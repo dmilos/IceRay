@@ -1,0 +1,8 @@
+#include "./ambient.hpp"
+#include "./AshikhminShirley/AshikhminShirley.hpp"
+#include "./beckmann.hpp"
+#include "./blinn.hpp"
+#include "./gaussian.hpp"
+#include "./illumination.hpp"
+#include "./lambert.hpp"
+#include "./phong.hpp"

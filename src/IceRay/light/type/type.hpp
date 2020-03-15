@@ -1,0 +1,8 @@
+#include "./affine.hpp"
+#include "./color.hpp"
+#include "./coord.hpp"
+#include "./interval.hpp"
+#include "./scalar.hpp"
+#include "./size.hpp"
+#include "./spot.hpp"
+#include "./swarm.hpp"

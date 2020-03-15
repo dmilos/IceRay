@@ -1,0 +1,112 @@
+#include <iostream>
+#include <iomanip>
+
+#include "./implementation.hpp"
+
+using namespace GS_DDMRM::S_IceRay::S_render::S_ray::S_classic2::S_stack;
+
+GC_implementation::GC_implementation()
+ {
+  M2_total = 0;
+ }
+ 
+GC_implementation::~GC_implementation()
+ {
+ }
+ 
+GC_implementation::T__input::T_ray           & GC_implementation::Fv_top( ) 
+ {
+  return T_data::F_top().M_incoming;
+ }
+
+GC_implementation::T__input::T_ray      const& GC_implementation::Fv_top( )const 
+ {
+  return T_data::F_top().M_incoming;
+ }
+
+GC_implementation::T__stack::T_accident       & GC_implementation::Fv_topAccident( )
+ {
+  return T_data::F_top();
+ }
+
+GC_implementation::T__stack::T_accident   const& GC_implementation::Fv_topAccident( )const
+ {
+  return T_data::F_top();
+ }
+
+void GC_implementation::Fv_pop()
+ {
+  if( 0 == T_data::F_size() )
+   {
+    return;
+   }
+
+  if( 0 == M2_index )
+   {
+    M2_index = T_data::F_size();
+    //return;
+   }
+
+  --M2_index;
+
+  auto & I_accident = Fv_topAccident();
+
+  I_accident.M_incoming.M_state.F_chunk().F_release();
+  I_accident.M_intersection.M_state.F_chunk().F_release();
+
+  T_data::F_pop();
+ }
+
+GC_implementation::T_size const&
+GC_implementation::Fv_occupancy()const
+ {
+  return T_data::F_size();
+ }
+
+void GC_implementation::Fv_reserve( T_size const& P_capacity )
+ {
+  return T_data::F_reserve( P_capacity );
+ }
+
+GC_implementation::T_size const&
+GC_implementation::Fv_size( )const
+ {
+  return M2_index;
+ }
+
+GC_implementation::T__input::T_ray & 
+GC_implementation::Fv_expose( T_size const& P_index )
+ {
+  return  T_data::F_at( ( T_data::F_size() - M2_index ) + P_index ).M_incoming;
+ }
+
+GC_implementation::T__input::T_ray const& 
+GC_implementation::Fv_get( T_size const& P_index )const
+{
+  return  T_data::F_at( ( T_data::F_size() - M2_index ) + P_index ).M_incoming;
+}
+
+void GC_implementation::Fv_push()
+{
+  static T_scalar Is_infinity = + 1e12;
+
+  if( T_data::F_size() == T_data::F_capacity() )
+  {
+    return;
+  }
+
+  ++M2_total;
+  ++ M2_index;
+
+  auto & I_accident = T_data::F_push();
+  //I_ray.M_intersection.M_lambda  = Is_infinity;
+  I_accident.M_incoming.M_UID        = M2_total;
+  I_accident.M_incoming.M_status     = T__input::T_ray::En_statusActive;
+  I_accident.M_status = T__stack::T_accident::En_statusUnUsed;
+}
+
+void GC_implementation::F_clear()
+ { // DONE
+  M2_index = 0;
+  T_data::F_clear();
+ }

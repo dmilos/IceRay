@@ -1,0 +1,6 @@
+#include "./bool.hpp"
+#include "./integer.hpp"
+#include "./report.hpp"
+#include "./scalar.hpp"
+#include "./size.hpp"
+#include "./string.hpp"

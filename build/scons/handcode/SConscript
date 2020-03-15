@@ -1,0 +1,187 @@
+import os
+import copy
+import nucleotide
+
+Import('settings' )
+
+
+## Primary Project Properties
+name_bare = settings.get_custom( 'project:name:handcode' )
+version   = settings.get_custom( 'project:version' )
+
+### Secondary Project Properties
+name_full = name_bare + '-' + version
+alias = name_bare
+
+
+## Project compiler settings
+platform      = settings.get_translator().get()['platform']['guest']
+configuration = settings.get_custom( 'compiler:configuration' )
+architecture  = settings.get_custom( 'architecture' )
+
+
+# Project directories
+compiler_msvc_version = settings.get_custom( 'compiler:msvc:version' )
+
+directory_prefix  = name_full
+directory_prefix += '-' + platform
+directory_prefix += '-' + settings.get_translator().get()['cc']['name']
+directory_prefix += '-' + settings.get_translator().get()['cc']['version'] +'-'+ architecture # TODO mismatch with compiler_msvc_version
+directory_prefix += '-' + configuration
+directory_prefix += '-' + settings.get_custom( 'RTL' )
+
+name_full += '-' + settings.get_custom( 'RTL' )
+
+
+
+directory_src  = settings.get_custom( 'directory:source' )
+directory_subm  = settings.get_custom( 'directory:submodule:_root' )
+
+directory_temp = os.path.join( settings.get_custom( 'directory:temp' ), directory_prefix )
+directory_obj =  os.path.join( directory_temp, 'obj' )
+directory_lib =  os.path.join( directory_temp, 'lib' )
+
+directory_pdb =  directory_obj
+directory_pdb =  directory_temp #os.path.join( directory_temp, 'pdb' )
+
+directory_dll =  os.path.join( directory_temp, 'dll' )
+directory_exe =  os.path.join( directory_temp, 'exe' )
+
+
+settings.accumulate( 'blank' )
+#settings.accumulate( 'pp2f' )
+
+settings.accumulate( 'architecture' , { 'name' : settings.get_custom( 'architecture' )  } )
+
+settings.accumulate( 'include' , { 'math'       : settings.get_custom( 'directory:submodule:math'       ) } )
+settings.accumulate( 'include' , { 'color'      : settings.get_custom( 'directory:submodule:color'      ) } )
+settings.accumulate( 'include' , { 'type'       : settings.get_custom( 'directory:submodule:type'       ) } )
+settings.accumulate( 'include' , { 'memory'     : settings.get_custom( 'directory:submodule:memory'     ) } )
+settings.accumulate( 'include' , { 'PNM'        : settings.get_custom( 'directory:submodule:PNM'        ) } )
+settings.accumulate( 'include' , { 'container'  : settings.get_custom( 'directory:submodule:container'  ) } )
+
+settings.accumulate( 'include' , { 'IceRay'     : settings.get_custom( 'directory:source'        ) } )
+
+settings.accumulate( 'compiler:configuration', { 'name'          : configuration  } )
+settings.accumulate( 'compiler:optimisation',  { 'configuration' : configuration  } )
+settings.accumulate( 'compiler:version', { 'msvc': [ compiler_msvc_version ] } )
+settings.accumulate( 'RTTI', { 'enable': 'true' } )
+settings.accumulate( 'PDB', { 'configuration': configuration , 'synchronous' : 'false', 'file-name': os.path.join( directory_pdb, name_full + '.pdb' ) } )
+settings.accumulate( 'RTL', { 'configuration' : configuration, 'type': settings.get_custom( 'RTL' ) } )
+settings.accumulate( 'exception' )
+
+settings.accumulate( 'source:c++', { 'dialect': 'c++11' } )
+
+#permanently disabled
+settings.accumulate( 'compiler:warning', { 'base-class-destructor-is-inaccessible' : 'disable'  } )
+settings.accumulate( 'macro', { 'name' : 'COLOR_USE_PP2FILE' } )
+
+#permanently error
+# ENABLE settings.accumulate( 'compiler:warning', { 'no-return-statement'         : 'error'  } )
+# ENABLE settings.accumulate( 'compiler:warning', { 'sign-compare'                : 'error'  } )
+settings.accumulate( 'compiler:warning', { 'member-order-initialization' : 'error'  } )
+settings.accumulate( 'compiler:warning', { 'returning-address-of-local-variable' : 'error'  } )
+settings.accumulate( 'compiler:warning', { 'using-of-uninitialized-variable' : 'error'  } )
+
+#for clean up
+settings.accumulate( 'compiler:warning', { 'unused-variable'            : 'enable'  } )
+settings.accumulate( 'compiler:warning', { 'unused-local-typedefs'      : 'enable'  } )
+
+
+# CPP files to build
+
+cc_files = []
+
+cc_files += [ os.path.join( 'main', 'make', 'basic.cpp' ) ]
+
+cc_files += [ os.path.join( 'main', 'make', 'camera.cpp' ) ]
+
+#cc_files += [ os.path.join( 'main', 'make', 'geometry_bezier.cpp' ) ]
+cc_files += [ os.path.join( 'main', 'make', 'geometry_blobby_sphere.cpp' ) ]
+cc_files += [ os.path.join( 'main', 'make', 'geometry_box.cpp' ) ]
+cc_files += [ os.path.join( 'main', 'make', 'geometry_projective.cpp' ) ]
+cc_files += [ os.path.join( 'main', 'make', 'geometry_rtss_add.cpp' ) ]
+cc_files += [ os.path.join( 'main', 'make', 'geometry_rtss_list.cpp' ) ]
+cc_files += [ os.path.join( 'main', 'make', 'geometry_rtss_object.cpp' ) ]
+cc_files += [ os.path.join( 'main', 'make', 'geometry_rtss_uniform.cpp' ) ]
+cc_files += [ os.path.join( 'main', 'make', 'geometry_sphere.cpp' ) ]
+
+cc_files += [ os.path.join( 'main', 'make', 'material.cpp' ) ]
+
+#cc_files += [ os.path.join( 'main', 'make', 'material_transmission_reflect.cpp' ) ]
+#cc_files += [ os.path.join( 'main', 'make', 'material_transmission_refract.cpp' ) ]
+#cc_files += [ os.path.join( 'main', 'make', 'pigment_cluster.cpp' ) ]
+#cc_files += [ os.path.join( 'main', 'make', 'pigment_illumination_ambient.cpp' ) ]
+#cc_files += [ os.path.join( 'main', 'make', 'pigment_illumination_beckmann.cpp' ) ]
+#cc_files += [ os.path.join( 'main', 'make', 'pigment_illumination_blin.cpp' ) ]
+#cc_files += [ os.path.join( 'main', 'make', 'pigment_illumination_gaussian.cpp' ) ]
+#cc_files += [ os.path.join( 'main', 'make', 'pigment_illumination_hs.cpp' ) ]
+#cc_files += [ os.path.join( 'main', 'make', 'pigment_illumination_lambert.cpp' ) ]
+#cc_files += [ os.path.join( 'main', 'make', 'pigment_illumination_light.cpp' ) ]
+#cc_files += [ os.path.join( 'main', 'make', 'pigment_illumination_on.cpp' ) ]
+#cc_files += [ os.path.join( 'main', 'make', 'pigment_illumination_phong.cpp' ) ]
+#cc_files += [ os.path.join( 'main', 'make', 'pigment_illumination_ward.cpp' ) ]
+#cc_files += [ os.path.join( 'main', 'make', 'pigment_intersect.cpp' ) ]
+#cc_files += [ os.path.join( 'main', 'make', 'pigment_normal.cpp' ) ]
+#cc_files += [ os.path.join( 'main', 'make', 'pigment_operation_add.cpp' ) ]
+#cc_files += [ os.path.join( 'main', 'make', 'pigment_operation_subtraction.cpp' ) ]
+#cc_files += [ os.path.join( 'main', 'make', 'pigment_pattern_color_const.cpp' ) ]
+#cc_files += [ os.path.join( 'main', 'make', 'pigment_pattern_coord_const.cpp' ) ]
+
+#cc_files += [ os.path.join( 'main', 'make', 'texture.cpp' ) ]
+
+
+cc_files += [ os.path.join( 'main', 'system', 'init_system.cpp' ) ]
+cc_files += [ os.path.join( 'main', 'system', 'windows_system.cpp' ) ]
+
+
+#cc_files += [ os.path.join( 'main', 'interface', 'handcode', 'scene', '1M.cpp' ) ]
+#cc_files += [ os.path.join( 'main', 'interface', 'handcode', 'scene', 'all_ilumination.cpp' ) ]
+#cc_files += [ os.path.join( 'main', 'interface', 'handcode', 'scene', 'blobby.cpp' ) ]
+#cc_files += [ os.path.join( 'main', 'interface', 'handcode', 'scene', 'deform_affine.cpp' ) ]
+#cc_files += [ os.path.join( 'main', 'interface', 'handcode', 'scene', 'deform_projective.cpp' ) ]
+#cc_files += [ os.path.join( 'main', 'interface', 'handcode', 'scene', 'sb.cpp' ) ]
+#cc_files += [ os.path.join( 'main', 'interface', 'handcode', 'scene', 'sphere.cpp' ) ]
+
+cc_files += [ os.path.join( 'main', 'interface', 'handcode', 'main.cpp' ) ]
+
+
+### Deal with Scons ###
+
+project_common_settings = copy.deepcopy( settings )
+envCommon  = nucleotide.Environment( project_common_settings ).native()
+
+objects = []
+
+for file in cc_files:
+    source = os.path.join( directory_src, 'IceRay', file )
+    target = os.path.join( directory_obj, file + envCommon['OBJSUFFIX'] )
+    objects += envCommon.Object( source = source, target = target )
+
+
+### ### ### ###
+
+the_library = SConscript( '../core/SConscript', exports=['settings'] )
+
+
+### Project
+
+project_settings = copy.deepcopy( settings )
+project_settings.accumulate( 'executable:console' )
+
+project_env = nucleotide.Environment( project_settings ).native()
+
+name_path = os.path.join( directory_exe, name_full + project_env['PROGSUFFIX'] )
+
+project_binary = project_env.Program( target = name_path, source = objects, LIBS = the_library )
+
+project_install_dir = os.path.join( settings.get_custom( 'directory:install' ), settings.get_custom( 'architecture' )+ '-' + configuration )
+
+project_handcode_result = project_env.Install( project_install_dir, project_binary )
+
+#Default( project_handcode_result )
+Return( 'project_handcode_result' )
+
+
+
+

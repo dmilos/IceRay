@@ -1,0 +1,58 @@
+{
+    "project" :
+    {
+        "name":
+         {
+             "base" : "IceRay",
+             "extent":
+             {
+                 "core"     : "Core",
+                 "clib"     : "CLib",
+                 "cdll"     : "CDLL",
+                 "python"   : "Py",
+                 "handcode" : "HC"
+             }
+         },
+        "version":
+        {
+            "major":  1,
+            "minor":  0,
+            "fix":    0,
+            "build":  0,
+            "date": "2019-11-01"
+        },
+        "UID": "7F43DFFEC9AEC5873A76D3A46D50C2F9"
+    },
+    "directory" :
+    {
+        "root"     : "../",
+        "source"   : "src",
+        "example"  : "example",
+        "temp"     : "temp",
+        "submodule": "submodule"
+    },
+    "URL":
+    {
+        "source": "http://github.com/dmilos/IceRay.git"
+    },
+    "dependency":
+    {
+        "boost" :
+        {
+            "directory"  : "e:/work/code/cpp/include/boost_168",
+            "version"    : "168"
+        },
+        "python2":
+        {
+            "directory" : "c:/prg/Python27",
+            "version"   : "27"
+        },
+
+        "python3":
+        {
+            "directory"     : "c:/prg/Python37",
+            "version" : "37"
+        }
+    }
+
+}

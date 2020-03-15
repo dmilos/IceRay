@@ -1,0 +1,8 @@
+#include "./blobby/blobby.cpp"
+#include "./complex/complex.cpp"
+#include "./hfield/hfield.cpp"
+#include "./rtss/rtss.cpp"
+#include "./simple/simple.cpp"
+#include "./spline/spline.cpp"
+#include "./transform/transform.cpp"
+#include "./volumetric/volumetric.cpp"

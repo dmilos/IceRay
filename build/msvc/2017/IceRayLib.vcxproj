@@ -1,0 +1,565 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{4CD251B2-8CAB-4320-9295-DEFEE78D5B9E}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>StaticLib1</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <ProjectName>IceRayLib</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>z:\work\code\cpp\prj\github\IceRay\work\submodule\type\src;z:\work\code\cpp\prj\github\math\work\src;z:\work\code\cpp\prj\github\color\work\src;z:\work\code\cpp\prj\github\IceRay\work\submodule\memory\src;z:\work\code\cpp\prj\github\IceRay\work\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4624</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>z:\work\code\cpp\prj\github\IceRay\work\submodule\type\src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\src\IceRay\camera\camera.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\camera\cylinder\vertical.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\camera\dof\cone.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\camera\dof\focus.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\camera\flat\general.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\camera\flat\hybrid.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\camera\flat\orthogonal.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\camera\flat\perspective.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\camera\invert.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\camera\sphere\vertical.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\camera\transform.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\camera\type\affine.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\camera\type\beam.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\camera\type\coord.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\camera\type\interval.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\camera\type\matrix.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\camera\type\ray.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\camera\type\report.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\camera\type\scalar.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\camera\type\size.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\camera\type\system.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\camera\type\type.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\camera\_parent.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\camera\_pure.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\blobby\affine.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\blobby\plane.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\blobby\sphere.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\blobby\system.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\blobby\translate.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\blobby\type\coefficient.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\blobby\type\heap.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\blobby\ucylinderZ.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\blobby\usphere.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\blobby\uwaterZ.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\blobby\_element.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\complex\intersect.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\complex\plane_sys.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\transform\affine.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\transform\mblur.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\transform\projective.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\transform\translate.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\hfield\container-func.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\hfield\container-ptr.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\hfield\container-vv.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\hfield\container-_pure.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\hfield\hfield.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\hfield\object-b3.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\hfield\object-flat.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\hfield\object-quad.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\hfield\object-trg.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\hfield\object-_pure.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\rtss\list.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\rtss\object.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\rtss\rtss.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\rtss\uniform.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\rtss\_pure.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\simple\box.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\simple\cone.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\simple\cylinder.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\simple\disc.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\simple\paraboloid.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\simple\plane.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\simple\quadric.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\simple\sphere.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\simple\torus.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\simple\triangle.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\simple\usphere.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\spline\spline.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\volumetric\smoke.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\volumetric\vacuum.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\_primitive.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\_pure\cluster.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\_pure\distance.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\_pure\inside.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\_pure\intersect.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\_pure\normal.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\_pure\test.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\_pure\uvw.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\_pure\valid.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\_pure\_base.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\_pure\_pure.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\_simple.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\_type\data.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\_type\manager.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\_type\ray.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\light\area.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\light\blocked.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\light\chandelier.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\light\circle.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\light\clipped.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\light\dark.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\light\light.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\light\line.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\light\point.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\light\reflector.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\light\sphere.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\light\spline.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\light\sun.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\light\type\color.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\light\type\coord.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\light\type\interval.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\light\type\scalar.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\light\type\size.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\light\type\spot.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\light\type\swarm.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\light\_pure.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\beam.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\convert\color2coord.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\convert\color2scalar.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\convert\coord2color.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\convert\rgb2hsv.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\convert\scalar2color.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\convert\scalar2coord.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\function\function1d.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\function\function2d.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\function\function3d.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\geometry\cluster.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\geometry\distance.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\geometry\extract.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\geometry\intersect.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\geometry\normal.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\geometry\reset.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\geometry\uvw.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\illumination\ambient.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\illumination\beckmann.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\illumination\blinn.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\illumination\gaussian.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\illumination\hs_lambert.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\illumination\hs_phong.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\illumination\lambert.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\illumination\on_p44.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\illumination\phong.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\illumination\ward_approx.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\illumination\ward_isotropic.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\illumination\ward_real.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\instruction.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\light\generator.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\light\spotUVW.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\light\swarm0.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\light\swarm1.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\memory.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\operation\add.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\operation\color_add.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\operation\color_negate.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\operation\color_scale.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\operation\color_sub.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\operation\coord_add.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\operation\coord_cross.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\operation\coord_div.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\operation\coord_dot.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\operation\coord_len.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\operation\coord_negate.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\operation\coord_scale.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\operation\coord_sub.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\pattern\color.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\pattern\colorc.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\pattern\coord.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\pattern\coordc.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\pattern\scalar.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\pattern\size.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\processor.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\program.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\raw.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\surface.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\transform\affine.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\transform\projective.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\transform\translate.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\transmission\reflect\one.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\transmission\reflect\split.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\transmission\refract.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\illumination\ambient.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\illumination\beckmann.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\illumination\blinn.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\illumination\CookTorranceFresnel\data.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\illumination\CookTorranceSchlick\data.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\illumination\gaussian.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\illumination\HeidrichSeidel\lambert.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\illumination\HeidrichSeidel\lp.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\illumination\HeidrichSeidel\phong.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\illumination\lambert.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\illumination\on_f29.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\illumination\on_p44.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\illumination\on_YasuhiroFujii.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\illumination\phong.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\illumination\ward\approx.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\illumination\ward\isotropic.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\illumination\ward\real.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\intersect.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\medium.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\medium\!template.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\medium\constant.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\medium\exponential.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\medium\linear.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\medium\quadratic.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\medium\wrapcb.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\medium\wrapcptr.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\medium\wrapfunct.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\medium\_pure.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\pattern\brick.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\pattern\checker.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\pattern\constantC.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\pattern\constantV.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\pattern\crackle.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\pattern\hexagon.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\pattern\image.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\pattern\marble.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\pattern\onion.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\pattern\UVWcylinder.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\pattern\UVWsphere.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\pattern\UVWtorus.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\pattern\wood.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\pattern\_pure.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\pigment.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\_pure.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\object\wrap.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\object\_base.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\object\_pure.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\render\0scanner\adaptive.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\render\0scanner\block.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\render\0scanner\parallel.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\render\0scanner\sobol.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\render\0scanner\_pure.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\render\1pixel\filter\const.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\render\1pixel\filter\_pure.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\render\1pixel\strategy\center.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\render\1pixel\strategy\grid.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\render\1pixel\strategy\random.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\render\1pixel\strategy\sobol.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\render\1pixel\strategy\_pure.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\render\1pixel\uv.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\render\1pixel\_base.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\render\1pixel\_pure.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\render\2pierce\uv.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\render\2pierce\_base.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\render\2pierce\_pure.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\render\4ray\classic2\algorithm.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\render\4ray\classic2\stack\beam.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\render\4ray\classic2\stack\data.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\render\4ray\classic2\stack\implementation.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\render\4ray\classic2\stack\input.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\render\4ray\classic2\stack\item.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\render\4ray\classic2\stack\output.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\render\4ray\classic2\stack\stack.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\render\4ray\classic\class.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\render\4ray\classic\geometry.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\render\4ray\classic\material.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\render\4ray\classic\medium.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\render\4ray\classic\ray.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\render\4ray\distance.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\render\4ray\_base.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\render\4ray\_pure.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\render\beam\all.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\render\beam\first.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\render\beam\random.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\render\beam\_pure.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\render\engine.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\render\image\adaptive.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\render\image\block.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\render\image\_pure.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\render\manager.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\render\pixel\center.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\render\pixel\grid.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\render\pixel\random.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\render\pixel\_pure.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\render\ray\classic\class.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\render\ray\classic\geometry.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\render\ray\classic\material.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\render\ray\classic\ray.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\render\ray\classic\texture.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\render\ray\distance.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\render\ray\_pure.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\type\basic\bool.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\type\basic\integer.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\type\basic\report.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\type\basic\scalar.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\type\basic\size.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\type\basic\string.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\type\color.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\type\math\affine.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\type\math\coord.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\type\math\interval.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\type\math\matrix.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\type\nothing.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\type\picture\memory.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\type\picture\picture.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\type\picture\_pure.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\type\pointer.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\type\pointer\dumb.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\type\ray-deprecated.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\type\ray\beam.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\type\ray\line.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\type\ray\simple.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\type\ray\state.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\type\ray\trace.hpp" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\src\IceRay\camera\camera.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\camera\cylinder\vertical.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\camera\dof\cone.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\camera\dof\focus.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\camera\flat\general.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\camera\flat\hybrid.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\camera\flat\orthogonal.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\camera\flat\perspective.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\camera\invert.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\camera\sphere\vertical.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\camera\transform.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\camera\_parent.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\camera\_pure.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\geometry\blobby\sphere.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\geometry\blobby\system.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\geometry\blobby\translate.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\geometry\blobby\ucylinderZ.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\geometry\blobby\usphere.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\geometry\blobby\uwaterZ.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\geometry\complex\intersect.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\geometry\transform\affine.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\geometry\transform\mblur.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\geometry\transform\projective.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\geometry\transform\translate.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\geometry\hfield\hfield.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\geometry\rtss\list.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\geometry\rtss\object.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\geometry\rtss\uniform.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\geometry\rtss\_pure.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\geometry\simple\box.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\geometry\simple\cone.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\geometry\simple\cylinder.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\geometry\simple\disc.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\geometry\simple\paraboloid.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\geometry\simple\plane.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\geometry\simple\quadric.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\geometry\simple\sphere.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\geometry\simple\torus.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\geometry\simple\triangle.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\geometry\simple\usphere.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\geometry\spline\spline.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\geometry\volumetric\smoke.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\geometry\volumetric\vacuum.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\geometry\_pure\_base.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\light\area.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\light\basic.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\light\blocked.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\light\chandelier.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\light\circle.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\light\clipped.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\light\dark.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\light\light.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\light\line.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\light\point.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\light\reflector.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\light\sphere.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\light\spline.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\light\sun.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\material\compute\compute.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\material\compute\processor.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\material\compute\program.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\material\illumination\illumination.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\material\material.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\material\medium\medium.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\material\medium\wrapcb.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\material\pattern\pattern.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\object\object.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\object\wrap.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\object\_base.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\object\_pure.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\render\0scanner\block.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\render\0scanner\parallel.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\render\0scanner\_pure.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\render\1pixel\strategy\center.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\render\1pixel\strategy\grid.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\render\1pixel\strategy\random.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\render\1pixel\_base.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\render\1pixel\_pure.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\render\2pierce\_base.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\render\2pierce\_pure.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\render\4ray\classic2\algorithm.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\render\4ray\classic2\stack\implementation.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\render\4ray\classic\class.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\render\4ray\classic\geometry.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\render\4ray\distance.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\render\4ray\_base.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\render\4ray\_pure.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\render\beam\all.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\render\beam\_pure.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\render\engine.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\render\image\block.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\render\image\_pure.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\render\manager.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\render\pixel\center.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\render\pixel\grid.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\render\pixel\random.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\render\pixel\_pure.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\render\ray\classic\class.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\render\ray\classic\geometry.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\render\ray\distance.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\render\ray\_pure.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\src\IceRay\material\illumination\HeidrichSeidel\lambert.hpp.bak" />
+    <None Include="..\..\..\src\IceRay\material\illumination\HeidrichSeidel\phong.hpp.bak" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\..\src\IceRay\material\racun.txt" />
+    <Text Include="..\..\..\src\IceRay\material\TODO.txt" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

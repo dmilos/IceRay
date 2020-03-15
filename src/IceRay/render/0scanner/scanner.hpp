@@ -1,0 +1,5 @@
+#include "./_pure.hpp"
+#include "./adaptive.hpp"
+#include "./block.hpp"
+#include "./parallel.hpp"
+#include "./sobol.hpp"

@@ -1,0 +1,10 @@
+#include "./compute/compute.hpp"
+#include "./illumination/illumination.hpp"
+#include "./medium/medium.hpp"
+#include "./pattern/pattern.hpp"
+#include "./pigment/pigment.hpp"
+#include "./transmission/transmission.hpp"
+
+#include "./_pure.hpp"
+#include "./beam.hpp"
+#include "./intersect.hpp"

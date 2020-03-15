@@ -1,0 +1,65 @@
+import os
+import sys
+import subprocess
+import nucleotide
+import json
+
+#nucleotide.Options.check()
+
+settings = nucleotide.Settings()
+
+settings.set_custom( 'directory:_root',            os.path.join('..','..','..') )
+settings.set_custom( 'file:configuration:json',       os.path.join( settings.get_custom( 'directory:_root' ) , 'build', 'info.json' ) )
+
+settings.set_custom( 'architecture' ,           'x86'     )
+settings.set_custom( 'architecture',             ARGUMENTS.get( 'architecture',           settings.get_custom( 'architecture' )      ) )
+settings.set_custom( 'compiler:configuration',  'release'  )
+settings.set_custom( 'compiler:configuration',   ARGUMENTS.get( 'compiler:configuration', settings.get_custom( 'compiler:configuration' ) ) )
+
+#settings.set_custom( 'compiler:msvc:version',  '14.0'  )
+#settings.set_custom( 'compiler:msvc:version',   ARGUMENTS.get( 'compiler:version', settings.get_custom( 'compiler:version' ) ) )
+
+settings.set_custom( 'RTL',                     'dynamic'  )
+settings.set_custom( 'RTL',                      ARGUMENTS.get( 'RTL',                    settings.get_custom( 'RTL' ) ) )
+
+
+configuration = json.load( open( settings.get_custom( 'file:configuration:json' ), "r")  )
+
+settings.set_custom( 'project:version:major',      configuration['project']['version']['major']  )
+settings.set_custom( 'project:version:minor',      configuration['project']['version']['minor']  )
+settings.set_custom( 'project:version:revision',   configuration['project']['version']['fix']    )
+settings.set_custom( 'project:version:build',      configuration['project']['version']['build']  )
+settings.set_custom( 'project:version',            '1.0.0.0'    )#!< TODO Take this from ini
+settings.set_custom( 'project:UID',                configuration['project']['UID']     )
+
+settings.set_custom( 'project:name:_base',        configuration['project']['name']['base']     )
+settings.set_custom( 'project:name:core',         configuration['project']['name']['base'] + configuration['project']['name']['extent']['core']     )
+settings.set_custom( 'project:name:clib',         configuration['project']['name']['base'] + configuration['project']['name']['extent']['clib']     )
+settings.set_custom( 'project:name:cdll',         configuration['project']['name']['base'] + configuration['project']['name']['extent']['cdll']     )
+settings.set_custom( 'project:name:python',       configuration['project']['name']['base'] + configuration['project']['name']['extent']['python']   )
+settings.set_custom( 'project:name:handcode',     configuration['project']['name']['base'] + configuration['project']['name']['extent']['handcode'] )
+
+settings.set_custom( 'directory:install',       os.path.join( settings.get_custom( 'directory:_root' ) , 'bin' ) )
+settings.set_custom( 'directory:install',        ARGUMENTS.get( 'directory:install',      settings.get_custom( 'directory:install' ) ) )
+settings.set_custom( 'directory:temp',          os.path.join( settings.get_custom( 'directory:_root' ) , 'temp' ) )
+settings.set_custom( 'directory:temp',           ARGUMENTS.get( 'directory:temp',         settings.get_custom( 'directory:temp' ) ) )
+
+settings.set_custom( 'directory:source',          os.path.join( settings.get_custom( 'directory:_root' ) ,"src"  ) )
+settings.set_custom( 'directory:submodule:_root', os.path.join( settings.get_custom( 'directory:_root' ) ,"submodule" ) )
+
+settings.set_custom( 'directory:submodule:math',        os.path.join( settings.get_custom( 'directory:submodule:_root' ) ,"math",       "src"  ) )
+settings.set_custom( 'directory:submodule:color',       os.path.join( settings.get_custom( 'directory:submodule:_root' ) ,"color",      "src"  ) )
+settings.set_custom( 'directory:submodule:PNM',         os.path.join( settings.get_custom( 'directory:submodule:_root' ) ,"pnm",        "src"  ) )
+settings.set_custom( 'directory:submodule:memory',      os.path.join( settings.get_custom( 'directory:submodule:_root' ) ,"memory",     "src"  ) )
+settings.set_custom( 'directory:submodule:type',        os.path.join( settings.get_custom( 'directory:submodule:_root' ) ,"type",       "src"  ) )
+settings.set_custom( 'directory:submodule:container',   os.path.join( settings.get_custom( 'directory:submodule:_root' ) ,"container",  "src"  ) )
+
+
+#print settings.get_options().m_this
+
+# project specific
+
+product = SConscript('./SConscript', exports=[ 'settings' ] )
+
+#Make it default
+Default( product )

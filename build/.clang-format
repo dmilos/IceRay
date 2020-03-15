@@ -1,0 +1,26 @@
+BasedOnStyle : LLVM
+Language : Cpp
+
+ColumnLimit : 120
+
+UseTab : Never
+
+IncludeCategories :
+  - Regex:           '<Windows\.h>$'
+    Priority:        8
+
+  - Regex:           '^<.+>$'
+    Priority:        7
+
+  - Regex:           '^<.+\.h>$'
+    Priority:        6
+
+  - Regex:           '^<.+\.hpp>$'
+    Priority:        6
+
+  - Regex:           '^".+"$'
+    Priority:        1
+
+IncludeBlocks : Regroup
+
+

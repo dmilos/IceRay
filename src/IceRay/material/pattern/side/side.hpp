@@ -1,0 +1,5 @@
+#include "./cube.hpp"
+#include "./dodecahedron.hpp"
+#include "./icosahedron.hpp"
+#include "./octahedron.hpp"
+#include "./tetrahedron.hpp"

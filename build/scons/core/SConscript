@@ -1,0 +1,277 @@
+import os
+import copy
+import nucleotide
+
+Import('settings')
+
+
+## Primary Project Properties
+name_bare = settings.get_custom( 'project:name:core' )
+version   = settings.get_custom( 'project:version' )
+
+### Secondary Project Properties
+name_full = name_bare + '-' + version
+alias = name_bare
+
+
+## Project compiler settings
+platform      = settings.get_translator().get()['platform']['guest']
+configuration = settings.get_custom( 'compiler:configuration' )
+architecture  = settings.get_custom( 'architecture' )
+
+
+# Project directories
+compiler_msvc_version = settings.get_custom( 'compiler:msvc:version' )
+
+directory_prefix  = name_full
+directory_prefix += '-' + platform
+directory_prefix += '-' + settings.get_translator().get()['cc']['name']
+directory_prefix += '-' + settings.get_translator().get()['cc']['version'] +'-'+ architecture
+directory_prefix += '-' + configuration
+directory_prefix += '-' + settings.get_custom( 'RTL' )
+
+name_full += '-' + settings.get_custom( 'RTL' )
+
+
+
+directory_src   = settings.get_custom( 'directory:source' )
+directory_subm  = settings.get_custom( 'directory:submodule:_root' )
+
+directory_temp = os.path.join( settings.get_custom( 'directory:temp' ), directory_prefix )
+directory_obj =  os.path.join( directory_temp, 'obj' )
+directory_lib =  os.path.join( directory_temp, 'lib' )
+
+directory_pdb =  directory_obj
+directory_pdb =  directory_temp #os.path.join( directory_temp, 'pdb' )
+
+settings.accumulate( 'blank' )
+#settings.accumulate( 'pp2f' )
+
+settings.accumulate( 'architecture' , { 'name' : settings.get_custom( 'architecture' )  } )
+
+settings.accumulate( 'include' , { 'math'       : settings.get_custom( 'directory:submodule:math'       ) } )
+settings.accumulate( 'include' , { 'color'      : settings.get_custom( 'directory:submodule:color'      ) } )
+settings.accumulate( 'include' , { 'type'       : settings.get_custom( 'directory:submodule:type'       ) } )
+settings.accumulate( 'include' , { 'memory'     : settings.get_custom( 'directory:submodule:memory'     ) } )
+settings.accumulate( 'include' , { 'PNM'        : settings.get_custom( 'directory:submodule:PNM'        ) } )
+settings.accumulate( 'include' , { 'container'  : settings.get_custom( 'directory:submodule:container'  ) } )
+settings.accumulate( 'include' , { 'counter'    : settings.get_custom( 'directory:submodule:counter'    ) } )
+
+settings.accumulate( 'include' , { 'IceRay'     : settings.get_custom( 'directory:source'        ) } )
+
+settings.accumulate( 'compiler:configuration', { 'name'          : configuration  } )
+settings.accumulate( 'compiler:optimisation',  { 'configuration' : configuration  } )
+settings.accumulate( 'compiler:version', { 'msvc': [ compiler_msvc_version ] } )
+settings.accumulate( 'RTTI', { 'enable': 'true' } )
+settings.accumulate( 'PDB', { 'configuration': configuration , 'synchronous' : 'false', 'file-name': os.path.join( directory_pdb, name_full + '.pdb' ) } )
+settings.accumulate( 'RTL', { 'configuration' : configuration, 'type': settings.get_custom( 'RTL' ) } )
+settings.accumulate( 'exception' )
+
+settings.accumulate( 'source:c++', { 'dialect': 'c++11' } )
+settings.accumulate( 'macro', { 'name' : 'COLOR_USE_PP2FILE' } )
+
+#permanently disabled
+settings.accumulate( 'compiler:warning', { 'base-class-destructor-is-inaccessible' : 'disable'  } )
+
+#permanently error
+# ENABLE settings.accumulate( 'compiler:warning', { 'no-return-statement'         : 'error'  } )
+# ENABLE settings.accumulate( 'compiler:warning', { 'sign-compare'                : 'error'  } )
+settings.accumulate( 'compiler:warning', { 'member-order-initialization'         : 'error'  } )
+settings.accumulate( 'compiler:warning', { 'returning-address-of-local-variable' : 'error'  } )
+settings.accumulate( 'compiler:warning', { 'using-of-uninitialized-variable'     : 'error'  } )
+
+#MSVC not to disable pragma warning ( disable: 4786 )
+#pragma warning( disable: 4244 )
+#pragma warning( disable: 4436 )
+
+
+#for clean up
+settings.accumulate( 'compiler:warning', { 'unused-variable'            : 'enable'  } )
+settings.accumulate( 'compiler:warning', { 'unused-local-typedefs'      : 'enable'  } )
+
+
+# CPP files to build
+
+cc_files = []
+
+cc_files += [ os.path.join( 'camera', 'camera.cpp' ) ]
+if( False ):
+    cc_files += [ os.path.join( 'camera', '_parent.cpp' ) ]
+    cc_files += [ os.path.join( 'camera', '_pure.cpp' ) ]
+    cc_files += [ os.path.join( 'camera', 'cylinder', 'vertical.cpp' ) ]
+    cc_files += [ os.path.join( 'camera', 'sphere',    'vertical.cpp' ) ]
+    cc_files += [ os.path.join( 'camera', 'dof', 'cone.cpp' ) ]
+    cc_files += [ os.path.join( 'camera', 'dof', 'focus.cpp' ) ]
+    cc_files += [ os.path.join( 'camera', 'flat', 'general.cpp' ) ]
+    cc_files += [ os.path.join( 'camera', 'flat', 'hybrid.cpp' ) ]
+    cc_files += [ os.path.join( 'camera', 'invert.cpp' ) ]
+    cc_files += [ os.path.join( 'camera', 'flat', 'orthogonal.cpp' ) ]
+    cc_files += [ os.path.join( 'camera', 'flat', 'perspective.cpp' ) ]
+    cc_files += [ os.path.join( 'camera', 'transform.cpp' ) ]
+
+cc_files += [ os.path.join( 'geometry', '_pure', '_pure.cpp' ) ]
+if( False ):
+    cc_files += [ os.path.join( 'geometry', '_pure', '_base.cpp' ) ]
+    cc_files += [ os.path.join( 'geometry', '_pure', 'child.cpp' ) ]
+    cc_files += [ os.path.join( 'geometry', '_pure', 'parent.cpp' ) ]
+
+cc_files += [ os.path.join( 'geometry', 'blobby', 'blobby.cpp' ) ]
+if( False ):
+    cc_files += [ os.path.join( 'geometry', 'blobby', 'sphere.cpp' ) ]
+    cc_files += [ os.path.join( 'geometry', 'blobby', 'system.cpp' ) ]
+    cc_files += [ os.path.join( 'geometry', 'blobby', 'translate.cpp' ) ]
+    cc_files += [ os.path.join( 'geometry', 'blobby', 'ucylinderZ.cpp' ) ]
+    cc_files += [ os.path.join( 'geometry', 'blobby', 'usphere.cpp' ) ]
+    cc_files += [ os.path.join( 'geometry', 'blobby', 'uwaterZ.cpp' ) ]
+
+cc_files += [ os.path.join( 'geometry', 'complex', 'complex.cpp' ) ]
+if( False ):
+    cc_files += [ os.path.join( 'geometry', 'complex', 'intersect.cpp' ) ]
+    cc_files += [ os.path.join( 'geometry', 'complex', 'aifs.cpp' ) ]
+
+cc_files += [ os.path.join( 'geometry', 'transform', 'transform.cpp' ) ]
+if( False ):
+    cc_files += [ os.path.join( 'geometry', 'transform', 'affine.cpp' ) ]
+    cc_files += [ os.path.join( 'geometry', 'transform', 'mblur.cpp' ) ]
+    cc_files += [ os.path.join( 'geometry', 'transform', 'projective.cpp' ) ]
+    cc_files += [ os.path.join( 'geometry', 'transform', 'translate.cpp' ) ]
+
+cc_files += [ os.path.join( 'geometry', 'hfield', 'hfield.cpp' ) ]
+
+cc_files += [ os.path.join( 'geometry', 'rtss', 'rtss.cpp' ) ]
+if( False ):
+    cc_files += [ os.path.join( 'geometry', 'rtss', '_pure.cpp' ) ]
+    cc_files += [ os.path.join( 'geometry', 'rtss', 'list.cpp' ) ]
+    cc_files += [ os.path.join( 'geometry', 'rtss', 'object.cpp' ) ]
+    cc_files += [ os.path.join( 'geometry', 'rtss', 'uniform.cpp' ) ]
+
+cc_files += [ os.path.join( 'geometry', 'simple', 'simple.cpp' ) ]
+if( False ):
+    cc_files += [ os.path.join( 'geometry', 'simple', 'box.cpp' ) ]
+    cc_files += [ os.path.join( 'geometry', 'simple', 'cone.cpp' ) ]
+    cc_files += [ os.path.join( 'geometry', 'simple', 'cylinder.cpp' ) ]
+    cc_files += [ os.path.join( 'geometry', 'simple', 'disc.cpp' ) ]
+    cc_files += [ os.path.join( 'geometry', 'simple', 'paraboloid.cpp' ) ]
+    cc_files += [ os.path.join( 'geometry', 'simple', 'plane.cpp' ) ]
+    cc_files += [ os.path.join( 'geometry', 'simple', 'sphere.cpp' ) ]
+    cc_files += [ os.path.join( 'geometry', 'simple', 'torus.cpp' ) ]
+    cc_files += [ os.path.join( 'geometry', 'simple', 'triangle.cpp' ) ]
+    cc_files += [ os.path.join( 'geometry', 'simple', 'usphere.cpp' ) ]
+    cc_files += [ os.path.join( 'geometry', 'simple', 'quadric.cpp' ) ]
+
+#cc_files += [ os.path.join( 'geometry', 'spline', 'spline.cpp' ) ]
+
+cc_files += [ os.path.join( 'geometry', 'volumetric', 'volumetric.cpp' ) ]
+if( False ):
+    cc_files += [ os.path.join( 'geometry', 'volumetric', 'smoke.cpp' ) ]
+    cc_files += [ os.path.join( 'geometry', 'volumetric', 'vacuum.cpp' ) ]
+
+cc_files += [ os.path.join( 'light', 'light.cpp' ) ]
+if( False ):
+    cc_files += [ os.path.join( 'light', 'sun.cpp' ) ]
+    cc_files += [ os.path.join( 'light', 'spline.cpp' ) ]
+    cc_files += [ os.path.join( 'light', 'sphere.cpp' ) ]
+    cc_files += [ os.path.join( 'light', 'reflector.cpp' ) ]
+    cc_files += [ os.path.join( 'light', 'point.cpp' ) ]
+    cc_files += [ os.path.join( 'light', 'line.cpp' ) ]
+    cc_files += [ os.path.join( 'light', 'dark.cpp' ) ]
+    cc_files += [ os.path.join( 'light', 'clipped.cpp' ) ]
+    cc_files += [ os.path.join( 'light', 'circle.cpp' ) ]
+    cc_files += [ os.path.join( 'light', 'chandelier.cpp' ) ]
+    cc_files += [ os.path.join( 'light', 'blocked.cpp' ) ]
+    cc_files += [ os.path.join( 'light', 'basic.cpp' ) ]
+    cc_files += [ os.path.join( 'light', 'area.cpp' ) ]
+
+cc_files += [ os.path.join( 'material', 'material.cpp'    ) ]
+if( False ):
+    cc_files += [ os.path.join( 'material', 'medium',  'wrapcb.cpp'    ) ]
+    cc_files += [ os.path.join( 'material', 'compute', 'program.cpp'   ) ]
+    cc_files += [ os.path.join( 'material', 'compute', 'processor.cpp' ) ]
+
+cc_files += [ os.path.join( 'object', 'object.cpp' ) ]
+if( False ):
+    cc_files += [ os.path.join( 'object', '_pure.cpp' ) ]
+    cc_files += [ os.path.join( 'object', '_base.cpp' ) ]
+    cc_files += [ os.path.join( 'object', 'wrap.cpp' ) ]
+
+cc_files += [ os.path.join( 'render', '0scanner', 'scanner.cpp' ) ]
+if( False ):
+    cc_files += [ os.path.join( 'render', '0scanner', '_pure.cpp' ) ]
+    cc_files += [ os.path.join( 'render', '0scanner', 'block.cpp' ) ]
+    cc_files += [ os.path.join( 'render', '0scanner', 'parallel.cpp' ) ]
+
+cc_files += [ os.path.join( 'render', '1pixel', 'pixel.cpp' ) ]
+cc_files += [ os.path.join( 'render', '1pixel', 'strategy', 'strategy.cpp' ) ]
+if( False ):
+    cc_files += [ os.path.join( 'render', '1pixel', '_base.cpp' ) ]
+    cc_files += [ os.path.join( 'render', '1pixel', '_pure.cpp' ) ]
+    cc_files += [ os.path.join( 'render', '1pixel', 'strategy', 'center.cpp' ) ]
+    cc_files += [ os.path.join( 'render', '1pixel', 'strategy', 'grid.cpp'   ) ]
+    cc_files += [ os.path.join( 'render', '1pixel', 'strategy', 'random.cpp' ) ]
+    cc_files += [ os.path.join( 'render', '1pixel', 'strategy', 'sobol.cpp'  ) ]
+
+
+cc_files += [ os.path.join( 'render', '2pierce',  'pierce.cpp' ) ]
+if( False ):
+    cc_files += [ os.path.join( 'render', '2pierce',  '_base.cpp' ) ]
+    cc_files += [ os.path.join( 'render', '2pierce',  '_pure.cpp' ) ]
+
+cc_files += [ os.path.join( 'render', '4ray',     '_base.cpp' ) ]
+cc_files += [ os.path.join( 'render', '4ray',     '_pure.cpp' ) ]
+# del cc_files += [ os.path.join( 'render', '4ray', 'classic', 'class.cpp' ) ]
+# del cc_files += [ os.path.join( 'render', '4ray', 'classic', 'geometry.cpp' ) ]
+cc_files += [ os.path.join( 'render', '4ray', 'classic2', 'algorithm.cpp' ) ]
+cc_files += [ os.path.join( 'render', '4ray', 'classic2', 'stack', 'implementation.cpp' ) ]
+cc_files += [ os.path.join( 'render', '4ray', 'distance.cpp' ) ]
+
+cc_files += [ os.path.join( 'render', 'engine.cpp' ) ]
+
+
+cc_submodule_memory_files = []
+#cc_submodule_files += [ os.path.join(  'math', 'random', 'sobol2D.cpp' ) ]
+cc_submodule_memory_files += [ os.path.join(  'memory' ,'allocator', 'fixed.cpp' ) ]
+cc_submodule_memory_files += [ os.path.join(  'memory' ,'allocator', 'chunk', 'managed.cpp' ) ]
+
+# Deal with Scons
+project_common_settings = copy.deepcopy( settings )
+envCommon  = nucleotide.Environment( project_common_settings ).native()
+
+def make_object( list, dir_src, dir_obj, prefix_src, prefix_obj ):
+    objs = []
+    for file in list:
+        source = os.path.join( dir_src, prefix_src, file )
+        target = os.path.join( dir_obj, prefix_obj, file + envCommon['OBJSUFFIX'] )
+        objs += envCommon.Object( source = source, target = target )
+    return objs
+
+objects = []
+objects += make_object( cc_files,                  directory_src,  directory_obj, 'IceRay', '' )
+objects += make_object( cc_submodule_memory_files, directory_subm, directory_obj, os.path.join( 'memory', 'src' ), 'submodule' )
+
+### ### ### ###
+
+###
+### Project
+
+project_settings = copy.deepcopy( settings )
+project_settings.accumulate( 'shared:object' )
+
+project_env = nucleotide.Environment( project_settings ).native()
+
+name_path = os.path.join( directory_lib, name_full + project_env['LIBSUFFIX'] )
+
+project_binary = project_env.Library( target = name_path, source = objects )
+
+project_install_dir = os.path.join( settings.get_custom( 'directory:install' ), settings.get_custom( 'architecture' ) + '-' + configuration )
+
+project_core_result = project_env.Install( project_install_dir, project_binary )
+
+#Default( project_core_result )
+Return( 'project_core_result' )
+
+
+
+
+
+
+

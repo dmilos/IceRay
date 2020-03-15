@@ -1,0 +1,1004 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\src">
+      <UniqueIdentifier>{2365aad0-08f6-4e90-a619-2b64e6ee885f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\camera">
+      <UniqueIdentifier>{c50963d5-05b0-4062-a911-60a322069e97}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\camera\cylindric">
+      <UniqueIdentifier>{f604ba75-a173-45a0-a733-583bc1333c16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\camera\flat">
+      <UniqueIdentifier>{b62cfb9d-7d4e-46f6-95b1-4b5d4637c32e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\camera\sphere">
+      <UniqueIdentifier>{6520c79e-a00b-446d-8e57-73fc69126ca9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\camera\type">
+      <UniqueIdentifier>{fadca195-72c3-40f3-a8bb-6fc16e6b14ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\geometry">
+      <UniqueIdentifier>{5e0b8ffc-e54d-47aa-96aa-c37cb31164c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\geometry\_pure">
+      <UniqueIdentifier>{2644515f-9fbd-4ca0-a590-4f54fa241d35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\geometry\blobby">
+      <UniqueIdentifier>{5be874be-73bf-4bac-a797-534dffa86742}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\geometry\blobby\type">
+      <UniqueIdentifier>{a7908117-396b-49a0-b293-6f8480200864}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\geometry\complex">
+      <UniqueIdentifier>{fcecacf0-6173-4bbd-a287-c7e52bc6dbfe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\geometry\transform">
+      <UniqueIdentifier>{5c40499c-4640-4d33-9b7f-d40e533b6b14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\geometry\hfiled">
+      <UniqueIdentifier>{3858d687-0f6e-46ed-a192-c62c4502065a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\geometry\rtss">
+      <UniqueIdentifier>{c830cc7a-2694-476a-b039-9b5004900b03}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\geometry\simple">
+      <UniqueIdentifier>{8c1fce20-834a-4061-a2f4-4cb262289a0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\geometry\simple\sphere">
+      <UniqueIdentifier>{5ef6fb81-94ab-4661-bbdc-f0ebc35535bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\geometry\spline">
+      <UniqueIdentifier>{e3e663de-4a53-4528-9efd-45a2422085ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\geometry\_state">
+      <UniqueIdentifier>{72213ceb-4e4e-437c-bc2b-caad408c1bc7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\geometry\_structure">
+      <UniqueIdentifier>{8bb7571b-1307-476b-81a2-3e820cba23d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\geometry\volumetric">
+      <UniqueIdentifier>{45386f1a-6f77-45b2-9c09-3ff9ea56cd9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\light">
+      <UniqueIdentifier>{d496a6e2-20f7-46da-9948-f21db7cc9b47}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\light\type">
+      <UniqueIdentifier>{de328d8a-64f7-4b2f-b882-09039378be25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\main">
+      <UniqueIdentifier>{66ccf8a0-cf31-4548-89b1-200e0450d175}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\main\interface">
+      <UniqueIdentifier>{b5a48f52-4d3e-48b5-84f8-3e840deab31d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\main\interface\handcode">
+      <UniqueIdentifier>{5c607cb6-84b5-48bf-9285-8cbd7db99958}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\main\interface\handcode\scene">
+      <UniqueIdentifier>{f186ed0f-9fae-416f-b487-4065ac4fc593}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\material">
+      <UniqueIdentifier>{89c5de7a-4f4d-4f43-9cbd-ecbf495dae60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\material\compute">
+      <UniqueIdentifier>{916599bc-a098-4eac-a587-f5ad1189d14a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\object">
+      <UniqueIdentifier>{a359112d-64be-4823-b095-e7298ab2e614}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\render">
+      <UniqueIdentifier>{69ff324a-d993-4242-a4da-172bfc22591d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\type">
+      <UniqueIdentifier>{a57a7e7b-dd0f-4491-8f84-fb5396aa9b3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\type\basic">
+      <UniqueIdentifier>{5716ef64-efa3-4972-9146-2ee2f56972fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\type\math">
+      <UniqueIdentifier>{818d63b2-61c9-4de3-85a7-7be9a1a8139c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\type\poiter">
+      <UniqueIdentifier>{677e8456-37ba-411f-8a46-95771c0ba86d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\type\ray">
+      <UniqueIdentifier>{c7905010-3d5e-46ed-9cdb-a671c62df51a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\util">
+      <UniqueIdentifier>{4e45b45b-2074-45a5-bedc-c0c663297ab8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\render\0scanner">
+      <UniqueIdentifier>{6cbb9076-ece6-4f07-86c4-46ff22207d66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\render\1pixel">
+      <UniqueIdentifier>{fe5977e8-9476-4f6b-8275-dc2939fc13d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\render\2pierce">
+      <UniqueIdentifier>{faf49ee4-e430-4da4-94db-f37d3c1cf370}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\render\3beam">
+      <UniqueIdentifier>{9bca5dc1-aba4-4f73-8df0-6f608e4d02c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\render\4ray">
+      <UniqueIdentifier>{ffb4985b-9830-4a7e-a8e9-a2082541734e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\render\4ray\classic2">
+      <UniqueIdentifier>{13003660-147d-4dbe-b12d-0e3c3e290d1a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\camera\dof">
+      <UniqueIdentifier>{259bcc36-08f5-4ee7-b5ce-79cbd96d84c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\material\compute\transmission">
+      <UniqueIdentifier>{fed41365-6a97-4274-bee9-3a8f026384bd}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\src\IceRay\camera\focus.cpp">
+      <Filter>Source Files\src\camera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\camera\invert.cpp">
+      <Filter>Source Files\src\camera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\camera\orthogonal.cpp">
+      <Filter>Source Files\src\camera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\camera\perspective.cpp">
+      <Filter>Source Files\src\camera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\camera\transform.cpp">
+      <Filter>Source Files\src\camera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\camera\_base.cpp">
+      <Filter>Source Files\src\camera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\camera\_parent.cpp">
+      <Filter>Source Files\src\camera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\camera\_pure.cpp">
+      <Filter>Source Files\src\camera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\camera\cylindric\cylindric_h.cpp">
+      <Filter>Source Files\src\camera\cylindric</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\camera\cylindric\cylindric_v.cpp">
+      <Filter>Source Files\src\camera\cylindric</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\camera\flat\general.cpp">
+      <Filter>Source Files\src\camera\flat</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\camera\flat\hybrid.cpp">
+      <Filter>Source Files\src\camera\flat</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\camera\flat\orthogonal.cpp">
+      <Filter>Source Files\src\camera\flat</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\camera\flat\perspective.cpp">
+      <Filter>Source Files\src\camera\flat</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\geometry\_pure.cpp">
+      <Filter>Source Files\src\geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\geometry\_pure\_base.cpp">
+      <Filter>Source Files\src\geometry\_pure</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\geometry\blobby\sphere.cpp">
+      <Filter>Source Files\src\geometry\blobby</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\geometry\blobby\system.cpp">
+      <Filter>Source Files\src\geometry\blobby</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\geometry\blobby\translate.cpp">
+      <Filter>Source Files\src\geometry\blobby</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\geometry\blobby\ucylinderZ.cpp">
+      <Filter>Source Files\src\geometry\blobby</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\geometry\blobby\usphere.cpp">
+      <Filter>Source Files\src\geometry\blobby</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\geometry\blobby\uwaterZ.cpp">
+      <Filter>Source Files\src\geometry\blobby</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\geometry\complex\intersect.cpp">
+      <Filter>Source Files\src\geometry\complex</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\geometry\complex\multitude.cpp">
+      <Filter>Source Files\src\geometry\complex</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\geometry\transform\affine.cpp">
+      <Filter>Source Files\src\geometry\transform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\geometry\transform\mblur.cpp">
+      <Filter>Source Files\src\geometry\transform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\geometry\transform\projective.cpp">
+      <Filter>Source Files\src\geometry\transform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\geometry\transform\trans.cpp">
+      <Filter>Source Files\src\geometry\transform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\geometry\transform\translate.cpp">
+      <Filter>Source Files\src\geometry\transform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\geometry\hfield\hfield.cpp">
+      <Filter>Source Files\src\geometry\hfiled</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\geometry\rtss\list.cpp">
+      <Filter>Source Files\src\geometry\rtss</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\geometry\rtss\object.cpp">
+      <Filter>Source Files\src\geometry\rtss</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\geometry\rtss\rtss.cpp">
+      <Filter>Source Files\src\geometry\rtss</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\geometry\rtss\rtss_list.cpp">
+      <Filter>Source Files\src\geometry\rtss</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\geometry\rtss\uniform.cpp">
+      <Filter>Source Files\src\geometry\rtss</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\geometry\rtss\_pure.cpp">
+      <Filter>Source Files\src\geometry\rtss</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\geometry\simple\box.cpp">
+      <Filter>Source Files\src\geometry\simple</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\geometry\simple\cone.cpp">
+      <Filter>Source Files\src\geometry\simple</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\geometry\simple\cylinder.cpp">
+      <Filter>Source Files\src\geometry\simple</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\geometry\simple\disc.cpp">
+      <Filter>Source Files\src\geometry\simple</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\geometry\simple\ellipsoid.cpp">
+      <Filter>Source Files\src\geometry\simple</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\geometry\simple\para.cpp">
+      <Filter>Source Files\src\geometry\simple</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\geometry\simple\paraboloid.cpp">
+      <Filter>Source Files\src\geometry\simple</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\geometry\simple\plane.cpp">
+      <Filter>Source Files\src\geometry\simple</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\geometry\simple\quadric.cpp">
+      <Filter>Source Files\src\geometry\simple</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\geometry\simple\simple.cpp">
+      <Filter>Source Files\src\geometry\simple</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\geometry\simple\sphere.cpp">
+      <Filter>Source Files\src\geometry\simple</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\geometry\simple\torus.cpp">
+      <Filter>Source Files\src\geometry\simple</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\geometry\simple\trg.cpp">
+      <Filter>Source Files\src\geometry\simple</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\geometry\simple\triangle.cpp">
+      <Filter>Source Files\src\geometry\simple</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\geometry\simple\usphere.cpp">
+      <Filter>Source Files\src\geometry\simple</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\geometry\spline\spline.cpp">
+      <Filter>Source Files\src\geometry\spline</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\geometry\structure\intersect.cpp">
+      <Filter>Source Files\src\geometry\_structure</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\geometry\volumetric\smoke.cpp">
+      <Filter>Source Files\src\geometry\volumetric</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\geometry\volumetric\vacuum.cpp">
+      <Filter>Source Files\src\geometry\volumetric</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\light\all.cpp">
+      <Filter>Source Files\src\light</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\light\area.cpp">
+      <Filter>Source Files\src\light</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\light\basic.cpp">
+      <Filter>Source Files\src\light</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\light\blocked.cpp">
+      <Filter>Source Files\src\light</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\light\chandelier.cpp">
+      <Filter>Source Files\src\light</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\light\circle.cpp">
+      <Filter>Source Files\src\light</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\light\clipped.cpp">
+      <Filter>Source Files\src\light</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\light\dark.cpp">
+      <Filter>Source Files\src\light</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\light\line.cpp">
+      <Filter>Source Files\src\light</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\light\point.cpp">
+      <Filter>Source Files\src\light</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\light\reflector.cpp">
+      <Filter>Source Files\src\light</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\light\sphere.cpp">
+      <Filter>Source Files\src\light</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\light\spline.cpp">
+      <Filter>Source Files\src\light</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\light\sun.cpp">
+      <Filter>Source Files\src\light</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\main\interface\handcode\main.cpp">
+      <Filter>Source Files\src\main\interface\handcode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\main\interface\handcode\scene\1M.cpp">
+      <Filter>Source Files\src\main\interface\handcode\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\main\interface\handcode\scene\all_ilumination.cpp">
+      <Filter>Source Files\src\main\interface\handcode\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\main\interface\handcode\scene\blobby.cpp">
+      <Filter>Source Files\src\main\interface\handcode\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\main\interface\handcode\scene\deform_affine.cpp">
+      <Filter>Source Files\src\main\interface\handcode\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\main\interface\handcode\scene\deform_projective.cpp">
+      <Filter>Source Files\src\main\interface\handcode\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\main\interface\handcode\scene\sb.cpp">
+      <Filter>Source Files\src\main\interface\handcode\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\main\interface\handcode\scene\sphere.cpp">
+      <Filter>Source Files\src\main\interface\handcode\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\material\compute\compute.cpp">
+      <Filter>Source Files\src\material\compute</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\material\compute\processor.cpp">
+      <Filter>Source Files\src\material\compute</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\material\compute\program.cpp">
+      <Filter>Source Files\src\material\compute</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\render\engine.cpp">
+      <Filter>Source Files\src\render</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\render\manager.cpp">
+      <Filter>Source Files\src\render</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\type\ray\ray-old.cpp">
+      <Filter>Source Files\src\type\ray</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\util\bound.cpp">
+      <Filter>Source Files\src\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\render\0scanner\_pure.cpp">
+      <Filter>Source Files\src\render\0scanner</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\render\0scanner\block.cpp">
+      <Filter>Source Files\src\render\0scanner</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\render\0scanner\parallel.cpp">
+      <Filter>Source Files\src\render\0scanner</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\render\0scanner\scanner.cpp">
+      <Filter>Source Files\src\render\0scanner</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\render\1pixel\_base.cpp">
+      <Filter>Source Files\src\render\1pixel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\render\1pixel\_pure.cpp">
+      <Filter>Source Files\src\render\1pixel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\render\1pixel\pixel.cpp">
+      <Filter>Source Files\src\render\1pixel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\render\2pierce\_base.cpp">
+      <Filter>Source Files\src\render\2pierce</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\render\2pierce\_pure.cpp">
+      <Filter>Source Files\src\render\2pierce</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\render\2pierce\pierce.cpp">
+      <Filter>Source Files\src\render\2pierce</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\render\3beam\_pure.cpp">
+      <Filter>Source Files\src\render\3beam</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\render\3beam\all.cpp">
+      <Filter>Source Files\src\render\3beam</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\render\4ray\classic2\algorithm.cpp">
+      <Filter>Source Files\src\render\4ray\classic2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\camera\dof\cone.cpp">
+      <Filter>Source Files\src\camera\dof</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\camera\dof\focus.cpp">
+      <Filter>Source Files\src\camera\dof</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\src\IceRay\camera\focus.hpp">
+      <Filter>Source Files\src\camera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\camera\invert.hpp">
+      <Filter>Source Files\src\camera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\camera\orthogonal.hpp">
+      <Filter>Source Files\src\camera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\camera\perspective.hpp">
+      <Filter>Source Files\src\camera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\camera\sphere_h.hpp">
+      <Filter>Source Files\src\camera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\camera\sphere_v.hpp">
+      <Filter>Source Files\src\camera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\camera\transform.hpp">
+      <Filter>Source Files\src\camera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\camera\_base.hpp">
+      <Filter>Source Files\src\camera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\camera\_parent.hpp">
+      <Filter>Source Files\src\camera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\camera\_pure.hpp">
+      <Filter>Source Files\src\camera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\camera\cylindric\cylindric_h.hpp">
+      <Filter>Source Files\src\camera\cylindric</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\camera\cylindric\cylindric_v.hpp">
+      <Filter>Source Files\src\camera\cylindric</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\camera\flat\general.hpp">
+      <Filter>Source Files\src\camera\flat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\camera\flat\hybrid.hpp">
+      <Filter>Source Files\src\camera\flat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\camera\flat\orthogonal.hpp">
+      <Filter>Source Files\src\camera\flat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\camera\flat\perspective.hpp">
+      <Filter>Source Files\src\camera\flat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\camera\sphere\horizontal.hpp">
+      <Filter>Source Files\src\camera\sphere</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\camera\sphere\vertical.hpp">
+      <Filter>Source Files\src\camera\sphere</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\camera\type\affine.hpp">
+      <Filter>Source Files\src\camera\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\camera\type\beam.hpp">
+      <Filter>Source Files\src\camera\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\camera\type\coord.hpp">
+      <Filter>Source Files\src\camera\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\camera\type\interval.hpp">
+      <Filter>Source Files\src\camera\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\camera\type\matrix.hpp">
+      <Filter>Source Files\src\camera\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\camera\type\ray.hpp">
+      <Filter>Source Files\src\camera\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\camera\type\report.hpp">
+      <Filter>Source Files\src\camera\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\camera\type\scalar.hpp">
+      <Filter>Source Files\src\camera\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\camera\type\size.hpp">
+      <Filter>Source Files\src\camera\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\camera\type\system.hpp">
+      <Filter>Source Files\src\camera\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\camera\type\type.hpp">
+      <Filter>Source Files\src\camera\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\ray.hpp">
+      <Filter>Source Files\src\geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\_primitive.hpp">
+      <Filter>Source Files\src\geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\_pure.hpp">
+      <Filter>Source Files\src\geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\_simple.hpp">
+      <Filter>Source Files\src\geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\_pure\cluster.hpp">
+      <Filter>Source Files\src\geometry\_pure</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\_pure\distance.hpp">
+      <Filter>Source Files\src\geometry\_pure</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\_pure\inside.hpp">
+      <Filter>Source Files\src\geometry\_pure</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\_pure\intersect.hpp">
+      <Filter>Source Files\src\geometry\_pure</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\_pure\normal.hpp">
+      <Filter>Source Files\src\geometry\_pure</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\_pure\test.hpp">
+      <Filter>Source Files\src\geometry\_pure</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\_pure\uvw.hpp">
+      <Filter>Source Files\src\geometry\_pure</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\_pure\_base.hpp">
+      <Filter>Source Files\src\geometry\_pure</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\_pure\_pure.hpp">
+      <Filter>Source Files\src\geometry\_pure</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\blobby\affine.hpp">
+      <Filter>Source Files\src\geometry\blobby</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\blobby\plane.hpp">
+      <Filter>Source Files\src\geometry\blobby</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\blobby\sphere.hpp">
+      <Filter>Source Files\src\geometry\blobby</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\blobby\system.hpp">
+      <Filter>Source Files\src\geometry\blobby</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\blobby\translate.hpp">
+      <Filter>Source Files\src\geometry\blobby</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\blobby\ucylinderZ.hpp">
+      <Filter>Source Files\src\geometry\blobby</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\blobby\usphere.hpp">
+      <Filter>Source Files\src\geometry\blobby</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\blobby\uwaterZ.hpp">
+      <Filter>Source Files\src\geometry\blobby</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\blobby\_element.hpp">
+      <Filter>Source Files\src\geometry\blobby</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\blobby\type\coefficient.hpp">
+      <Filter>Source Files\src\geometry\blobby\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\blobby\type\heap.hpp">
+      <Filter>Source Files\src\geometry\blobby\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\complex\intersect.hpp">
+      <Filter>Source Files\src\geometry\complex</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\complex\multitude.hpp">
+      <Filter>Source Files\src\geometry\complex</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\complex\plane_sys.hpp">
+      <Filter>Source Files\src\geometry\complex</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\transform\affine.hpp">
+      <Filter>Source Files\src\geometry\transform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\transform\mblur.hpp">
+      <Filter>Source Files\src\geometry\transform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\transform\projective.hpp">
+      <Filter>Source Files\src\geometry\transform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\transform\trans.hpp">
+      <Filter>Source Files\src\geometry\transform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\transform\translate.hpp">
+      <Filter>Source Files\src\geometry\transform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\hfield\container-func.hpp">
+      <Filter>Source Files\src\geometry\hfiled</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\hfield\container-ptr.hpp">
+      <Filter>Source Files\src\geometry\hfiled</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\hfield\container-vv.hpp">
+      <Filter>Source Files\src\geometry\hfiled</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\hfield\container-_pure.hpp">
+      <Filter>Source Files\src\geometry\hfiled</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\hfield\hfield.hpp">
+      <Filter>Source Files\src\geometry\hfiled</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\hfield\object-b3.hpp">
+      <Filter>Source Files\src\geometry\hfiled</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\hfield\object-flat.hpp">
+      <Filter>Source Files\src\geometry\hfiled</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\hfield\object-quad.hpp">
+      <Filter>Source Files\src\geometry\hfiled</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\hfield\object-trg.hpp">
+      <Filter>Source Files\src\geometry\hfiled</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\hfield\object-_pure.hpp">
+      <Filter>Source Files\src\geometry\hfiled</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\rtss\list.hpp">
+      <Filter>Source Files\src\geometry\rtss</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\rtss\object.hpp">
+      <Filter>Source Files\src\geometry\rtss</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\rtss\rtss.hpp">
+      <Filter>Source Files\src\geometry\rtss</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\rtss\rtss_list.hpp">
+      <Filter>Source Files\src\geometry\rtss</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\rtss\uniform.hpp">
+      <Filter>Source Files\src\geometry\rtss</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\rtss\_pure.hpp">
+      <Filter>Source Files\src\geometry\rtss</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\simple\box.hpp">
+      <Filter>Source Files\src\geometry\simple</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\simple\cone.hpp">
+      <Filter>Source Files\src\geometry\simple</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\simple\cylinder.hpp">
+      <Filter>Source Files\src\geometry\simple</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\simple\disc.hpp">
+      <Filter>Source Files\src\geometry\simple</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\simple\ellipsoid.hpp">
+      <Filter>Source Files\src\geometry\simple</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\simple\para.hpp">
+      <Filter>Source Files\src\geometry\simple</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\simple\paraboloid.hpp">
+      <Filter>Source Files\src\geometry\simple</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\simple\plane.hpp">
+      <Filter>Source Files\src\geometry\simple</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\simple\quadric.hpp">
+      <Filter>Source Files\src\geometry\simple</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\simple\simple.hpp">
+      <Filter>Source Files\src\geometry\simple</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\simple\sphere.hpp">
+      <Filter>Source Files\src\geometry\simple</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\simple\torus.hpp">
+      <Filter>Source Files\src\geometry\simple</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\simple\trg.hpp">
+      <Filter>Source Files\src\geometry\simple</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\simple\triangle.hpp">
+      <Filter>Source Files\src\geometry\simple</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\simple\usphere.hpp">
+      <Filter>Source Files\src\geometry\simple</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\simple\sphere\complete.hpp">
+      <Filter>Source Files\src\geometry\simple\sphere</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\simple\sphere\radius.hpp">
+      <Filter>Source Files\src\geometry\simple\sphere</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\simple\sphere\unit.hpp">
+      <Filter>Source Files\src\geometry\simple\sphere</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\spline\spline.hpp">
+      <Filter>Source Files\src\geometry\spline</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\state\data.hpp">
+      <Filter>Source Files\src\geometry\_state</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\state\manager.hpp">
+      <Filter>Source Files\src\geometry\_state</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\structure\intersect.hpp">
+      <Filter>Source Files\src\geometry\_structure</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\volumetric\smoke.hpp">
+      <Filter>Source Files\src\geometry\volumetric</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\volumetric\vacuum.hpp">
+      <Filter>Source Files\src\geometry\volumetric</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\light\all.hpp">
+      <Filter>Source Files\src\light</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\light\area.hpp">
+      <Filter>Source Files\src\light</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\light\blocked.hpp">
+      <Filter>Source Files\src\light</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\light\chandelier.hpp">
+      <Filter>Source Files\src\light</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\light\circle.hpp">
+      <Filter>Source Files\src\light</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\light\clipped.hpp">
+      <Filter>Source Files\src\light</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\light\dark.hpp">
+      <Filter>Source Files\src\light</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\light\line.hpp">
+      <Filter>Source Files\src\light</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\light\point.hpp">
+      <Filter>Source Files\src\light</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\light\reflector.hpp">
+      <Filter>Source Files\src\light</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\light\sphere.hpp">
+      <Filter>Source Files\src\light</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\light\spline.hpp">
+      <Filter>Source Files\src\light</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\light\sun.hpp">
+      <Filter>Source Files\src\light</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\light\_pure.hpp">
+      <Filter>Source Files\src\light</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\light\type\color.hpp">
+      <Filter>Source Files\src\light\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\light\type\coord.hpp">
+      <Filter>Source Files\src\light\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\light\type\interval.hpp">
+      <Filter>Source Files\src\light\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\light\type\scalar.hpp">
+      <Filter>Source Files\src\light\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\light\type\size.hpp">
+      <Filter>Source Files\src\light\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\light\type\spot.hpp">
+      <Filter>Source Files\src\light\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\light\type\swarm.hpp">
+      <Filter>Source Files\src\light\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\material\beam.hpp">
+      <Filter>Source Files\src\material</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\material\data.hpp">
+      <Filter>Source Files\src\material</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\material\intersect.hpp">
+      <Filter>Source Files\src\material</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\material\medium.hpp">
+      <Filter>Source Files\src\material</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\material\pigment.hpp">
+      <Filter>Source Files\src\material</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\material\_pure.hpp">
+      <Filter>Source Files\src\material</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\instruction.hpp">
+      <Filter>Source Files\src\material\compute</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\memory.hpp">
+      <Filter>Source Files\src\material\compute</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\processor.hpp">
+      <Filter>Source Files\src\material\compute</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\program.hpp">
+      <Filter>Source Files\src\material\compute</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\raw.hpp">
+      <Filter>Source Files\src\material\compute</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\surface.hpp">
+      <Filter>Source Files\src\material\compute</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\render\engine.hpp">
+      <Filter>Source Files\src\render</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\render\manager.hpp">
+      <Filter>Source Files\src\render</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\type\basic\bool.hpp">
+      <Filter>Source Files\src\type\basic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\type\basic\integer.hpp">
+      <Filter>Source Files\src\type\basic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\type\basic\report.hpp">
+      <Filter>Source Files\src\type\basic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\type\basic\scalar.hpp">
+      <Filter>Source Files\src\type\basic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\type\basic\size.hpp">
+      <Filter>Source Files\src\type\basic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\type\basic\string.hpp">
+      <Filter>Source Files\src\type\basic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\type\math\affine.hpp">
+      <Filter>Source Files\src\type\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\type\math\coord.hpp">
+      <Filter>Source Files\src\type\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\type\math\interval.hpp">
+      <Filter>Source Files\src\type\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\type\math\matrix.hpp">
+      <Filter>Source Files\src\type\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\type\math\matrix2D.hpp">
+      <Filter>Source Files\src\type\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\type\math\matrix3D.hpp">
+      <Filter>Source Files\src\type\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\type\math\matrix4D.hpp">
+      <Filter>Source Files\src\type\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\type\pointer\dumb.hpp">
+      <Filter>Source Files\src\type\poiter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\type\ray-deprecated.hpp">
+      <Filter>Source Files\src\type\ray</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\type\ray\beam.hpp">
+      <Filter>Source Files\src\type\ray</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\type\ray\line.hpp">
+      <Filter>Source Files\src\type\ray</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\type\ray\ray-old.hpp">
+      <Filter>Source Files\src\type\ray</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\type\ray\simple.hpp">
+      <Filter>Source Files\src\type\ray</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\type\ray\state.hpp">
+      <Filter>Source Files\src\type\ray</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\type\ray\trace.hpp">
+      <Filter>Source Files\src\type\ray</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\util\bound.hpp">
+      <Filter>Source Files\src\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\util\bound\box.hpp">
+      <Filter>Source Files\src\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\util\bound\sphere.hpp">
+      <Filter>Source Files\src\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\render\2pierce\_base.hpp">
+      <Filter>Source Files\src\render\2pierce</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\render\2pierce\_pure.hpp">
+      <Filter>Source Files\src\render\2pierce</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\render\2pierce\uv.hpp">
+      <Filter>Source Files\src\render\2pierce</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\render\3beam\_pure.hpp">
+      <Filter>Source Files\src\render\3beam</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\render\3beam\all.hpp">
+      <Filter>Source Files\src\render\3beam</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\render\3beam\first.hpp">
+      <Filter>Source Files\src\render\3beam</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\render\3beam\random.hpp">
+      <Filter>Source Files\src\render\3beam</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\render\4ray\classic2\algorithm.hpp">
+      <Filter>Source Files\src\render\4ray\classic2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\camera\dof\cone.hpp">
+      <Filter>Source Files\src\camera\dof</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\camera\dof\focus.hpp">
+      <Filter>Source Files\src\camera\dof</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\transmission\refract\arbitrary.hpp">
+      <Filter>Source Files\src\material\compute\transmission</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\transmission\blossom.hpp">
+      <Filter>Source Files\src\material\compute\transmission</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\transmission\refract\fresnel.hpp">
+      <Filter>Source Files\src\material\compute\transmission</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\transmission\refract\multi.hpp">
+      <Filter>Source Files\src\material\compute\transmission</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\transmission\reflect\one.hpp">
+      <Filter>Source Files\src\material\compute\transmission</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\transmission\refract\one.hpp">
+      <Filter>Source Files\src\material\compute\transmission</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\transmission\reflect\reflect.hpp">
+      <Filter>Source Files\src\material\compute\transmission</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\transmission\refract\refract.hpp">
+      <Filter>Source Files\src\material\compute\transmission</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\transmission\refract\schlick.hpp">
+      <Filter>Source Files\src\material\compute\transmission</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\transmission\reflect\split.hpp">
+      <Filter>Source Files\src\material\compute\transmission</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\transmission\refract\split.hpp">
+      <Filter>Source Files\src\material\compute\transmission</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\transmission\transmission.hpp">
+      <Filter>Source Files\src\material\compute\transmission</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\src\IceRay\camera\cyludric_h">
+      <Filter>Source Files\src\camera</Filter>
+    </None>
+    <None Include="..\..\..\src\IceRay\camera\cyludric_v">
+      <Filter>Source Files\src\camera</Filter>
+    </None>
+  </ItemGroup>
+</Project>

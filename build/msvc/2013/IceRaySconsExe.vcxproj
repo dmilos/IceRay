@@ -1,0 +1,1386 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\..\..\math\random\sobol.cpp" />
+    <ClCompile Include="..\..\..\..\..\system\allocator\chunk\managed.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\system\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\system\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\system\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\system\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\system\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\system\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\system\allocator\fixed.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\system\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\system\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\system\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\system\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\system\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\system\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\camera\cone.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\camera\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\camera\</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\camera\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\camera\</AssemblerListingLocation>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\camera\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\camera\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\camera\cylindric\cylindric_h.cpp" />
+    <ClCompile Include="..\..\camera\cylindric\cylindric_v.cpp" />
+    <ClCompile Include="..\..\camera\cylindric_h.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\camera\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\camera\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\camera\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\camera\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\camera\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\camera\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\camera\cylindric_v.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\camera\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\camera\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\camera\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\camera\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\camera\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\camera\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\camera\flat\general.cpp" />
+    <ClCompile Include="..\..\camera\flat\hybrid.cpp" />
+    <ClCompile Include="..\..\camera\flat\orthogonal.cpp" />
+    <ClCompile Include="..\..\camera\flat\perspective.cpp" />
+    <ClCompile Include="..\..\camera\focus.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\camera\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\camera\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\camera\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\camera\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\camera\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\camera\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\camera\invert.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\camera\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\camera\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\camera\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\camera\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\camera\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\camera\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\camera\orthogonal.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\camera\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\camera\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\camera\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\camera\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\camera\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\camera\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\camera\transform.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\camera\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\camera\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\camera\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\camera\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\camera\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\camera\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\camera\_parent.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\camera\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\camera\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\camera\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\camera\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\camera\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\camera\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\camera\_pure.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\camera\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\camera\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\camera\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\camera\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\camera\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\camera\</ProgramDataBaseFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)</XMLDocumentationFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)</XMLDocumentationFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\blobby\sphere.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\blobby\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\blobby\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\blobby\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\blobby\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\blobby\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\blobby\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\blobby\system.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\blobby\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\blobby\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\blobby\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\blobby\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\blobby\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\blobby\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\blobby\translate.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\blobby\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\blobby\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\blobby\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\blobby\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\blobby\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\blobby\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\blobby\ucylinderZ.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\blobby\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\blobby\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\blobby\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\blobby\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\blobby\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\blobby\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\blobby\usphere.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\blobby\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\blobby\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\blobby\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\blobby\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\blobby\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\blobby\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\blobby\uwaterZ.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\blobby\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\blobby\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\blobby\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\blobby\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\blobby\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\blobby\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\complex\intersect.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\complex\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\complex\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\complex\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\complex\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\complex\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\complex\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\complex\multitude.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\transform\affine.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\deform\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\deform\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\deform\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\deform\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\deform\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\deform\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\transform\mblur.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\deform\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\deform\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\deform\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\deform\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\deform\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\deform\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\transform\projective.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\deform\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\deform\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\deform\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\deform\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\deform\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\deform\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\transform\translate.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\deform\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\deform\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\deform\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\deform\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\deform\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\deform\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\hfield\hfield.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\hfield\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\hfield\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\hfield\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\hfield\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\hfield\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\hfield\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\rtss\list.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\rtss\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\rtss\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\rtss\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\rtss\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\rtss\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\rtss\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\rtss\object.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\rtss\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\rtss\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\rtss\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\rtss\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\rtss\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\rtss\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\rtss\uniform.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\rtss\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\rtss\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\rtss\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\rtss\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\rtss\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\rtss\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\rtss\_pure.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\rtss\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\rtss\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\rtss\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\rtss\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\rtss\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\rtss\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\simple\box.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\simple\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\simple\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\simple\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\simple\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\simple\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\simple\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\simple\cone.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\simple\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\simple\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\simple\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\simple\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\simple\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\simple\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\simple\cylinder.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\simple\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\simple\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\simple\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\simple\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\simple\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\simple\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\simple\disc.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\simple\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\simple\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\simple\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\simple\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\simple\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\simple\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\simple\paraboloid.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\simple\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\simple\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\simple\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\simple\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\simple\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\simple\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\simple\plane.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\simple\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\simple\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\simple\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\simple\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\simple\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\simple\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\simple\quadric.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\simple\simple.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\simple\sphere.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\simple\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\simple\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\simple\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\simple\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\simple\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\simple\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\simple\torus.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\simple\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\simple\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\simple\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\simple\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\simple\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\simple\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\simple\triangle.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\simple\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\simple\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\simple\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\simple\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\simple\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\simple\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\simple\usphere.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\simple\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\simple\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\simple\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\simple\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\simple\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\simple\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\smoke.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\spline\spline.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\vacuum.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\_pure\_base.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\_pure\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\_pure\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\_pure\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\_pure\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\geometry\_pure\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\geometry\_pure\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\light\area.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\light\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\light\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\light\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\light\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\light\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\light\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\light\basic.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\light\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\light\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\light\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\light\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\light\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\light\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\light\blocked.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\light\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\light\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\light\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\light\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\light\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\light\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\light\chandelier.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\light\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\light\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\light\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\light\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\light\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\light\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\light\circle.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\light\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\light\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\light\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\light\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\light\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\light\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\light\clipped.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\light\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\light\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\light\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\light\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\light\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\light\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\light\dark.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\light\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\light\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\light\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\light\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\light\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\light\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\light\line.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\light\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\light\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\light\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\light\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\light\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\light\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\light\point.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\light\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\light\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\light\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\light\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\light\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\light\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\light\reflector.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\light\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\light\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\light\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\light\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\light\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\light\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\light\sphere.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\light\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\light\</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\light\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\light\</AssemblerListingLocation>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\light\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\light\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\light\spline.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\light\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\light\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\light\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\light\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\light\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\light\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\light\sun.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\light\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\light\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\light\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\light\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\light\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\light\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\interface\python\camera\IceRay_camera_orthogonal.cpp" />
+    <ClCompile Include="..\..\main\interface\python\camera\IceRay_camera_perspective.cpp" />
+    <ClCompile Include="..\..\main\interface\python\camera\IceRay_camera_pure.cpp" />
+    <ClCompile Include="..\..\main\interface\python\geometry\IceRay_geometry_sphere.cpp" />
+    <ClCompile Include="..\..\main\interface\python\geometry\IceRay_geometry__pure.cpp" />
+    <ClCompile Include="..\..\main\interface\python\graph_picture_memory.cpp" />
+    <ClCompile Include="..\..\main\interface\python\graph_picture_save_image.cpp" />
+    <ClCompile Include="..\..\main\interface\python\graph_type_color.cpp" />
+    <ClCompile Include="..\..\main\interface\python\index.cpp" />
+    <ClCompile Include="..\..\main\interface\python\light\IceRay_light_Point.cpp" />
+    <ClCompile Include="..\..\main\interface\python\light\IceRay_light_type_Spot.cpp" />
+    <ClCompile Include="..\..\main\interface\python\light\IceRay_light__Pure.cpp" />
+    <ClCompile Include="..\..\main\interface\python\math_type_coord.cpp" />
+    <ClCompile Include="..\..\main\interface\python\math_type_matrix.cpp" />
+    <ClCompile Include="..\..\main\interface\python\render\IceRay_render_Engine.cpp" />
+    <ClCompile Include="..\..\main\interface\python\render\IceRay_render_pierce_Base.cpp" />
+    <ClCompile Include="..\..\main\interface\python\render\IceRay_render_pierce__pure.cpp" />
+    <ClCompile Include="..\..\main\interface\python\render\IceRay_render_pixel_Base.cpp" />
+    <ClCompile Include="..\..\main\interface\python\render\IceRay_render_pixel__pure.cpp" />
+    <ClCompile Include="..\..\main\interface\python\render\IceRay_render_scanner_Block.cpp" />
+    <ClCompile Include="..\..\main\interface\python\render\IceRay_render_scanner__pure.cpp" />
+    <ClCompile Include="..\..\main\main.cpp">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\camera_cylindricV.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\camera\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\camera\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\camera\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\camera\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\camera\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\camera\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\camera_invert.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\camera\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\camera\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\camera\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\camera\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\camera\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\camera\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\camera_lookAt.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\camera\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\camera\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\camera\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\camera\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\camera\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\camera\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\camera_orthogonal.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\camera\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\camera\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\camera\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\camera\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\camera\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\camera\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\camera_perspective.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\camera\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\camera\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\camera\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\camera\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\camera\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\camera\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\geometry_bezier.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\geometry_blobby_sphere.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\geometry_blobby_system.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\geometry_blobby_system_add.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\geometry_blobby_system_rtss.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\geometry_blobby_translate.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\geometry_blobby_ucylinderZ.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\geometry_blobby_usphere.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\geometry_blobby_uwaterZ.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\geometry_box.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\geometry_csg_intersect.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\geometry_hfield.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\geometry_projective.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\geometry_rtss_add.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\geometry_rtss_list.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\geometry_rtss_object.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\geometry_rtss_uniform.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\geometry_smoke.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\geometry_sphere.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\light_area.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\light\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\light\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\light\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\light\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\light\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\light\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\light_blocked.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\light\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\light\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\light\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\light\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\light\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\light\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\light_chandelier.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\light\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\light\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\light\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\light\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\light\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\light\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\light_circle.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\light\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\light\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\light\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\light\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\light\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\light\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\light_line.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\light\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\light\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\light\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\light\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\light\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\light\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\light_point.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\light\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\light\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\light\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\light\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\light\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\light\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\light_reflector.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\light\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\light\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\light\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\light\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\light\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\light\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\light_spline.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\light\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\light\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\light\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\light\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\light\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\light\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\light_sun.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\light\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\light\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\light\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\light\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\light\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\light\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\material_transmission_reflect.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\material\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\material\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\material\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\material\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\material\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\material\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\pigment_cluster.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\texture\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\texture\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\texture\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\texture\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\texture\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\texture\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\pigment_illumination_ambient.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\material\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\material\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\material\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\material\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\material\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\material\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\pigment_illumination_beckmann.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\material\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\material\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\material\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\material\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\material\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\material\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\pigment_illumination_blin.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\material\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\material\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\material\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\material\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\material\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\material\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\pigment_illumination_gaussian.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\material\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\material\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\material\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\material\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\material\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\material\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\pigment_illumination_hs.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\material\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\material\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\material\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\material\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\material\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\material\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\pigment_illumination_lambert.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\material\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\material\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\material\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\material\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\material\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\material\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\pigment_illumination_light.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\texture\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\texture\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\texture\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\texture\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\texture\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\texture\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\pigment_illumination_on.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\material\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\material\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\material\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\material\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\material\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\material\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\pigment_illumination_phong.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\material\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\material\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\material\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\material\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\material\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\material\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\pigment_illumination_ward.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\material\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\material\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\material\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\material\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\material\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\material\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\pigment_intersect.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\texture\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\texture\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\texture\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\texture\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\texture\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\texture\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\pigment_normal.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\texture\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\texture\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\texture\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\texture\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\texture\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\texture\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\pigment_operation_add.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\texture\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\texture\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\texture\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\texture\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\texture\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\texture\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\pigment_operation_subtraction.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\texture\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\texture\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\texture\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\texture\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\texture\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\texture\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\pigment_pattern_color_const.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\texture\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\texture\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\texture\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\texture\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\texture\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\texture\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\pigment_pattern_coord_const.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\material\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\material\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\material\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\material\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\material\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\material\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\texture_ambient.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\texture\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\texture\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\texture\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\texture\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\texture\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\texture\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\texture_beckmann.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\texture\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\texture\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\texture\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\texture\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\texture\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\texture\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\texture_blinn.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\texture\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\texture\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\texture\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\texture\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\texture\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\texture\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\texture_gaussian.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\texture\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\texture\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\texture\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\texture\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\texture\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\texture\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\texture_hs.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\texture\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\texture\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\texture\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\texture\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\texture\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\texture\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\texture_lambert.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\texture\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\texture\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\texture\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\texture\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\texture\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\texture\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\texture_on.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\texture\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\texture\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\texture\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\texture\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\texture\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\texture\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\texture_phong.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\texture\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\texture\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\texture\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\texture\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\texture\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\texture\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\texture_ward.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\texture\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\texture\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\texture\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\texture\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\texture\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\texture\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\main\system\init_system.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\main\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\main\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\material\compute\processor.cpp" />
+    <ClCompile Include="..\..\material\compute\program.cpp" />
+    <ClCompile Include="..\..\object\wrap.cpp" />
+    <ClCompile Include="..\..\object\_base.cpp" />
+    <ClCompile Include="..\..\object\_pure.cpp" />
+    <ClCompile Include="..\..\render\0scanner\block.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\render\0scanner\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\render\0scanner\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\render\0scanner\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\render\0scanner\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\render\0scanner\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\render\0scanner\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\render\0scanner\parallel.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\render\0scanner\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\render\0scanner\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\render\0scanner\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\render\0scanner\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\render\0scanner\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\render\0scanner\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\render\0scanner\_pure.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\render\0scanner\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\render\0scanner\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\render\0scanner\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\render\0scanner\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\render\0scanner\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\render\0scanner\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\render\1pixel\strategy\center.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\Debug\render\1pixel\strategy\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\Debug\render\1pixel\strategy\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\Debug\render\1pixel\strategy\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\Debug\render\1pixel\strategy\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\Debug\render\1pixel\strategy\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\Debug\render\1pixel\strategy\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\render\1pixel\strategy\grid.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\Debug\render\1pixel\strategy\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\Debug\render\1pixel\strategy\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\Debug\render\1pixel\strategy\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\Debug\render\1pixel\strategy\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\Debug\render\1pixel\strategy\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\Debug\render\1pixel\strategy\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\render\1pixel\strategy\random.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\Debug\render\1pixel\strategy\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\Debug\render\1pixel\strategy\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\Debug\render\1pixel\strategy\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\Debug\render\1pixel\strategy\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\Debug\render\1pixel\strategy\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\Debug\render\1pixel\strategy\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\render\1pixel\_base.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\render\1pixel\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\render\1pixel\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\render\1pixel\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\render\1pixel\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\render\1pixel\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\render\1pixel\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\render\1pixel\_pure.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\render\1pizel\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\render\1pizel\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\render\1pizel\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\render\1pizel\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\render\1pizel\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\render\1pizel\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\render\2pierce\_base.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\render\2pierce\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\render\2pierce\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\render\2pierce\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\render\2pierce\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\render\2pierce\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\render\2pierce\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\render\2pierce\_pure.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\render\2pierce\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\render\2pierce\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\render\2pierce\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\render\2pierce\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\render\2pierce\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\render\2pierce\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\render\4ray\classic2\algorithm.cpp" />
+    <ClCompile Include="..\..\render\4ray\classic2\stack\implementation.cpp" />
+    <ClCompile Include="..\..\render\4ray\distance.cpp" />
+    <ClCompile Include="..\..\render\4ray\_base.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\render\4ray\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\render\4ray\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\render\4ray\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\render\4ray\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\render\4ray\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\render\4ray\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\render\4ray\_pure.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\render\4ray\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\render\4ray\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\render\4ray\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\render\4ray\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\render\4ray\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\render\4ray\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\render\engine.cpp">
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\render\</AssemblerListingLocation>
+      <AssemblerListingLocation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\render\</AssemblerListingLocation>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\render\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\render\</ObjectFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\_OutPut\$(Configuration)\render\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\_OutPut\$(Configuration)\render\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\util\BOUND.CPP">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\..\math\random\sobol.hpp" />
+    <ClInclude Include="..\..\..\..\..\math\random\vdc.hpp" />
+    <ClInclude Include="..\..\..\..\..\system\allocator\chunk\managed.hpp" />
+    <ClInclude Include="..\..\camera\cone.hpp" />
+    <ClInclude Include="..\..\camera\cylindric\cylindric_h.hpp" />
+    <ClInclude Include="..\..\camera\cylindric\cylindric_v.hpp" />
+    <ClInclude Include="..\..\camera\cylindric_h.hpp" />
+    <ClInclude Include="..\..\camera\cylindric_v.hpp" />
+    <ClInclude Include="..\..\camera\flat\general.hpp" />
+    <ClInclude Include="..\..\camera\flat\hybrid.hpp" />
+    <ClInclude Include="..\..\camera\flat\orthogonal.hpp" />
+    <ClInclude Include="..\..\camera\flat\perspective.hpp" />
+    <ClInclude Include="..\..\camera\focus.hpp" />
+    <ClInclude Include="..\..\camera\invert.hpp" />
+    <ClInclude Include="..\..\camera\orthogonal.hpp" />
+    <ClInclude Include="..\..\camera\sphere\horizontal.hpp" />
+    <ClInclude Include="..\..\camera\sphere\vertical.hpp" />
+    <ClInclude Include="..\..\camera\transform.hpp" />
+    <ClInclude Include="..\..\camera\type\beam.hpp" />
+    <ClInclude Include="..\..\camera\type\coord.hpp" />
+    <ClInclude Include="..\..\camera\type\interval.hpp" />
+    <ClInclude Include="..\..\camera\type\matrix.hpp" />
+    <ClInclude Include="..\..\camera\type\ray.hpp" />
+    <ClInclude Include="..\..\camera\type\report.hpp" />
+    <ClInclude Include="..\..\camera\type\scalar.hpp" />
+    <ClInclude Include="..\..\camera\type\size.hpp" />
+    <ClInclude Include="..\..\camera\type\system.hpp" />
+    <ClInclude Include="..\..\camera\type\type.hpp" />
+    <ClInclude Include="..\..\camera\_parent.hpp" />
+    <ClInclude Include="..\..\camera\_pure.hpp" />
+    <ClInclude Include="..\..\geometry\blobby\sphere.hpp" />
+    <ClInclude Include="..\..\geometry\blobby\system.hpp" />
+    <ClInclude Include="..\..\geometry\blobby\translate.hpp" />
+    <ClInclude Include="..\..\geometry\blobby\type\coefficient.hpp" />
+    <ClInclude Include="..\..\geometry\blobby\type\heap.hpp" />
+    <ClInclude Include="..\..\geometry\blobby\ucylinderZ.hpp" />
+    <ClInclude Include="..\..\geometry\blobby\usphere.hpp" />
+    <ClInclude Include="..\..\geometry\blobby\uwaterZ.hpp" />
+    <ClInclude Include="..\..\geometry\blobby\_element.hpp" />
+    <ClInclude Include="..\..\geometry\complex\intersect.hpp" />
+    <ClInclude Include="..\..\geometry\complex\multitude.hpp" />
+    <ClInclude Include="..\..\geometry\complex\plane_sys.hpp" />
+    <ClInclude Include="..\..\geometry\transform\affine.hpp" />
+    <ClInclude Include="..\..\geometry\transform\mblur.hpp" />
+    <ClInclude Include="..\..\geometry\transform\projective.hpp" />
+    <ClInclude Include="..\..\geometry\transform\translate.hpp" />
+    <ClInclude Include="..\..\geometry\hfield\container-func.hpp" />
+    <ClInclude Include="..\..\geometry\hfield\container-ptr.hpp" />
+    <ClInclude Include="..\..\geometry\hfield\container-vv.hpp" />
+    <ClInclude Include="..\..\geometry\hfield\container-_pure.hpp" />
+    <ClInclude Include="..\..\geometry\hfield\hfield.hpp" />
+    <ClInclude Include="..\..\geometry\hfield\object-b3.hpp" />
+    <ClInclude Include="..\..\geometry\hfield\object-flat.hpp" />
+    <ClInclude Include="..\..\geometry\hfield\object-quad.hpp" />
+    <ClInclude Include="..\..\geometry\hfield\object-trg.hpp" />
+    <ClInclude Include="..\..\geometry\hfield\object-_pure.hpp" />
+    <ClInclude Include="..\..\geometry\rtss\list.hpp" />
+    <ClInclude Include="..\..\geometry\rtss\object.hpp" />
+    <ClInclude Include="..\..\geometry\rtss\uniform.hpp" />
+    <ClInclude Include="..\..\geometry\rtss\_pure.hpp" />
+    <ClInclude Include="..\..\geometry\simple\box.hpp" />
+    <ClInclude Include="..\..\geometry\simple\cone.hpp" />
+    <ClInclude Include="..\..\geometry\simple\cylinder.hpp" />
+    <ClInclude Include="..\..\geometry\simple\disc.hpp" />
+    <ClInclude Include="..\..\geometry\simple\paraboloid.hpp" />
+    <ClInclude Include="..\..\geometry\simple\plane.hpp" />
+    <ClInclude Include="..\..\geometry\simple\quadric.hpp" />
+    <ClInclude Include="..\..\geometry\simple\simple.hpp" />
+    <ClInclude Include="..\..\geometry\simple\sphere.hpp" />
+    <ClInclude Include="..\..\geometry\simple\torus.hpp" />
+    <ClInclude Include="..\..\geometry\simple\triangle.hpp" />
+    <ClInclude Include="..\..\geometry\simple\usphere.hpp" />
+    <ClInclude Include="..\..\geometry\smoke.hpp" />
+    <ClInclude Include="..\..\geometry\spline\spline.hpp" />
+    <ClInclude Include="..\..\geometry\state\data.hpp" />
+    <ClInclude Include="..\..\geometry\state\manager.hpp" />
+    <ClInclude Include="..\..\geometry\vacuum.hpp" />
+    <ClInclude Include="..\..\geometry\_pure\cluster.hpp" />
+    <ClInclude Include="..\..\geometry\_pure\distance.hpp" />
+    <ClInclude Include="..\..\geometry\_pure\inside.hpp" />
+    <ClInclude Include="..\..\geometry\_pure\intersect.hpp" />
+    <ClInclude Include="..\..\geometry\_pure\normal.hpp" />
+    <ClInclude Include="..\..\geometry\_pure\uvw.hpp" />
+    <ClInclude Include="..\..\geometry\_pure\_base.hpp" />
+    <ClInclude Include="..\..\light\all.hpp" />
+    <ClInclude Include="..\..\light\area.hpp" />
+    <ClInclude Include="..\..\light\basic.hpp" />
+    <ClInclude Include="..\..\light\blocked.hpp" />
+    <ClInclude Include="..\..\light\chandelier.hpp" />
+    <ClInclude Include="..\..\light\circle.hpp" />
+    <ClInclude Include="..\..\light\clipped.hpp" />
+    <ClInclude Include="..\..\light\line.hpp" />
+    <ClInclude Include="..\..\light\point.hpp" />
+    <ClInclude Include="..\..\light\reflector.hpp" />
+    <ClInclude Include="..\..\light\sphere.hpp" />
+    <ClInclude Include="..\..\light\spline.hpp" />
+    <ClInclude Include="..\..\light\sun.hpp" />
+    <ClInclude Include="..\..\light\type\spot.hpp" />
+    <ClInclude Include="..\..\light\type\swarm.hpp" />
+    <ClInclude Include="..\..\light\_pure.hpp" />
+    <ClInclude Include="..\..\main\interface\python\def_submodule.hpp" />
+    <ClInclude Include="..\..\material\beam.hpp" />
+    <ClInclude Include="..\..\material\compute\illumination\ambient.hpp" />
+    <ClInclude Include="..\..\material\compute\illumination\beckmann.hpp" />
+    <ClInclude Include="..\..\material\compute\illumination\blinn.hpp" />
+    <ClInclude Include="..\..\material\compute\illumination\gaussian.hpp" />
+    <ClInclude Include="..\..\material\compute\illumination\hs_lambert.hpp" />
+    <ClInclude Include="..\..\material\compute\illumination\hs_phong.hpp" />
+    <ClInclude Include="..\..\material\compute\illumination\lambert.hpp" />
+    <ClInclude Include="..\..\material\compute\illumination\on_p44.hpp" />
+    <ClInclude Include="..\..\material\compute\illumination\phong.hpp" />
+    <ClInclude Include="..\..\material\compute\illumination\ward_approx.hpp" />
+    <ClInclude Include="..\..\material\compute\illumination\ward_isotropic.hpp" />
+    <ClInclude Include="..\..\material\compute\illumination\ward_real.hpp" />
+    <ClInclude Include="..\..\material\compute\instruction.hpp" />
+    <ClInclude Include="..\..\material\compute\memory.hpp" />
+    <ClInclude Include="..\..\material\compute\pattern\color.hpp" />
+    <ClInclude Include="..\..\material\compute\pattern\colorc.hpp" />
+    <ClInclude Include="..\..\material\compute\pattern\coord.hpp" />
+    <ClInclude Include="..\..\material\compute\pattern\scalar.hpp" />
+    <ClInclude Include="..\..\material\compute\pattern\size.hpp" />
+    <ClInclude Include="..\..\material\compute\pigment\add.hpp" />
+    <ClInclude Include="..\..\material\compute\pigment\cluster.hpp" />
+    <ClInclude Include="..\..\material\compute\pigment\light.hpp" />
+    <ClInclude Include="..\..\material\compute\pigment\normal.hpp" />
+    <ClInclude Include="..\..\material\compute\processor.hpp" />
+    <ClInclude Include="..\..\material\compute\program.hpp" />
+    <ClInclude Include="..\..\material\compute\raw.hpp" />
+    <ClInclude Include="..\..\material\compute\surface.hpp" />
+    <ClInclude Include="..\..\material\compute\transmission\reflect.hpp" />
+    <ClInclude Include="..\..\material\compute\transmission\reflect\one.hpp" />
+    <ClInclude Include="..\..\material\compute\transmission\refract.hpp" />
+    <ClInclude Include="..\..\material\illumination\ambient.hpp" />
+    <ClInclude Include="..\..\material\illumination\beckmann.hpp" />
+    <ClInclude Include="..\..\material\illumination\blinn.hpp" />
+    <ClInclude Include="..\..\material\illumination\gaussian.hpp" />
+    <ClInclude Include="..\..\material\illumination\HeidrichSeidel\lambert.hpp" />
+    <ClInclude Include="..\..\material\illumination\HeidrichSeidel\lp.hpp" />
+    <ClInclude Include="..\..\material\illumination\HeidrichSeidel\phong.hpp" />
+    <ClInclude Include="..\..\material\illumination\lambert.hpp" />
+    <ClInclude Include="..\..\material\illumination\on_f29.hpp" />
+    <ClInclude Include="..\..\material\illumination\on_p44.hpp" />
+    <ClInclude Include="..\..\material\illumination\on_YasuhiroFujii.hpp" />
+    <ClInclude Include="..\..\material\illumination\phong.hpp" />
+    <ClInclude Include="..\..\material\illumination\ward\approx.hpp" />
+    <ClInclude Include="..\..\material\illumination\ward\isotropic.hpp" />
+    <ClInclude Include="..\..\material\illumination\ward\real.hpp" />
+    <ClInclude Include="..\..\material\intersect.hpp" />
+    <ClInclude Include="..\..\material\_pure.hpp" />
+    <ClInclude Include="..\..\object\wrap.hpp" />
+    <ClInclude Include="..\..\object\_base.hpp" />
+    <ClInclude Include="..\..\object\_pure.hpp" />
+    <ClInclude Include="..\..\render\0scanner\adaptive.hpp" />
+    <ClInclude Include="..\..\render\0scanner\block.hpp" />
+    <ClInclude Include="..\..\render\0scanner\parallel.hpp" />
+    <ClInclude Include="..\..\render\0scanner\_pure.hpp" />
+    <ClInclude Include="..\..\render\1pixel\filter\const.hpp" />
+    <ClInclude Include="..\..\render\1pixel\filter\_pure.hpp" />
+    <ClInclude Include="..\..\render\1pixel\strategy\center.hpp" />
+    <ClInclude Include="..\..\render\1pixel\strategy\grid.hpp" />
+    <ClInclude Include="..\..\render\1pixel\strategy\random.hpp" />
+    <ClInclude Include="..\..\render\1pixel\strategy\_pure.hpp" />
+    <ClInclude Include="..\..\render\1pixel\uv.hpp" />
+    <ClInclude Include="..\..\render\1pixel\_base.hpp" />
+    <ClInclude Include="..\..\render\1pixel\_pure.hpp" />
+    <ClInclude Include="..\..\render\2pierce\filter\_pure.hpp" />
+    <ClInclude Include="..\..\render\2pierce\uv.hpp" />
+    <ClInclude Include="..\..\render\2pierce\_base.hpp" />
+    <ClInclude Include="..\..\render\2pierce\_pure.hpp" />
+    <ClInclude Include="..\..\render\4ray\classic2\algorithm.hpp" />
+    <ClInclude Include="..\..\render\4ray\classic2\stack\beam.hpp" />
+    <ClInclude Include="..\..\render\4ray\classic2\stack\data.hpp" />
+    <ClInclude Include="..\..\render\4ray\classic2\stack\implementation.hpp" />
+    <ClInclude Include="..\..\render\4ray\classic2\stack\input.hpp" />
+    <ClInclude Include="..\..\render\4ray\classic2\stack\output.hpp" />
+    <ClInclude Include="..\..\render\4ray\classic2\stack\stack.hpp" />
+    <ClInclude Include="..\..\render\4ray\distance.hpp" />
+    <ClInclude Include="..\..\render\4ray\_base.hpp" />
+    <ClInclude Include="..\..\render\4ray\_pure.hpp" />
+    <ClInclude Include="..\..\render\engine.hpp" />
+    <ClInclude Include="..\..\type\basic\integer.hpp" />
+    <ClInclude Include="..\..\type\basic\report.hpp" />
+    <ClInclude Include="..\..\type\basic\scalar.hpp" />
+    <ClInclude Include="..\..\type\basic\size.hpp" />
+    <ClInclude Include="..\..\type\basic\string.hpp" />
+    <ClInclude Include="..\..\type\beam.hpp" />
+    <ClInclude Include="..\..\type\color.hpp" />
+    <ClInclude Include="..\..\type\coord.hpp" />
+    <ClInclude Include="..\..\type\interval.hpp" />
+    <ClInclude Include="..\..\type\pointer.hpp" />
+    <ClInclude Include="..\..\type\ray\beam.hpp" />
+    <ClInclude Include="..\..\type\ray\line.hpp" />
+    <ClInclude Include="..\..\type\ray\simple.hpp" />
+    <ClInclude Include="..\..\type\ray\state.hpp" />
+    <ClInclude Include="..\..\type\ray\trace.hpp" />
+    <ClInclude Include="..\..\util\bound\box.hpp" />
+    <ClInclude Include="..\..\util\bound\sphere.hpp" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{2238940F-DC97-443F-98D2-4967B52AE266}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>IceRaySconsExe</RootNamespace>
+    <ProjectName>IceRaySconsExe</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <NMakeBuildCommandLine>$(prg_scons) --directory=$(SolutionDir)build compiler:configuration=debug project:executable=true project:plug-in=false</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine>$(prg_scons) --directory=$(SolutionDir)build compiler:configuration=debug project:executable=true project:plug-in=false</NMakeReBuildCommandLine>
+    <NMakeCleanCommandLine>$(prg_scons) --directory=$(SolutionDir)build  -c</NMakeCleanCommandLine>
+    <OutDir>$(SolutionDir)\build\install</OutDir>
+    <NMakeOutput>c:\work\code\cpp\prj\IceRay\IceRay\build\IceRay.pyd</NMakeOutput>
+    <IntDir>$(SolutionDir)\build\temp</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <NMakeBuildCommandLine>$(prg_scons) --directory=$(SolutionDir)build config=release</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine>$(prg_scons) --directory=$(SolutionDir)build config=release</NMakeReBuildCommandLine>
+    <NMakeCleanCommandLine>$(prg_scons) --directory=$(SolutionDir)build  -c config=release</NMakeCleanCommandLine>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,1335 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\_std">
+      <UniqueIdentifier>{45f2a0f7-b81a-4888-8761-1ab1da416d19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\_std\math">
+      <UniqueIdentifier>{85356194-5c43-45ec-9e21-bfa7745f1c80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\_std\graph">
+      <UniqueIdentifier>{786f0110-0df6-4f6b-bc86-8d36686ddf5d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\_std\system">
+      <UniqueIdentifier>{98de2abe-7663-437a-bed9-a901155df137}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\camera">
+      <UniqueIdentifier>{d66ce855-0f8a-4f37-8e50-5acc9b83126c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\camera\type">
+      <UniqueIdentifier>{0b6277b5-7bce-4d68-ac27-d21d8cbdc170}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\camera\perspective">
+      <UniqueIdentifier>{af6ab79c-b343-4497-a952-45d2ce959f24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\geometry">
+      <UniqueIdentifier>{0af16c6a-a479-4cb1-946b-046edef1312b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\geometry\complex">
+      <UniqueIdentifier>{b0ddcec9-e909-4ad8-96b4-79c5c2422771}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\geometry\deform">
+      <UniqueIdentifier>{98e5bc2c-c3dd-4da8-8c82-f83dd6194a24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\geometry\rtss">
+      <UniqueIdentifier>{bef43363-9c93-4b53-83d5-1761b4cf8051}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\geometry\simple">
+      <UniqueIdentifier>{edce6a5e-cbfb-4d40-9ece-d2ae1105ec51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\geometry\_pure">
+      <UniqueIdentifier>{a9789e34-ff28-4350-b767-65881e383728}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\geometry\state">
+      <UniqueIdentifier>{5fec8b87-6378-42a3-8f5b-81ef6835f92a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\geometry\spline">
+      <UniqueIdentifier>{e37a6221-c88a-4635-91b6-c53b03a8fd60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\geometry\hfield">
+      <UniqueIdentifier>{a010b74f-fa4d-492a-95ba-71e6a79f679e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\geometry\blobby">
+      <UniqueIdentifier>{e11eb09c-e26b-41fc-b86f-6bab1f979dbd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\geometry\blobby\type">
+      <UniqueIdentifier>{fca0d458-b221-4055-a0f5-2a89b09fa07b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\light">
+      <UniqueIdentifier>{0d3c7f72-5b3b-49a3-97ee-1be1ba015902}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\light\type">
+      <UniqueIdentifier>{3d575b74-7e9b-4e40-8482-994340231566}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\main">
+      <UniqueIdentifier>{8c27e325-9868-4410-8acf-6ce4a5f156f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\main\system">
+      <UniqueIdentifier>{36a86e56-dd7e-47fa-a04f-5923b76c9b71}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\main\make">
+      <UniqueIdentifier>{49749249-88b5-4f8f-af4f-6faa8818ab07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\main\make\geometry">
+      <UniqueIdentifier>{5ff80875-924e-42ad-85ab-2a8499bad69a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\main\make\geometry\blobby">
+      <UniqueIdentifier>{ba70b348-f404-483c-9f8c-ec71d4bc9d6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\main\make\camera">
+      <UniqueIdentifier>{d1d1737a-3d83-43a5-a2f7-57d39421a740}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\main\make\light">
+      <UniqueIdentifier>{619c2041-0905-4a56-af14-be35e3a66484}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\main\make\material">
+      <UniqueIdentifier>{3102c8aa-26ad-40f3-8ce9-3f8e2da9082d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\main\make\material\pigment">
+      <UniqueIdentifier>{3d0da044-2960-41eb-bd6e-20e121c00fea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\main\interface">
+      <UniqueIdentifier>{42eb6139-9e3e-4a9d-ba0c-b579b4bd5f19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\material">
+      <UniqueIdentifier>{63e41883-0a13-4c50-a500-3473946a7821}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\material\shade">
+      <UniqueIdentifier>{4d023080-3a2b-40a5-bcee-579871a51e6d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\material\illumination">
+      <UniqueIdentifier>{3b905090-8bee-4248-a956-b7d4a241c5a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\material\illumination\HeidrichSeidel">
+      <UniqueIdentifier>{c55c794b-bef4-4a90-b523-6540268026e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\material\illumination\ward">
+      <UniqueIdentifier>{9a6c18ef-86da-48ab-86c3-0e096fefe34e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\material\illumination\on">
+      <UniqueIdentifier>{fe4e3ae9-4b7a-476c-8df5-783cbe859916}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\material\medium">
+      <UniqueIdentifier>{0fe6dc4b-098e-4972-8dfa-0f15ee300eed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\material\transmission">
+      <UniqueIdentifier>{85713f4c-31b4-495f-9da9-253d6c761b69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\material\pattern">
+      <UniqueIdentifier>{e07fd15e-80f0-4148-add1-40f2f752aaf0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\material\compute">
+      <UniqueIdentifier>{846d2b7b-7624-4b93-a3a3-77a00f54f5d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\object">
+      <UniqueIdentifier>{032539db-bc5c-46ad-9057-db91a75b4eaa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\render">
+      <UniqueIdentifier>{dcb26eb1-d18f-45ff-aa5f-658acbf41c7d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\render\1pixel">
+      <UniqueIdentifier>{58592ae0-7169-4f04-9593-2143494f9a19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\render\1pixel\strategy">
+      <UniqueIdentifier>{e88a544f-2bb1-42c2-a308-6184df034ece}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\render\1pixel\filter">
+      <UniqueIdentifier>{0648dba0-fe5b-4092-96dd-ceff32d1825b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\render\2pierce">
+      <UniqueIdentifier>{092eef21-c867-4824-942b-7245e414ec97}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\render\2pierce\filter">
+      <UniqueIdentifier>{673e3e5d-4451-4d9a-a974-609e9482ba56}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\render\4ray">
+      <UniqueIdentifier>{00e008f3-9287-4792-8bc7-ee4143571310}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\render\4ray\classic">
+      <UniqueIdentifier>{53b8140e-d097-4dd1-9b2d-048d7d4ad32a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\render\4ray\classic2">
+      <UniqueIdentifier>{36511cd1-7eea-429c-8d29-85b8ad6b9dd2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\render\4ray\classic2\object">
+      <UniqueIdentifier>{d9fba874-6855-44fd-bba6-6eaaac819376}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\render\4ray\classic2\stack">
+      <UniqueIdentifier>{a864d04b-8fd2-4608-9b88-492166a8ce40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\render\4ray\classic2\beam">
+      <UniqueIdentifier>{a5124ef2-c986-4c1b-af5c-0eb9b2f4a18c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\render\0scanner">
+      <UniqueIdentifier>{560f632e-3649-478f-8d7d-398ca3fb8b7d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\texture">
+      <UniqueIdentifier>{e9d6457f-06dc-4f25-83c0-18f0a589659c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\type">
+      <UniqueIdentifier>{615902d2-48e9-4a3c-bdec-47aa5f8610a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\type\basic">
+      <UniqueIdentifier>{29f3a222-dff7-4772-9e06-6118987953b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\type\ray">
+      <UniqueIdentifier>{0cbcb425-7b50-4c60-98a8-53f7e22b5ddb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\util">
+      <UniqueIdentifier>{a6b08ace-d366-4a3d-b229-14143db0fbd1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\main\interface\render">
+      <UniqueIdentifier>{10bea3f0-03a2-4137-95f3-807c23055f24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\main\interface\camera">
+      <UniqueIdentifier>{32f6b534-7122-45f2-a72e-3d61a77245a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\main\interface\light">
+      <UniqueIdentifier>{b888e6f8-7cd9-4a65-b688-b4963a5d3c6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\main\interface\geometry">
+      <UniqueIdentifier>{927d23f5-d87f-4ed2-892d-1342f90e9e4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\material\compute\illumination">
+      <UniqueIdentifier>{0d3b9183-972e-44d6-a2e0-e18769857d2c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\material\compute\pattern">
+      <UniqueIdentifier>{1f7970a5-704e-4e4a-9b34-1a8c2ac0206d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\material\compute\transmission">
+      <UniqueIdentifier>{ea5e3568-453c-423b-92da-6adfb71cd9a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\main\interface\library">
+      <UniqueIdentifier>{e733ee47-200f-4faa-8fc1-a1ceae40858a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\main\interface\library\math">
+      <UniqueIdentifier>{13907963-54f8-425a-9b31-284276fc3c0e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\material\compute\geometry">
+      <UniqueIdentifier>{13fcba3a-9cf7-4153-93ca-b7536333b4f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\material\compute\light">
+      <UniqueIdentifier>{1a465fbe-8321-4b6a-bace-a90539200abe}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\..\..\math\random\sobol.cpp">
+      <Filter>Source Files\_std\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\system\allocator\chunk\managed.cpp">
+      <Filter>Source Files\_std\system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\system\allocator\fixed.cpp">
+      <Filter>Source Files\_std\system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\camera\cylindric_h.cpp">
+      <Filter>Source Files\camera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\camera\cylindric_v.cpp">
+      <Filter>Source Files\camera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\camera\invert.cpp">
+      <Filter>Source Files\camera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\camera\transform.cpp">
+      <Filter>Source Files\camera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\camera\_parent.cpp">
+      <Filter>Source Files\camera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\camera\_pure.cpp">
+      <Filter>Source Files\camera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\camera\cone.cpp">
+      <Filter>Source Files\camera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\camera\focus.cpp">
+      <Filter>Source Files\camera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\camera\orthogonal.cpp">
+      <Filter>Source Files\camera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\camera\perspective\perspective.cpp">
+      <Filter>Source Files\camera\perspective</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\camera\perspective\perspectiveG.cpp">
+      <Filter>Source Files\camera\perspective</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\camera\perspective\unit.cpp">
+      <Filter>Source Files\camera\perspective</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\smoke.cpp">
+      <Filter>Source Files\geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\vacuum.cpp">
+      <Filter>Source Files\geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\complex\intersect.cpp">
+      <Filter>Source Files\geometry\complex</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\complex\multitude.cpp">
+      <Filter>Source Files\geometry\complex</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\transform\affine.cpp">
+      <Filter>Source Files\geometry\deform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\transform\mblur.cpp">
+      <Filter>Source Files\geometry\deform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\transform\projective.cpp">
+      <Filter>Source Files\geometry\deform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\transform\translate.cpp">
+      <Filter>Source Files\geometry\deform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\rtss\list.cpp">
+      <Filter>Source Files\geometry\rtss</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\rtss\object.cpp">
+      <Filter>Source Files\geometry\rtss</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\rtss\uniform.cpp">
+      <Filter>Source Files\geometry\rtss</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\rtss\_pure.cpp">
+      <Filter>Source Files\geometry\rtss</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\simple\box.cpp">
+      <Filter>Source Files\geometry\simple</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\simple\cone.cpp">
+      <Filter>Source Files\geometry\simple</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\simple\cylinder.cpp">
+      <Filter>Source Files\geometry\simple</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\simple\disc.cpp">
+      <Filter>Source Files\geometry\simple</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\simple\paraboloid.cpp">
+      <Filter>Source Files\geometry\simple</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\simple\plane.cpp">
+      <Filter>Source Files\geometry\simple</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\simple\torus.cpp">
+      <Filter>Source Files\geometry\simple</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\simple\triangle.cpp">
+      <Filter>Source Files\geometry\simple</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\simple\usphere.cpp">
+      <Filter>Source Files\geometry\simple</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\simple\quadric.cpp">
+      <Filter>Source Files\geometry\simple</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\simple\simple.cpp">
+      <Filter>Source Files\geometry\simple</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\simple\sphere.cpp">
+      <Filter>Source Files\geometry\simple</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\_pure\_base.cpp">
+      <Filter>Source Files\geometry\_pure</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\spline\spline.cpp">
+      <Filter>Source Files\geometry\spline</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\hfield\hfield.cpp">
+      <Filter>Source Files\geometry\hfield</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\blobby\sphere.cpp">
+      <Filter>Source Files\geometry\blobby</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\blobby\system.cpp">
+      <Filter>Source Files\geometry\blobby</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\blobby\translate.cpp">
+      <Filter>Source Files\geometry\blobby</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\blobby\ucylinderZ.cpp">
+      <Filter>Source Files\geometry\blobby</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\blobby\usphere.cpp">
+      <Filter>Source Files\geometry\blobby</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\geometry\blobby\uwaterZ.cpp">
+      <Filter>Source Files\geometry\blobby</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\light\area.cpp">
+      <Filter>Source Files\light</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\light\basic.cpp">
+      <Filter>Source Files\light</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\light\blocked.cpp">
+      <Filter>Source Files\light</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\light\chandelier.cpp">
+      <Filter>Source Files\light</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\light\circle.cpp">
+      <Filter>Source Files\light</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\light\clipped.cpp">
+      <Filter>Source Files\light</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\light\dark.cpp">
+      <Filter>Source Files\light</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\light\line.cpp">
+      <Filter>Source Files\light</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\light\point.cpp">
+      <Filter>Source Files\light</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\light\reflector.cpp">
+      <Filter>Source Files\light</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\light\sphere.cpp">
+      <Filter>Source Files\light</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\light\spline.cpp">
+      <Filter>Source Files\light</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\light\sun.cpp">
+      <Filter>Source Files\light</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\main.cpp">
+      <Filter>Source Files\main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\system\init_system.cpp">
+      <Filter>Source Files\main\system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\geometry_bezier.cpp">
+      <Filter>Source Files\main\make\geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\geometry_box.cpp">
+      <Filter>Source Files\main\make\geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\geometry_projective.cpp">
+      <Filter>Source Files\main\make\geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\geometry_rtss_add.cpp">
+      <Filter>Source Files\main\make\geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\geometry_rtss_list.cpp">
+      <Filter>Source Files\main\make\geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\geometry_rtss_object.cpp">
+      <Filter>Source Files\main\make\geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\geometry_rtss_uniform.cpp">
+      <Filter>Source Files\main\make\geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\geometry_smoke.cpp">
+      <Filter>Source Files\main\make\geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\geometry_sphere.cpp">
+      <Filter>Source Files\main\make\geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\geometry_blobby_sphere.cpp">
+      <Filter>Source Files\main\make\geometry\blobby</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\geometry_blobby_system.cpp">
+      <Filter>Source Files\main\make\geometry\blobby</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\geometry_blobby_system_add.cpp">
+      <Filter>Source Files\main\make\geometry\blobby</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\geometry_blobby_system_rtss.cpp">
+      <Filter>Source Files\main\make\geometry\blobby</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\geometry_blobby_translate.cpp">
+      <Filter>Source Files\main\make\geometry\blobby</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\geometry_blobby_ucylinderZ.cpp">
+      <Filter>Source Files\main\make\geometry\blobby</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\geometry_blobby_usphere.cpp">
+      <Filter>Source Files\main\make\geometry\blobby</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\geometry_blobby_uwaterZ.cpp">
+      <Filter>Source Files\main\make\geometry\blobby</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\camera_cylindricV.cpp">
+      <Filter>Source Files\main\make\camera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\camera_invert.cpp">
+      <Filter>Source Files\main\make\camera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\camera_lookAt.cpp">
+      <Filter>Source Files\main\make\camera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\camera_orthogonal.cpp">
+      <Filter>Source Files\main\make\camera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\camera_perspective.cpp">
+      <Filter>Source Files\main\make\camera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\light_area.cpp">
+      <Filter>Source Files\main\make\light</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\light_blocked.cpp">
+      <Filter>Source Files\main\make\light</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\light_chandelier.cpp">
+      <Filter>Source Files\main\make\light</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\light_circle.cpp">
+      <Filter>Source Files\main\make\light</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\light_line.cpp">
+      <Filter>Source Files\main\make\light</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\light_point.cpp">
+      <Filter>Source Files\main\make\light</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\light_reflector.cpp">
+      <Filter>Source Files\main\make\light</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\light_spline.cpp">
+      <Filter>Source Files\main\make\light</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\light_sun.cpp">
+      <Filter>Source Files\main\make\light</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\texture_ambient.cpp">
+      <Filter>Source Files\main\make\material</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\texture_beckmann.cpp">
+      <Filter>Source Files\main\make\material</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\texture_blinn.cpp">
+      <Filter>Source Files\main\make\material</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\texture_gaussian.cpp">
+      <Filter>Source Files\main\make\material</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\texture_hs.cpp">
+      <Filter>Source Files\main\make\material</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\texture_lambert.cpp">
+      <Filter>Source Files\main\make\material</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\texture_on.cpp">
+      <Filter>Source Files\main\make\material</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\texture_phong.cpp">
+      <Filter>Source Files\main\make\material</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\texture_ward.cpp">
+      <Filter>Source Files\main\make\material</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\material_transmission_reflect.cpp">
+      <Filter>Source Files\main\make\material\pigment</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\pigment_cluster.cpp">
+      <Filter>Source Files\main\make\material\pigment</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\pigment_illumination_ambient.cpp">
+      <Filter>Source Files\main\make\material\pigment</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\pigment_illumination_beckmann.cpp">
+      <Filter>Source Files\main\make\material\pigment</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\pigment_illumination_blin.cpp">
+      <Filter>Source Files\main\make\material\pigment</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\pigment_illumination_gaussian.cpp">
+      <Filter>Source Files\main\make\material\pigment</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\pigment_illumination_hs.cpp">
+      <Filter>Source Files\main\make\material\pigment</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\pigment_illumination_lambert.cpp">
+      <Filter>Source Files\main\make\material\pigment</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\pigment_illumination_light.cpp">
+      <Filter>Source Files\main\make\material\pigment</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\pigment_illumination_on.cpp">
+      <Filter>Source Files\main\make\material\pigment</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\pigment_illumination_phong.cpp">
+      <Filter>Source Files\main\make\material\pigment</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\pigment_illumination_ward.cpp">
+      <Filter>Source Files\main\make\material\pigment</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\pigment_intersect.cpp">
+      <Filter>Source Files\main\make\material\pigment</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\pigment_normal.cpp">
+      <Filter>Source Files\main\make\material\pigment</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\pigment_operation_add.cpp">
+      <Filter>Source Files\main\make\material\pigment</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\pigment_operation_subtraction.cpp">
+      <Filter>Source Files\main\make\material\pigment</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\pigment_pattern_color_const.cpp">
+      <Filter>Source Files\main\make\material\pigment</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\make\pigment_pattern_coord_const.cpp">
+      <Filter>Source Files\main\make\material\pigment</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\material\compute\processor.cpp">
+      <Filter>Source Files\material\compute</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\material\compute\program.cpp">
+      <Filter>Source Files\material\compute</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\render\engine.cpp">
+      <Filter>Source Files\render</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\render\1pixel\_base.cpp">
+      <Filter>Source Files\render\1pixel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\render\1pixel\_pure.cpp">
+      <Filter>Source Files\render\1pixel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\render\1pixel\strategy\center.cpp">
+      <Filter>Source Files\render\1pixel\strategy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\render\1pixel\strategy\grid.cpp">
+      <Filter>Source Files\render\1pixel\strategy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\render\1pixel\strategy\random.cpp">
+      <Filter>Source Files\render\1pixel\strategy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\render\2pierce\_base.cpp">
+      <Filter>Source Files\render\2pierce</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\render\2pierce\_pure.cpp">
+      <Filter>Source Files\render\2pierce</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\render\4ray\distance.cpp">
+      <Filter>Source Files\render\4ray</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\render\4ray\_base.cpp">
+      <Filter>Source Files\render\4ray</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\render\4ray\_pure.cpp">
+      <Filter>Source Files\render\4ray</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\render\4ray\classic2\algorithm.cpp">
+      <Filter>Source Files\render\4ray\classic2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\render\4ray\classic2\stack\implementation.cpp">
+      <Filter>Source Files\render\4ray\classic2\stack</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\render\0scanner\block.cpp">
+      <Filter>Source Files\render\0scanner</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\render\0scanner\parallel.cpp">
+      <Filter>Source Files\render\0scanner</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\render\0scanner\_pure.cpp">
+      <Filter>Source Files\render\0scanner</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\util\BOUND.CPP">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\interface\python\render\IceRay_render_Engine.cpp">
+      <Filter>Source Files\main\interface\render</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\interface\python\render\IceRay_render_pierce__pure.cpp">
+      <Filter>Source Files\main\interface\render</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\interface\python\render\IceRay_render_pierce_Base.cpp">
+      <Filter>Source Files\main\interface\render</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\interface\python\render\IceRay_render_pixel__pure.cpp">
+      <Filter>Source Files\main\interface\render</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\interface\python\render\IceRay_render_pixel_Base.cpp">
+      <Filter>Source Files\main\interface\render</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\interface\python\render\IceRay_render_scanner__pure.cpp">
+      <Filter>Source Files\main\interface\render</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\interface\python\render\IceRay_render_scanner_Block.cpp">
+      <Filter>Source Files\main\interface\render</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\interface\python\camera\IceRay_camera_orthogonal.cpp">
+      <Filter>Source Files\main\interface\camera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\interface\python\camera\IceRay_camera_perspective.cpp">
+      <Filter>Source Files\main\interface\camera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\interface\python\camera\IceRay_camera_pure.cpp">
+      <Filter>Source Files\main\interface\camera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\interface\python\light\IceRay_light__Pure.cpp">
+      <Filter>Source Files\main\interface\light</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\interface\python\light\IceRay_light_Point.cpp">
+      <Filter>Source Files\main\interface\light</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\interface\python\light\IceRay_light_type_Spot.cpp">
+      <Filter>Source Files\main\interface\light</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\interface\python\graph_picture_memory.cpp">
+      <Filter>Source Files\main\interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\interface\python\graph_picture_save_image.cpp">
+      <Filter>Source Files\main\interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\interface\python\graph_type_color.cpp">
+      <Filter>Source Files\main\interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\interface\python\index.cpp">
+      <Filter>Source Files\main\interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\interface\python\math_type_coord.cpp">
+      <Filter>Source Files\main\interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\interface\python\math_type_matrix.cpp">
+      <Filter>Source Files\main\interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\interface\python\geometry\IceRay_geometry__pure.cpp">
+      <Filter>Source Files\main\interface\geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\interface\python\geometry\IceRay_geometry_sphere.cpp">
+      <Filter>Source Files\main\interface\geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\object\_base.cpp">
+      <Filter>Source Files\object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\object\_pure.cpp">
+      <Filter>Source Files\object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\object\wrap.cpp">
+      <Filter>Source Files\object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\interface\python\library\math\affine.cpp">
+      <Filter>Source Files\main\interface\library\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\interface\python\library\math\coord.cpp">
+      <Filter>Source Files\main\interface\library\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\interface\python\library\math\interval.cpp">
+      <Filter>Source Files\main\interface\library\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\main\interface\python\library\math\matrix.cpp">
+      <Filter>Source Files\main\interface\library\math</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\..\math\random\sobol.hpp">
+      <Filter>Source Files\_std\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\math\random\vdc.hpp">
+      <Filter>Source Files\_std\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\system\allocator\chunk\managed.hpp">
+      <Filter>Source Files\_std\system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\camera\cylindric_h.hpp">
+      <Filter>Source Files\camera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\camera\cylindric_v.hpp">
+      <Filter>Source Files\camera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\camera\invert.hpp">
+      <Filter>Source Files\camera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\camera\transform.hpp">
+      <Filter>Source Files\camera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\camera\_parent.hpp">
+      <Filter>Source Files\camera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\camera\_pure.hpp">
+      <Filter>Source Files\camera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\camera\cone.hpp">
+      <Filter>Source Files\camera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\camera\focus.hpp">
+      <Filter>Source Files\camera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\camera\orthogonal.hpp">
+      <Filter>Source Files\camera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\camera\type\beam.hpp">
+      <Filter>Source Files\camera\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\camera\type\coord.hpp">
+      <Filter>Source Files\camera\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\camera\type\interval.hpp">
+      <Filter>Source Files\camera\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\camera\type\matrix.hpp">
+      <Filter>Source Files\camera\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\camera\type\ray.hpp">
+      <Filter>Source Files\camera\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\camera\type\report.hpp">
+      <Filter>Source Files\camera\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\camera\type\scalar.hpp">
+      <Filter>Source Files\camera\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\camera\type\size.hpp">
+      <Filter>Source Files\camera\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\camera\type\system.hpp">
+      <Filter>Source Files\camera\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\camera\type\type.hpp">
+      <Filter>Source Files\camera\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\camera\perspective\perspective.hpp">
+      <Filter>Source Files\camera\perspective</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\camera\perspective\perspectiveG.hpp">
+      <Filter>Source Files\camera\perspective</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\camera\perspective\unit.hpp">
+      <Filter>Source Files\camera\perspective</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\geometry\smoke.hpp">
+      <Filter>Source Files\geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\geometry\vacuum.hpp">
+      <Filter>Source Files\geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\geometry\complex\intersect.hpp">
+      <Filter>Source Files\geometry\complex</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\geometry\complex\multitude.hpp">
+      <Filter>Source Files\geometry\complex</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\geometry\complex\plane_sys.hpp">
+      <Filter>Source Files\geometry\complex</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\geometry\transform\projective.hpp">
+      <Filter>Source Files\geometry\deform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\geometry\transform\translate.hpp">
+      <Filter>Source Files\geometry\deform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\geometry\transform\affine.hpp">
+      <Filter>Source Files\geometry\deform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\geometry\transform\mblur.hpp">
+      <Filter>Source Files\geometry\deform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\geometry\rtss\list.hpp">
+      <Filter>Source Files\geometry\rtss</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\geometry\rtss\object.hpp">
+      <Filter>Source Files\geometry\rtss</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\geometry\rtss\uniform.hpp">
+      <Filter>Source Files\geometry\rtss</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\geometry\rtss\_pure.hpp">
+      <Filter>Source Files\geometry\rtss</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\geometry\simple\cone.hpp">
+      <Filter>Source Files\geometry\simple</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\geometry\simple\cylinder.hpp">
+      <Filter>Source Files\geometry\simple</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\geometry\simple\disc.hpp">
+      <Filter>Source Files\geometry\simple</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\geometry\simple\paraboloid.hpp">
+      <Filter>Source Files\geometry\simple</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\geometry\simple\triangle.hpp">
+      <Filter>Source Files\geometry\simple</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\geometry\simple\box.hpp">
+      <Filter>Source Files\geometry\simple</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\geometry\simple\plane.hpp">
+      <Filter>Source Files\geometry\simple</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\geometry\simple\quadric.hpp">
+      <Filter>Source Files\geometry\simple</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\geometry\simple\simple.hpp">
+      <Filter>Source Files\geometry\simple</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\geometry\simple\sphere.hpp">
+      <Filter>Source Files\geometry\simple</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\geometry\simple\torus.hpp">
+      <Filter>Source Files\geometry\simple</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\geometry\simple\usphere.hpp">
+      <Filter>Source Files\geometry\simple</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\geometry\_pure\cluster.hpp">
+      <Filter>Source Files\geometry\_pure</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\geometry\_pure\distance.hpp">
+      <Filter>Source Files\geometry\_pure</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\geometry\_pure\inside.hpp">
+      <Filter>Source Files\geometry\_pure</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\geometry\_pure\intersect.hpp">
+      <Filter>Source Files\geometry\_pure</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\geometry\_pure\normal.hpp">
+      <Filter>Source Files\geometry\_pure</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\geometry\_pure\uvw.hpp">
+      <Filter>Source Files\geometry\_pure</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\geometry\_pure\_base.hpp">
+      <Filter>Source Files\geometry\_pure</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\geometry\state\data.hpp">
+      <Filter>Source Files\geometry\state</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\geometry\state\manager.hpp">
+      <Filter>Source Files\geometry\state</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\geometry\spline\spline.hpp">
+      <Filter>Source Files\geometry\spline</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\geometry\hfield\container-func.hpp">
+      <Filter>Source Files\geometry\hfield</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\geometry\hfield\container-ptr.hpp">
+      <Filter>Source Files\geometry\hfield</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\geometry\hfield\container-vv.hpp">
+      <Filter>Source Files\geometry\hfield</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\geometry\hfield\container-_pure.hpp">
+      <Filter>Source Files\geometry\hfield</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\geometry\hfield\hfield.hpp">
+      <Filter>Source Files\geometry\hfield</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\geometry\hfield\object-b3.hpp">
+      <Filter>Source Files\geometry\hfield</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\geometry\hfield\object-flat.hpp">
+      <Filter>Source Files\geometry\hfield</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\geometry\hfield\object-quad.hpp">
+      <Filter>Source Files\geometry\hfield</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\geometry\hfield\object-trg.hpp">
+      <Filter>Source Files\geometry\hfield</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\geometry\hfield\object-_pure.hpp">
+      <Filter>Source Files\geometry\hfield</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\geometry\blobby\sphere.hpp">
+      <Filter>Source Files\geometry\blobby</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\geometry\blobby\system.hpp">
+      <Filter>Source Files\geometry\blobby</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\geometry\blobby\translate.hpp">
+      <Filter>Source Files\geometry\blobby</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\geometry\blobby\ucylinderZ.hpp">
+      <Filter>Source Files\geometry\blobby</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\geometry\blobby\usphere.hpp">
+      <Filter>Source Files\geometry\blobby</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\geometry\blobby\uwaterZ.hpp">
+      <Filter>Source Files\geometry\blobby</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\geometry\blobby\_element.hpp">
+      <Filter>Source Files\geometry\blobby</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\geometry\blobby\type\coefficient.hpp">
+      <Filter>Source Files\geometry\blobby\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\geometry\blobby\type\heap.hpp">
+      <Filter>Source Files\geometry\blobby\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\light\blocked.hpp">
+      <Filter>Source Files\light</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\light\chandelier.hpp">
+      <Filter>Source Files\light</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\light\clipped.hpp">
+      <Filter>Source Files\light</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\light\_pure.hpp">
+      <Filter>Source Files\light</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\light\all.hpp">
+      <Filter>Source Files\light</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\light\area.hpp">
+      <Filter>Source Files\light</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\light\basic.hpp">
+      <Filter>Source Files\light</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\light\circle.hpp">
+      <Filter>Source Files\light</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\light\line.hpp">
+      <Filter>Source Files\light</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\light\point.hpp">
+      <Filter>Source Files\light</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\light\reflector.hpp">
+      <Filter>Source Files\light</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\light\sphere.hpp">
+      <Filter>Source Files\light</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\light\spline.hpp">
+      <Filter>Source Files\light</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\light\sun.hpp">
+      <Filter>Source Files\light</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\light\type\spot.hpp">
+      <Filter>Source Files\light\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\light\type\swarm.hpp">
+      <Filter>Source Files\light\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\material\beam.hpp">
+      <Filter>Source Files\material</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\material\intersect.hpp">
+      <Filter>Source Files\material</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\material\_pure.hpp">
+      <Filter>Source Files\material</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\material\illumination\ambient.hpp">
+      <Filter>Source Files\material\illumination</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\material\illumination\beckmann.hpp">
+      <Filter>Source Files\material\illumination</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\material\illumination\blinn.hpp">
+      <Filter>Source Files\material\illumination</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\material\illumination\gaussian.hpp">
+      <Filter>Source Files\material\illumination</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\material\illumination\lambert.hpp">
+      <Filter>Source Files\material\illumination</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\material\illumination\phong.hpp">
+      <Filter>Source Files\material\illumination</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\material\illumination\HeidrichSeidel\lambert.hpp">
+      <Filter>Source Files\material\illumination\HeidrichSeidel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\material\illumination\HeidrichSeidel\lp.hpp">
+      <Filter>Source Files\material\illumination\HeidrichSeidel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\material\illumination\HeidrichSeidel\phong.hpp">
+      <Filter>Source Files\material\illumination\HeidrichSeidel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\material\illumination\ward\approx.hpp">
+      <Filter>Source Files\material\illumination\ward</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\material\illumination\ward\isotropic.hpp">
+      <Filter>Source Files\material\illumination\ward</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\material\illumination\ward\real.hpp">
+      <Filter>Source Files\material\illumination\ward</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\material\illumination\on_f29.hpp">
+      <Filter>Source Files\material\illumination\on</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\material\illumination\on_p44.hpp">
+      <Filter>Source Files\material\illumination\on</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\material\illumination\on_YasuhiroFujii.hpp">
+      <Filter>Source Files\material\illumination\on</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\material\compute\instruction.hpp">
+      <Filter>Source Files\material\compute</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\material\compute\memory.hpp">
+      <Filter>Source Files\material\compute</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\material\compute\processor.hpp">
+      <Filter>Source Files\material\compute</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\material\compute\program.hpp">
+      <Filter>Source Files\material\compute</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\material\compute\raw.hpp">
+      <Filter>Source Files\material\compute</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\material\compute\surface.hpp">
+      <Filter>Source Files\material\compute</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render\engine.hpp">
+      <Filter>Source Files\render</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render\1pixel\uv.hpp">
+      <Filter>Source Files\render\1pixel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render\1pixel\_base.hpp">
+      <Filter>Source Files\render\1pixel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render\1pixel\_pure.hpp">
+      <Filter>Source Files\render\1pixel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render\1pixel\strategy\center.hpp">
+      <Filter>Source Files\render\1pixel\strategy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render\1pixel\strategy\grid.hpp">
+      <Filter>Source Files\render\1pixel\strategy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render\1pixel\strategy\random.hpp">
+      <Filter>Source Files\render\1pixel\strategy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render\1pixel\strategy\_pure.hpp">
+      <Filter>Source Files\render\1pixel\strategy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render\1pixel\filter\const.hpp">
+      <Filter>Source Files\render\1pixel\filter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render\1pixel\filter\_pure.hpp">
+      <Filter>Source Files\render\1pixel\filter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render\2pierce\uv.hpp">
+      <Filter>Source Files\render\2pierce</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render\2pierce\_base.hpp">
+      <Filter>Source Files\render\2pierce</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render\2pierce\_pure.hpp">
+      <Filter>Source Files\render\2pierce</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render\2pierce\filter\_pure.hpp">
+      <Filter>Source Files\render\2pierce\filter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render\4ray\distance.hpp">
+      <Filter>Source Files\render\4ray</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render\4ray\_base.hpp">
+      <Filter>Source Files\render\4ray</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render\4ray\_pure.hpp">
+      <Filter>Source Files\render\4ray</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render\4ray\classic2\algorithm.hpp">
+      <Filter>Source Files\render\4ray\classic2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render\4ray\classic2\stack\beam.hpp">
+      <Filter>Source Files\render\4ray\classic2\stack</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render\4ray\classic2\stack\data.hpp">
+      <Filter>Source Files\render\4ray\classic2\stack</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render\4ray\classic2\stack\implementation.hpp">
+      <Filter>Source Files\render\4ray\classic2\stack</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render\4ray\classic2\stack\input.hpp">
+      <Filter>Source Files\render\4ray\classic2\stack</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render\4ray\classic2\stack\stack.hpp">
+      <Filter>Source Files\render\4ray\classic2\stack</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render\4ray\classic2\stack\output.hpp">
+      <Filter>Source Files\render\4ray\classic2\stack</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render\0scanner\adaptive.hpp">
+      <Filter>Source Files\render\0scanner</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render\0scanner\block.hpp">
+      <Filter>Source Files\render\0scanner</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render\0scanner\parallel.hpp">
+      <Filter>Source Files\render\0scanner</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\render\0scanner\_pure.hpp">
+      <Filter>Source Files\render\0scanner</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\type\beam.hpp">
+      <Filter>Source Files\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\type\color.hpp">
+      <Filter>Source Files\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\type\coord.hpp">
+      <Filter>Source Files\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\type\interval.hpp">
+      <Filter>Source Files\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\type\pointer.hpp">
+      <Filter>Source Files\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\type\basic\integer.hpp">
+      <Filter>Source Files\type\basic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\type\basic\report.hpp">
+      <Filter>Source Files\type\basic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\type\basic\scalar.hpp">
+      <Filter>Source Files\type\basic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\type\basic\size.hpp">
+      <Filter>Source Files\type\basic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\type\basic\string.hpp">
+      <Filter>Source Files\type\basic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\type\ray\beam.hpp">
+      <Filter>Source Files\type\ray</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\type\ray\line.hpp">
+      <Filter>Source Files\type\ray</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\type\ray\simple.hpp">
+      <Filter>Source Files\type\ray</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\type\ray\state.hpp">
+      <Filter>Source Files\type\ray</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\type\ray\trace.hpp">
+      <Filter>Source Files\type\ray</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\util\bound\box.hpp">
+      <Filter>Source Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\util\bound\sphere.hpp">
+      <Filter>Source Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\main\interface\python\def_submodule.hpp">
+      <Filter>Source Files\main\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\material\compute\illumination\ambient.hpp">
+      <Filter>Source Files\material\compute\illumination</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\material\compute\illumination\beckmann.hpp">
+      <Filter>Source Files\material\compute\illumination</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\material\compute\illumination\blinn.hpp">
+      <Filter>Source Files\material\compute\illumination</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\material\compute\illumination\gaussian.hpp">
+      <Filter>Source Files\material\compute\illumination</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\material\compute\illumination\hs_lambert.hpp">
+      <Filter>Source Files\material\compute\illumination</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\material\compute\illumination\hs_phong.hpp">
+      <Filter>Source Files\material\compute\illumination</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\material\compute\illumination\lambert.hpp">
+      <Filter>Source Files\material\compute\illumination</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\material\compute\illumination\on_p44.hpp">
+      <Filter>Source Files\material\compute\illumination</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\material\compute\illumination\phong.hpp">
+      <Filter>Source Files\material\compute\illumination</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\material\compute\illumination\ward_approx.hpp">
+      <Filter>Source Files\material\compute\illumination</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\material\compute\illumination\ward_isotropic.hpp">
+      <Filter>Source Files\material\compute\illumination</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\material\compute\illumination\ward_real.hpp">
+      <Filter>Source Files\material\compute\illumination</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\material\compute\transmission\reflect\one.hpp">
+      <Filter>Source Files\material\compute\transmission</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\material\compute\transmission\reflect.hpp">
+      <Filter>Source Files\material\compute\transmission</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\material\compute\transmission\refract.hpp">
+      <Filter>Source Files\material\compute\transmission</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\object\_base.hpp">
+      <Filter>Source Files\object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\object\_pure.hpp">
+      <Filter>Source Files\object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\object\wrap.hpp">
+      <Filter>Source Files\object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\material\compute\pattern\color.hpp">
+      <Filter>Source Files\material\compute\pattern</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\material\compute\pattern\colorc.hpp">
+      <Filter>Source Files\material\compute\pattern</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\material\compute\pattern\coord.hpp">
+      <Filter>Source Files\material\compute\pattern</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\material\compute\pattern\scalar.hpp">
+      <Filter>Source Files\material\compute\pattern</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\material\compute\pattern\size.hpp">
+      <Filter>Source Files\material\compute\pattern</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\material\compute\geometry\cluster.hpp">
+      <Filter>Source Files\material\compute\geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\material\compute\geometry\distance.hpp">
+      <Filter>Source Files\material\compute\geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\material\compute\geometry\extract.hpp">
+      <Filter>Source Files\material\compute\geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\material\compute\geometry\intersect.hpp">
+      <Filter>Source Files\material\compute\geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\material\compute\geometry\normal.hpp">
+      <Filter>Source Files\material\compute\geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\material\compute\geometry\reset.hpp">
+      <Filter>Source Files\material\compute\geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\material\compute\geometry\uvw.hpp">
+      <Filter>Source Files\material\compute\geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\material\compute\light\generator.hpp">
+      <Filter>Source Files\material\compute\light</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\material\compute\light\spotUVW.hpp">
+      <Filter>Source Files\material\compute\light</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\material\compute\light\swarm0.hpp">
+      <Filter>Source Files\material\compute\light</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\material\compute\light\swarm1.hpp">
+      <Filter>Source Files\material\compute\light</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\material\compute\pattern\coordc.hpp">
+      <Filter>Source Files\material\compute\pattern</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

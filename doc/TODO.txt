@@ -1,0 +1,19 @@
+- medium handling
+- cameras
+- lights
+-- test for sphere
+- illuminations
+- computing
+- geometryes
+--blobby
+-- etc
+- pattern
+- blobby
+- HField
+- CSG
+- bezier
+- projective
+- camera
+-- transform origin from point to line, or something else.
+--- calc point on screen. recalc direction = screen - new_origin
+- check sunLine
