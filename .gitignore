@@ -14,7 +14,7 @@ example/hello_oneh
 /build/msvc/2015/IceRay2015.VC.db
 /build/msvc/2015/IceRay2015.VC.VC.opendb
 /build/scons/*.dblite
-/temp
+/temp/*
 /bin/*
 *.dblite
 *.pyc

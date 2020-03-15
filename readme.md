@@ -60,14 +60,14 @@ TODO
 ![img](data/sample/material/illumination/ward-real.png)
 
 #### Pattern
-![img](data/sample/material/pattern/function/checker.png)
-![img](data/sample/material/pattern/function/hexagon.png)
-![img](data/sample/material/pattern/function/normal2ambient.png)
-![img](data/sample/material/pattern/function/waveSaw.png
-![img](data/sample/material/pattern/function/waveSin.png)
-![img](data/sample/material/pattern/noise/Crackle.png)
-![img](data/sample/material/pattern/noise/Perlin.png)
-![img](data/sample/material/pattern/noise/Value.png)
+![checker](data/sample/material/pattern/function/checker.png)
+![hexagon](data/sample/material/pattern/function/hexagon.png)
+![normal2ambient](data/sample/material/pattern/function/normal2ambient.png)
+![waveSaw](data/sample/material/pattern/function/waveSaw.png)
+![waveSin](data/sample/material/pattern/function/waveSin.png)
+![Crackle](data/sample/material/pattern/noise/Crackle.png)
+![Perlin](data/sample/material/pattern/noise/Perlin.png)
+![Value](data/sample/material/pattern/noise/Value.png)
 ![img](data/sample/material/pattern/noise/noiseCells.png)
 ![img](data/sample/material/pattern/transform/cartesian2cylindric.png)
 ![img](data/sample/material/pattern/transform/cartesian2spherical.png)
@@ -108,21 +108,18 @@ TODO
   - git clone http://github.com/dmilos/IceRay.git
   - git submodule init
   - git submodule update
-
- \# modify build\set-env.bat according to your configuration
- \# run build\set-env.bat
- \# cd ./IceRay/work/build/scons/python
- \# scons
- \# rename *dll/*so from temp/IceRayLib-.../dll to IceRayCpp.pyd and copy in to your PYTHONPATH folder
- \# run some examples.
+  - modify ```build\set-env.bat``` according to your configuration
+  - run ```build\set-env.bat```
+  - cd ./IceRay/work/build/scons/python
+  - scons
+  - rename *dll/*so from temp/IceRayLib-.../dll to IceRayCpp.pyd and copy in to your PYTHONPATH folder
+  - run some examples.
 
 
 # Boost vs python pre-built binaries
-   +------------------------------------+
-   | Boost  | MSVC/Python | MSVC/Python |
-   | 1.68   | 120/27      | 140/37      |
-   +------------------------------------+
-   | Boost  | MSVC/Python | MSVC/Python |
-   | 1.70   | 120/27      | 140/37      |
-   +------------------------------------+
+   Boost  | MSVC/Python | MSVC/Python
+  ------- |-------------|--------
+   1.68   | 120/27      | 140/37
+   1.70   | 120/27      | 140/37
+  -----------------------------
 
