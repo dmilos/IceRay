@@ -40,7 +40,7 @@ typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_illumination::S_OrenNayar::
   boost::python::scope I_scope = I_this;
 
   boost::python::enum_<GTs_on_f29::Ee_input>( "Input" )
-    .value( "LightCount",     GTs_on_f29::En_inSize_LightCount  )
+    .value( "LightCount",     GTs_on_f29::En_inSize_SpotCount  )
     .value( "A",              GTs_on_f29::En_inColor_rho        )
     .value( "B",              GTs_on_f29::En_inColor_sigma      )
     .value( "point",          GTs_on_f29::En_inCoord_Point      )

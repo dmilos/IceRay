@@ -1,7 +1,7 @@
 #ifndef Dh_IceRay_material_pattern_brick_hpp_
  #define Dh_IceRay_material_pattern_brick_hpp_
 
-//! GS_DDMRM::S_IceRay::S_material::S_pattern::S_typeN::GC__pure<N_number>
+//! GS_DDMRM::S_IceRay::S_material::S_pattern::GC_brick
 
 #include "./_pure.hpp"
 

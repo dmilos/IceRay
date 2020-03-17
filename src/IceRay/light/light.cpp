@@ -10,4 +10,5 @@
 #include "./reflector.cpp"
 #include "./sphere.cpp"
 #include "./spline.cpp"
-#include "./sun.cpp"
+#include "./suns.cpp"
+#include "./sung.cpp"

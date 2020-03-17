@@ -100,6 +100,11 @@ namespace
     return P_matrix;
    }
 
+  GTs_matrix3D &  GFs_zero3( GTs_matrix3D & P_matrix )
+   {
+    ::math::linear::matrix::zero( P_matrix );
+    return P_matrix;
+   }
  }
 
 void expose_math_type_matrix2D()
@@ -141,6 +146,7 @@ void expose_math_type_matrix3D()
     .def( "scale",     &GFs_scale1,    boost::python::return_value_policy<boost::python::reference_existing_object>()  )
     .def( "scale",     &GFs_scale3,    boost::python::return_value_policy<boost::python::reference_existing_object>()  )
     .def( "identity",  &GFs_id3,       boost::python::return_value_policy<boost::python::reference_existing_object>()  )
+    .def( "zero",      &GFs_zero3,     boost::python::return_value_policy<boost::python::reference_existing_object>()  )
 
     //.def( "rotate_z" )
     //.def( "rotate_axis" )

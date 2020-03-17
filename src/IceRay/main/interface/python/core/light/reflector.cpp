@@ -23,8 +23,8 @@ void expose_IceRay_light_Reflector()
   typedef  GTs_scalar const& (GTs_reflector::*Tf_getScalar  )(void) const;
   typedef  bool (GTs_reflector::*Tf_setScalar  )(GTs_scalar const&);
 
-  Tf_getScalar I_getInner = &GTs_reflector::F_innner;
-  Tf_setScalar I_setInner = &GTs_reflector::F_innner;
+  Tf_getScalar I_getInner = &GTs_reflector::F_inner;
+  Tf_setScalar I_setInner = &GTs_reflector::F_inner;
 
   Tf_getScalar I_getOutter = &GTs_reflector::F_outter;
   Tf_setScalar I_setOutter = &GTs_reflector::F_outter;
@@ -41,8 +41,8 @@ void expose_IceRay_light_Reflector()
   Tf_getCoord I_getDirection = &GTs_reflector::F_direction;
   Tf_setCoord I_setDirection = &GTs_reflector::F_direction;
 
-  Tf_getCoord I_getPosition = &GTs_reflector::F_position;
-  Tf_setCoord I_setPosition = &GTs_reflector::F_position;
+  Tf_getCoord I_getPosition = &GTs_reflector::F_center;
+  Tf_setCoord I_setPosition = &GTs_reflector::F_center;
 
   boost::python::class_<GTs_reflector, boost::python::bases<GTs__pure> >( "LightReflector" )
     .def( boost::python::init<>() )
@@ -52,8 +52,8 @@ void expose_IceRay_light_Reflector()
     .def( boost::python::init<GTs_spot, GTs_coord3D, GTs_scalar, GTs_scalar>() )
     .def("spot",     I_getSpot, boost::python::return_value_policy<boost::python::copy_const_reference>() )
     .def("spot",     I_setSpot      )
-    .def("position",   I_getPosition, boost::python::return_value_policy<boost::python::copy_const_reference>() )
-    .def("position",   I_setPosition      )
+    .def("center",   I_getPosition, boost::python::return_value_policy<boost::python::copy_const_reference>() )
+    .def("center",   I_setPosition      )
     .def("direction",  I_getDirection, boost::python::return_value_policy<boost::python::copy_const_reference>() )
     .def("direction",  I_setDirection      )
     .def("inner",     I_getInner, boost::python::return_value_policy<boost::python::copy_const_reference>() )

@@ -29,19 +29,26 @@
 
              GC_swarm( )
               {
-               M_size=0; 
+               this->M_size=0; 
               }
 
              void F_push( T_spot const& P_spot )
               {
-               if( F_capacity() == M_size ) 
+               if( this->F_capacity() == M_size ) 
                 {
-                 F_reserve( F_capacity() + 1 ); 
+                   this->F_reserve( this->F_capacity() + 1 ); 
                 }
-               M2_container[M_size] = P_spot; 
-               ++M_size;
+               this->M2_container[M_size] = P_spot; 
+               ++this->M_size;
               }
-             void F_pop(){ if( 0 != M_size )--M_size; }
+
+             void F_pop()
+              {
+               if( 0 != M_size )
+                {
+                 --M_size;
+                } 
+              }
 
              void F_clear(){ M_size = 0; }
              T_size const& F_size()const{ return M_size; }
@@ -67,6 +74,12 @@
 
              T_spot const& operator[]( T_size const& P_index )const{ return M2_container[P_index]; }
              T_spot      & operator[]( T_size const& P_index )     { return M2_container[P_index]; }
+
+             T_spot const& F_front()const{ return M2_container[0]; }
+             T_spot      & F_front()     { return M2_container[0]; }
+
+             T_spot const& F_back()const{ return M2_container[M_size-1]; }
+             T_spot      & F_back()     { return M2_container[M_size-1]; }
 
            public:
             T_container const& F_container()const{ return M2_container; };

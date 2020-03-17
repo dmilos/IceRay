@@ -1,5 +1,6 @@
 #include "./coord.h"
 #include "./interval.h"
+#include "./coord.hpp"
 
 #include "IceRay/type/math/interval.hpp"
 
@@ -8,8 +9,8 @@
 GS_DDMRM::S_IceRay::S_type::S_interval::GT_scalar1D c2cpp( IceRayC_TypeInterval1D P_that )
  {
   GS_DDMRM::S_IceRay::S_type::S_interval::GT_scalar1D Ir_result;
-   Ir_result[0] = P_that.value[0].value[0]; //!< TODO
-   Ir_result[1] = P_that.value[1].value[0]; //!< TODO
+  Ir_result[0] = P_that.value[0].value[0]; //!< TODO
+  Ir_result[1] = P_that.value[1].value[0]; //!< TODO
   return Ir_result;
  }
 

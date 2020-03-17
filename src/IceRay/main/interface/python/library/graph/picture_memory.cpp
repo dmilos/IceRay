@@ -22,7 +22,7 @@ namespace {
 namespace Ss_wrap
 {
 
-class GCs_wrap 
+class GCs_wrap
  : public GS_DDMRM::S_IceRay::S_type::S_picture::GC_type::GT_memory
  {
   public:
@@ -39,14 +39,19 @@ class GCs_wrap
 
     bool F_load( std::string const& P_filename)
      {
-      //if( not_pnm ){ return false; }
-
       PNM::Info info;
       { std::ifstream ifs( P_filename.c_str(), std::ios_base::binary ); ifs >> PNM::probe( info ); }
+
       if( false == info.valid() )
        {
         return false;
        }
+
+      if( PNM::P6 != info.type() )
+       {
+        return false;
+       }
+
       this->Fv_size( { info.width(), info.height()} );
       std::uint8_t * data = const_cast<  uint8_t * >( ( uint8_t const* )Fv_data() );
       { std::ifstream ifs( P_filename.c_str(), std::ios_base::binary ); ifs >> PNM::load( data, info ); }

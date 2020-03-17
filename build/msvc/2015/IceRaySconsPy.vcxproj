@@ -81,7 +81,7 @@
     <ClCompile Include="..\..\..\src\IceRay\light\reflector.cpp" />
     <ClCompile Include="..\..\..\src\IceRay\light\sphere.cpp" />
     <ClCompile Include="..\..\..\src\IceRay\light\spline.cpp" />
-    <ClCompile Include="..\..\..\src\IceRay\light\sun.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\light\suns.cpp" />
     <ClCompile Include="..\..\..\src\IceRay\main\interface\handcode\main.cpp" />
     <ClCompile Include="..\..\..\src\IceRay\main\interface\handcode\scene\1M.cpp" />
     <ClCompile Include="..\..\..\src\IceRay\main\interface\handcode\scene\all_ilumination.cpp" />
@@ -227,7 +227,7 @@
     <ClInclude Include="..\..\..\src\IceRay\light\reflector.hpp" />
     <ClInclude Include="..\..\..\src\IceRay\light\sphere.hpp" />
     <ClInclude Include="..\..\..\src\IceRay\light\spline.hpp" />
-    <ClInclude Include="..\..\..\src\IceRay\light\sun.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\light\suns.hpp" />
     <ClInclude Include="..\..\..\src\IceRay\light\type\color.hpp" />
     <ClInclude Include="..\..\..\src\IceRay\light\type\coord.hpp" />
     <ClInclude Include="..\..\..\src\IceRay\light\type\interval.hpp" />

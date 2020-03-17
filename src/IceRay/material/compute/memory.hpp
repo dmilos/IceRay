@@ -2,7 +2,7 @@
  #define Dh_DDMRM_Iceray_material_compute_data_memory__pure__HPP_
 
 // GS_DDMRM::S_IceRay::S_material::S_compute::GC_memory
- 
+
  #include <vector>
  #include "IceRay/type/basic/basic.hpp"
  #include "../../type/basic/scalar.hpp"
@@ -56,6 +56,133 @@
 
               template < typename type_type > struct C_type2component{ enum{ En_component = En__error }; };
 
+
+             enum Ee_constantBool
+              {
+               En_Bool__Begin = 0,
+               En_inBool_ConstFALSE   = 0,
+               En_inBool_ConstTRUE    = 1,
+               En_inBool_DynamicValid = 2,
+               En_Bool__End = 32
+              };
+
+             enum Ee_constantSize
+              {
+               En_Size__Begin = 0,
+               En_inSize_ConstantBegin,
+               En_inSize_ConstZero=0,
+               En_inSize_ConstOne=1,
+               En_inSize_ConstantEnd = 10,
+
+               En_inSize_DynamicBegin = En_inSize_ConstantEnd +1,
+
+               En_inSize_DynamicLightCount,
+
+               En_inSize_DynamicSpotCount,
+               En_inSize_DynamicSpotBegin,
+
+               En_inSize_DynamicRaysReflectedCount,
+               En_inSize_DynamicRaysRefractedCount,
+
+               En_inSize_DynamicEnd,
+
+               En_inSize_TemporalBegin = En_inSize_DynamicEnd,
+               En_Size__End = 100
+             };
+
+             enum Ee_constantScalar
+              {
+               En_Scalar__Begin = 0,
+               En_inScalar_Const__Begin,
+               En_inScalar_ConstZero    = En_inScalar_Const__Begin,
+               En_inScalar_ConstOne     = 1,
+               En_inScalar_ConstPi      = 2,
+               En_inScalar_ConstGold    = 3,
+               En_inScalar_ConstE       = 4,
+               En_inScalar_Const__End,
+               En_inScalar_Dynamic__Begin = En_inScalar_Const__End + 10,
+               En_inScalar_DynamicLambda = En_inScalar_Dynamic__Begin,
+               En_inScalar_Dynamic__End,
+               En_inScalar_Temporal__Begin = En_inScalar_Dynamic__End,
+               En_inScalar_Temporal__End = En_inScalar_Temporal__Begin,
+               En_Scalar__End = 100
+              };
+
+             enum Ee_constantColor
+              {
+               En_Color__Begin = 0,
+               En_outColor__Begin = 0,
+               En_outColor_Result = 0,
+
+               En_inColor__Begin = 1,
+
+               En_inColor_Const__Begin = En_inColor__Begin,
+               En_inColor_ConstBlack = En_inColor_Const__Begin,
+               En_inColor_ConstWhite,
+               En_inColor_ConstGray,
+               En_inColor_Const__End,
+               En_inColor_Dynamic__Begin,
+
+               En_inColor_Dynamic__End = En_inColor_Dynamic__Begin +10,
+               En_inColor_Temporal__Begin = En_inColor_Dynamic__End +1,
+               En_Color__End = 100
+              };
+
+             enum Ee_constantCoord3D
+              {
+               En_Coord3D__Begin = 0,
+               En_inCoord3D_Const__Begin,
+               En_inCoord3D_ConstZero = 0,
+               En_inCoord3D_Const__End,
+               En_inCoord3D_Dynamic__Begin = En_inCoord3D_Const__End + 10,
+               En_inCoord3D_DynamicPoint,
+               En_inCoord3D_DynamicNormal,
+               En_inCoord3D_DynamicBump,
+               En_inCoord3D_DynamicUVW,
+               En_inCoord3D_Dynamic__End,
+               En_inCoord3D_Temporal__Begin,
+             //En_inCoord3D_Temporal__End,
+               En_Coord3D__End = 100
+              };
+
+             enum Ee_constantSpot
+              {
+               En_Spot__Begin = 0,
+               En_inSpot_Const__Begin,
+               En_inSpot_Const__End,
+               En_inSpot_Dynamic__Begin = En_inSpot_Const__End + 10,
+               En_inSpot_Dynamic_Front = En_inSpot_Dynamic__Begin, //!< First spot in input array
+               En_inSpot_Dynamic__End,
+               En_inSpot_Temporal__Begin,
+             //En_inSpot_Temporal__End
+               En_Spot__End = 100
+              };
+
+             enum Ee_constantLight
+              {
+               En_Light__Begin = 0,
+               En_inLight_Const__Begin = En_Light__Begin,
+               En_inLight_Const__End,
+               En_inLight_Dynamic__Begin = En_inLight_Const__End + 10,//!< First spot in input array
+               En_inLight_Dynamic_Front,
+               En_inLight_Dynamic__End,
+               En_inLight_Temporal__Begin,
+             //En_inLight_Temporal__End,
+               En_Light__End = 100
+              };
+
+             enum Ee_constantRay
+              {
+               En_Ray_ConstZero = 0,
+               En_inRay_DynamicIncident,
+               En_inRay_DynamicReflected,
+               En_inRay_Temporal__Begin,
+               En_inRay_Temporal__End,
+               En_Ray__End = 100
+              };
+
+
+
               typedef GS_DDMRM::S_IceRay::S_type::GT_bool               T_bool;
               typedef GS_DDMRM::S_IceRay::S_type::GT_int8               T_int8;
               typedef GS_DDMRM::S_IceRay::S_type::GT_uint8              T_uint8;
@@ -93,18 +220,18 @@
                 M2_memory.resize( En__size, nullptr );
                 M2_memory[ En__begin     ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fake;
 
-                M2_memory[ En_bool     ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_bool   , 10 >();
+                M2_memory[ En_bool     ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_bool   , En_Bool__End >();
 
                 M2_memory[ En_int8     ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_int8   , 10 >();
                 M2_memory[ En_uint8    ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_uint8  , 10 >();
                 M2_memory[ En_integer  ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_integer, 10 >();
                 M2_memory[ En_size     ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_size   , 10 >();
-                M2_memory[ En_scalar   ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_scalar , 10 >();
+                M2_memory[ En_scalar   ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_scalar , En_Scalar__End >();
 
-                M2_memory[ En_color    ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_color  , 10 >();
+                M2_memory[ En_color    ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_color  , En_Color__End >();
 
                 M2_memory[ En_coord2D  ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_coord2D, 10 >();
-                M2_memory[ En_coord3D  ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_coord3D, 10 >();
+                M2_memory[ En_coord3D  ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_coord3D, En_Coord3D__End >();
                 M2_memory[ En_coord4D  ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_coord4D, 10 >();
 
                 M2_memory[ En_cell2D  ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_cell2D, 10 >();
@@ -114,9 +241,9 @@
                 M2_memory[ En_affine2D ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_affine2D, 10 >();
                 M2_memory[ En_affine3D ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_affine3D, 10 >();
 
-                M2_memory[ En_ray      ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_dynamic< T_ray >;
-                M2_memory[ En_spot     ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_dynamic< T_spot >( 10 );
-                M2_memory[ En_light    ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_light*,  10 >();
+                M2_memory[ En_ray      ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_dynamic< T_ray >();
+                M2_memory[ En_spot     ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_dynamic< T_spot >( En_Spot__End );
+                M2_memory[ En_light    ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_light*,  En_Light__End >();
 
                 M2_memory[ En_chunk             ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_geometry_Base::T_state, 10 >();
                 M2_memory[ En_geometry_Base     ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_geometry_Base    *, 10 >();

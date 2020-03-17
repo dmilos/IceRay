@@ -1,6 +1,7 @@
 #ifndef _DDMM_IceRAY_geometry_rtss_object_H_
  #define _DDMM_IceRAY_geometry_rtss_object_H_
 
+//  GS_DDMRM::S_IceRay::S_geometry::S_RTSS::GC_object
 
 #include <vector>
 

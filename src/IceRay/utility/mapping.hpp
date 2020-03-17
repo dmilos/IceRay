@@ -20,7 +20,7 @@
        namespace S_mapping
         {
 
-         class GC_identical
+         class GC_identity
           {
            public:
             typedef GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar T_coord;

@@ -59,7 +59,8 @@ BOOST_PYTHON_MODULE(IceRayCpp)
   EXTERN_AND_CALL( expose_IceRay_light_Reflector );
   EXTERN_AND_CALL( expose_IceRay_light_Sphere );
   EXTERN_AND_CALL( expose_IceRay_light_Spline );
-  EXTERN_AND_CALL( expose_IceRay_light_Sun );
+  EXTERN_AND_CALL( expose_IceRay_light_SunSpot );
+  EXTERN_AND_CALL( expose_IceRay_light_SunGeneral );
 
   EXTERN_AND_CALL( expose_IceRay_geometry__pure      );
   EXTERN_AND_CALL( expose_IceRay_geometry__inside    );
@@ -105,6 +106,7 @@ BOOST_PYTHON_MODULE(IceRayCpp)
   EXTERN_AND_CALL( expose_IceRay_geometry_transform_mblur );
   EXTERN_AND_CALL( expose_IceRay_geometry_transform_projective );
   EXTERN_AND_CALL( expose_IceRay_geometry_transform_translate );
+  EXTERN_AND_CALL( expose_IceRay_geometry_transform_identity );
 
   EXTERN_AND_CALL( expose_IceRay_geometry_smoke   );
   EXTERN_AND_CALL( expose_IceRay_geometry_vacuum  );
@@ -183,7 +185,7 @@ BOOST_PYTHON_MODULE(IceRayCpp)
 
   EXTERN_AND_CALL( expose_IceRay_render_Engine            );
   EXTERN_AND_CALL( expose_IceRay_render_pierce__pure      );
-  EXTERN_AND_CALL( expose_IceRay_render_pierce_Base       );
+  EXTERN_AND_CALL( expose_IceRay_render_pierce_Projector  );
   EXTERN_AND_CALL( expose_IceRay_render_pierce_UV         );
 
   EXTERN_AND_CALL( expose_IceRay_render_pixel_filter      );

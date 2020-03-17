@@ -79,8 +79,8 @@
                  M2_marbles.clear();
                  if( nullptr != M2_cluster )
                   {
-                   M2_marbles.resize( M2_cluster->Fv_size() );
-                   for( T_size I_index = 0 ; I_index < M2_cluster->Fv_size(); ++I_index )
+                   M2_marbles.resize( M2_cluster->Fv_quantity() );
+                   for( T_size I_index = 0 ; I_index < M2_cluster->Fv_quantity(); ++I_index )
                     {
                      M2_marbles[ I_index ] = dynamic_cast< T_pigment* >( M2_cluster->Fv_base( I_index ) );
                     }

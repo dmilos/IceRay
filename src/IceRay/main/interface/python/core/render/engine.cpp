@@ -32,10 +32,14 @@ void expose_IceRay_render_Engine()
   typedef GS_DDMRM::S_IceRay::S_render::S_scanner::GC__pure   Tf_scanner;
   typedef GS_DDMRM::S_IceRay::S_render::S_pixel::GC__pure     Tf_pixel;
   typedef GS_DDMRM::S_IceRay::S_render::S_pierce::GC__pure    Tf_pierce;
+  typedef GS_DDMRM::S_IceRay::S_render::S_beam::GC__pure      Tf_beam;
+  typedef GS_DDMRM::S_IceRay::S_render::S_ray::GC__pure       Tf_ray;
 
   void (GFs_engine::*I_setScanner)( Tf_scanner * ) = &GFs_engine::F_scanner;
   void (GFs_engine::*I_setPixel  )( Tf_pixel   * ) = &GFs_engine::F_pixel;
   void (GFs_engine::*I_setPierce )( Tf_pierce  * ) = &GFs_engine::F_pierce;
+  void (GFs_engine::*I_setBeam   )( Tf_beam    * ) = &GFs_engine::F_beam;
+  void (GFs_engine::*I_setRay    )( Tf_ray     * ) = &GFs_engine::F_ray;
 
    boost::python::class_<GFs_engine>( "RenderEngine" )
       .def( boost::python::init<>() )
@@ -44,9 +48,12 @@ void expose_IceRay_render_Engine()
       .def( "stop",     &GFs_engine::F_stop      )
       .def( "progress", &GFs_engine::F_progress  )
     //.def( "join",     &GFs_engine::F_join      )
-      .def( "scanner",  I_setScanner   )
-      .def( "pixel",    I_setPixel     )
-      .def( "pierce",   I_setPierce    )
+
+      .def( "scanner",  I_setScanner )
+      .def( "pixel",    I_setPixel   )
+      .def( "pierce",   I_setPierce  )
+      .def( "beam",     I_setBeam    )
+      .def( "ray",      I_setRay     )
   ;
 
  }

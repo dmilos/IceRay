@@ -3,88 +3,202 @@
 
 #include "IceRay/render/4ray/classic2/algorithm.hpp"
 
-IceRayC_RenderEnginePure IceRayC_RenderEngine()
+void IceRayC_RenderEngine_Release( IceRayC_Render_EngineHandle P_this )
  {
-  return new GS_DDMRM::S_IceRay::S_render::GC_engine{};
+  typedef GS_DDMRM::S_IceRay::S_render::GC_engine Tf_engine;
+  auto I_this = reinterpret_cast<Tf_engine*> ( P_this );
+  delete I_this;
  }
 
-IceRayC_RenderEnginePure IceRayC_RenderEngine_Scanner(IceRayC_RenderEnginePure P_this, IceRayC_RenderScannerPure P_scanner )
+IceRayC_Render_EngineHandle IceRayC_Render_Engine0()
  {
-  auto I_this    = reinterpret_cast<GS_DDMRM::S_IceRay::S_render::GC_engine*>(P_this);
+  typedef GS_DDMRM::S_IceRay::S_render::GC_engine Tf_engine;
+  return reinterpret_cast< IceRayC_Render_EngineHandle>( new Tf_engine{} );
+ }
+
+int IceRayC_Render_Engine_Scanner( IceRayC_Render_EngineHandle P_this, IceRayC_Render_ScannerHandle P_scanner )
+ {
+  auto I_this    = reinterpret_cast<GS_DDMRM::S_IceRay::S_render::GC_engine*>( P_this );
   auto I_scanner = reinterpret_cast<GS_DDMRM::S_IceRay::S_render::S_scanner::GC__pure*>(P_scanner);
-  I_this-> F_scanner( I_scanner ); 
-  return nullptr;
+  I_this-> F_scanner( I_scanner );
+  return 1;
  }
 
-IceRayC_RenderEnginePure IceRayC_RenderEngine_Pixel(IceRayC_RenderEnginePure P_this, IceRayC_RenderPixelPure P_pixel )
+int IceRayC_Render_Engine_Pixel(IceRayC_Render_EngineHandle P_this, IceRayC_Render_PixelHandle P_pixel )
  {
   auto I_this    = reinterpret_cast<GS_DDMRM::S_IceRay::S_render::GC_engine*>(P_this);
   auto I_scanner = reinterpret_cast<GS_DDMRM::S_IceRay::S_render::S_scanner::GC__pure*>(P_pixel);
-  I_this-> F_scanner( I_scanner ); 
-  return nullptr;
-}
+  I_this-> F_scanner( I_scanner );
+  return 1;
+ }
 
-IceRayC_RenderEnginePure IceRayC_RenderEngine_Pierce(IceRayC_RenderEnginePure P_this, IceRayC_RenderPiercePure P_perce )
+int IceRayC_Render_Engine_Pierce(IceRayC_Render_EngineHandle P_this, IceRayC_Render_PierceHandle P_perce )
  {
   auto I_this    = reinterpret_cast<GS_DDMRM::S_IceRay::S_render::GC_engine*>(P_this);
   auto I_pierce = reinterpret_cast<GS_DDMRM::S_IceRay::S_render::S_pierce::GC__pure*>(P_perce);
-  I_this-> F_pierce( I_pierce ); 
-  return nullptr;
-}
-
-IceRayC_RenderEnginePure IceRayC_RenderEngine_Ray( IceRayC_RenderEnginePure P_this, IceRayC_RenderRayPure)
- {
-  return nullptr;
+  I_this-> F_pierce( I_pierce );
+  return 1;
  }
 
-
-IceRayC_RenderEnginePure IceRayC_RenderEngine_Start( IceRayC_RenderEnginePure P_this )
+int IceRayC_Render_Engine_Beam(IceRayC_Render_EngineHandle P_this, IceRayC_Render_BeamHandle P_beam )
  {
   auto I_this    = reinterpret_cast<GS_DDMRM::S_IceRay::S_render::GC_engine*>(P_this);
-  //I_this->F_start();
-  return nullptr;
+  auto I_beam = reinterpret_cast<GS_DDMRM::S_IceRay::S_render::S_beam::GC__pure*>(P_beam);
+  I_this-> F_beam( I_beam );
+  return 1;
  }
 
-IceRayC_RenderEnginePure IceRayC_RenderEngine_Stop(IceRayC_RenderEnginePure P_this)
+int IceRayC_Render_Engine_Ray( IceRayC_Render_EngineHandle P_this, IceRayC_Render_RayHandle P_ray )
+ {
+  auto I_this    = reinterpret_cast<GS_DDMRM::S_IceRay::S_render::GC_engine*>(P_this);
+  auto I_ray = reinterpret_cast<GS_DDMRM::S_IceRay::S_render::S_ray::GC__pure*>(P_ray);
+  I_this-> F_ray( I_ray );
+  return 1;
+ }
+
+int IceRayC_Render_Engine_Start( IceRayC_Render_EngineHandle P_this/*, IcerayC_Type_ImageHandle P_image */ )
+ {
+  auto I_this    = reinterpret_cast<GS_DDMRM::S_IceRay::S_render::GC_engine*>(P_this);
+  // I_this->F_start( P_image );
+  return 0;
+ }
+
+int IceRayC_Render_Engine_Stop(IceRayC_Render_EngineHandle P_this)
  {
   auto I_this    = reinterpret_cast<GS_DDMRM::S_IceRay::S_render::GC_engine*>(P_this);
   I_this->F_stop();
-  return nullptr;
+  return 0;
 }
 
-IceRayC_RenderEnginePure IceRayC_RenderEngine_Progress(IceRayC_RenderEnginePure P_this)
+int IceRayC_Render_Engine_Progress(IceRayC_Render_EngineHandle P_this)
  {
-  return nullptr;
+  auto I_this    = reinterpret_cast<GS_DDMRM::S_IceRay::S_render::GC_engine*>(P_this);
+  return I_this->F_progress();
  }
 
 
-IceRayC_RenderScannerPure IceRayC_RenderScannerBlock()
+void IceRayC_Render_Scanner_Release( IceRayC_Render_ScannerHandle P_this )
  {
-  GS_DDMRM::S_IceRay::S_render::S_scanner::GC__pure *I_pure = new GS_DDMRM::S_IceRay::S_render::S_scanner::GC_block{};
-  return I_pure;
+  typedef GS_DDMRM::S_IceRay::S_render::S_scanner::GC__pure Tf__pure;
+  auto I_this = reinterpret_cast<Tf__pure*> ( P_this );
+  delete I_this;
  }
 
-IceRayC_RenderScannerPure IceRayC_RenderScannerParallel()
+IceRayC_Render_ScannerHandle IceRayC_Render_ScannerBlock0()
  {
-  GS_DDMRM::S_IceRay::S_render::S_scanner::GC__pure *I_pure = new GS_DDMRM::S_IceRay::S_render::S_scanner::GC_parallel{};
-  return I_pure;
+  typedef GS_DDMRM::S_IceRay::S_render::S_scanner::GC__pure  Tf__pure;
+  Tf__pure *I_pure = new GS_DDMRM::S_IceRay::S_render::S_scanner::GC_block{};
+  return reinterpret_cast< IceRayC_Render_ScannerHandle >( nullptr );
+ }
+
+IceRayC_Render_ScannerHandle IceRayC_Render_ScannerParallel0()
+ {
+  typedef GS_DDMRM::S_IceRay::S_render::S_scanner::GC__pure  Tf__pure;
+  Tf__pure *I_pure = new GS_DDMRM::S_IceRay::S_render::S_scanner::GC_parallel{};
+  return reinterpret_cast< IceRayC_Render_ScannerHandle>( nullptr );
  }
 
 
-IceRayC_RenderPixelPure IceRayC_RenderPixelBasic()
+void IceRayC_Render_Pixel_Release( IceRayC_Render_PixelHandle P_this )
  {
-  GS_DDMRM::S_IceRay::S_render::S_pixel::GC__pure * I_pure = new GS_DDMRM::S_IceRay::S_render::S_pixel::GC__base{};
-  return I_pure;
+  typedef GS_DDMRM::S_IceRay::S_render::S_pixel::GC__pure  Tf__pure;
+  auto I_this = reinterpret_cast<Tf__pure*> ( P_this );
+  delete I_this;
  }
 
-IceRayC_RenderPiercePure IceRayC_RenderPierceBasic()
+IceRayC_Render_PixelHandle IceRayC_Render_Pixel_Constant0()
  {
-  GS_DDMRM::S_IceRay::S_render::S_pierce::GC__pure *I_pure = new GS_DDMRM::S_IceRay::S_render::S_pierce::GC__base{};
-  return I_pure;
+  typedef GS_DDMRM::S_IceRay::S_render::S_pixel::GC__pure  Tf__pure;
+  Tf__pure * I_pure = new GS_DDMRM::S_IceRay::S_render::S_pixel::GC_constant{};
+  return reinterpret_cast< IceRayC_Render_PixelHandle>( nullptr );
  }
 
-IceRayC_RenderRayPure   IceRayC_CoreRenderRayC2A()
+IceRayC_Render_PixelHandle IceRayC_Render_Pixel_UV0()
  {
-  return new GS_DDMRM::S_IceRay::S_render::S_ray::S_classic2::GC_algorithm {};
+  typedef GS_DDMRM::S_IceRay::S_render::S_pixel::GC__pure  Tf__pure;
+  Tf__pure * I_pure = new GS_DDMRM::S_IceRay::S_render::S_pixel::GC_UV{};
+  return reinterpret_cast< IceRayC_Render_PixelHandle>( nullptr );
+ }
+
+IceRayC_Render_PixelHandle IceRayC_Render_PixelBasic0()
+ {
+  typedef GS_DDMRM::S_IceRay::S_render::S_pixel::GC__pure  Tf__pure;
+  Tf__pure * I_pure = new GS_DDMRM::S_IceRay::S_render::S_pixel::GC__base{};
+  return reinterpret_cast< IceRayC_Render_PixelHandle>( nullptr );
+ }
+
+
+void IceRayC_Render_Pierce_Release( IceRayC_Render_PierceHandle P_this )
+ {
+  typedef GS_DDMRM::S_IceRay::S_render::S_pierce::GC__pure  Tf__pure;
+  auto I_this = reinterpret_cast<Tf__pure*> ( P_this );
+  delete I_this;
+ }
+
+IceRayC_Render_PierceHandle IceRayC_Render_Pierce_UV0()
+ {
+  typedef GS_DDMRM::S_IceRay::S_render::S_pierce::GC__pure  Tf__pure;
+  Tf__pure *I_pure = new GS_DDMRM::S_IceRay::S_render::S_pierce::GC_UV{};
+  return reinterpret_cast< IceRayC_Render_PierceHandle>( nullptr );
+ }
+
+IceRayC_Render_PierceHandle IceRayC_Render_Pierce_Projector0()
+ {
+  typedef GS_DDMRM::S_IceRay::S_render::S_pierce::GC__pure  Tf__pure;
+  Tf__pure *I_pure = new GS_DDMRM::S_IceRay::S_render::S_pierce::GC_projector{};
+  return reinterpret_cast< IceRayC_Render_PierceHandle>( I_pure );
+ }
+
+
+void IceRayC_Render_Beam_Release( IceRayC_Render_BeamHandle P_this )
+ {
+  typedef GS_DDMRM::S_IceRay::S_render::S_beam::GC__pure  Tf__pure;
+  auto I_this = reinterpret_cast<Tf__pure*> ( P_this );
+  delete I_this;
+ }
+
+IceRayC_Render_BeamHandle IceRayC_Render_Beam_ALL0()
+ {
+  typedef GS_DDMRM::S_IceRay::S_render::S_beam::GC__pure  Tf__pure;
+  Tf__pure *I_pure = new GS_DDMRM::S_IceRay::S_render::S_beam::GC_all{};
+  return reinterpret_cast< IceRayC_Render_BeamHandle>( I_pure );
+ }
+
+IceRayC_Render_BeamHandle IceRayC_Render_Beam_First0()
+ {
+  typedef GS_DDMRM::S_IceRay::S_render::S_beam::GC__pure  Tf__pure;
+  Tf__pure *I_pure = new GS_DDMRM::S_IceRay::S_render::S_beam::GC_first{};
+  return reinterpret_cast< IceRayC_Render_BeamHandle>( I_pure );
+ }
+
+IceRayC_Render_BeamHandle IceRayC_Render_Beam_Random0()
+ {
+  typedef GS_DDMRM::S_IceRay::S_render::S_beam::GC__pure  Tf__pure;
+  Tf__pure *I_pure = new GS_DDMRM::S_IceRay::S_render::S_beam::GC_random{};
+  return reinterpret_cast< IceRayC_Render_BeamHandle>( I_pure );
+ }
+
+
+void IceRayC_Render_Ray_Release( IceRayC_Render_RayHandle P_this )
+ {
+  typedef GS_DDMRM::S_IceRay::S_render::S_ray::GC__pure  Tf__pure;
+  auto I_this = reinterpret_cast<Tf__pure*> ( P_this );
+  delete I_this;
+ }
+
+IceRayC_Render_RayHandle   IceRayC_Render_Ray_Distance()
+ {
+  typedef GS_DDMRM::S_IceRay::S_render::S_ray::GC__pure  Tf__pure;
+  typedef GS_DDMRM::S_IceRay::S_render::S_ray::GC_distance  T_distance;
+  Tf__pure* I_this = new T_distance{};
+  return reinterpret_cast< IceRayC_Render_RayHandle >( I_this );
+ }
+
+IceRayC_Render_RayHandle   IceRayC_Render_Ray_Trace()
+ {
+  typedef GS_DDMRM::S_IceRay::S_render::S_ray::GC__pure  Tf__pure;
+  typedef GS_DDMRM::S_IceRay::S_render::S_ray::S_classic2::GC_algorithm  T_algorithm;
+  Tf__pure* I_this = new T_algorithm{};
+  return reinterpret_cast< IceRayC_Render_RayHandle >( I_this );
  }
 

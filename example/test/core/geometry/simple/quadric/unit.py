@@ -3,6 +3,20 @@ import IceRayCpp
 def name( ):
     return "quadric"
 
+def planeZ( ):
+    geometry = IceRayCpp.GeometrySimpleQuadric()
+
+    matrix = IceRayCpp.MathTypeMatrix3D()
+    matrix.zero()
+    coord = IceRayCpp.MathTypeCoord3D().load( 0, 0, 1 )
+    scalar = 0
+
+    geometry.matrix( matrix );
+    geometry.coord( coord );
+    geometry.scalar( scalar );
+
+    return{ 'this' : geometry }
+
 def sphere( ):
     geometry = IceRayCpp.GeometrySimpleQuadric()
 

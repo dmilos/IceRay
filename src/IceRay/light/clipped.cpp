@@ -6,14 +6,14 @@ using namespace GS_DDMRM::S_IceRay::S_light;
 
 
 GC_clipped::GC_clipped( )
- :M2_light( nullptr )
+ :M2_child( nullptr )
  ,M2_shell( nullptr )
  ,M2_side( T_inside::En_in )
  {
  }
 
-GC_clipped::GC_clipped( T__pure *P_light, T_inside* P_shell )
- :M2_light( P_light )
+GC_clipped::GC_clipped( T__pure *P_child, T_inside* P_shell )
+ :M2_child( P_child )
  ,M2_shell( P_shell )
  ,M2_side( T_inside::En_in )
  {
@@ -26,14 +26,14 @@ GC_clipped::Fv_swarm
  ,T_coord const& P_point
  )const
  {
-  if( nullptr == M2_light )
+  if( nullptr == M2_child )
    {
     return 0;
    }
 
   T_size Ir_count = 0;
   M2_swarm.F_clear();
-  M2_light->Fv_swarm( M2_swarm, P_point );
+  M2_child->Fv_swarm( M2_swarm, P_point );
 
   if( nullptr == M2_shell )
    {

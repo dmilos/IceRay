@@ -34,7 +34,7 @@
          typedef GC__model< GS_DDMRM::S_IceRay::S_type::GT_scalar, 1 >::T_typedef GT_scalar1D;
          typedef GC__model< GS_DDMRM::S_IceRay::S_type::GT_scalar, 2 >::T_typedef GT_scalar2D;
          typedef GC__model< GS_DDMRM::S_IceRay::S_type::GT_scalar, 3 >::T_typedef GT_scalar3D, GT_affine, GT_scalar;
-       //typedef GC__model< GS_DDMRM::S_IceRay::S_type::GT_scalar, 4 >::T_typedef GT_scalar4D;
+         typedef GC__model< GS_DDMRM::S_IceRay::S_type::GT_scalar, 4 >::T_typedef GT_scalar4D;
 
         }
       }

@@ -52,7 +52,6 @@
              T_coord const& F1_scale( )const{ return M2_scale; }
            private:
              T_coord M2_scale;
-
           };
 
        }

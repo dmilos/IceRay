@@ -164,6 +164,7 @@ if( False ):
     cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'geometry', 'transform', 'mblur.cpp' ) ]
     cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'geometry', 'transform', 'projective.cpp' ) ]
     cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'geometry', 'transform', 'translate.cpp' ) ]
+    cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'geometry', 'transform', 'identical.cpp' ) ]
 
 cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'geometry', 'volumetric', 'smoke.cpp' ) ]
 cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'geometry', 'volumetric', 'vacuum.cpp' ) ]

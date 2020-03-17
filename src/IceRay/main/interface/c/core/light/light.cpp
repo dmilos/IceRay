@@ -2,6 +2,7 @@
 #include "./light.h"
 
 #include "IceRay/light/light.hpp"
+#include "../../type/coord.hpp"
 
 
 GS_DDMRM::S_IceRay::S_light::S_type::GC_spot c2cpp( IceRayC_TypeSpot )
@@ -10,21 +11,22 @@ GS_DDMRM::S_IceRay::S_light::S_type::GC_spot c2cpp( IceRayC_TypeSpot )
   return Ir_result;
  }
 
-void IceRayC_Light_Release( IceRayC_LightHandle P_this )
+void IceRayC_Light_Release( IceRayC_Light_Handle P_this )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   auto I_this = reinterpret_cast<Tf__pure*> ( P_this );
   delete I_this;
  }
 
-IceRayC_LightHandle IceRayC_LightArea( )
+IceRayC_Light_Handle IceRayC_Light_Area0( )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_area Tf_area;
   auto Ir_result = new Tf_area{};
-  return reinterpret_cast< IceRayC_LightHandle >( dynamic_cast< Tf__pure *> ( Ir_result ) );
+  return reinterpret_cast< IceRayC_Light_Handle >( dynamic_cast< Tf__pure *> ( Ir_result ) );
  }
-int IceRayC_LightArea_Spot( IceRayC_LightHandle P_this, IceRayC_TypeSpot P_spot )
+
+int IceRayC_Light_Area_Spot( IceRayC_Light_Handle P_this, IceRayC_TypeSpot P_spot )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_area Tf_area;
@@ -32,12 +34,12 @@ int IceRayC_LightArea_Spot( IceRayC_LightHandle P_this, IceRayC_TypeSpot P_spot 
   auto I_this = dynamic_cast< Tf_area *>( reinterpret_cast<Tf__pure*> ( P_this ) );
   if( nullptr == I_this )
    {
-    return 1;
+    return 0;
    }
   I_this->F_spot( c2cpp( P_spot ) );
-  return 0;
+  return 1;
  }
-int IceRayC_LightArea_Sample( IceRayC_LightHandle P_this, IceRayC_TypeSize P_sample )
+int IceRayC_Light_Area_Sample( IceRayC_Light_Handle P_this, IceRayC_TypeSize P_sample )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_area Tf_area;
@@ -45,12 +47,12 @@ int IceRayC_LightArea_Sample( IceRayC_LightHandle P_this, IceRayC_TypeSize P_sam
   auto I_this = dynamic_cast< Tf_area *>( reinterpret_cast<Tf__pure*> ( P_this ) );
   if( nullptr == I_this )
    {
-    return 1;
+    return 0;
    }
   I_this->F_sample( P_sample );
-  return 0;
+  return 1;
  }
-int IceRayC_LightArea_Origin( IceRayC_LightHandle P_this, IceRayC_TypeCoord3D P_origin )
+int IceRayC_Light_Area_Origin( IceRayC_Light_Handle P_this, IceRayC_TypeCoord3D P_origin )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_area Tf_area;
@@ -58,12 +60,13 @@ int IceRayC_LightArea_Origin( IceRayC_LightHandle P_this, IceRayC_TypeCoord3D P_
   auto I_this = dynamic_cast< Tf_area *>( reinterpret_cast<Tf__pure*> ( P_this ) );
   if( nullptr == I_this )
    {
-    return 1;
+    return 0;
    }
-  // TODO logic I_this->
-  return 0;
+  I_this->F_origin( c2cpp( P_origin ) );
+  return 1;
  }
-int IceRayC_LightArea_X( IceRayC_LightHandle P_this, IceRayC_TypeCoord3D P_X )
+
+int IceRayC_Light_Area_X( IceRayC_Light_Handle P_this, IceRayC_TypeCoord3D P_X )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_area Tf_area;
@@ -71,12 +74,12 @@ int IceRayC_LightArea_X( IceRayC_LightHandle P_this, IceRayC_TypeCoord3D P_X )
   auto I_this = dynamic_cast< Tf_area *>( reinterpret_cast<Tf__pure*> ( P_this ) );
   if( nullptr == I_this )
    {
-    return 1;
+    return 0;
    }
-  // TODO logic I_this->
-  return 0;
+  I_this->F_x( c2cpp( P_X ) );
+  return 1;
  }
-int IceRayC_LightArea_Y( IceRayC_LightHandle P_this, IceRayC_TypeCoord3D P_Y )
+int IceRayC_Light_Area_Y( IceRayC_Light_Handle P_this, IceRayC_TypeCoord3D P_Y )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_area Tf_area;
@@ -84,21 +87,21 @@ int IceRayC_LightArea_Y( IceRayC_LightHandle P_this, IceRayC_TypeCoord3D P_Y )
   auto I_this = dynamic_cast< Tf_area *>( reinterpret_cast<Tf__pure*> ( P_this ) );
   if( nullptr == I_this )
    {
-    return 1;
+    return 0;
    }
-  // TODO logic  I_this->
-  return 0;
+  I_this->F_x( c2cpp( P_Y ) );
+  return 1;
  }
 
-IceRayC_LightHandle IceRayC_LightBlocked0( )
+IceRayC_Light_Handle IceRayC_Light_Blocked0( )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_blocked Tf_blocked;
   auto Ir_result = new Tf_blocked{};
-  return reinterpret_cast< IceRayC_LightHandle >( dynamic_cast< Tf__pure *> ( Ir_result ) );
+  return reinterpret_cast< IceRayC_Light_Handle >( dynamic_cast< Tf__pure *> ( Ir_result ) );
  }
 
-int IceRayC_LightBlocked_Barrier( IceRayC_LightHandle P_this, IceRayC_GeometryHandle P_barrier  )
+int IceRayC_Light_Blocked_Barrier( IceRayC_Light_Handle P_this, IceRayC_Geometry_Handle P_barrier  )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_blocked Tf_blocked;
@@ -108,21 +111,21 @@ int IceRayC_LightBlocked_Barrier( IceRayC_LightHandle P_this, IceRayC_GeometryHa
   auto I_this = dynamic_cast< Tf_blocked *>( reinterpret_cast<Tf__pure*> ( P_this ) );
   if( nullptr == I_this )
    {
-    return 1;
+    return 0;
    }
   I_this->F_barrier( dynamic_cast< T_barrier *>( reinterpret_cast<Tf_geometry*> ( P_barrier ) ) );
-  return 0;
+  return 1;
  }
 
-IceRayC_LightHandle IceRayC_LightChandelier0( )
+IceRayC_Light_Handle IceRayC_Light_Chandelier0( )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_chandelier Tf_chandelier;
   auto Ir_result = new Tf_chandelier{};
-  return reinterpret_cast< IceRayC_LightHandle >( dynamic_cast< Tf__pure *> ( Ir_result ) );
+  return reinterpret_cast< IceRayC_Light_Handle >( dynamic_cast< Tf__pure *> ( Ir_result ) );
  }
 
-int IceRayC_LightChandelier_push( IceRayC_LightHandle P_this, IceRayC_LightHandle P_child )
+int IceRayC_Light_Chandelier_push( IceRayC_Light_Handle P_this, IceRayC_Light_Handle P_child )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_chandelier Tf_chandelier;
@@ -130,21 +133,21 @@ int IceRayC_LightChandelier_push( IceRayC_LightHandle P_this, IceRayC_LightHandl
   auto I_this = dynamic_cast< Tf_chandelier *>( reinterpret_cast<Tf__pure*> ( P_this ) );
   if( nullptr == I_this )
    {
-    return 1;
+    return 0;
    }
   I_this->F_add( reinterpret_cast<Tf__pure*> ( P_child ) );
-  return 0;
+  return 1;
  }
 
 
-IceRayC_LightHandle IceRayC_LightCircle0( )
+IceRayC_Light_Handle IceRayC_Light_Circle0( )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_circle Tf_circle;
   auto Ir_result = new Tf_circle{};
-  return reinterpret_cast< IceRayC_LightHandle >( dynamic_cast< Tf__pure *> ( Ir_result ) );
+  return reinterpret_cast< IceRayC_Light_Handle >( dynamic_cast< Tf__pure *> ( Ir_result ) );
  }
-int IceRayC_LightCircle_Sample( IceRayC_LightHandle P_this, IceRayC_TypeSize P_sample )
+int IceRayC_Light_Circle_Sample( IceRayC_Light_Handle P_this, IceRayC_TypeSize P_sample )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_circle Tf_circle;
@@ -152,12 +155,12 @@ int IceRayC_LightCircle_Sample( IceRayC_LightHandle P_this, IceRayC_TypeSize P_s
   auto I_this = dynamic_cast< Tf_circle *>( reinterpret_cast<Tf__pure*> ( P_this ) );
   if( nullptr == I_this )
    {
-    return 1;
+    return 0;
    }
   I_this->F_sample( P_sample );
-  return 0;
+  return 1;
  }
-int IceRayC_LightCircle_Spot( IceRayC_LightHandle P_this, IceRayC_TypeSpot P_spot )
+int IceRayC_Light_Circle_Spot( IceRayC_Light_Handle P_this, IceRayC_TypeSpot P_spot )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_circle Tf_circle;
@@ -165,12 +168,12 @@ int IceRayC_LightCircle_Spot( IceRayC_LightHandle P_this, IceRayC_TypeSpot P_spo
   auto I_this = dynamic_cast< Tf_circle *>( reinterpret_cast<Tf__pure*> ( P_this ) );
   if( nullptr == I_this )
    {
-    return 1;
+    return 0;
    }
   I_this->F_spot( c2cpp( P_spot ) );
-  return 0;
+  return 1;
  }
-int IceRayC_LightCircle_Origin( IceRayC_LightHandle P_this, IceRayC_TypeCoord3D P_origin )
+int IceRayC_Light_Circle_Center( IceRayC_Light_Handle P_this, IceRayC_TypeCoord3D P_center )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_circle Tf_circle;
@@ -178,12 +181,12 @@ int IceRayC_LightCircle_Origin( IceRayC_LightHandle P_this, IceRayC_TypeCoord3D 
   auto I_this = dynamic_cast< Tf_circle *>( reinterpret_cast<Tf__pure*> ( P_this ) );
   if( nullptr == I_this )
    {
-    return 1;
+    return 0;
    }
-  // TODO logic
-  return 0;
+  I_this->F_center( c2cpp( P_center) ) ;
+  return 1;
  }
-int IceRayC_LightCircle_X( IceRayC_LightHandle P_this, IceRayC_TypeCoord3D P_X )
+int IceRayC_Light_Circle_X( IceRayC_Light_Handle P_this, IceRayC_TypeCoord3D P_X )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_circle Tf_circle;
@@ -191,12 +194,12 @@ int IceRayC_LightCircle_X( IceRayC_LightHandle P_this, IceRayC_TypeCoord3D P_X )
   auto I_this = dynamic_cast< Tf_circle *>( reinterpret_cast<Tf__pure*> ( P_this ) );
   if( nullptr == I_this )
    {
-    return 1;
+    return 0;
    }
-  // TODO logic
-  return 0;
+  I_this->F_x( c2cpp( P_X ) ) ;
+  return 1;
  }
-int IceRayC_LightCircle_Y( IceRayC_LightHandle P_this, IceRayC_TypeCoord3D P_Y )
+int IceRayC_Light_Circle_Y( IceRayC_Light_Handle P_this, IceRayC_TypeCoord3D P_Y )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_circle Tf_circle;
@@ -204,20 +207,21 @@ int IceRayC_LightCircle_Y( IceRayC_LightHandle P_this, IceRayC_TypeCoord3D P_Y )
   auto I_this = dynamic_cast< Tf_circle *>( reinterpret_cast<Tf__pure*> ( P_this ) );
   if( nullptr == I_this )
    {
-    return 1;
+    return 0;
    }
-  // TODO logic
-  return 0;
+  I_this->F_x( c2cpp( P_Y ) ) ;
+  return 1;
  }
 
-IceRayC_LightHandle IceRayC_LightClipped0( )
+IceRayC_Light_Handle IceRayC_Light_Clipped0( )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_clipped Tf_clipped;
   auto Ir_result = new Tf_clipped{};
-  return reinterpret_cast< IceRayC_LightHandle >( dynamic_cast< Tf__pure *> ( Ir_result ) );
+  return reinterpret_cast< IceRayC_Light_Handle >( dynamic_cast< Tf__pure *> ( Ir_result ) );
  }
-int IceRayC_LightClipped_Qarter( IceRayC_LightHandle P_this/*, TODO */ )
+
+int IceRayC_Light_Clipped_Child( IceRayC_Light_Handle P_this, IceRayC_Light_Handle P_child )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_clipped Tf_clipped;
@@ -225,21 +229,37 @@ int IceRayC_LightClipped_Qarter( IceRayC_LightHandle P_this/*, TODO */ )
   auto I_this = dynamic_cast< Tf_clipped *>( reinterpret_cast<Tf__pure*> ( P_this ) );
   if( nullptr == I_this )
    {
-    return 1;
+    return 0;
    }
-  // TODO logic
-  return 0;
+  I_this->F_child( reinterpret_cast<Tf__pure*> ( P_child ) );
+  return 1;
+ }
+
+int IceRayC_Light_Clipped_Shell( IceRayC_Light_Handle P_this, IceRayC_Geometry_Handle P_shell )
+ {
+  typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
+  typedef GS_DDMRM::S_IceRay::S_light::GC_clipped Tf_clipped;
+  typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base  Tf_geometry;
+  typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_inside Tf_inside;
+
+  auto I_this = dynamic_cast< Tf_clipped *>( reinterpret_cast<Tf__pure*> ( P_this ) );
+  if( nullptr == I_this )
+   {
+    return 0;
+   }
+  I_this->F_shell( dynamic_cast< Tf_inside *>( reinterpret_cast<Tf_geometry*> ( P_shell ) ) );
+  return 1;
  }
 
 
-IceRayC_LightHandle IceRayC_LightDisc0( )
+IceRayC_Light_Handle IceRayC_Light_Disc0( )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_disc Tf_disc;
   auto Ir_result = new Tf_disc{};
-  return reinterpret_cast< IceRayC_LightHandle >( dynamic_cast< Tf__pure *> ( Ir_result ) );
+  return reinterpret_cast< IceRayC_Light_Handle >( dynamic_cast< Tf__pure *> ( Ir_result ) );
  }
-int IceRayC_LightDisc_Sample( IceRayC_LightHandle P_this, IceRayC_TypeSize P_sample )
+int IceRayC_Light_Disc_Sample( IceRayC_Light_Handle P_this, IceRayC_TypeSize P_sample )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_disc Tf_disc;
@@ -247,12 +267,12 @@ int IceRayC_LightDisc_Sample( IceRayC_LightHandle P_this, IceRayC_TypeSize P_sam
   auto I_this = dynamic_cast< Tf_disc *>( reinterpret_cast<Tf__pure*> ( P_this ) );
   if( nullptr == I_this )
    {
-    return 1;
+    return 0;
    }
   I_this->F_sample( P_sample );
-  return 0;
+  return 1;
  }
-int IceRayC_LightDisc_Spot( IceRayC_LightHandle P_this, IceRayC_TypeSpot P_spot )
+int IceRayC_Light_Disc_Spot( IceRayC_Light_Handle P_this, IceRayC_TypeSpot P_spot )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_disc Tf_disc;
@@ -260,12 +280,12 @@ int IceRayC_LightDisc_Spot( IceRayC_LightHandle P_this, IceRayC_TypeSpot P_spot 
   auto I_this = dynamic_cast< Tf_disc *>( reinterpret_cast<Tf__pure*> ( P_this ) );
   if( nullptr == I_this )
    {
-    return 1;
+    return 0;
    }
   I_this->F_spot( c2cpp( P_spot ) );
-  return 0;
+  return 1;
  }
-int IceRayC_LightDisc_Origin( IceRayC_LightHandle P_this, IceRayC_TypeCoord3D P_origin )
+int IceRayC_Light_Disc_Center( IceRayC_Light_Handle P_this, IceRayC_TypeCoord3D P_center )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_disc Tf_disc;
@@ -273,12 +293,12 @@ int IceRayC_LightDisc_Origin( IceRayC_LightHandle P_this, IceRayC_TypeCoord3D P_
   auto I_this = dynamic_cast< Tf_disc *>( reinterpret_cast<Tf__pure*> ( P_this ) );
   if( nullptr == I_this )
    {
-    return 1;
+    return 0;
    }
-  // TODO logic
-  return 0;
+  I_this->F_center( c2cpp( P_center ) );
+  return 1;
  }
-int IceRayC_LightDisc_X( IceRayC_LightHandle P_this, IceRayC_TypeCoord3D P_X )
+int IceRayC_Light_Disc_X( IceRayC_Light_Handle P_this, IceRayC_TypeCoord3D P_X )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_disc Tf_disc;
@@ -286,12 +306,12 @@ int IceRayC_LightDisc_X( IceRayC_LightHandle P_this, IceRayC_TypeCoord3D P_X )
   auto I_this = dynamic_cast< Tf_disc *>( reinterpret_cast<Tf__pure*> ( P_this ) );
   if( nullptr == I_this )
    {
-    return 1;
+    return 0;
    }
-  // TODO logic
-  return 0;
+  I_this->F_x( c2cpp( P_X ) );
+  return 1;
  }
-int IceRayC_LightDisc_Y( IceRayC_LightHandle P_this, IceRayC_TypeCoord3D P_Y )
+int IceRayC_Light_Disc_Y( IceRayC_Light_Handle P_this, IceRayC_TypeCoord3D P_Y )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_disc Tf_disc;
@@ -299,20 +319,20 @@ int IceRayC_LightDisc_Y( IceRayC_LightHandle P_this, IceRayC_TypeCoord3D P_Y )
   auto I_this = dynamic_cast< Tf_disc *>( reinterpret_cast<Tf__pure*> ( P_this ) );
   if( nullptr == I_this )
    {
-    return 1;
+    return 0;
    }
-  // TODO logic
-  return 0;
+  I_this->F_y( c2cpp( P_Y ) );
+  return 1;
  }
 
-IceRayC_LightHandle IceRayC_LightLine0( )
+IceRayC_Light_Handle IceRayC_Light_Line0( )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_line Tf_line;
   auto Ir_result = new Tf_line{};
-  return reinterpret_cast< IceRayC_LightHandle >( dynamic_cast< Tf__pure *> ( Ir_result ) );
+  return reinterpret_cast< IceRayC_Light_Handle >( dynamic_cast< Tf__pure *> ( Ir_result ) );
  }
-int IceRayC_LightLine_Spot( IceRayC_LightHandle P_this, IceRayC_TypeSpot P_spot )
+int IceRayC_Light_Line_Spot( IceRayC_Light_Handle P_this, IceRayC_TypeSpot P_spot )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_line Tf_line;
@@ -320,12 +340,12 @@ int IceRayC_LightLine_Spot( IceRayC_LightHandle P_this, IceRayC_TypeSpot P_spot 
   auto I_this = dynamic_cast< Tf_line *>( reinterpret_cast<Tf__pure*> ( P_this ) );
   if( nullptr == I_this )
    {
-    return 1;
+    return 0;
    }
   I_this->F_spot( c2cpp( P_spot ) );
-  return 0;
+  return 1;
  }
-int IceRayC_LightLine_Sample( IceRayC_LightHandle P_this, IceRayC_TypeSize P_sample )
+int IceRayC_Light_Line_Sample( IceRayC_Light_Handle P_this, IceRayC_TypeSize P_sample )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_line Tf_line;
@@ -333,12 +353,12 @@ int IceRayC_LightLine_Sample( IceRayC_LightHandle P_this, IceRayC_TypeSize P_sam
   auto I_this = dynamic_cast< Tf_line *>( reinterpret_cast<Tf__pure*> ( P_this ) );
   if( nullptr == I_this )
    {
-    return 1;
+    return 0;
    }
   I_this->F_sample( P_sample );
-  return 0;
+  return 1;
  }
-int IceRayC_LightLine_Start( IceRayC_LightHandle P_this/*, TODO */ )
+int IceRayC_Light_Line_Start( IceRayC_Light_Handle P_this, IceRayC_TypeSpot P_spot )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_line Tf_line;
@@ -346,54 +366,54 @@ int IceRayC_LightLine_Start( IceRayC_LightHandle P_this/*, TODO */ )
   auto I_this = dynamic_cast< Tf_line *>( reinterpret_cast<Tf__pure*> ( P_this ) );
   if( nullptr == I_this )
    {
-    return 1;
-   }
-  // TODO logic
-  return 0;
- }
-int IceRayC_LightLine_End( IceRayC_LightHandle P_this, IceRayC_TypeCoord3D P_end )
- {
-  typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
-  typedef GS_DDMRM::S_IceRay::S_light::GC_line Tf_line;
-
-  auto I_this = dynamic_cast< Tf_line *>( reinterpret_cast<Tf__pure*> ( P_this ) );
-  if( nullptr == I_this )
-   {
-    return 1;
-   }
-  // TODO logic
-  return 0;
- }
-
-
-IceRayC_LightHandle IceRayC_LightPoint0()
- {
-  typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
-  typedef GS_DDMRM::S_IceRay::S_light::GC_point Tf_point;
-  auto Ir_result = new Tf_point{};
-  return reinterpret_cast< IceRayC_LightHandle >( dynamic_cast< Tf__pure *> ( Ir_result ) );
- }
-IceRayC_LightHandle IceRayC_LightPoint1( IceRayC_TypeCoord3D center, IceRayC_TypeColorRGB c0, IceRayC_TypeColorRGB c1, IceRayC_TypeColorRGB c2 )
- {
-  typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
-  typedef GS_DDMRM::S_IceRay::S_light::GC_point Tf_point;
-  auto Ir_result = new Tf_point{};
-  return reinterpret_cast< IceRayC_LightHandle >( dynamic_cast< Tf__pure *> ( Ir_result ) );
- }
-int IceRayC_LightPoint_Spot( IceRayC_LightHandle P_this , IceRayC_TypeSpot P_spot )
- {
-  typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
-  typedef GS_DDMRM::S_IceRay::S_light::GC_point Tf_point;
-
-  auto I_this = dynamic_cast< Tf_point *>( reinterpret_cast<Tf__pure*> ( P_this ) );
-  if( nullptr == I_this )
-   {
-    return 1;
+    return 0;
    }
   I_this->F_spot( c2cpp( P_spot ) );
-  return 0;
+  return 1;
  }
-int IceRayC_LightPoint_Center( IceRayC_LightHandle P_this, IceRayC_TypeCoord3D P_center )
+
+int IceRayC_Light_Line_Start( IceRayC_Light_Handle P_this, IceRayC_TypeCoord3D P_start )
+ {
+  typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
+  typedef GS_DDMRM::S_IceRay::S_light::GC_line Tf_line;
+
+  auto I_this = dynamic_cast< Tf_line *>( reinterpret_cast<Tf__pure*> ( P_this ) );
+  if( nullptr == I_this )
+   {
+    return 0;
+   }
+  I_this->F_start( c2cpp( P_start ) );
+  return 1;
+ }
+int IceRayC_Light_Line_End( IceRayC_Light_Handle P_this, IceRayC_TypeCoord3D P_end )
+ {
+  typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
+  typedef GS_DDMRM::S_IceRay::S_light::GC_line Tf_line;
+
+  auto I_this = dynamic_cast< Tf_line *>( reinterpret_cast<Tf__pure*> ( P_this ) );
+  if( nullptr == I_this )
+   {
+    return 0;
+   }
+  I_this->F_end( c2cpp( P_end ) );
+  return 1;
+ }
+
+IceRayC_Light_Handle IceRayC_Light_Point0()
+ {
+  typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
+  typedef GS_DDMRM::S_IceRay::S_light::GC_point Tf_point;
+  auto Ir_result = new Tf_point{};
+  return reinterpret_cast< IceRayC_Light_Handle >( dynamic_cast< Tf__pure *> ( Ir_result ) );
+ }
+IceRayC_Light_Handle IceRayC_Light_Point1( IceRayC_TypeCoord3D center, IceRayC_TypeColorRGB c0, IceRayC_TypeColorRGB c1, IceRayC_TypeColorRGB c2 )
+ {
+  typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
+  typedef GS_DDMRM::S_IceRay::S_light::GC_point Tf_point;
+  auto Ir_result = new Tf_point{};
+  return reinterpret_cast< IceRayC_Light_Handle >( dynamic_cast< Tf__pure *> ( Ir_result ) );
+ }
+int IceRayC_Light_Point_Spot( IceRayC_Light_Handle P_this , IceRayC_TypeSpot P_spot )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_point Tf_point;
@@ -401,21 +421,34 @@ int IceRayC_LightPoint_Center( IceRayC_LightHandle P_this, IceRayC_TypeCoord3D P
   auto I_this = dynamic_cast< Tf_point *>( reinterpret_cast<Tf__pure*> ( P_this ) );
   if( nullptr == I_this )
    {
-    return 1;
+    return 0;
    }
-  // TODO logic
-  return 0;
+  I_this->F_spot( c2cpp( P_spot ) );
+  return 1;
  }
 
+int IceRayC_Light_Point_Center( IceRayC_Light_Handle P_this, IceRayC_TypeCoord3D P_center )
+ {
+  typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
+  typedef GS_DDMRM::S_IceRay::S_light::GC_point Tf_point;
 
-IceRayC_LightHandle IceRayC_LightReflector0( )
+  auto I_this = dynamic_cast< Tf_point *>( reinterpret_cast<Tf__pure*> ( P_this ) );
+  if( nullptr == I_this )
+   {
+    return 0;
+   }
+  I_this->F_center( c2cpp( P_center ) );
+  return 1;
+ }
+
+IceRayC_Light_Handle IceRayC_Light_Reflector0( )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_reflector Tf_reflector;
   auto Ir_result = new Tf_reflector{};
-  return reinterpret_cast< IceRayC_LightHandle >( dynamic_cast< Tf__pure *> ( Ir_result ) );
+  return reinterpret_cast< IceRayC_Light_Handle >( dynamic_cast< Tf__pure *> ( Ir_result ) );
  }
-int IceRayC_LightReflector_Center( IceRayC_LightHandle P_this/*, TODO */   )
+int IceRayC_Light_Reflector_Center( IceRayC_Light_Handle P_this, IceRayC_TypeCoord3D P_center )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_reflector Tf_reflector;
@@ -423,12 +456,12 @@ int IceRayC_LightReflector_Center( IceRayC_LightHandle P_this/*, TODO */   )
   auto I_this = dynamic_cast< Tf_reflector *>( reinterpret_cast<Tf__pure*> ( P_this ) );
   if( nullptr == I_this )
    {
-    return 1;
+    return 0;
    }
-  // TODO logic
-  return 0;
+  I_this->F_center( c2cpp( P_center ) );
+  return 1;
  }
-int IceRayC_LightReflector_Spot( IceRayC_LightHandle P_this, IceRayC_TypeSpot P_spot )
+int IceRayC_Light_Reflector_Spot( IceRayC_Light_Handle P_this, IceRayC_TypeSpot P_spot )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_reflector Tf_reflector;
@@ -436,12 +469,12 @@ int IceRayC_LightReflector_Spot( IceRayC_LightHandle P_this, IceRayC_TypeSpot P_
   auto I_this = dynamic_cast< Tf_reflector *>( reinterpret_cast<Tf__pure*> ( P_this ) );
   if( nullptr == I_this )
    {
-    return 1;
+    return 0;
    }
   I_this->F_spot( c2cpp( P_spot ) );
-  return 0;
+  return 1;
  }
-int IceRayC_LightReflector_Direction( IceRayC_LightHandle P_this, IceRayC_TypeCoord3D P_direction )
+int IceRayC_Light_Reflector_Direction( IceRayC_Light_Handle P_this, IceRayC_TypeCoord3D P_direction )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_reflector Tf_reflector;
@@ -449,12 +482,12 @@ int IceRayC_LightReflector_Direction( IceRayC_LightHandle P_this, IceRayC_TypeCo
   auto I_this = dynamic_cast< Tf_reflector *>( reinterpret_cast<Tf__pure*> ( P_this ) );
   if( nullptr == I_this )
    {
-    return 1;
+    return 0;
    }
-  // TODO logic
-  return 0;
+  I_this->F_center( c2cpp( P_direction ) );
+  return 1;
  }
-int IceRayC_LightReflector_In( IceRayC_LightHandle P_this/*, reflector */ )
+int IceRayC_Light_Reflector_Inner( IceRayC_Light_Handle P_this, IceRayC_TypeScalar P_innner )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_reflector Tf_reflector;
@@ -462,12 +495,12 @@ int IceRayC_LightReflector_In( IceRayC_LightHandle P_this/*, reflector */ )
   auto I_this = dynamic_cast< Tf_reflector *>( reinterpret_cast<Tf__pure*> ( P_this ) );
   if( nullptr == I_this )
    {
-    return 1;
+    return 0;
    }
-  // TODO logic
-  return 0;
+  I_this->F_inner( P_innner );
+  return 1;
  }
-int IceRayC_LightReflector_Out( IceRayC_LightHandle P_this/*, TODO reflector */ )
+int IceRayC_Light_Reflector_Outter( IceRayC_Light_Handle P_this, IceRayC_TypeScalar P_outter )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_reflector Tf_reflector;
@@ -475,21 +508,21 @@ int IceRayC_LightReflector_Out( IceRayC_LightHandle P_this/*, TODO reflector */ 
   auto I_this = dynamic_cast< Tf_reflector *>( reinterpret_cast<Tf__pure*> ( P_this ) );
   if( nullptr == I_this )
    {
-    return 1;
+    return 0;
    }
-  // TODO logic
-  return 0;
+  I_this->F_outter( P_outter );
+  return 1;
  }
 
-IceRayC_LightHandle IceRayC_LightSpline( )
+IceRayC_Light_Handle IceRayC_Light_Spline0( )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_spline Tf_spline;
   auto Ir_result = new Tf_spline{};
-  return reinterpret_cast< IceRayC_LightHandle >( dynamic_cast< Tf__pure *> ( Ir_result ) );
+  return reinterpret_cast< IceRayC_Light_Handle >( dynamic_cast< Tf__pure *> ( Ir_result ) );
  }
 
-int IceRayC_LightSpline_Spot( IceRayC_LightHandle P_this, IceRayC_TypeSpot P_spot )
+int IceRayC_Light_Spline_Spot( IceRayC_Light_Handle P_this, IceRayC_TypeSpot P_spot )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_spline Tf_spline;
@@ -497,12 +530,12 @@ int IceRayC_LightSpline_Spot( IceRayC_LightHandle P_this, IceRayC_TypeSpot P_spo
   auto I_this = dynamic_cast< Tf_spline *>( reinterpret_cast<Tf__pure*> ( P_this ) );
   if( nullptr == I_this )
    {
-    return 1;
+    return 0;
    }
   I_this->F_spot( c2cpp( P_spot ) );
-  return 0;
+  return 1;
  }
-int IceRayC_LightSpline_Sample( IceRayC_LightHandle P_this, IceRayC_TypeSize P_sample )
+int IceRayC_Light_Spline_Sample( IceRayC_Light_Handle P_this, IceRayC_TypeSize P_sample )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_spline Tf_spline;
@@ -510,12 +543,12 @@ int IceRayC_LightSpline_Sample( IceRayC_LightHandle P_this, IceRayC_TypeSize P_s
   auto I_this = dynamic_cast< Tf_spline *>( reinterpret_cast<Tf__pure*> ( P_this ) );
   if( nullptr == I_this )
    {
-    return 1;
+    return 0;
    }
   I_this->F_sample( P_sample );
-  return 0;
+  return 1;
  }
-int IceRayC_LightSpline_CP_0( IceRayC_LightHandle P_this, IceRayC_TypeCoord3D P_0 )
+int IceRayC_Light_Spline_CP_0( IceRayC_Light_Handle P_this, IceRayC_TypeCoord3D P_0 )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_spline Tf_spline;
@@ -523,12 +556,12 @@ int IceRayC_LightSpline_CP_0( IceRayC_LightHandle P_this, IceRayC_TypeCoord3D P_
   auto I_this = dynamic_cast< Tf_spline *>( reinterpret_cast<Tf__pure*> ( P_this ) );
   if( nullptr == I_this )
    {
-    return 1;
+    return 0;
    }
-  // TODO logic
-  return 0;
+  I_this->F_cp( 0, c2cpp( P_0 ) );
+  return 1;
  }
-int IceRayC_LightSpline_CP_1( IceRayC_LightHandle P_this, IceRayC_TypeCoord3D P_1 )
+int IceRayC_Light_Spline_CP_1( IceRayC_Light_Handle P_this, IceRayC_TypeCoord3D P_1 )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_spline Tf_spline;
@@ -536,12 +569,12 @@ int IceRayC_LightSpline_CP_1( IceRayC_LightHandle P_this, IceRayC_TypeCoord3D P_
   auto I_this = dynamic_cast< Tf_spline *>( reinterpret_cast<Tf__pure*> ( P_this ) );
   if( nullptr == I_this )
    {
-    return 1;
+    return 0;
    }
-  // TODO logic
-  return 0;
+  I_this->F_cp( 0, c2cpp( P_1 ) );
+  return 1;
  }
-int IceRayC_LightSpline_CP_2( IceRayC_LightHandle P_this, IceRayC_TypeCoord3D P_2 )
+int IceRayC_Light_Spline_CP_2( IceRayC_Light_Handle P_this, IceRayC_TypeCoord3D P_2 )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_spline Tf_spline;
@@ -549,12 +582,12 @@ int IceRayC_LightSpline_CP_2( IceRayC_LightHandle P_this, IceRayC_TypeCoord3D P_
   auto I_this = dynamic_cast< Tf_spline *>( reinterpret_cast<Tf__pure*> ( P_this ) );
   if( nullptr == I_this )
    {
-    return 1;
+    return 0;
    }
-  // TODO logic
-  return 0;
+  I_this->F_cp( 0, c2cpp( P_2 ) );
+  return 1;
  }
-int IceRayC_LightSpline_CP_3( IceRayC_LightHandle P_this/*, TODO */ )
+int IceRayC_Light_Spline_CP_3( IceRayC_Light_Handle P_this, IceRayC_TypeCoord3D P_3 )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_spline Tf_spline;
@@ -562,36 +595,36 @@ int IceRayC_LightSpline_CP_3( IceRayC_LightHandle P_this/*, TODO */ )
   auto I_this = dynamic_cast< Tf_spline *>( reinterpret_cast<Tf__pure*> ( P_this ) );
   if( nullptr == I_this )
    {
-    return 1;
+    return 0;
    }
-  // TODO logic I_this->F_child( c2cpp( )
-  return 0;
+  I_this->F_cp( 0, c2cpp( P_3 ) );
+  return 1;
  }
 
-IceRayC_LightHandle IceRayC_LightSun0( )
+IceRayC_Light_Handle IceRayC_Light_SunG0( )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
-  typedef GS_DDMRM::S_IceRay::S_light::GC_sun Tf_sun;
+  typedef GS_DDMRM::S_IceRay::S_light::GC_sung Tf_sun;
   auto Ir_result = new Tf_sun{};
-  return reinterpret_cast< IceRayC_LightHandle >( dynamic_cast< Tf__pure *> ( Ir_result ) );
+  return reinterpret_cast< IceRayC_Light_Handle >( dynamic_cast< Tf__pure *> ( Ir_result ) );
  }
-IceRayC_LightHandle IceRayC_LightSun1( IceRayC_LightHandle *P_child )
+IceRayC_Light_Handle IceRayC_Light_SunG1( IceRayC_Light_Handle *P_child )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
-  typedef GS_DDMRM::S_IceRay::S_light::GC_sun Tf_sun;
+  typedef GS_DDMRM::S_IceRay::S_light::GC_sung Tf_sun;
   auto Ir_result = new Tf_sun{};
-  return reinterpret_cast< IceRayC_LightHandle >( dynamic_cast< Tf__pure *> ( Ir_result ) );
+  return reinterpret_cast< IceRayC_Light_Handle >( dynamic_cast< Tf__pure *> ( Ir_result ) );
  }
-int IceRayC_LightSun_Child ( IceRayC_LightHandle P_this, IceRayC_LightHandle P_child )
+int IceRayC_Light_SunG_Child ( IceRayC_Light_Handle P_this, IceRayC_Light_Handle P_child )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
-  typedef GS_DDMRM::S_IceRay::S_light::GC_sun Tf_sun;
+  typedef GS_DDMRM::S_IceRay::S_light::GC_sung Tf_sun;
 
   auto I_this = dynamic_cast< Tf_sun *>( reinterpret_cast<Tf__pure*> ( P_this ) );
   if( nullptr == I_this )
    {
-    return 1;
+    return 0;
    }
   I_this->F_child( reinterpret_cast< Tf__pure* >( P_child ) );
-  return 0;
+  return 1;
  }

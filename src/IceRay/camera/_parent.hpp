@@ -4,7 +4,6 @@
   #include "./type/report.hpp"
 
   #include "./_pure.hpp"
-  #include "./flat/perspective.hpp"
 
   namespace GS_DDMRM
    {
@@ -44,14 +43,11 @@
 
           protected:
             T__pure & F1_child(){ return *M2_child; }
-
-          public:
-            static T__pure & Fs_perspective();
-
           private:
             T__pure *M2_child;  //!< dumb_ptr<>???
-            typedef GS_DDMRM::S_IceRay::S_camera::S_flat::GC_perspective  T2_perspective;
-            static T2_perspective M2s_perspective; //!< Default child camera
+
+          public:
+            static T__pure & Fs_child();
 
          };
 

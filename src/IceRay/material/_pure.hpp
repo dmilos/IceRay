@@ -13,8 +13,8 @@
       {
 
        class GC__pure
-        : public GS_DDMRM::S_IceRay::S_material::S_medium::GC__pure
-        , public GS_DDMRM::S_IceRay::S_material::S_pigment::GC__pure
+        : public virtual GS_DDMRM::S_IceRay::S_material::S_medium::GC__pure
+        , public virtual GS_DDMRM::S_IceRay::S_material::S_pigment::GC__pure
         {
          public:
            // Just to resolve ambiguousness
@@ -34,6 +34,17 @@
          public:
            using T_medium::Fv_attenuate;
            using T_pigment::Fv_color;
+
+           T_medium  const& F_medium()const
+            {
+             return *this;
+            }
+
+           T_pigment const& F_pigment()const
+            {
+             return *this;
+            }
+
         };
 
       }

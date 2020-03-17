@@ -1,11 +1,43 @@
-import sys
-#print( '<' + __name__ + '>' )
-import IceRayCpp
 
-class Transform:
-    m_child = None
-    def __init__( self, P_child = IceRayCpp.CameraFlatPerspective() ):
-        P_child = self.m_child
+class Invert:
+    def __init__( self, P_dll, P_child = None ):
+        self.m_cargo={}
+        self.m_cargo['dll']= P_dll
+        self.m_cargo['child']= {}
+
+        if( None != P_child ):
+            self.chid( P_child )
+
+    def __del__( self ):
+        self.m_cargo['dll'].IceRayC_Camera_Release( self.m_cargo['this'] )
+        #TODO self.m_cargo['child']['this']
+
+    def child(self):
+        return self.m_cargo['child'];
+
+    def child( self, P_child ):
+        self.m_cargo['child'] = P_child
+        #TODO self.m_cargo['child']['this']
+        pass
+
+class Affine:
+
+    def __init__( self, P_dll ):
+        self.m_cargo={}
+        self.m_cargo['dll']= P_dll
+        if( None != P_child ):
+            self.chid( P_child )
+
+    def __del__( self ):
+        self.m_cargo['dll'].IceRayC_Camera_Release( self.m_cargo['this'] )
+
+    def child( self ):
+        return self.m_cargo['child'];
+
+    def child( self, P_child ):
+        self.m_cargo['child'] = P_child
+        #TODO self.m_cargo['child']['this']
+
 
     def move( self, P_move ):
         pass
@@ -30,8 +62,7 @@ class Transform:
 
     def rotateJaw( self, P_angle ):
         pass
-        
+
     def rotateRoll( self, P_angle ):
         pass
 
-#print( '</' + __name__ + '>' )

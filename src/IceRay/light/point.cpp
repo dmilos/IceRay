@@ -38,10 +38,10 @@ GC_point::~GC_point()
 GC_point::T_size
 GC_point::Fv_swarm 
  (
-   T_swarm      & P_spot
+   T_swarm      & P_swarm
   ,T_coord const& P_point
  )const
  {
-  P_spot.F_push( M2_spot );
+  P_swarm.F_push( M2_spot );
   return 1;
  }

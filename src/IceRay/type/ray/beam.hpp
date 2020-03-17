@@ -1,7 +1,12 @@
 #ifndef Dh_DDMM_IceRay_type_beam_HPP_
  #define Dh_DDMM_IceRay_type_beam_HPP_
-// GS_DDMRM::S_IceRay::S_type::S_ray::GT_beam
- 
+
+// GS_DDMRM::S_IceRay::S_type::S_ray::S_beam::GC_beam< ... >
+// GS_DDMRM::S_IceRay::S_type::S_ray::S_beam::GT_line
+// GS_DDMRM::S_IceRay::S_type::S_ray::S_beam::GT_simple
+// GS_DDMRM::S_IceRay::S_type::S_ray::S_beam::GT_trace
+// GS_DDMRM::S_IceRay::S_type::S_ray::S_beam::GT_state
+
  
  #include <vector>
  #include "./line.hpp"
@@ -22,18 +27,16 @@
           {
 
            template< typename N_ray>
-            struct GC_beam
+            struct GC_generator
              {
-               typedef std::vector<N_ray> T_typedef; 
-               // void push( )
-               // void pop( )
-               // T_size size( )
+              public:
+                typedef std::vector<N_ray> T_typedef;
              };
 
-           typedef GC_beam< GS_DDMRM::S_IceRay::S_type::S_ray::GC_line   >::T_typedef    GT_line;
-           typedef GC_beam< GS_DDMRM::S_IceRay::S_type::S_ray::GC_simple >::T_typedef    GT_simple;
-           typedef GC_beam< GS_DDMRM::S_IceRay::S_type::S_ray::GC_trace  >::T_typedef    GT_trace;
-           typedef GC_beam< GS_DDMRM::S_IceRay::S_type::S_ray::GC_state  >::T_typedef    GT_state;
+           typedef GC_generator< GS_DDMRM::S_IceRay::S_type::S_ray::GC_line   >::T_typedef    GT_line;
+           typedef GC_generator< GS_DDMRM::S_IceRay::S_type::S_ray::GC_simple >::T_typedef    GT_simple;
+           typedef GC_generator< GS_DDMRM::S_IceRay::S_type::S_ray::GC_trace  >::T_typedef    GT_trace;
+           typedef GC_generator< GS_DDMRM::S_IceRay::S_type::S_ray::GC_state  >::T_typedef    GT_state;
 
           }
         }

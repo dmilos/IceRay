@@ -5,94 +5,108 @@
 #include "../../type/type.h"
 
 
-struct IceRayC_GeometryStruct {};
-typedef IceRayC_GeometryStruct* IceRayC_GeometryHandle;
+struct  IceRayC_Geometry_Struct {};
+typedef IceRayC_Geometry_Struct* IceRayC_Geometry_Handle;
 
 
-IceRayC__EXPORT IceRayC__DECLSPEC  void IceRayC_Geometry_Release( IceRayC_GeometryHandle );
+IceRayC__EXPORT IceRayC__DECLSPEC  void IceRayC_Geometry__Release( IceRayC_Geometry_Handle );
 
 
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_GeometryHandle IceRayC_GeometrySphere0( );
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_GeometryHandle IceRayC_GeometrySphere1( IceRayC_TypeCoord3D center, IceRayC_TypeScalar radius );
-IceRayC__EXPORT IceRayC__DECLSPEC  int              IceRayC_GeometrySphere_Center( IceRayC_GeometryHandle P_this, IceRayC_TypeCoord3D center );
-IceRayC__EXPORT IceRayC__DECLSPEC  int              IceRayC_GeometrySphere_Radius( IceRayC_GeometryHandle P_this, IceRayC_TypeScalar radius );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Sphere0( );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Sphere1( IceRayC_TypeCoord3D center, IceRayC_TypeScalar radius );
+IceRayC__EXPORT IceRayC__DECLSPEC  int                     IceRayC_Geometry_Sphere_Center( IceRayC_Geometry_Handle P_this, IceRayC_TypeCoord3D center );
+IceRayC__EXPORT IceRayC__DECLSPEC  int                     IceRayC_Geometry_Sphere_Radius( IceRayC_Geometry_Handle P_this, IceRayC_TypeScalar radius );
 
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_GeometryHandle IceRayC_GeometryUSphere();
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_USphere();
 
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_GeometryHandle IceRayC_GeometryBox0();
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_GeometryHandle IceRayC_GeometryBox1( IceRayC_TypeCoord3D lo, IceRayC_TypeCoord3D hi );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Box0();
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Box1( IceRayC_TypeCoord3D lo, IceRayC_TypeCoord3D hi );
 
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_GeometryHandle IceRayC_GeometryTorus0();
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_GeometryHandle IceRayC_GeometryTorus1( IceRayC_TypeScalar P_minor );
-IceRayC__EXPORT IceRayC__DECLSPEC  int              IceRayC_GeometryTorus_Minor( IceRayC_GeometryHandle P_this, IceRayC_TypeScalar P_minor );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Torus0();
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Torus1( IceRayC_TypeScalar P_minor );
+IceRayC__EXPORT IceRayC__DECLSPEC  int                     IceRayC_Geometry_Torus_Minor( IceRayC_Geometry_Handle P_this, IceRayC_TypeScalar P_minor );
 
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_GeometryHandle IceRayC_GeometryTriangle0();
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_GeometryHandle IceRayC_GeometryTriangle1( IceRayC_TypeCoord3D e0, IceRayC_TypeCoord3D ex, IceRayC_TypeCoord3D ey );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Triangle0();
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Triangle1( IceRayC_TypeCoord3D e0, IceRayC_TypeCoord3D ex, IceRayC_TypeCoord3D ey );
 
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_GeometryHandle IceRayC_GeometrySmoke0( );
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_GeometryHandle IceRayC_GeometrySmoke1( IceRayC_TypeCoord3D P_lo, IceRayC_TypeCoord3D P_hi, IceRayC_TypeScalar P_density );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Smoke0( );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Smoke1( IceRayC_TypeCoord3D P_lo, IceRayC_TypeCoord3D P_hi, IceRayC_TypeScalar P_density );
 
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_GeometryHandle IceRayC_GeometryMotionBlur0();
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_GeometryHandle IceRayC_GeometryMotionBlur_Child( IceRayC_GeometryHandle P_this, IceRayC_GeometryHandle P_child );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_MotionBlur0();
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_MotionBlur_Child( IceRayC_Geometry_Handle P_this, IceRayC_Geometry_Handle P_child );
 
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_GeometryHandle IceRayC_GeometryPlane0( );
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_GeometryHandle IceRayC_GeometryPlane( IceRayC_TypeCoord3D P_origin, IceRayC_TypeCoord3D P_normal );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Plane0( );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Plane( IceRayC_TypeCoord3D P_origin, IceRayC_TypeCoord3D P_normal );
 
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_GeometryHandle IceRayC_GeometryHField();
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_HField();
 
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_GeometryHandle IceRayC_GeometryDisc0();
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_GeometryHandle IceRayC_GeometryDisc1(  IceRayC_TypeCoord3D P_center, IceRayC_TypeCoord3D P_normal, IceRayC_TypeScalar P_radius );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Disc0();
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Disc1(  IceRayC_TypeCoord3D P_center, IceRayC_TypeCoord3D P_normal, IceRayC_TypeScalar P_radius );
 
-IceRayC__EXPORT IceRayC__DECLSPEC  int IceRayC_GeometryDisc_Center( IceRayC_GeometryHandle P_this, IceRayC_TypeCoord3D P_center );
-IceRayC__EXPORT IceRayC__DECLSPEC  int IceRayC_GeometryDisc_Normal( IceRayC_GeometryHandle P_this, IceRayC_TypeCoord3D P_normal );
-IceRayC__EXPORT IceRayC__DECLSPEC  int IceRayC_GeometryDisc_Radius( IceRayC_GeometryHandle P_this, IceRayC_TypeScalar P_radius );
-
-
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_GeometryHandle IceRayC_GeometryCylinder0();
-
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_GeometryHandle IceRayC_GeometryCone0();
-
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_GeometryHandle IceRayC_GeometryParaboloid0();
-
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_GeometryHandle IceRayC_GeometryHyperboloid0();
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_GeometryHandle IceRayC_GeometryHyperboloid1( IceRayC_TypeScalar P_core );
-IceRayC__EXPORT IceRayC__DECLSPEC  int              IceRayC_GeometryHyperboloid_Core( IceRayC_GeometryHandle P_this, IceRayC_TypeScalar P_core );
-
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_GeometryHandle IceRayC_GeometrySaddle0();
-
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_GeometryHandle IceRayC_GeometryCSG0();
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_GeometryHandle IceRayC_GeometryCSG1( IceRayC_GeometryHandle P_left, IceRayC_GeometryHandle Pright );
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_GeometryHandle IceRayC_GeometryCSG_Set(   IceRayC_GeometryHandle P_this,  IceRayC_GeometryHandle P_left, IceRayC_GeometryHandle Pright );
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_GeometryHandle IceRayC_GeometryCSG_Left(  IceRayC_GeometryHandle P_this, IceRayC_GeometryHandle P_left );
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_GeometryHandle IceRayC_GeometryCSG_Right( IceRayC_GeometryHandle P_this, IceRayC_GeometryHandle P_right );
-
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_GeometryHandle IceRayC_GeometryAffine0();
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_GeometryHandle IceRayC_GeometryAffine1( IceRayC_GeometryHandle child, IceRayC_TypeAffine3D P_affine );
-//IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_GeometryHandle IceRayC_GeometryAffine2( IceRayC_GeometryHandle child, IceRayC_TypeMatric3D P_affine, IceRayC_TypeCoord3D P_move );
-
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_GeometryHandle IceRayC_GeometryAffine_Child( IceRayC_GeometryHandle P_this, IceRayC_GeometryHandle P_child );
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_GeometryHandle IceRayC_GeometryAffine_Affine( IceRayC_GeometryHandle P_this, IceRayC_TypeAffine3D P_affine );
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_GeometryHandle IceRayC_GeometryAffine_Scale( IceRayC_GeometryHandle P_this, IceRayC_TypeCoord3D P_origin, IceRayC_TypeCoord3D P_scale );
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_GeometryHandle IceRayC_GeometryAffine_Translate( IceRayC_GeometryHandle P_this, IceRayC_TypeCoord3D P_move );
-
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_GeometryHandle IceRayC_GeometryTranslate0();
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_GeometryHandle IceRayC_GeometryTranslate1(            IceRayC_GeometryHandle P_child, IceRayC_TypeCoord3D translation );
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_GeometryHandle IceRayC_GeometryTranslate_Translation( IceRayC_GeometryHandle P_this, IceRayC_TypeCoord3D translation );
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_GeometryHandle IceRayC_GeometryTranslate_Child(       IceRayC_GeometryHandle P_this, IceRayC_GeometryHandle child );
-
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_GeometryHandle IceRayC_GeometryVacuum0();
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_GeometryHandle IceRayC_GeometryVacuum1( IceRayC_TypeCoord3D P_lo, IceRayC_TypeCoord3D P_hi );
+IceRayC__EXPORT IceRayC__DECLSPEC  int                     IceRayC_Geometry_Disc_Center( IceRayC_Geometry_Handle P_this, IceRayC_TypeCoord3D P_center );
+IceRayC__EXPORT IceRayC__DECLSPEC  int                     IceRayC_Geometry_Disc_Normal( IceRayC_Geometry_Handle P_this, IceRayC_TypeCoord3D P_normal );
+IceRayC__EXPORT IceRayC__DECLSPEC  int                     IceRayC_Geometry_Disc_Radius( IceRayC_Geometry_Handle P_this, IceRayC_TypeScalar P_radius );
 
 
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_GeometryHandle IceRayC_GeometryBlobbySystem0( );
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_GeometryHandle IceRayC_GeometryBlobbySystem_RTSS( IceRayC_GeometryHandle  P_system, IceRayC_GeometryHandle* P_rtss );
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_GeometryHandle IceRayC_GeometryBlobbySystem_Add( IceRayC_GeometryHandle  P_system, IceRayC_GeometryHandle* P_element );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Cylinder0();
 
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_GeometryHandle IceRayC_GeometryBlobbySphere0( IceRayC_TypeCoord3D P_center, IceRayC_TypeScalar P_influence, IceRayC_TypeScalar P_radius );
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_GeometryHandle IceRayC_GeometryBlobbyUSphere( IceRayC_TypeScalar P_radius );
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_GeometryHandle IceRayC_GeometryBlobbyUCylinderZ( IceRayC_TypeScalar P_radius );
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_GeometryHandle IceRayC_GeometryBlobbyUWaterZ( IceRayC_TypeScalar P_level);
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_GeometryHandle IceRayC_GeometryBlobbyTranslate( IceRayC_GeometryHandle P_element, IceRayC_TypeCoord3D P_translate );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Cone0();
+
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Paraboloid0();
+
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Hyperboloid0();
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Hyperboloid1( IceRayC_TypeScalar P_core );
+IceRayC__EXPORT IceRayC__DECLSPEC  int              IceRayC_Geometry_Hyperboloid_Core( IceRayC_Geometry_Handle P_this, IceRayC_TypeScalar P_core );
+
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Saddle0();
+
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Complex_Intersect0();
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Complex_Intersect1( IceRayC_Geometry_Handle P_left, IceRayC_Geometry_Handle P_right );
+IceRayC__EXPORT IceRayC__DECLSPEC  int                     IceRayC_Geometry_Complex_Intersect_Left0( IceRayC_Geometry_Handle P_this, IceRayC_Geometry_Handle P_left );
+IceRayC__EXPORT IceRayC__DECLSPEC  int                     IceRayC_Geometry_Complex_Intersect_Left1( IceRayC_Geometry_Handle P_this, IceRayC_Geometry_Handle P_left, int location );
+IceRayC__EXPORT IceRayC__DECLSPEC  int                     IceRayC_Geometry_Complex_Intersect_Right0( IceRayC_Geometry_Handle P_this, IceRayC_Geometry_Handle P_right );
+IceRayC__EXPORT IceRayC__DECLSPEC  int                     IceRayC_Geometry_Complex_Intersect_Right1( IceRayC_Geometry_Handle P_this, IceRayC_Geometry_Handle P_right, int location );
+
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Identity0();
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Identity1(      IceRayC_Geometry_Handle P_child );
+IceRayC__EXPORT IceRayC__DECLSPEC  int                     IceRayC_Geometry_Identity_Child( IceRayC_Geometry_Handle P_this, IceRayC_Geometry_Handle P_child );
+
+
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Affine0();
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Affine1( IceRayC_Geometry_Handle child, IceRayC_TypeAffine3D P_affine );
+//IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Affine2( IceRayC_Geometry_Handle child, IceRayC_TypeMatric3D P_affine, IceRayC_TypeCoord3D P_move );
+
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Affine_Child( IceRayC_Geometry_Handle P_this, IceRayC_Geometry_Handle P_child );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Affine_Affine( IceRayC_Geometry_Handle P_this, IceRayC_TypeAffine3D P_affine );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Affine_Scale( IceRayC_Geometry_Handle P_this, IceRayC_TypeCoord3D P_origin, IceRayC_TypeCoord3D P_scale );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Affine_Translate( IceRayC_Geometry_Handle P_this, IceRayC_TypeCoord3D P_move );
+
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Translate0();
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Translate1(      IceRayC_Geometry_Handle P_child, IceRayC_TypeCoord3D translation );
+IceRayC__EXPORT IceRayC__DECLSPEC  int                     IceRayC_Geometry_Translate_Child( IceRayC_Geometry_Handle P_this, IceRayC_Geometry_Handle child );
+IceRayC__EXPORT IceRayC__DECLSPEC  int                     IceRayC_Geometry_Translate_Move(  IceRayC_Geometry_Handle P_this, IceRayC_TypeCoord3D translation );
+
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Volumetric_Vacuum0();
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Volumetric_Vacuum1( IceRayC_TypeCoord3D P_lo, IceRayC_TypeCoord3D P_hi );
+
+
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Blobby_System0( );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Blobby_System_RTSS( IceRayC_Geometry_Handle  P_system, IceRayC_Geometry_Handle* P_rtss );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Blobby_System_Add( IceRayC_Geometry_Handle  P_system, IceRayC_Geometry_Handle* P_element );
+
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Blobby_Sphere0( IceRayC_TypeCoord3D P_center, IceRayC_TypeScalar P_influence, IceRayC_TypeScalar P_radius );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Blobby_USphere0( IceRayC_TypeScalar P_radius );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Blobby_UCylinderZ0( IceRayC_TypeScalar P_radius );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Blobby_UWaterZ0( IceRayC_TypeScalar P_level );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Blobby_Translate0( IceRayC_Geometry_Handle P_element, IceRayC_TypeCoord3D P_translate );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Blobby_Affine0( IceRayC_Geometry_Handle P_element, IceRayC_TypeAffine3D P_affine );
+
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_RTSS_Object0(  );
+IceRayC__EXPORT IceRayC__DECLSPEC  int                     IceRayC_Geometry_RTSS_Object_Rtss0( IceRayC_Geometry_Handle P_this, IceRayC_Geometry_Handle P_child );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_RTSS_List0(  );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_RTSS_Uniform0(  );
+IceRayC__EXPORT IceRayC__DECLSPEC  int                     IceRayC_Geometry_RTSS_Uniform_Size( IceRayC_Geometry_Handle P_this, IceRayC_TypeSize3D P_size );
+
 
 
 #endif

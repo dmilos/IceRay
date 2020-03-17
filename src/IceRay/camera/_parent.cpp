@@ -1,17 +1,17 @@
 #include   "./_parent.hpp"
 
+#include "./flat/perspective.hpp"
+
 using namespace GS_DDMRM::S_IceRay::S_camera;
 
-GC__parent::T2_perspective GC__parent::M2s_perspective;
-
 GC__parent::GC__parent()
-: GC__parent( &M2s_perspective, 1 )
+: GC__parent( &Fs_child(), 1 )
  {
  }
 
 GC__parent::GC__parent ( T__pure * P_child, T_size const& P_size )
  :GC__pure( P_size )
- ,M2_child ( nullptr )
+ ,M2_child ( &Fs_child() )
  {
   F_child( M2_child );
  }
@@ -36,19 +36,20 @@ GC__parent::Fv_system( T_affine &P_matrix, T_coord2D const& P_uv )const
 bool
 GC__parent::F_child( T__pure * P_child )
  {
-  if( NULL == P_child )
+  M2_child = P_child;
+  if( nullptr == P_child )
    {
-    M2_child = &M2s_perspective;
+    M2_child = &Fs_child();
    }
-  else
-   {
-    M2_child = P_child;
-   }
+
   F1_size() = M2_child->F_size();
   return true;
  }
 
-GC__parent::T__pure & GC__parent::Fs_perspective()
+GC__parent::T__pure & GC__parent::Fs_child()
  {
-  return M2s_perspective;
+  typedef GS_DDMRM::S_IceRay::S_camera::S_flat::GC_perspective  T2_perspective;
+  static T2_perspective Irs_perspective;
+  return Irs_perspective;
  }
+

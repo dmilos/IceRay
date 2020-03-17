@@ -1,1 +1,1 @@
-///renderuje svaku n-tu pa onda ili extrapolira ili radi i njih
+///renderu evry n-th then calc dispersion.

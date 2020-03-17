@@ -4,7 +4,10 @@ import IceRayCpp
 def name( ):
     return "box"
 
-def make( P_len = (math.sqrt(5)-1)/2 ): # P_lo, P_hi
+def make(
+    #P_len = (math.sqrt(5)-1)/2 
+    P_len = 1
+    ): # P_lo, P_hi
     lo = IceRayCpp.MathTypeCoord3D()
     lo[0] = -P_len
     lo[1] = -P_len

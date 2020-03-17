@@ -55,12 +55,14 @@
                M2_box = P_box;
                ::math::linear::vector::subtraction( M2_size, M2_box.hi(), M2_box.lo() );
               }
+           private:
+             T_box M2_box;
 
+           public:
              T_coord const& F_size()const{ return M2_size; }
            protected:
              T_box      & F1_box(){ return M2_box; }
            private:
-             T_box M2_box;
              T_coord M2_size;
 
            public:

@@ -2,3 +2,4 @@
 #include "./mblur.hpp"
 #include "./projective.hpp"
 #include "./translate.hpp"
+#include "./identity.hpp"

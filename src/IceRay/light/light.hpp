@@ -11,4 +11,5 @@
 #include "./reflector.hpp"
 #include "./sphere.hpp"
 #include "./spline.hpp"
-#include "./sun.hpp"
+#include "./suns.hpp"
+#include "./sung.hpp"

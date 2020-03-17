@@ -7,6 +7,9 @@
 
  #include "../instruction.hpp"
 
+#include "../../../geometry/_pure/_base.hpp"
+#include "../../../geometry/_pure/uvw.hpp"
+
 
  namespace GS_DDMRM
   {
@@ -23,7 +26,7 @@
               : public GS_DDMRM::S_IceRay::S_material::S_compute::GC_instruction
               {
                public:
-                 typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__pure   T_geometryPure;
+                 typedef  GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base  T_geometryPure;
                  typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_uvw     T_geometryUVW;
 
                  typedef GS_DDMRM::S_IceRay::S_type::GT_size               T_size;
@@ -42,7 +45,7 @@
                public:
                  explicit GC_UVW
                   (
-                   ,T_size const& P_point      = 0
+                    T_size const& P_point      = 0
                    ,T_size const& P_result     = 0
                   )
                   {
@@ -55,14 +58,14 @@
                  bool    Fv_execute( T_beam &P_next, T_pigment::T_intersect const& P_intersect, T_state const& P_state )const
                   {
                    T_coord  const& I_point      = M2_memoryCoord->Fv_load(   F_input<T_coord >( En_inCoord_Point ) );
-                   T_geometry P_intersect.M_geometry;
+                   //T_geometry P_intersect.M_geometry;
 
-                   M2_geometryUVW = nullptr; //!< TODO
+                   // M2_geometryUVW = nullptr; //!< TODO
                    T_coord I_result;
 
-                   M2_geometryUVW->Fv_uvw( I_result, I_point, P_state );
+                   // M2_geometryUVW->Fv_uvw( I_result, I_point, P_state );
 
-                   M2_memoryCoord->Fv_store( F_output<T_coord>( En_outColor_result ), I_result );
+                   M2_memoryCoord->Fv_store( F_output<T_coord>( En_outCoord_result ), I_result );
                    return true;
                   }
 
@@ -80,8 +83,6 @@
 
                private:
                  T2_memoryCoord    *M2_memoryCoord;
-
-
              };
 
           }

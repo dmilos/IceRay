@@ -3,7 +3,7 @@
 
 #include "../../../../../render/2pierce/_pure.hpp"
 #include "../../../../../render/2pierce/uv.hpp"
-#include "../../../../../render/2pierce/_base.hpp"
+#include "../../../../../render/2pierce/projector.hpp"
 
 
 
@@ -44,7 +44,7 @@ void expose_IceRay_render_pierce_UV()
 typedef GS_DDMRM::S_IceRay::S_camera::GC__pure           GTs_camera;
 typedef GS_DDMRM::S_IceRay::S_render::S_ray::GC__pure    GTs_ray;
 
-void expose_IceRay_render_pierce_Base()
+void expose_IceRay_render_pierce_Projector()
  {
   //MAKE_SUBMODULE( IceRay );
   MAKE_SUBMODULE( core );
@@ -52,21 +52,21 @@ void expose_IceRay_render_pierce_Base()
   MAKE_SUBMODULE( pierce );
 
   typedef GS_DDMRM::S_IceRay::S_render::S_pierce::GC__pure  Tf__pure;
-  typedef GS_DDMRM::S_IceRay::S_render::S_pierce::GC__base  Tf__base;
+  typedef GS_DDMRM::S_IceRay::S_render::S_pierce::GC_projector  Tf_projector;
 
-  typedef void (Tf__base::*T_setCamera )( GTs_camera *  );
-  typedef void (Tf__base::*T_setRay    )( GTs_ray    *  );
+  typedef void (Tf_projector::*T_setCamera )( GTs_camera *  );
+  typedef void (Tf_projector::*T_setRay    )( GTs_ray    *  );
 
-  T_setCamera  I_setCamera = &Tf__base::Fv_camera;
-  T_setRay     I_setRay    = &Tf__base::Fv_ray;
+  T_setCamera  I_setCamera = &Tf_projector::Fv_camera;
+  T_setRay     I_setRay    = &Tf_projector::Fv_ray;
 
-  boost::python::class_<Tf__base, boost::python::bases<Tf__pure> >("RenderPierceBasic" )
+  boost::python::class_<Tf_projector, boost::python::bases<Tf__pure> >("RenderPierceProjector" )
     .def( boost::python::init<>() )
   //.def( boost::python::init<GT_coord>() )
    .def("camera",  I_setCamera  )
- //.def("camera",  &Tf__base::F_camera   )
+ //.def("camera",  &Tf__projector::F_camera   )
    .def("ray",     I_setRay     )
- //.def("ray",     &Tf__base::F_ray      )
+ //.def("ray",     &Tf__projector::F_ray      )
   ;
 
  }

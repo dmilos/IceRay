@@ -31,6 +31,7 @@
              typedef GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar     T_coord;
 
              typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base   T_geometry;
+             typedef GS_DDMRM::S_IceRay::S_geometry::S__type::GC_state   T_state;
 
              typedef GS_DDMRM::S_IceRay::S_material::S_medium::GC__pure    T_medium;
              typedef GS_DDMRM::S_IceRay::S_material::S_pigment::GC__pure   T_pigment;
@@ -40,38 +41,20 @@
                       GC__pure(){}
              virtual ~GC__pure(){}
 
-          public:
+           public:
              using T_geometry::Fv_reset;
              using T_geometry::Fv_weight;
-          public:
+           public:
              using T_material::Fv_color;
              using T_material::Fv_maxNextRays;
 
            public:
-             T_size const& F_maxRayPerHit( )const
-              {
-               return M2_maxRayPerHit;
-              }
-           protected:
-             T_size & F1_maxRayPerHit( )
-              {
-               return M2_maxRayPerHit;
-              }
-           private:
-             T_size M2_maxRayPerHit=1000;
-
-           public:
-             bool Fv_attenuate( T_color & P_result, T_color & P_deplete, T_coord const& P_start, T_coord const& P_end )const
-              {
-               return false;
-              }
-
-             T_material & F_material()
+             T_geometry & F_geometry()
               {
                return *this;
               }
 
-             T_geometry & F_geometry()
+             T_material & F_material()
               {
                return *this;
               }

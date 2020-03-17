@@ -39,9 +39,9 @@
          private:
            T_spot M2_spot;
 
-         public:  // property coord  origin
-           T_coord   const& F_origin()const{ return M2_spot.F_center(); }
-           bool             F_origin( T_coord const& P_position ){ return M2_spot.F_center( P_position ); }
+         public:  // property coord  center
+           T_coord   const& F_center()const{ return M2_spot.F_center(); }
+           bool             F_center( T_coord const& P_position ){ return M2_spot.F_center( P_position ); }
 
           public:  // property coord  x
             T_coord    const& F_x()const{ return M2_x; }

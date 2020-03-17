@@ -37,7 +37,7 @@ void expose_IceRay_material_illumination_hs_lambert()
   boost::python::scope I_scope = I_this;
 
   boost::python::enum_<GTs_HeidrichSeidelLambert::Ee_input>("Input")
-    .value( "LightCount",     GTs_HeidrichSeidelLambert::En_inSize_LightCount    )
+    .value( "LightCount",     GTs_HeidrichSeidelLambert::En_inSize_SpotCount    )
     .value( "Diffuse",        GTs_HeidrichSeidelLambert::En_inColor_Diffuse      )
     .value( "Normal",         GTs_HeidrichSeidelLambert::En_inCoord_Normal       )
     .value( "Groove",         GTs_HeidrichSeidelLambert::En_inCoord_Groove       )

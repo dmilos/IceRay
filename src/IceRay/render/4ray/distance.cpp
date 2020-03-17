@@ -1,6 +1,7 @@
 #include <limits>
 
 #include "./distance.hpp"
+ #include "../../geometry/volumetric/vacuum.hpp"
 
 using namespace GS_DDMRM::S_IceRay::S_render::S_ray;
 
@@ -9,7 +10,7 @@ using namespace GS_DDMRM::S_IceRay::S_render::S_ray;
 
 
 GC_distance::GC_distance()
- :M2_geometry( &GC_distance::Fs_vacuum() )
+ :M2_geometry( &GC_distance::Fs_geometry() )
  {
   M2_clip.lo() =  1;
   M2_clip.hi() =  2;
@@ -62,8 +63,9 @@ GC_distance::F1_geometry( )
   return M2_geometry;
  }
 
-GC_distance::T1_vacuum & GC_distance::Fs_vacuum()
+GC_distance::T_state & GC_distance::Fs_geometry()
  {
-  static T1_vacuum Is_vacuum;
+  typedef GS_DDMRM::S_IceRay::S_geometry::GC_vacuum Tf_vacuum;
+  static Tf_vacuum Is_vacuum;
   return Is_vacuum;
  }

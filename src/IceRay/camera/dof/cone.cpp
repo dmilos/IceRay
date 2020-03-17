@@ -8,9 +8,16 @@ GS_DDMRM::S_IceRay::S_utility::S_table::GC_hexagon GC_cone::M2s_hexagon( 20 );
 
 
 GC_cone::GC_cone()
- :GC_cone( nullptr, 1, 0, 1 )
+ :GC_cone( &Fs_child(), 1, 0, 1 )
  {
  }
+
+GC_cone::GC_cone( T_size const& P_sample, T_scalar const& P_aperture )
+  :GC__parent( nullptr, P_sample )
+{
+  F_aperture( P_aperture );
+  F_gauss( 1 );
+}
 
 GC_cone::GC_cone( T__pure *P_camera, T_size const& P_sample, T_scalar const& P_aperture )
   :GC__parent( P_camera, P_sample )

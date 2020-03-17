@@ -9,11 +9,11 @@ using namespace GS_DDMRM::S_IceRay::S_light;
 
 GC_reflector::GC_reflector( )
  :M2_direction( ::math::linear::vector::fill( M2_direction, 0 ) )
- ,M2_innner( ::math::geometry::deg2rad( 0 ) )
+ ,M2_inner( ::math::geometry::deg2rad( 0 ) )
  ,M2_outter( ::math::geometry::deg2rad( 90 ) )
  {
   M2_direction[0] = 1;
-  M2_innner = cos( M2_innner );
+  M2_inner = cos( M2_inner );
   M2_outter = cos( M2_outter );
  }
 
@@ -26,10 +26,10 @@ GC_reflector::GC_reflector
  )
  :M2_spot( P_position )
  ,M2_direction( P_direction )
- ,M2_innner( P_in )
+ ,M2_inner( P_in )
  ,M2_outter( P_out )
  {
-  M2_innner = cos( M2_innner );
+  M2_inner = cos( M2_inner );
   M2_outter = cos( M2_outter );
  }
 
@@ -42,17 +42,17 @@ GC_reflector::GC_reflector
  )
  :M2_spot( P_spot )
  ,M2_direction( P_direction )
- ,M2_innner( P_in )
+ ,M2_inner( P_in )
  ,M2_outter( P_out )
  {
   ::math::linear::vector::length( M2_direction, P_direction, T_scalar(1) );
 
-  if( M2_innner > M2_outter )
+  if( M2_inner > M2_outter )
    {
-    std::swap( M2_innner, M2_outter );
+    std::swap( M2_inner, M2_outter );
    }
 
-  M2_innner = cos( M2_innner );
+  M2_inner = cos( M2_inner );
   M2_outter = cos( M2_outter );
  }
 
@@ -83,13 +83,13 @@ GC_reflector::Fv_swarm
     I_alfa = Is_small;
    }
 
-  if( M2_innner < I_alfa  )
+  if( M2_inner < I_alfa  )
    {
     I_alfa = T_scalar( 1 ) ;
    }
    else
     {
-     I_alfa=( I_alfa - M2_outter ) / ( M2_innner - M2_outter );
+     I_alfa=( I_alfa - M2_outter ) / ( M2_inner - M2_outter );
      I_alfa = I_alfa*I_alfa*( T_scalar( 3 ) - I_alfa - I_alfa );
     }
 

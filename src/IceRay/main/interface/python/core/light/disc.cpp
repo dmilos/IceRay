@@ -30,8 +30,8 @@ void expose_IceRay_light_Disc()
   typedef  GTs_coord3D const& (GTs_disc::*Tf_getCoord  )(void) const;
   typedef  bool (GTs_disc::*Tf_setCoord  )(GTs_coord3D const&);
 
-  Tf_getCoord I_getOrigin = &GTs_disc::F_origin;
-  Tf_setCoord I_setOrigin = &GTs_disc::F_origin;
+  Tf_getCoord I_getCenter = &GTs_disc::F_center;
+  Tf_setCoord I_setCenter = &GTs_disc::F_center;
   Tf_getCoord I_getX = &GTs_disc::F_x;
   Tf_setCoord I_setX = &GTs_disc::F_x;
   Tf_getCoord I_getY = &GTs_disc::F_y;
@@ -46,8 +46,8 @@ void expose_IceRay_light_Disc()
     .def( boost::python::init<>() )
     .def( boost::python::init<GTs_spot,GTs_coord3D,GTs_coord3D>() )
     .def( boost::python::init<GTs_spot,GTs_coord3D,GTs_coord3D,GTs_size>() )
-    .def("origin",   I_getOrigin, boost::python::return_value_policy<boost::python::copy_const_reference>() )
-    .def("origin",   I_setOrigin    )
+    .def("center",   I_getCenter, boost::python::return_value_policy<boost::python::copy_const_reference>() )
+    .def("center",   I_setCenter    )
 
     .def("spot",   I_getSpot, boost::python::return_value_policy<boost::python::copy_const_reference>() )
     .def("spot",   I_setSpot    )

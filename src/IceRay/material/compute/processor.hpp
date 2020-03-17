@@ -1,6 +1,8 @@
 #ifndef Dh_DDMRM_Iceray_material_compute_processor_HPP_
  #define Dh_DDMRM_Iceray_material_compute_processor_HPP_
 
+// GS_DDMRM::S_IceRay::S_material::S_compute::GC_processor
+
  #include "./instruction.hpp"
  #include "./program.hpp"
  #include "./memory.hpp"

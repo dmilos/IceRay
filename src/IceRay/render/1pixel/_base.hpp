@@ -10,6 +10,8 @@
  #include "./strategy/center.hpp"
  #include "./filter/const.hpp"
 
+ #include "../2pierce/_pure.hpp"
+
 
 
  namespace GS_DDMRM
@@ -21,7 +23,7 @@
        namespace S_pixel
         {
 
-         class GC__base
+         class GC__base // !< change name 
           : public GS_DDMRM::S_IceRay::S_render::S_pixel::GC__pure
           {
            public:
@@ -30,6 +32,8 @@
 
              typedef GS_DDMRM::S_IceRay::S_render::S_pixel::S_strategy::GC__pure T_strategy;
              typedef GS_DDMRM::S_IceRay::S_render::S_pixel::S_filter::GC__pure T_filter;
+
+             typedef GS_DDMRM::S_IceRay::S_render::S_pierce::GC__pure T_pierce;
 
              typedef GC__base T__base, T_this;
 
@@ -41,6 +45,14 @@
               @param P_cell &sin; [0,width-1]x[0,height-1]
              */
              virtual void Fv_render( T_color & P_color, T_cell const& P_cell );
+
+           public:
+             void         F_pierce( T_pierce * P_pierce );
+             T_pierce &   F_pierce( );
+           private:
+             T_pierce* M2_pierce;
+           public:
+             static T_pierce & Fs_pierce( );
 
            public:
              void           F_strategy( T_strategy * P_strategy );

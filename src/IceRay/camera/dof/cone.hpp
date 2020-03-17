@@ -30,6 +30,7 @@
 
            public:
              GC_cone( );
+             GC_cone( T_size const& P_sample, T_scalar const& P_aperture );
              GC_cone( T__pure *P_camera, T_size const& P_sample, T_scalar const& P_aperture );
              GC_cone( T__pure *P_camera, T_size const& P_sample, T_scalar const& P_aperture, T_scalar const& P_gauss );
              ~GC_cone();

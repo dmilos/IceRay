@@ -108,11 +108,10 @@
 
                    I_summae += I_color;
 
-
-                   for( T_size I_lightIndex=0; I_lightIndex < I_spotCount; ++I_lightIndex )
+                   for( T_size I_spotIndex=0; I_spotIndex < I_spotCount; ++I_spotIndex )
                     {
-                     T_color I_energy;
-                     T_spot const& I_spot = M2_memorySpot->Fv_load( I_lightIndex );
+                     T_spot const& I_spot = M2_memorySpot->Fv_load( I_spotIndex );
+
                      I_spot.F_energy( I_energy, I_point );
                       ::math::linear::vector::subtraction( I_2light, I_spot.F_center(), I_point );
                      ::math::linear::vector::length( I_2light , T_scalar(1) );
@@ -126,8 +125,8 @@
                        auto const& I_ray = P_next.Fv_get( I_rayIndex );
                        T_coord const& I_origin = I_ray.M_origin;
 
-                       M2_memorySpot->Fv_load( I_lightIndex ).F_energy( I_energy, I_origin );
-                       ::math::linear::vector::subtraction( I_2light, M2_memorySpot->Fv_load( I_lightIndex ).F_center(), I_origin );
+                       I_spot.F_energy( I_energy, I_origin );
+                       ::math::linear::vector::subtraction( I_2light, I_spot.F_center(), I_origin );
                        ::math::linear::vector::length( I_2light , T_scalar(1) );
                        if( true == I_phong.F_process( I_color, I_energy, I_ray.M_direction, I_2light ) )
                         {

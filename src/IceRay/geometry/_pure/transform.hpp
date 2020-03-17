@@ -37,20 +37,20 @@
              // return is live as long P_state is live. One depth only. Use fragment to reach leaf.
              virtual T_affine const&  Fv_2world( T_state const&P_state )const
               {
-               return Fs_identical();
+               return Fs_identity();
               }
 
              // return is live as long P_state is live. One depth only. Use fragment to reach leaf.
              virtual T_affine const&  Fv_2local( T_state const&P_state )const
               {
-               return Fs_identical();
+               return Fs_identity();
               }
 
            public:
-             static T_affine const& Fs_identical()
+             static T_affine const& Fs_identity ()
               {
-               static T_affine Irs_identical = ::math::linear::affine::id( T_affine{} );
-               return  Irs_identical;
+               static T_affine Irs_identity  = ::math::linear::affine::id( T_affine{} );
+               return  Irs_identity;
               }
           };
 

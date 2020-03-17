@@ -14,6 +14,22 @@ GC_focus::GC_focus ()
   M2_gauss    = 1;
  }
 
+GC_focus::GC_focus( T_size const& P_sample, T_interval1D const& P_aperture, T_interval1D const& P_focus, T_scalar const& P_gauss )
+: GC__parent( nullptr, P_sample)
+ {
+  F_aperture( P_aperture );
+  F_gauss( P_gauss );
+  F_focus( P_focus );
+ }
+
+GC_focus::GC_focus( T__pure *P_camera, T_size const& P_sample, T_interval1D const& P_aperture, T_interval1D const& P_focus )
+: GC__parent( P_camera, P_sample)
+ {
+  F_aperture( P_aperture );
+  F_gauss( 1 );
+  F_focus( P_focus );
+ }
+
 GC_focus::GC_focus( T__pure *P_camera, T_size const& P_sample, T_interval1D const& P_aperture, T_interval1D const& P_focus, T_scalar const& P_gauss )
 : GC__parent( P_camera, P_sample)
  {

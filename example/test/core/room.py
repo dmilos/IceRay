@@ -435,8 +435,8 @@ def cornell_open( P_geometry, P_light, P_surfaceExponat, P_surfaceRoom, P_medium
     move       = [ 0, 0, (1+1+1 + (math.sqrt(5)-1)/2 )/2-1 ]
     I_dimension= [ 5, 5, (1+1+1 + (math.sqrt(5)-1)/2 ) ]
 
-    move       = [ 0, 0, 2.2 ]
-    I_dimension= [ 6.5, 6.5, 6.5 ]
+    I_dimension= [ 4*((math.sqrt(5)-1)/2+1), 4*((math.sqrt(5)-1)/2+1), 4 ]
+    move       = [ 0, 0, I_dimension[2]/2 - 1 ]
 
     lo = IceRayCpp.MathTypeCoord3D().load(123,123,123)
     lo[0] = -I_dimension[0]/2 + move[0]

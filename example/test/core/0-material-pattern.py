@@ -36,6 +36,7 @@ from geometry.simple.ellipsoid.unit import make
 from geometry.simple.torus.unit import make
 from geometry.simple.triangle.unit import make
 from geometry.simple.usphere.unit import make
+from geometry.simple.ucylinder.unit import make
 
 from geometry.volumetric.smoke.unit import make
 from geometry.volumetric.vacuum.unit import make
@@ -50,22 +51,23 @@ from geometry.transform.mblur.unit      import make
 from geometry.transform.translate.unit  import *
 from geometry.transform.affine.unit     import *
 from geometry.transform.projective.unit import *
+from geometry.transform.identity.unit  import *
 
-from  material.operation.mapping.cartesian2cylindric  import make
-from  material.operation.mapping.cartesian2package    import make
-from  material.operation.mapping.cartesian2spherical  import make
-from  material.operation.mapping.cartesian2tablecloth import make
-from  material.operation.mapping.cartesian2torus      import make
-from  material.operation.mapping.cylindric2cartesian  import make
-from  material.operation.mapping.cylindric2spherical  import make
-from  material.operation.mapping.spherical2cartesian  import make
-from  material.operation.mapping.spherical2cylindric  import make
-from  material.operation.mapping.cartesian2woodX      import make
-from  material.operation.mapping.cartesian2woodY      import make
-from  material.operation.mapping.cartesian2woodZ      import make
-from  material.operation.mapping.cartesian2fisheye    import make
-from  material.operation.mapping.euclid2max           import make
-from  material.operation.mapping.max2euclid           import make
+from material.operation.mapping.cartesian2cylindric  import make
+from material.operation.mapping.cartesian2package    import make
+from material.operation.mapping.cartesian2spherical  import make
+from material.operation.mapping.cartesian2tablecloth import make
+from material.operation.mapping.cartesian2torus      import make
+from material.operation.mapping.cylindric2cartesian  import make
+from material.operation.mapping.cylindric2spherical  import make
+from material.operation.mapping.spherical2cartesian  import make
+from material.operation.mapping.spherical2cylindric  import make
+from material.operation.mapping.cartesian2woodX      import make
+from material.operation.mapping.cartesian2woodY      import make
+from material.operation.mapping.cartesian2woodZ      import make
+from material.operation.mapping.cartesian2fisheye    import make
+from material.operation.mapping.euclid2max           import make
+from material.operation.mapping.max2euclid           import make
 
 import material.pattern.unit
 import material.pattern.noise.unit
@@ -78,7 +80,8 @@ from light.area.unit        import make
 from light.disc.unit        import make
 from light.line.unit        import make
 from light.point.unit       import make, makeX, makeY
-from light.sun.unit         import point, circle
+from light.sun.general      import point, circle
+from light.sun.spot         import make
 from light.reflector.unit   import make
 from light.spline.unit      import make
 from light.sphere.unit      import make
@@ -131,22 +134,23 @@ from camera.invert.unit                 import cylinder
 
 light_list = {
        #'dark'       : light.dark.unit.make,
-       #'point'      : light.point.unit.makeZ,
-        'line'       : light.line.unit.make,
-       'reflector'  : light.reflector.unit.make,
+       'point'      : light.point.unit.makeZ,
+       #'line'       : light.line.unit.make,
+       #'reflector'  : light.reflector.unit.make,
        #'circle'     : light.circle.unit.make,
        #'area'       : light.area.unit.make,
        #'disc'       : light.disc.unit.make,
-       #'sunArea'    : light.sun.unit.area,
-       #'sunCircle'  : light.sun.unit.circle,
-       #'sunDisc'    : light.sun.unit.disc,
-       #'sunLine'    : light.sun.unit.line,
-       #'sunPoint'   : light.sun.unit.point,
+        'sunArea'    : light.sun.general.area,
+        'sunCircle'  : light.sun.general.circle,
+        'sunDisc'    : light.sun.general.disc,
+        'sunLine'    : light.sun.general.line,
+        'sunPoint'   : light.sun.general.point,
+        'sunSpot'    : light.sun.spot.make,
        #'spline'     : light.spline.unit.make,
        #'sphere'     : light.sphere.unit.make,
-        'chandelier-H'  : light.chandelier.unit.hexa,
+       #'chandelier-H'  : light.chandelier.unit.hexa,
        #'chandelier-T'  : light.chandelier.unit.tetra,
-      #'chandelier-O'  : light.chandelier.unit.octa
+       #'chandelier-O'  : light.chandelier.unit.octa
 }
 
 geometry_list = {
@@ -156,30 +160,32 @@ geometry_list = {
       #
       ##'hfield-theone'     :geometry.hfield.unit.theone,
       ##'hfield-function'     :geometry.hfield.unit.funktion,
+       #'box'        :geometry.simple.box.unit.make,
+       'usphere'    :geometry.simple.usphere.unit.make,
+      #'ucylinder'    :geometry.simple.ucylinder.unit.make,
       #'blobby'     :geometry.blobby.unit.make,
       #'sphere'     :geometry.simple.sphere.unit.make,
       #'ellipsoid'  :geometry.simple.ellipsoid.unit.make,
-       'usphere'    :geometry.simple.usphere.unit.make,
       #'plane'      :geometry.simple.plane.unit.make,
-      #'box'        :geometry.simple.box.unit.make,
-      #'disc'       :geometry.simple.disc.unit.make,
-      #
-      #'transform-translate-identical'  :geometry.transform.translate.unit.identical,
+      #disc'       :geometry.simple.disc.unit.make,
+
+      #'transform-identity'  :geometry.transform.identity.unit.make,
+
+      #'transform-translate-identity'   :geometry.transform.translate.unit.identical,
       #'transform-translate-make'       :geometry.transform.translate.unit.make,
-      #
-      #'transform-affine-identical'     :geometry.transform.affine.unit.identical,
+
+      #'transform-affine-identity'      :geometry.transform.affine.unit.identical,
       #'transform-affine-uniform'       :geometry.transform.affine.unit.uniform,
       #'transform-affine-translate'     :geometry.transform.affine.unit.translate,
       #'transform-affine-make'          :geometry.transform.affine.unit.make,
-      #
-      #'transform-projective-identical' :geometry.transform.projective.unit.identical,
+
+      #'transform-projective-identity'  :geometry.transform.projective.unit.identical,
       #'transform-projective-uniform'   :geometry.transform.projective.unit.uniform,
       #'transform-projective-translate' :geometry.transform.projective.unit.translate,
-      #
+
       #'transform-mblur'      :geometry.transform.mblur.unit.make,
       #'intersect'            :geometry.complex.intersect.unit.make,
-      #
-      #
+
       #'cylinder'   :geometry.simple.cylinder.unit.make,
       #'cone':       geometry.simple.cone.unit.make,
       #'paraboloid': geometry.simple.paraboloid.unit.make,
@@ -189,6 +195,7 @@ geometry_list = {
       #'hyper-cylinder': geometry.simple.hyperboloid.unit.cylinder,
       #'hyper-negative': geometry.simple.hyperboloid.unit.negative,
       #'saddle'         : geometry.simple.saddle.unit.make,
+      #'quadric-planeZ':        geometry.simple.quadric.unit.planeZ,
       #'quadric-sphere':        geometry.simple.quadric.unit.sphere,
       #'quadric-paraboloid':    geometry.simple.quadric.unit.paraboloid,
       #'quadric-hyperboloid':   geometry.simple.quadric.unit.hyperboloid,
@@ -277,23 +284,23 @@ surface_list = {
         #'reflectBGrid'          : material.transmission.blossom.grid.unit.make,
         #'reflectBRand'          : material.transmission.blossom.random.unit.make,
         #'reflectBVDC'           : material.transmission.blossom.vdc.unit.make,
+        #'illum-ALP'             : material.illumination.alp.unit.make,
+        #'illum-AshShiCmpl'      : material.illumination.AshShi.unit.make_complete,
+        #'illum-AshShiDif'       : material.illumination.AshShi.unit.make_diffuse,
+        #'illum-AshShiSpec'      : material.illumination.AshShi.unit.make_specular,
+        #'illum-ambient'         : material.illumination.ambient.unit.make,
+        #'illum-beckmann'        : material.illumination.beckmann.unit.make,
+        #'illum-blinn'           : material.illumination.blinn.unit.make,
+        #'illum-gaussian'        : material.illumination.gaussian.unit.make,
+        #'illum-hs-lambert'      : material.illumination.hs.unit.make_HSLambert,
+        #'illum-hs-phong'        : material.illumination.hs.unit.make_HSPhong,
+         'illum-lambert'         : material.illumination.lambert.unit.make,
+        #'illum-phong'           : material.illumination.phong.unit.make,
+        #'illum-ONp44'           : material.illumination.on.unit.make_p44,
+        #'illum-ONf29'           : material.illumination.on.unit.make_f29,
         #'illum-ward-aprox'      : material.illumination.ward.unit.make_aprox,
         #'illum-ward-real'       : material.illumination.ward.unit.make_real,
         #'illum-ward-iso'        : material.illumination.ward.unit.make_isotropic,
-        #'illum-ambient'         : material.illumination.ambient.unit.make,
-        #'illum-lambert'         : material.illumination.lambert.unit.make,
-         'illum-phong'           : material.illumination.phong.unit.make,
-        #'illum-ALP'             : material.illumination.alp.unit.make,
-        #'illum-gaussian'        : material.illumination.gaussian.unit.make,
-        #'illum-blinn'           : material.illumination.blinn.unit.make,
-        #'illum-beckmann'        : material.illumination.beckmann.unit.make,
-        #'illum-hs-lambert'      : material.illumination.hs.unit.make_HSLambert,
-        #'illum-hs-phong'        : material.illumination.hs.unit.make_HSPhong,
-        #'illum-ONp44'           : material.illumination.on.unit.make_p44,
-        #'illum-ONf29'           : material.illumination.on.unit.make_f29,
-        #'illum-AshShiCmpl'      : material.illumination.AshShi.unit.make_complete,
-        #'illum-AshShiDif'       : material.illumination.AshShi.unit.make_diffuse,
-        #'illum-AshShiSpec'      : material.illumination.AshShi.unit.make_specular
      }
 
 camera_list = {
@@ -349,7 +356,7 @@ def doRendering(P_config):
                        l = light_make( data_light() );
                        s = data_surface( l )
                        c = kamera.make( data_camera()
-                                , P_config['camera']['eye'], P_config['camera']['view'],
+                                 , P_config['camera']['eye'], P_config['camera']['view'],
                         )
                        name = key_room +"-"+ key_camera +'-'+key_geometry +"-"+ key_surface+"-" + key_light
 
@@ -418,7 +425,7 @@ for i in range( start, 360, step ):
                    'index' : i,
                    'pixelStrategyGridSize': 1,
                    'ray-trace-depth': 32,
-                   'image': { 'scale': 1, 'width': 600, 'height': 600 },
+                   'image': { 'scale': 1, 'width': 800, 'height': 800 },
                    #'room' { 'size':[1,1,1], 'move':[0,0,0]}
                    'camera': {
                        'eye' : IceRayCpp.MathTypeCoord3D().load( x, y, height )

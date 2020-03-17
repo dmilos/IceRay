@@ -26,7 +26,7 @@
                         M2_b = 0.5*0.002;
                        }
 
-                      GC_linear( T_color const& P_value, T_scalar const P_c0, T_scalar const& P_c1 )
+                      GC_linear( T_color const& P_value, T_scalar const& P_c0, T_scalar const& P_c1 )
                        {
                         M2_value = P_value;
                         M2_a = P_c1;

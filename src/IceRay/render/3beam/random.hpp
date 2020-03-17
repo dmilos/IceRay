@@ -17,10 +17,11 @@
           {
            public:
 
-             GC_random();
-             virtual ~GC_random();
+             GC_random(){}
+             virtual ~GC_random(){}
 
-             virtual void Fv_do( T_color & P_color, T_beam const& );
+           public:
+             virtual void Fv_do( T_color & P_color, T_beam const& ){}
 
           };
 

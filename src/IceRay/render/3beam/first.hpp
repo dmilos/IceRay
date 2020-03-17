@@ -16,11 +16,11 @@
           : public GC__pure
           {
            public:
+             GC_first(){}
+             virtual ~GC_first(){}
 
-             GC_first();
-             virtual ~GC_first();
-
-             virtual void Fv_do( T_color & P_color, T_beam const& );
+           public:
+             virtual void Fv_do( T_color & P_color, T_beam const& ){}
 
           };
 

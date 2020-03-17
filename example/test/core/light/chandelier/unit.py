@@ -38,7 +38,7 @@ def tetra( P_radius = 1 + 1 + (math.sqrt(5)-1)/2 ):
 
     return { 'this': chandelier, '1': pointL, '2': pointR, '3': pointF, '4': pointB }
 
-def octa( P_edge = 1 + 1 + (math.sqrt(5)-1)/2 ):
+def octa(  P_edge   = 1 + 1 + (math.sqrt(5)-1)/2):
     chandelier = IceRayCpp.LightChandelier()
 
     point000 = IceRayCpp.LightPoint(  )
@@ -69,19 +69,19 @@ def octa( P_edge = 1 + 1 + (math.sqrt(5)-1)/2 ):
     point011.spot( spot )
 
     spot._0(  IceRayCpp.GraphTypeColorRGB().load( 1,0,0 ) )
-    spot.center( IceRayCpp.MathTypeCoord3D().load( -P_edge, -P_edge, -P_edge ) )
+    spot.center( IceRayCpp.MathTypeCoord3D().load( -P_edge, -P_edge, +P_edge ) )
     point100.spot( spot )
 
     spot._0(  IceRayCpp.GraphTypeColorRGB().load( 1,0,1 ) )
-    spot.center( IceRayCpp.MathTypeCoord3D().load( +P_edge, -P_edge, -P_edge ) )
+    spot.center( IceRayCpp.MathTypeCoord3D().load( +P_edge, -P_edge, +P_edge ) )
     point101.spot( spot )
 
     spot._0(  IceRayCpp.GraphTypeColorRGB().load( 1,1,0 ) )
-    spot.center( IceRayCpp.MathTypeCoord3D().load( -P_edge, +P_edge, -P_edge ) )
+    spot.center( IceRayCpp.MathTypeCoord3D().load( -P_edge, +P_edge, +P_edge ) )
     point110.spot( spot )
 
     spot._0(  IceRayCpp.GraphTypeColorRGB().load( 1,1,1 ) )
-    spot.center( IceRayCpp.MathTypeCoord3D().load( +P_edge, +P_edge, -P_edge ) )
+    spot.center( IceRayCpp.MathTypeCoord3D().load( +P_edge, +P_edge, +P_edge ) )
     point111.spot( spot )
 
     chandelier.add( point000 )
@@ -99,7 +99,7 @@ def octa( P_edge = 1 + 1 + (math.sqrt(5)-1)/2 ):
 
       }
 
-def hexa( P_radius = 1 + 1 + (math.sqrt(5)-1)/2 ):
+def hexa( P_radius  = 1 + 1 + (math.sqrt(5)-1)/2 ):
 
     chandelier = IceRayCpp.LightChandelier()
 

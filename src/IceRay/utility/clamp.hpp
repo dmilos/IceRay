@@ -48,9 +48,20 @@
             typedef GS_DDMRM::S_IceRay::S_type::GT_scalar T_scalar;
             T_scalar   operator()( T_scalar const&P_value )const
              {
-              return ::math::function::wave(P_value);
+              return ::math::function::wave( P_value );
              }
           };
+
+         // TODOclass GC_sinkhole
+         // TODO {
+         // TODO  public:
+         // TODO   typedef GS_DDMRM::S_IceRay::S_type::GT_scalar T_scalar;
+         // TODO   T_scalar   operator()( T_scalar const&P_value )const
+         // TODO    {
+         // TODO     return ::math::function::sinkhole( P_value );
+         // TODO    }
+         // TODO };
+
 
         }
       }

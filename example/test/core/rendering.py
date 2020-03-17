@@ -114,7 +114,7 @@ def work( P_name, P_room, P_config, P_geometry, P_light, P_camera, P_surface ):
     else:
         cargo_engine['this'].pixelStrategy().size( 1 )
 
-    cargo_engine['this'].scannerGet().hot( IceRayCpp.MathTypeSize2D( ).load( 800, 400 ) )
+    cargo_engine['this'].scannerGet().hot( IceRayCpp.MathTypeSize2D( ).load( 400, 320 ) )
 
     sys.stdout.flush()
 

@@ -144,8 +144,8 @@ void expose_IceRay_material_compute_operation_mapping()
   MAKE_SUBMODULE( material );
   MAKE_SUBMODULE( convert );
 
-  typedef  GS_DDMRM::S_IceRay::S_material::S_compute::S_mapping::GT_identical    GTs_identical;
-  typedef boost::python::class_< GTs_identical, boost::python::bases< GTs_instruction > > ( "MaterialCoord3DMappingIdentical" )
+  typedef  GS_DDMRM::S_IceRay::S_material::S_compute::S_mapping::GT_identity    GTs_identity;
+  typedef boost::python::class_< GTs_identity, boost::python::bases< GTs_instruction > > ( "MaterialCoord3DMappingIdentity" )
     .def( boost::python::init<>() )
     .def( boost::python::init< GTs_size,GTs_size>( ) )
     ;

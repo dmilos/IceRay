@@ -6,5 +6,6 @@
 typedef struct IceRayC_TypeAffine1D{ IceRayC_TypeScalar value[2][2];  } IceRayC_TypeAffine1D;
 typedef struct IceRayC_TypeAffine2D{ IceRayC_TypeScalar value[3][3];  } IceRayC_TypeAffine2D;
 typedef struct IceRayC_TypeAffine3D{ IceRayC_TypeScalar value[4][4];  } IceRayC_TypeAffine3D;
+typedef struct IceRayC_TypeAffine4D{ IceRayC_TypeScalar value[5][5];  } IceRayC_TypeAffine4D;
 
 #endif

@@ -38,7 +38,7 @@ typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_illumination::GC_lambert   
   boost::python::scope I_scope = I_this;
 
   boost::python::enum_<GTs_lambert::Ee_input>( "Input" )
-    .value( "LightCount",     GTs_lambert::En_inSize_LightCount  )
+    .value( "LightCount",     GTs_lambert::En_inSize_SpotCount   )
     .value( "diffuse",        GTs_lambert::En_inColor_Diffuse    )
     .value( "point",          GTs_lambert::En_inCoord_Point      )
     .value( "normal",         GTs_lambert::En_inCoord_Normal     )

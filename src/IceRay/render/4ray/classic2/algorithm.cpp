@@ -30,7 +30,7 @@ GC_algorithm::~GC_algorithm( )
     std::cout << "Traced:     " << PRINT(M2_statistic.M_traced    ) << std::endl;
     std::cout << "Discarded:  " << PRINT(M2_statistic.M_discarded ) << std::endl;
     std::cout << "Eye:        " << PRINT(M2_statistic.M_eye       ) << std::endl;
-    std::cout << "Reflected:  " << PRINT(M2_statistic.M_refracted ) << std::endl;
+    std::cout << "Reflected:  " << PRINT(M2_statistic.M_reflected ) << std::endl;
     std::cout << "Refracted:  " << PRINT(M2_statistic.M_refracted ) << std::endl;
   //std::cout << "Too far:    " << PRINT(M2_statistic.M_2far      ) << std::endl;
     std::cout << "Too deep:   " << PRINT(M2_statistic.M_2deep     ) << std::endl;
@@ -70,8 +70,8 @@ bool GC_algorithm::F_depth( T_size const& P_depth )
   I_reseve += 1; //!< First ray;
   I_reseve += 1; //!< Candidate
 
-  I_reseve += M2_object->F_maxRayPerHit() * F_depth(); //!< Other rays
-  I_reseve += M2_object->F_maxRayPerHit() ; //!< Rejected
+  I_reseve += M2_object->Fv_maxNextRays() * F_depth(); //!< Other rays
+  I_reseve += M2_object->Fv_maxNextRays() ; //!< Rejected
 
   I_reseve += 1; //!< Lights
 

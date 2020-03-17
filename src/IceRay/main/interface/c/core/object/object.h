@@ -6,15 +6,16 @@
 #include "../material/material.h"
 #include "../geometry/geometry.h"
 
-typedef  void * IceRayC_Object;
 
 struct IceRayC_ObjectStruct {};
-typedef IceRayC_ObjectStruct* IceRayC_ObjectHandle;
+typedef IceRayC_ObjectStruct* IceRayC_Object_Handle;
 
-IceRayC__EXPORT IceRayC__DECLSPEC  void IceRayC_Object_Release( IceRayC_ObjectHandle );
+IceRayC__EXPORT IceRayC__DECLSPEC  void                   IceRayC_Object_Release( IceRayC_Object_Handle P_this );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Object_Handle  IceRayC_Object0();
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Object_Handle  IceRayC_Object1( IceRayC_Geometry_Handle P_geometry );
+IceRayC__EXPORT IceRayC__DECLSPEC  int                    IceRayC_Object_Geometry( IceRayC_Object_Handle P_this, IceRayC_Geometry_Handle  P_gemetry );
+IceRayC__EXPORT IceRayC__DECLSPEC  int                    IceRayC_Object_Pigment( IceRayC_Object_Handle P_this, IceRayC_Material_PigmentHandle  P_pigment );
+IceRayC__EXPORT IceRayC__DECLSPEC  int                    IceRayC_Object_Medium( IceRayC_Object_Handle P_this, IceRayC_Material_MediumHandle  P_medium );
 
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_ObjectHandle  IceRayC_Object0( );
-
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_ObjectHandle  IceRayC_Object1( IceRayC_GeometryHandle P_geometry );
 
 #endif

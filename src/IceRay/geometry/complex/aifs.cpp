@@ -180,7 +180,7 @@ GC_AIFS::T_affine const&  GC_AIFS::Fv_2world( T_state const&P_state )const
   C_intersect const&I_intersect = P_state.F_content<C_intersect>();
   if( I_intersect.M_index == Fs_invalid() )
    {
-    return Fs_identical();
+    return Fs_identity();
    }
 
   return I_intersect.M_2world;
@@ -191,7 +191,7 @@ GC_AIFS::T_affine const&  GC_AIFS::Fv_2local( T_state const&P_state )const
   C_intersect const&I_intersect = P_state.F_content<C_intersect>();
   if( I_intersect.M_index == Fs_invalid() )
    {
-    return Fs_identical();
+    return Fs_identity();
    }
   return I_intersect.M_2local;
  }

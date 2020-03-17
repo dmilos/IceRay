@@ -3,30 +3,33 @@
 
 #include "../../system/system.h"
 
-typedef  void * IceRayC_RenderEnginePure;
-typedef  void * IceRayC_RenderScannerPure;
-typedef  void * IceRayC_RenderPixelPure;
-typedef  void * IceRayC_RenderPiercePure;
-typedef  void * IceRayC_RenderRayPure;
+struct  IceRayC_Render_EngineStruct {};
+typedef IceRayC_Render_EngineStruct* IceRayC_Render_EngineHandle;
+
+struct  IceRayC_Render_ScannerStruct {};
+typedef IceRayC_Render_ScannerStruct* IceRayC_Render_ScannerHandle;
+
+struct  IceRayC_Render_PixelStruct {};
+typedef IceRayC_Render_PixelStruct* IceRayC_Render_PixelHandle;
+
+struct  IceRayC_Render_PierceStruct {};
+typedef IceRayC_Render_PierceStruct* IceRayC_Render_PierceHandle;
+
+struct  IceRayC_Render_BeamStruct {};
+typedef IceRayC_Render_BeamStruct* IceRayC_Render_BeamHandle;
+
+struct  IceRayC_Render_RayStruct {};
+typedef IceRayC_Render_RayStruct* IceRayC_Render_RayHandle;
 
 
-IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_RenderEnginePure IceRayC_RenderEngine();
-IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_RenderEnginePure IceRayC_RenderEngine_Scanner(IceRayC_RenderEnginePure, IceRayC_RenderScannerPure );
-IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_RenderEnginePure IceRayC_RenderEngine_Pixel(IceRayC_RenderEnginePure, IceRayC_RenderPixelPure);
-IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_RenderEnginePure IceRayC_RenderEngine_Pierce(IceRayC_RenderEnginePure, IceRayC_RenderPiercePure);
-IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_RenderEnginePure IceRayC_RenderEngine_Ray(IceRayC_RenderEnginePure, IceRayC_RenderRayPure);
-
-IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_RenderEnginePure IceRayC_RenderEngine_Start();
-IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_RenderEnginePure IceRayC_RenderEngine_Stop();
-IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_RenderEnginePure IceRayC_RenderEngine_Progress();
-
-IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_RenderScannerPure IceRayC_RenderScannerBlock();
-IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_RenderScannerPure IceRayC_RenderScannerParallel();
-
-IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_RenderPixelPure IceRayC_RenderPixelBasic();
-
-IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_RenderPiercePure IceRayC_RenderPierceBasic();
-
-IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_RenderRayPure   IceRayC_CoreRenderRayC2A();
-
+IceRayC__EXPORT IceRayC__DECLSPEC  void IceRayC_RenderEngine_Release( IceRayC_Render_EngineHandle P_this );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Render_EngineHandle IceRayC_Render_Engine0();
+IceRayC__EXPORT IceRayC__DECLSPEC  int IceRayC_Render_Engine_Scanner( IceRayC_Render_EngineHandle P_this, IceRayC_Render_ScannerHandle P_scanner );
+IceRayC__EXPORT IceRayC__DECLSPEC  int IceRayC_Render_Engine_Pixel(IceRayC_Render_EngineHandle P_this, IceRayC_Render_PixelHandle P_pixel );
+IceRayC__EXPORT IceRayC__DECLSPEC  int IceRayC_Render_Engine_Pierce(IceRayC_Render_EngineHandle P_this, IceRayC_Render_PierceHandle P_perce );
+IceRayC__EXPORT IceRayC__DECLSPEC  int IceRayC_Render_Engine_Beam(IceRayC_Render_EngineHandle P_this, IceRayC_Render_BeamHandle P_beam );
+IceRayC__EXPORT IceRayC__DECLSPEC  int IceRayC_Render_Engine_Ray( IceRayC_Render_EngineHandle P_this, IceRayC_Render_RayHandle P_ray );
+IceRayC__EXPORT IceRayC__DECLSPEC  int IceRayC_Render_Engine_Start( IceRayC_Render_EngineHandle P_this );
+IceRayC__EXPORT IceRayC__DECLSPEC  int IceRayC_Render_Engine_Stop(IceRayC_Render_EngineHandle P_this);
+IceRayC__EXPORT IceRayC__DECLSPEC  int IceRayC_Render_Engine_Progress(IceRayC_Render_EngineHandle P_this);
 #endif

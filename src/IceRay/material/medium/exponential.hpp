@@ -54,7 +54,7 @@
 
            public:
              T_scalar    const& F_half()const{ return M2_half; }
-             bool              F_half( T_scalar const& P_half ){ M2_half = P_half; return true; }
+             bool               F_half( T_scalar const& P_half ){ M2_half = P_half; return true; }
            protected:
              T_scalar        & F1_half(){ return M2_half; }
            private:

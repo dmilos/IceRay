@@ -22,8 +22,13 @@ _!*
 *.bak
 /example/test/*.ppm
 /example/test/*.png
+/build/msvc/2015/.vs
+/build/msvc/2015/Debug
+/build/msvc/2015/Release
+/build/msvc/2015/x64
 /build/msvc/2017/.vs
 /build/msvc/2017/Debug
+/build/msvc/2017/Release
 /build/msvc/2017/x64
 /example/test/core/*.ppm
 /example/test/core/_!out

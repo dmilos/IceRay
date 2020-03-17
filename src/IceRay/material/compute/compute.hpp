@@ -5,3 +5,12 @@
 #include "./pattern/pattern.hpp"
 #include "./transform/transform.hpp"
 #include "./transmission/transmission.hpp"
+
+#include "./instruction.hpp"
+#include "./medium.hpp"
+#include "./memory.hpp"
+#include "./processor.hpp"
+#include "./program.hpp"
+#include "./raw.hpp"
+#include "./surface.hpp"
+

@@ -351,9 +351,6 @@
     <ClCompile Include="..\..\..\src\IceRay\light\spline.cpp">
       <Filter>Source Files\src\light</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\IceRay\light\sun.cpp">
-      <Filter>Source Files\src\light</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\IceRay\main\interface\handcode\main.cpp">
       <Filter>Source Files\src\main\interface\handcode</Filter>
     </ClCompile>
@@ -443,6 +440,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\IceRay\camera\dof\focus.cpp">
       <Filter>Source Files\src\camera\dof</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\light\suns.cpp">
+      <Filter>Source Files\src\light</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -785,9 +785,6 @@
     <ClInclude Include="..\..\..\src\IceRay\light\spline.hpp">
       <Filter>Source Files\src\light</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\src\IceRay\light\sun.hpp">
-      <Filter>Source Files\src\light</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\src\IceRay\light\_pure.hpp">
       <Filter>Source Files\src\light</Filter>
     </ClInclude>
@@ -991,6 +988,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\src\IceRay\material\compute\transmission\transmission.hpp">
       <Filter>Source Files\src\material\compute\transmission</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\light\suns.hpp">
+      <Filter>Source Files\src\light</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

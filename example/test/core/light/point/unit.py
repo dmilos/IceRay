@@ -4,7 +4,7 @@ import IceRayCpp
 def name( ):
     return "line"
 
-def make( P_height = 1+1 + (math.sqrt(5)-1)/2 ):
+def make( P_height = 1 + 1 + (math.sqrt(5)-1)/2 ):
 
     point = IceRayCpp.LightPoint()
 
@@ -49,7 +49,7 @@ def makeY( P_y = 1 + 1 + (math.sqrt(5)-1)/2 ):
 
     return { 'this': point }
 
-def makeZ( P_z = 1 + (math.sqrt(5)-1)/2 ):
+def makeZ( P_z = 1 + 1 + (math.sqrt(5)-1)/2 ):
 
     point = IceRayCpp.LightPoint()
 

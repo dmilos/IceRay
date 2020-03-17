@@ -25,7 +25,7 @@ def print_render_pierce_base(P_base):
 
 camera1 = IceRayCpp.CameraFlatPerspective()
     
-base1 = IceRayCpp.RenderPierceBasic()
+base1 = IceRayCpp.RenderPierceProjector()
 
 base1.camera( camera1 )
 

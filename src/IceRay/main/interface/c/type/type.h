@@ -8,3 +8,4 @@
 #include "./projective.h"
 #include "./scalar.h"
 #include "./size.h"
+#include "./picture.h"

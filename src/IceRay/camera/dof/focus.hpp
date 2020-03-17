@@ -28,8 +28,10 @@
 
             public:
               GC_focus ();
+              GC_focus( T_size const& P_sample, T_interval1D const& P_aperture, T_interval1D const& P_focus, T_scalar const& P_gauss );
+              GC_focus( T__pure *P_camera, T_size const& P_sample, T_interval1D const& P_aperture, T_interval1D const& P_focus );
               GC_focus( T__pure *P_camera, T_size const& P_sample, T_interval1D const& P_aperture, T_interval1D const& P_focus, T_scalar const& P_gauss );
-             ~GC_focus (){}
+              ~GC_focus (){}
 
             public:
               T_size  Fv_beam( T_beam & P_beam, T_coord2D const& P_uv )const;

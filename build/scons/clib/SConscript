@@ -84,6 +84,7 @@ settings.accumulate( 'compiler:warning', { 'member-order-initialization' : 'erro
 settings.accumulate( 'compiler:warning', { 'returning-address-of-local-variable' : 'error'  } )
 settings.accumulate( 'compiler:warning', { 'using-of-uninitialized-variable' : 'error'  } )
 
+
 #for clean up
 settings.accumulate( 'compiler:warning', { 'unused-variable'            : 'enable'  } )
 settings.accumulate( 'compiler:warning', { 'unused-local-typedefs'      : 'enable'  } )
@@ -101,6 +102,10 @@ cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'geome
 if( False ):
     pass
 
+cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'object', 'object.cpp' ) ]
+if( False ):
+    pass
+
 cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'light', 'light.cpp' ) ]
 if( False ):
     pass
@@ -112,6 +117,11 @@ if( False ):
 cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'render', 'render.cpp' ) ]
 if( False ):
     pass
+
+cc_files += [ os.path.join( 'main', 'interface', 'c', 'type', 'type.cpp' ) ]
+if( False ):
+    pass
+
 
 ### Deal with Scons ###
 
@@ -146,8 +156,8 @@ project_install_dir = os.path.join( settings.get_custom( 'directory:install' ), 
 
 project_clib_result = project_env.Install( project_install_dir, project_binary )
 
+#Publis result
+
 #Default( project_clib_result )
 Return( 'project_clib_result' )
-
-
 

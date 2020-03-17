@@ -135,6 +135,7 @@ if( False ):
     cc_files += [ os.path.join( 'geometry', 'transform', 'mblur.cpp' ) ]
     cc_files += [ os.path.join( 'geometry', 'transform', 'projective.cpp' ) ]
     cc_files += [ os.path.join( 'geometry', 'transform', 'translate.cpp' ) ]
+    cc_files += [ os.path.join( 'geometry', 'transform', 'identical.cpp' ) ]
 
 cc_files += [ os.path.join( 'geometry', 'hfield', 'hfield.cpp' ) ]
 
@@ -216,13 +217,19 @@ if( False ):
     cc_files += [ os.path.join( 'render', '2pierce',  '_base.cpp' ) ]
     cc_files += [ os.path.join( 'render', '2pierce',  '_pure.cpp' ) ]
 
-cc_files += [ os.path.join( 'render', '4ray',     '_base.cpp' ) ]
-cc_files += [ os.path.join( 'render', '4ray',     '_pure.cpp' ) ]
-# del cc_files += [ os.path.join( 'render', '4ray', 'classic', 'class.cpp' ) ]
-# del cc_files += [ os.path.join( 'render', '4ray', 'classic', 'geometry.cpp' ) ]
-cc_files += [ os.path.join( 'render', '4ray', 'classic2', 'algorithm.cpp' ) ]
-cc_files += [ os.path.join( 'render', '4ray', 'classic2', 'stack', 'implementation.cpp' ) ]
-cc_files += [ os.path.join( 'render', '4ray', 'distance.cpp' ) ]
+cc_files += [ os.path.join( 'render', '3beam',  'beam.cpp' ) ]
+if( False ):
+    cc_files += [ os.path.join( 'render', '3beam', '_pure.cpp' ) ]
+    cc_files += [ os.path.join( 'render', '3beam', 'all.cpp'   ) ]
+
+if( True ):
+    cc_files += [ os.path.join( 'render', '4ray',     '_base.cpp' ) ]
+    cc_files += [ os.path.join( 'render', '4ray',     '_pure.cpp' ) ]
+    # del cc_files += [ os.path.join( 'render', '4ray', 'classic', 'class.cpp' ) ]
+    # del cc_files += [ os.path.join( 'render', '4ray', 'classic', 'geometry.cpp' ) ]
+    cc_files += [ os.path.join( 'render', '4ray', 'classic2', 'algorithm.cpp' ) ]
+    cc_files += [ os.path.join( 'render', '4ray', 'classic2', 'stack', 'implementation.cpp' ) ]
+    cc_files += [ os.path.join( 'render', '4ray', 'distance.cpp' ) ]
 
 cc_files += [ os.path.join( 'render', 'engine.cpp' ) ]
 

@@ -4,6 +4,9 @@
 #include "./strategy/center.hpp"
 #include "./filter/const.hpp"
 
+#include "../2pierce/uv.hpp"
+
+
 
 
 using namespace GS_DDMRM::S_IceRay::S_render::S_pixel;
@@ -29,7 +32,7 @@ GC__base::Fv_render( T_color & P_color, T_cell const& P_cell )
   F_strategy().Fv_make();
   F1_filter().Fv_reset();
 
-  T1_uv I_origin;
+  T_uv I_origin;
   F1_2uv( I_origin, P_cell );
 
   T1_color I_summae( ::color::constant::black_t{} );
@@ -43,7 +46,7 @@ GC__base::Fv_render( T_color & P_color, T_cell const& P_cell )
       case( T_filter::En_break   ): goto L_break; break;
      }
 
-    T1_uv I_uv;
+    T_uv I_uv;
     ::math::linear::vector::multiply( I_uv, I_dot, F1_scale() );
     ::math::linear::vector::addition( I_uv, I_origin );
 
@@ -68,3 +71,26 @@ void GC__base::F_filter( T_filter  * P_filter )
 {
   M2_filter = P_filter;
 }
+
+GC__base::T_pierce &   GC__base::F_pierce( )
+ {
+  return *M2_pierce;
+ }
+
+void GC__base::F_pierce( T_pierce * P_pierce )
+ {
+  if( nullptr == P_pierce )
+   {
+    M2_pierce =  &Fs_pierce();
+    return;
+   }
+  M2_pierce = P_pierce;
+ }
+
+GC__base::T_pierce & GC__base::Fs_pierce()
+ {
+  typedef GS_DDMRM::S_IceRay::S_render::S_pierce::GC_UV      T2_UV;
+  static T2_UV Irs_pierce;
+  return Irs_pierce;
+ }
+

@@ -1,7 +1,8 @@
 #ifndef Dh_DDMRM_Iceray_material_compute_illumination_ambient_HPP_
  #define Dh_DDMRM_Iceray_material_compute_illumination_ambient_HPP_
 
- #include <tuple>
+// GS_DDMRM::S_IceRay::S_material::S_compute::S_illumination::GC_ambient
+
  #include <limits>
 
  #include "../../illumination/ambient.hpp"

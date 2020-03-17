@@ -40,7 +40,7 @@ typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_illumination::S_ward::GC_re
   boost::python::scope I_scope = I_this;
 
   boost::python::enum_<GTs_wardReal::Ee_input>( "Input" )
-    .value( "LightCount",     GTs_wardReal::En_inSize_LightCount  )
+    .value( "LightCount",     GTs_wardReal::En_inSize_SpotCount  )
     .value( "Specular",       GTs_wardReal::En_inColor_Specular   )
     .value( "AlphaX",         GTs_wardReal::En_inColor_AlphaX     )
     .value( "AlphaY",         GTs_wardReal::En_inColor_AlphaY     )

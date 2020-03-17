@@ -3,8 +3,9 @@
 
 // GS_DDMRM::S_IceRay::S_material::S_pigment::GC__base
 
- #include "../type/color.hpp"
- #include "../type/basic/size.hpp
+ #include "./_pure.hpp"
+ #include "IceRay/type/color.hpp"
+ #include "IceRay/type/basic/size.hpp"
 
  namespace GS_DDMRM
   {
@@ -16,14 +17,22 @@
         {
 
          class GC__base
-          : public virtual GS_DDMRM::S_IceRay::S_material::S_pigment::GC__pure 
+          : public virtual GS_DDMRM::S_IceRay::S_material::S_pigment::GC__pure
           {
            public:
+             typedef GS_DDMRM::S_IceRay::S_material::S_pigment::GC__pure T__pure;
+
                       GC__base(){}
              virtual ~GC__base(){}
 
-          public:
-             using T_material::Fv_maxNextRays;
+           public:
+             using T__pure::Fv_color;
+
+           public:
+             T_size const& Fv_maxNextRays( )const
+              {
+               return F_maxRayPerHit();
+              }
 
            public:
              T_size const& F_maxRayPerHit( )const

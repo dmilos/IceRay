@@ -8,7 +8,7 @@ def make( P_height = 1 + 1 + (math.sqrt(5)-1)/2 ):
 
     reflector = IceRayCpp.LightReflector(  )
 
-    reflector.position( IceRayCpp.MathTypeCoord3D().load( 0, 0, P_height ) )
+    reflector.center( IceRayCpp.MathTypeCoord3D().load( 0, 0, P_height ) )
 
     reflector.direction( IceRayCpp.MathTypeCoord3D().load(0,0,-1) )
 

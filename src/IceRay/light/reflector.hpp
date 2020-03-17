@@ -34,8 +34,8 @@
            T_spot M2_spot;
 
          public:  // property spot  spot
-           T_coord   const& F_position()const{ return M2_spot.F_center(); }
-           bool             F_position( T_coord const& P_position ){ return M2_spot.F_center( P_position ); }
+           T_coord   const& F_center()const{ return M2_spot.F_center(); }
+           bool             F_center( T_coord const& P_center ){ return M2_spot.F_center( P_center ); }
 
          public:  // property coord  direction
            T_coord    const& F_direction()const{ return M2_direction; }
@@ -46,12 +46,12 @@
            T_coord M2_direction;
 
          public:  // property coord  innner
-           T_scalar    const& F_innner()const{ return M2_innner; }
-           bool               F_innner( T_scalar const& P_innner ){ M2_innner = P_innner; return bool( true ); }
+           T_scalar    const& F_inner()const{ return M2_inner; }
+           bool               F_inner( T_scalar const& P_innner ){ M2_inner = P_innner; return bool( true ); }
          protected:
-           T_scalar        & F1_innner(){ return M2_innner; }
+           T_scalar        & F1_inner(){ return M2_inner; }
          private:
-           T_scalar M2_innner;
+           T_scalar M2_inner;
 
          public:  // property coord  outter
            T_scalar    const& F_outter()const{ return M2_outter; }

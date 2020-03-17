@@ -1,12 +1,14 @@
 #ifndef Dh_DDMRM_Iceray_render_ray_distance_HPP_
  #define Dh_DDMRM_Iceray_render_ray_distance_HPP_
 
+// GS_DDMRM::S_IceRay::S_render::S_ray::GC_distance
+
  #include "./_pure.hpp"
  #include "../../type/math/interval.hpp"
  #include "../../type/color.hpp"
 
  #include "../../geometry/_pure/intersect.hpp"
-  #include "../../geometry/volumetric/vacuum.hpp"
+ #include "../../geometry/volumetric/vacuum.hpp"
 
  namespace GS_DDMRM
   {
@@ -16,6 +18,7 @@
       {
        namespace S_ray
         {
+
          class GC_distance
           : public GC__pure
           {
@@ -23,7 +26,7 @@
              typedef GS_DDMRM::S_IceRay::S_type::S_color::GT_scalar                           T_color;
              typedef GS_DDMRM::S_IceRay::S_type::S_interval::GC__model<T_color,1>::T_typedef  T_gradient;
 
-             typedef GS_DDMRM::S_IceRay::S_type::S_interval::GT_scalar1D               T_clip;
+             typedef GS_DDMRM::S_IceRay::S_type::S_interval::GT_scalar1D                       T_clip;
              typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base                         T_geometry;
              typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_intersect                     T_state;
              //enum Ee_
@@ -51,13 +54,12 @@
            public:
              void         F_geometry( T_geometry * P_geometry );
            protected:
-             typedef GS_DDMRM::S_IceRay::S_geometry::GC_vacuum T1_vacuum;
-
              T_state *  F1_geometry( );
            private:
              T_state* M2_geometry;
+
            private:
-            static T1_vacuum & Fs_vacuum();
+             static T_state & Fs_geometry();
           };
 
        }

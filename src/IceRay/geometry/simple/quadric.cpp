@@ -80,7 +80,7 @@ bool GC_quadric::Fv_intersect
 //  ( l *d + o ) ( l* M(d) + M(o) + v ) + s = 0
 //  ( l *d + o ) ( l* D + O + v ) + s = 0
 
-  T_coord  O;  ::math::linear::matrix::transform( O, M2_matrix,I_origin );
+  T_coord  O;  ::math::linear::matrix::transform( O, M2_matrix, I_origin );
   T_coord  D;  ::math::linear::matrix::transform( D, M2_matrix, I_direction );
 
   T_scalar a = ::math::linear::vector::dot( I_direction, D );

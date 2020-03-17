@@ -1,10 +1,10 @@
-#IceRay Ray tracer
+# IceRay Ray tracer
 
- - Description
-  An ancient ray tracer that I finally put in public.
+ - Description \
+    An ancient ray tracer that I finally put in public.
 
- - Status:
-  - Still in development.
+ - Status: \
+    Still in development.
 
 ## Key features:
  - Like any ancient ray tracers posses.
@@ -27,7 +27,41 @@
 
 
 ### Geometry
-TODO
+
+#### Flat
+
+![img](data/sample/geometry/flat/box.png)
+![img](data/sample/geometry/flat/disc.png)
+![img](data/sample/geometry/flat/plane.png)
+![img](data/sample/geometry/flat/triangle.png)
+
+#### Quadric
+![img](data/sample/geometry/quadric/cone.png)
+![img](data/sample/geometry/quadric/cylinder.png)
+![img](data/sample/geometry/quadric/hyper-cone.png)
+![img](data/sample/geometry/quadric/hyper-cylinder.png)
+![img](data/sample/geometry/quadric/hyper-negative.png)
+![img](data/sample/geometry/quadric/hyper-nuke.png)
+![img](data/sample/geometry/quadric/hyper-sphere.png)
+![img](data/sample/geometry/quadric/paraboloid.png)
+![img](data/sample/geometry/quadric/quadric-cone.png)
+![img](data/sample/geometry/quadric/quadric-cylinder.png)
+![img](data/sample/geometry/quadric/quadric-hyperboloid.png)
+![img](data/sample/geometry/quadric/quadric-paraboloid.png)
+![img](data/sample/geometry/quadric/quadric-sphere.png)
+![img](data/sample/geometry/quadric/saddle.png)
+![img](data/sample/geometry/quadric/usphere.png)
+
+#### Transformation
+![img](sample\geometry\transform\affine.png)
+![img](sample\geometry\transform\translate.png)
+
+#### Misc
+![img](data\sample\geometry\blobby.png)
+![img](data\sample\geometry\intersect.png)
+![img](data\sample\geometry\mblur.png)
+![img](data\sample\geometry\torus.png)
+![img](data\sample\geometry\vacuum.png)
 
 ### Light
 ![area](data/sample/light/area.png)
@@ -108,8 +142,8 @@ TODO
   - git clone http://github.com/dmilos/IceRay.git
   - git submodule init
   - git submodule update
-  - modify ```build\set-env.bat``` according to your configuration
-  - run ```build\set-env.bat```
+  - modify ```build/set-env.bat``` according to your configuration
+  - run ```build/set-env.bat```
   - cd ./IceRay/work/build/scons/python
   - scons
   - rename *dll/*so from temp/IceRayLib-.../dll to IceRayCpp.pyd and copy in to your PYTHONPATH folder

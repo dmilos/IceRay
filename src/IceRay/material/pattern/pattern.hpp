@@ -1,15 +1,24 @@
 #include "./noise/noise.hpp"
-#include "./side.side.hpp"
-#include "./wave.hpp"
+#include "./side/side.hpp"
+#include "./expression/expression.hpp"
+
+// coord3d
 #include "./uvw.hpp"
-#include "./pattern.hpp"
+
+//Scalar
+#include "./wave.hpp"
 #include "./onion.hpp"
 #include "./level.hpp"
+
+// color
 #include "./image.hpp"
-#include "./hexagon.hpp"
-#include "./function.hpp"
-#include "./crackle.hpp"
+
+// ALL
 #include "./constant.hpp"
+
+//Size
 #include "./checker.hpp"
 #include "./brick.hpp"
-#include "./_pure.hpp"
+#include "./hexagon.hpp"
+
+#include "./_pure.hpp"  

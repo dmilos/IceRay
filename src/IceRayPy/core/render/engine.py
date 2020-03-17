@@ -15,7 +15,7 @@ class Engine:
         #self.M__cargo['this'] = IceRayCpp.RenderEngine()
         #self.M__cargo['cargo']['scanner'] = IceRayCpp.RenderScannerBlock()
         #self.M__cargo['cargo']['pixel'  ] = IceRayCpp.RenderPixelBasic()
-        #self.M__cargo['cargo']['piercer'] = IceRayCpp.RenderPierceBasic()
+        #self.M__cargo['cargo']['piercer'] = IceRayCpp.RenderPierceProjector()
         #self.M__cargo['cargo']['ray'    ] = IceRayCpp.CoreRenderRayC2A()
         #self.M__cargo['cargo']['camera' ] = IceRayCpp.CameraFlatPerspective()
 
@@ -29,7 +29,7 @@ class Engine:
         self.M__cargo['pixel'].strategy( self.M__cargo['cargo']['pixel' ]['strategy'] )
         self.M__cargo['engine'].pixel( self.M__cargo['pixel'] );
 
-        self.M__cargo['piercer'] = IceRayCpp.RenderPierceBasic()
+        self.M__cargo['piercer'] = IceRayCpp.RenderPierceProjector()
         self.M__cargo['engine'].pierce( self.M__cargo['piercer'] );
 
         self.M__cargo['ray']    = IceRayCpp.CoreRenderRayC2A()
@@ -47,9 +47,6 @@ class Engine:
         self.M__cargo['engine'].scanner( self.M__cargo['scanner'] );
 
     def pixel( self, P_pixel ):
-        #self.M__cargo['cargo']['pixel']['this']  = P_pixel['this'];
-        #self.M__cargo['cargo']['pixel']['cargo'] = P_pixel['cargo'];
-
         self.M__cargo['pixel'] = P_pixel
         self.M__cargo['engine'].pixel( self.M__cargo['pixel'] );
 
@@ -63,10 +60,13 @@ class Engine:
     def object( self, P_object ):
         self.M__cargo['ray'].object( P_object )
 
-    def piercer( self ):
-        self.M__cargo['engine'].pierce( self.M__cargo['piercer'] );
-        self.M__cargo['piercer'].ray( self.M__cargo['ray'] )
-        self.M__cargo['piercer'].camera( self.M__cargo['camera'] )
+    def beam( self, P_beam ):
+        self.M__cargo['beam'] = P_beam
+        self.M__cargo['engine'].beam( self.M__cargo['beam'] );
+
+    def ray( self, P_ray ):
+        self.M__cargo['ray'] = P_ray
+        self.M__cargo['engine'].scanner( self.M__cargo['ray'] );
 
     def start( self,  P_image ):
         self.M__cargo['engine'].start( P_image )
