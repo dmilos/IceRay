@@ -15,6 +15,7 @@ main/interface/python/core/geometry/_inside.cpp
 main/interface/python/core/geometry','blobby/blobby.cpp
 
 main/interface/python/core/geometry/complex/intersect.cpp
+main/interface/python/core/geometry/complex/enclose.cpp
 
 main/interface/python/core/geometry/rtss/_pure.cpp
 main/interface/python/core/geometry/rtss/list.cpp
@@ -25,6 +26,7 @@ main/interface/python/core/geometry/simple/simple.cpp
 main/interface/python/core/geometry/transform/transform.cpp
 main/interface/python/core/geometry/volumetric/smoke.cpp
 main/interface/python/core/geometry/volumetric/vacuum.cpp
+main/interface/python/core/geometry/volumetric/mist.cpp
 
 main/interface/python/core/light/light.cpp
 main/interface/python/core/material/illumination/illumination.cpp
@@ -52,9 +54,10 @@ main/interface/python/core/material/pigment.cpp
 
 
 main/interface/python/core/render/engine.cpp
-main/interface/python/core/render/pierce.cpp
-main/interface/python/core/render/pixel.cpp
 main/interface/python/core/render/scanner.cpp
+main/interface/python/core/render/pixel.cpp
+main/interface/python/core/render/pierce.cpp
+main/interface/python/core/render/sheaf.cpp
 
 main/interface/python/core/render/ray/_pure.cpp
 main/interface/python/core/render/ray/_base.cpp

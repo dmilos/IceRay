@@ -5,7 +5,7 @@ import math
 import material.medium.linear
 import decoration
 
-def vacuum( P_geometry, P_light, P_surfaceExponat, P_surfaceRoom, P_medium = material.medium.linear.make() ):
+def vacuum(   P_geometry, P_light, P_surfaceExponat, P_surfaceRoom, P_medium = material.medium.linear.make() ):
 
     geometry_cargo={}
     geometry_cargo['this'] = IceRayCpp.GeometryRTSSGeometry( )
@@ -42,7 +42,7 @@ def vacuum( P_geometry, P_light, P_surfaceExponat, P_surfaceRoom, P_medium = mat
 
     return { 'this': object, 'geometry': geometry_cargo }
 
-def plane( P_geometry, P_light, P_surfaceExponat, P_surfaceRoom, P_medium = material.medium.linear.make() ):
+def plane(    P_geometry, P_light, P_surfaceExponat, P_surfaceRoom, P_medium = material.medium.linear.make() ):
 
     level = -1
 
@@ -90,7 +90,7 @@ def plane( P_geometry, P_light, P_surfaceExponat, P_surfaceRoom, P_medium = mate
     P_light['this'].barrier( geometry_cargo['this'] )
     return { 'this': object, 'geometry': geometry_cargo }
 
-def plate( P_geometry, P_light, P_surfaceExponat, P_surfaceRoom, P_medium = material.medium.linear.make() ):
+def plate(    P_geometry, P_light, P_surfaceExponat, P_surfaceRoom, P_medium = material.medium.linear.make() ):
 
     level = - 1;
     width = 5
@@ -139,7 +139,7 @@ def plate( P_geometry, P_light, P_surfaceExponat, P_surfaceRoom, P_medium = mate
     P_light['this'].barrier( geometry_cargo['this'] )
     return { 'this': object, 'geometry': geometry_cargo }
 
-def cube( P_geometry, P_light, P_surfaceExponat, P_surfaceRoom, P_medium = material.medium.linear.make() ):
+def cube(     P_geometry, P_light, P_surfaceExponat, P_surfaceRoom, P_medium = material.medium.linear.make() ):
 
     I_size = 6 / 2
     geometry_cargo={}
@@ -257,7 +257,7 @@ def cylinder( P_geometry, P_light, P_surfaceExponat, P_surfaceRoom, P_medium = m
     P_light['this'].barrier( P_geometry['this'] )
     return { 'this': object, 'geometry': geometry_cargo }
 
-def sphere( P_geometry, P_light, P_surfaceExponat, P_surfaceRoom, P_medium = material.medium.linear.make() ):
+def sphere(   P_geometry, P_light, P_surfaceExponat, P_surfaceRoom, P_medium = material.medium.linear.make() ):
 
     radius = 4
 

@@ -3,7 +3,7 @@ import IceRayCpp
 
 def make( P_camera,
           # default P_eye = IceRayCpp.MathTypeCoord3D().load( 2, 5, 3 )*0.6,
-           P_eye = IceRayCpp.MathTypeCoord3D().load( 2, 5, 3 ) * 0.6 * 0.7,
+          P_eye = IceRayCpp.MathTypeCoord3D().load( 2, 5, 3 ) * 0.6 * 0.7,
           P_view = IceRayCpp.MathTypeCoord3D().fill( 0 ),
           ): # The default
     transform = IceRayCpp.CameraTransformAffine()

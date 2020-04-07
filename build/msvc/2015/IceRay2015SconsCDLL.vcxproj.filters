@@ -198,9 +198,6 @@
     <ClInclude Include="..\..\..\src\IceRay\render\engine.hpp">
       <Filter>Source Files\src\render</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\src\IceRay\render\manager.hpp">
-      <Filter>Source Files\src\render</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\src\IceRay\camera\type\scalar.hpp">
       <Filter>Source Files\src\camera\type</Filter>
     </ClInclude>
@@ -531,15 +528,6 @@
     <ClInclude Include="..\..\..\src\IceRay\geometry\simple\usphere.hpp">
       <Filter>Source Files\src\geometry\simple</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\src\IceRay\geometry\simple\sphere\complete.hpp">
-      <Filter>Source Files\src\geometry\simple\sphere</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\src\IceRay\geometry\simple\sphere\radius.hpp">
-      <Filter>Source Files\src\geometry\simple\sphere</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\src\IceRay\geometry\simple\sphere\unit.hpp">
-      <Filter>Source Files\src\geometry\simple\sphere</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\src\IceRay\geometry\spline\spline.hpp">
       <Filter>Source Files\src\geometry\spline</Filter>
     </ClInclude>
@@ -615,9 +603,6 @@
       <Filter>Source Files\src\type\ray</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\IceRay\render\engine.cpp">
-      <Filter>Source Files\src\render</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\IceRay\render\manager.cpp">
       <Filter>Source Files\src\render</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\IceRay\camera\flat\perspective.cpp">

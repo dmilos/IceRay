@@ -33,12 +33,12 @@
 
           public:
              /*
-              @param P_coord &sin; [-1,1]x[-1,1]
+              @param P_coord &sin; [0,1]x[0,1]
              */
                      void F_render( T_color & P_color, T_coord const& P_coord );
            protected:
              /*
-              @param P_coord &sin; [-1,1]x[-1,1]
+              @param P_coord &sin; [0,1]x[0,1]
              */
              virtual void F1v_render( T_color & P_color, T_coord const& P_coord )=0;
 

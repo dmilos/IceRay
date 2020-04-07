@@ -182,7 +182,7 @@ bool               GC_affine::F_2world( T_affine const& P_2world )
 
   ::math::linear::matrix::transpose( M2_transpose, F_2local().matrix() );
 
-  Fv_box( I_box );
+  F1_box( I_box );
   return true;
  }
 

@@ -14,11 +14,10 @@ GC_ellipsoid::GC_ellipsoid( )
   ::math::linear::affine::id( M2_2local    );
   ::math::linear::matrix::id( M2_transpose );
 
-  F_box
-   (
+  F1_box( T_box{
      ::math::linear::vector::fill<T_scalar>( T_coord{}, -1 )
     ,::math::linear::vector::fill<T_scalar>( T_coord{},  1 )
-   );
+   } );
  }
 
 GC_ellipsoid::GC_ellipsoid( T_coord const&  P_center, T_coord const& P_radius )
@@ -176,6 +175,38 @@ GC_ellipsoid::Fv_weight( )const
   return sizeof( C_intersect );
  }
 
+bool    GC_ellipsoid::Fv_box( T_box const& P_box )
+ {
+  T_coord I_center; ::math::geometry::interval::center( I_center, P_box );
+  T_coord I_size;   ::math::geometry::interval::size( I_size, P_box );
+
+  T_coord I_eX{ I_size[0]/T_scalar(2),0,0 };
+  T_coord I_eY{ 0,I_size[1]/T_scalar(2),0};
+  T_coord I_eZ{ 0,0,I_size[2]/T_scalar(2)};
+
+  return F_load( I_center, I_eX, I_eY, I_eZ );
+ }
+
+bool GC_ellipsoid::F_radius( T_scalar const& P_radius )
+ {
+  T_coord I_eX; ::math::linear::vector::scale( I_eX, P_radius, F_2world().matrix()[0] );
+  T_coord I_eY; ::math::linear::vector::scale( I_eY, P_radius, F_2world().matrix()[1] );
+  T_coord I_eZ; ::math::linear::vector::scale( I_eZ, P_radius, F_2world().matrix()[2] );
+  T_coord const& I_center = F_2world().vector();
+
+  return F_load( I_center, I_eX, I_eY, I_eZ );
+ }
+
+bool GC_ellipsoid::F_radius( T_coord const& P_radius )
+ {
+  T_coord I_eX; ::math::linear::vector::scale( I_eX, P_radius[0], F_2world().matrix()[0] );
+  T_coord I_eY; ::math::linear::vector::scale( I_eY, P_radius[1], F_2world().matrix()[1] );
+  T_coord I_eZ; ::math::linear::vector::scale( I_eZ, P_radius[2], F_2world().matrix()[2] );
+  T_coord const& I_center = F_2world().vector();
+
+  return F_load( I_center, I_eX, I_eY, I_eZ );
+ }
+
 bool GC_ellipsoid::F_center( T_coord const& P_center )
  {
   T_coord I_eX = F_2world().matrix()[0];
@@ -202,7 +233,7 @@ bool GC_ellipsoid::F_load( T_coord const& P_center, T_coord const& P_eX, T_coord
   T_interval I_box;
   ::math::geometry::interval::transform( I_box, F_2world(),I_unit );
 
-  Fv_box( I_box );
+  F1_box( I_box );
 
   return true;
  }

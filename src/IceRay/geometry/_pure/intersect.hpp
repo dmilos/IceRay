@@ -30,7 +30,7 @@
 
              typedef GS_DDMRM::S_IceRay::S_type::GT_scalar                       T_scalar;
 
-             typedef GS_DDMRM::S_IceRay::S_geometry::S_type::GT_ray              T_ray;
+             typedef GS_DDMRM::S_IceRay::S_geometry::S__type::GT_ray              T_ray;
 
              typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base           T__base;
 

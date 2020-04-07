@@ -17,8 +17,8 @@ def make(
     cargo['4'] = IceRayCpp.MaterialPatternColorConstant( P_shininess, 4 )
 
     cargo['5'] = IceRayCpp.MaterialLightGenerator( P_light['this'], 0 )
-    #MaterialLightSpotSwarm( [coord]point, [light]light, [spot]start, [size]count  )
-    cargo['6'] = IceRayCpp.MaterialLightSpotSwarm( 0, 0, 0, 0 )
+    #MaterialLightSpotSwarmA( [size]count, [light]light, [coord]point, [spot]begin )
+    cargo['6'] = IceRayCpp.MaterialLightSpotSwarmA( 0, 0, 0, 0 )
     #MaterialLightSpotCull( [coord]point, [coord]normal, [spot]start, [size]count  )
     cargo['7'] = IceRayCpp.MaterialLightSpotCull( 0, 1, 0, 0 )
 
@@ -58,8 +58,8 @@ def makeOF(
     cargo['2'] = IceRayCpp.MaterialIlluminationAmbient( 0, 1 ) # first result
 
     cargo['3'] = IceRayCpp.MaterialLightGenerator( P_light['this'], 0 )
-    #MaterialLightSpotSwarm( [coord]point, [light]light, [spot]start, [size]count  )
-    cargo['3A'] = IceRayCpp.MaterialLightSpotSwarm( 0, 0, 0, 0 )
+    #MaterialLightSpotSwarmA( [size]count, [light]light, [coord]point, [spot]start )
+    cargo['3A'] = IceRayCpp.MaterialLightSpotSwarmA( 0, 0, 0, 0 )
     #MaterialLightSpotCull( [coord]point, [coord]normal, [spot]start, [size]count  )
     cargo['3B'] = IceRayCpp.MaterialLightSpotCull( 0, 1, 0, 0 )
 

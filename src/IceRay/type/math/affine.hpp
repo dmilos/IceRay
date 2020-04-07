@@ -1,10 +1,10 @@
 #ifndef Dh_DDMM_IceRay_type_affine_HPP_
  #define Dh_DDMM_IceRay_type_affine_HPP_
 // GS_DDMRM::S_IceRay::S_type::S_affine::GC__model<N_number, N_dimension>
-// GT_scalar1D,
-// GT_scalar2D,
-// GT_scalar3D,
-// GT_scalar4D
+// GS_DDMRM::S_IceRay::S_type::S_affine::GT_scalar1D,
+// GS_DDMRM::S_IceRay::S_type::S_affine::GT_scalar2D,
+// GS_DDMRM::S_IceRay::S_type::S_affine::GT_scalar3D,
+// GS_DDMRM::S_IceRay::S_type::S_affine::GT_scalar4D
 
 
  #include "../basic/report.hpp"
@@ -41,7 +41,7 @@
     }
   }
 
-  //namespace  GS_DDMRM{namespace S_math{namespace S_LA{namespace S_matrix 
+  //namespace  GS_DDMRM{namespace S_math{namespace S_LA{namespace S_affine 
   // {
   //  template< typename scalar_name , unsigned dimension_number > 
   //    using GF_transform = ::math::linear::affine::trasform<scalar_name,dimension_number>; } 

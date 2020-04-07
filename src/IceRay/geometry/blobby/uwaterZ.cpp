@@ -37,7 +37,7 @@ GC_uwaterZ ::GC_uwaterZ ( T_scalar const& P_level )
 
   T_coord I_lo; ::math::linear::vector::fill( I_lo, -1 );  I_lo[2] = 0;
   T_coord I_hi; ::math::linear::vector::fill( I_hi, +1 );
-  F_box( I_lo, I_hi );
+  F1_box( T_box{ I_lo, I_hi } );
  }
 
 GC_uwaterZ ::~GC_uwaterZ ( )

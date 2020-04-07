@@ -17,7 +17,7 @@
         {
          namespace S_light
           {
-           
+
            class GC_generator //!< Put the light in memory.
             : public GS_DDMRM::S_IceRay::S_material::S_compute::GC_instruction
             {

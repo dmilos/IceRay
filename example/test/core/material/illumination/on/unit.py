@@ -31,8 +31,8 @@ def make_p44( P_light, albedo    = IceRayCpp.GraphTypeColorRGB().load( 3, 3, 3 )
 
     cargo = {}
     cargo['1'] = IceRayCpp.MaterialLightGenerator( P_light['this'], 0 )
-    #MaterialLightSpotSwarm( [coord]point, [light]light, [spot]start, [size]count  )
-    cargo['2A'] = IceRayCpp.MaterialLightSpotSwarm( 0, 0, 0, 0 )
+    #MaterialLightSpotSwarmA( [size]count, [light]light, [coord]point, [spot]start )
+    cargo['2A'] = IceRayCpp.MaterialLightSpotSwarmA( 0, 0, 0, 0 )
     #MaterialLightSpotCull( [coord]point, [coord]normal, [spot]start, [size]count  )
     cargo['2B'] = IceRayCpp.MaterialLightSpotCull( 0, 1, 0, 0 )
 
@@ -61,8 +61,8 @@ def make_f29( P_light ):
 
     cargo = {}
     cargo['1'] = IceRayCpp.MaterialLightGenerator( P_light['this'], 0 )
-    #MaterialLightSpotSwarm( [coord]point, [light]light, [spot]start, [size]count  )
-    cargo['2A'] = IceRayCpp.MaterialLightSpotSwarm( 0, 0, 0, 0 )
+    #MaterialLightSpotSwarmA( [size]count, [light]light, [coord]point, [spot]start )
+    cargo['2A'] = IceRayCpp.MaterialLightSpotSwarmA( 0, 0, 0, 0 )
     #MaterialLightSpotCull( [coord]point, [coord]normal, [spot]start, [size]count  )
     cargo['2B'] = IceRayCpp.MaterialLightSpotCull( 0, 1, 0, 0 )
 
@@ -83,14 +83,13 @@ def make_f29( P_light ):
     return { 'this' : surface, 'list': cargo, 'light': P_light  }
 
 def make_YasuhiroFujii( P_light ):
-    return
 
     surface = IceRayCpp.MaterialSurface()
 
     cargo = {}
     cargo['1'] = IceRayCpp.MaterialLightGenerator( P_light['this'], 0 )
-    #MaterialLightSpotSwarm( [coord]point, [light]light, [spot]start, [size]count  )
-    cargo['2A'] = IceRayCpp.MaterialLightSpotSwarm( 0, 0, 0, 0 )
+    #MaterialLightSpotSwarmA( [size]count, [light]light, [coord]point, [spot]start )
+    cargo['2A'] = IceRayCpp.MaterialLightSpotSwarmA( 0, 0, 0, 0 )
     #MaterialLightSpotCull( [coord]point, [coord]normal, [spot]start, [size]count  )
     cargo['2B'] = IceRayCpp.MaterialLightSpotCull( 0, 1, 0, 0 )
 
@@ -102,8 +101,8 @@ def make_YasuhiroFujii( P_light ):
     cargo['7'] = IceRayCpp.MaterialPatternColorConstant( IceRayCpp.GraphTypeColorRGB().load( 0.1, 0.1, 0.1 ), 3 )
     cargo['8'] = IceRayCpp.MaterialPatternCoord3DConstant( IceRayCpp.MathTypeCoord3D().load( 0.0, 0.0, 1.0 ), 3 )
 
-    #MaterialIlluminationWardApprox( [coord]point, [coord]normal, [size]lightCount, [color]specular,[color]alphaX,[color]alphaY,[coord]direction, [color]result )
-    cargo['9'] = IceRayCpp.MaterialIlluminationWardApprox( 0,1, 0, 1,2,3, 3, 0 )
+    #MaterialIlluminationONYF( [coord]point, [coord]normal, [size]lightCount, [color]rho, [color]sigma, [color]result )
+    cargo['9'] = IceRayCpp.MaterialIlluminationONYF( 0,1, 0, 1,2, 0 )
 
 
     surface.append( cargo['1'] )
@@ -116,5 +115,6 @@ def make_YasuhiroFujii( P_light ):
     surface.append( cargo['7'] )
     surface.append( cargo['8'] )
     surface.append( cargo['9'] )
+    print( '-------------------------------')
 
     return { 'this' : surface, 'list': cargo, 'light': P_light  }

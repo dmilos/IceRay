@@ -4,6 +4,8 @@
 #include "../../system/system.h"
 #include "../../type/color.hpp"
 
+struct  IceRayC_Material_Pattern_Struct {};
+typedef IceRayC_Material_Pattern_Struct* IceRayC_Material_Pattern_Handle;
 
 struct  IceRayC_Material_Pattern_SizeStruct {};
 typedef IceRayC_Material_Pattern_SizeStruct* IceRayC_Material_Pattern_SizeHandle;

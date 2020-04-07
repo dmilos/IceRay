@@ -64,7 +64,7 @@ GC_cone::Fv_beam
    {
     GS_DDMRM::S_IceRay::S_utility::S_random::GF_disc2D( I_disc[0], I_disc[1], M2_randSobol2D );
   //GS_DDMRM::S_IceRay::S_utility::S_random::GF_disc2D( I_disc, M2_randStandard2D );
-  //GS_DDMRM::S_IceRay::S_utility::S_random::GF_disc2D( I_disc, M2_randVaPND );
+  //GS_DDMRM::S_IceRay::S_utility::S_random::GF_disc2D( I_disc, M2_randVaLND );
     I_disc = M2s_hexagon.F_spot()[I_index]; ::math::linear::vector::scale( I_disc, T_scalar(1)/M2s_hexagon.F_radius()[M2_index] );
 
     T_scalar const& I_x = I_disc[0];

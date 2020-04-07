@@ -379,22 +379,22 @@ void GC_intersect::F2_recalc()
      {
       T_box I_box = F_box();
       ::math::geometry::interval::intersect( I_box, M2_left.M_base->F_box(), M2_right.M_base->F_box() );
-      Fv_box( I_box );
+      F1_box( I_box );
      }break;
 
     case( 1 + 0 ): // reverse diference
-      Fv_box( M2_right.M_base->F_box() );
+      F1_box( M2_right.M_base->F_box() );
      break;
 
     case( 0 + 2 ): // clasic diference
-      Fv_box( M2_left.M_base->F_box() );
+      F1_box( M2_left.M_base->F_box() );
      break;
 
     case( 1 + 2 ): // inverted union
      {
       T_box I_box = F_box();
       ::math::geometry::interval::extend( I_box, M2_left.M_base->F_box(), M2_right.M_base->F_box() );
-      Fv_box( I_box );
+      F1_box( I_box );
      }break;
 
     default :

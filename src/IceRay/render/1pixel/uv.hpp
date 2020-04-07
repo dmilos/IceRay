@@ -7,6 +7,8 @@
 
 
 
+
+
  namespace GS_DDMRM
   {
    namespace S_IceRay
@@ -18,7 +20,7 @@
 
          // Just return color. Demo that pixel render might be something different than ray tracer
          class GC_UV
-          : public GC__pure
+          : public GS_DDMRM::S_IceRay::S_render::S_pixel::GC__pure
           {
            public:
              GC_UV()

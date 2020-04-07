@@ -28,7 +28,7 @@ BOOST_PYTHON_MODULE(IceRayCpp)
   EXTERN_AND_CALL( expose_IceRay_camera__parent     );
   EXTERN_AND_CALL( expose_IceRay_camera_focus       );
   EXTERN_AND_CALL( expose_IceRay_camera_cone        );
-  
+
   EXTERN_AND_CALL( expose_IceRay_camera_transform_invert      );
   EXTERN_AND_CALL( expose_IceRay_camera_transform_affine   );
 
@@ -52,7 +52,6 @@ BOOST_PYTHON_MODULE(IceRayCpp)
   EXTERN_AND_CALL( expose_IceRay_light_Blocked );
   EXTERN_AND_CALL( expose_IceRay_light_Chandelier );
   EXTERN_AND_CALL( expose_IceRay_light_Circle );
-  EXTERN_AND_CALL( expose_IceRay_light_Clipped );
   EXTERN_AND_CALL( expose_IceRay_light_Dark );
   EXTERN_AND_CALL( expose_IceRay_light_Line );
   EXTERN_AND_CALL( expose_IceRay_light_Point );
@@ -61,6 +60,8 @@ BOOST_PYTHON_MODULE(IceRayCpp)
   EXTERN_AND_CALL( expose_IceRay_light_Spline );
   EXTERN_AND_CALL( expose_IceRay_light_SunSpot );
   EXTERN_AND_CALL( expose_IceRay_light_SunGeneral );
+  EXTERN_AND_CALL( expose_IceRay_light_Clipped );
+  EXTERN_AND_CALL( expose_IceRay_light_confine );
 
   EXTERN_AND_CALL( expose_IceRay_geometry__pure      );
   EXTERN_AND_CALL( expose_IceRay_geometry__inside    );
@@ -108,6 +109,7 @@ BOOST_PYTHON_MODULE(IceRayCpp)
   EXTERN_AND_CALL( expose_IceRay_geometry_transform_translate );
   EXTERN_AND_CALL( expose_IceRay_geometry_transform_identity );
 
+  EXTERN_AND_CALL( expose_IceRay_geometry_mist    );
   EXTERN_AND_CALL( expose_IceRay_geometry_smoke   );
   EXTERN_AND_CALL( expose_IceRay_geometry_vacuum  );
 
@@ -134,6 +136,7 @@ BOOST_PYTHON_MODULE(IceRayCpp)
   EXTERN_AND_CALL( expose_IceRay_material_illumination_lambert );
   EXTERN_AND_CALL( expose_IceRay_material_illumination_on_p44 );
   EXTERN_AND_CALL( expose_IceRay_material_illumination_on_f29 );
+  EXTERN_AND_CALL( expose_IceRay_material_illumination_on_YF );
   EXTERN_AND_CALL( expose_IceRay_material_illumination_phong );
   EXTERN_AND_CALL( expose_IceRay_material_illumination_ward_approx );
   EXTERN_AND_CALL( expose_IceRay_material_illumination_ward_isotropic );
@@ -141,6 +144,10 @@ BOOST_PYTHON_MODULE(IceRayCpp)
 
   EXTERN_AND_CALL( expose_IceRay_material_illumination_AshikhminShirley_diffuse );
   EXTERN_AND_CALL( expose_IceRay_material_illumination_AshikhminShirley_specular );
+
+  // TODO EXTERN_AND_CALL( expose_IceRay_material_illumination_CT_fresnel );
+  // TODO EXTERN_AND_CALL( expose_IceRay_material_illumination_CT_slick );
+
 
   EXTERN_AND_CALL( expose_IceRay_material_geometry_distance  );
   EXTERN_AND_CALL( expose_IceRay_material_geometry_intersect );
@@ -151,10 +158,6 @@ BOOST_PYTHON_MODULE(IceRayCpp)
     EXTERN_AND_CALL( expose_IceRay_material_light_spotUVW );
     EXTERN_AND_CALL( expose_IceRay_material_light_spotCull );
     EXTERN_AND_CALL( expose_IceRay_material_light_spotSwarm );
-
-    EXTERN_AND_CALL( expose_IceRay_material_light_swarm0 );
-    EXTERN_AND_CALL( expose_IceRay_material_light_swarm1 );
-
 
   EXTERN_AND_CALL( expose_IceRay_material_compute_operation_convert );
   EXTERN_AND_CALL( expose_IceRay_material_compute_operation_scalar_clamp );
@@ -198,6 +201,9 @@ BOOST_PYTHON_MODULE(IceRayCpp)
   EXTERN_AND_CALL( expose_IceRay_render_scanner__pure     );
   EXTERN_AND_CALL( expose_IceRay_render_scanner_Block     );
   EXTERN_AND_CALL( expose_IceRay_render_scanner_Parallel  );
+
+  EXTERN_AND_CALL( expose_IceRay_render_sheaf__pure     );
+  EXTERN_AND_CALL( expose_IceRay_render_sheaf_ALL     );
 
 
   EXTERN_AND_CALL( expose_IceRay_render_ray__pure     );

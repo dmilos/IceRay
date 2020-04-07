@@ -166,8 +166,11 @@ if( False ):
     cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'geometry', 'transform', 'translate.cpp' ) ]
     cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'geometry', 'transform', 'identical.cpp' ) ]
 
-cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'geometry', 'volumetric', 'smoke.cpp' ) ]
-cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'geometry', 'volumetric', 'vacuum.cpp' ) ]
+cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'geometry', 'volumetric', 'volumetric.cpp' ) ]
+if( False ):
+    cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'geometry', 'volumetric', 'mist.cpp' ) ]
+    cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'geometry', 'volumetric', 'smoke.cpp' ) ]
+    cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'geometry', 'volumetric', 'vacuum.cpp' ) ]
 
 cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'light', 'light.cpp' ) ]
 if( False ):
@@ -177,7 +180,6 @@ if( False ):
     cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'light', 'blocked.cpp' ) ]
     cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'light', 'chandelier.cpp' ) ]
     cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'light', 'circle.cpp' ) ]
-    cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'light', 'clipped.cpp' ) ]
     cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'light', 'dark.cpp' ) ]
     cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'light', 'line.cpp' ) ]
     cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'light', 'point.cpp' ) ]
@@ -185,6 +187,7 @@ if( False ):
     cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'light', 'sphere.cpp' ) ]
     cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'light', 'spline.cpp' ) ]
     cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'light', 'sun.cpp' ) ]
+    cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'light', 'clipped.cpp' ) ]
 
 cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'material', 'illumination', 'illumination.cpp' ) ]
 if( False ):
@@ -231,9 +234,10 @@ cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'material', '
 
 
 cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'render', 'engine.cpp' ) ]
-cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'render', 'pierce.cpp' ) ]
-cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'render', 'pixel.cpp' ) ]
 cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'render', 'scanner.cpp' ) ]
+cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'render', 'pixel.cpp' ) ]
+cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'render', 'pierce.cpp' ) ]
+cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'render', 'sheaf.cpp' ) ]
 
 cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'render', 'ray', '_pure.cpp' ) ]
 cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'render', 'ray', '_base.cpp' ) ]

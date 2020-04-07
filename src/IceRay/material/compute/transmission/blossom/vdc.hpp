@@ -134,7 +134,7 @@
                    for( T_size I_index=0; I_index < P_count; ++I_index )
                     {
                      T_coord2D I_disc2d;
-                     GS_DDMRM::S_IceRay::S_utility::S_random::GF_disc2D( I_disc2d, M2_VaPND );
+                     GS_DDMRM::S_IceRay::S_utility::S_random::GF_disc2D( I_disc2d, M2_VaLND );
 
                      T_scalar I_height = sqrt( T_scalar( 1 ) - I_radius * ::math::linear::vector::dot( I_disc2d, I_disc2d ) );
                      ::math::linear::vector::combine( I_direction, I_disc2d[0], I_x, I_height, I_y, I_disc2d[1], I_z );
@@ -173,7 +173,7 @@
                  }
 
                private:
-                 mutable GS_DDMRM::S_IceRay::S_utility::S_random::GT_VaPND         M2_VaPND;
+                 mutable GS_DDMRM::S_IceRay::S_utility::S_random::GT_VaLND         M2_VaLND;
 
                private:
                  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC__base<T_size>    T2_memorySize;

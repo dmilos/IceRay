@@ -44,7 +44,7 @@
                  typedef GS_DDMRM::S_IceRay::S_render::S_ray::S_classic2::S_stack::GC_data T_data;
 
                  typedef GS_DDMRM::S_IceRay::S_geometry::S__type::GC_state       T_state;
-                 typedef GS_DDMRM::S_IceRay::S_geometry::S_type::GT_allocator   T_allocator;
+                 typedef GS_DDMRM::S_IceRay::S_geometry::S__type::GT_allocator   T_allocator;
 
                  typedef  GS_DDMRM::S_IceRay::S_render::S_ray::S_classic2::S_stack::GC__input   T__input;
                  typedef  GS_DDMRM::S_IceRay::S_render::S_ray::S_classic2::S_stack::GC__output  T__output;

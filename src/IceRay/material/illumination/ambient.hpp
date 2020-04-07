@@ -13,7 +13,7 @@
         {
 
          class GC_ambient
-          //: public S_IceRay::S_material::S_illumination::S__base::GC_data
+          //: public S_IceRay::S_material::S_illumination::GC__pure
           {
            public:
              typedef GS_DDMRM::S_IceRay::S_type::S_color::GT_scalar    T_color;

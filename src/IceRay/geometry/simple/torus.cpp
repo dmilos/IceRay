@@ -24,7 +24,7 @@ GC_torus::T_scalar GC_torus::M2s_worst;
 GC_torus::GC_torus( )
  {
   F_minor( 0.5 );
-  M2s_worst = 0;
+  //M2s_worst = 0;
  }
 
 GC_torus::GC_torus( T_scalar const& P_minor )
@@ -35,7 +35,7 @@ GC_torus::GC_torus( T_scalar const& P_minor )
 
 GC_torus::~GC_torus( )
  {
-  std::cout << __FUNCTION__ << " = " << std::setprecision(10)<< M2s_worst << std::endl;
+  //std::cout << __FUNCTION__ << " = " << std::setprecision(10)<< M2s_worst << std::endl;
  }
 
 bool GC_torus::Fv_intersect( T_scalar &P_lambda, T_state &P_state, T_ray const& P_ray  )const
@@ -115,14 +115,14 @@ bool GC_torus::Fv_intersect( T_scalar &P_lambda, T_state &P_state, T_ray const& 
      }break;
    }
 
-  T_coord I_point;
+ // T_coord I_point;
   bool Ir_hit = false;
   switch( I_count )
    {
-    case( 4 ) : I_root[3] += I_move;  M2s_worst = std::max( M2s_worst, fabs( Fv_distance( ::math::linear::vector::combine( I_point, P_ray.M_origin, I_root[3], P_ray.M_direction ) ) ) );
-    case( 3 ) : I_root[2] += I_move;  M2s_worst = std::max( M2s_worst, fabs( Fv_distance( ::math::linear::vector::combine( I_point, P_ray.M_origin, I_root[2], P_ray.M_direction ) ) ) );
-    case( 2 ) : I_root[1] += I_move;  M2s_worst = std::max( M2s_worst, fabs( Fv_distance( ::math::linear::vector::combine( I_point, P_ray.M_origin, I_root[1], P_ray.M_direction ) ) ) );
-    case( 1 ) : I_root[0] += I_move;  M2s_worst = std::max( M2s_worst, fabs( Fv_distance( ::math::linear::vector::combine( I_point, P_ray.M_origin, I_root[0], P_ray.M_direction ) ) ) );
+    case( 4 ) : I_root[3] += I_move;  // M2s_worst = std::max( M2s_worst, fabs( Fv_distance( ::math::linear::vector::combine( I_point, P_ray.M_origin, I_root[3], P_ray.M_direction ) ) ) );
+    case( 3 ) : I_root[2] += I_move;  // M2s_worst = std::max( M2s_worst, fabs( Fv_distance( ::math::linear::vector::combine( I_point, P_ray.M_origin, I_root[2], P_ray.M_direction ) ) ) );
+    case( 2 ) : I_root[1] += I_move;  // M2s_worst = std::max( M2s_worst, fabs( Fv_distance( ::math::linear::vector::combine( I_point, P_ray.M_origin, I_root[1], P_ray.M_direction ) ) ) );
+    case( 1 ) : I_root[0] += I_move;  // M2s_worst = std::max( M2s_worst, fabs( Fv_distance( ::math::linear::vector::combine( I_point, P_ray.M_origin, I_root[0], P_ray.M_direction ) ) ) );
       break;
     case( 0 ):  return I_intersect.M_hit = false;
    }
@@ -222,7 +222,7 @@ GC_torus::F_minor( T_scalar const& P_minor )
   T_coord I_lo, I_hi;
   I_lo[0] = -I_tmp; I_lo[1] = -I_tmp; I_lo[2] = -1;
   I_hi[0] =  I_tmp; I_hi[1] =  I_tmp; I_hi[2] =  1;
-  F_box( I_lo, I_hi );
+  F1_box( T_box{ I_lo, I_hi } );
 
   return true;
  }

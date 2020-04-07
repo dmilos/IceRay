@@ -46,16 +46,18 @@
               {
                return M2_box;
               }
-             void F_box( T_coord const& P_lo, T_coord const& P_hi )
+             virtual bool Fv_box( T_box const& P_box )
               {
-               this->Fv_box( T_box{P_lo, P_hi } );
+               return false;
               }
-             virtual void Fv_box( T_box const& P_box )
+           protected:
+             void F1_box( T_box const& P_box )
               {
                M2_box = P_box;
                ::math::linear::vector::subtraction( M2_size, M2_box.hi(), M2_box.lo() );
               }
            private:
+
              T_box M2_box;
 
            public:

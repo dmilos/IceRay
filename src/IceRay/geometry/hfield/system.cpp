@@ -22,7 +22,7 @@ GC_system::GC_system( T_generator* P_generator, T_object* P_object )
  {
   T_coord I_lo; ::math::linear::vector::fill( I_lo, 0 );
   T_coord I_hi; ::math::linear::vector::fill( I_hi, 1 );
-  F_box( I_lo, I_hi );
+  F1_box( T_box{ I_lo, I_hi } );
   F_generator( P_generator );
  }
 

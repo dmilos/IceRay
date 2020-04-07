@@ -38,7 +38,7 @@ void expose_IceRay_geometry_smoke()
 
   boost::python::class_< GTs_smoke, boost::python::bases<GTs__base> >( "GeometryVolumetricSmoke" )
     .def( boost::python::init<>() )
-    .def( boost::python::init<GTs_coord3D, GTs_coord3D>() )
+   //.def( boost::python::init<GTs_coord3D, GTs_coord3D>() )
     // TODO .def("lo",  I_getLo, boost::python::return_value_policy<boost::python::copy_const_reference>()  )
     // TODO .def("lo",  I_setLo )
     // TODO .def("hi",  I_getHi, boost::python::return_value_policy<boost::python::copy_const_reference>()  )

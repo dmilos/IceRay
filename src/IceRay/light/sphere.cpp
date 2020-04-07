@@ -55,7 +55,7 @@ GC_sphere::Fv_swarm( T_swarm &P_swarm, T_coord const& P_point )const
    {
     //T_scalar I_x, I_y; M2_randStandard2D( I_uvw[0], I_uvw[1] );
       M2_randSobol2D.next( I_uvw[0], I_uvw[1] );
-    //T_coord2D I_c2D; M2_randVaPND.next( I_c2D );
+    //T_coord2D I_c2D; M2_randVaLND.next( I_c2D );
     I_uvw[2] = 1;
 
     ::math::linear::vector::length( I_uvw, T_scalar(1) );
@@ -142,7 +142,7 @@ static int EXTENDED::light1( VECTOR3 point, LSPOT *sp, LIGHT *This )
 
     do
      {
-      peano2d( &x, &y, next ); peano1d( next );
+      lebesgue2d( &x, &y, next ); lebesgue1d( next );
 
       x -= 0.5; y -= 0.5;
       t = x * x  +  y * y ;

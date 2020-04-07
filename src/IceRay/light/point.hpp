@@ -29,9 +29,6 @@
            ~GC_point();
 
          public:
-           bool        F_shadow()const{ return M2_spot.F_shadow() ; }
-           T_report    F_shadow( bool const& P_shadow ){  return M2_spot.F_shadow( P_shadow ); }
-
            T_size  Fv_swarm( T_swarm &P_spot,  T_coord const& P_point )const;
 
          public:  // property spot  spot

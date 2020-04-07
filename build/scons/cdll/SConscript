@@ -97,9 +97,11 @@ cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'camera', 'camera.
 if( False ):
     pass
 
-cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'geometry.cpp' ) ]
-if( False ):
-    pass
+#cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'geometry.cpp' ) ]
+if( True ):
+    cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'geometry.cpp' ) ]
+    cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'rtss.cpp' ) ]
+    cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'blobby.cpp' ) ]
 
 cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'object', 'object.cpp' ) ]
 if( False ):

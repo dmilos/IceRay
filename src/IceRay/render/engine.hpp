@@ -5,7 +5,7 @@
 #include "./0scanner/_pure.hpp"
 #include "./1pixel/_pure.hpp"
 #include "./2pierce/_pure.hpp"
-#include "./3beam/_pure.hpp"
+#include "./3sheaf/_pure.hpp"
 #include "./4ray/_pure.hpp"
 
  namespace GS_DDMRM
@@ -25,7 +25,7 @@
            typedef GS_DDMRM::S_IceRay::S_render::S_scanner::GC__pure   T_scanner;
            typedef GS_DDMRM::S_IceRay::S_render::S_pixel::GC__pure     T_pixel;
            typedef GS_DDMRM::S_IceRay::S_render::S_pierce::GC__pure    T_pierce;
-           typedef GS_DDMRM::S_IceRay::S_render::S_beam::GC__pure      T_beam;
+           typedef GS_DDMRM::S_IceRay::S_render::S_sheaf::GC__pure     T_sheaf;
            typedef GS_DDMRM::S_IceRay::S_render::S_ray::GC__pure       T_ray;
 
            GC_engine();
@@ -62,12 +62,12 @@
            static T_pierce & Fs_pierce();
 
          public:
-           void         F_beam( T_beam  * P_beam    );
-           T_beam    *& F_beam(){ return M2_beam;   }
+           void         F_sheaf( T_sheaf  * P_sheaf    );
+           T_sheaf    *& F_sheaf(){ return M2_sheaf;   }
          private:
-           T_beam      *M2_beam;
+           T_sheaf      *M2_sheaf;
          public:
-           static T_beam & Fs_beam();
+           static T_sheaf & Fs_sheaf();
 
          public:
            void        F_ray( T_ray  * P_ray    );

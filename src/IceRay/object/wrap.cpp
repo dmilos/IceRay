@@ -8,18 +8,25 @@
 
 #include "IceRay/material/pigment/simple.hpp"
 
+#include "../geometry/volumetric/vacuum.hpp"
+
+#include "../material/medium/transparent.hpp"
+#include "../material/medium/linear.hpp"
+
+
 using namespace GS_DDMRM::S_IceRay::S_object;
 
 
 GC_wrap::GC_wrap()
- :GC_wrap( &Fs_vacuum() )
+ :GC_wrap( &F1s_geometry() )
  {
  }
 
 GC_wrap::GC_wrap( T_geometry * P_geometry )
  {
-  M2_pigment = &GC_wrap::Fs_pigment();
-  M2_medium = &GC_wrap::Fs_transparent();
+  F_pigment( nullptr );
+  F_medium( nullptr );
+
   M2_geometry = nullptr;
    M2_intersect = nullptr;
    M2_normal = nullptr;
@@ -27,6 +34,7 @@ GC_wrap::GC_wrap( T_geometry * P_geometry )
    M2_distance = nullptr;
    M2_uvw = nullptr;
    M2_cluster = nullptr;
+
   F_geometry( P_geometry );
  }
 
@@ -35,7 +43,7 @@ GC_wrap::GC_wrap( T_geometry * P_geometry,  T_pigment * P_pigment )
  {
   F_geometry( P_geometry );
   F_pigment( P_pigment );
- } 
+ }
 
 GC_wrap::GC_wrap( T_geometry * P_geometry,  T_pigment * P_pigment, T_medium * P_medium )
  :GC_wrap()
@@ -86,6 +94,7 @@ bool GC_wrap::Fv_attenuate( T_color & P_result, T_color & P_deplete, T_coord con
      }
    }
 
+  // No transform. This is as is.
   return M2_medium->Fv_attenuate( P_result, P_deplete, P_start, P_end, P_state );
  }
 
@@ -126,28 +135,39 @@ bool        GC_wrap::Fv_uvw(       T_coord & P_uvw, T_coord const& P_point, T_st
 
 bool        GC_wrap::F_geometry( T_geometry * P_geometry )
  {
-   M2_geometry = P_geometry;
-   M2_marbles.clear();
-   M2_cluster = dynamic_cast< T_cluster *>( M2_geometry );
-   if( nullptr != M2_cluster )
-    {
-     M2_marbles.resize( M2_cluster->Fv_quantity() );
-     for( T_size I_index = 0 ; I_index < M2_cluster->Fv_quantity(); ++I_index )
-      {
-       auto & I_marble = M2_marbles[ I_index ];
-       I_marble.M_pigment = dynamic_cast< T_pigment* >( M2_cluster->Fv_base( I_index ) ); if( nullptr == I_marble.M_pigment ) I_marble.M_pigment = &Fs_pigment();
-       I_marble.M_medium  = dynamic_cast< T_medium* >(  M2_cluster->Fv_base( I_index ) ); if( nullptr == I_marble.M_medium  ) I_marble.M_medium  = &Fs_transparent();
-      }
-    }
+  M2_geometry = P_geometry;
+  if( nullptr == M2_geometry )
+   {
+    M2_geometry = &F1s_geometry();
+   }
 
-   M2_intersect      = dynamic_cast<T_intersect*>( M2_geometry ); if( nullptr == M2_intersect ) M2_intersect = & Fs_vacuum();
-   M2_normal         = dynamic_cast<T_normal   *>( M2_geometry ); if( nullptr == M2_normal    ) M2_normal    = & Fs_vacuum();
-   M2_inside         = dynamic_cast<T_inside   *>( M2_geometry ); if( nullptr == M2_inside    ) M2_inside    = & Fs_vacuum();
-   M2_distance       = dynamic_cast<T_distance *>( M2_geometry ); if( nullptr == M2_distance  ) M2_distance  = & Fs_vacuum();
-   M2_uvw            = dynamic_cast<T_uvw      *>( M2_geometry ); if( nullptr == M2_uvw       ) M2_uvw       = & Fs_vacuum();
+  M2_marbles.clear();
+  M2_cluster = dynamic_cast< T_cluster *>( M2_geometry );
+  if( nullptr != M2_cluster )
+   {
+    M2_marbles.resize( M2_cluster->Fv_quantity() );
+    for( T_size I_index = 0 ; I_index < M2_cluster->Fv_quantity(); ++I_index )
+     {
+      auto & I_marble = M2_marbles[ I_index ];
+      I_marble.M_pigment = dynamic_cast< T_pigment* >( M2_cluster->Fv_base( I_index ) ); //if( nullptr == I_marble.M_pigment ) I_marble.M_pigment = &Fs_pigment();
+      I_marble.M_medium  = dynamic_cast< T_medium* >(  M2_cluster->Fv_base( I_index ) ); //if( nullptr == I_marble.M_medium  ) I_marble.M_medium  = &F1s_medium();
+     }
+   }
 
-   Fv_box( P_geometry->F_box() );
-   return true;
+  M2_intersect      = dynamic_cast<T_intersect*>( M2_geometry ); if( nullptr == M2_intersect ) M2_intersect = dynamic_cast<T_intersect*>( & F1s_geometry() );
+  M2_normal         = dynamic_cast<T_normal   *>( M2_geometry ); if( nullptr == M2_normal    ) M2_normal    = dynamic_cast<T_normal   *>( & F1s_geometry() );
+  M2_inside         = dynamic_cast<T_inside   *>( M2_geometry ); if( nullptr == M2_inside    ) M2_inside    = dynamic_cast<T_inside   *>( & F1s_geometry() );
+  M2_distance       = dynamic_cast<T_distance *>( M2_geometry ); if( nullptr == M2_distance  ) M2_distance  = dynamic_cast<T_distance *>( & F1s_geometry() );
+  M2_uvw            = dynamic_cast<T_uvw      *>( M2_geometry ); if( nullptr == M2_uvw       ) M2_uvw       = dynamic_cast<T_uvw      *>( & F1s_geometry() );
+
+  F1_box( P_geometry->F_box() );
+  return true;
+ }
+
+GC_wrap::T_geometry & GC_wrap::F1s_geometry()
+ {
+  static GS_DDMRM::S_IceRay::S_geometry::GC_vacuum Is_vacuum;
+  return Is_vacuum;
  }
 
 bool   GC_wrap::F_pigment( T_pigment * P_pigment )
@@ -155,7 +175,7 @@ bool   GC_wrap::F_pigment( T_pigment * P_pigment )
   M2_pigment = P_pigment;
   if( nullptr == M2_pigment )
    {
-    M2_pigment = &Fs_pigment();
+    M2_pigment = &F1s_pigment();
    }
 
   F1_maxRayPerHit() = M2_pigment->Fv_maxNextRays();
@@ -175,30 +195,24 @@ bool   GC_wrap::F_pigment( T_pigment * P_pigment )
   return true;
  }
 
+GC_wrap::T_pigment & GC_wrap::F1s_pigment()
+ {
+  static GS_DDMRM::S_IceRay::S_material::S_pigment::GC_default Is_default;
+  return Is_default;
+ }
+
 bool  GC_wrap::F_medium( T_medium * P_medium )
  {
   M2_medium = P_medium;
+  if( nullptr == M2_medium )
+   {
+    M2_medium = &F1s_medium();
+   }
   return true;
  }
 
-GC_wrap::T_vacuum & GC_wrap::Fs_vacuum()
- {
-  static T_vacuum Is_vacuum;
-  return Is_vacuum;
- }
-
-#include "../material/medium/transparent.hpp"
-#include "../material/medium/linear.hpp"
-
-GC_wrap::T_medium & GC_wrap::Fs_transparent()
+GC_wrap::T_medium & GC_wrap::F1s_medium()
  {
   static GS_DDMRM::S_IceRay::S_material::S_medium::GC_transparent Is_transparent; return Is_transparent;
-  //static  GS_DDMRM::S_IceRay::S_material::S_medium::GC_linear     Is_linear;   return Is_linear;
+//static GS_DDMRM::S_IceRay::S_material::S_medium::GC_linear     Is_linear;       return Is_linear;
  }
- 
-GC_wrap::T_pigment & GC_wrap::Fs_pigment()
- {
-  static GS_DDMRM::S_IceRay::S_material::S_pigment::GC_simple Is_base;
-  return Is_base;
- }
- 

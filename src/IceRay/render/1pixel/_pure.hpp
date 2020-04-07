@@ -1,8 +1,11 @@
 #ifndef Dh_DDMRM_Iceray_render_pixel__pure_HPP_
  #define Dh_DDMRM_Iceray_render_pixel__pure_HPP_
 
+// GS_DDMRM::S_IceRay::S_render::S_pixel::GC__pure
+
  #include "../../type/color.hpp"
  #include "../../type/math/coord.hpp"
+
 
 
 

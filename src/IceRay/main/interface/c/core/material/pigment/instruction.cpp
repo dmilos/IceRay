@@ -5,31 +5,46 @@
 #include "../../../util/internal.hpp"
 
 
-void IceRayC_Material_Pigment_Instruction_Release( IceRayC_Material_Pigment_InstructionHandle P_this )
+IceRayC_Material_Pigment_InstructionHandle cpp2c( GS_DDMRM::S_IceRay::S_material::S_compute::GC_instruction * P_this )
  {
-  IceRayC__Internal_Release
-    <
-      IceRayC_Material_Pigment_InstructionHandle
-     ,GS_DDMRM::S_IceRay::S_material::S_compute::GC_instruction
-    >( P_this );
-
-  //typedef  GS_DDMRM::S_IceRay::S_material::S_compute::GC_instruction Tf__instruction;
-  //auto I_this = reinterpret_cast<Tf__instruction*> ( P_this );
-  //delete I_this;
+  return reinterpret_cast<IceRayC_Material_Pigment_InstructionHandle>( P_this );
  }
 
-IceRayC_Material_Pigment_InstructionHandle IceRayC_Material_Pigment_Instruction_Ambient0( IceRayC_TypeSize P_result, IceRayC_TypeSize P_emmision )
+GS_DDMRM::S_IceRay::S_material::S_compute::GC_instruction * c2cpp(  IceRayC_Material_Pigment_InstructionHandle P_that )
+ {
+  return reinterpret_cast<GS_DDMRM::S_IceRay::S_material::S_compute::GC_instruction *>( P_that );
+ }
+
+
+void IceRayC_Material_Pigment_Instruction_Release( IceRayC_Material_Pigment_InstructionHandle P_that )
+ {
+  auto I_this = c2cpp( P_that );
+  delete I_this;
+ }
+
+IceRayC_Material_Pigment_InstructionHandle IceRayC_Material_Pigment_Surface_Instruction_NOP0()
+ {
+  typedef GS_DDMRM::S_IceRay::S_material::S_pigment::GC__pure  Tf__pure;
+  typedef GS_DDMRM::S_IceRay::S_material::S_compute::GC_nop    Tf_nop;
+
+  auto Ir_result = new Tf_nop{};
+  return cpp2c( Ir_result );
+ }
+
+#define D_P(type,name) IceRayC_Type##type P_##name
+
+IceRayC_Material_Pigment_InstructionHandle IceRayC_Material_Pigment_Instruction_Ambient0( D_P(Size,result), D_P(Size,emmision) )
  {
   typedef GS_DDMRM::S_IceRay::S_material::S_compute::GC_instruction              Tf__instruction;
   typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_illumination::GC_ambient  Tf_ambient;
 
   auto Ir_result = new Tf_ambient{ P_result, P_emmision };
-  return reinterpret_cast<IceRayC_Material_Pigment_InstructionHandle>( dynamic_cast< Tf__instruction *> ( Ir_result ) );
+  return cpp2c( Ir_result );
  }
 
 /*
-IceRayC_Material_Pigment_InstructionHandle IceRayC_Material_Pigment_Instruction_Geometry_Cluster( )
-IceRayC_Material_Pigment_InstructionHandle IceRayC_Material_Pigment_Instruction_Geometry_Distance( )
+IceRayC_Material_Pigment_InstructionHandle IceRayC_Material_Pigment_Instruction_Geometry_Cluster( TODO )
+IceRayC_Material_Pigment_InstructionHandle IceRayC_Material_Pigment_Instruction_Geometry_Distance( TODO )
 IceRayC_Material_Pigment_InstructionHandle IceRayC_Material_Pigment_Instruction_Geometry_Intersect( )
 IceRayC_Material_Pigment_InstructionHandle IceRayC_Material_Pigment_Instruction_Geometry_Normal( )
 IceRayC_Material_Pigment_InstructionHandle IceRayC_Material_Pigment_Instruction_Geometry_Uvw( )

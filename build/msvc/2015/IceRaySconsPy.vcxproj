@@ -60,6 +60,7 @@
     <ClCompile Include="..\..\..\src\IceRay\geometry\spline\spline.cpp" />
     <ClCompile Include="..\..\..\src\IceRay\geometry\structure\intersect.cpp" />
     <ClCompile Include="..\..\..\src\IceRay\geometry\transform\affine.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\geometry\transform\identity.cpp" />
     <ClCompile Include="..\..\..\src\IceRay\geometry\transform\mblur.cpp" />
     <ClCompile Include="..\..\..\src\IceRay\geometry\transform\projective.cpp" />
     <ClCompile Include="..\..\..\src\IceRay\geometry\transform\trans.cpp" />
@@ -93,6 +94,10 @@
     <ClCompile Include="..\..\..\src\IceRay\material\compute\compute.cpp" />
     <ClCompile Include="..\..\..\src\IceRay\material\compute\processor.cpp" />
     <ClCompile Include="..\..\..\src\IceRay\material\compute\program.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\object\object.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\object\wrap.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\object\_base.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\object\_pure.cpp" />
     <ClCompile Include="..\..\..\src\IceRay\render\0scanner\block.cpp" />
     <ClCompile Include="..\..\..\src\IceRay\render\0scanner\parallel.cpp" />
     <ClCompile Include="..\..\..\src\IceRay\render\0scanner\scanner.cpp" />
@@ -197,6 +202,7 @@
     <ClInclude Include="..\..\..\src\IceRay\geometry\state\manager.hpp" />
     <ClInclude Include="..\..\..\src\IceRay\geometry\structure\intersect.hpp" />
     <ClInclude Include="..\..\..\src\IceRay\geometry\transform\affine.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\geometry\transform\identity.hpp" />
     <ClInclude Include="..\..\..\src\IceRay\geometry\transform\mblur.hpp" />
     <ClInclude Include="..\..\..\src\IceRay\geometry\transform\projective.hpp" />
     <ClInclude Include="..\..\..\src\IceRay\geometry\transform\trans.hpp" />
@@ -260,6 +266,10 @@
     <ClInclude Include="..\..\..\src\IceRay\material\medium.hpp" />
     <ClInclude Include="..\..\..\src\IceRay\material\pigment.hpp" />
     <ClInclude Include="..\..\..\src\IceRay\material\_pure.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\object\object.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\object\wrap.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\object\_base.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\object\_pure.hpp" />
     <ClInclude Include="..\..\..\src\IceRay\render\2pierce\uv.hpp" />
     <ClInclude Include="..\..\..\src\IceRay\render\2pierce\_base.hpp" />
     <ClInclude Include="..\..\..\src\IceRay\render\2pierce\_pure.hpp" />
@@ -328,7 +338,7 @@
     <NMakeBuildCommandLine>$(prg_scons2) --directory=$(SolutionDir)../../scons/python compiler:configuration=debug</NMakeBuildCommandLine>
     <NMakeReBuildCommandLine>$(prg_scons2) -c --directory=$(SolutionDir)../../scons/python compiler:configuration=debug</NMakeReBuildCommandLine>
     <NMakeCleanCommandLine>$(prg_scons2) -c --directory=$(SolutionDir)../../scons/python compiler:configuration=debug</NMakeCleanCommandLine>
-    <NMakeOutput>z:\work\code\cpp\prj\github\IceRay\work\example\IceRayCpp.pyd</NMakeOutput>
+    <NMakeOutput>$(SolutionDir)..\..\..\example\IceRayCpp.pyd</NMakeOutput>
     <IncludePath>../../../src;$(boost_168_INCLUDE);$(IncludePath)</IncludePath>
     <NMakeIncludeSearchPath>$(boost_168_INCLUDE);../../../src</NMakeIncludeSearchPath>
     <SourcePath>../../../src;$(SourcePath)</SourcePath>

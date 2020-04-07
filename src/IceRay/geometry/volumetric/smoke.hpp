@@ -33,7 +33,7 @@
 
          public:
            GC_smoke();
-           GC_smoke( T_coord  const& P_lo, T_coord  const& P_hi );
+         //GC_smoke( T_hull * P_hull );
           ~GC_smoke( );
 
          public:

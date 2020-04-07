@@ -2,7 +2,6 @@
 
 #include "math/random/vdc.hpp"
 #include "math/random/sobol1d.hpp"
-#include "math/function/peano2D.hpp"
 
 
 #include "./disc.hpp"
@@ -55,7 +54,7 @@ GC_disc::Fv_swarm
      T_scalar I_x, I_y;
 
     GS_DDMRM::S_IceRay::S_utility::S_random::GF_disc2D( I_x, I_y, M2_randSobol2D  );
-   // GS_DDMRM::S_IceRay::S_utility::S_random::GF_disc2D( I_point, M2_VaPND );
+   // GS_DDMRM::S_IceRay::S_utility::S_random::GF_disc2D( I_point, M2_VaLND );
    // GS_DDMRM::S_IceRay::S_utility::S_random::GF_disc2D( I_point[0], I_point[1], M2_randSobol2D  );
    // GS_DDMRM::S_IceRay::S_utility::S_random::GF_disc2D( I_point, M2_randStandard2D );
 

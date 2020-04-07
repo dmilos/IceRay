@@ -3,7 +3,6 @@
 #include "./blocked.hpp"
 #include "./chandelier.hpp"
 #include "./circle.hpp"
-#include "./clipped.hpp"
 #include "./dark.hpp"
 #include "./disc.hpp"
 #include "./line.hpp"
@@ -13,3 +12,5 @@
 #include "./spline.hpp"
 #include "./suns.hpp"
 #include "./sung.hpp"
+#include "./clipped.hpp"
+#include "./confine.hpp"

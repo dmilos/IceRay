@@ -70,24 +70,23 @@ GC_smoke::GC_smoke()
  {
   T_coord I_lo; ::math::linear::vector::fill( I_lo, -1 );
   T_coord I_hi; ::math::linear::vector::fill( I_hi, +1 );
-  F_box( I_lo, I_hi );
+  F1_box( T_box{ I_lo, I_hi } );
 
   M2_precision = 0.01;
   M2_density = [ ](T_coord const& ){ return 0.25; };
   F_hull( &Fs_vacuum() );
  }
 
-GC_smoke::GC_smoke
- (
-   T_coord  const& P_lo
-  ,T_coord  const& P_hi
- )
- {
-  F_box( P_lo, P_hi );
-  M2_precision = 0.01;
-  M2_density = [ ](T_coord const& ){ return 0.25; };
-  F_hull( &Fs_vacuum() );
- }
+// GC_smoke::GC_smoke
+//  (
+//    T_hull * P_hull
+//  )
+//  {
+//   //F1_box( T_box{ P_lo, P_hi } );
+//   M2_precision = 0.01;
+//   M2_density = [ ](T_coord const& ){ return 0.25; };
+//   F_hull( P_hull );
+//  }
 
 GC_smoke::~GC_smoke( )
  {
@@ -316,5 +315,5 @@ GC_smoke::T_hull const& GC_smoke::F_hull( )const
 void GC_smoke::F_hull( T_hull * P_hull )
  {
   M2_hull = P_hull;
-  Fv_box( F_hull().F_box() );
+  F1_box( F_hull().F_box() );
  }

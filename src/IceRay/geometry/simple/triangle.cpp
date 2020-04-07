@@ -140,7 +140,7 @@ bool GC_triangle::F2_setP( T_coord const& P_v1, T_coord const& P_v2, T_coord con
   T_box I_box;
   ::math::geometry::interval::load( I_box, P_v1, P_v2 );
   ::math::geometry::interval::extend( I_box, P_v3 );
-  Fv_box( I_box );
+  F1_box( I_box );
   return true;
  }
 

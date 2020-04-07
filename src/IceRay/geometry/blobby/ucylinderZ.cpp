@@ -39,7 +39,7 @@ GC_ucylinderZ::GC_ucylinderZ( T_scalar const& P_radius )
 
   T_coord I_lo; ::math::linear::vector::fill( T_coord(), -1 ); I_lo[2] = 0;
   T_coord I_hi; ::math::linear::vector::fill( T_coord(), +1 );
-  F_box( I_lo, I_hi );
+  F1_box( T_box{ I_lo, I_hi } );
  }
 
 GC_ucylinderZ::~GC_ucylinderZ( )

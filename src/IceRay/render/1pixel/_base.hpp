@@ -1,6 +1,7 @@
 #ifndef Dh_DDMRM_Iceray_render_pixel__base_HPP_
  #define Dh_DDMRM_Iceray_render_pixel__base_HPP_
- // GS_DDMRM::S_IceRay::S_render::S_pixel::GC__base
+
+// GS_DDMRM::S_IceRay::S_render::S_pixel::GC__base
 
  #include "./_pure.hpp"
  #include "../../type/math/coord.hpp"
@@ -23,7 +24,7 @@
        namespace S_pixel
         {
 
-         class GC__base // !< change name 
+         class GC__base // !< change name
           : public GS_DDMRM::S_IceRay::S_render::S_pixel::GC__pure
           {
            public:

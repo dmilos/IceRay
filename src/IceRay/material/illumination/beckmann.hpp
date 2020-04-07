@@ -14,22 +14,22 @@
       {
        namespace S_illumination
         {
-   
+
          class GC_beckmann
-          //: public S_IceRay::S_material::S_illumination::S__base::GC_data
+          //: public S_IceRay::S_material::S_illumination::GC__pure
           {
            public:
-               typedef GS_DDMRM::S_IceRay::S_type::GT_scalar             T_scalar;
-               typedef GS_DDMRM::S_IceRay::S_type::S_color::GT_scalar    T_color;
-               typedef GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar    T_coord;
-   
-             public:
+             typedef GS_DDMRM::S_IceRay::S_type::GT_scalar             T_scalar;
+             typedef GS_DDMRM::S_IceRay::S_type::S_color::GT_scalar    T_color;
+             typedef GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar    T_coord;
+
+           public:
              GC_beckmann( T_color const&  P_specular, T_color const&  P_roughness )
               : M2_specular( P_specular )
               , M2_roughness( P_roughness )
               {
               }
-   
+
            public:
              bool F_process
               (
@@ -54,12 +54,12 @@
                P_result.set( 2, P_light[2] * M2_specular[2] * exp( I_x / M2_roughness[2] / M2_roughness[2]) / ( I_y * M2_roughness[2] * M2_roughness[2] ) );
                return true;
               }
-   
+
            private:
              T_color const& M2_specular;
              T_color const& M2_roughness;
           };
-   
+
         }
       }
     }

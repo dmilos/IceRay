@@ -3,3 +3,4 @@
 #include "./color.cpp"
 #include "./picture.cpp"
 #include "./affine.cpp"
+#include "./matrix.cpp"

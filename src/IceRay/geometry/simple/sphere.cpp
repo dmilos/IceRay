@@ -15,11 +15,10 @@ GC_sphere::GC_sphere()
   M1_r2  = 1;
   M1_o_r = 1;
 
-  F_box
-   (
+  F1_box( T_box{ 
      ::math::linear::vector::fill( T_coord{}, -1 )
     ,::math::linear::vector::fill( T_coord{},  1 )
-   );
+   } );
 
  }
 
@@ -47,11 +46,10 @@ GC_sphere::GC_sphere
 
   using namespace ::math::linear::vector;
 
-  F_box
-   (
+  F1_box( T_box{ 
      P_center -  ::math::linear::vector::fill( T_coord{}, M2_radius )
     ,P_center +  ::math::linear::vector::fill( T_coord{}, M2_radius )
-   );
+   } );
 
  }
 
@@ -186,6 +184,12 @@ GC_sphere::Fv_weight( )const
   return Ir_weigh;
  }
 
+bool    GC_sphere::Fv_box( T_box const& P_box )
+ {
+  // TODO
+  return true;
+ }
+
 bool   GC_sphere::F_radius( T_scalar const& P_radius )
  {
   M2_radius = P_radius;
@@ -196,7 +200,7 @@ bool   GC_sphere::F_radius( T_scalar const& P_radius )
   using namespace ::math::linear::vector;
   T_coord I_lo = F_center() -  ::math::linear::vector::fill( T_coord{}, M2_radius );
   T_coord I_hi = F_center() +  ::math::linear::vector::fill( T_coord{}, M2_radius );
-  F_box( I_lo, I_hi );
+  F1_box( T_box{ I_lo, I_hi } );
 
   return bool( true );
  }
@@ -208,7 +212,7 @@ bool   GC_sphere::F_center( T_coord const& P_center )
   using namespace ::math::linear::vector;
   T_coord I_lo = F_center() -  ::math::linear::vector::fill( T_coord{}, M2_radius );
   T_coord I_hi = F_center() +  ::math::linear::vector::fill( T_coord{}, M2_radius );
-  F_box( I_lo, I_hi );
+  F1_box( T_box{ I_lo, I_hi } );
 
   return bool( true );
  }

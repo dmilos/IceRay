@@ -1,5 +1,6 @@
 #ifndef _DDMM_IceRAY_geometry_rtss__pure_H_
  #define _DDMM_IceRAY_geometry_rtss__pure_H_
+
 // GS_DDMRM::S_IceRay::S_geometry::S_RTSS::GC__pure
 
 #include "../_pure/_base.hpp"

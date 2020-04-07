@@ -9,7 +9,7 @@
     {
      namespace S_geometry
       {
-       namespace S_type
+       namespace S__type
         {
 
          //typedef GS_DDMRM::S_system::S_allocator::S_chunk::GC_managed GT_chunk;

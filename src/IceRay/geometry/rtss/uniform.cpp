@@ -235,14 +235,14 @@ GC_uniform::Fv_push( T__base * P_object )
 
   if( 1 == M2_collection.size() )
    {
-    Fv_box( P_object->F_box() );
+    F1_box( P_object->F_box() );
    }
   else
    {
     T_box I_box = F_box();
     // TODO ::math::geometry::interval::inflate( I_box, I_scale, I_box );
     ::math::geometry::interval::extend( I_box, P_object->F_box() );
-    Fv_box( I_box );
+    F1_box( I_box );
    }
 
   return M2_collection.size()-1;

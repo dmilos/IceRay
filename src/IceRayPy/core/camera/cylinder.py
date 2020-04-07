@@ -1,19 +1,40 @@
-class Horizontal:
+import ctypes
 
+Scalar = ctypes.c_double
+
+class Horizontal:
     def __init__(self, P_dll ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
-        self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_CameraCylinderHorizontal0()
+        self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Camera_Cylinder_Horizontal0()
     def __del__(self):
         self.m_cargo['dll'].IceRayC_Camera_Release( self.m_cargo['this'] )
+
+
+    def width(self, P_width ):
+        return self.m_cargo['dll'].IceRayC_Camera_Cylinder_Horizontal_Width(self.m_cargo['this'], Scalar( P_width ) )
+
+    def theta(self, P_theta ):
+        return self.m_cargo['dll'].IceRayC_Camera_Cylinder_Horizontal_Theta(self.m_cargo['this'], Scalar( P_theta ) )
+
+    def radius(self, P_radius ):
+        return self.m_cargo['dll'].IceRayC_Camera_Cylinder_Horizontal_Radius(self.m_cargo['this'], Scalar( P_radius ) )
 
 
 class Vertical:
-
     def __init__(self, P_dll ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
-        self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_CameraCylinderVerticall0()
+        self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Camera_Cylinder_Vertical0()
 
     def __del__(self):
         self.m_cargo['dll'].IceRayC_Camera_Release( self.m_cargo['this'] )
+
+    def phi(self, P_height ):
+        return self.m_cargo['dll'].IceRayC_Camera_Cylinder_Vertical_Phi(self.m_cargo['this'], Scalar( P_height ) )
+
+    def height(self, P_height ):
+        return self.m_cargo['dll'].IceRayC_Camera_Cylinder_Vertical_Height(self.m_cargo['this'], Scalar( P_height ) )
+
+    def radius(self, P_radius ):
+        return self.m_cargo['dll'].IceRayC_Camera_Cylinder_Vertical_Radius(self.m_cargo['this'], Scalar( P_radius ) )

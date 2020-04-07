@@ -40,6 +40,12 @@ GC_vacuum::T_size GC_vacuum::Fv_weight( )const
   return Ir_weigh;
  }
 
+bool    GC_vacuum::Fv_box( T_box const& P_box )
+ {
+  F1_box( P_box );
+  return true;
+ }
+
 bool GC_vacuum::Fv_intersect( T_scalar &P_lambda, T_state &P_state, T_ray const& P_ray )const
  {
   return false;

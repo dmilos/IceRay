@@ -134,7 +134,7 @@ void GC_translate::F_child( T__element *P_child )
   M2_child = P_child;
   T_box I_box = M2_child->F_box();
   ::math::geometry::interval::translate( I_box, M2_2world );
-  Fv_box( I_box );
+  F1_box( I_box );
  }
 
 bool GC_translate::F_move( T_coord const& P_move )
@@ -143,6 +143,6 @@ bool GC_translate::F_move( T_coord const& P_move )
   ::math::linear::vector::negate( M2_2local, P_move );
   T_box I_box = M2_child->F_box();
   ::math::geometry::interval::translate( I_box, M2_2world );
-  Fv_box( I_box );
+  F1_box( I_box );
   return bool( true );
 }

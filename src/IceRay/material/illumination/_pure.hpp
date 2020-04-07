@@ -1,6 +1,7 @@
 #ifndef Dh_IceRay_material_illumination__pure_hpp_
  #define Dh_IceRay_material_illumination__pure_hpp_
 
+// GS_DDMRM::S_IceRay::S_material::S_illumination::GC__pure
 
  namespace  GS_DDMRM
   {
@@ -20,7 +21,7 @@
              virtual ~GC__pure( )
               {
               }
-             // Noting. Just to make base class 
+             // Noting. Just to make base class
           };
 
         }

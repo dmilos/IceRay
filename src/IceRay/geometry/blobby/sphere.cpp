@@ -44,7 +44,7 @@ GC_sphere::GC_sphere( T_coord const& P_center, T_scalar const& P_radius, T_scala
 
   T_coord I_lo; ::math::linear::vector::addition( I_lo, P_center, ::math::linear::vector::fill( T_coord(), -P_influence ) );
   T_coord I_hi; ::math::linear::vector::addition( I_hi, P_center, ::math::linear::vector::fill( T_coord(), +P_influence ) );
-  F_box( I_lo, I_hi );
+  F1_box( T_box{ I_lo, I_hi } );
  }
 
 GC_sphere::~GC_sphere( )

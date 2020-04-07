@@ -41,8 +41,8 @@ void expose_IceRay_render_pierce_UV()
  }
 
 
-typedef GS_DDMRM::S_IceRay::S_camera::GC__pure           GTs_camera;
-typedef GS_DDMRM::S_IceRay::S_render::S_ray::GC__pure    GTs_ray;
+typedef GS_DDMRM::S_IceRay::S_camera::GC__pure             GTs_camera;
+typedef GS_DDMRM::S_IceRay::S_render::S_sheaf::GC__pure    GTs_sheaf;
 
 void expose_IceRay_render_pierce_Projector()
  {
@@ -55,18 +55,18 @@ void expose_IceRay_render_pierce_Projector()
   typedef GS_DDMRM::S_IceRay::S_render::S_pierce::GC_projector  Tf_projector;
 
   typedef void (Tf_projector::*T_setCamera )( GTs_camera *  );
-  typedef void (Tf_projector::*T_setRay    )( GTs_ray    *  );
+  typedef void (Tf_projector::*T_setSheaf  )( GTs_sheaf    *  );
 
   T_setCamera  I_setCamera = &Tf_projector::Fv_camera;
-  T_setRay     I_setRay    = &Tf_projector::Fv_ray;
+  T_setSheaf   I_setSheaf    = &Tf_projector::Fv_sheaf;
 
   boost::python::class_<Tf_projector, boost::python::bases<Tf__pure> >("RenderPierceProjector" )
     .def( boost::python::init<>() )
   //.def( boost::python::init<GT_coord>() )
    .def("camera",  I_setCamera  )
  //.def("camera",  &Tf__projector::F_camera   )
-   .def("ray",     I_setRay     )
- //.def("ray",     &Tf__projector::F_ray      )
+   .def("sheaf",     I_setSheaf     )
+ //.def("sheaf",     &Tf__projector::F_sheaf      )
   ;
 
  }

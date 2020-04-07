@@ -198,7 +198,7 @@ bool GC_affine::F_2world( T_affine const& P_2world )
 
   T_interval I_box;
   ::math::geometry::interval::transform( I_box, F_2world(), M2_geometry.M2__base->F_box() );
-  Fv_box( I_box );
+  F1_box( I_box );
   return true;
  }
 

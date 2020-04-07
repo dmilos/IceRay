@@ -1,15 +1,15 @@
 #ifndef Dh_DDMRM_Iceray_render_pierce_projector_HPP_
  #define Dh_DDMRM_Iceray_render_pierce_projector_HPP_
+
  // GS_DDMRM::S_IceRay::S_render::S_pierce::GC_projector
 
  #include "../../type/color.hpp"
  #include "../../type/math/coord.hpp"
 
  #include "../../camera/_pure.hpp"
- #include "../../camera/flat/perspective.hpp"
 
  #include "../4ray/_pure.hpp"
-//#include "../4ray/_base.hpp"
+ #include "../3sheaf/_pure.hpp"
 
  #include "./_pure.hpp"
 
@@ -34,6 +34,7 @@
 
              typedef GS_DDMRM::S_IceRay::S_type::S_ray::S_beam::GT_simple    T_beam;
 
+             typedef GS_DDMRM::S_IceRay::S_render::S_sheaf::GC__pure         T_sheaf;
              typedef GS_DDMRM::S_IceRay::S_camera::GC__pure                  T_camera;
              typedef GS_DDMRM::S_IceRay::S_render::S_ray::GC__pure           T_ray;
 
@@ -56,18 +57,18 @@
               }
            private:
              T_camera* M2_camera;
-             typedef GS_DDMRM::S_IceRay::S_camera::S_flat::GC_perspective  T2_perspective;
-             static T2_perspective M2s_camera;
+           private:
+             static T_camera & Fs_camera();
 
            public:
-             virtual void      Fv_ray( T_ray * P_ray ){ M2_ray = P_ray; }
-                     T_ray   *  F_ray(){ return M2_ray; }
+             virtual void        Fv_sheaf( T_sheaf * P_sheaf );
+                     T_sheaf   &  F_sheaf(){ return *M2_sheaf; }
            protected:
-           //typedef GS_DDMRM::S_IceRay::S_render::S_ray::GC__base           T1_base;
-             T_ray * & F1v_ray(){ return M2_ray; }
+             T_sheaf   & F1v_sheaf(){ return *M2_sheaf; }
            private:
-             T_ray * M2_ray;
-           //static T1_base M2s_base;
+             T_sheaf * M2_sheaf;
+           private:
+             static T_sheaf & Fs_sheaf();
 
            private:
             T_beam M2_beam;

@@ -49,6 +49,9 @@
              public:
                T_object const& F_object( )const{ return *M2_object; }
                bool            F_object( T_object * P_object );
+             protected:
+               T_object &      F1_object( ){ return *M2_object; }
+ 
              private:
                T_object *M2_object;
 
@@ -79,7 +82,7 @@
                void F2_trace( T_color &P_color );
 
              private:
-               typedef GS_DDMRM::S_IceRay::S_geometry::S_type::GT_allocator   T_allocator;
+               typedef GS_DDMRM::S_IceRay::S_geometry::S__type::GT_allocator   T_allocator;
                T_allocator M2_allocator;
              private:
                struct C_statistic

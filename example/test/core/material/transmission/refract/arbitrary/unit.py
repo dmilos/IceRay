@@ -13,8 +13,8 @@ def make(
     cargo = {}
     cargo['0'] = IceRayCpp.MaterialPatternColorConstant( P_ambient, 0 )
     cargo['1'] = IceRayCpp.MaterialLightGenerator( P_light['this'], 0 )
-    #MaterialLightSpotSwarm( [coord]point, [light]light, [spot]start, [size]count  )
-    cargo['2A'] = IceRayCpp.MaterialLightSpotSwarm( 0, 0, 0, 0 )
+    #MaterialLightSpotSwarmA( [size]count, [light]light, [coord]point, [spot]start )
+    cargo['2A'] = MaterialLightSpotSwarmA( 0, 0, 0, 0 )
     #MaterialLightSpotCull( [coord]point, [coord]normal, [spot]start, [size]count  )
     cargo['2B'] = IceRayCpp.MaterialLightSpotCull( 0, 1, 0, 0 )
 

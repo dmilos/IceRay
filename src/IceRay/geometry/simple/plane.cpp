@@ -17,11 +17,10 @@ GC_plane::GC_plane( )
 
   M2_normal[ T_coord().size() - 1 ] =1;
 
-  F_box
-   (
+  F1_box( T_box{ 
      ::math::linear::vector::fill( T_coord{}, -Is_infinity )
     ,::math::linear::vector::fill( T_coord{}, +Is_infinity )
-   );
+   } );
 
  }
 
@@ -41,7 +40,7 @@ GC_plane::GC_plane
   using namespace ::math::linear::vector;
   T_coord I_lo; ::math::linear::vector::fill( I_lo, Is_infinity );
   T_coord I_hi; ::math::linear::vector::fill( I_hi, Is_infinity );
-  F_box( I_lo, I_hi );
+  F1_box( T_box{ I_lo, I_hi } );
  }
 
 GC_plane::~GC_plane()

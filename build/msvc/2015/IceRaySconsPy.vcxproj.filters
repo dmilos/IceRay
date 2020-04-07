@@ -444,6 +444,21 @@
     <ClCompile Include="..\..\..\src\IceRay\light\suns.cpp">
       <Filter>Source Files\src\light</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\geometry\transform\identity.cpp">
+      <Filter>Source Files\src\geometry\transform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\object\wrap.cpp">
+      <Filter>Source Files\src\object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\object\_base.cpp">
+      <Filter>Source Files\src\object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\object\_pure.cpp">
+      <Filter>Source Files\src\object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\object\object.cpp">
+      <Filter>Source Files\src\object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\src\IceRay\camera\focus.hpp">
@@ -991,6 +1006,21 @@
     </ClInclude>
     <ClInclude Include="..\..\..\src\IceRay\light\suns.hpp">
       <Filter>Source Files\src\light</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\transform\identity.hpp">
+      <Filter>Source Files\src\geometry\transform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\object\wrap.hpp">
+      <Filter>Source Files\src\object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\object\_pure.hpp">
+      <Filter>Source Files\src\object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\object\_base.hpp">
+      <Filter>Source Files\src\object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\object\object.hpp">
+      <Filter>Source Files\src\object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

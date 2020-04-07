@@ -17,7 +17,7 @@ GC_ucylinder::GC_ucylinder(   )
   I_lo[0] = -1; I_lo[1] = -1; I_lo[2] = -1;
   I_hi[0] =  1; I_hi[1] =  1; I_hi[2] = +1;
 
-  F_box( I_lo, I_hi );
+  F1_box( T_box{ I_lo, I_hi } );
  }
 
 GC_ucylinder::~GC_ucylinder( )

@@ -4,7 +4,7 @@
 
 #include "IceRay/material/medium/medium.hpp"
 
-void IceRayC_Material_MediumRelease( IceRayC_Material_MediumHandle P_this )
+void IceRayC_Material_Medium_Release( IceRayC_Material_MediumHandle P_this )
  {
   typedef GS_DDMRM::S_IceRay::S_material::S_medium::GC__pure Tf__pure;
   auto I_this = reinterpret_cast<Tf__pure*> ( P_this );
@@ -17,7 +17,6 @@ IceRayC_Material_MediumHandle  IceRayC_Material_Medium_Constant0()
   auto Ir_result = new GS_DDMRM::S_IceRay::S_material::S_medium::GC_constant{};
   return reinterpret_cast<IceRayC_Material_MediumHandle>( dynamic_cast< Tf__pure *> ( Ir_result ) );
  }
-
 IceRayC_Material_MediumHandle  IceRayC_Material_Medium_Constant1(   IceRayC_TypeColorRGB P_value, IceRayC_TypeColorRGB P_deplete)
  {
   typedef GS_DDMRM::S_IceRay::S_material::S_medium::GC__pure Tf__pure;
@@ -45,7 +44,6 @@ IceRayC_Material_MediumHandle  IceRayC_Material_Medium_Quadratic0()
   auto Ir_result = new GS_DDMRM::S_IceRay::S_material::S_medium::GC_quadratic{};
   return reinterpret_cast<IceRayC_Material_MediumHandle>( dynamic_cast< Tf__pure *> ( Ir_result ) );
  }
-
 IceRayC_Material_MediumHandle  IceRayC_Material_Medium_Quadratic1( IceRayC_TypeColorRGB P_value, IceRayC_TypeScalar P_c0, IceRayC_TypeScalar P_c1, IceRayC_TypeScalar P_c2 )
  {
   typedef GS_DDMRM::S_IceRay::S_material::S_medium::GC__pure Tf__pure;
@@ -59,7 +57,6 @@ IceRayC_Material_MediumHandle  IceRayC_Material_Medium_Exponential0()
   auto Ir_result = new GS_DDMRM::S_IceRay::S_material::S_medium::GC_exponential{};
   return reinterpret_cast<IceRayC_Material_MediumHandle>( dynamic_cast< Tf__pure *> ( Ir_result ) );
  }
-
 IceRayC_Material_MediumHandle  IceRayC_Material_Medium_Exponential1( IceRayC_TypeColorRGB P_value, IceRayC_TypeScalar P_half )
  {
   typedef GS_DDMRM::S_IceRay::S_material::S_medium::GC__pure Tf__pure;

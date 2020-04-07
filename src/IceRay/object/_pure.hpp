@@ -49,14 +49,14 @@
              using T_material::Fv_maxNextRays;
 
            public:
-             T_geometry & F_geometry()
+             T_geometry & F_geometry() //!< to avoid cast
               {
                return *this;
               }
 
-             T_material & F_material()
+             T_material & F_material() //!< to avoid cast
               {
-               return *this;
+               return *this; 
               }
 
           };

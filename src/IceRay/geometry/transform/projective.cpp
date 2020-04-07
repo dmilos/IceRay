@@ -264,7 +264,7 @@ bool GC_projective::F_2world( T_projective const& P_2world )
      }
    }
 
-  Fv_box( I_box );
+  F1_box( I_box );
   return true;
  }
 

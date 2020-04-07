@@ -1,11 +1,13 @@
 #include "../../../def_submodule.hpp"
 
-#include "IceRay/material/compute/light/swarm1.hpp"
-#include "IceRay/material/compute/light/swarm0.hpp"
 #include "IceRay/material/compute/light/generator.hpp"
+
 #include "IceRay/material/compute/light/spotUVW.hpp"
 #include "IceRay/material/compute/light/spotCull.hpp"
-#include "IceRay/material/compute/light/spotSwarm.hpp"
+
+#include "IceRay/material/compute/light/swarmA.hpp"
+#include "IceRay/material/compute/light/swarmB.hpp"
+#include "IceRay/material/compute/light/swarmC.hpp"
 
 #include "IceRay/material/compute/instruction.hpp"
 
@@ -58,14 +60,38 @@ void expose_IceRay_material_light_spotSwarm()
   MAKE_SUBMODULE( material );
   MAKE_SUBMODULE( light );
 
-  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_light::GC_spotSwarm     Ts_swarm;
+  {
+    typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_light::GC_swarmA     Ts_swarmA;
+  
+    typedef boost::python::class_<Ts_swarmA, boost::python::bases< GTs_instruction  > > Tf_this;
+  
+    boost::python::object I_this = Tf_this( "MaterialLightSpotSwarmA" )
+      .def( boost::python::init<>() )
+      .def( boost::python::init<GTs_size,GTs_size,GTs_size,GTs_size>() )
+    ;
+  }
 
-  typedef boost::python::class_<Ts_swarm, boost::python::bases< GTs_instruction  > > Tf_this;
+  {
+    typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_light::GC_swarmB     Ts_swarmB;
+  
+    typedef boost::python::class_<Ts_swarmB, boost::python::bases< GTs_instruction  > > Tf_this;
+  
+    boost::python::object I_this = Tf_this( "MaterialLightSpotSwarmB" )
+      .def( boost::python::init<>() )
+      .def( boost::python::init<GTs_size,GTs_size,GTs_size,GTs_size,GTs_size>() )
+    ;
+  }
 
-  boost::python::object I_this = Tf_this( "MaterialLightSpotSwarm" )
-    .def( boost::python::init<>() )
-    .def( boost::python::init<GTs_size,GTs_size,GTs_size,GTs_size>() )
-  ;
+  {
+   typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_light::GC_swarmC     Ts_swarmC;
+ 
+   typedef boost::python::class_<Ts_swarmC, boost::python::bases< GTs_instruction  > > Tf_this;
+ 
+   boost::python::object I_this = Tf_this( "MaterialLightSpotSwarmC" )
+     .def( boost::python::init<>() )
+     .def( boost::python::init<GTs_size,GTs_size,GTs_size,GTs_size>() )
+   ;
+  }
 
  }
 
@@ -124,72 +150,3 @@ void expose_IceRay_material_light_spotCull()
   //  .export_values()
   //  ;
 }
-
-void expose_IceRay_material_light_swarm1()
- {
-  //MAKE_SUBMODULE( IceRay );
-  MAKE_SUBMODULE( core );
-  MAKE_SUBMODULE( material );
-  MAKE_SUBMODULE( light );
-
-  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_light::GC_swarm1     GTs_swarm1;
-
-
-  typedef boost::python::class_<GTs_swarm1, boost::python::bases< GTs_instruction  > > Tf_this;
-
-  boost::python::object I_this = Tf_this( "MaterialLightSwarm1" )
-    .def( boost::python::init<>() )
-    .def( boost::python::init<GTs_size >() )
-  ;
-
-  boost::python::scope I_scope = I_this;
-
-  boost::python::enum_<GTs_swarm1::Ee_input>( "Input" )
-    .value( "point",     GTs_swarm1::En_inCoord_Point  )
-    .value( "normal",    GTs_swarm1::En_inCoord_Normal )
-    .value( "start",     GTs_swarm1::En_inSize_Start   )
-  //.value( "limit",     GTs_swarm1::En_inSize_Limit   )
-    .export_values()
-  ;
-
-  boost::python::enum_<GTs_swarm1::Ee_output>( "Output" )
-    .value( "count",     GTs_swarm1::En_outSize_SpotCount  )
-    .export_values()
-   ;
- }
-
-void expose_IceRay_material_light_swarm0()
- {
-  //MAKE_SUBMODULE( IceRay );
-  MAKE_SUBMODULE( core );
-  MAKE_SUBMODULE( material );
-  MAKE_SUBMODULE( light );
-
-  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_light::GC_swarm0     GTs_swarm0;
-
-  typedef boost::python::class_<GTs_swarm0, boost::python::bases< GTs_instruction  > > Tf_this;
-
-  boost::python::object I_this = Tf_this( "MaterialLightSwarm0" )
-    .def( boost::python::init<>() )
-    .def( boost::python::init<GTs_size >() )
-    .def( boost::python::init<GTs_size, GTs_size >() )
-  ;
-
-  boost::python::scope I_scope = I_this;
-
-  //boost::python::enum_<GTs_swarm0::Ee_input>( "Input" )
-  //  .value( "point",     GTs_swarm0::En_inCoord_Point  )
-  //  .value( "normal",    GTs_swarm0::En_inCoord_Normal )
-  //  .value( "start",     GTs_swarm0::En_inSize_SpotStart   )
-  //  .value( "light",     GTs_swarm0::En_inLight_Start      )
-  //  .value( "light",     GTs_swarm0::En_inLight_Count      )
-  ////.value( "limit",     GTs_swarm0::En_inSize_SpotLimit   )
-  //  .export_values()
-  //;
-
-  boost::python::enum_<GTs_swarm0::Ee_output>( "Output" )
-    .value( "count",     GTs_swarm0::En_outSize_SpotCount  )
-    .export_values()
-   ;
- }
-

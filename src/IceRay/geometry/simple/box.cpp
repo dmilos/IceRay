@@ -33,14 +33,13 @@ GC_box::GC_box( T_box const& P_box )
 
 bool GC_box::F_load( T_box const& P_box )
  {
-  Fv_box( P_box );
+  this->Fv_box( P_box );
   return true;
  }
 
 bool    GC_box::F_load( T_coord const& P_lo, T_coord const& P_hi )
  {
-  F_box( P_lo, P_hi );
-
+    F1_box( T_box{  P_lo, P_hi } );
   return true;
  }
 
@@ -163,7 +162,6 @@ void GC_box::Fv_normal
   P_normal[ (I_intersect.M_side-1) / 2 ] = ( ( I_intersect.M_side % 2) ? T_scalar( -1 ) : T_scalar( 1 ) );
  }
 
-
 GC_box::T_location GC_box::Fv_inside
  (
   T_coord const& P_point
@@ -200,6 +198,13 @@ GC_box::Fv_weight( )const
   Ir_weigh += sizeof( C_intersect );
 
   return Ir_weigh;
+ }
+
+bool
+GC_box::Fv_box( T_box const& P_box )
+ {
+  F1_box( P_box );
+  return true;
  }
 
 bool               GC_box::Fs_valid( T_state const&P_state )

@@ -48,8 +48,8 @@ def make_surface( ):
 
     a = {}
     a['1'] = IceRayCpp.MaterialLightGenerator( light_cargo['light'], 0 )
-    #MaterialLightSpotSwarm( [coord]point, [light]light, [spot]start, [size]count  )
-    cargo['2A'] = IceRayCpp.MaterialLightSpotSwarm( 0, 0, 0, 0 )
+    #MaterialLightSpotSwarmA( [size]count, [light]light, [coord]point, [spot]start )
+    cargo['2A'] = IceRayCpp.MaterialLightSpotSwarmA( 0, 0, 0, 0 )
     #MaterialLightSpotCull( [coord]point, [coord]normal, [spot]start, [size]count  )
     cargo['2B'] = IceRayCpp.MaterialLightSpotCull( 0, 1, 0, 0 )
 

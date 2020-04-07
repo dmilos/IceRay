@@ -42,7 +42,7 @@
 
          private:
            typedef GS_DDMRM::S_IceRay::S_geometry::S__type::GC_state      T2_state;
-           typedef GS_DDMRM::S_IceRay::S_geometry::S_type::GT_ray        T2_ray;
+           typedef GS_DDMRM::S_IceRay::S_geometry::S__type::GT_ray        T2_ray;
 
          private:
            mutable T2_state M2_stateInstance;

@@ -74,6 +74,13 @@ import material.pattern.noise.unit
 import material.geometry.unit
 import material.illumination.hs.unit
 
+import material.medium.constant
+import material.medium.linear
+import material.medium.quadratic
+import material.medium.exponential
+
+
+
 import light
 from light.circle.unit      import make
 from light.area.unit        import make
@@ -87,6 +94,10 @@ from light.spline.unit      import make
 from light.sphere.unit      import make
 from light.dark.unit        import make
 from light.chandelier.unit  import tetra, hexa, octa
+
+from material.light.spot         import *
+from material.light.spot.uvw        import *
+
 
 from material.illumination.hs.unit               import *
 from material.illumination.on.unit               import *
@@ -135,18 +146,18 @@ from camera.invert.unit                 import cylinder
 light_list = {
        #'dark'       : light.dark.unit.make,
        'point'      : light.point.unit.makeZ,
-       #'line'       : light.line.unit.make,
-       #'reflector'  : light.reflector.unit.make,
-       #'circle'     : light.circle.unit.make,
-       #'area'       : light.area.unit.make,
-       #'disc'       : light.disc.unit.make,
-        'sunArea'    : light.sun.general.area,
-        'sunCircle'  : light.sun.general.circle,
-        'sunDisc'    : light.sun.general.disc,
-        'sunLine'    : light.sun.general.line,
-        'sunPoint'   : light.sun.general.point,
-        'sunSpot'    : light.sun.spot.make,
-       #'spline'     : light.spline.unit.make,
+       'reflector'  : light.reflector.unit.make,
+       'sunPoint'   : light.sun.general.point,
+       'sunSpot'    : light.sun.spot.make,
+       'sunArea'    : light.sun.general.area,
+       'sunLine'    : light.sun.general.line,
+       'sunCircle'  : light.sun.general.circle,
+       'sunDisc'    : light.sun.general.disc,
+       'line'       : light.line.unit.make,
+       'spline'     : light.spline.unit.make,
+       'circle'     : light.circle.unit.make,
+       'area'       : light.area.unit.make,
+       'disc'       : light.disc.unit.make,
        #'sphere'     : light.sphere.unit.make,
        #'chandelier-H'  : light.chandelier.unit.hexa,
        #'chandelier-T'  : light.chandelier.unit.tetra,
@@ -157,61 +168,64 @@ geometry_list = {
 
       #'rtss-list'     : geometry.rtss.unit.list,
       #'rtss-uniform'  : geometry.rtss.unit.uniform,
-      #
-      ##'hfield-theone'     :geometry.hfield.unit.theone,
-      ##'hfield-function'     :geometry.hfield.unit.funktion,
-       #'box'        :geometry.simple.box.unit.make,
-       'usphere'    :geometry.simple.usphere.unit.make,
-      #'ucylinder'    :geometry.simple.ucylinder.unit.make,
-      #'blobby'     :geometry.blobby.unit.make,
-      #'sphere'     :geometry.simple.sphere.unit.make,
-      #'ellipsoid'  :geometry.simple.ellipsoid.unit.make,
-      #'plane'      :geometry.simple.plane.unit.make,
-      #disc'       :geometry.simple.disc.unit.make,
+
+      #'hfield-theone'     :geometry.hfield.unit.theone,
+      #'hfield-function'   :geometry.hfield.unit.funktion,
+      #'simple-box'        :geometry.simple.box.unit.make,
+      'simple-usphere'    :geometry.simple.usphere.unit.make,
+      #'simple-ucylinder'    :geometry.simple.ucylinder.unit.make,
+      #'simple-sphere'     :geometry.simple.sphere.unit.make,
+      #'simple-ellipsoid'  :geometry.simple.ellipsoid.unit.make,
+      #'simple-plane'      :geometry.simple.plane.unit.make,
+      #'simple-disc'       :geometry.simple.disc.unit.make,
+      #'simple-torus'      :geometry.simple.torus.unit.make,
+      #'simple-cylinder'   :geometry.simple.cylinder.unit.make,
+      #'simple-cone':       geometry.simple.cone.unit.make,
+      #'simple-saddle'         : geometry.simple.saddle.unit.make,
+      #'simple-paraboloid': geometry.simple.paraboloid.unit.make,
 
       #'transform-identity'  :geometry.transform.identity.unit.make,
-
+      #
       #'transform-translate-identity'   :geometry.transform.translate.unit.identical,
       #'transform-translate-make'       :geometry.transform.translate.unit.make,
-
+      #
       #'transform-affine-identity'      :geometry.transform.affine.unit.identical,
       #'transform-affine-uniform'       :geometry.transform.affine.unit.uniform,
       #'transform-affine-translate'     :geometry.transform.affine.unit.translate,
       #'transform-affine-make'          :geometry.transform.affine.unit.make,
-
+      #
       #'transform-projective-identity'  :geometry.transform.projective.unit.identical,
       #'transform-projective-uniform'   :geometry.transform.projective.unit.uniform,
       #'transform-projective-translate' :geometry.transform.projective.unit.translate,
-
+      #
       #'transform-mblur'      :geometry.transform.mblur.unit.make,
       #'intersect'            :geometry.complex.intersect.unit.make,
 
-      #'cylinder'   :geometry.simple.cylinder.unit.make,
-      #'cone':       geometry.simple.cone.unit.make,
-      #'paraboloid': geometry.simple.paraboloid.unit.make,
-      #'hyper-nuke'    : geometry.simple.hyperboloid.unit.nuke,
-      #'hyper-sphere'  : geometry.simple.hyperboloid.unit.sphere,
-      #'hyper-cone'    : geometry.simple.hyperboloid.unit.cone,
-      #'hyper-cylinder': geometry.simple.hyperboloid.unit.cylinder,
-      #'hyper-negative': geometry.simple.hyperboloid.unit.negative,
-      #'saddle'         : geometry.simple.saddle.unit.make,
-      #'quadric-planeZ':        geometry.simple.quadric.unit.planeZ,
-      #'quadric-sphere':        geometry.simple.quadric.unit.sphere,
-      #'quadric-paraboloid':    geometry.simple.quadric.unit.paraboloid,
-      #'quadric-hyperboloid':   geometry.simple.quadric.unit.hyperboloid,
-      #'quadric-cone':          geometry.simple.quadric.unit.cone,
-      #'quadric-cylinder':      geometry.simple.quadric.unit.cylinder,
-      #'volumetric-smoke'      :geometry.volumetric.smoke.unit.make,
-      #'torus'      :geometry.simple.torus.unit.make,
-      #'volumetric-vacuum'     :geometry.volumetric.vacuum.unit.make,
-      #'triangle'   :geometry.simple.triangle.unit.make,
-      #'tetra'      :geometry.simple.triangle.unit.tetra,
-      #'octa'       :geometry.simple.triangle.unit.octa,
-      #'icosa'      :geometry.simple.triangle.unit.icosa,
+       #'hyper-nuke'    : geometry.simple.hyperboloid.unit.nuke,
+       #'hyper-sphere'  : geometry.simple.hyperboloid.unit.sphere,
+       #'hyper-cone'    : geometry.simple.hyperboloid.unit.cone,
+       #'hyper-cylinder': geometry.simple.hyperboloid.unit.cylinder,
+       #'hyper-negative': geometry.simple.hyperboloid.unit.negative,
+
+       #'quadric-planeZ':        geometry.simple.quadric.unit.planeZ,
+       #'quadric-sphere':        geometry.simple.quadric.unit.sphere,
+       #'quadric-paraboloid':    geometry.simple.quadric.unit.paraboloid,
+       #'quadric-hyperboloid':   geometry.simple.quadric.unit.hyperboloid,
+       #'quadric-cone':          geometry.simple.quadric.unit.cone,
+       #'quadric-cylinder':      geometry.simple.quadric.unit.cylinder,
+
+       #'volumetric-smoke'      :geometry.volumetric.smoke.unit.make,
+       #'volumetric-vacuum'     :geometry.volumetric.vacuum.unit.make,
+       #
+       #'triangle'   :geometry.simple.triangle.unit.make,
+       #'tetra'      :geometry.simple.triangle.unit.tetra,
+       #'octa'       :geometry.simple.triangle.unit.octa,
+       #'icosa'      :geometry.simple.triangle.unit.icosa,
 
       ## TODO'dodeka'      :geometry.simple.triangle.unit.dodeka,
       ## TODO'hexa'      :geometry.simple.triangle.unit.hexa,
 
+      #'blobby'     :geometry.blobby.unit.make,
       #'blobby_s_solo'     :geometry.blobby.sphere.unit.solo,
       #'blobby_s_line'     :geometry.blobby.sphere.unit.line,
       #'blobby_s_triangle' :geometry.blobby.sphere.unit.triangle,
@@ -238,22 +252,23 @@ geometry_list = {
 surface_list = {
         #'nothing'              : surface.make_nothing,
         #'mirror'               : surface.make_mirror,
-        #'noisePerlin'          : material.pattern.noise.unit.perlin,
-        #'noiseCrackle'         : material.pattern.noise.unit.crackle,
-        #'noiseValue'           : material.pattern.noise.unit.value,
-        #'noiseCells'           : material.pattern.noise.unit.cells,
-        #'noiseRandom'          : material.pattern.noise.unit.random,
-        #'noiseGold'            : material.pattern.noise.unit.gold,
-        #'noiseVDC'             : material.pattern.noise.unit.vdc,
-        #'hexagon'              : material.pattern.unit.hexagon,
-        #'checker'              : material.pattern.unit.checker,
-        #'brick'                : material.pattern.unit.brick,
-        #'level'                : material.pattern.unit.level,
-        #'onion'                : material.pattern.unit.onion,
-        #'image'                : material.pattern.unit.image,
-        #'waveSin'              : material.pattern.unit.wave_sin,
-        #'waveSaw'              : material.pattern.unit.wave_saw,
-        #'normal2ambient'       : material.pattern.unit.normal,
+        #'pattern-noisePerlin'          : material.pattern.noise.unit.perlin,
+        #'pattern-noiseCrackle'         : material.pattern.noise.unit.crackle,
+        #'pattern-noiseValue'           : material.pattern.noise.unit.value,
+        #'pattern-noiseCells'           : material.pattern.noise.unit.cells,
+        #'pattern-noiseRandom'          : material.pattern.noise.unit.random,
+        #'pattern-noiseGold'            : material.pattern.noise.unit.gold,
+        #'pattern-noiseVDC'             : material.pattern.noise.unit.vdc,
+        #'pattern-hexagon'              : material.pattern.unit.hexagon,
+        #'pattern-checker'              : material.pattern.unit.checker,
+        #'pattern-brick'                : material.pattern.unit.brick,
+        #'pattern-level'                : material.pattern.unit.level,
+        #'pattern-onion'                : material.pattern.unit.onion,
+        #'pattern-image'                : material.pattern.unit.image,
+        #'pattern-waveSin'              : material.pattern.unit.wave_sin,
+        #'pattern-waveSaw'              : material.pattern.unit.wave_saw,
+        #'pattern-normal2ambient'       : material.pattern.unit.normal,
+        #'pattern-spot-UVW'             : material.light.spot.uvw.make,
 
         #'mapping-cartesian2spherical'  :  material.operation.mapping.cartesian2spherical.make,
         #'mapping-cartesian2woodX'      :  material.operation.mapping.cartesian2woodX.make,
@@ -294,14 +309,25 @@ surface_list = {
         #'illum-gaussian'        : material.illumination.gaussian.unit.make,
         #'illum-hs-lambert'      : material.illumination.hs.unit.make_HSLambert,
         #'illum-hs-phong'        : material.illumination.hs.unit.make_HSPhong,
-         'illum-lambert'         : material.illumination.lambert.unit.make,
-        #'illum-phong'           : material.illumination.phong.unit.make,
+        #'illum-lambert'         : material.illumination.lambert.unit.make,
+         'illum-phong'           : material.illumination.phong.unit.make,
         #'illum-ONp44'           : material.illumination.on.unit.make_p44,
         #'illum-ONf29'           : material.illumination.on.unit.make_f29,
+        #'illum-ONYF'           : material.illumination.on.unit.make_YasuhiroFujii,
         #'illum-ward-aprox'      : material.illumination.ward.unit.make_aprox,
         #'illum-ward-real'       : material.illumination.ward.unit.make_real,
         #'illum-ward-iso'        : material.illumination.ward.unit.make_isotropic,
      }
+
+
+medium_list = {
+      'constant'      : material.medium.constant.make,
+      'exponential'   : material.medium.exponential.make,
+      'constant'      : material.medium.linear.make,
+      'quadratic'     : material.medium.quadratic.make,
+    }
+
+
 
 camera_list = {
        'flat-perspective'      : camera.flat.perspective.unit.make,
@@ -358,6 +384,7 @@ def doRendering(P_config):
                        c = kamera.make( data_camera()
                                  , P_config['camera']['eye'], P_config['camera']['view'],
                         )
+                       m = medium_list['constant']()
                        name = key_room +"-"+ key_camera +'-'+key_geometry +"-"+ key_surface+"-" + key_light
 
                        filen_name = folder + "\\" + name + '_'+ "{:04d}".format(P_config['index']) + '.ppm'
@@ -365,7 +392,7 @@ def doRendering(P_config):
                        my_file = Path(filen_name)
                        if not my_file.is_file():
                            print ( filen_name )
-                           rendering.work( folder +"\\" + name, data_room, P_config, exponat, l, c, s )
+                           rendering.work( folder +"\\" + name, data_room, P_config, exponat, l, c, s, m )
                        #break
                    #break
                #break
@@ -415,7 +442,7 @@ for i in range( start, 360, step ):
     height = 3 * ( math.cos(    alpha ) + 1 )/2 *  height;
 
     x = 2 * math.cos( alpha );
-    y = ( 4*( math.cos( alpha ) +1)/2 + 1 ) * math.sin( alpha );
+    y = ( 3*( math.cos( alpha ) +1)/2 + 1 ) * math.sin( alpha );
     eye = [x*0.8, y*0.8, height*0.8];
 
     print( "Index:" + str(i) + "[" + os.getcwd() + "]" )
@@ -425,7 +452,8 @@ for i in range( start, 360, step ):
                    'index' : i,
                    'pixelStrategyGridSize': 1,
                    'ray-trace-depth': 32,
-                   'image': { 'scale': 1, 'width': 800, 'height': 800 },
+                   'hot' :{ 'x': 346, 'y': 224 },
+                   'image': { 'scale': 1, 'width': 3.46*200, 'height': 3.46*200 },
                    #'room' { 'size':[1,1,1], 'move':[0,0,0]}
                    'camera': {
                        'eye' : IceRayCpp.MathTypeCoord3D().load( x, y, height )

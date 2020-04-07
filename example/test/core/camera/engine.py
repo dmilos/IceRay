@@ -1,11 +1,12 @@
 import IceRayCpp
 import IceRayPy
 
+import IceRayPy.core
 
 def make( P_object_cargo, P_camera_cargo ):
 
     engine_cargo={}
-    engine_cargo['this'] = IceRayPy.core.render.Engine()
+    engine_cargo['this'] = IceRayPy.core.render.EngineEx()
 
     engine_cargo['camera'] = P_camera_cargo
     engine_cargo['this'].camera( engine_cargo['camera']['this'] )

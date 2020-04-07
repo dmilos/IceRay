@@ -79,7 +79,7 @@ GC_object::T_size GC_object::F_push( T__base  * P__base )
 
   M2_container.resize( std::max( M2_container.size(), Ir_index + 1 ) );
   M2_container[ Ir_index ] = I_geometry;
-  Fv_box( M2_rtss->F_box() );
+  F1_box( M2_rtss->F_box() );
 
   return Ir_index;
  }
@@ -216,7 +216,7 @@ GC_object::F_rtss( T_rtss *P_rtss )
      }
    }
 
-  Fv_box( M2_rtss->F_box() );
+  F1_box( M2_rtss->F_box() );
 
   return true;
  }

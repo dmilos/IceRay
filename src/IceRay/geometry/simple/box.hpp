@@ -38,6 +38,7 @@
          public:
            void    Fv_reset( T_state &P_state )const;
            T_size  Fv_weight( )const;
+           bool    Fv_box( T_box const& P_box );
 
          public:
            bool        Fv_intersect( T_scalar &P_lambda, T_state &P_state, T_ray const& P_ray )const;
@@ -50,11 +51,11 @@
            bool    F_load( T_coord const& P_lo, T_coord const& P_hi );
          public:
            T_coord    const& F_lo()const{ return F_box().lo(); }
-           bool              F_lo( T_coord const& P_lo ){ F_box( P_lo, F_box().hi() ); return true; }
+           bool              F_lo( T_coord const& P_lo ){ Fv_box( T_box{ P_lo, F_box().hi() } ); return true; }
 
          public:
            T_coord    const& F_hi()const{ return F_box().hi(); }
-           bool              F_hi( T_coord const& P_hi ){ F_box( F_box().lo(), P_hi ); return true; }
+           bool              F_hi( T_coord const& P_hi ){ Fv_box( T_box{  F_box().lo(), P_hi } ); return true; }
 
          public:
            using T__base::F_box;

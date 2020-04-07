@@ -7,6 +7,8 @@
 
 
 
+
+
  namespace GS_DDMRM
   {
    namespace S_IceRay
@@ -17,7 +19,7 @@
         {
 
          class GC_constant
-          : public GC__pure
+          : public GS_DDMRM::S_IceRay::S_render::S_pixel::GC__pure
           {
            public:
              GC_constant()

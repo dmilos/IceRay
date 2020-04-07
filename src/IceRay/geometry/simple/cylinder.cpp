@@ -139,7 +139,7 @@ bool               GC_cylinder::F_radius( T_scalar const& P_radius )
   T_coord I_lo, I_hi;
   I_lo[0] = -M2_radius; I_lo[1] = -M2_radius; I_lo[2] = M2_ml2;
   I_hi[0] =  M2_radius; I_hi[1] =  M2_radius; I_hi[2] = M2_pl2;
-  F_box( I_lo, I_hi );
+  F1_box( T_box{ I_lo, I_hi } );
 
   return true;
  }
@@ -153,7 +153,7 @@ bool               GC_cylinder::F_length( T_scalar const& P_length )
   T_coord I_lo, I_hi;
   I_lo[0] = -M2_radius; I_lo[1] = -M2_radius; I_lo[2] = M2_ml2;
   I_hi[0] =  M2_radius; I_hi[1] =  M2_radius; I_hi[2] = M2_pl2;
-  F_box( I_lo, I_hi );
+  F1_box( T_box{ I_lo, I_hi } );
 
   return true;
  }

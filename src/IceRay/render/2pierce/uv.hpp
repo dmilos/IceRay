@@ -1,6 +1,8 @@
 #ifndef Dh_DDMRM_Iceray_render_pierce_UV_HPP_
  #define Dh_DDMRM_Iceray_render_pierce_UV_HPP_
 
+// GS_DDMRM::S_IceRay::S_render::S_pierce::GC_UV
+
  #include "./_pure.hpp"
 
 
@@ -30,7 +32,7 @@
 
            protected:
              /*
-              @param P_coord &sin; [0,width-1]x[0,height-1]
+              @param P_coord &sin; [0,1]x[0,1]
              */
              void F1v_render( T_color & P_color, T_coord const& P_coord )
               {

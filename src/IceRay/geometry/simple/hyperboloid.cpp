@@ -20,7 +20,7 @@ GC_hyperboloid::GC_hyperboloid( )
 
 GC_hyperboloid::GC_hyperboloid( T_scalar const& P_core )
  {
-  F_box( ::math::linear::vector::fill( T_coord{}, -1 ), ::math::linear::vector::fill( T_coord{}, +1 ) );
+    F1_box( T_box{  ::math::linear::vector::fill( T_coord{}, -1 ), ::math::linear::vector::fill( T_coord{}, +1 ) } );
 
   this->F_core( P_core );
  }
@@ -143,9 +143,7 @@ GC_hyperboloid::T_size
 GC_hyperboloid::Fv_weight( )const
  {
   T_size Ir_weigh = 0;
-
   Ir_weigh += sizeof( C_intersect );
-
   return Ir_weigh;
  }
 

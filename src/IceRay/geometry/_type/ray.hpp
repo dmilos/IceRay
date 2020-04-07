@@ -11,7 +11,7 @@
     {
      namespace S_geometry
       {
-       namespace S_type
+       namespace S__type
         {
 
          typedef GS_DDMRM::S_IceRay::S_type::S_ray::GC_line GT_ray;

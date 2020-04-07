@@ -26,11 +26,11 @@ GC_disc::GC_disc
   ::math::linear::vector::length( M2_normal, P_normal, T_scalar( 1 ) );
   M2_center = P_center;
   using namespace ::math::linear::vector;
-  F_box
-   (
+  F1_box
+   ( T_box{ 
      P_center -  ::math::linear::vector::fill( T_coord{}, -M2_radius )
     ,P_center +  ::math::linear::vector::fill( T_coord{}, +M2_radius )
-   );
+   } );
  }
 
 bool GC_disc::Fv_intersect( T_scalar &P_lambda, T_state &P_intersect, T_ray const& P_ray  )const

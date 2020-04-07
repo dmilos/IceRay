@@ -10,7 +10,7 @@ GC__base::GC__base()
  {
   M2s_counter++;
   M2_ID = M2s_counter;
-  F_box( ::math::linear::vector::fill( T_coord{}, 0 ), ::math::linear::vector::fill( T_coord{}, 0 ) );
+  this->F1_box( T_box{ ::math::linear::vector::fill( T_coord{}, 0 ), ::math::linear::vector::fill( T_coord{}, 0 ) } );
  }
 
 GC__base::GC__base( T_box const& P_box )

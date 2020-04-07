@@ -4,6 +4,10 @@
 #include "./as_specular.hpp"
 #include "./beckmann.hpp"
 #include "./blinn.hpp"
+
+#include "./ct_fresnel.hpp"
+#include "./ct_schlick.hpp"
+
 #include "./gaussian.hpp"
 #include "./hs_lambert.hpp"
 #include "./hs_normal.hpp"

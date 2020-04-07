@@ -259,7 +259,7 @@ def dodeka( P_radius = 1, P_position =  IceRayCpp.MathTypeCoord3D().fill(0) ):
         point[0] *= 1.5;
         point[1] *= 1.5;
         point[2] = height / 2;
-        print( point[0], point[1], point[2]  )
+        #print( point[0], point[1], point[2]  )
 
     for point in minus :
         point[0] *= 1.5;
@@ -269,10 +269,10 @@ def dodeka( P_radius = 1, P_position =  IceRayCpp.MathTypeCoord3D().fill(0) ):
     # normalization
     for point in ceil :
         len = IceRayCpp.MathLinearVector3DLength( point );
-        print( point[0], point[1], point[2]  )
+        #print( point[0], point[1], point[2]  )
         point[0] /= len; point[1] /= len; point[2] /= len;
-        print( point[0], point[1], point[2]  )
-        print('---')
+        #print( point[0], point[1], point[2]  )
+        #print('---')
 
     for point in floor :
         len = IceRayCpp.MathLinearVector3DLength( point );
@@ -281,15 +281,15 @@ def dodeka( P_radius = 1, P_position =  IceRayCpp.MathTypeCoord3D().fill(0) ):
     for point in plus :
         len = IceRayCpp.MathLinearVector3DLength( point );
         point[0] /= len; point[1] /= len; point[2] /= len;
-        print( point[0], point[1], point[2]  )
+        #print( point[0], point[1], point[2]  )
 
     for minus in minus :
         len = IceRayCpp.MathLinearVector3DLength( point );
         point[0] /= len; point[1] /= len; point[2] /= len;
 
 
-    print( IceRayCpp.MathLinearVector3DLength( ceil[0] - ceil[1] ) )
-    print( IceRayCpp.MathLinearVector3DLength( ceil[0] - plus[1] ) )
+    #print( IceRayCpp.MathLinearVector3DLength( ceil[0] - ceil[1] ) )
+    #print( IceRayCpp.MathLinearVector3DLength( ceil[0] - plus[1] ) )
 
 
 

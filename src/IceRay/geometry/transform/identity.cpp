@@ -12,13 +12,13 @@ struct GC_identity::C_intersect
 GC_identity::GC_identity()
  :GC_identity( nullptr )
  {
-  //std::cout << __FUNCTION__ << "[" << __LINE__ << "] " << "id:" << F_id() << " vid:" << Fv_id();
+  //std::cout << __FUNCTION__ << "[" << __LINE__ << "] " << "id:" << F_id() << " vid:" << F_id();
  }
 
 GC_identity::GC_identity( T_geometry *P_child )
- :GC_identity( P_child )
  {
-  //std::cout << __FUNCTION__ << "[" << __LINE__ << "] " << "id:" << F_id() << " vid:" << Fv_id();
+  // std::cout << __FUNCTION__ << "[" << __LINE__ << "] " << "id:" << F_id() << " vid:" << F_id();
+  F_child( P_child );
  }
 
 GC_identity::~GC_identity( )
@@ -129,7 +129,7 @@ bool GC_identity::F_child( T_geometry *P_child )
   M2_geometry.M2_distance  = dynamic_cast<T2_distance *>( M2_geometry.M2__base ); if( nullptr == M2_geometry.M2_distance ) M2_geometry.M2_distance  = & Fs_vacuum();
   M2_geometry.M2_uvw       = dynamic_cast<T2_uvw      *>( M2_geometry.M2__base ); if( nullptr == M2_geometry.M2_uvw      ) M2_geometry.M2_uvw       = & Fs_vacuum();
 
-  Fv_box( M2_geometry.M2__base->F_box() );
+  F1_box( M2_geometry.M2__base->F_box() );
   return true;
  }
 

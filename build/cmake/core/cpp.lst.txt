@@ -2,6 +2,7 @@ camera/camera.cpp
 geometry/_pure/_base.cpp
 geometry/blobby/blobby.cpp
 geometry/complex/intersect.cpp
+geometry/complex/enclose.cpp
 geometry/transform/transform.cpp
 geometry/hfield/hfield.cpp
 geometry/rtss/rtss.cpp

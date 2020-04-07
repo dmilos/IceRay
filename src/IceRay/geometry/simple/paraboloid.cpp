@@ -16,7 +16,7 @@ GC_paraboloid::GC_paraboloid( )
   I_lo[0] = -1; I_lo[1] = -1; I_lo[2] = 0;
   I_hi[0] =  1; I_hi[1] =  1; I_hi[2] = 1;
 
-  F_box( I_lo, I_hi );
+  F1_box( T_box{ I_lo, I_hi } );
  }
 
 GC_paraboloid::~GC_paraboloid( )
@@ -50,7 +50,7 @@ bool GC_paraboloid::Fv_intersect( T_scalar     & P_lambda ,T_state      & P_stat
     return false;
    }
 
-  T_scalar d = b * b - 4 * a * c;
+  T_scalar d = b * b - T_scalar(4) * a * c;
   if( d < Is_epsilon )
    {
     return false;
@@ -112,13 +112,14 @@ GC_paraboloid::T_location GC_paraboloid::Fv_inside( T_coord const& P_point )cons
    }
 
   return En_surface;
-
  }
 
 void
 GC_paraboloid::Fv_reset( T_state &P_intersect )const
  {
-  return ;
+  C_intersect &I_intersect = P_intersect.F_content<C_intersect>();
+  I_intersect.M_hit = false;
+  return;
  }
 
 GC_paraboloid::T_size

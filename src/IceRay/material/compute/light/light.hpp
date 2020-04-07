@@ -1,8 +1,8 @@
 #include "./generator.hpp"
 
-#include "./swarm0.hpp"
-#include "./swarm1.hpp"
-
-#include "./spotSwarm.hpp"
 #include "./spotUVW.hpp"
 #include "./spotCull.hpp"
+
+#include "./swarmA.hpp"
+#include "./swarmB.hpp"
+#include "./swarmC.hpp"

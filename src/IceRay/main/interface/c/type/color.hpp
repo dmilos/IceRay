@@ -6,6 +6,7 @@
 #include "IceRay/type/color.hpp"
 
 extern GS_DDMRM::S_IceRay::S_type::S_color::GT_scalar c2cpp( IceRayC_TypeColorRGB );
+extern IceRayC_TypeColorRGB                           cpp2c( GS_DDMRM::S_IceRay::S_type::S_color::GT_scalar );
 
 #endif
 

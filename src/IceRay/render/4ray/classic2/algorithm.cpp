@@ -70,15 +70,15 @@ bool GC_algorithm::F_depth( T_size const& P_depth )
   I_reseve += 1; //!< First ray;
   I_reseve += 1; //!< Candidate
 
-  I_reseve += M2_object->Fv_maxNextRays() * F_depth(); //!< Other rays
-  I_reseve += M2_object->Fv_maxNextRays() ; //!< Rejected
+  I_reseve += F1_object().Fv_maxNextRays() * F_depth(); //!< Other rays
+  I_reseve += F1_object().Fv_maxNextRays() ; //!< Rejected
 
   I_reseve += 1; //!< Lights
 
   M2_stack.F_reserve( I_reseve );
   M2_stack.F_clear();
 
-  M2_allocator.F_weight( M2_object->Fv_weight() );
+  M2_allocator.F_weight( F1_object().Fv_weight() );
   M2_allocator.F_reserve( I_reseve );
   M2_allocator.F_clear();
   M2_statistic.M_depth.resize( M2_depth, 0 );
@@ -102,7 +102,7 @@ void GC_algorithm::Fv_trace( T_color &P_color, T_ray const& P_incident )
    new  (&I_incoming) T2_ray{ P_incident, T2_ray::En_type1Eye };
 
    M2_allocator.F_new( I_incoming.M_state.F_chunk() ) ;
-   M2_object->F_geometry().Fv_reset( I_incoming.M_state );
+   F1_object().F_geometry().Fv_reset( I_incoming.M_state );
   }
 
   F2_trace( P_color );
@@ -131,8 +131,8 @@ void GC_algorithm::F2_trace( T_color &P_color )
      {
       if( T2_ray::En_type1Refracted == I_incoming.M_type )
        {
-        auto id = M2_object->F_geometry().Fv_id( I_intersection.M_state );
-        //if true == M2_object->F_geometry()->Fv_solid() )
+        auto id = F1_object().F_geometry().Fv_id( I_intersection.M_state );
+        //if true == F1_object().F_geometry()->Fv_solid() )
         //F_medium()->pop( id );
        }
       M2_stack.Fv_pop(); continue;
@@ -171,11 +171,11 @@ void GC_algorithm::F2_trace( T_color &P_color )
 
     I_intersection.M_lambda = Is_infinity;
     I_intersection.M_state = I_incoming.M_state;
-    auto I_hit =  M2_object->Fv_intersect( I_intersection.M_lambda, I_intersection.M_state, I_incoming );
+    auto I_hit =  F1_object().Fv_intersect( I_intersection.M_lambda, I_intersection.M_state, I_incoming );
 
     ::math::linear::vector::combine( I_intersection.M_point, I_incoming.M_origin, I_intersection.M_lambda, I_incoming.M_direction );
 
-    if( true == M2_object->F_material().Fv_attenuate( I_fog, I_deplete, I_incoming.M_origin, I_intersection.M_point, I_incoming.M_state ) )
+    if( true == F1_object().F_material().Fv_attenuate( I_fog, I_deplete, I_incoming.M_origin, I_intersection.M_point, I_incoming.M_state ) )
      {
       ::color::operation::multiply( I_color, I_fog, I_incoming.M_intesity );
       P_color += I_color;
@@ -188,23 +188,23 @@ void GC_algorithm::F2_trace( T_color &P_color )
       M2_stack.Fv_pop(); continue;
      }
 
-    I_intersection.M_geometryID = M2_object->F_geometry().Fv_id( I_intersection.M_state );
+    I_intersection.M_geometryID = F1_object().F_geometry().Fv_id( I_intersection.M_state );
 
     if( T2_ray::En_type1Refracted == I_incoming.M_type )
      {
-      // if true == M2_object->F_geometry()->Fv_solid() )
+      // if true == F1_object().F_geometry()->Fv_solid() )
       //TODO F_medium()->push( I_accident.M_geometryID, I_incoming.M_IOR );
      }
 
     M2_stack.Fv_mark();
 
-    M2_object->Fv_normal( I_intersection.M_normal, I_intersection.M_point, I_intersection.M_state );
+    F1_object().Fv_normal( I_intersection.M_normal, I_intersection.M_point, I_intersection.M_state );
     if( 0 < ::math::linear::vector::dot( I_intersection.M_normal, I_incoming.M_direction ) )
      {
       ::math::linear::vector::negate( I_intersection.M_normal );
      }
 
-    M2_object->F_material().Fv_color( I_color, M2_stack, I_accident, I_intersection.M_state );
+    F1_object().F_material().Fv_color( I_color, M2_stack, I_accident, I_intersection.M_state );
 
     I_accident.M_status = T_stack::T_accident::En_statusUsed;
 

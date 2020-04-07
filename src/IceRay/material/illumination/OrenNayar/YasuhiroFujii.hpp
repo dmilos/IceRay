@@ -1,9 +1,11 @@
 #ifndef Dh_IceRay_material_illumination_OrenNayar_YasuhiroFujii_hpp_
  #define Dh_IceRay_material_illumination_OrenNayar_YasuhiroFujii_hpp_
 
- #include "../../type/basic/scalar.hpp"
- #include "../../type/color.hpp"
- #include "../../type/math/coord.hpp"
+// GS_DDMRM::S_IceRay::S_material::S_illumination::S_OrenNayar::GC_YasuhiroFujii
+
+ #include "IceRay/type/basic/scalar.hpp"
+ #include "IceRay/type/color.hpp"
+ #include "IceRay/type/math/coord.hpp"
 
 
  namespace  GS_DDMRM
@@ -18,7 +20,7 @@
           {
 
            class GC_YasuhiroFujii
-            //: public S_IceRay::S_material::S_illumination::S__base::GC_data
+          //: public S_IceRay::S_material::S_illumination::GC__pure
             {
              public:
                typedef GS_DDMRM::S_IceRay::S_type::GT_scalar             T_scalar;
@@ -42,7 +44,7 @@
                  T_coord const&  P_viewer
                  )
                  {
-                  T_scalar I_dotLV = ::math::linear::vector::dot( P_normal, P_2light );
+                  T_scalar I_dotLV = -::math::linear::vector::dot( P_viewer, P_2light );
                   T_scalar I_dotNL = ::math::linear::vector::dot( P_normal, P_2light );
                   T_scalar I_dotNV = ::math::linear::vector::dot( P_normal, P_viewer );
 

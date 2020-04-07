@@ -18,7 +18,7 @@
           {
 
            class GC_p44
-            //: public S_IceRay::S_material::S_illumination::S__base::GC_data
+          //: public S_IceRay::S_material::S_illumination::GC__pure
             {
              public:
                typedef GS_DDMRM::S_IceRay::S_type::GT_scalar             T_scalar;

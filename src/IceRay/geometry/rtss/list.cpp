@@ -117,13 +117,13 @@ GC_list::T_size GC_list::Fv_push( T__base * P_object )
 
   if( 1 == M2_index.size() )
    {
-    Fv_box( P_object->F_box() );
+    F1_box( P_object->F_box() );
    }
   else
    {
     T_box I_box;
     ::math::geometry::interval::extend( I_box, F_box(), P_object->F_box() );
-    Fv_box( I_box );
+    F1_box( I_box );
    }
 
   return M2_index.back();

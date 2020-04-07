@@ -16,7 +16,7 @@ GC_quadric::GC_quadric()
   using namespace ::math::linear::vector;
   T_coord I_lo; ::math::linear::vector::fill( I_lo, -1 );
   T_coord I_hi; ::math::linear::vector::fill( I_hi, +1 );
-  F_box( I_lo, I_hi );
+  F1_box( T_box{ I_lo, I_hi } );
 
   ::math::linear::matrix::id( M2_matrix );
    F_matrix( M2_matrix );

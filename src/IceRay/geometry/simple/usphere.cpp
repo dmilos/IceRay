@@ -14,11 +14,10 @@ struct GC_usphere::C_intersect
 GC_usphere::GC_usphere( )
  {
 
-  F_box
-   (
+    F1_box( T_box{
      ::math::linear::vector::fill( T_coord{}, -1 )
     ,::math::linear::vector::fill( T_coord{},  1 )
-   );
+   } );
 
  }
 

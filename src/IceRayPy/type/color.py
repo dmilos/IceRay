@@ -1,14 +1,16 @@
-import ctype
+import ctypes
 
-class ColorRGB(Structure):
-    _fields_ = [("r", c_double),
-                ("g", c_double),
-                ("b", c_double)
+Scalar = ctypes.c_double
+
+class RGB(ctypes.Structure):
+    _fields_ = [("r", Scalar),
+                ("g", Scalar),
+                ("b", Scalar)
                 ]
 
-class ColorRGBA(Structure):
-    _fields_ = [("r", c_double),
-                ("g", c_double),
-                ("b", c_double),
-                ("a", c_double)
+class RGBA(ctypes.Structure):
+    _fields_ = [("r", Scalar),
+                ("g", Scalar),
+                ("b", Scalar),
+                ("a", Scalar)
                 ]

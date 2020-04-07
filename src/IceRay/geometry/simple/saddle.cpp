@@ -10,11 +10,10 @@ struct GC_saddle::C_intersect
 
 GC_saddle::GC_saddle()
  {
-  F_box
-   (
+  F1_box( T_box{
      ::math::linear::vector::fill( T_coord{}, -1 )
     ,::math::linear::vector::fill( T_coord{},  1 )
-   );
+   } );
 
  }
 
@@ -152,8 +151,6 @@ GC_saddle::T_size
 GC_saddle::Fv_weight( )const
  {
   T_size Ir_weigh = 0;
-
   Ir_weigh += sizeof( C_intersect );
-
   return Ir_weigh;
  }

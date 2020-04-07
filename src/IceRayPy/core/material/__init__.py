@@ -1,12 +1,15 @@
-#print( '<' + __name__ + '>' )
+#print( '<' + __name__ + ' name=\'' +   __file__ + '\'>' )
 
-#print( __name__ ) 
+#__all__= [
+# 'instruction',
+# 'pattern',
+# 'medium',
+# 'pigment'
+# ]
 
-from .illumination import *
-from .light        import *
-from .medium       import *
-from .pattern      import *
-from .transmission import *
+import IceRayPy.core.material.instruction
+import IceRayPy.core.material.pattern
+import IceRayPy.core.material.medium
+import IceRayPy.core.material.pigment
 
-
-#print( '</' + __name__ + '>' )
+#print( '</' + __name__ + ' name=\'' +   __file__ + '/>' )

@@ -8,7 +8,7 @@
 struct IceRayC_Material_MediumStruct {};
 typedef IceRayC_Material_MediumStruct* IceRayC_Material_MediumHandle;
 
-IceRayC__EXPORT IceRayC__DECLSPEC void    IceRayC_Material_MediumRelease( IceRayC_Material_MediumHandle P_this );
+IceRayC__EXPORT IceRayC__DECLSPEC void    IceRayC_Material_Medium_Release( IceRayC_Material_MediumHandle P_this );
 
 IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_Material_MediumHandle  IceRayC_Material_Medium_Constant0();
 IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_Material_MediumHandle  IceRayC_Material_Medium_Constant1( IceRayC_TypeColorRGB P_value, IceRayC_TypeColorRGB P_deplete);

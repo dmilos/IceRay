@@ -88,9 +88,6 @@
     <ClInclude Include="..\..\..\src\IceRay\geometry\simple\quadric.hpp" />
     <ClInclude Include="..\..\..\src\IceRay\geometry\simple\simple.hpp" />
     <ClInclude Include="..\..\..\src\IceRay\geometry\simple\sphere.hpp" />
-    <ClInclude Include="..\..\..\src\IceRay\geometry\simple\sphere\complete.hpp" />
-    <ClInclude Include="..\..\..\src\IceRay\geometry\simple\sphere\radius.hpp" />
-    <ClInclude Include="..\..\..\src\IceRay\geometry\simple\sphere\unit.hpp" />
     <ClInclude Include="..\..\..\src\IceRay\geometry\simple\torus.hpp" />
     <ClInclude Include="..\..\..\src\IceRay\geometry\simple\trg.hpp" />
     <ClInclude Include="..\..\..\src\IceRay\geometry\simple\triangle.hpp" />
@@ -147,7 +144,6 @@
     <ClInclude Include="..\..\..\src\IceRay\material\pigment.hpp" />
     <ClInclude Include="..\..\..\src\IceRay\material\_pure.hpp" />
     <ClInclude Include="..\..\..\src\IceRay\render\engine.hpp" />
-    <ClInclude Include="..\..\..\src\IceRay\render\manager.hpp" />
     <ClInclude Include="..\..\..\src\IceRay\type\basic\bool.hpp" />
     <ClInclude Include="..\..\..\src\IceRay\type\basic\integer.hpp" />
     <ClInclude Include="..\..\..\src\IceRay\type\basic\report.hpp" />
@@ -256,7 +252,6 @@
     <ClCompile Include="..\..\..\src\IceRay\material\compute\processor.cpp" />
     <ClCompile Include="..\..\..\src\IceRay\material\compute\program.cpp" />
     <ClCompile Include="..\..\..\src\IceRay\render\engine.cpp" />
-    <ClCompile Include="..\..\..\src\IceRay\render\manager.cpp" />
     <ClCompile Include="..\..\..\src\IceRay\type\ray\ray-old.cpp" />
     <ClCompile Include="..\..\..\src\IceRay\util\bound.cpp" />
   </ItemGroup>
@@ -294,10 +289,11 @@
     <NMakeBuildCommandLine>$(prg_scons2) --directory=$(SolutionDir)/../../scons/cdll compiler:configuration=Debug</NMakeBuildCommandLine>
     <NMakeReBuildCommandLine>$(prg_scons2) -c --directory=$(SolutionDir)/../../scons/cdll compiler:configuration=Debug</NMakeReBuildCommandLine>
     <NMakeCleanCommandLine>$(prg_scons2) -c --directory=$(SolutionDir)/../../scons/cdll compiler:configuration=Debug</NMakeCleanCommandLine>
-    <NMakeOutput>$(SolutionDir)..\..\..\bin\x86-release\IceRayExe-1.0.0.0-dynamic.exe</NMakeOutput>
+    <NMakeOutput>$(SolutionDir)..\..\..\bin\IceRayCDLL-x86-Debug\IceRayCDLL-1.0.0.0-dynamic.dll</NMakeOutput>
     <OutDir>$(SolutionDir)\out\bin\msvc$(MSBuildToolsVersion)-$(Configuration)-$(PROCESSOR_ARCHITECTURE)</OutDir>
     <IntDir>$(SolutionDir)\out\bin\msvc$(MSBuildToolsVersion)-$(Configuration)-$(PROCESSOR_ARCHITECTURE)</IntDir>
     <IncludePath>../../../src;$(IncludePath)</IncludePath>
+    <SourcePath>../../../src;$(SourcePath)</SourcePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>

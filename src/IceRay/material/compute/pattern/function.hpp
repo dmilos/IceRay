@@ -31,7 +31,7 @@
 
                  typedef GS_DDMRM::S_IceRay::S_material::S_compute::GC_memory   T_memory;
 
-                 typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GC__pure<T_type> T_pattern;
+                 typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GC__special<T_type> T_pattern;
 
                  enum Ee_input{ En_inCoord_Point   = 0};
                  enum Ee_output{ En_outType_ResultValue = 0 };

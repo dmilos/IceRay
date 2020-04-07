@@ -170,7 +170,7 @@ bool                            GC_translate::F_move( T_coord const& P_move )
 
   T_box I_box;
   ::math::geometry::interval::translate( I_box, M2_geometry.M2__base->F_box(), M2_re );
-  Fv_box( I_box );
+  F1_box( I_box );
 
   return bool( true );
  }
@@ -187,7 +187,7 @@ bool GC_translate::F_child( T_geometry *P_child )
 
   T_box I_box;
   ::math::geometry::interval::translate( I_box, M2_geometry.M2__base->F_box(), M2_re );
-  Fv_box( I_box );
+  F1_box( I_box );
   return true;
  }
 

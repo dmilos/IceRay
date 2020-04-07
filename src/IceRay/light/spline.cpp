@@ -9,10 +9,9 @@ using namespace GS_DDMRM::S_IceRay::S_light;
 GC_spline::GC_spline( )
  :M2_sample( 1 )
  {
-  M2_cp[1][0] = 1;
-  M2_cp[2][1] = 1;
-  M2_cp[3][0] = 1;
-  M2_cp[3][1] = 1;
+  M2_cp[0][0] = 1;
+  M2_cp[1][1] = 1;
+  M2_cp[2][0] = 1;
  }
 
 GC_spline::GC_spline

@@ -16,19 +16,19 @@
        namespace S_pigment
         {
 
-         class GC_simple
+         class GC_default
           : public virtual GS_DDMRM::S_IceRay::S_material::S_pigment::GC__base
           {
            public:
              typedef GS_DDMRM::S_IceRay::S_material::S_pigment::GC__base T__base;
 
-                      GC_simple(){}
-             virtual ~GC_simple(){}
+                      GC_default(){}
+             virtual ~GC_default(){}
 
            public:
              bool Fv_color( T_color & P_color, T_beam &P_next, T_incident const& P_incident, T_state const& P_state )const
               {
-               P_color = T_color( ::color::constant::black_t{} );
+               P_color = T_color( ::color::constant::gold_t{} );
                return true;
               }
 

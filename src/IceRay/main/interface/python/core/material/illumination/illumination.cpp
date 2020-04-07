@@ -10,6 +10,7 @@
 #include "./lambert.cpp"
 #include "./on_p44.cpp"
 #include "./on_f29.cpp"
+#include "./on_yf.cpp"
 #include "./phong.cpp"
 #include "./ward_approx.cpp"
 #include "./ward_isotropic.cpp"

@@ -1,16 +1,18 @@
 #include "./projector.hpp"
 
+#include "../../camera/flat/perspective.hpp"
+
+ #include "../3sheaf/all.hpp"
 
 using namespace GS_DDMRM::S_IceRay::S_render::S_pierce;
 
 
-GC_projector::T2_perspective GC_projector::M2s_camera;
-//GC_projector::T1_base        GC_projector::M2s_base;
-
 GC_projector::GC_projector( void )
- :M2_camera( &M2s_camera )
- ,M2_ray   ( nullptr  )
+ :M2_camera( nullptr )
+ ,M2_sheaf   ( nullptr  )
  {
+  Fv_camera( M2_camera );
+  Fv_sheaf( M2_sheaf );
  }
 
 GC_projector::~GC_projector( void )
@@ -19,7 +21,19 @@ GC_projector::~GC_projector( void )
 
 void GC_projector::Fv_camera( T_camera* P_camera )
  {
-  M2_camera = ( nullptr == P_camera ? &M2s_camera : P_camera );
+  M2_camera = P_camera;
+  if( nullptr == M2_camera )
+   {
+    M2_camera = &Fs_camera();
+   }
+  M2_beam.resize( F1_camera()->F_size() );
+ }
+
+GC_projector::T_camera & GC_projector::Fs_camera()
+ {
+  typedef GS_DDMRM::S_IceRay::S_camera::S_flat::GC_perspective  T2_perspective;
+  static T2_perspective Irs_camera;
+  return Irs_camera;
  }
 
 void GC_projector::F1v_render( T_color & P_color, T_coord const& P_coord )
@@ -32,24 +46,27 @@ void GC_projector::F1v_render( T_color & P_color, T_coord const& P_coord )
   ::math::linear::vector::subtraction( I_coord , Is_one );
   I_coord[1] = -I_coord[1];
 
-  M2_beam.resize( F1_camera()->F_size() );
   F1_camera()->Fv_beam( M2_beam, I_coord );
 
-  T_color I_summae( ::color::constant::black_t{} );
-  for( auto & I_ray : M2_beam )
+  T_color I_color( ::color::constant::black_t{} );
+
+  F_sheaf().Fv_do( I_color, M2_beam );
+
+   P_color = I_color;
+ }
+
+void      GC_projector::Fv_sheaf( T_sheaf * P_sheaf )
+ {
+  M2_sheaf = P_sheaf;
+  if( nullptr == M2_sheaf )
    {
-    T_color I_color;
-
-    ::math::linear::vector::length( I_ray.M_direction, T_scalar(1) );
-
-    F1v_ray()->Fv_trace( I_color, I_ray );
-
-    // DEBUG I_color.set( 0, 1*(I_ray.M_direction[0]/2+0.5) );
-    // DEBUG I_color.set( 1, 1*(I_ray.M_direction[1]/2+0.5) );
-    // DEBUG I_color.set( 2, 1*(I_ray.M_direction[2]/2+0.5) );
-
-    I_summae += I_color;
+    M2_sheaf = &Fs_sheaf();
    }
+ }
 
-   P_color = I_summae / M2_beam.size();
+GC_projector::T_sheaf & GC_projector::Fs_sheaf()
+ {
+  typedef GS_DDMRM::S_IceRay::S_render::S_sheaf::GC_all Tf_all;
+  static Tf_all Irs_all;
+  return Irs_all;
  }

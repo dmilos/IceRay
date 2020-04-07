@@ -9,6 +9,8 @@
 
  #include "../../geometry/_pure/intersect.hpp"
  #include "../../geometry/volumetric/vacuum.hpp"
+ #include "../../geometry/_type/manager.hpp"
+ #include "../../geometry/_type/state.hpp"
 
  namespace GS_DDMRM
   {
@@ -28,10 +30,10 @@
 
              typedef GS_DDMRM::S_IceRay::S_type::S_interval::GT_scalar1D                       T_clip;
              typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base                         T_geometry;
-             typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_intersect                     T_state;
+             typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_intersect                     T_intersect;
              //enum Ee_
 
-             GC_distance();
+             explicit GC_distance( T_geometry * P_geometry = nullptr );
              ~GC_distance();
 
              void Fv_trace( T_color & P_color, T_ray const& );
@@ -54,12 +56,16 @@
            public:
              void         F_geometry( T_geometry * P_geometry );
            protected:
-             T_state *  F1_geometry( );
+             T_intersect &  F1_geometry( );
            private:
-             T_state* M2_geometry;
-
+             T_intersect* M2_geometry;
            private:
-             static T_state & Fs_geometry();
+             static T_intersect & Fs_geometry();
+           private:
+             typedef GS_DDMRM::S_IceRay::S_geometry::S__type::GT_allocator   T_allocator;
+             typedef GS_DDMRM::S_IceRay::S_geometry::S__type::GC_state    T_state;
+             T_allocator M2_allocator;
+             T_state M2_state;
           };
 
        }

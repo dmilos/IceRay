@@ -110,8 +110,8 @@ def make_lambert( P_light, P_color = IceRayCpp.GraphTypeColorRGB().fill( 0.5 ) )
 
     cargo = {}
     cargo['3'] = IceRayCpp.MaterialLightGenerator( P_light['this'], 0 )
-    #MaterialLightSpotSwarm( [coord]point, [light]light, [spot]start, [size]count  )
-    cargo['4A'] = IceRayCpp.MaterialLightSpotSwarm( 0, 0, 0, 0 )
+    #MaterialLightSpotSwarmA( [size]count, [light]light, [coord]point, [spot]start )
+    cargo['4A'] = IceRayCpp.MaterialLightSpotSwarmA( 0, 0, 0, 0 )
     #MaterialLightSpotCull( [coord]point, [coord]normal, [spot]start, [size]count  )
     cargo['4B'] = IceRayCpp.MaterialLightSpotCull( 0, 1, 0, 0 )
 

@@ -25,7 +25,7 @@
 
            public:
              GC_usphere(  );
-             GC_usphere( T_scalar const& P_radius );
+             GC_usphere( T_scalar const& P_core );
             ~GC_usphere( );
 
            public:

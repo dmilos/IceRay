@@ -11,7 +11,7 @@ import surface
 import light
 
 
-def work( P_name, P_room, P_config, P_geometry, P_light, P_camera, P_surface ):
+def work( P_name, P_room, P_config, P_geometry, P_light, P_camera, P_surface, P_medium ):
     surface_global={}
     surface_global['room']={}
 
@@ -103,7 +103,7 @@ def work( P_name, P_room, P_config, P_geometry, P_light, P_camera, P_surface ):
 
     surface_global['exponat'] = P_surface
 
-    cargo_engine = engine.make( P_room( P_geometry, P_light, surface_global['exponat'], surface_global['room'] ), P_camera )
+    cargo_engine = engine.make( P_room( P_geometry, P_light, surface_global['exponat'], surface_global['room'], P_medium ), P_camera )
     cargo_engine['this'].depth( 16 )
     if( 'ray-trace-depth' in P_config ):
         cargo_engine['this'].depth( P_config['ray-trace-depth'] )
@@ -114,10 +114,10 @@ def work( P_name, P_room, P_config, P_geometry, P_light, P_camera, P_surface ):
     else:
         cargo_engine['this'].pixelStrategy().size( 1 )
 
-    cargo_engine['this'].scannerGet().hot( IceRayCpp.MathTypeSize2D( ).load( 400, 320 ) )
+    if( 'hot' in P_config ):
+        cargo_engine['this'].scannerGet().hot( IceRayCpp.MathTypeSize2D( ).load( P_config['hot']['x'], P_config['hot']['y'] ) )
 
     sys.stdout.flush()
-
 
     scale = 123
     width  = int(scale*10)

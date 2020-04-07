@@ -35,6 +35,7 @@
          public:
            void    Fv_reset( T_state &P_state )const;
            T_size  Fv_weight( )const;
+           bool    Fv_box( T_box const& P_box );
 
          public:
            bool        Fv_intersect( T_scalar &P_lambda, T_state &P_state, T_ray const& P_ray  )const;

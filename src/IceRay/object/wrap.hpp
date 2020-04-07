@@ -10,8 +10,6 @@
  #include "../geometry/_pure/uvw.hpp"
  #include "../geometry/_pure/cluster.hpp"
 
- #include "../geometry/volumetric/vacuum.hpp"
-
 #include "../material/medium/_pure.hpp"
 #include "../material/pigment/_base.hpp"
 
@@ -87,18 +85,24 @@
            bool         F_pigment( T_pigment * P_pigment );
          private:
            T_pigment *   M2_pigment;
+         protected:
+           static T_pigment & F1s_pigment();
 
          public:
            T_medium *  F_medium()const{ return M2_medium; }
            bool        F_medium( T_medium * P_medium );
          private:
            T_medium *   M2_medium;
+         private:
+           static T_medium & F1s_medium();
 
          public:
            T_geometry * F_geometry(){ return M2_geometry; }
            bool         F_geometry( T_geometry * P_geometry );
          private:
            T_geometry *M2_geometry; //!< dumb_ptr;
+         private:
+           static T_geometry  & F1s_geometry();
 
          private:
            struct C2_geometry //!< child geometry
@@ -119,6 +123,7 @@
            T_uvw       *M2_uvw      ;
            T_cluster   *M2_cluster  ;  //!< dumb_ptr;
 
+          C2_geometry M2_whatever;
          private:
            struct C2_marble
             {
@@ -128,11 +133,6 @@
            typedef  std::vector< C2_marble > T2_marbles;
            T2_marbles M2_marbles;
 
-         public:
-           typedef GS_DDMRM::S_IceRay::S_geometry::GC_vacuum T_vacuum;
-           static T_vacuum  & Fs_vacuum();
-           static T_medium  & Fs_transparent();
-           static T_pigment & Fs_pigment();
         };
 
       }

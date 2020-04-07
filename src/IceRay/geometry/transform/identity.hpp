@@ -47,7 +47,7 @@
 
            public:
              GC_identity( );
-             explicit GC_identity(  T__base *P_child );
+             explicit GC_identity( T__base *P_child );
             ~GC_identity( );
 
            public:

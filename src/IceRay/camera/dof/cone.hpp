@@ -64,7 +64,7 @@
            private:
              mutable GS_DDMRM::S_IceRay::S_utility::S_random::GC_standard2D  M2_randStandard2D;
              mutable GS_DDMRM::S_IceRay::S_utility::S_random::GT_sobol2D     M2_randSobol2D;
-             mutable GS_DDMRM::S_IceRay::S_utility::S_random::GT_VaPND       M2_randVaPND;
+             mutable GS_DDMRM::S_IceRay::S_utility::S_random::GT_VaLND       M2_randVaLND;
              static  GS_DDMRM::S_IceRay::S_utility::S_table::GC_hexagon      M2s_hexagon;
           };
 

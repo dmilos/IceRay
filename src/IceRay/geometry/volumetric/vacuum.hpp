@@ -1,5 +1,6 @@
-#ifndef _DDMM_IceRAY_object_vacuum_H_
- #define _DDMM_IceRAY_object_vacuum_H_
+#ifndef _DDMM_IceRAY_geometry_volumetric_vacuum_H_
+ #define _DDMM_IceRAY_geometry_volumetric_vacuum_H_
+// GS_DDMRM::S_IceRay::S_geometry::GC_vacuum
 
 #include "../_pure/_base.hpp"
 #include "../_pure/cluster.hpp"
@@ -48,6 +49,7 @@
          public:
            void    Fv_reset( T_state &P_intersect )const;
            T_size  Fv_weight( )const;
+           bool    Fv_box( T_box const& P_box );
 
          public: // cluster
            T_size    const& Fv_quantity()const{ static T_size Irs_zero = 0; return Irs_zero; }

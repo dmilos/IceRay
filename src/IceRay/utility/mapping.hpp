@@ -257,6 +257,13 @@
              }
           };
 
+         /*
+           6|5|6
+          --+-+-
+           2|1|3
+          --+-+-
+           6|4|6
+         */
          class GC_cartesian2package //!< Box package //TODO
           {
            public:
@@ -264,7 +271,7 @@
              typedef GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar T_coord;
 
             T_coord   operator()( T_coord const& P_point )const
-             {
+             { // map [0,1]x[0,1] -> box wrap
               static T_scalar Is_side = sqrt( T_scalar( 1 ) / T_scalar( 24 ) );
               T_coord Ir_result;
 

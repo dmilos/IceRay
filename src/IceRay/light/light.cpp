@@ -2,7 +2,6 @@
 #include "./blocked.cpp"
 #include "./chandelier.cpp"
 #include "./circle.cpp"
-#include "./clipped.cpp"
 #include "./dark.cpp"
 #include "./disc.cpp"
 #include "./line.cpp"
@@ -12,3 +11,5 @@
 #include "./spline.cpp"
 #include "./suns.cpp"
 #include "./sung.cpp"
+#include "./clipped.cpp"
+#include "./confine.cpp"

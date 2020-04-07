@@ -197,7 +197,7 @@ bool GC_mblur::F_move( T_coord const& P_move )
 
   ::math::geometry::interval::extend( I_boxA, I_boxB );
 
-  M2_geometry.M2__base->Fv_box( I_boxA );
+  F1_box( I_boxA );
   return true;
  }
 

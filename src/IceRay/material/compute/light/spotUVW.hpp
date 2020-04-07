@@ -50,10 +50,10 @@
              public:
                GC_spotUVW
                 (
-                  T_size const& P_point      = 0
+                  T_size const& P_out        = 2
+                 ,T_size const& P_point      = 0
                  ,T_size const& P_normal     = 1
                  ,T_size const& P_spotIndex  = 1
-                 ,T_size const& P_out        = 2
                 )
                 {
                  F_input<T_coord>(   En_inCoord_Point,  P_point     );
@@ -66,23 +66,40 @@
              public:
                bool    Fv_execute( T_beam &P_next, T_pigment::T_intersect const& P_intersect, T_state const& P_state )const
                 {
+                 auto const&  I_incoming = P_intersect.M_incoming;
                  T_coord const& I_point  = M2_memoryCoord->Fv_load( F_input<T_coord>( En_inCoord_Point  ) );
                  T_coord const& I_normal = M2_memoryCoord->Fv_load( F_input<T_coord>( En_inCoord_Normal ) );
                  T_spot const&  I_spot   = M2_memorySpot->Fv_load(  F_input<T_spot>(  En_inSpot_Index   ) );
 
-                 T_coord I_x;
-                 T_coord I_y;  ::math::linear::vector::subtraction( I_y, I_spot.F_center(), I_point );
-                 T_coord const& I_z = I_normal;
+                 T_coord I_reflected;  ::math::linear::vector::reflect(     I_reflected, I_incoming.M_direction, I_normal ); ::math::linear::vector::length( I_reflected, T_scalar(1) );
+                 T_coord I_2light;      ::math::linear::vector::subtraction( I_2light, I_spot.F_center(), I_point ); ::math::linear::vector::length( I_2light, T_scalar(1) );
+                 T_coord I_2viewer;     ::math::linear::vector::negate(      I_2viewer, I_incoming.M_direction );
 
-                 ::math::linear::vector::cross( I_x, I_y, I_z ); ::math::linear::vector::length( I_x, T_scalar(1) );
-                 ::math::linear::vector::cross( I_y, I_z, I_x ); ::math::linear::vector::length( I_y, T_scalar(1) );
+                 //T_coord const& I_z = I_normal;
+                 T_coord I_decline; ::math::linear::vector::cross( I_decline, I_normal, I_reflected );  ::math::linear::vector::length( I_decline, T_scalar(1) );
+                 //::math::linear::vector::cross( I_x, I_y, I_z ); ::math::linear::vector::length( I_x, T_scalar(1) );
+                 //::math::linear::vector::cross( I_y, I_z, I_x ); ::math::linear::vector::length( I_y, T_scalar(1) );
 
-                 T_coord const& I_incoming = P_intersect.M_incoming.M_direction;
+                 T_scalar I_dot0 = ::math::linear::vector::dot( I_reflected, I_2light );
+                 T_scalar I_dot1 = sin( 60*::math::linear::vector::dot( I_2light, I_decline ) );
 
                  T_coord I_UVW;
-                 I_UVW[0] =   ::math::linear::vector::dot( I_x, I_incoming );
-                 I_UVW[1] =   ::math::linear::vector::dot( I_y, I_incoming );
-                 I_UVW[2] = - ::math::linear::vector::dot( I_z, I_incoming );
+                 I_UVW[0] = 0*( I_dot0 + 1 )/2; if( I_dot0 < 0 ) I_dot0 = 0;
+                 I_UVW[1] = ( I_dot1 + 1 )/2;
+                 if( I_dot1 < 0 ) 
+                  {
+                   //I_UVW[1] = 0;
+                  }
+                 I_UVW[2] =0;    //* - ::math::linear::vector::dot( I_z, I_incoming );
+
+                 if( ::math::linear::vector::dot( I_2viewer, I_normal ) < 0 )
+                  {
+                   I_UVW[0] = I_UVW[1] = I_UVW[2] = 0.3;
+                  }
+                 if( ::math::linear::vector::dot( I_2light, I_normal ) < 0 )
+                  {
+                   I_UVW[0] = I_UVW[1] = I_UVW[2] = 0.6;
+                  }
 
                  M2_memoryCoord->Fv_store( F_output<T_coord>( En_outCoord_UVW ), I_UVW );
 

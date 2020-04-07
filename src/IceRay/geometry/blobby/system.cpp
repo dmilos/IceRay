@@ -215,7 +215,7 @@ void GC_system::F_add( T_element * P_element )
   M2_element.push_back( P_element );
 
   M2_rtss->Fv_push( P_element );
-  T_geometry::Fv_box( M2_rtss->F_box() );
+  T_geometry::F1_box( M2_rtss->F_box() );
  }
 
 void GC_system::F_rtss( T_rtss * P_rtss )

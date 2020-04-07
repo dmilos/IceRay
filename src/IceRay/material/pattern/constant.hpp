@@ -22,7 +22,7 @@
 
          template< typename N_type >
           class GC_constant
-           : public GS_DDMRM::S_IceRay::S_material::S_pattern::GC__pure< N_type >
+           : public GS_DDMRM::S_IceRay::S_material::S_pattern::GC__special< N_type >
            { // DONE
             public:
              typedef N_type T_type, T_result;

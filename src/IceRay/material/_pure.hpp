@@ -35,12 +35,12 @@
            using T_medium::Fv_attenuate;
            using T_pigment::Fv_color;
 
-           T_medium  const& F_medium()const
+           T_medium  const& F_medium()const //!< to avoid cast
             {
              return *this;
             }
 
-           T_pigment const& F_pigment()const
+           T_pigment const& F_pigment()const //!< to avoid cast
             {
              return *this;
             }

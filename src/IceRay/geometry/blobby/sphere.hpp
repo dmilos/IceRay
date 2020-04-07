@@ -1,6 +1,8 @@
 #ifndef _DDMRM_IceRAY_geometry_blobby_sphere_HPP_
  #define _DDMRM_IceRAY_geometry_blobby_sphere_HPP_
 
+// GS_DDMRM::S_IceRay::S_geometry::S_blobby::GC_sphere
+
 #include "./_element.hpp"
 
 

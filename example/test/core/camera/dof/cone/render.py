@@ -24,7 +24,7 @@ print( '1 - ENGINE' )
 image = IceRayCpp.GraphTypePicture( )
 image.size( IceRayCpp.MathTypeSize2D().load( 1000, 1000 ) );
 
-engine = IceRayPy.core.render.Engine()
+engine = IceRayPy.core.render.EngineEx()
 engine.object( object )
 
 camera_perspective = IceRayCpp.CameraFlatOrthogonal()
