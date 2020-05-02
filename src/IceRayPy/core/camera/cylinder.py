@@ -1,6 +1,10 @@
 import ctypes
 
-Scalar = ctypes.c_double
+import IceRayPy
+import IceRayPy.type
+import IceRayPy.type.basic
+
+Scalar = IceRayPy.type.basic.Scalar
 
 class Horizontal:
     def __init__(self, P_dll ):
@@ -9,7 +13,6 @@ class Horizontal:
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Camera_Cylinder_Horizontal0()
     def __del__(self):
         self.m_cargo['dll'].IceRayC_Camera_Release( self.m_cargo['this'] )
-
 
     def width(self, P_width ):
         return self.m_cargo['dll'].IceRayC_Camera_Cylinder_Horizontal_Width(self.m_cargo['this'], Scalar( P_width ) )

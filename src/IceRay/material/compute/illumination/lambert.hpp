@@ -34,7 +34,8 @@
                   {
                    En_inCoord_Point = 0, En_inCoord_Normal = 1,
                    En_inColor_Diffuse = 0,
-                   En_inSize_SpotCount = 0,
+                   En_inSize_SpotBegin = 0,
+                   En_inSize_SpotEnd  = 1,
                   };
                  enum Ee_output{ En_outColor_result=0 };
 
@@ -42,18 +43,20 @@
                  GC_lambert
                   (
                     T_size const& P_result     = 0
-                   ,T_size const& P_point      = 0
-                   ,T_size const& P_normal     = 1
-                   ,T_size const& P_spotCount  = 0
-                   ,T_size const& P_diffuse    = 1
+                   ,T_size const& P_inCoord_Point     = 0
+                   ,T_size const& P_inCoord_Normal    = 1
+                   ,T_size const& P_inSize_SpotBegin  = 0
+                   ,T_size const& P_inSize_SpotEnd    = 1
+                   ,T_size const& P_diffuse           = 1
                   )
                   {
                    F_output<T_color>( En_outColor_result,   P_result );
 
-                   F_input<T_coord>( En_inCoord_Point,       P_point );
-                   F_input<T_coord>( En_inCoord_Normal,      P_normal );
-                   F_input<T_size>(  En_inSize_SpotCount,    P_spotCount );
-                   F_input<T_color>(    En_inColor_Diffuse,  P_diffuse    );
+                   F_input<T_coord>( En_inCoord_Point,     P_inCoord_Point  );
+                   F_input<T_coord>( En_inCoord_Normal,    P_inCoord_Normal );
+                   F_input<T_size>(  En_inSize_SpotBegin,  P_inSize_SpotBegin   );
+                   F_input<T_size>(  En_inSize_SpotEnd,    P_inSize_SpotEnd     );
+                   F_input<T_color>( En_inColor_Diffuse,   P_diffuse   );
                   }
 
                public:
@@ -63,7 +66,8 @@
 
                    T_coord const& I_point      = M2_memoryCoord->Fv_load( F_input()[ T_memory::En_coord ][ En_inCoord_Point ] );
                    T_coord const& I_normal     = M2_memoryCoord->Fv_load( F_input()[ T_memory::En_coord ][ En_inCoord_Normal ] );
-                   T_size         I_lightCount = M2_memorySize->Fv_load(  F_input()[ T_memory::En_size  ][ En_inSize_SpotCount ] );
+                   T_size         I_spotBegin  = M2_memorySize->Fv_load(  F_input<T_size>( En_inSize_SpotBegin ) );
+                   T_size         I_spotEnd    = M2_memorySize->Fv_load(  F_input<T_size>( En_inSize_SpotEnd ) );
                    T_color const& I_diffuse    = M2_memoryColor->Fv_load( F_input()[ T_memory::En_color ][ En_inColor_Diffuse] );
 
                    GS_DDMRM::S_IceRay::S_material::S_illumination::GC_lambert I_lambert( I_diffuse );
@@ -73,13 +77,14 @@
                    T_coord I_2light;
                    T_color I_energy;
 
-                   for( T_size I_spotIndex=0; I_spotIndex < I_lightCount; ++I_spotIndex )
+                   for( T_size I_spotIndex = I_spotBegin; I_spotIndex < I_spotEnd; ++I_spotIndex )
                     {
                      T_spot const& I_spot = M2_memorySpot->Fv_load( I_spotIndex );
 
                      I_spot.F_energy( I_energy, I_point );
                       ::math::linear::vector::subtraction( I_2light, I_spot.F_center(), I_point );
                      ::math::linear::vector::length( I_2light , T_scalar(1) );
+
                      if( true == I_lambert.F_process( I_color, I_energy, I_2light, I_normal ) )
                       {
                        I_summae +=I_color;

@@ -7,13 +7,14 @@ using namespace GS_DDMRM::S_IceRay::S_geometry::S_RTSS;
 
 struct GC_object::C_intersect
  {
-  int M_dummy;
+  int M_dummy=0x20150802;
  };
 
 
 GC_object::GC_object( )
  {
   M2_rtss = &M2_list;
+  M2_cdwewewews = M2_rtss->Fv_quantity();
  }
 
 GC_object::GC_object( T_rtss *P_rtss )
@@ -62,8 +63,14 @@ GC_object::T_size GC_object::F_push( T__base  * P__base )
 
   C2_geometry I_geometry;
   I_geometry.M__base = P__base;
+  if( nullptr == P__base )
+   {
+    I_geometry.M__base = & T_rtss::Fs_vacuum();
+   }
 
-   I_geometry.M_intersect      = dynamic_cast<T2_intersect*>(I_geometry.M__base); if( nullptr == I_geometry.M_intersect) I_geometry.M_intersect = & T_rtss::Fs_vacuum();
+   I_geometry.M_intersect      = dynamic_cast<T2_intersect*>(I_geometry.M__base); 
+    if( nullptr == I_geometry.M_intersect) I_geometry.M_intersect = & T_rtss::Fs_vacuum();
+
    I_geometry.M_normal         = dynamic_cast<T2_normal   *>(I_geometry.M__base); if( nullptr == I_geometry.M_normal   ) I_geometry.M_normal    = & T_rtss::Fs_vacuum();
    I_geometry.M_inside         = dynamic_cast<T2_inside   *>(I_geometry.M__base); if( nullptr == I_geometry.M_inside   ) I_geometry.M_inside    = & T_rtss::Fs_vacuum();
    I_geometry.M_distance       = dynamic_cast<T2_distance *>(I_geometry.M__base); if( nullptr == I_geometry.M_distance ) I_geometry.M_distance  = & T_rtss::Fs_vacuum();
@@ -88,12 +95,14 @@ void GC_object::F_erase( T__base  * P_object )
  {
   M2_rtss->Fv_erase( P_object );
   // auto I_iterator = std::find( M2_container.begin(), M2_container.end(), P_object );
+  M2_cdwewewews = M2_rtss->Fv_quantity();
  }
 
 void GC_object::F_clear()
  {
   M2_rtss->Fv_clear();
   M2_container.clear();
+  M2_cdwewewews = M2_rtss->Fv_quantity();
  }
 
 

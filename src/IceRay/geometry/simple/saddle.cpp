@@ -38,6 +38,29 @@ bool GC_saddle::Fv_intersect
   T_scalar b = I_direction[2] - ( I_direction[1]*I_origin[0] +  I_direction[0]*I_origin[1] );
   T_scalar c = I_origin[2] - I_origin[0]*I_origin[1];
 
+  if( fabs( a ) < Is_epsilon )
+   {
+    if( true == I_intersect.M_hit )
+     {
+      return I_intersect.M_hit = false;
+     }
+
+    if( fabs( b ) < Is_epsilon )
+     {
+      return I_intersect.M_hit = false;
+     }
+
+    T_scalar I_lambda = -c / b;
+    T_coord I_point; ::math::linear::vector::combine( I_point, I_origin, I_lambda, I_direction );
+    if( ( ( Is_epsilon < I_lambda ) && ( I_lambda < P_lambda ) ) && ( ::math::geometry::interval::in( F_box(), I_point ) ) )
+     {
+      P_lambda = I_lambda;
+     //Fv_inside( ::math::linear::vector::combine( T_coord{}, I_origin, P_lambda, I_direction ) );
+      return I_intersect.M_hit = true;
+     }
+    return I_intersect.M_hit = false;
+   }
+
   if( true == I_intersect.M_hit )
    {
     if( -Is_epsilon < b )
@@ -50,7 +73,7 @@ bool GC_saddle::Fv_intersect
     if( ( ( Is_epsilon < I_lambda ) && ( I_lambda < P_lambda ) ) && ( ::math::geometry::interval::in( F_box(), I_point ) ) )
      {
       P_lambda = I_lambda;
-      Fv_inside( ::math::linear::vector::combine( T_coord{}, I_origin, P_lambda, I_direction ) );
+      //Fv_inside( ::math::linear::vector::combine( T_coord{}, I_origin, P_lambda, I_direction ) );
       return I_intersect.M_hit = true;
      }
 
@@ -77,7 +100,7 @@ bool GC_saddle::Fv_intersect
    if( ( ( Is_epsilon < I_lambda ) && ( I_lambda < P_lambda ) ) && ( ::math::geometry::interval::in( F_box(), I_point ) ) )
     {
      P_lambda = I_lambda;
-     Fv_inside( ::math::linear::vector::combine( T_coord{}, I_origin, P_lambda, I_direction ) );
+     //Fv_inside( ::math::linear::vector::combine( T_coord{}, I_origin, P_lambda, I_direction ) );
      return I_intersect.M_hit = true;
     }
   }
@@ -88,7 +111,7 @@ bool GC_saddle::Fv_intersect
    if( ( ( Is_epsilon < I_lambda ) && ( I_lambda < P_lambda ) ) && ( ::math::geometry::interval::in( F_box(), I_point ) ) )
     {
      P_lambda = I_lambda;
-     Fv_inside( ::math::linear::vector::combine( T_coord{}, I_origin, P_lambda, I_direction ) );
+     //Fv_inside( ::math::linear::vector::combine( T_coord{}, I_origin, P_lambda, I_direction ) );
      return I_intersect.M_hit = true;
     }
   }

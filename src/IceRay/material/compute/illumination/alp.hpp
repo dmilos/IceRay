@@ -42,27 +42,29 @@
                    En_inColor_Emission = 0,
                    En_inColor_Diffuse = 1,
                    En_inColor_Specular=2, En_inColor_Shininess=3,
-                   En_inSize_SpotCount=0, En_inSpot_Begin=0,
+                   En_inSize_SpotBegin=0, En_inSize_SpotEnd=1,
                   };
 
                public:
                  GC_AmbientLambertPhong
                   (
                     T_size const& P_result      = 0
-                   ,T_size const& P_point       = 0
-                   ,T_size const& P_normal      = 1
+                   ,T_size const& P_inCoord_Point      = 0
+                   ,T_size const& P_inCoord_Normal      = 1
+                   ,T_size const& P_inSize_SpotBegin   = 0
+                   ,T_size const& P_inSize_SpotEnd   = 1
                    ,T_size const& P_emission    = 0
                    ,T_size const& P_diffuse     = 1
                    ,T_size const& P_specular    = 2
                    ,T_size const& P_shininess   = 3
-                   ,T_size const& P_spotCount   = 0
-                   ,T_size const& P_spotBegin   = 0
                   )
                   {
                    F_output<T_color>( En_outColor_result,    P_result );
 
-                   F_input<T_coord>( En_inCoord_Point,     P_point );
-                   F_input<T_coord>( En_inCoord_Normal,    P_normal );
+                   F_input<T_coord>( En_inCoord_Point,     P_inCoord_Point );
+                   F_input<T_coord>( En_inCoord_Normal,    P_inCoord_Normal );
+                   F_input<T_size>(   En_inSize_SpotBegin,  P_inSize_SpotBegin   );
+                   F_input<T_size>(   En_inSize_SpotEnd,    P_inSize_SpotEnd     );
 
                    F_input<T_color>(    En_inColor_Emission,  P_emission );
 
@@ -71,8 +73,6 @@
                    F_input<T_color>(    En_inColor_Specular,    P_specular   );
                    F_input<T_color>(    En_inColor_Shininess,   P_shininess  );
 
-                   F_input<T_size>(     En_inSize_SpotCount,   P_spotCount );
-                   F_input<T_spot>(     En_inSpot_Begin,       P_spotBegin );
                   }
 
                public:
@@ -89,8 +89,8 @@
                    T_color const& I_specular  = M2_memoryColor->Fv_load( F_input<T_color>( En_inColor_Specular  ) );
                    T_color const& I_shininess = M2_memoryColor->Fv_load( F_input<T_color>( En_inColor_Shininess ) );
 
-                   T_size         I_spotCount= M2_memorySize->Fv_load(  F_input<T_size>( En_inSize_SpotCount ) );
-                   T_size         I_spotBegin= M2_memorySize->Fv_load(  F_input<T_size>( En_inSpot_Begin     ) );
+                   T_size         I_spotBegin  = M2_memorySize->Fv_load(  F_input<T_size>( En_inSize_SpotBegin ) );
+                   T_size         I_spotEnd    = M2_memorySize->Fv_load(  F_input<T_size>( En_inSize_SpotEnd ) );
 
                    T_size  const& I_rayCount = P_next.Fv_size(); //M2_memorySize->Fv_load(  F_input()[ T_memory::En_size  ][ En_inSize_RayCount ] );
 
@@ -108,7 +108,7 @@
 
                    I_summae += I_color;
 
-                   for( T_size I_spotIndex=0; I_spotIndex < I_spotCount; ++I_spotIndex )
+                   for( T_size I_spotIndex=0; I_spotIndex < I_spotEnd; ++I_spotIndex )
                     {
                      T_spot const& I_spot = M2_memorySpot->Fv_load( I_spotIndex );
 
@@ -131,6 +131,7 @@
                        if( true == I_phong.F_process( I_color, I_energy, I_ray.M_direction, I_2light ) )
                         {
                          I_color *= I_ray.M_coefficient;
+                         ::color::operation::multiply( I_color, I_ray.M_intesity );
                          I_summae += I_color;
                         }
                       }

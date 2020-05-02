@@ -4,10 +4,10 @@
 
 #include "IceRay/material/compute/instruction.hpp"
 
-#include "IceRay/material/compute/operation/convert.hpp"
+#include "IceRay/material/compute/convert/convert.hpp"
 #include "IceRay/material/compute/operation/switch.hpp"
 #include "IceRay/material/compute/operation/clamp.hpp"
-#include "IceRay/material/compute/operation/mapping.hpp"
+#include "IceRay/material/compute/operation/mapping/mapping.hpp"
 #include "IceRay/material/compute/operation/operator.hpp"
 
 typedef GS_DDMRM::S_IceRay::S_type::GT_size               GTs_size;
@@ -27,10 +27,10 @@ void expose_IceRay_material_compute_operation_switch()
   MAKE_SUBMODULE( material );
   MAKE_SUBMODULE( convert );
 
-  typedef  GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::GT_switchSize       GTs_switchSize;
-  typedef  GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::GT_switchScalar     GTs_switchScalar;
-  typedef  GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::GT_switchColor      GTs_switchColor;
-  typedef  GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::GT_switchCoord3D    GTs_switchCoord3D;
+  typedef  GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_switch::GT_size       GTs_switchSize;
+  typedef  GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_switch::GT_scalar     GTs_switchScalar;
+  typedef  GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_switch::GT_color      GTs_switchColor;
+  typedef  GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_switch::GT_coord3D    GTs_switchCoord3D;
 
   typedef boost::python::class_< GTs_switchSize, boost::python::bases< GTs_instruction > > ( "MaterialSwitchSize" )
     .def( boost::python::init<>() )
@@ -58,19 +58,19 @@ void expose_IceRay_material_compute_operation_scalar_clamp()
   MAKE_SUBMODULE( material );
   MAKE_SUBMODULE( convert );
 
-  typedef  GS_DDMRM::S_IceRay::S_material::S_compute::S_clamp::GT_ramp    GTs_ramp;
+  typedef  GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_clamp::GT_ramp    GTs_ramp;
   typedef boost::python::class_< GTs_ramp, boost::python::bases< GTs_instruction > > ( "MaterialScalarClipRamp" )
     .def( boost::python::init<>() )
     .def( boost::python::init< GTs_size,GTs_size>( ) )
     ;
 
-  typedef  GS_DDMRM::S_IceRay::S_material::S_compute::S_clamp::GT_saw    GTs_saw;
+  typedef  GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_clamp::GT_saw    GTs_saw;
   typedef boost::python::class_< GTs_saw, boost::python::bases< GTs_instruction > > ( "MaterialScalarClipSaw" )
     .def( boost::python::init<>() )
     .def( boost::python::init< GTs_size,GTs_size>( ) )
     ;
 
-  typedef  GS_DDMRM::S_IceRay::S_material::S_compute::S_clamp::GT_wave    GTs_wave;
+  typedef  GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_clamp::GT_wave    GTs_wave;
   typedef boost::python::class_< GTs_wave, boost::python::bases< GTs_instruction > > ( "MaterialScalarClipWave" )
     .def( boost::python::init<>() )
     .def( boost::python::init< GTs_size,GTs_size>( ) )
@@ -144,97 +144,97 @@ void expose_IceRay_material_compute_operation_mapping()
   MAKE_SUBMODULE( material );
   MAKE_SUBMODULE( convert );
 
-  typedef  GS_DDMRM::S_IceRay::S_material::S_compute::S_mapping::GT_identity    GTs_identity;
+  typedef  GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_mapping::GT_identity    GTs_identity;
   typedef boost::python::class_< GTs_identity, boost::python::bases< GTs_instruction > > ( "MaterialCoord3DMappingIdentity" )
     .def( boost::python::init<>() )
     .def( boost::python::init< GTs_size,GTs_size>( ) )
     ;
 
-  typedef  GS_DDMRM::S_IceRay::S_material::S_compute::S_mapping::GT_cartesian2cylindric GTs_cartesian2cylindric;
+  typedef  GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_mapping::GT_cartesian2cylindric GTs_cartesian2cylindric;
   typedef boost::python::class_< GTs_cartesian2cylindric, boost::python::bases< GTs_instruction > > ( "MaterialCoord3DMappingCartesian2Cylindric" )
     .def( boost::python::init<>() )
     .def( boost::python::init< GTs_size,GTs_size>( ) )
     ;
 
-  typedef  GS_DDMRM::S_IceRay::S_material::S_compute::S_mapping::GT_cartesian2spherical GTs_cartesian2spherical;
+  typedef  GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_mapping::GT_cartesian2spherical GTs_cartesian2spherical;
   typedef boost::python::class_< GTs_cartesian2spherical, boost::python::bases< GTs_instruction > > ( "MaterialCoord3DMappingCartesian2Spherical" )
     .def( boost::python::init<>() )
     .def( boost::python::init< GTs_size,GTs_size>( ) )
     ;
 
-  typedef  GS_DDMRM::S_IceRay::S_material::S_compute::S_mapping::GT_cylindric2cartesian GTs_cylindric2cartesian;
+  typedef  GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_mapping::GT_cylindric2cartesian GTs_cylindric2cartesian;
   typedef boost::python::class_< GTs_cylindric2cartesian, boost::python::bases< GTs_instruction > > ( "MaterialCoord3DMappingCylindric2Cartesian" )
     .def( boost::python::init<>() )
     .def( boost::python::init< GTs_size,GTs_size>( ) )
     ;
 
-  typedef  GS_DDMRM::S_IceRay::S_material::S_compute::S_mapping::GT_cylindric2spherical GTs_cylindric2spherical;
+  typedef  GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_mapping::GT_cylindric2spherical GTs_cylindric2spherical;
   typedef boost::python::class_< GTs_cylindric2spherical, boost::python::bases< GTs_instruction > > ( "MaterialCoord3DMappingCylindric2Spherical" )
     .def( boost::python::init<>() )
     .def( boost::python::init< GTs_size,GTs_size>( ) )
     ;
 
-  typedef  GS_DDMRM::S_IceRay::S_material::S_compute::S_mapping::GT_spherical2cartesian    GTs_spherical2cartesian;
+  typedef  GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_mapping::GT_spherical2cartesian    GTs_spherical2cartesian;
   typedef boost::python::class_< GTs_spherical2cartesian, boost::python::bases< GTs_instruction > > ( "MaterialCoord3DMappingSpherical2Cartesian" )
     .def( boost::python::init<>() )
     .def( boost::python::init< GTs_size,GTs_size>( ) )
     ;
 
-  typedef  GS_DDMRM::S_IceRay::S_material::S_compute::S_mapping::GT_spherical2cylindric GTs_spherical2cylindric;
+  typedef  GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_mapping::GT_spherical2cylindric GTs_spherical2cylindric;
   typedef boost::python::class_< GTs_spherical2cylindric, boost::python::bases< GTs_instruction > > ( "MaterialCoord3DMappingSpherical2Cylindric" )
     .def( boost::python::init<>() )
     .def( boost::python::init< GTs_size,GTs_size>( ) )
     ;
 
 
-  typedef  GS_DDMRM::S_IceRay::S_material::S_compute::S_mapping::GT_cartesian2package    GTs_cartesian2package;
+  typedef  GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_mapping::GT_cartesian2package    GTs_cartesian2package;
   typedef boost::python::class_< GTs_cartesian2package, boost::python::bases< GTs_instruction > > ( "MaterialCoord3DMappingCartesian2Package" )
     .def( boost::python::init<>() )
     .def( boost::python::init< GTs_size,GTs_size>( ) )
     ;
 
-  typedef  GS_DDMRM::S_IceRay::S_material::S_compute::S_mapping::GT_cartesian2torus    GTs_cartesian2torus;
+  typedef  GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_mapping::GT_cartesian2torus    GTs_cartesian2torus;
   typedef boost::python::class_< GTs_cartesian2torus, boost::python::bases< GTs_instruction > > ( "MaterialCoord3DMappingCartesian2Torus" )
     .def( boost::python::init<>() )
     .def( boost::python::init< GTs_size,GTs_size>( ) )
     ;
 
-  typedef  GS_DDMRM::S_IceRay::S_material::S_compute::S_mapping::GT_cartesian2tablecloth    GTs_cartesian2tablecloth;
+  typedef  GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_mapping::GT_cartesian2tablecloth    GTs_cartesian2tablecloth;
   typedef boost::python::class_< GTs_cartesian2tablecloth, boost::python::bases< GTs_instruction > > ( "MaterialCoord3DMappingCartesian2Tablecloth" )
     .def( boost::python::init<>() )
     .def( boost::python::init< GTs_size,GTs_size>( ) )
     ;
 
-  typedef  GS_DDMRM::S_IceRay::S_material::S_compute::S_mapping::GT_cartesian2woodX    GTs_cartesian2woodX;
+  typedef  GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_mapping::GT_cartesian2woodX    GTs_cartesian2woodX;
   typedef boost::python::class_< GTs_cartesian2woodX, boost::python::bases< GTs_instruction > > ( "MaterialCoord3DMappingCartesian2WoodX" )
     .def( boost::python::init<>() )
     .def( boost::python::init< GTs_size,GTs_size>( ) )
     ;
 
-  typedef  GS_DDMRM::S_IceRay::S_material::S_compute::S_mapping::GT_cartesian2woodY    GTs_cartesian2woodY;
+  typedef  GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_mapping::GT_cartesian2woodY    GTs_cartesian2woodY;
   typedef boost::python::class_< GTs_cartesian2woodY, boost::python::bases< GTs_instruction > > ( "MaterialCoord3DMappingCartesian2WoodY" )
     .def( boost::python::init<>() )
     .def( boost::python::init< GTs_size,GTs_size>( ) )
     ;
-  typedef  GS_DDMRM::S_IceRay::S_material::S_compute::S_mapping::GT_cartesian2woodZ    GTs_cartesian2woodZ;
+  typedef  GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_mapping::GT_cartesian2woodZ    GTs_cartesian2woodZ;
   typedef boost::python::class_< GTs_cartesian2woodZ, boost::python::bases< GTs_instruction > > ( "MaterialCoord3DMappingCartesian2WoodZ" )
     .def( boost::python::init<>() )
     .def( boost::python::init< GTs_size,GTs_size>( ) )
     ;
 
-  typedef  GS_DDMRM::S_IceRay::S_material::S_compute::S_mapping::GT_euclid2max    GTs_euclid2max;
+  typedef  GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_mapping::GT_euclid2max    GTs_euclid2max;
   typedef boost::python::class_< GTs_euclid2max, boost::python::bases< GTs_instruction > > ( "MaterialCoord3DMappingEuclid2Max" )
     .def( boost::python::init<>() )
     .def( boost::python::init< GTs_size,GTs_size>( ) )
     ;
 
-  typedef  GS_DDMRM::S_IceRay::S_material::S_compute::S_mapping::GT_max2euclid    GTs_max2euclid;
+  typedef  GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_mapping::GT_max2euclid    GTs_max2euclid;
   typedef boost::python::class_< GTs_max2euclid, boost::python::bases< GTs_instruction > > ( "MaterialCoord3DMappingMax2Euclid" )
     .def( boost::python::init<>() )
     .def( boost::python::init< GTs_size,GTs_size>( ) )
     ;
 
-  typedef  GS_DDMRM::S_IceRay::S_material::S_compute::S_mapping::GT_cartesian2fisheye    GTs_cartesian2fisheye;
+  typedef  GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_mapping::GT_cartesian2fisheye    GTs_cartesian2fisheye;
   typedef boost::python::class_< GTs_cartesian2fisheye, boost::python::bases< GTs_instruction > > ( "MaterialCoord3DMappingCartesian2Fisheye" )
     .def( boost::python::init<>() )
     .def( boost::python::init< GTs_size,GTs_size>( ) )
@@ -293,7 +293,6 @@ void expose_IceRay_material_compute_operation_convert()
     .def( boost::python::init<>() )
     .def( boost::python::init< GTs_size,GTs_size>( ) )
   ;
-
 
   typedef  GS_DDMRM::S_IceRay::S_material::S_compute::S_convert::GT_color2coord GTs_color2coord;
   typedef boost::python::class_< GTs_color2coord, boost::python::bases< GTs_instruction > > ( "MaterialConvertColor2Coord3D" )

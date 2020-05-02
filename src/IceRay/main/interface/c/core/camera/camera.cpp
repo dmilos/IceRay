@@ -493,7 +493,7 @@ int                        IceRayC_Camera_Transform_Affine_Child( IceRayC_Camera
   I_this->F_child( c2cpp( P_child ) );
   return 1;
  }
-int                        IceRayC_Camera_Transform_Affine_2WorldGet( IceRayC_Camera_Handle P_that, IceRayC_Type_Math_Affine3D * P_2world )
+int                        IceRayC_Camera_Transform_Affine_2World_Get( IceRayC_Camera_Handle P_that, IceRayC_Type_Math_Affine3D * P_2world )
  {
   typedef GS_DDMRM::S_IceRay::S_camera::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_camera::S_transform::GC_affine Tf_affine;
@@ -507,7 +507,7 @@ int                        IceRayC_Camera_Transform_Affine_2WorldGet( IceRayC_Ca
   *P_2world = cpp2c( I_this->F_2world() );
   return 1;
  }
-int                        IceRayC_Camera_Transform_Affine_2WorldSet( IceRayC_Camera_Handle P_that, IceRayC_Type_Math_Affine3D * P_2world )
+int                        IceRayC_Camera_Transform_Affine_2World_Set( IceRayC_Camera_Handle P_that, IceRayC_Type_Math_Affine3D * P_2world )
  {
   typedef GS_DDMRM::S_IceRay::S_camera::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_camera::S_transform::GC_affine Tf_affine;
@@ -520,7 +520,7 @@ int                        IceRayC_Camera_Transform_Affine_2WorldSet( IceRayC_Ca
   I_this->F_2world( c2cpp( *P_2world ) );
   return 1;
  }
-int IceRayC_Camera_Transform_Affine_2LocalGet( IceRayC_Camera_Handle P_that, IceRayC_Type_Math_Affine3D *P_2local )
+int IceRayC_Camera_Transform_Affine_2Local_Get( IceRayC_Camera_Handle P_that, IceRayC_Type_Math_Affine3D *P_2local )
  {
   typedef GS_DDMRM::S_IceRay::S_camera::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_camera::S_transform::GC_affine Tf_affine;
@@ -534,7 +534,7 @@ int IceRayC_Camera_Transform_Affine_2LocalGet( IceRayC_Camera_Handle P_that, Ice
   *P_2local = cpp2c( I_this->F_2local() );
   return 1;
  }
-int                        IceRayC_Camera_Transform_Affine_2LocalSet( IceRayC_Camera_Handle P_that, IceRayC_Type_Math_Affine3D * P_2local )
+int                        IceRayC_Camera_Transform_Affine_2Local_Set( IceRayC_Camera_Handle P_that, IceRayC_Type_Math_Affine3D * P_2local )
  {
   typedef GS_DDMRM::S_IceRay::S_camera::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_camera::S_transform::GC_affine Tf_affine;

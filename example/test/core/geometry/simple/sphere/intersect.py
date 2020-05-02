@@ -41,7 +41,7 @@ def make_geometry_rtss_list( ):
 
 def make_light_blocked( ):
 
-    blocked = IceRayCpp.LightBlocked()
+    blocked = IceRayCpp.LightObstruct()
 
     point = IceRayCpp.LightPoint()
 

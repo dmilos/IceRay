@@ -40,7 +40,8 @@ typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_illumination::S_ward::GC_is
   boost::python::scope I_scope = I_this;
 
   boost::python::enum_<GTs_wardIsotropic::Ee_input>( "Input" )
-    .value( "LightCount",     GTs_wardIsotropic::En_inSize_SpotCount  )
+    .value( "SpotBegin",      GTs_wardIsotropic::En_inSize_SpotBegin )
+    .value( "SpotEnd",        GTs_wardIsotropic::En_inSize_SpotEnd )
     .value( "Specular",       GTs_wardIsotropic::En_inColor_Specular   )
     .value( "Alpha",          GTs_wardIsotropic::En_inColor_Alpha     )
     .value( "point",          GTs_wardIsotropic::En_inCoord_Point      )

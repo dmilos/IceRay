@@ -27,7 +27,7 @@
              typedef GS_DDMRM::S_IceRay::S_type::S_ray::GC_simple       T_ray;
 
              typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base T_geometry;
-             typedef GS_DDMRM::S_IceRay::S_geometry::GC_vacuum         T_vacuum;
+             typedef GS_DDMRM::S_IceRay::S_geometry::S_volumetric::GC_vacuum         T_vacuum;
 
            public:
                       GC__base();

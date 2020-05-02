@@ -5,19 +5,17 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>7102b81c-471c-44aa-9ca4-93141bbb65f5</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>..\..\..\example\test\core\0-material-pattern2.py</StartupFile>
-    <SearchPath>../../../example;../../../example/test/core;../../../example/test</SearchPath>
-    <WorkingDirectory>../../../example/test/core</WorkingDirectory>
+    <StartupFile>..\..\..\example\test2\list.py</StartupFile>
+    <SearchPath>../../../example;../../../example/test/core;../../../example/test;../../../example/test2;../../../src/IceRayPy;;../../../src</SearchPath>
+    <WorkingDirectory>../../../example/test2</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>IceRayPy3</Name>
     <RootNamespace>IceRayPy3</RootNamespace>
+    <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
+    <LaunchProvider>Standard Python launcher</LaunchProvider>
     <IsWindowsApplication>False</IsWindowsApplication>
     <InterpreterId>{621bf02e-b3cb-4844-aa0b-73abe87016ee}</InterpreterId>
     <InterpreterVersion>3.5</InterpreterVersion>
-    <LaunchProvider>Standard Python launcher</LaunchProvider>
-    <EnableNativeCodeDebugging>True</EnableNativeCodeDebugging>
-    <Environment>
-    </Environment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -32,11 +30,11 @@
     <PtvsTargetsFile>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets</PtvsTargetsFile>
   </PropertyGroup>
   <ItemGroup>
-    <InterpreterReference Include="{621bf02e-b3cb-4844-aa0b-73abe87016ee}\3.5" />
+    <Compile Include="../../../example/test/core/0-material-pattern2.py" />
+    <Compile Include="../../../example/test2/list.py" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="../../../example/test/core/0-material-pattern2.py" />
-    <Compile Include="0-material-pattern.py" />
+    <InterpreterReference Include="{621bf02e-b3cb-4844-aa0b-73abe87016ee}\3.5" />
   </ItemGroup>
   <Import Condition="Exists($(PtvsTargetsFile))" Project="$(PtvsTargetsFile)" />
   <Import Condition="!Exists($(PtvsTargetsFile))" Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />

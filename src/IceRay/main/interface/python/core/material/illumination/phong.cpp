@@ -42,7 +42,8 @@ typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_illumination::GC_phong   GT
   boost::python::enum_<GTs_phong::Ee_input>( "Input" )
     .value( "Specular",       GTs_phong::En_inColor_Specular   )
     .value( "Shininess",      GTs_phong::En_inColor_Shininess  )
-    .value( "LightCount",     GTs_phong::En_inSize_SpotCount  )
+    .value( "SpotBegin",      GTs_phong::En_inSize_SpotBegin )
+    .value( "SpotEnd",        GTs_phong::En_inSize_SpotEnd )
     .export_values()
    ;
 

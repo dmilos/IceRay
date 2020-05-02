@@ -9,15 +9,16 @@ using namespace GS_DDMRM::S_IceRay::S_light;
 GC_spline::GC_spline( )
  :M2_sample( 1 )
  {
-  M2_cp[0][0] = 1;
-  M2_cp[1][1] = 1;
-  M2_cp[2][0] = 1;
+  ::math::linear::vector::load( M2_cp[0], -1, -1, 0 );
+  ::math::linear::vector::load( M2_cp[1], +1, -1, 0 );
+  ::math::linear::vector::load( M2_cp[2], -1, +1, 0 );
+  ::math::linear::vector::load( M2_cp[3],  1,  1, 0 );
  }
 
 GC_spline::GC_spline
 (
    T_spot  const& P_spot
-  ,T_coord const P_cp[3]
+  ,T_coord const P_cp[4]
   ,T_size  const& P_sample
  )
  :M2_spot( P_spot )
@@ -26,6 +27,7 @@ GC_spline::GC_spline
   M2_cp[0] = P_cp[0];
   M2_cp[1] = P_cp[1];
   M2_cp[2] = P_cp[2];
+  M2_cp[4] = P_cp[4];
 
   F_sample( P_sample );
 
@@ -56,12 +58,12 @@ GC_spline::Fv_swarm
     T_scalar I_parm = M2_randGold1D.next();
 
     I_spot.F_center( M2_spot.F_center() );
-     using namespace ::math::linear::vector;
+    using namespace ::math::linear::vector;
 
-    I_t = ( T_scalar(1) - I_parm ) ; I_t =     I_t *     I_t *    I_t;  I_spot.F_center(  I_spot.F_center() * I_t );
-    I_t = ( T_scalar(1) - I_parm ) ; I_t = 3 * I_t *     I_t * I_parm;  I_spot.F_center(  I_spot.F_center() + I_t * M2_cp[0] );
-    I_t = ( T_scalar(1) - I_parm ) ; I_t = 3 * I_t *  I_parm * I_parm;  I_spot.F_center(  I_spot.F_center() + I_t * M2_cp[1] );
-    I_t = I_parm * I_parm * I_parm;                                     I_spot.F_center(  I_spot.F_center() + I_t * M2_cp[2] );
+    I_t = ( T_scalar(1) - I_parm ) ; I_t =     I_t    *    I_t * I_t;     I_spot.F_center(                      I_t * M2_cp[0] );
+    I_t = ( T_scalar(1) - I_parm ) ; I_t = 3 * I_t    *    I_t * I_parm;  I_spot.F_center(  I_spot.F_center() + I_t * M2_cp[1] );
+    I_t = ( T_scalar(1) - I_parm ) ; I_t = 3 * I_t    * I_parm * I_parm;  I_spot.F_center(  I_spot.F_center() + I_t * M2_cp[2] );
+                                     I_t =     I_parm * I_parm * I_parm;  I_spot.F_center(  I_spot.F_center() + I_t * M2_cp[3] );
 
     P_swarm.F_push( I_spot );
    }

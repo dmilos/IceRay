@@ -15,7 +15,7 @@ def make( P_light, P_image = str( os.getcwd()[0] ) + ":\\work\\code\\cpp\\prj\\g
     surface = IceRayCpp.MaterialSurface()
 
     surface_cargo['1'] = IceRayCpp.MaterialCoord3DMappingCartesian2Fisheye( 0, 1 )
-    surface_cargo['2'] = IceRayCpp.MaterialPatternColorFunction( surface_cargo['image']['function'], 1, 1 )
+    surface_cargo['2'] = IceRayCpp.MaterialPatternFunctionColor( surface_cargo['image']['function'], 1, 1 )
     surface_cargo['3'] = IceRayCpp.MaterialIlluminationAmbient( 0, 1 )
 
     surface_cargo['this'].append( surface_cargo['1'] )

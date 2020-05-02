@@ -52,16 +52,25 @@
              }
           };
 
-         // TODOclass GC_sinkhole
-         // TODO {
-         // TODO  public:
-         // TODO   typedef GS_DDMRM::S_IceRay::S_type::GT_scalar T_scalar;
-         // TODO   T_scalar   operator()( T_scalar const&P_value )const
-         // TODO    {
-         // TODO     return ::math::function::sinkhole( P_value );
-         // TODO    }
-         // TODO };
+         class GC_sinkhole
+          {
+           public:
+            typedef GS_DDMRM::S_IceRay::S_type::GT_scalar T_scalar;
+            T_scalar   operator()( T_scalar const&P_value )const
+             {
+              return ::math::function::sinkhole( P_value );
+             }
+          };
 
+         class GC_relu
+          {
+           public:
+            typedef GS_DDMRM::S_IceRay::S_type::GT_scalar T_scalar;
+            T_scalar   operator()( T_scalar const&P_value )const
+             {
+              return ::math::function::relu( P_value );
+             }
+          };
 
         }
       }

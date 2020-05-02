@@ -101,7 +101,7 @@
                 M2_input[P_component][P_position] = P_index;
                 if( nullptr != F1_memory() )
                  {
-                 F1_memory()->F_size( P_component, std::max<T_size>( P_index, F1_memory()->F_size(P_component) ) );
+                  F1_memory()->F_size( P_component, std::max<T_size>( P_index, F1_memory()->F_size(P_component) ) );
                  }
               }
 
@@ -162,7 +162,10 @@
            public:
              virtual void    Fv_memory( T_memory * P_memory ){ M2_memory = P_memory; }
            protected:
-             T_memory * & F1_memory(){ return M2_memory; }
+             T_memory * & F1_memory()
+              {
+               return M2_memory; 
+              }
            private:
              T_memory *M2_memory;
 

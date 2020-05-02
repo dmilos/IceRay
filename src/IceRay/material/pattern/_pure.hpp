@@ -37,7 +37,7 @@
            typedef GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar4D    GT_coord4D;
           }
 
-          class GC__pure //! Just be a main non-tempplate base
+          class GC__pure //! Just be a main non-template base
            {
             public:
               typedef GS_DDMRM::S_IceRay::S_material::S_pattern::S_type::GT_scalar  T_scalar;

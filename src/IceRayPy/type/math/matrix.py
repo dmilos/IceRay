@@ -1,10 +1,11 @@
+print( '<' + __name__ + ' name=\'' +   __file__ + '\'/>' )
 import ctypes
 
-Scalar = ctypes.c_double
-
-import IceRayPy.type.math.coord
-
+Scalar  = IceRayPy.type.basic.Scalar
 Coord3D = IceRayPy.type.math.coord.Scalar3D
+
+AddresOf = ctypes.addressof
+
 
 class Scalar1D(ctypes.Structure):
     _fields_ = [ ("11", Scalar), ("12", Scalar)
@@ -29,50 +30,48 @@ class Scalar4D(ctypes.Structure):
                 ]
 
 
-Pointer = ctypes.POINTER
-
 def id( P_dll ):
     result = Scalar3D()
-    P_dll.IceRayC_Type_Math_Matrix3D_ID( Pointer( result ) )
+    P_dll.IceRayC_Type_Math_Matrix3D_ID( AddresOf( result ) )
     return result
 
 def zero( P_dll ):
     result = Scalar3D()
-    P_dll.IceRayC_Type_Math_Matrix3D_Zero( Pointer( result ) )
+    P_dll.IceRayC_Type_Math_Matrix3D_Zero( AddresOf( result ) )
     return result
 
 def scaleS( P_scale ):
     result = Scalar3D()
-    P_dll.IceRayC_Type_Math_Matrix3D_ScaleV( Pointer( result ), Scalar( P_scale ) )
+    P_dll.IceRayC_Type_Math_Matrix3D_ScaleV( AddresOf( result ), Scalar( P_scale ) )
     return result
 
 def scaleV( P_scale : Coord3D ):
     result = Scalar3D()
-    P_dll.IceRayC_Type_Math_Matrix3D_ScaleV( Pointer( result ), P_scale )
+    P_dll.IceRayC_Type_Math_Matrix3D_ScaleV( AddresOf( result ), P_scale )
     return result
 
 def rotateX( P_alpha ):
     result = Scalar3D()
-    P_dll.IceRayC_Type_Math_Matrix3D_RotateX( Pointer( result ), P_alpha )
+    P_dll.IceRayC_Type_Math_Matrix3D_RotateX( AddresOf( result ), P_alpha )
     return result
 
 def rotateY( P_alpha ):
     result = Scalar3D()
-    P_dll.IceRayC_Type_Math_Matrix3D_RotateY( Pointer( result ), P_alpha )
+    P_dll.IceRayC_Type_Math_Matrix3D_RotateY( AddresOf( result ), P_alpha )
     return result
 
 def rotateZ( P_alpha ):
     result = Scalar3D()
-    P_dll.IceRayC_Type_Math_Matrix3D_RotateY( Pointer( result ), P_alpha )
+    P_dll.IceRayC_Type_Math_Matrix3D_RotateY( AddresOf( result ), P_alpha )
     return result
 
 def rotateA( P_direction : Coord3D, P_alpha ):
     result = Scalar3D()
-    P_dll.IceRayC_Type_Math_Matrix3D_RotateA( Pointer( result ), P_direction, Scalar( P_alpha ) )
+    P_dll.IceRayC_Type_Math_Matrix3D_RotateA( AddresOf( result ), P_direction, Scalar( P_alpha ) )
     return result
 
 def compose( P_left : Scalar3D,  P_right : Scalar3D ):
     result = Scalar3D()
-    P_dll.IceRayC_Type_Math_Matrix3D_Compose( Pointer( result ), Pointer( P_left ), Pointer( P_right ) )
+    P_dll.IceRayC_Type_Math_Matrix3D_Compose( AddresOf( result ), AddresOf( P_left ), AddresOf( P_right ) )
     return result
 

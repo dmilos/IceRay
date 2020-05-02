@@ -2,8 +2,18 @@
 
 #include "./picture.h"
 
-#include "IceRay/type/picture/memory.hpp"
+#include "IceRay/type/picture/picture.hpp"
 #include "pnm/pnm.hpp"
+
+
+IceRayC_Type_Picture_Handle cpp2c( GS_DDMRM::S_IceRay::S_type::S_picture::GC__pure* P_this )
+ {
+  return reinterpret_cast< IceRayC_Type_Picture_Handle >( P_this );
+ }
+GS_DDMRM::S_IceRay::S_type::S_picture::GC__pure * c2cpp( IceRayC_Type_Picture_Handle P_that )
+ {
+  return  reinterpret_cast<GS_DDMRM::S_IceRay::S_type::S_picture::GC__pure*> ( P_that );
+ }
 
 void                       IceRayC_Type_Picture_Release( IceRayC_Type_Picture_Handle P_this )
  {
@@ -33,7 +43,7 @@ int IceRayC_Type_Picture_Size(     IceRayC_Type_Picture_Handle P_this, unsigned 
   typedef GS_DDMRM::S_IceRay::S_type::S_picture::GC__pure      Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_type::S_picture::GC_memory    Tf_memory;
 
-  auto I_this = dynamic_cast<Tf_memory*>( reinterpret_cast<Tf__pure*> ( P_this ) );
+  auto I_this = dynamic_cast<Tf_memory*>( c2cpp( P_this ) );
   if( nullptr == I_this )
    {
     return 0;
@@ -41,6 +51,20 @@ int IceRayC_Type_Picture_Size(     IceRayC_Type_Picture_Handle P_this, unsigned 
   I_this->Fv_size( Tf_memory::T_coord{ width, height } );
   return 1;
  }
+
+int IceRayC_Type_Picture_Crop0( IceRayC_Type_Picture_Handle P_this, IceRayC_TypeCoordSize2D const* P_A, IceRayC_TypeCoordSize2D const* P_B )
+ {
+  auto I_this = c2cpp( P_this );
+  return GS_DDMRM::S_IceRay::S_type::S_picture::GF_crop( *I_this, { c2cpp( *P_A ), c2cpp( *P_B ) } );
+ }
+
+int IceRayC_Type_Picture_Crop( IceRayC_Type_Picture_Handle P_target, IceRayC_Type_Picture_Handle P_source, IceRayC_TypeCoordSize2D const* P_A, IceRayC_TypeCoordSize2D const* P_B )
+ {
+  auto I_target = c2cpp( P_target );
+  auto I_source = c2cpp( P_source );
+  return GS_DDMRM::S_IceRay::S_type::S_picture::GF_crop( *I_target, *I_source, { c2cpp( *P_A ), c2cpp( *P_B ) } );
+ }
+
 
 int IceRayC_Type_Picture_Load( IceRayC_Type_Picture_Handle P_this, char const* P_fileName )
  {

@@ -2,6 +2,7 @@
 #define f291d809791f42508ed099e5816c7dc9
 
 #include "./rtss.h"
+
 #include "IceRay/geometry/rtss/_pure.hpp"
 
 

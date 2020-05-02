@@ -40,7 +40,8 @@ typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_illumination::GC_gaussian  
   boost::python::scope I_scope = I_this;
 
   boost::python::enum_<GTs_gaussian::Ee_input>( "Input" )
-    .value( "LightCount",     GTs_gaussian::En_inSize_SpotCount    )
+    .value( "SpotBegin",      GTs_gaussian::En_inSize_SpotBegin     )
+    .value( "SpotEnd",        GTs_gaussian::En_inSize_SpotEnd       )
     .value( "Specular",       GTs_gaussian::En_inColor_Specular     )
     .value( "Smoothness",     GTs_gaussian::En_inColor_Smoothness   )
     .value( "point",          GTs_gaussian::En_inCoord_Point        )

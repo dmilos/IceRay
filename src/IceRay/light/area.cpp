@@ -17,8 +17,10 @@ GC_area::GC_area( )
  ,M2_x( ::math::linear::vector::fill( M2_x, 0 ) )
  ,M2_y( ::math::linear::vector::fill( M2_y, 0 ) )
  {
-  M2_x[0] = 1;
-  M2_y[1] = 1;
+  M2_x[0] = 2;
+  M2_y[1] = 2;
+
+  ::math::linear::vector::load( M2_spot.F_center(), -1, -1, 0 );
 
   F_sample( 1 );
  }

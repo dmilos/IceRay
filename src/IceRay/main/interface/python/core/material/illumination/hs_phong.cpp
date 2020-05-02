@@ -40,7 +40,8 @@ typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_illumination::S_HeidrichSei
   boost::python::scope I_scope = I_this;
 
   boost::python::enum_<GTs_HeidrichSeidelPhong::Ee_input>( "Input" )
-    .value( "LightCount",     GTs_HeidrichSeidelPhong::En_inSize_SpotCount  )
+    .value( "SpotBegin",      GTs_HeidrichSeidelPhong::En_inSize_SpotBegin   )
+    .value( "SpotEnd",        GTs_HeidrichSeidelPhong::En_inSize_SpotEnd     )
     .value( "Specular",       GTs_HeidrichSeidelPhong::En_inColor_Specular   )
     .value( "Shininess",      GTs_HeidrichSeidelPhong::En_inColor_Shininess  )
     .value( "Groove",         GTs_HeidrichSeidelPhong::En_inCoord_Groove     )

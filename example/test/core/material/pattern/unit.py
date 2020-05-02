@@ -13,13 +13,13 @@ def hexagon( P_light ):
     surface_cargo['hexagon']={}
     surface_cargo['hexagon']['function'] = IceRayCpp.FunctionSizeHexagon()
 
-    surface_cargo['1'] = IceRayCpp.MaterialPatternSizeFunction( surface_cargo['hexagon']['function'], 0, 1 )
+    surface_cargo['1'] = IceRayCpp.MaterialPatternFunctionSize( surface_cargo['hexagon']['function'], 1, 0 )
 
     surface_cargo['2'] = IceRayCpp.MaterialPatternColorConstant( IceRayCpp.GraphTypeColorRGB().load( 0.5, 0.0, 0.0 ), 2 )
     surface_cargo['3'] = IceRayCpp.MaterialPatternColorConstant( IceRayCpp.GraphTypeColorRGB().load( 0.0, 0.5, 0.0 ), 3 )
     surface_cargo['4'] = IceRayCpp.MaterialPatternColorConstant( IceRayCpp.GraphTypeColorRGB().load( 0.0, 0.0, 0.5 ), 4 )
 
-    surface_cargo['5'] = IceRayCpp.MaterialSwitchColor( 1, 2, 1 )
+    surface_cargo['5'] = IceRayCpp.MaterialSwitchColor( 1, 1, 2 )
     surface_cargo['6'] = IceRayCpp.MaterialIlluminationAmbient( 0, 1 )
 
     surface_cargo['this'].append( surface_cargo['1'] )
@@ -31,6 +31,7 @@ def hexagon( P_light ):
 
     return surface_cargo
 
+
 def brick( P_light ):
 
     surface_cargo = {}
@@ -39,11 +40,11 @@ def brick( P_light ):
     surface_cargo['brick']={}
     surface_cargo['brick']['function'] = IceRayCpp.FunctionSizeBrick()
 
-    surface_cargo['1'] = IceRayCpp.MaterialPatternSizeFunction( surface_cargo['brick']['function'], 0, 1 )
+    surface_cargo['1'] = IceRayCpp.MaterialPatternFunctionSize( surface_cargo['brick']['function'], 1, 0 )
     surface_cargo['2'] = IceRayCpp.MaterialPatternColorConstant( IceRayCpp.GraphTypeColorRGB().load( 0.5, 0, 0.0 ), 2 )
     surface_cargo['3'] = IceRayCpp.MaterialPatternColorConstant( IceRayCpp.GraphTypeColorRGB().load( 0.5, 0, 0.5 ), 3 )
 
-    surface_cargo['4'] = IceRayCpp.MaterialSwitchColor( 1, 2, 1 )
+    surface_cargo['4'] = IceRayCpp.MaterialSwitchColor( 1, 1, 2 )
     surface_cargo['5'] = IceRayCpp.MaterialIlluminationAmbient( 0, 1 )
 
     surface_cargo['this'].append( surface_cargo['1'] )
@@ -63,11 +64,11 @@ def checker( P_light ):
     surface_cargo['checker']={}
     surface_cargo['checker']['function'] = IceRayCpp.FunctionSizeChecker()
 
-    surface_cargo['1'] = IceRayCpp.MaterialPatternSizeFunction( surface_cargo['checker']['function'], 0, 1 )
+    surface_cargo['1'] = IceRayCpp.MaterialPatternFunctionSize( surface_cargo['checker']['function'], 1, 0 )
     surface_cargo['2'] = IceRayCpp.MaterialPatternColorConstant( IceRayCpp.GraphTypeColorRGB().load( 0.5, 0, 0.0 ), 2 )
     surface_cargo['3'] = IceRayCpp.MaterialPatternColorConstant( IceRayCpp.GraphTypeColorRGB().load( 0.5, 0, 0.5 ), 3 )
 
-    surface_cargo['4'] = IceRayCpp.MaterialSwitchColor( 1, 2, 1 )
+    surface_cargo['4'] = IceRayCpp.MaterialSwitchColor( 1, 1, 2 )
     surface_cargo['5'] = IceRayCpp.MaterialIlluminationAmbient( 0, 1 )
 
     surface_cargo['this'].append( surface_cargo['1'] )
@@ -87,7 +88,7 @@ def level( P_light ):
     surface_cargo['level']['function'] = IceRayCpp.FunctionScalarLevel( IceRayCpp.MathTypeCoord3D().load(0,0,0.5) )
 
 
-    surface_cargo['1'] = IceRayCpp.MaterialPatternScalarFunction( surface_cargo['level']['function'], 0, 0 )
+    surface_cargo['1'] = IceRayCpp.MaterialPatternFunctionScalar( surface_cargo['level']['function'], 0, 0 )
     surface_cargo['1a'] = IceRayCpp.MaterialScalarClipSaw( 0, 0 )
 
     surface_cargo['2'] = IceRayCpp.MaterialConvertScalar2Color( 0, 1 )
@@ -109,7 +110,7 @@ def onion( P_light ):
     surface_cargo['onion']['function'] = IceRayCpp.FunctionScalarOnion()
 
 
-    surface_cargo['1'] = IceRayCpp.MaterialPatternScalarFunction( surface_cargo['onion']['function'], 0, 0 )
+    surface_cargo['1'] = IceRayCpp.MaterialPatternFunctionScalar( surface_cargo['onion']['function'], 0, 0 )
     surface_cargo['2'] = IceRayCpp.MaterialConvertScalar2Color( 0, 1 )
     surface_cargo['3'] = IceRayCpp.MaterialIlluminationAmbient( 0, 1 )
 
@@ -131,7 +132,7 @@ def image( P_light , P_path = str( os.getcwd()[0] ) + ":\\work\\code\\cpp\\prj\\
 
     surface = IceRayCpp.MaterialSurface()
 
-    a1 = IceRayCpp.MaterialPatternColorFunction( image['function'], 0, 1 )
+    a1 = IceRayCpp.MaterialPatternFunctionColor( image['function'], 1, 0 )
     a2 = IceRayCpp.MaterialIlluminationAmbient( 0, 1 )
 
     surface.append( a1 )
@@ -156,7 +157,7 @@ def wave_sin( P_light ):
     surface_cargo['crackle']={}
     surface_cargo['crackle']['function'] = IceRayCpp.FunctionScalarWaveSin()
 
-    surface_cargo['1'] = IceRayCpp.MaterialPatternScalarFunction( surface_cargo['crackle']['function'], 0, 0 )
+    surface_cargo['1'] = IceRayCpp.MaterialPatternFunctionScalar( surface_cargo['crackle']['function'], 0, 0 )
     surface_cargo['2'] = IceRayCpp.MaterialConvertScalar2Color( 0, 1 )
     surface_cargo['3'] = IceRayCpp.MaterialIlluminationAmbient( 0, 1 )
 
@@ -174,7 +175,7 @@ def wave_saw( P_light ):
     surface_cargo['crackle']={}
     surface_cargo['crackle']['function'] = IceRayCpp.FunctionScalarWaveSaw()
 
-    surface_cargo['1'] = IceRayCpp.MaterialPatternScalarFunction( surface_cargo['crackle']['function'], 0, 0 )
+    surface_cargo['1'] = IceRayCpp.MaterialPatternFunctionScalar( surface_cargo['crackle']['function'], 0, 0 )
     surface_cargo['2'] = IceRayCpp.MaterialConvertScalar2Color( 0, 1 )
     surface_cargo['3'] = IceRayCpp.MaterialIlluminationAmbient( 0, 1 )
 

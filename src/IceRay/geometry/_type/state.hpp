@@ -1,6 +1,6 @@
 #ifndef Dh_DDMRM_Iceray_geometry_state_data_hpp_
  #define Dh_DDMRM_Iceray_geometry_state_data_hpp_
- 
+
 // GS_DDMRM::S_IceRay::S_geometry::S__type::GC_state
 
 #include <cstddef>
@@ -47,6 +47,7 @@
               {
                *this = P_that;
               }
+             ~GC_state(){ }
 
            public:
              GC_state & operator =( GC_state const& P_that )

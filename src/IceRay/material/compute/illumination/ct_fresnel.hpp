@@ -34,7 +34,7 @@
 
                  enum Ee_input
                   {
-                   En_inSize_SpotCount=0,
+                   En_inSize_SpotBegin=0, En_inSize_SpotEnd=1,
                    En_inCoord_Point=0, En_inCoord_Normal=1
                   };
                  enum Ee_output{ En_outColor_result=0 };
@@ -42,17 +42,20 @@
                public:
                  GC_fresnel
                   (
-                    T_size const& P_point      = 0
-                   ,T_size const& P_normal     = 1
-                   ,T_size const& P_spotCount = 0
-                   ,T_size const& P_result     = 0
+                    T_size const& P_result     = 0
+                   ,T_size const& P_inCoord_Point      = 0
+                   ,T_size const& P_inCoord_Normal     = 1
+                   ,T_size const& P_inSize_SpotBegin  = 0
+                   ,T_size const& P_inSize_SpotEnd  = 0
                   )
                   {
-                   F_input<T_coord>( En_inCoord_Point,     P_point );
-                   F_input<T_coord>( En_inCoord_Normal,    P_normal );
-                   F_input<T_size>(  En_inSize_SpotCount,  P_spotCount );
-
                    F_output<T_color>( En_outColor_result,     P_result );
+
+                   F_input<T_coord>( En_inCoord_Point,     P_inCoord_Point );
+                   F_input<T_coord>( En_inCoord_Normal,    P_inCoord_Normal );
+                   F_input<T_size>(   En_inSize_SpotBegin,  P_inSize_SpotBegin   );
+                   F_input<T_size>(   En_inSize_SpotEnd,    P_inSize_SpotEnd     );
+
                   }
 
                public:
@@ -62,9 +65,11 @@
 
                    T_coord const& I_point     = M2_memoryCoord->Fv_load( F_input()[ T_memory::En_coord ][ En_inCoord_Point     ] );
                    T_coord const& I_normal    = M2_memoryCoord->Fv_load( F_input()[ T_memory::En_coord ][ En_inCoord_Normal    ] );
-                   T_size         I_spotCount = M2_memorySize->Fv_load(  F_input()[ T_memory::En_size  ][ En_inSize_SpotCount ] );
+                   T_size         I_spotBegin  = M2_memorySize->Fv_load(  F_input<T_size>( En_inSize_SpotBegin ) );
+                   T_size         I_spotEnd    = M2_memorySize->Fv_load(  F_input<T_size>( En_inSize_SpotEnd ) );
 
-                   T_color I_summae(::color::constant::black_t{});
+                   T_color I_summae( ::color::constant::black_t{} );
+                   // TODO
 
                    M2_memoryColor->Fv_store( F_output<T_color>( En_outColor_result ), I_summae );
                    return true;

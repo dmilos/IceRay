@@ -18,6 +18,8 @@ IceRayC__EXPORT IceRayC__DECLSPEC int IceRayC_Type_Picture_Size(     IceRayC_Typ
 IceRayC__EXPORT IceRayC__DECLSPEC int IceRayC_Type_Picture_SizeGet( IceRayC_Type_Picture_Handle P_this, IceRayC_TypeCoordSize2D * P_size );
 IceRayC__EXPORT IceRayC__DECLSPEC int IceRayC_Type_Picture_SizeSet( IceRayC_Type_Picture_Handle P_this, IceRayC_TypeCoordSize2D const* P_size  );
 
+IceRayC__EXPORT IceRayC__DECLSPEC int IceRayC_Type_Picture_Crop0( IceRayC_Type_Picture_Handle P_this, IceRayC_TypeCoordSize2D const* P_A, IceRayC_TypeCoordSize2D const* P_B );
+IceRayC__EXPORT IceRayC__DECLSPEC int IceRayC_Type_Picture_Crop( IceRayC_Type_Picture_Handle P_target, IceRayC_Type_Picture_Handle P_source, IceRayC_TypeCoordSize2D const* P_A, IceRayC_TypeCoordSize2D const* P_B );
 
 IceRayC__EXPORT IceRayC__DECLSPEC int IceRayC_Type_Picture_Load(     IceRayC_Type_Picture_Handle P_this, char const* P_filename );
 IceRayC__EXPORT IceRayC__DECLSPEC int IceRayC_Type_Picture_StorePNM( IceRayC_Type_Picture_Handle P_this, char const* P_filename );

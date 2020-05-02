@@ -70,7 +70,7 @@ GC_distance::T_intersect& GC_distance::F1_geometry( )
 
 GC_distance::T_intersect & GC_distance::Fs_geometry()
  {
-  typedef GS_DDMRM::S_IceRay::S_geometry::GC_vacuum Tf_vacuum;
+  typedef GS_DDMRM::S_IceRay::S_geometry::S_volumetric::GC_vacuum Tf_vacuum;
   static Tf_vacuum Is_vacuum;
   return Is_vacuum;
  }

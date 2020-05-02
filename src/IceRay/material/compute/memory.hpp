@@ -35,20 +35,24 @@
                 En__begin = 0,
 
                 En_bool=1, En_int8=2, En_uint8=3, En_integer=4, En_size=5, En_scalar=6,
-                En_color=7,
-                En_coord2D = 8,  En_coord3D =  9, En_coord = En_coord3D, En_coord4D = 10,
-                En_cell2D  =11,  En_cell3D  = 12, En_cell  = En_cell3D,  En_cell4D  = 13,
-                En_affine2D=14, En_affine3D=15,
-                En_ray = 16,
-                En_spot =17,
-                En_light =18,
+                En_color,
+                En_cell2D   ,  En_cell3D   ,  En_cell       = En_cell3D,       En_cell4D    ,
+                En_coord2D  ,  En_coord3D  ,  En_coord      = En_coord3D,      En_coord4D   ,
+                En_affine2D ,  En_affine3D ,  En_affine     = En_affine3D,     En_affine4D  ,
+              //TODO En_homography2D,  En_homography3D,  En_homography = En_homography3D, En_homography4D,
+              //TODO En_spline2D    ,  En_spline3D    ,  En_spline     = En_spline3D,     En_spline4D    ,
+              //TODO En_polynom2D   ,  En_polynom3D   ,  En_polynom    = En_polynom3D,    En_polynom4D   ,
 
-                En_chunk             =19,
-                En_geometry_Base     =20,
-                En_geometryNormal    =21,
-                En_geometryIntersect =22,
-                En_geometryUVW       =23,
-                En_geometryDistance  =24,
+                En_ray  ,
+                En_spot ,
+                En_light,
+
+                En_chunk            ,
+                En_geometry_Base    ,
+                En_geometryNormal   ,
+                En_geometryIntersect,
+                En_geometryUVW      ,
+                En_geometryDistance ,
 
                 En__size, En__end = En__size
                };
@@ -63,69 +67,81 @@
                En_inBool_ConstFALSE   = 0,
                En_inBool_ConstTRUE    = 1,
                En_inBool_DynamicValid = 2,
-               En_Bool__End = 32
+               En_Bool__End = 100
               };
 
              enum Ee_constantSize
               {
                En_Size__Begin = 0,
-               En_inSize_ConstantBegin,
-               En_inSize_ConstZero=0,
-               En_inSize_ConstOne=1,
-               En_inSize_ConstantEnd = 10,
+               En_Size_ConstantBegin,
+               En_Size_ConstZero=0,
+               En_Size_ConstOne=1,
+               En_Size_ConstantEnd = 10,
 
-               En_inSize_DynamicBegin = En_inSize_ConstantEnd +1,
+               En_Size_DynamicBegin = En_Size_ConstantEnd +1,
 
-               En_inSize_DynamicLightCount,
+               En_Size_DynamicLightCount,
+               En_Size_DynamicLightBegin,
+               En_Size_DynamicLightEnd,
 
-               En_inSize_DynamicSpotCount,
-               En_inSize_DynamicSpotBegin,
+               En_Size_DynamicSpotCount,
+               En_Size_DynamicSpotBegin,
+               En_Size_DynamicSpotEnd,
 
-               En_inSize_DynamicRaysReflectedCount,
-               En_inSize_DynamicRaysRefractedCount,
+               En_Size_DynamicRaysReflectedCount,
+               En_Size_DynamicRaysRefractedCount,
 
-               En_inSize_DynamicEnd,
+               En_Size_DynamicEnd,
 
-               En_inSize_TemporalBegin = En_inSize_DynamicEnd,
+               En_Size_TemporalBegin = En_Size_DynamicEnd,
                En_Size__End = 100
              };
 
              enum Ee_constantScalar
               {
                En_Scalar__Begin = 0,
-               En_inScalar_Const__Begin,
-               En_inScalar_ConstZero    = En_inScalar_Const__Begin,
-               En_inScalar_ConstOne     = 1,
-               En_inScalar_ConstPi      = 2,
-               En_inScalar_ConstGold    = 3,
-               En_inScalar_ConstE       = 4,
-               En_inScalar_Const__End,
-               En_inScalar_Dynamic__Begin = En_inScalar_Const__End + 10,
-               En_inScalar_DynamicLambda = En_inScalar_Dynamic__Begin,
-               En_inScalar_Dynamic__End,
-               En_inScalar_Temporal__Begin = En_inScalar_Dynamic__End,
-               En_inScalar_Temporal__End = En_inScalar_Temporal__Begin,
+               En_Scalar_Const__Begin,
+               En_Scalar_ConstZero    = En_Scalar_Const__Begin,
+               En_Scalar_ConstOne     = 1,
+               En_Scalar_ConstPi      = 2,
+               En_Scalar_ConstGold    = 3,
+               En_Scalar_ConstE       = 4,
+               En_Scalar_Const__End,
+               En_Scalar_Dynamic__Begin = En_Scalar_Const__End + 10,
+               En_Scalar_DynamicLambda = En_Scalar_Dynamic__Begin,
+               En_Scalar_Dynamic__End,
+               En_Scalar_Temporal__Begin = En_Scalar_Dynamic__End,
+               En_Scalar_Temporal__End = En_Scalar_Temporal__Begin,
                En_Scalar__End = 100
               };
 
              enum Ee_constantColor
               {
                En_Color__Begin = 0,
-               En_outColor__Begin = 0,
-               En_outColor_Result = 0,
 
-               En_inColor__Begin = 1,
+               En_Color_Const__Begin = En_Color__Begin,
+               En_Color_ConstBlack = En_Color_Const__Begin,
+               En_Color_ConstWhite,
+               En_Color_ConstGray,
+               En_Color_Const__End = En_Color_ConstGray + 1,
+               En_Color_Dynamic__Begin = En_Color_Const__End,
+               En_Color_DynamicResult,
+               En_Color_Dynamic__End = En_Color_DynamicResult +1,
+               En_Color_Temporal__Begin = En_Color_Dynamic__End,
+               En_Color_Temporal__End = En_Color_Temporal__Begin + 100,
+               En_Color__End = En_Color_Temporal__End
+              };
 
-               En_inColor_Const__Begin = En_inColor__Begin,
-               En_inColor_ConstBlack = En_inColor_Const__Begin,
-               En_inColor_ConstWhite,
-               En_inColor_ConstGray,
-               En_inColor_Const__End,
-               En_inColor_Dynamic__Begin,
-
-               En_inColor_Dynamic__End = En_inColor_Dynamic__Begin +10,
-               En_inColor_Temporal__Begin = En_inColor_Dynamic__End +1,
-               En_Color__End = 100
+             enum Ee_constantCoord2D
+              {
+               En_Coord2D__Begin = 0,
+               En_inCoord2D_Const__Begin = En_Coord2D__Begin,
+               En_inCoord2D_ConstZero = En_inCoord2D_Const__Begin,
+               En_inCoord2D_Const__End = En_inCoord2D_ConstZero + 1,
+               En_inCoord2D_Dynamic__Begin = En_inCoord2D_Const__End + 10,
+               En_inCoord2D_Temporal__Begin = En_inCoord2D_Dynamic__Begin + 10,
+               En_inCoord2D_Temporal__End = En_inCoord2D_Temporal__Begin + 50,
+               En_Coord2D__End = En_inCoord2D_Temporal__End
               };
 
              enum Ee_constantCoord3D
@@ -133,42 +149,55 @@
                En_Coord3D__Begin = 0,
                En_inCoord3D_Const__Begin,
                En_inCoord3D_ConstZero = 0,
-               En_inCoord3D_Const__End,
-               En_inCoord3D_Dynamic__Begin = En_inCoord3D_Const__End + 10,
+               En_inCoord3D_Const__End = En_inCoord3D_Const__Begin + 10,
+               En_inCoord3D_Dynamic__Begin = En_inCoord3D_Const__End,
                En_inCoord3D_DynamicPoint,
                En_inCoord3D_DynamicNormal,
                En_inCoord3D_DynamicBump,
                En_inCoord3D_DynamicUVW,
-               En_inCoord3D_Dynamic__End,
-               En_inCoord3D_Temporal__Begin,
-             //En_inCoord3D_Temporal__End,
-               En_Coord3D__End = 100
+               En_inCoord3D_Dynamic__End = En_inCoord3D_DynamicUVW + 1,
+               En_inCoord3D_Temporal__Begin = En_inCoord3D_Dynamic__End + 1,
+               En_inCoord3D_Temporal__End = En_inCoord3D_Temporal__Begin + 100,
+               En_Coord3D__End = En_inCoord3D_Temporal__End
+              };
+
+             enum Ee_constantCoord4D
+              {
+               En_Coord4D__Begin = 0,
+               En_inCoord4D_Const__Begin,
+               En_inCoord4D_ConstZero = En_inCoord4D_Const__Begin,
+               En_inCoord4D_Const__End = En_inCoord4D_ConstZero + 1,
+               En_inCoord4D_Dynamic__Begin = En_inCoord4D_Const__End,
+               En_inCoord4D_Dynamic__End = En_inCoord4D_Dynamic__Begin + 50,
+               En_inCoord4D_Temporal__Begin = En_inCoord4D_Dynamic__End,
+               En_inCoord4D_Temporal__End = En_inCoord4D_Temporal__Begin + 100,
+               En_Coord4D__End = En_inCoord4D_Temporal__End
               };
 
              enum Ee_constantSpot
               {
                En_Spot__Begin = 0,
-               En_inSpot_Const__Begin,
-               En_inSpot_Const__End,
-               En_inSpot_Dynamic__Begin = En_inSpot_Const__End + 10,
-               En_inSpot_Dynamic_Front = En_inSpot_Dynamic__Begin, //!< First spot in input array
-               En_inSpot_Dynamic__End,
-               En_inSpot_Temporal__Begin,
-             //En_inSpot_Temporal__End
-               En_Spot__End = 100
+               En_Spot_Const__Begin = En_Spot__Begin,
+               En_Spot_Const__End = En_Spot_Const__Begin + 10,
+               En_Spot_Dynamic__Begin = En_Spot_Const__End,
+               En_Spot_Dynamic_Front = En_Spot_Dynamic__Begin, //!< First spot in input array
+               En_Spot_Dynamic__End = En_Spot_Dynamic__Begin + 100,
+               En_Spot_Temporal__Begin = En_Spot_Dynamic__End,
+               En_Spot_Temporal__End = En_Spot_Temporal__Begin + 50,
+               En_Spot__End = En_Spot_Temporal__End
               };
 
              enum Ee_constantLight
               {
                En_Light__Begin = 0,
                En_inLight_Const__Begin = En_Light__Begin,
-               En_inLight_Const__End,
-               En_inLight_Dynamic__Begin = En_inLight_Const__End + 10,//!< First spot in input array
-               En_inLight_Dynamic_Front,
-               En_inLight_Dynamic__End,
-               En_inLight_Temporal__Begin,
-             //En_inLight_Temporal__End,
-               En_Light__End = 100
+               En_inLight_Const__End   = En_inLight_Const__Begin + 10,
+               En_inLight_Dynamic__Begin = En_inLight_Const__End,
+               En_inLight_Dynamic_Front = En_inLight_Dynamic__Begin,//!< First light in input array
+               En_inLight_Dynamic__End = En_inLight_Dynamic__Begin + 50,
+               En_inLight_Temporal__Begin = En_inLight_Dynamic__End,
+               En_inLight_Temporal__End = En_inLight_Temporal__Begin + 50,
+               En_Light__End = En_inLight_Temporal__End
               };
 
              enum Ee_constantRay
@@ -200,8 +229,9 @@
               typedef GS_DDMRM::S_IceRay::S_type::S_coord::GT_int3D  T_cell3D;
               typedef GS_DDMRM::S_IceRay::S_type::S_coord::GT_int4D  T_cell4D;
 
-              typedef GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar4D    T_affine2D;
-              typedef GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar4D    T_affine3D;
+              typedef GS_DDMRM::S_IceRay::S_type::S_affine::GT_scalar2D    T_affine2D;
+              typedef GS_DDMRM::S_IceRay::S_type::S_affine::GT_scalar3D    T_affine3D;
+              typedef GS_DDMRM::S_IceRay::S_type::S_affine::GT_scalar4D    T_affine4D;
 
 
               typedef GS_DDMRM::S_IceRay::S_light::S_type::GC_spot      T_spot;
@@ -225,14 +255,14 @@
                 M2_memory[ En_int8     ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_int8   , 10 >();
                 M2_memory[ En_uint8    ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_uint8  , 10 >();
                 M2_memory[ En_integer  ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_integer, 10 >();
-                M2_memory[ En_size     ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_size   , 10 >();
+                M2_memory[ En_size     ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_size   , En_Size__End >();
                 M2_memory[ En_scalar   ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_scalar , En_Scalar__End >();
 
                 M2_memory[ En_color    ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_color  , En_Color__End >();
 
-                M2_memory[ En_coord2D  ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_coord2D, 10 >();
+                M2_memory[ En_coord2D  ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_coord2D, En_Coord2D__End >();
                 M2_memory[ En_coord3D  ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_coord3D, En_Coord3D__End >();
-                M2_memory[ En_coord4D  ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_coord4D, 10 >();
+                M2_memory[ En_coord4D  ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_coord4D, En_Coord4D__End >();
 
                 M2_memory[ En_cell2D  ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_cell2D, 10 >();
                 M2_memory[ En_cell3D  ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_cell3D, 10 >();
@@ -240,10 +270,11 @@
 
                 M2_memory[ En_affine2D ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_affine2D, 10 >();
                 M2_memory[ En_affine3D ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_affine3D, 10 >();
+                M2_memory[ En_affine4D ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_affine4D, 10 >();
 
                 M2_memory[ En_ray      ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_dynamic< T_ray >();
                 M2_memory[ En_spot     ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_dynamic< T_spot >( En_Spot__End );
-                M2_memory[ En_light    ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_light*,  En_Light__End >();
+                M2_memory[ En_light    ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_light*,   En_Light__End >();
 
                 M2_memory[ En_chunk             ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_geometry_Base::T_state, 10 >();
                 M2_memory[ En_geometry_Base     ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_geometry_Base    *, 10 >();
@@ -329,8 +360,9 @@
          IceRay_material_compute_memory_type2component( S_coord::GT_int4D ,     En_cell4D   );
          IceRay_material_compute_memory_type2component( S_affine::GT_scalar2D , En_affine2D );
          IceRay_material_compute_memory_type2component( S_affine::GT_scalar3D , En_affine3D );
-         IceRay_material_compute_memory_type2component( S_ray::GC_line,         En_ray      );
+         IceRay_material_compute_memory_type2component( S_affine::GT_scalar4D , En_affine4D );
 
+         IceRay_material_compute_memory_type2component( S_ray::GC_line,         En_ray      );
          IceRay_material_compute_memory_type2componentEx( T_spot ,              En_spot  );
          IceRay_material_compute_memory_type2componentEx( T_light,              En_light );
 

@@ -42,9 +42,9 @@
               public:
                 GC_binary
                 (
-                  T_size const& P_inType_left    = 0
-                 ,T_size const& P_inType_right   = 1
-                 ,T_size const& P_outType_result = 2
+                  T_size const& P_outType_result = 0
+                 ,T_size const& P_inType_left    = 1
+                 ,T_size const& P_inType_right   = 2
                 )
                 {
                  this->template F_input<T_typeLeft>(    En_inTYPE_LeftValue,     P_inType_left  );

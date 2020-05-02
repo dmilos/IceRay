@@ -102,6 +102,11 @@ if( True ):
     cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'geometry.cpp' ) ]
     cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'rtss.cpp' ) ]
     cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'blobby.cpp' ) ]
+    cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'volumetric.cpp' ) ]
+    cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'transform.cpp' ) ]
+    cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'complex.cpp' ) ]
+    cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'simple.cpp'   ) ]
+    cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'handle.cpp'   ) ]
 
 cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'object', 'object.cpp' ) ]
 if( False ):
@@ -119,7 +124,15 @@ cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'render', 'render.
 if( False ):
     pass
 
+cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'utility', 'utility.cpp' ) ]
+if( False ):
+    pass
+
 cc_files += [ os.path.join( 'main', 'interface', 'c', 'type', 'type.cpp' ) ]
+if( False ):
+    pass
+
+cc_files += [ os.path.join( 'main', 'interface', 'c', 'utility', 'utility.cpp' ) ]
 if( False ):
     pass
 

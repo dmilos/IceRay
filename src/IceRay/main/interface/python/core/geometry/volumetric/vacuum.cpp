@@ -11,7 +11,7 @@ typedef GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar3D  GTs_coord3D;
 typedef GS_DDMRM::S_IceRay::S_type::GT_scalar    GTs_scalar;
 
 typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base GTs__base;
-typedef GS_DDMRM::S_IceRay::S_geometry::GC_vacuum         GTs_vacuum;
+typedef GS_DDMRM::S_IceRay::S_geometry::S_volumetric::GC_vacuum         GTs_vacuum;
 
 void expose_IceRay_geometry_vacuum()
  {

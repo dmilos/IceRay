@@ -35,10 +35,13 @@
                  enum Ee_output{ En_outScalar_Distance = 0 };
 
              public:
-               GC_distance()
+               GC_distance
+                (
+                 T_scalar const& P_inCoord_Point = 0
+                )
                 {
                  F_input( T_memory::En_geometryDistance, En_inGeometryDistance_This,  0 );
-                 F_input( T_memory::En_coord3D,          En_inCoord_Point,  0 );
+                 F_input( T_memory::En_coord3D,          En_inCoord_Point,  P_inCoord_Point );
 
                  F_output( T_memory::En_scalar, En_outScalar_Distance, 1 );
                 }

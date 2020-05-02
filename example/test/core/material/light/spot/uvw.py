@@ -15,7 +15,7 @@ def make( P_light, P_diffuse = IceRayCpp.GraphTypeColorRGB().fill( 0.5 ) ):
     #MaterialLightSpotCull( [coord]point, [coord]normal, [spot]start, [size]count  )
     cargo['3'] = IceRayCpp.MaterialLightSpotCull( 0, 1, 0, 0 )
 
-    #MaterialIlluminationLambert( [coord]result, [coord]point, [coord]normal, [size]spotIndex  )
+    #MaterialLightSpotUVW( TODO  )
     cargo['4'] = IceRayCpp.MaterialLightSpotUVW( 2, 0, 1, 0 )
     cargo['5'] = IceRayCpp.MaterialConvertCoord3D2Color( 2, 0 )
 

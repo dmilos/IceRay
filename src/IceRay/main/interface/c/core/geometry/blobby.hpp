@@ -2,6 +2,7 @@
 #define _0cd1ef8bc1994180b4dbe3189865aa2a
 
 #include "./blobby.h"
+
 #include "IceRay/geometry/blobby/_element.hpp"
 
 

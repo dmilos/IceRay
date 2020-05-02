@@ -24,7 +24,7 @@ GC_paraboloid::~GC_paraboloid( )
  }
 
 bool GC_paraboloid::Fv_intersect( T_scalar     & P_lambda ,T_state      & P_state ,T_ray   const& P_ray )const
- {
+ { // y = x*x + y*y
   static T_scalar Is_epsilon = 1e-12;// T_scalar( std::numeric_limits<T_scalar>::epsilon() );
   C_intersect &I_intersect = P_state.F_content<C_intersect>();
 

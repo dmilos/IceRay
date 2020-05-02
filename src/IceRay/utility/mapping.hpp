@@ -1,10 +1,17 @@
 #ifndef Dh_DDMRM_Iceray_utility_mapping_HPP_
  #define Dh_DDMRM_Iceray_utility_mapping_HPP_
 
- // GS_DDMRM::S_IceRay::S_utility::S_mapping::GC_polar
+ // GS_DDMRM::S_IceRay::S_utility::S_mapping::GC_identity
+ // GS_DDMRM::S_IceRay::S_utility::S_mapping::GC_cartesian2cylindric
+ // GS_DDMRM::S_IceRay::S_utility::S_mapping::GC_cartesian2spherical
+ // GS_DDMRM::S_IceRay::S_utility::S_mapping::GC_cylindric2cartesian
+ // GS_DDMRM::S_IceRay::S_utility::S_mapping::GC_cylindric2spherical
+
 
 
 #include "IceRay/type/math/coord.hpp"
+#include "IceRay/type/math/affine.hpp"
+#include "IceRay/type/math/homography.hpp"
 #include "math/geometry/geometry.hpp"
 
 
@@ -29,6 +36,39 @@
               return P_point;
              }
          };
+
+         class GC_translate
+          {
+           public:
+             typedef GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar T_coord;
+
+             GC_translate( T_coord const& P_move = T_coord{ 0, 0, 0 } )
+              : M_move( P_move )
+              {
+              }
+             T_coord   operator()( T_coord const& P_point )const
+              {
+               T_coord Ir_result;
+               ::math::linear::vector::addition( Ir_result, M_move, P_point );
+               return Ir_result;
+              }
+           public:
+             T_coord M_move;
+          };
+
+         // TODO class GC_affine
+         // TODO  {
+         // TODO   public:
+         // TODO    typedef GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar T_coord;
+         // TODO    typedef GS_DDMRM::S_IceRay::S_type::S_affine::GT_scalar T_affine;
+         // TODO
+         // TODO    GC_translate( T_affine const& P_affine = ::math::linear::affine::id<T_scalar, 3 >() )
+         // TODO    T_coord   operator()( T_coord const& P_point )const
+         // TODO     {
+         // TODO
+         // TODO      return P_point;
+         // TODO     }
+         // TODO };
 
          class GC_cartesian2cylindric
           {
@@ -123,7 +163,7 @@
               }
           };
 
-         class GC_cartesian2tablecloth
+         class GC_cartesian2tablecloth //?? TODO fisheye
           {
            public:
             typedef GS_DDMRM::S_IceRay::S_type::GT_scalar          T_scalar;

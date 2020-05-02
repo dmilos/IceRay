@@ -44,7 +44,7 @@ void expose_IceRay_render_scanner_Block()
 
 
     typedef TF_block::T_report (TF_block::*T_setRange )( TF_range const& );
-    T_setRange I_setRange = &TF_block::F_range;
+    T_setRange I_setRange = &TF_block::F_window;
 
     typedef TF_block::T_report (TF_block::*T_setHot )( GTs_cell2D const& );
     T_setHot I_setHot = &TF_block::F_hot;
@@ -54,6 +54,7 @@ void expose_IceRay_render_scanner_Block()
       .def( boost::python::init<GTs_size,GTs_size,GTs_size,GTs_size >() )
       .def( boost::python::init<GTs_cell2D,GTs_cell2D >() )
       .def("range",     I_setRange )
+      .def("window",     I_setRange )
       .def("hot",       I_setHot )
   //.def("top",       &TF_engine::F_range )
   //  .def("bottom",    &TF_engine::F_range )

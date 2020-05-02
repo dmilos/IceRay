@@ -43,7 +43,7 @@ def main( P_name, P_camera ):
 
 def light_make( P_light ):
 
-    blocked = IceRayCpp.LightBlocked()
+    blocked = IceRayCpp.LightObstruct()
 
     blocked.light( P_light['this'] )
 

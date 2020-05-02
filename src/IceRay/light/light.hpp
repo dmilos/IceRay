@@ -1,6 +1,6 @@
 #include "./_pure.hpp"
 #include "./area.hpp"
-#include "./blocked.hpp"
+#include "./obstruct.hpp"
 #include "./chandelier.hpp"
 #include "./circle.hpp"
 #include "./dark.hpp"
@@ -14,3 +14,6 @@
 #include "./sung.hpp"
 #include "./clipped.hpp"
 #include "./confine.hpp"
+#include "./transform/transform.hpp"
+#include "./_pure.hpp"
+

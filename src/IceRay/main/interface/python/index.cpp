@@ -49,7 +49,7 @@ BOOST_PYTHON_MODULE(IceRayCpp)
 
   EXTERN_AND_CALL( expose_IceRay_light_Area );
   EXTERN_AND_CALL( expose_IceRay_light_Disc );
-  EXTERN_AND_CALL( expose_IceRay_light_Blocked );
+  EXTERN_AND_CALL( expose_IceRay_light_Obstruct );
   EXTERN_AND_CALL( expose_IceRay_light_Chandelier );
   EXTERN_AND_CALL( expose_IceRay_light_Circle );
   EXTERN_AND_CALL( expose_IceRay_light_Dark );
@@ -105,7 +105,7 @@ BOOST_PYTHON_MODULE(IceRayCpp)
 
   EXTERN_AND_CALL( expose_IceRay_geometry_transform_affine );
   EXTERN_AND_CALL( expose_IceRay_geometry_transform_mblur );
-  EXTERN_AND_CALL( expose_IceRay_geometry_transform_projective );
+  EXTERN_AND_CALL( expose_IceRay_geometry_transform_homography );
   EXTERN_AND_CALL( expose_IceRay_geometry_transform_translate );
   EXTERN_AND_CALL( expose_IceRay_geometry_transform_identity );
 

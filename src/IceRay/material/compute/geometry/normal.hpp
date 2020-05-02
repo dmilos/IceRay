@@ -34,18 +34,22 @@
                enum Ee_output{ En_outCoord_Normal = 0 };
 
              public:
-               GC_normal( T_size const& P_point = 0, T_size const& P_normal = 1 )
+               GC_normal
+                (
+                  T_size const& P_outCoord_Normal = 1
+                 ,T_size const& P_inCoord_Point   = 0
+                )
                 {
-                 F_input<T_coord>( En_inCoord_Point,  P_point );
+                 F_output<T_coord>( En_outCoord_Normal, P_outCoord_Normal );
 
-                 F_output<T_coord>( En_outCoord_Normal, P_normal );
+                 F_input<T_coord>( En_inCoord_Point,  P_inCoord_Point );
                 }
 
              public:
                bool    Fv_execute( T_beam &P_next, T_pigment::T_intersect const& P_intersect, T_state const& P_state )const
                 {
                  T_coord const& I_point = M2_memoryCoord->Fv_load(    F_input<T_coord>( En_inCoord_Point ) );
-                 
+
                  T_coord  I_normal;
 
                  // TODO  I_geometry->Fv_normal( I_normal, I_point, P_state );

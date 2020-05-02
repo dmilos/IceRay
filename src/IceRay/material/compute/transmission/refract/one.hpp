@@ -34,7 +34,7 @@
                     {
                       En_inCoord_Point  = 0
                      ,En_inCoord_Normal = 1
-                     ,En_inColor_Transmittance = 0
+                     ,En_inColor_Transparency = 0
                      ,En_inScalar_IOR   = 0
                     };
                    enum Ee_output
@@ -46,17 +46,17 @@
                  public:
                    GC_one
                     (
-                      T_size const& P_point     = 0
-                     ,T_size const& P_normal    = 1
-                     ,T_size const& P_transmittance   = 0
-                     ,T_size const& P_ior       = 0
+                      T_size const& P_inCoord_Point           = 0
+                     ,T_size const& P_inCoord_Normal          = 1
+                     ,T_size const& P_transparency   = 0
+                     ,T_size const& P_ior             = 0
                    //,T_size const& P_outSize_rayCount = 0,
                    //,T_size const& P_outRay_refracted = 1
                     )
                     {
-                     F_input<T_coord>(  En_inCoord_Point,       P_point     );
-                     F_input<T_coord>(  En_inCoord_Normal,      P_normal    );
-                     F_input<T_color>(  En_inColor_Transmittance,     P_transmittance   );
+                     F_input<T_coord>(  En_inCoord_Point,       P_inCoord_Point     );
+                     F_input<T_coord>(  En_inCoord_Normal,      P_inCoord_Normal    );
+                     F_input<T_color>(  En_inColor_Transparency,     P_transparency   );
                      F_input<T_scalar>( En_inScalar_IOR,        P_ior       );
 
                    //F_output<T_size>( En_outSize_RayCount,     P_outSize_RayCount );
@@ -70,10 +70,10 @@
 
                      auto const&  I_incoming = P_intersect.M_incoming;
                      auto const&  I_intersect = P_intersect.M_intersection;
-                     T_coord  const& I_point    = M2_memoryCoord->Fv_load( F_input<T_coord>(  En_inCoord_Point ) );
-                     T_coord  const& I_normal   = M2_memoryCoord->Fv_load( F_input<T_coord>(  En_inCoord_Normal) );
-                     T_scalar const& I_IOR      = M2_memoryScalar->Fv_load( F_input<T_scalar>( En_inScalar_IOR  ) );
-                     T_color  const& I_transmittance  = M2_memoryColor->Fv_load( F_input<T_color>(  En_inColor_Transmittance ) );
+                     T_coord  const& I_point         = M2_memoryCoord->Fv_load(  F_input<T_coord>(  En_inCoord_Point        ) );
+                     T_coord  const& I_normal        = M2_memoryCoord->Fv_load(  F_input<T_coord>(  En_inCoord_Normal       ) );
+                     T_scalar const& I_IOR           = M2_memoryScalar->Fv_load( F_input<T_scalar>( En_inScalar_IOR         ) );
+                     T_color  const& I_transparency  = M2_memoryColor->Fv_load(  F_input<T_color>(  En_inColor_Transparency ) );
 
 
                      T_scalar I_air = 1.000277;
@@ -111,7 +111,7 @@
 
                      ::math::linear::vector::length( I_refracted.M_direction, T_scalar(1) );
 
-                      ::color::operation::multiply( I_refracted.M_intesity, I_transmittance, I_incoming.M_intesity );
+                      ::color::operation::multiply( I_refracted.M_intesity, I_transparency, I_incoming.M_intesity );
 
                      I_refracted.M_coefficient = T_scalar(1);
 

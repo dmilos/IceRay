@@ -3,3 +3,5 @@
 #include "./coord.hpp"
 #include "./interval.hpp"
 #include "./color.hpp"
+#include "./homography.hpp"
+#include "./picture.hpp"

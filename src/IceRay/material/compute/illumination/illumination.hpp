@@ -15,6 +15,7 @@
 #include "./lambert.hpp"
 #include "./on_f29.hpp"
 #include "./on_p44.hpp"
+#include "./on_yf.hpp"
 #include "./phong.hpp"
 #include "./ward_approx.hpp"
 #include "./ward_isotropic.hpp"

@@ -1,12 +1,14 @@
 #ifndef Dh_DDMRM_Iceray_material_compute_light_swarm1_HPP_
  #define Dh_DDMRM_Iceray_material_compute_light_swarm1_HPP_
 
+// GS_DDMRM::S_IceRay::S_material::S_compute::S_light::GC_swarmC
 
  #include "../../../type/basic/size.hpp"
  #include "../../../type/color.hpp"
  #include "../../../type/math/coord.hpp"
  #include "../../../light/_pure.hpp"
  #include "../../../light/type/spot.hpp"
+ #include "../../../light/point.hpp"
  #include "../../../geometry/_pure/intersect.hpp"
 
  #include "../instruction.hpp"
@@ -37,7 +39,6 @@
                typedef GS_DDMRM::S_IceRay::S_light::GC__pure             T_light;
 
                typedef GS_DDMRM::S_IceRay::S_geometry::S__type::GC_state      T_state;
-               typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_intersect T_geometry;
 
                typedef GS_DDMRM::S_IceRay::S_material::S_compute::GC_memory      T_memory;
                typedef GS_DDMRM::S_IceRay::S_material::S_compute::GC_instruction T_instruction;
@@ -47,29 +48,29 @@
 
                   En_inCoord_Point    = 0
                  ,En_inCoord_Normal   = 1
-                 ,En_inSpot_Begin     = 0
+                 ,En_inSize_SpotBegin     = 0
 
                 };
-               enum Ee_output{ En_outSize_SpotCount = 0 };
+               enum Ee_output{ En_outSize_SpotEnd = 1 };
 
              public:
                explicit GC_swarmC
                 (
-                  T_size const& P_outSpot_Count    = 0
-
-                 ,T_size const& P_inCoord_Point    = 0
-                 ,T_size const& P_inCoord_Normal   = 0
-                 ,T_size const& P_inSpot_Begin     = 0
-               //,T_size const& P_inBool_Cull      = 0
+                  T_light * P_light = nullptr
+                 ,T_size const& P_outSize_SpotEnd       = 0
+                 ,T_size const& P_inCoord_Point     = 0
+                 ,T_size const& P_inCoord_Normal    = 0
+                 ,T_size const& P_inSize_SpotEnd      = 0
+               //,T_size const& P_inBool_Cull       = 0
                 )
+               :M2_light( P_light )
                 {
-                 F_output<T_size>( En_outSize_SpotCount, P_outSpot_Count );
+                 F_output<T_size>( En_outSize_SpotEnd,    P_outSize_SpotEnd );
 
 
                  F_input<T_coord>( En_inCoord_Point,      P_inCoord_Point  );
                  F_input<T_coord>( En_inCoord_Normal,     P_inCoord_Normal );
-                 F_input<T_spot>(  En_inSpot_Begin,   P_inSpot_Begin   );
-
+                 F_input<T_size>(  En_inSize_SpotBegin,   P_inSize_SpotEnd   );
                 }
 
              public:
@@ -81,13 +82,13 @@
                  T_light const* I_light = M2_light;
                  T_coord const& I_point  = M2_memoryCoord->Fv_load( F_input<T_coord>( En_inCoord_Point ) );
                  T_coord const& I_normal = M2_memoryCoord->Fv_load( F_input<T_coord>( En_inCoord_Normal ) );
-                 T_size  const& I_start  = F_input<T_spot>( En_inSpot_Begin );
+                 T_size  const& I_begin  = M2_memorySize->Fv_load(  F_input<T_size>( En_inSize_SpotBegin ) );
 
 
                  M2_swarm.F_clear();
                  I_light->Fv_swarm( M2_swarm, I_point /*,P_state*/ );
 
-                 T_size I_count = 0;
+                 T_size I_end = I_begin;
 
                  T_coord I_2light;
                  for( auto const& I_spot : M2_swarm )
@@ -103,11 +104,11 @@
                     }
 
 
-                   M2_memorySpot->Fv_store( I_start + I_count, I_spot );
-                   ++I_count;
+                   M2_memorySpot->Fv_store( I_end, I_spot );
+                   ++I_end;
                   }
 
-                 M2_memorySize->Fv_store( F_output<T_size>( En_outSize_SpotCount ), I_count );
+                 M2_memorySize->Fv_store( F_output<T_size>( En_outSize_SpotEnd ), I_end );
                  return true;
                 }
 
@@ -116,6 +117,10 @@
                void              F_light( T_light* P_light )
                 {
                  M2_light = P_light;
+                 if( nullptr == M2_light )
+                  {
+                   M2_light = &F2s_light();
+                  }
                  M2_swarm.F_reserve( M2_light->F_max() );
                 }
              protected:
@@ -145,6 +150,12 @@
                T2_memorySize     *M2_memorySize;
                T2_memoryCoord    *M2_memoryCoord;
                T2_memorySpot     *M2_memorySpot;
+             private:
+               static T_light & F2s_light()
+                {
+                 static GS_DDMRM::S_IceRay::S_light::GC_point Is_light;
+                 return Is_light;
+                }
 
            };
 

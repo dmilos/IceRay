@@ -59,7 +59,7 @@ int IceRayC_Geometry_Blobby_Sphere_Radius( IceRayC_Geometry_Blobby_Element_Handl
  {
   return 0;
  }
-int IceRayC_Geometry_Blobby_Sphere_Center( IceRayC_Geometry_Blobby_Element_Handle P_that, IceRayC_TypeCoordScalar3D P_center )
+int IceRayC_Geometry_Blobby_Sphere_Center( IceRayC_Geometry_Blobby_Element_Handle P_that, IceRayC_TypeCoordScalar3D* P_center )
  {
   return 0;
  }
@@ -124,13 +124,13 @@ IceRayC_Geometry_Blobby_Element_Handle IceRayC_Geometry_Blobby_Translate0( )
   return cpp2c( Ir_result );
  }
 
-IceRayC_Geometry_Blobby_Element_Handle IceRayC_Geometry_Blobby_Translate1( IceRayC_Geometry_Blobby_Element_Handle P_element, IceRayC_TypeCoordScalar3D P_translate )
+IceRayC_Geometry_Blobby_Element_Handle IceRayC_Geometry_Blobby_Translate1( IceRayC_Geometry_Blobby_Element_Handle P_element, IceRayC_TypeCoordScalar3D* P_translate )
  {
-  auto Ir_result = new GS_DDMRM::S_IceRay::S_geometry::S_blobby::GC_translate{ c2cpp( P_element), c2cpp( P_translate ) };
+  auto Ir_result = new GS_DDMRM::S_IceRay::S_geometry::S_blobby::GC_translate{ c2cpp( P_element ), c2cpp( *P_translate ) };
   return cpp2c( Ir_result );
  }
 
-int IceRayC_Geometry_Blobby_Translate_Move( IceRayC_Geometry_Blobby_Element_Handle P_that,  IceRayC_TypeCoordScalar3D P_translate )
+int IceRayC_Geometry_Blobby_Translate_Move( IceRayC_Geometry_Blobby_Element_Handle P_that,  IceRayC_TypeCoordScalar3D* P_translate )
  {
   return 0;
  }

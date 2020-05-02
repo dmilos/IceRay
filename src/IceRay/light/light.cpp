@@ -1,5 +1,5 @@
 #include "./area.cpp"
-#include "./blocked.cpp"
+#include "./obstruct.cpp"
 #include "./chandelier.cpp"
 #include "./circle.cpp"
 #include "./dark.cpp"
@@ -13,3 +13,5 @@
 #include "./sung.cpp"
 #include "./clipped.cpp"
 #include "./confine.cpp"
+#include "./transform/transform.cpp"
+#include "./_parent.cpp"

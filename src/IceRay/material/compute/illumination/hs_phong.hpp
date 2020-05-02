@@ -34,7 +34,7 @@
 
                  enum Ee_input
                   {
-                   En_inSize_SpotCount=0,
+                   En_inSize_SpotBegin=0, En_inSize_SpotEnd=1,
                    En_inColor_Specular =0, En_inColor_Shininess=1,
                    En_inCoord_Point =0, En_inCoord_Normal=1, En_inCoord_Groove = 2
                   };
@@ -43,23 +43,25 @@
                public:
                  GC_Phong
                   (
-                    T_size const& P_point      = 0
-                   ,T_size const& P_normal     = 1
-                   ,T_size const& P_spotCount  = 0
-                   ,T_size const& P_specular   = 0
-                   ,T_size const& P_shininess  = 1
-                   ,T_size const& P_groove     = 2
-                   ,T_size const& P_result     = 0
+                    T_size const& P_result             = 0
+                   ,T_size const& P_inCoord_Point      = 0
+                   ,T_size const& P_inCoord_Normal     = 1
+                   ,T_size const& P_inSize_SpotBegin   = 0
+                   ,T_size const& P_inSize_SpotEnd     = 1
+                   ,T_size const& P_groove             = 2
+                   ,T_size const& P_specular           = 0
+                   ,T_size const& P_shininess          = 1
                   )
                   {
-                   F_input<T_coord>( En_inCoord_Point,     P_point );
-                   F_input<T_coord>( En_inCoord_Normal,    P_normal );
-                   F_input<T_size>(  En_inSize_SpotCount,  P_spotCount );
+                   F_input<T_coord>( En_inCoord_Point,     P_inCoord_Point     );
+                   F_input<T_coord>( En_inCoord_Normal,    P_inCoord_Normal    );
+                   F_input<T_size>(  En_inSize_SpotBegin,  P_inSize_SpotBegin  );
+                   F_input<T_size>(  En_inSize_SpotEnd,    P_inSize_SpotEnd    );
 
-                   F_input<T_color>(    En_inColor_Specular,    P_specular );
-                   F_input<T_color>(    En_inColor_Shininess,   P_shininess );
+                   F_input<T_color>( En_inColor_Specular,    P_specular  );
+                   F_input<T_color>( En_inColor_Shininess,   P_shininess );
 
-                   F_input<T_coord>(    En_inCoord_Groove,      P_groove );
+                   F_input<T_coord>( En_inCoord_Groove,      P_groove );
 
                    F_output<T_color>( En_outColor_result,     P_result );
                   }
@@ -75,7 +77,8 @@
                    T_coord const& I_point     = M2_memoryCoord->Fv_load( F_input()[ T_memory::En_coord ][ En_inCoord_Point     ] );
                    T_coord const& I_normal    = M2_memoryCoord->Fv_load( F_input()[ T_memory::En_coord ][ En_inCoord_Normal    ] );
                    T_coord const& I_groove    = M2_memoryCoord->Fv_load( F_input()[ T_memory::En_coord ][ En_inCoord_Groove    ] );
-                   T_size         I_count     = M2_memorySize->Fv_load(  F_input()[ T_memory::En_size  ][ En_inSize_SpotCount  ] );
+                   T_size         I_spotBegin  = M2_memorySize->Fv_load(  F_input<T_size>( En_inSize_SpotBegin ) );
+                   T_size         I_spotEnd    = M2_memorySize->Fv_load(  F_input<T_size>( En_inSize_SpotEnd ) );
 
                    GS_DDMRM::S_IceRay::S_material::S_illumination::S_HeidrichSeidel::GC_phong I_HeidrichSeidel( I_specular, I_shininess, I_groove );
 
@@ -84,7 +87,7 @@
                    T_coord I_2light;
                    T_color I_energy;
 
-                   for( T_size I_spotIndex=0; I_spotIndex < I_count; ++I_spotIndex )
+                   for( T_size I_spotIndex = I_spotBegin; I_spotIndex < I_spotEnd; ++I_spotIndex )
                     {
                      T_spot const& I_spot = M2_memorySpot->Fv_load( I_spotIndex );
 

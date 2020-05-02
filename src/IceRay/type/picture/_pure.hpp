@@ -23,6 +23,7 @@
              typedef GS_DDMRM::S_IceRay::S_type::S_color::GT_char   T_color;
              typedef GS_DDMRM::S_IceRay::S_type::S_coord::GT_size2D T_coord;
 
+              virtual T_report Fv_pixel( T_color      & color, T_coord const& coord )const=0;
               virtual T_report Fv_pixel( T_coord const& coord, T_color const& color )=0;
 
               virtual T_coord const& F_size(  )const{ return M2_size; }

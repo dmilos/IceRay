@@ -1,6 +1,8 @@
 import ctypes
 
-Scalar = ctypes.c_double
+import IceRayPy
+
+Scalar = IceRayPy.type.basic.Scalar
 
 class Sphere:
     def __init__( self, P_dll, P_center = None , P_radius = None ):
@@ -75,7 +77,7 @@ class WatterZ:
         self.m_cargo['dll'].IceRayC_Geometry_Blobby_Element_Cylinder_Bottom( self.m_cargo['this'], P_bottom )
 
     def level( self, P_level ):
-        self.m_cargo['dll'].IceRayC_Geometry_Blobby_Element_Cylinder_Core( self.m_cargo['this'], Scalar( ( P_level ) )
+        self.m_cargo['dll'].IceRayC_Geometry_Blobby_Element_Cylinder_Core( self.m_cargo['this'], Scalar( ( P_level ) ) )
 
 class Vacuum:
     def __init__( self, P_dll, P_center = None , P_radius = None ):

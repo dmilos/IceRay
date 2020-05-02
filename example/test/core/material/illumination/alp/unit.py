@@ -58,7 +58,7 @@ def makeOF(
     cargo['2'] = IceRayCpp.MaterialIlluminationAmbient( 0, 1 ) # first result
 
     cargo['3'] = IceRayCpp.MaterialLightGenerator( P_light['this'], 0 )
-    #MaterialLightSpotSwarmA( [size]count, [light]light, [coord]point, [spot]start )
+    #MaterialLightSpotSwarmA( [size]sporEnd, [size]spotStart, [light]light, [coord]point )
     cargo['3A'] = IceRayCpp.MaterialLightSpotSwarmA( 0, 0, 0, 0 )
     #MaterialLightSpotCull( [coord]point, [coord]normal, [spot]start, [size]count  )
     cargo['3B'] = IceRayCpp.MaterialLightSpotCull( 0, 1, 0, 0 )

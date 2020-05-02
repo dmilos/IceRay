@@ -42,16 +42,17 @@
              void F1v_render( T_picture & P_image );
 
            public:
-             T_range const& F_range()const{ return M2_range; }
-             T_report       F_range( T_range const& P_range );
-             T_report       F_range( T_cell const& P_lo, T_cell const& P_ho );
+             T_range const& F_window()const{ return M2_window; }
+             T_report       F_window( T_range const& P_window );
+             T_report       F_window( T_cell const& P_lo, T_cell const& P_ho );
            private:
-             T_range M2_range;
+             T_range M2_window;
 
           public:
             T_report       F_hot( T_cell2D const& P_hot );
           private:
             T_cell2D M2_hot;
+          //T_cell2D M2_steper;
 
           };
 

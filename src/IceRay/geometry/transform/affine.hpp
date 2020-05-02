@@ -109,7 +109,7 @@
 
 
            public:
-             typedef GS_DDMRM::S_IceRay::S_geometry::GC_vacuum T_vacuum;
+             typedef GS_DDMRM::S_IceRay::S_geometry::S_volumetric::GC_vacuum T_vacuum;
              static T_vacuum & Fs_vacuum();
            private:
              struct C_intersect;

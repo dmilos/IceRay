@@ -14,7 +14,7 @@ from pathlib import Path
 
 def light_make( P_light ):
 
-    blocked = IceRayCpp.LightBlocked()
+    blocked = IceRayCpp.LightObstruct()
 
     blocked.light( P_light['this'] )
 
@@ -50,7 +50,7 @@ from geometry.rtss.unit import *
 from geometry.transform.mblur.unit      import make
 from geometry.transform.translate.unit  import *
 from geometry.transform.affine.unit     import *
-from geometry.transform.projective.unit import *
+from geometry.transform.homography.unit import *
 from geometry.transform.identity.unit  import *
 
 from material.operation.mapping.cartesian2cylindric  import make
@@ -145,19 +145,19 @@ from camera.invert.unit                 import cylinder
 
 light_list = {
        #'dark'       : light.dark.unit.make,
-       'point'      : light.point.unit.makeZ,
-       'reflector'  : light.reflector.unit.make,
-       'sunPoint'   : light.sun.general.point,
-       'sunSpot'    : light.sun.spot.make,
-       'sunArea'    : light.sun.general.area,
-       'sunLine'    : light.sun.general.line,
-       'sunCircle'  : light.sun.general.circle,
-       'sunDisc'    : light.sun.general.disc,
-       'line'       : light.line.unit.make,
-       'spline'     : light.spline.unit.make,
-       'circle'     : light.circle.unit.make,
-       'area'       : light.area.unit.make,
-       'disc'       : light.disc.unit.make,
+       #'point'      : light.point.unit.makeZ,
+       #'reflector'  : light.reflector.unit.make,
+       #'sunPoint'   : light.sun.general.point,
+       #'sunSpot'    : light.sun.spot.make,
+       #'sunArea'    : light.sun.general.area,
+       #'sunLine'    : light.sun.general.line,
+       #'sunCircle'  : light.sun.general.circle,
+       #'sunDisc'    : light.sun.general.disc,
+        'line'       : light.line.unit.make,
+       #'spline'     : light.spline.unit.make,
+       #'circle'     : light.circle.unit.make,
+       #'area'       : light.area.unit.make,
+       #'disc'       : light.disc.unit.make,
        #'sphere'     : light.sphere.unit.make,
        #'chandelier-H'  : light.chandelier.unit.hexa,
        #'chandelier-T'  : light.chandelier.unit.tetra,
@@ -194,9 +194,9 @@ geometry_list = {
       #'transform-affine-translate'     :geometry.transform.affine.unit.translate,
       #'transform-affine-make'          :geometry.transform.affine.unit.make,
       #
-      #'transform-projective-identity'  :geometry.transform.projective.unit.identical,
-      #'transform-projective-uniform'   :geometry.transform.projective.unit.uniform,
-      #'transform-projective-translate' :geometry.transform.projective.unit.translate,
+      #'transform-homography-identity'  :geometry.transform.homography.unit.identical,
+      #'transform-homography-uniform'   :geometry.transform.homography.unit.uniform,
+      #'transform-homography-translate' :geometry.transform.homography.unit.translate,
       #
       #'transform-mblur'      :geometry.transform.mblur.unit.make,
       #'intersect'            :geometry.complex.intersect.unit.make,
@@ -250,73 +250,73 @@ geometry_list = {
 }
 
 surface_list = {
-        #'nothing'              : surface.make_nothing,
-        #'mirror'               : surface.make_mirror,
-        #'pattern-noisePerlin'          : material.pattern.noise.unit.perlin,
-        #'pattern-noiseCrackle'         : material.pattern.noise.unit.crackle,
-        #'pattern-noiseValue'           : material.pattern.noise.unit.value,
-        #'pattern-noiseCells'           : material.pattern.noise.unit.cells,
-        #'pattern-noiseRandom'          : material.pattern.noise.unit.random,
-        #'pattern-noiseGold'            : material.pattern.noise.unit.gold,
-        #'pattern-noiseVDC'             : material.pattern.noise.unit.vdc,
-        #'pattern-hexagon'              : material.pattern.unit.hexagon,
-        #'pattern-checker'              : material.pattern.unit.checker,
-        #'pattern-brick'                : material.pattern.unit.brick,
-        #'pattern-level'                : material.pattern.unit.level,
-        #'pattern-onion'                : material.pattern.unit.onion,
-        #'pattern-image'                : material.pattern.unit.image,
-        #'pattern-waveSin'              : material.pattern.unit.wave_sin,
-        #'pattern-waveSaw'              : material.pattern.unit.wave_saw,
-        #'pattern-normal2ambient'       : material.pattern.unit.normal,
-        #'pattern-spot-UVW'             : material.light.spot.uvw.make,
+         #'nothing'              : surface.make_nothing,
+         #'mirror'               : surface.make_mirror,
+         #'pattern-noisePerlin'          : material.pattern.noise.unit.perlin,
+         #'pattern-noiseCrackle'         : material.pattern.noise.unit.crackle,
+         #'pattern-noiseValue'           : material.pattern.noise.unit.value,
+         #'pattern-noiseCells'           : material.pattern.noise.unit.cells,
+         #'pattern-noiseRandom'          : material.pattern.noise.unit.random,
+         #'pattern-noiseGold'            : material.pattern.noise.unit.gold,
+         #'pattern-noiseVDC'             : material.pattern.noise.unit.vdc,
+         #'pattern-hexagon'              : material.pattern.unit.hexagon,
+         #'pattern-checker'              : material.pattern.unit.checker,
+         #'pattern-brick'                : material.pattern.unit.brick,
+         #'pattern-level'                : material.pattern.unit.level,
+         #'pattern-onion'                : material.pattern.unit.onion,
+         #'pattern-image'                : material.pattern.unit.image,
+         #'pattern-waveSin'              : material.pattern.unit.wave_sin,
+         #'pattern-waveSaw'              : material.pattern.unit.wave_saw,
+         #'pattern-normal2ambient'       : material.pattern.unit.normal,
+         #'pattern-spot-UVW'             : material.light.spot.uvw.make,
 
-        #'mapping-cartesian2spherical'  :  material.operation.mapping.cartesian2spherical.make,
-        #'mapping-cartesian2woodX'      :  material.operation.mapping.cartesian2woodX.make,
-        #'mapping-cartesian2woodY'      :  material.operation.mapping.cartesian2woodY.make,
-        #'mapping-cartesian2woodZ'      :  material.operation.mapping.cartesian2woodZ.make,
-        #'mapping-cartesian2fisheye'    :  material.operation.mapping.cartesian2fisheye.make,
-        #'mapping-cartesian2cylindric'  :  material.operation.mapping.cartesian2cylindric.make,
-        #'mapping-cartesian2tablecloth' :  material.operation.mapping.cartesian2tablecloth.make,
-        #'mapping-cartesian2torus'      :  material.operation.mapping.cartesian2torus.make,
+         #'mapping-cartesian2spherical'  :  material.operation.mapping.cartesian2spherical.make,
+         #'mapping-cartesian2woodX'      :  material.operation.mapping.cartesian2woodX.make,
+         #'mapping-cartesian2woodY'      :  material.operation.mapping.cartesian2woodY.make,
+         #'mapping-cartesian2woodZ'      :  material.operation.mapping.cartesian2woodZ.make,
+         #'mapping-cartesian2fisheye'    :  material.operation.mapping.cartesian2fisheye.make,
+         #'mapping-cartesian2cylindric'  :  material.operation.mapping.cartesian2cylindric.make,
+         #'mapping-cartesian2tablecloth' :  material.operation.mapping.cartesian2tablecloth.make,
+         #'mapping-cartesian2torus'      :  material.operation.mapping.cartesian2torus.make,
 
-        #'mapping-cylindric2cartesian'  :  material.operation.mapping.cylindric2cartesian.make,
-        #'mapping-cylindric2spherical'  :  material.operation.mapping.cylindric2spherical.make,
-        #'mapping-spherical2cartesian'  :  material.operation.mapping.spherical2cartesian.make,
-        #'mapping-spherical2cylindric'  :  material.operation.mapping.spherical2cylindric.make,
-        #'mapping-cartesian2package'    :  material.operation.mapping.cartesian2package.make,
+         #'mapping-cylindric2cartesian'  :  material.operation.mapping.cylindric2cartesian.make,
+         #'mapping-cylindric2spherical'  :  material.operation.mapping.cylindric2spherical.make,
+         #'mapping-spherical2cartesian'  :  material.operation.mapping.spherical2cartesian.make,
+         #'mapping-spherical2cylindric'  :  material.operation.mapping.spherical2cylindric.make,
+         #'mapping-cartesian2package'    :  material.operation.mapping.cartesian2package.make,
 
-        #'mapping-euclid2max'           :  material.operation.mapping.euclid2max.make,
-        #'mapping-max2euclid'           :  material.operation.mapping.max2euclid.make,
+         # TODO crash 'mapping-euclid2max'           :  material.operation.mapping.euclid2max.make,
+         #'mapping-max2euclid'           :  material.operation.mapping.max2euclid.make,
 
-        #'refractFresnel'        : material.transmission.refract.fresnel.unit.make,
-        #'refractSchlick'        : material.transmission.refract.schlick.unit.make,
-        #'refractArbitrary'      : material.transmission.refract.arbitrary.unit.make,
-        #'refractOne'            : material.transmission.refract.one.unit.make,
-        #'reflectSchlick'        : material.transmission.reflect.schlick.unit.make,
-        #'reflectFresnel'        : material.transmission.reflect.fresnel.unit.make,
-        #'reflectOne'            : material.transmission.reflect.one.unit.make,
-        #'reflectBHex'           : material.transmission.blossom.hexagon.unit.make,
-        #'reflectBGrid'          : material.transmission.blossom.grid.unit.make,
-        #'reflectBRand'          : material.transmission.blossom.random.unit.make,
-        #'reflectBVDC'           : material.transmission.blossom.vdc.unit.make,
-        #'illum-ALP'             : material.illumination.alp.unit.make,
-        #'illum-AshShiCmpl'      : material.illumination.AshShi.unit.make_complete,
-        #'illum-AshShiDif'       : material.illumination.AshShi.unit.make_diffuse,
-        #'illum-AshShiSpec'      : material.illumination.AshShi.unit.make_specular,
-        #'illum-ambient'         : material.illumination.ambient.unit.make,
-        #'illum-beckmann'        : material.illumination.beckmann.unit.make,
-        #'illum-blinn'           : material.illumination.blinn.unit.make,
-        #'illum-gaussian'        : material.illumination.gaussian.unit.make,
-        #'illum-hs-lambert'      : material.illumination.hs.unit.make_HSLambert,
-        #'illum-hs-phong'        : material.illumination.hs.unit.make_HSPhong,
-        #'illum-lambert'         : material.illumination.lambert.unit.make,
-         'illum-phong'           : material.illumination.phong.unit.make,
-        #'illum-ONp44'           : material.illumination.on.unit.make_p44,
-        #'illum-ONf29'           : material.illumination.on.unit.make_f29,
-        #'illum-ONYF'           : material.illumination.on.unit.make_YasuhiroFujii,
-        #'illum-ward-aprox'      : material.illumination.ward.unit.make_aprox,
-        #'illum-ward-real'       : material.illumination.ward.unit.make_real,
-        #'illum-ward-iso'        : material.illumination.ward.unit.make_isotropic,
+         #'refractFresnel'        : material.transmission.refract.fresnel.unit.make,
+         #'refractSchlick'        : material.transmission.refract.schlick.unit.make,
+         #'refractArbitrary'      : material.transmission.refract.arbitrary.unit.make,
+         #'refractOne'            : material.transmission.refract.one.unit.make,
+         #'reflectSchlick'        : material.transmission.reflect.schlick.unit.make,
+         #'reflectFresnel'        : material.transmission.reflect.fresnel.unit.make,
+         #'reflectOne'            : material.transmission.reflect.one.unit.make,
+         #'reflectBHex'           : material.transmission.blossom.hexagon.unit.make,
+         #'reflectBGrid'          : material.transmission.blossom.grid.unit.make,
+         #'reflectBRand'          : material.transmission.blossom.random.unit.make,
+         #'reflectBVDC'           : material.transmission.blossom.vdc.unit.make,
+         #'illum-ALP'             : material.illumination.alp.unit.make,
+         #'illum-AshShiCmpl'      : material.illumination.AshShi.unit.make_complete,
+         #'illum-AshShiDif'       : material.illumination.AshShi.unit.make_diffuse,
+         #'illum-AshShiSpec'      : material.illumination.AshShi.unit.make_specular,
+         #'illum-ambient'         : material.illumination.ambient.unit.make,
+         #'illum-beckmann'        : material.illumination.beckmann.unit.make,
+         #'illum-blinn'           : material.illumination.blinn.unit.make,
+         #'illum-gaussian'        : material.illumination.gaussian.unit.make,
+         #'illum-hs-lambert'      : material.illumination.hs.unit.make_HSLambert,
+         #'illum-hs-phong'        : material.illumination.hs.unit.make_HSPhong,
+         'illum-lambert'         : material.illumination.lambert.unit.make,
+         #'illum-phong'           : material.illumination.phong.unit.make,
+         #'illum-ONp44'           : material.illumination.on.unit.make_p44,
+         #'illum-ONf29'           : material.illumination.on.unit.make_f29,
+         #'illum-ONYF'           : material.illumination.on.unit.make_YasuhiroFujii,
+         #'illum-ward-aprox'      : material.illumination.ward.unit.make_aprox,
+         #'illum-ward-real'       : material.illumination.ward.unit.make_real,
+         #'illum-ward-iso'        : material.illumination.ward.unit.make_isotropic,
      }
 
 
@@ -378,6 +378,15 @@ def doRendering(P_config):
            for key_geometry, data_geometry in geometry_list.items():
                for key_surface, data_surface in surface_list.items():
                    for key_light, data_light in light_list.items():
+
+                       name = key_room +"-"+ key_camera +'-'+key_geometry +"-"+ key_surface+"-" + key_light
+                       filen_name = folder + "\\" + name + '_'+ "{:04d}".format(P_config['index']) + '.ppm'
+                       print ( filen_name )
+
+                       my_file = Path(filen_name)
+                       if my_file.is_file():
+                          continue
+
                        exponat = data_geometry()
                        l = light_make( data_light() );
                        s = data_surface( l )
@@ -385,14 +394,8 @@ def doRendering(P_config):
                                  , P_config['camera']['eye'], P_config['camera']['view'],
                         )
                        m = medium_list['constant']()
-                       name = key_room +"-"+ key_camera +'-'+key_geometry +"-"+ key_surface+"-" + key_light
+                       rendering.work( folder +"\\" + name, data_room, P_config, exponat, l, c, s, m )
 
-                       filen_name = folder + "\\" + name + '_'+ "{:04d}".format(P_config['index']) + '.ppm'
-
-                       my_file = Path(filen_name)
-                       if not my_file.is_file():
-                           print ( filen_name )
-                           rendering.work( folder +"\\" + name, data_room, P_config, exponat, l, c, s, m )
                        #break
                    #break
                #break
@@ -428,7 +431,7 @@ def len_ABS( P_coord ):
 
 start = 0;
 if( 1 < len( sys.argv ) ):
-    start = int( sys.argv[1] )
+    start= int( sys.argv[1] )
 
 step = 1
 if( 2 < len( sys.argv ) ):
@@ -452,7 +455,7 @@ for i in range( start, 360, step ):
                    'index' : i,
                    'pixelStrategyGridSize': 1,
                    'ray-trace-depth': 32,
-                   'hot' :{ 'x': 346, 'y': 224 },
+                   'hot' :{ 'x': 460, 'y': 214 },
                    'image': { 'scale': 1, 'width': 3.46*200, 'height': 3.46*200 },
                    #'room' { 'size':[1,1,1], 'move':[0,0,0]}
                    'camera': {

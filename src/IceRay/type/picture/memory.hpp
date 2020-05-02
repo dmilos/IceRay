@@ -28,6 +28,12 @@
              GC_memory( T_size const& P_width, T_size const& P_height ){ this-> Fv_size( T_coord{ P_width, P_height } ); }
              GC_memory( T_coord const& P_size ){ this-> Fv_size(P_size); }
 
+             virtual T_report Fv_pixel( T_color & P_color, T_coord const& P_coord )const
+              {
+               P_color = M2_data[ P_coord[1] * F_size()[0] + P_coord[0] ];
+               return true;
+              }
+
              virtual T_report Fv_pixel( T_coord const& P_coord, T_color const& P_color )
               {
                M2_data[ P_coord[1] * F_size()[0] + P_coord[0] ] = P_color;

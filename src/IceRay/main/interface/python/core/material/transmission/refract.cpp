@@ -104,7 +104,6 @@ void expose_IceRay_material_transmission_refract_one()
   boost::python::enum_<GTs_one::Ee_input>( "Input" )
     .value( "point",          GTs_one::En_inCoord_Point    )
     .value( "normal",         GTs_one::En_inCoord_Normal   )
-    .value( "transmittance",   GTs_one::En_inColor_Transmittance  )
     .export_values()
    ;
 
@@ -136,7 +135,7 @@ void expose_IceRay_material_transmission_refract_multi()
 
   boost::python::object I_this = Tf_this( "MaterialTransmissionRefractMulti", boost::python::no_init )
     .def( boost::python::init<>() )
-  //.def( boost::python::init< GTs_size,...>() )
+    .def( boost::python::init< GTs_size,GTs_size,GTs_size,GTs_size>() )
   ;
 
   boost::python::scope I_scope = I_this;

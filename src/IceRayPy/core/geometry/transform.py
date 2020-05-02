@@ -1,10 +1,20 @@
+import ctypes
+
 import IceRayPy
 import IceRayPy.type
 import IceRayPy.type.math.affine
 import IceRayPy.type.math.coord
 
-Coord3D  = IceRayPy.type.math.coord.Scalar3D
+Pointer = ctypes.POINTER
+AddresOf = ctypes.addressof
+
+
+#Scalar  = IceRayPy.type.basic.Scalar
+VoidPtr = IceRayPy.type.basic.VoidPtr
+Integer = IceRayPy.type.basic.Integer
+Coord3D = IceRayPy.type.math.coord.Scalar3D
 Affine3D = IceRayPy.type.math.affine.Scalar3D
+
 
 
 class Identity:
@@ -26,14 +36,13 @@ class Identity:
         self.m_cargo['dll'].IceRayC_Geometry_Transform_Identity_Child( self.m_cargo['this'], P_child.m_cargo['this'] )
 
 class Translate:
-
     def __init__( self, P_dll,  P_child = None , P_move = None ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Geometry_Transform_Translate0()
 
         if( None != P_child ):
-            self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Geometry_Transform_Translate_Child(  self.m_cargo['this'], P_child.m_cargo['this'] )
+            self.child( P_child )
 
     def __del__( self ):
         self.m_cargo['dll'].IceRayC_Geometry_Release( self.m_cargo['this'] )
@@ -47,7 +56,7 @@ class Translate:
         self.m_cargo['dll'].IceRayC_Geometry_Transform_Translate_Child( self.m_cargo['this'], P_child.m_cargo['this'] )
 
     def move(self, P_move : Coord3D ):
-        self.m_cargo['dll'].IceRayC_Geometry_Transform_Translate_Move( self.m_cargo['this'], P_move )
+        return self.m_cargo['dll'].IceRayC_Geometry_Transform_Translate_Move( self.m_cargo['this'], AddresOf( P_move ) )
 
 
 class Affine:
@@ -58,7 +67,7 @@ class Affine:
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Geometry_Transform_Affine0()
 
         if( None != P_child ):
-            self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Geometry_Transform_Affine_Child(  self.m_cargo['this'], self.m_cargo['child']['this'])
+            self.child( P_child )
 
     def __del__( self ):
         self.m_cargo['dll'].IceRayC_Geometry_Release( self.m_cargo['this'] )
@@ -68,14 +77,19 @@ class Affine:
         return self.m_cargo['child'];
 
     def child( self, P_child ):
-        self.m_cargo['child'] = P_child
         self.m_cargo['dll'].IceRayC_Geometry_Transform_Affine_Child( self.m_cargo['this'], P_child.m_cargo['this'] )
+        self.m_cargo['child'] = P_child
 
     def toWorldGet( self ):
-        self.m_cargo['dll'].IceRayC_Geometry_Transform_Affine_2World( self.m_cargo['this'] )
+        result = Affine3D()
+        self.m_cargo['dll'].IceRayC_Geometry_Transform_Affine_2World_Get( self.m_cargo['this'], AddresOf( result ) )
+        return result
 
-    def toWorldSet( self, P_2wolrd: Affine3D ):
-        self.m_cargo['dll'].IceRayC_Geometry_Transform_Affine_2World( self.m_cargo['this'], P_2wolrd )
+    def toWorldSet( self, P_2world: Affine3D ):
+        return self.m_cargo['dll'].IceRayC_Geometry_Transform_Affine_2World( self.m_cargo['this'], AddresOf( P_2world ) )
+
+    def toLocalSet( self, P_2local: Affine3D ):
+        return self.m_cargo['dll'].IceRayC_Geometry_Transform_Affine_2Local( self.m_cargo['this'], AddresOf( P_2local ) )
 
     def move(self, P_move : Coord3D ):
         pass #TODO;

@@ -37,7 +37,7 @@
                enum Ee_input
                 {
                  En_inColor_Specular=0, En_inColor_Shininess=1,
-                 En_inSize_SpotCount=0 //,En_inSize_SpotStart=1,
+                 En_inSize_SpotBegin=0 ,En_inSize_SpotEnd=1,
                //En_inSize_RayCount=1, En_inRay_Start
                 };
 
@@ -45,30 +45,35 @@
                GC_phong
                 (
                   T_size const& P_result      = 0
+                 ,T_size const& P_inSize_SpotBegin  = 0
+                 ,T_size const& P_inSize_SpotEnd    = 1
                  ,T_size const& P_specular    = 0
                  ,T_size const& P_shininess   = 1
-                 ,T_size const& P_spotCount   = 0
                 )
                 {
-                 F_input<T_color>(    En_inColor_Specular,    P_specular   );
-                 F_input<T_color>(    En_inColor_Shininess,   P_shininess  );
-                 F_input<T_size>(     En_inSize_SpotCount,    P_spotCount );
+                 F_output( T_memory::En_color ,  En_outColor_result,     P_result );
+
+                 F_input<T_color>(  En_inColor_Specular,    P_specular   );
+                 F_input<T_color>(  En_inColor_Shininess,   P_shininess  );
+                 F_input<T_size>(   En_inSize_SpotBegin,    P_inSize_SpotBegin   );
+                 F_input<T_size>(   En_inSize_SpotEnd,      P_inSize_SpotEnd     );
 
                //F_input<T_size>(     En_inSize_RayCount,     P_rayCount   );
                //F_input<T_size>(     En_inSize_RayStart,     P_rayStart   );
 
-                 F_output( T_memory::En_color ,  En_outColor_result,     P_result );
                 }
 
              public:
                bool    Fv_execute( T_beam &P_next, T_pigment::T_intersect const& P_intersect, T_state const& P_state )const
                 {
                //T_coord const& I_point     = M2_memoryCoord->Fv_load( F_input()[ T_memory::En_coord ][ En_inCoord_Point ] );
+               //T_coord const& I_normal    = M2_memoryCoord->Fv_load( F_input()[ T_memory::En_coord ][ En_inCoord_Normal ] );
+                 T_size         I_spotBegin  = M2_memorySize->Fv_load(  F_input<T_size>( En_inSize_SpotBegin ) );
+                 T_size         I_spotEnd    = M2_memorySize->Fv_load(  F_input<T_size>( En_inSize_SpotEnd ) );
                  T_color const& I_specular  = M2_memoryColor->Fv_load( F_input()[ T_memory::En_color ][ En_inColor_Specular  ] );
                  T_color const& I_shininess = M2_memoryColor->Fv_load( F_input()[ T_memory::En_color ][ En_inColor_Shininess ] );
-                 T_size         I_spotCount = M2_memorySize->Fv_load(  F_input()[ T_memory::En_size  ][ En_inSize_SpotCount ] );
 
-                 T_size  const& I_rayCount = P_next.Fv_size(); //M2_memorySize->Fv_load(  F_input()[ T_memory::En_size  ][ En_inSize_RayCount ] );
+                 T_size  const& I_rayCount = P_next.Fv_size(); //M2_memorySize->Fv_load(  F_input<T_ray>( En_inSize_RayCount ) );
                //T_size  const& I_rayStart = M2_memorySize->Fv_load(  F_input()[ T_memory::En_size  ][ En_inSize_RayStart ] );
 
 
@@ -79,7 +84,7 @@
                  T_coord I_2light;
                  T_color I_energy;
 
-                 for( T_size I_spotIndex=0; I_spotIndex < I_spotCount; ++I_spotIndex )
+                 for( T_size I_spotIndex = I_spotBegin; I_spotIndex < I_spotEnd; ++I_spotIndex )
                   {
                    T_spot const& I_spot = M2_memorySpot->Fv_load( I_spotIndex );
 
@@ -95,6 +100,7 @@
                      if( true == I_phong.F_process( I_color, I_energy, I_ray.M_direction, I_2light ) )
                       {
                        I_color *= I_ray.M_coefficient;
+                       ::color::operation::multiply( I_color, I_ray.M_intesity );
                        I_summae += I_color;
                       }
                     }

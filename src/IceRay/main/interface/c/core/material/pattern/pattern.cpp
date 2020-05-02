@@ -1,243 +1,190 @@
 #include "./pattern.h"
+#include "./pattern.hpp"
+
+#include "../../../type/color.hpp"
+#include "../../../type/coord.hpp"
+#include "../../../type/affine.hpp"
+#include "../../../type/picture.hpp"
 
 #include "IceRay/material/pattern/pattern.hpp"
 
 
-void IceRayC_Material_Pattern_Release( IceRayC_Material_Pattern_SizeHandle P_this )
+IceRayC_Material_Pattern_Handle cpp2c( GS_DDMRM::S_IceRay::S_material::S_pattern::GC__pure* P_this )
+ {
+  return reinterpret_cast< IceRayC_Material_Pattern_Handle >( P_this );
+ }
+GS_DDMRM::S_IceRay::S_material::S_pattern::GC__pure * c2cpp( IceRayC_Material_Pattern_Handle P_that )
+ {
+  return  reinterpret_cast<GS_DDMRM::S_IceRay::S_material::S_pattern::GC__pure*> ( P_that );
+ }
+
+void IceRayC_Material_Pattern_Release( IceRayC_Material_Pattern_Handle  P_this )
  {
   typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GC__pure Tf__pure;
-  auto I_this = reinterpret_cast<Tf__pure*> ( P_this );
+  auto I_this = c2cpp( P_this );
   delete I_this;
  }
 
-void IceRayC_Material_Pattern_Size_Release( IceRayC_Material_Pattern_SizeHandle P_this )
+
+IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Constant_Size0(           IceRayC_Type_Size              P_value )
  {
-  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GT__size Tf_size;
-  auto I_this = reinterpret_cast<Tf_size*> ( P_this );
-  delete I_this;
+  auto Ir_result = new GS_DDMRM::S_IceRay::S_material::S_pattern::S_constant::GT_size{P_value};
+  return cpp2c( Ir_result );
+ }
+IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Constant_Scalar0(         IceRayC_Type_Scalar            P_value )
+ {
+  auto Ir_result = new GS_DDMRM::S_IceRay::S_material::S_pattern::S_constant::GT_scalar{ P_value };
+  return cpp2c( Ir_result );
+ }
+IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Constant_Color0(          IceRayC_Type_Color_RGB            *P_value )
+ {
+  auto Ir_result = new GS_DDMRM::S_IceRay::S_material::S_pattern::S_constant::GT_color{ c2cpp( *P_value ) };
+  return cpp2c( Ir_result );
+ }
+IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Constant_Coord_Scalar2D0( IceRayC_Type_Coord_Scalar2D   *P_value )
+ {
+  auto Ir_result = new GS_DDMRM::S_IceRay::S_material::S_pattern::S_constant::GT_coord2D{ c2cpp( *P_value ) };
+  return cpp2c( Ir_result );
+ }
+IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Constant_Coord_Scalar3D0( IceRayC_Type_Coord_Scalar3D   *P_value )
+ {
+  auto Ir_result = new GS_DDMRM::S_IceRay::S_material::S_pattern::S_constant::GT_coord3D{ c2cpp( *P_value ) };
+  return cpp2c( Ir_result );
+ }
+IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Constant_Coord_Scalar4D0( IceRayC_Type_Coord_Scalar4D   *P_value )
+ {
+  auto Ir_result = new GS_DDMRM::S_IceRay::S_material::S_pattern::S_constant::GT_coord4D{ c2cpp( *P_value ) };
+  return cpp2c( Ir_result );
+ }
+IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Constant_Coord_Size2D0(   IceRayC_Type_Coord_Size2D     *P_value )
+ {
+  auto Ir_result = new GS_DDMRM::S_IceRay::S_material::S_pattern::S_constant::GT_size2D{ c2cpp( *P_value ) };
+  return cpp2c( Ir_result );
+ }
+IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Constant_Coord_Size3D0(   IceRayC_Type_Coord_Size3D     *P_value )
+ {
+  auto Ir_result = new GS_DDMRM::S_IceRay::S_material::S_pattern::S_constant::GT_size3D{ c2cpp( *P_value ) };
+  return cpp2c( Ir_result );
+ }
+IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Constant_Coord_Size4D0(   IceRayC_Type_Coord_Size4D     *P_value )
+ {
+  auto Ir_result = new GS_DDMRM::S_IceRay::S_material::S_pattern::S_constant::GT_size4D{ c2cpp( *P_value ) };
+  return cpp2c( Ir_result );
  }
 
-IceRayC_Material_Pattern_SizeHandle IceRayC_Material_Pattern_Brick0( )
+IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Brick0( )
  {
-  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GC__pure Tf__pure;
-  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GT__size Tf_size;
-
   auto Ir_result = new GS_DDMRM::S_IceRay::S_material::S_pattern::GC_brick{};
-  return reinterpret_cast<IceRayC_Material_Pattern_SizeHandle>( dynamic_cast< Tf_size *> ( Ir_result ) );
+  return cpp2c( Ir_result );
  }
-
-IceRayC_Material_Pattern_SizeHandle IceRayC_Material_Pattern_Checker0( )
+IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Checker0( )
  {
-  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GC__pure Tf__pure;
-  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GT__size Tf_size;
   auto Ir_result = new GS_DDMRM::S_IceRay::S_material::S_pattern::GC_checker{};
-  return reinterpret_cast<IceRayC_Material_Pattern_SizeHandle>( dynamic_cast< Tf_size *> ( Ir_result ) );
+  return cpp2c( Ir_result );
  }
-IceRayC_Material_Pattern_SizeHandle IceRayC_Material_Pattern_Hexagon0( )
+IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Hexagon0( )
  {
-  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GC__pure Tf__pure;
-  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GT__size Tf_size;
   auto Ir_result = new GS_DDMRM::S_IceRay::S_material::S_pattern::GC_hexagon{};
-  return reinterpret_cast<IceRayC_Material_Pattern_SizeHandle>( dynamic_cast< Tf_size *> ( Ir_result ) );
+  return cpp2c( Ir_result );
  }
-
-IceRayC_Material_Pattern_SizeHandle IceRayC_Material_Pattern_Side_Cube0( )
+IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Wave0( )
  {
-  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GC__pure Tf__pure;
-  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GT__size Tf_size;
-  auto Ir_result = new GS_DDMRM::S_IceRay::S_material::S_pattern::S_side::GC_cube{};
-  return reinterpret_cast<IceRayC_Material_Pattern_SizeHandle>( dynamic_cast< Tf_size *> ( Ir_result ) );
+  auto Ir_result = new GS_DDMRM::S_IceRay::S_material::S_pattern::GC_waveSaw{};
+  return cpp2c( Ir_result );
  }
-
-IceRayC_Material_Pattern_SizeHandle IceRayC_Material_Pattern_Side_Dodecahedron0( )
+IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Onion0( )
  {
-  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GC__pure Tf__pure;
-  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GT__size Tf_size;
-  auto Ir_result = new GS_DDMRM::S_IceRay::S_material::S_pattern::S_side::GC_dodecahedron{};
-  return reinterpret_cast<IceRayC_Material_Pattern_SizeHandle>( dynamic_cast< Tf_size *> ( Ir_result ) );
- }
-
-IceRayC_Material_Pattern_SizeHandle IceRayC_Material_Pattern_Side_Icosahedron0( )
- {
-  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GC__pure Tf__pure;
-  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GT__size Tf_size;
-  auto Ir_result = new GS_DDMRM::S_IceRay::S_material::S_pattern::S_side::GC_icosahedron{};
-  return reinterpret_cast<IceRayC_Material_Pattern_SizeHandle>( dynamic_cast< Tf_size *> ( Ir_result ) );
- }
-
-IceRayC_Material_Pattern_SizeHandle IceRayC_Material_Pattern_Side_Octahedron0( )
- {
-  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GC__pure Tf__pure;
-  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GT__size Tf_size;
-  auto Ir_result = new GS_DDMRM::S_IceRay::S_material::S_pattern::S_side::GC_octahedron{};
-  return reinterpret_cast<IceRayC_Material_Pattern_SizeHandle>( dynamic_cast< Tf_size *> ( Ir_result ) );
- }
-
-IceRayC_Material_Pattern_SizeHandle IceRayC_Material_Pattern_Side_Tetrahedron0( )
- {
-  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GC__pure Tf__pure;
-  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GT__size Tf_size;
-  auto Ir_result = new GS_DDMRM::S_IceRay::S_material::S_pattern::S_side::GC_tetrahedron{};
-  return reinterpret_cast<IceRayC_Material_Pattern_SizeHandle>( dynamic_cast< Tf_size *> ( Ir_result ) );
- }
-
-
-IceRayC_Material_Pattern_ScalarHandle IceRayC_Material_Pattern_Scalar_Level0( )
- {
-  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GC__pure Tf__pure;
-  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GT__scalar Tf_scalar;
-  auto Ir_result = new GS_DDMRM::S_IceRay::S_material::S_pattern::GC_level{};
-  return reinterpret_cast<IceRayC_Material_Pattern_ScalarHandle>( dynamic_cast< Tf_scalar *> ( Ir_result ) );
- }
-
-IceRayC_Material_Pattern_ScalarHandle IceRayC_Material_Pattern_Scalar_Onion0( )
- {
-  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GC__pure Tf__pure;
-  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GT__scalar Tf_scalar;
   auto Ir_result = new GS_DDMRM::S_IceRay::S_material::S_pattern::GC_onion{};
-  return reinterpret_cast<IceRayC_Material_Pattern_ScalarHandle>( dynamic_cast< Tf_scalar *> ( Ir_result ) );
+  return cpp2c( Ir_result );
+ }
+IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Level0( )
+ {
+  auto Ir_result = new GS_DDMRM::S_IceRay::S_material::S_pattern::GC_level{};
+  return cpp2c( Ir_result );
  }
 
-IceRayC_Material_Pattern_ScalarHandle IceRayC_Material_Pattern_Scalar_Noise_Cells( )
+IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Image0( )
  {
-  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GC__pure Tf__pure;
-  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GT__scalar Tf_scalar;
-  auto Ir_result = new GS_DDMRM::S_IceRay::S_material::S_pattern::S_noise::GC_cells{};
-  return reinterpret_cast<IceRayC_Material_Pattern_ScalarHandle>( dynamic_cast< Tf_scalar *> ( Ir_result ) );
+  auto Ir_result = new GS_DDMRM::S_IceRay::S_material::S_pattern::GC_image{};
+  return cpp2c( Ir_result );
+ }
+IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Image1( IceRayC_Type_Picture_Handle P_picture )
+ {
+  auto Ir_result = new GS_DDMRM::S_IceRay::S_material::S_pattern::GC_image{ c2cpp( P_picture ) };
+  return cpp2c( Ir_result );
  }
 
-IceRayC_Material_Pattern_ScalarHandle IceRayC_Material_Pattern_Scalar_Noise_Crackle( )
+int IceRayC_Material_Pattern_Image_Picture( IceRayC_Material_Pattern_Handle P_that, IceRayC_Type_Picture_Handle P_picture )
  {
-  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GC__pure Tf__pure;
-  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GT__scalar Tf_scalar;
-  auto Ir_result = new GS_DDMRM::S_IceRay::S_material::S_pattern::S_noise::GC_crackle{};
-  return reinterpret_cast<IceRayC_Material_Pattern_ScalarHandle>( dynamic_cast< Tf_scalar *> ( Ir_result ) );
- }
+  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GC_image Tf_this;
 
-IceRayC_Material_Pattern_ScalarHandle IceRayC_Material_Pattern_Scalar_Noise_Perlin( )
- {
-  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GC__pure Tf__pure;
-  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GT__scalar Tf_scalar;
-  auto Ir_result = new GS_DDMRM::S_IceRay::S_material::S_pattern::S_noise::GC_perlin{};
-  return reinterpret_cast<IceRayC_Material_Pattern_ScalarHandle>( dynamic_cast< Tf_scalar *> ( Ir_result ) );
- }
-
-IceRayC_Material_Pattern_ScalarHandle IceRayC_Material_Pattern_Scalar_Noise_Value( )
- {
-  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GC__pure Tf__pure;
-  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GT__scalar Tf_scalar;
-  auto Ir_result = new GS_DDMRM::S_IceRay::S_material::S_pattern::S_noise::GC_value{};
-  return reinterpret_cast<IceRayC_Material_Pattern_ScalarHandle>( dynamic_cast< Tf_scalar *> ( Ir_result ) );
- }
-
-
-IceRayC_Material_Pattern_ScalarHandle IceRayC_Material_Pattern_Scalar_Noise_Gold( )
- {
-  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GC__pure Tf__pure;
-  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GT__scalar Tf_scalar;
-  auto Ir_result = new GS_DDMRM::S_IceRay::S_material::S_pattern::S_noise::GC_gold{};
-  return reinterpret_cast<IceRayC_Material_Pattern_ScalarHandle>( dynamic_cast< Tf_scalar *> ( Ir_result ) );
- }
-
-IceRayC_Material_Pattern_ScalarHandle IceRayC_Material_Pattern_Scalar_Noise_Random( )
- {
-  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GC__pure Tf__pure;
-  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GT__scalar Tf_scalar;
-  auto Ir_result = new GS_DDMRM::S_IceRay::S_material::S_pattern::S_noise::GC_random{};
-  return reinterpret_cast<IceRayC_Material_Pattern_ScalarHandle>( dynamic_cast< Tf_scalar *> ( Ir_result ) );
- }
-
-IceRayC_Material_Pattern_ScalarHandle IceRayC_Material_Pattern_Scalar_Noise_VDC( )
- {
-  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GC__pure Tf__pure;
-  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GT__scalar Tf_scalar;
-  auto Ir_result = new GS_DDMRM::S_IceRay::S_material::S_pattern::S_noise::GC_VDC{};
-  return reinterpret_cast<IceRayC_Material_Pattern_ScalarHandle>( dynamic_cast< Tf_scalar *> ( Ir_result ) );
- }
-
-IceRayC_Material_Pattern_ScalarHandle IceRayC_Material_Pattern_Scalar_Expression( )
- {
-  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GC__pure Tf__pure;
-  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GT__scalar Tf_scalar;
-  auto Ir_result = new GS_DDMRM::S_IceRay::S_material::S_pattern::S_expression::GC_scalar{};
-  return reinterpret_cast<IceRayC_Material_Pattern_ScalarHandle>( dynamic_cast< Tf_scalar *> ( Ir_result ) );
- }
-
-// TODO wave.hpp
-
-// COLOR
-void IceRayC_Material_Pattern_ColorRelease( IceRayC_Material_Pattern_ColorHandle P_this )
- {
-  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GC__pure Tf__pure;
-  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GT__color Tf_color;
-  auto I_this = reinterpret_cast<Tf_color*> ( P_this );
-  delete I_this;
- }
-
-IceRayC_Material_Pattern_ScalarHandle IceRayC_Material_Pattern_Color_Image0( )
- {
-  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GT__scalar Tf__pure;
-  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GT__color  Tf_color;
-  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GC_image   Tf_image;
-  auto Ir_result = new Tf_image{};
-  return reinterpret_cast<IceRayC_Material_Pattern_ScalarHandle>( dynamic_cast< Tf_color *> ( Ir_result ) );
- }
-
-IceRayC_Material_Pattern_ScalarHandle IceRayC_Material_Pattern_Color_Image1( IceRayC_Type_Picture_Handle P_picture )
- {
-  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GC__pure   Tf__pure;
-  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GT__color  Tf_color;
-  typedef GS_DDMRM::S_IceRay::S_type::S_picture::GC__pure       Tf_picture;
-  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GC_image   Tf_image;
-
-  auto Ir_result = new Tf_image{ reinterpret_cast< Tf_picture* >( P_picture )};
-
-  return reinterpret_cast<IceRayC_Material_Pattern_ScalarHandle>( dynamic_cast< Tf_color *> ( Ir_result ) );
- }
-
-int IceRayC_Material_Pattern_Color_Image_Picture( IceRayC_Material_Pattern_ScalarHandle P_this, IceRayC_Type_Picture_Handle P_picture )
- {
-  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GC__pure   Tf__pure;
-  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GT__color  Tf_color;
-  typedef GS_DDMRM::S_IceRay::S_type::S_picture::GC__pure       Tf_picture;
-  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GC_image   Tf_image;
-
-  auto I_picture = reinterpret_cast< Tf_picture* >( P_picture );
-  auto I_this = dynamic_cast<Tf_image*>( reinterpret_cast< Tf_color* >( P_this ) );
-
+  auto I_this = dynamic_cast< Tf_this *>( c2cpp( P_that ) );
   if( nullptr == I_this )
    {
     return 0;
    }
-  I_this->F_image( I_picture );
-  return 0;
+  I_this->F_picture( c2cpp( P_picture ) );
+  return 1;
  }
 
-void IceRayC_Material_PatternCoord2DRelease( IceRayC_Material_Pattern_Coord2DHandle P_this )
+IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Noise_Cells0( )
  {
-  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GC__pure Tf__pure;
-  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GT__coord2D Tf_coord2D;
-  auto I_this = reinterpret_cast<Tf_coord2D*> ( P_this );
-  delete I_this;
+  auto Ir_result = new GS_DDMRM::S_IceRay::S_material::S_pattern::S_noise::GC_cells{};
+  return cpp2c( Ir_result );
  }
-
-// TODO Coord2d
-
-void IceRayC_Material_PatternCoord3DRelease( IceRayC_Material_Pattern_Coord3DHandle P_this )
+IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Noise_Crackle0( )
  {
-  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GC__pure Tf__pure;
-  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GT__coord3D Tf_coord3D;
-  auto I_this = reinterpret_cast<Tf_coord3D*> ( P_this );
-  delete I_this;
+  auto Ir_result = new GS_DDMRM::S_IceRay::S_material::S_pattern::S_noise::GC_crackle{};
+  return cpp2c( Ir_result );
  }
-// TODO Coord3d
-
-void IceRayC_Material_PatternCoord4DRelease( IceRayC_Material_Pattern_Coord4DHandle P_this )
+IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Noise_Gold0( )
  {
-  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GC__pure Tf__pure;
-  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GT__coord4D Tf_coord4D;
-  auto I_this = reinterpret_cast<Tf_coord4D*> ( P_this );
-  delete I_this;
+  auto Ir_result = new GS_DDMRM::S_IceRay::S_material::S_pattern::S_noise::GC_gold{};
+  return cpp2c( Ir_result );
+ }
+IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Noise_Perlin0( )
+ {
+  auto Ir_result = new GS_DDMRM::S_IceRay::S_material::S_pattern::S_noise::GC_perlin{};
+  return cpp2c( Ir_result );
+ }
+IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Noise_Random0( )
+ {
+  auto Ir_result = new GS_DDMRM::S_IceRay::S_material::S_pattern::S_noise::GC_random{};
+  return cpp2c( Ir_result );
+ }
+IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Noise_Value0( )
+ {
+  auto Ir_result = new GS_DDMRM::S_IceRay::S_material::S_pattern::S_noise::GC_value{};
+  return cpp2c( Ir_result );
+ }
+IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Noise_Vdc0( )
+ {
+  auto Ir_result = new GS_DDMRM::S_IceRay::S_material::S_pattern::S_noise::GC_VDC{};
+  return cpp2c( Ir_result );
  }
 
-// TODO Coord4d
+IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Side_Cube0( )
+ {
+  auto Ir_result = new GS_DDMRM::S_IceRay::S_material::S_pattern::S_side::GC_cube{};
+  return cpp2c( Ir_result );
+ }
+IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Side_Dodecahedron0( )
+ {
+  auto Ir_result = new GS_DDMRM::S_IceRay::S_material::S_pattern::S_side::GC_dodecahedron{};
+  return cpp2c( Ir_result );
+ }
+IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Side_Icosahedron0( )
+ {
+  auto Ir_result = new GS_DDMRM::S_IceRay::S_material::S_pattern::S_side::GC_icosahedron{};
+  return cpp2c( Ir_result );
+ }
+IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Side_Octahedron0( )
+ {
+  auto Ir_result = new GS_DDMRM::S_IceRay::S_material::S_pattern::S_side::GC_octahedron{};
+  return cpp2c( Ir_result );
+ }
+IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Side_Tetrahedron0( )
+ {
+  auto Ir_result = new GS_DDMRM::S_IceRay::S_material::S_pattern::S_side::GC_tetrahedron{};
+  return cpp2c( Ir_result );
+ }

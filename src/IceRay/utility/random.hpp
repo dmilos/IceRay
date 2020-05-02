@@ -26,7 +26,7 @@
           void GF_disc2D
            (
              GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar2D & P_coord
-            ,N_random & P_random = N_random() 
+            ,N_random & P_random = N_random()
            )
            {
             typedef GS_DDMRM::S_IceRay::S_type::GT_scalar Tf_scalar;
@@ -67,9 +67,9 @@
                }
 
               T_scalar next()
-              {
+               {
                 return rand()/(T_scalar)(RAND_MAX);
-              }
+               }
 
            };
 
@@ -111,6 +111,32 @@
                }
 
                T_size M2_position;
+           };
+
+
+          class GC_table1D
+           {
+            public:
+              typedef GS_DDMRM::S_IceRay::S_type::GT_size   T_size;
+              typedef GS_DDMRM::S_IceRay::S_type::GT_scalar T_scalar;
+              typedef std::array<T_scalar,30> T_table;
+
+              GC_table1D(){  M2_counter = 0; }
+              T_scalar operator()()
+               {
+                return this->next();
+               }
+
+              T_scalar next()
+               {
+                return M2_table[ ++M2_counter % M2_table.size() ] / T_scalar(M2_table.size() -1 );
+               }
+          
+            public:
+              void static Fs_next();
+            private:
+              T_size M2_counter;
+              static T_table M2_table;
            };
 
 

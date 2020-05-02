@@ -9,10 +9,10 @@ using namespace GS_DDMRM::S_IceRay::S_light;
 
 GC_reflector::GC_reflector( )
  :M2_direction( ::math::linear::vector::fill( M2_direction, 0 ) )
- ,M2_inner( ::math::geometry::deg2rad( 0 ) )
+ ,M2_inner(  ::math::geometry::deg2rad(  0 ) )
  ,M2_outter( ::math::geometry::deg2rad( 90 ) )
  {
-  M2_direction[0] = 1;
+  M2_direction[2] = -1;
   M2_inner = cos( M2_inner );
   M2_outter = cos( M2_outter );
  }

@@ -31,7 +31,7 @@ def uvw_sphere( P_light ):
     surface_cargo['image']['function'] = IceRayCpp.FunctionColorImage( surface_cargo['image']['picture'] )
 
     surface_cargo['1'] = IceRayCpp.MaterialPatternCoord3DFunction( surface_cargo['uvw']['function'], 0, 1 )
-    surface_cargo['2'] = IceRayCpp.MaterialPatternColorFunction( surface_cargo['image']['function'], 1, 1 )
+    surface_cargo['2'] = IceRayCpp.MaterialPatternFunctionColor( surface_cargo['image']['function'], 1, 1 )
     surface_cargo['3'] = IceRayCpp.MaterialIlluminationAmbient( 0, 1 )
 
     surface_cargo['this'].append( surface_cargo['1'] )
@@ -55,7 +55,7 @@ def uvw_box( P_light ):
     surface_cargo['image']['function'] = IceRayCpp.FunctionColorImage( surface_cargo['image']['picture'] )
 
     surface_cargo['1'] = IceRayCpp.MaterialPatternCoord3DFunction( surface_cargo['uvw']['function'], 0, 1 )
-    surface_cargo['2'] = IceRayCpp.MaterialPatternColorFunction( surface_cargo['image']['function'], 1, 1 )
+    surface_cargo['2'] = IceRayCpp.MaterialPatternFunctionColor( surface_cargo['image']['function'], 1, 1 )
     surface_cargo['3'] = IceRayCpp.MaterialIlluminationAmbient( 0, 1 )
 
     surface_cargo['this'].append( surface_cargo['1'] )
@@ -79,7 +79,7 @@ def uvw_vacuum( P_light ):
     surface_cargo['image']['function'] = IceRayCpp.FunctionColorImage( surface_cargo['image']['picture'] )
 
     surface_cargo['1'] = IceRayCpp.MaterialPatternCoord3DFunction( surface_cargo['uvw']['function'], 0, 1 )
-    surface_cargo['2'] = IceRayCpp.MaterialPatternColorFunction( surface_cargo['image']['function'], 1, 1 )
+    surface_cargo['2'] = IceRayCpp.MaterialPatternFunctionColor( surface_cargo['image']['function'], 1, 1 )
     surface_cargo['3'] = IceRayCpp.MaterialIlluminationAmbient( 0, 1 )
 
     surface_cargo['this'].append( surface_cargo['1'] )
@@ -103,7 +103,7 @@ def uvw_torus( P_light ):
     surface_cargo['image']['function'] = IceRayCpp.FunctionColorImage( surface_cargo['image']['picture'] )
 
     surface_cargo['1'] = IceRayCpp.MaterialPatternCoord3DFunction( surface_cargo['uvw']['function'], 0, 1 )
-    surface_cargo['2'] = IceRayCpp.MaterialPatternColorFunction( surface_cargo['image']['function'], 1, 1 )
+    surface_cargo['2'] = IceRayCpp.MaterialPatternFunctionColor( surface_cargo['image']['function'], 1, 1 )
     surface_cargo['3'] = IceRayCpp.MaterialIlluminationAmbient( 0, 1 )
 
     surface_cargo['this'].append( surface_cargo['1'] )

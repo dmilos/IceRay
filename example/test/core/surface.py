@@ -105,24 +105,3 @@ def make_radiosityVDC( P_light, P_color, P_albedo=IceRayCpp.GraphTypeColorRGB().
 def make_radiosityRandom( P_light, P_color, P_albedo=IceRayCpp.GraphTypeColorRGB().fill( 0.8 ), P_angle = 0.2, P_sample = 8 ):
     return material.transmission.blossom.random.unit.make( P_light = P_light,P_ambient = P_color, P_angle = P_angle, P_sample = P_sample )
 
-def make_lambert( P_light, P_color = IceRayCpp.GraphTypeColorRGB().fill( 0.5 ) ):
-    surface = IceRayCpp.MaterialSurface()
-
-    cargo = {}
-    cargo['3'] = IceRayCpp.MaterialLightGenerator( P_light['this'], 0 )
-    #MaterialLightSpotSwarmA( [size]count, [light]light, [coord]point, [spot]start )
-    cargo['4A'] = IceRayCpp.MaterialLightSpotSwarmA( 0, 0, 0, 0 )
-    #MaterialLightSpotCull( [coord]point, [coord]normal, [spot]start, [size]count  )
-    cargo['4B'] = IceRayCpp.MaterialLightSpotCull( 0, 1, 0, 0 )
-
-    cargo['5'] = IceRayCpp.MaterialPatternColorConstant( P_color, 1 )
-    #MaterialIlluminationLambert( [color]result, [coord]point, [coord]normal, [size]spotCount, [color]diffuse )
-    cargo['6'] = IceRayCpp.MaterialIlluminationLambert( 0, 0, 1, 0, 1 )
-
-    surface.append( cargo['3'] )
-    surface.append( cargo['4A'] )
-    surface.append( cargo['4B'] )
-    surface.append( cargo['5'] )
-    surface.append( cargo['6'] )
-
-    return { 'this' : surface, 'light': P_light, 'cargo': cargo  }

@@ -23,8 +23,8 @@ struct GC_manager::C2_hat
 
    ~C2_hat()
    {
-     M_bound = 0xEEEEEEEE;
-     M_end   = 0xFFFFFFFF;
+     M_bound = 0xCCCCCCCC;
+     M_end   = 0xDDDDDDDD;
      M_index = Fs_invalid();
      M_count = 0;
    } 
@@ -135,6 +135,11 @@ bool GC_manager::F_release( T_data & P_data )
     return true;
    }
 
+   if( false == F_check( P_data ) )
+    {
+     return false;
+    }
+
   T2_hat *I_hat = & this->F2_hat( P_data );
   void * I_head = I_hat+1;
   if( Fs_invalid() == I_hat->M_index )
@@ -203,13 +208,13 @@ bool GC_manager::F_clear( )
   for( T_size & I_info : M2_vacant )
    {
     //I_info = M2_container.size()/F_gross() - I_index -1;
-    I_info = I_index;
+    I_info = M2_vacant.size() - I_index - 1;
 
     //T2_hat *I_hat = reinterpret_cast<T2_hat *>( M2_container.data() + I_info*F_gross() );
     //I_hat->M_count =  0;
     //I_hat->M_index = Fs_invalid();
-    //I_hat->M_bound = 0xDDDDDDDD;
-    //I_hat->M_end   = 0xEEEEEEEE;
+    //I_hat->M_bound = 0xEEEEEEEE;
+    //I_hat->M_end   = 0xFFFFFFFF;
     //
     ++I_index;
    }
@@ -245,3 +250,8 @@ GC_manager::T_size GC_manager::F2_offset( T_data const& P_data )const
 
   return ( I_distance ) % this->F_gross() - sizeof(T2_hat);
  }
+
+//int GC_manager::F2_distance( T_data const& P_data )const
+// {
+//  return (T2_uint8*)P_data.F_ptr() - this->M2_container.data();
+// }

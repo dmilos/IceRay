@@ -1,4 +1,5 @@
 #include "./ray.h"
+#include "./ray.hpp"
 
 #include "IceRay/render/4ray/ray.hpp"
 #include "IceRay/render/4ray/classic2/algorithm.hpp"

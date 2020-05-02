@@ -26,29 +26,30 @@ GC_algorithm::GC_algorithm( )
 
 GC_algorithm::~GC_algorithm( )
  {
-    std::cout << "Total:      " << PRINT(M2_stack.F_total() )       << std::endl;
-    std::cout << "Traced:     " << PRINT(M2_statistic.M_traced    ) << std::endl;
-    std::cout << "Discarded:  " << PRINT(M2_statistic.M_discarded ) << std::endl;
-    std::cout << "Eye:        " << PRINT(M2_statistic.M_eye       ) << std::endl;
-    std::cout << "Reflected:  " << PRINT(M2_statistic.M_reflected ) << std::endl;
-    std::cout << "Refracted:  " << PRINT(M2_statistic.M_refracted ) << std::endl;
-  //std::cout << "Too far:    " << PRINT(M2_statistic.M_2far      ) << std::endl;
-    std::cout << "Too deep:   " << PRINT(M2_statistic.M_2deep     ) << std::endl;
-    std::cout << "Under:      " << PRINT(M2_statistic.M_under     ) << std::endl;
-    std::cout << "Miss:       " << PRINT(M2_statistic.M_miss      ) << std::endl;
-    std::cout << "Teleported: " << PRINT(M2_statistic.M_teleported) << std::endl;
-    std::cout << "Broken: "     << PRINT(M2_statistic.M_broken    ) << std::endl;
+  if( true ) return;
+  std::cout << "Total:      " << PRINT(M2_stack.F_total() )       << std::endl;
+  std::cout << "Traced:     " << PRINT(M2_statistic.M_traced    ) << std::endl;
+  std::cout << "Discarded:  " << PRINT(M2_statistic.M_discarded ) << std::endl;
+  std::cout << "Eye:        " << PRINT(M2_statistic.M_eye       ) << std::endl;
+  std::cout << "Reflected:  " << PRINT(M2_statistic.M_reflected ) << std::endl;
+  std::cout << "Refracted:  " << PRINT(M2_statistic.M_refracted ) << std::endl;
+//std::cout << "Too far:    " << PRINT(M2_statistic.M_2far      ) << std::endl;
+  std::cout << "Too deep:   " << PRINT(M2_statistic.M_2deep     ) << std::endl;
+  std::cout << "Under:      " << PRINT(M2_statistic.M_under     ) << std::endl;
+  std::cout << "Miss:       " << PRINT(M2_statistic.M_miss      ) << std::endl;
+  std::cout << "Teleported: " << PRINT(M2_statistic.M_teleported) << std::endl;
+  std::cout << "Broken: "     << PRINT(M2_statistic.M_broken    ) << std::endl;
 
-   std::cout << "Depth count: ";
-   T_size I_summae = 0;
-   for( auto const & I_count: M2_statistic.M_depth )
-    {
-     std::cout << I_count << "; ";
-     I_summae += I_count;
-    }
-   std::cout << "S: " << I_summae << "; " ; 
-   std::cout << std::endl;
-}
+  std::cout << "Depth count: ";
+  T_size I_summae = 0;
+  for( auto const & I_count: M2_statistic.M_depth )
+   {
+    std::cout << I_count << "; ";
+    I_summae += I_count;
+   }
+  std::cout << "S: " << I_summae << "; " ;
+  std::cout << std::endl;
+ }
 
 bool GC_algorithm::F_object( T_object * P_object )
  {
@@ -99,7 +100,8 @@ void GC_algorithm::Fv_trace( T_color &P_color, T_ray const& P_incident )
    auto & I_accident = M2_stack.Fv_topAccident();
    auto & I_incoming = I_accident.M_incoming;
 
-   new  (&I_incoming) T2_ray{ P_incident, T2_ray::En_type1Eye };
+    I_incoming.M_type = T2_ray::En_type1Eye;
+    (T_ray&)I_incoming = P_incident;
 
    M2_allocator.F_new( I_incoming.M_state.F_chunk() ) ;
    F1_object().F_geometry().Fv_reset( I_incoming.M_state );

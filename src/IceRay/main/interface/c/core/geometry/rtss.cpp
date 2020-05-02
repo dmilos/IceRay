@@ -100,15 +100,15 @@ IceRayC_Geometry_RTSS_Handle IceRayC_Geometry_RTSS_Uniform0(  )
   auto Ir_result = new Tf_uniform{};
   return cpp2c( Ir_result );
  }
-IceRayC_Geometry_RTSS_Handle IceRayC_Geometry_RTSS_Uniform1( IceRayC_TypeCoordSize3D P_size )
+IceRayC_Geometry_RTSS_Handle IceRayC_Geometry_RTSS_Uniform1( IceRayC_TypeCoordSize3D* P_size )
  {
   typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;
   typedef GS_DDMRM::S_IceRay::S_geometry::S_RTSS::GC_uniform Tf_uniform;
-  auto Ir_result = new Tf_uniform{ c2cpp( P_size ) };
+  auto Ir_result = new Tf_uniform{ c2cpp( *P_size ) };
   return cpp2c( Ir_result );
  }
 
-int IceRayC_Geometry_RTSS_Uniform_Dimension( IceRayC_Geometry_RTSS_Handle P_that, IceRayC_TypeCoordSize3D P_size )
+int IceRayC_Geometry_RTSS_Uniform_Dimension( IceRayC_Geometry_RTSS_Handle P_that, IceRayC_TypeCoordSize3D* P_size )
  {
   typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;
   typedef GS_DDMRM::S_IceRay::S_geometry::S_RTSS::GC_uniform Tf_uniform;
@@ -119,6 +119,6 @@ int IceRayC_Geometry_RTSS_Uniform_Dimension( IceRayC_Geometry_RTSS_Handle P_that
     return 0;
    }
 
-  I_this->F_dimension( c2cpp( P_size ) );
+  I_this->F_dimension( c2cpp( *P_size ) );
   return 1;
  }

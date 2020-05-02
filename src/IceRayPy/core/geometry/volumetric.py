@@ -1,10 +1,17 @@
 import ctypes
 
-Scalar = ctypes.c_double
+import IceRayPy
+import IceRayPy.type.math.interval
+
+Pointer  = ctypes.POINTER
+AddresOf = ctypes.addressof
+
+Scalar      = IceRayPy.type.basic.Scalar
+Coord3D     = IceRayPy.type.math.coord.Scalar3D
+Interval3D  = IceRayPy.type.math.interval.Scalar3D
 
 class Vacuum:
-
-    def __init__( self, P_dll,  P_child = None ):
+    def __init__( self, P_dll ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Geometry_Volumetric_Vacuum0()
@@ -12,21 +19,21 @@ class Vacuum:
     def __del__( self ):
         self.m_cargo['dll'].IceRayC_Light_Release( self.m_cargo['this'] )
 
-    def lo( self, P_lo ):
+    def lo( self, P_lo : Coord3D):
+        self.m_cargo['dll'].IceRayC_Geometry_Volumetric_Vacuum_Lo( self.m_cargo['this'], AddresOf(P_lo) )
+
+    def hi( self, P_hi : Coord3D ):
+        self.m_cargo['dll'].IceRayC_Geometry_Volumetric_Vacuum_Hi( self.m_cargo['this'], AddresOf(P_hi) )
+
+    def box( self, P_box :Interval3D ):
         pass #TODO
 
-    def hi( self, P_lo ):
-        pass #TODO
-
-    def box( self, P_lo ):
-        pass #TODO
-
-    def box( self, P_lo, P_hi ):
-        pass #TODO
+    def box( self, P_lo : Coord3D, P_hi :Coord3D ):
+        self.lo( P_lo )
+        self.hi( P_hi )
 
 class Mist:
-
-    def __init__( self, P_dll,  P_child = None ):
+    def __init__( self, P_dll ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Geometry_Volumetric_Smoke0()
@@ -45,8 +52,7 @@ class Mist:
         self.m_cargo['dll'].IceRayC_Geometry_Volumetric_Mist_Precision( self.m_cargo['this'], Scalar( P_precision ) )
 
 class Smoke:
-
-    def __init__( self, P_dll,  P_child = None ):
+    def __init__( self, P_dll ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Geometry_Volumetric_Smoke0()

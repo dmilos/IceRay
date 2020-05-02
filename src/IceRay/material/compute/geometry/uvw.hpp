@@ -35,13 +35,17 @@
                enum Ee_output{ En_outBool_Valid = 0, En_outCoord_UVW = 0 };
 
              public:
-               GC_UVW()
+               GC_UVW
+                (
+                  T_size const& P_inCoord_Point = 0
+                 ,T_size const& P_outCoord_UVW = 2
+                )
                 {
                  F_input( T_memory::En_geometryUVW, En_inGeometryUVW_This,  0 );
-                 F_input( T_memory::En_coord3D,     En_inCoord_Point,  0 );
+                 F_input( T_memory::En_coord3D,     En_inCoord_Point,  P_inCoord_Point );
                // TODO F_input( T_memory::En_memory,      En_inState_State,  0 );
 
-                 F_output( T_memory::En_coord3D, En_outCoord_UVW, 1 );
+                 F_output( T_memory::En_coord3D, En_outCoord_UVW, P_outCoord_UVW );
                  F_output( T_memory::En_bool,    En_outBool_Valid, 0 );
                 }
 

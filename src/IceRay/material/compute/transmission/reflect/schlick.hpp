@@ -47,16 +47,16 @@
                  public:
                    GC_schlick
                     (
-                      T_size const& P_point     = 0
-                     ,T_size const& P_normal    = 1
+                      T_size const& P_inCoord_Point     = 0
+                     ,T_size const& P_inCoord_Normal    = 1
                      ,T_size const& P_ior       = 0
                    //,T_size const& P_outSize_rayCount = 0,
                    //,T_size const& P_outRay_reflected = 1
                     )
                     {
-                     F_input<T_coord>(  En_inCoord_Point,   P_point     );
-                     F_input<T_coord>(  En_inCoord_Normal,  P_normal    );
-                     F_input<T_scalar>( En_inScalar_IOR,    P_ior       );
+                     F_input<T_coord>(  En_inCoord_Point,   P_inCoord_Point     );
+                     F_input<T_coord>(  En_inCoord_Normal,  P_inCoord_Normal    );
+                     F_input<T_scalar>( En_inScalar_IOR,    P_ior               );
 
                    //F_output<T_size>( En_outSize_RayCount,     P_outSize_RayCount );
                    //F_output( T_memory::En_ray,   En_outRay_reflected,     P_outRay_reflected );

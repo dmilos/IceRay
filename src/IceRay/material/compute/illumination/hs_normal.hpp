@@ -42,16 +42,16 @@
                public:
                  GC_normal
                   (
+                    T_size const& P_result  = 0
 
-                    T_size const& P_normal  = 1
+                   ,T_size const& P_normal  = 1
                    ,T_size const& P_groove  = 2
-                   ,T_size const& P_result  = 0
                   )
                   {
+                   F_output<T_coord>(  En_outCoord_result,  P_result );
+
                    F_input<T_coord>(    En_inCoord_Normal,  P_normal );
                    F_input<T_coord>(    En_inCoord_Groove,  P_groove );
-
-                   F_output<T_coord>(  En_outCoord_result,     P_result );
                   }
 
                public:

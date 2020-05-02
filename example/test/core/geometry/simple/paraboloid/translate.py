@@ -38,7 +38,7 @@ def make_geometry_rtss_list( ): # P_center, P_radius
 
 def make_light_blocked( ):
 
-    blocked = IceRayCpp.LightBlocked()
+    blocked = IceRayCpp.LightObstruct()
 
     point = IceRayCpp.LightPoint()
 

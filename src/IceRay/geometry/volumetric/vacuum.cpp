@@ -1,6 +1,6 @@
 #include "./vacuum.hpp"
 
-using namespace GS_DDMRM::S_IceRay::S_geometry;
+using namespace GS_DDMRM::S_IceRay::S_geometry::S_volumetric;
 
 
 struct GC_vacuum::C_intersect

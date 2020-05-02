@@ -20,8 +20,8 @@ GC_enclose::GC_enclose
   T__base *P_child, T__base *P_hull
  )
  {
-  F_hull( P_child );
   F_hull( P_hull );
+  F_child( P_child );
  }
 
 GC_enclose::~GC_enclose( )
@@ -119,7 +119,7 @@ bool GC_enclose::Fv_intersect
      default: return false;
     }
 
-  // TODO
+  // TODO M2_child.M_intersect->Fv_intersect( TODO, TODO, I_ray );
   return false;
  }
 
@@ -152,7 +152,6 @@ bool  GC_enclose::Fv_uvw( T_coord & P_uvw, T_coord const& P_point, T_state const
  {
   return false;
  }
-
 
 GC_enclose::T_vacuum & GC_enclose::Fs_vacuum()
  {

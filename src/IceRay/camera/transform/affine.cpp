@@ -35,7 +35,7 @@ S_transform::GC_affine::Fv_beam( T_beam &P_beam, T_coord2D const& P_uv )const
     ::math::linear::affine::transform( I_direction, M2_2world );
 
     ::math::linear::vector::subtraction( I_direction,I_origin );
-    ::math::linear::vector::length( I_direction, T_scalar( 1 ) );
+    //::math::linear::vector::length( I_direction, T_scalar( 1 ) );
    }
 
   return P_beam.size();

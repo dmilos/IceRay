@@ -96,7 +96,7 @@
              C2_geometry  M2_geometry;
 
            public:
-             typedef GS_DDMRM::S_IceRay::S_geometry::GC_vacuum T_vacuum;
+             typedef GS_DDMRM::S_IceRay::S_geometry::S_volumetric::GC_vacuum T_vacuum;
              static T_vacuum & Fs_vacuum();
            private:
              mutable GS_DDMRM::S_IceRay::S_utility::S_random::GT_sobol1D       M2_randSobol1D;

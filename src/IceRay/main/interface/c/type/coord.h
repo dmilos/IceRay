@@ -8,15 +8,15 @@
 
 
 
-typedef struct IceRayC_TypeCoordScalar1D{ IceRayC_TypeScalar value[1]; } IceRayC_TypeCoordScalar1D;
-typedef struct IceRayC_TypeCoordScalar2D{ IceRayC_TypeScalar value[2]; } IceRayC_TypeCoordScalar2D;
-typedef struct IceRayC_TypeCoordScalar3D{ IceRayC_TypeScalar value[3]; } IceRayC_TypeCoordScalar3D;
-typedef struct IceRayC_TypeCoordScalar4D{ IceRayC_TypeScalar value[4]; } IceRayC_TypeCoordScalar4D;
+typedef struct IceRayC_TypeCoordScalar1D{ IceRayC_TypeScalar value[1]; } IceRayC_TypeCoordScalar1D, IceRayC_Type_Coord_Scalar1D;
+typedef struct IceRayC_TypeCoordScalar2D{ IceRayC_TypeScalar value[2]; } IceRayC_TypeCoordScalar2D, IceRayC_Type_Coord_Scalar2D;
+typedef struct IceRayC_TypeCoordScalar3D{ IceRayC_TypeScalar value[3]; } IceRayC_TypeCoordScalar3D, IceRayC_Type_Coord_Scalar3D;
+typedef struct IceRayC_TypeCoordScalar4D{ IceRayC_TypeScalar value[4]; } IceRayC_TypeCoordScalar4D, IceRayC_Type_Coord_Scalar4D;
 
-typedef struct IceRayC_TypeCoordSize1D{ IceRayC_TypeSize value[1]; } IceRayC_TypeCoordSize1D;
-typedef struct IceRayC_TypeCoordSize2D{ IceRayC_TypeSize value[2]; } IceRayC_TypeCoordSize2D;
-typedef struct IceRayC_TypeCoordSize3D{ IceRayC_TypeSize value[3]; } IceRayC_TypeCoordSize3D;
-typedef struct IceRayC_TypeCoordSize4D{ IceRayC_TypeSize value[4]; } IceRayC_TypeCoordSize4D;
+typedef struct IceRayC_TypeCoordSize1D{ IceRayC_TypeSize value[1]; } IceRayC_TypeCoordSize1D, IceRayC_Type_Coord_Size1D;
+typedef struct IceRayC_TypeCoordSize2D{ IceRayC_TypeSize value[2]; } IceRayC_TypeCoordSize2D, IceRayC_Type_Coord_Size2D;
+typedef struct IceRayC_TypeCoordSize3D{ IceRayC_TypeSize value[3]; } IceRayC_TypeCoordSize3D, IceRayC_Type_Coord_Size3D;
+typedef struct IceRayC_TypeCoordSize4D{ IceRayC_TypeSize value[4]; } IceRayC_TypeCoordSize4D, IceRayC_Type_Coord_Size4D;
 
 
 IceRayC__EXPORT IceRayC__DECLSPEC  int  IceRayC_Type_Math_Coord1D_Fill( IceRayC_TypeCoordScalar1D *P_that, IceRayC_TypeScalar );

@@ -45,17 +45,17 @@
               public:
                 GC_ternary
                 (
-                  T_size const& P_inType_left    = 0
-                 ,T_size const& P_inType_right   = 1
-                 ,T_size const& P_inType_middle  = 2
-                 ,T_size const& P_outType_result = 3
+                  T_size const& P_outType_result = 0
+                 ,T_size const& P_inType_left    = 1
+                 ,T_size const& P_inType_right   = 2
+                 ,T_size const& P_inType_middle  = 3
                 )
                 {
+                 F_output<T_typeRight>( En_outTYPE_ResultValue,  P_outType_result );
+
                  F_input<T_typeLeft>(   En_inTYPE_LeftValue,   P_inType_left   );
                  F_input<T_typeMiddle>( En_inTYPE_MiddleValue, P_inType_middle );
                  F_input<T_typeRight>(  En_inTYPE_RightValue,  P_inType_right  );
-
-                 F_output<T_typeRight>( En_outTYPE_ResultValue,  P_outType_result );
                 }
 
               public:

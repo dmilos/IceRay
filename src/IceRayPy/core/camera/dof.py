@@ -1,4 +1,6 @@
 import ctypes
 
-Scalar = ctypes.c_double
+import IceRayPy.type.basic
+
+Scalar = IceRayPy.type.basic.Scalar
 

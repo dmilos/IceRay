@@ -40,7 +40,8 @@ typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_illumination::GC_beckmann  
   boost::python::scope I_scope = I_this;
 
   boost::python::enum_<GTs_beckmann::Ee_input>( "Input" )
-    .value( "LightCount",     GTs_beckmann::En_inSize_SpotCount  )
+    .value( "SpotBegin",     GTs_beckmann::En_inSize_SpotBegin   )
+    .value( "SpotEnd",       GTs_beckmann::En_inSize_SpotEnd     )
     .value( "Specular",       GTs_beckmann::En_inColor_Specular   )
     .value( "Roughness",      GTs_beckmann::En_inColor_Roughness  )
     .value( "point",          GTs_beckmann::En_inCoord_Point      )

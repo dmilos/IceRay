@@ -9,7 +9,7 @@
 #include "./clipped.cpp"
 #include "./circle.cpp"
 #include "./chandelier.cpp"
-#include "./blocked.cpp"
+#include "./obstruct.cpp"
 #include "./area.cpp"
 #include "./disc.cpp"
 #include "./_pure.cpp"

@@ -26,6 +26,7 @@
 
              enum Ee_type1
               {
+                En_type1_Unknown,
                 En_type1Eye
                ,En_type1Light
                ,En_type1Reflected
@@ -49,17 +50,17 @@
 
            public:
              GC_trace()
-              :GC_trace( T_simple( T_line{} ), En_type1Eye )
+              :GC_trace( T_simple( T_line{} ), En_type1_Unknown )
               {
               }
 
              explicit GC_trace( T_line const& P_line )
-              :GC_trace( T_simple( P_line ), En_type1Eye )
+              :GC_trace( T_simple( P_line ), En_type1_Unknown )
               {
               }
 
              explicit GC_trace( T_simple const& P_simple )
-              :GC_trace( P_simple, En_type1Eye )
+              :GC_trace( P_simple, En_type1_Unknown )
               {
               }
 

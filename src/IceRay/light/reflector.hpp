@@ -47,7 +47,7 @@
 
          public:  // property coord  innner
            T_scalar    const& F_inner()const{ return M2_inner; }
-           bool               F_inner( T_scalar const& P_innner ){ M2_inner = P_innner; return bool( true ); }
+           bool               F_inner( T_scalar const& P_inner ){ M2_inner = P_inner; return bool( true ); }
          protected:
            T_scalar        & F1_inner(){ return M2_inner; }
          private:

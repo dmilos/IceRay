@@ -106,7 +106,6 @@ GC_list::T_size GC_list::Fv_push( T__base * P_object )
   C2_geometry I_geometry;
 
    I_geometry.M__base = P_object;
-
    I_geometry.M_intersect      = dynamic_cast<T_intersect*>(I_geometry.M__base); if( nullptr == I_geometry.M_intersect) I_geometry.M_intersect = & Fs_vacuum();
    I_geometry.M_intersectSize  = I_geometry.M__base->Fv_weight();
 

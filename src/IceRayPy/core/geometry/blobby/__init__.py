@@ -1,5 +1,4 @@
 print( '<' + __name__ + ' name=\'' +   __file__ + '\'>' )
-print( '</' + __name__ + ' name=\'' +   __file__ + '/>' )
 
 
 class System:
@@ -24,3 +23,5 @@ class System:
     def rtss( self, P_rtss ):
         self.m_cargo['dll'].IceRayC_Geometry_RTSS_Release( self.m_cargo['this'], P_rtss.m_cargo['this'] )
         self.m_cargo['rtss'] = P_rtss
+
+print( '</' + __name__ + ' name=\'' +   __file__ + '>' )

@@ -1,6 +1,9 @@
 import ctypes
 
-Scalar = ctypes.c_double
+import IceRayPy
+
+
+Scalar = IceRayPy.type.basic.Scalar
 
 class Perspective:
     def __init__( self, P_dll ):
@@ -31,17 +34,17 @@ class Perspective:
         return self.m_cargo['dll'].IceRayC_Camera_Flat_Perspective_Height(self.m_cargo['this'], Scalar( P_aspect ) )
 
 class Orthogonal:
-    def __init__(self, P_dll ):
+    def __init__( self, P_dll ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Camera_Flat_Orthogonal0()
 
-    #def __init__(self, P_dll, P_aspect ):
+    #def __init__( self, P_dll, P_aspect ):
     #    self.m_cargo = {}
     #    self.m_cargo['dll'] = P_dll
     #    self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Camera_Flat_Orthogonal1(P_aspect)
     #
-    #def __init__(self, P_dll, P_width, P_height ):
+    #def __init__( self, P_dll, P_width, P_height ):
     #    self.m_cargo = {}
     #    self.m_cargo['dll'] = P_dll
     #    self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Camera_Flat_Orthogonal2(P_width, P_height)

@@ -40,7 +40,8 @@ typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_illumination::GC_blinn   GT
   boost::python::scope I_scope = I_this;
 
   boost::python::enum_<GTs_blinn::Ee_input>( "Input" )
-    .value( "LightCount",     GTs_blinn::En_inSize_SpotCount   )
+    .value( "SpotBegin",      GTs_blinn::En_inSize_SpotBegin   )
+    .value( "SpotEnd",        GTs_blinn::En_inSize_SpotEnd     )
     .value( "Specular",       GTs_blinn::En_inColor_Specular   )
     .value( "Shininess",      GTs_blinn::En_inColor_Shininess  )
     .value( "point",          GTs_blinn::En_inCoord_Point      )

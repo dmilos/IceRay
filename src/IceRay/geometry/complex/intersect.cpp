@@ -404,7 +404,7 @@ void GC_intersect::F2_recalc()
 
 GC_intersect::T_vacuum & GC_intersect::Fs_vacuum()
  {
-  static GS_DDMRM::S_IceRay::S_geometry::GC_vacuum Is_vacuum;
+  static GS_DDMRM::S_IceRay::S_geometry::S_volumetric::GC_vacuum Is_vacuum;
   return Is_vacuum;
  }
 

@@ -3,9 +3,14 @@ import inspect
 
 import IceRayPy
 import IceRayPy.type
-import IceRayPy.type.math.affine
+import IceRayPy.type.math
 import IceRayPy.type.math.coord
+import IceRayPy.type.math.affine
 
+Pointer = ctypes.POINTER
+AddresOf = ctypes.addressof
+
+Integer  = IceRayPy.type.basic.Integer
 Coord3D  = IceRayPy.type.math.coord.Scalar3D
 Affine3D = IceRayPy.type.math.affine.Scalar3D
 
@@ -44,33 +49,20 @@ class Affine:
 
     def toWorldGet( self ):
         I_2world = Affine3D()
-        f = self.m_cargo['dll'].IceRayC_Camera_Transform_Affine_2WorldGet
-        f.argtypes = [ ctypes.c_void_p, ctypes.POINTER( Affine3D ) ]
-        f.restype = ctypes.c_int
-        f( self.m_cargo['this'], I_2world )
-
+        self.m_cargo['dll'].IceRayC_Camera_Transform_Affine_2World_Get( self.m_cargo['this'], AddresOf( I_2world ) )
         return I_2world
 
-
     def toWorldSet( self, P_2world : Affine3D ):
-        f = self.m_cargo['dll'].IceRayC_Camera_Transform_Affine_2WorldSet
-        f.argtypes = [ ctypes.c_void_p, ctypes.POINTER( Affine3D ) ]
-        f.restype = ctypes.c_int
-        f( self.m_cargo['this'], P_2world )
-        return True
+        return self.m_cargo['dll'].IceRayC_Camera_Transform_Affine_2World_Set( self.m_cargo['this'], AddresOf( P_2world ) )
 
     def lookAt( self, P_eye : Coord3D, P_view: Coord3D, P_up: Coord3D ):
         self.toWorldSet( IceRayPy.type.math.affine.lookAt( self.m_cargo['dll'], P_eye, P_view, P_up ) )
         return True
 
     def move( self, P_move : Coord3D ):
-
         I_2world = self.toWorldGet()
-
         I_move = IceRayPy.type.math.affine.move3D( self.m_cargo['dll'], P_move )
-
         I_result = IceRayPy.type.math.affine.compose3D( self.m_cargo['dll'], I_move, I_2world )
-
         self.toWorldSet( I_result )
 
     def scale( self, P_scale ):

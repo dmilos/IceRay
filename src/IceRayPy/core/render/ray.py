@@ -1,7 +1,9 @@
 import ctypes
 
-Integer = ctypes.c_int
-Scalar = ctypes.c_double
+import IceRayPy
+
+Unsigned = IceRayPy.type.basic.Unsigned
+Scalar   = IceRayPy.type.basic.Scalar
 
 class Direction:
     m_cargo  = {}
@@ -51,7 +53,7 @@ class Trace:
         self.m_cargo['object'] = P_object
 
     def depth( self, P_depth ):
-        self.m_cargo['dll'].IceRayC_Render_Ray_Trace_Depth( self.m_cargo['this'], Integer(P_depth) )
+        self.m_cargo['dll'].IceRayC_Render_Ray_Trace_Depth( self.m_cargo['this'], Unsigned(P_depth) )
 
     def trash( self, P_trash ):
         self.m_cargo['dll'].IceRayC_Render_Ray_Trace_Trash( self.m_cargo['this'], Scalar(P_trash) )

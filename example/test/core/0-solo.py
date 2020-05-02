@@ -12,7 +12,7 @@ import rendering
 
 def light_make( P_light ):
 
-    blocked = IceRayCpp.LightBlocked()
+    blocked = IceRayCpp.LightObstruct()
 
     blocked.light( P_light['this'] )
 

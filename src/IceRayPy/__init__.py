@@ -1,4 +1,5 @@
-__all__       = [ "constant", "core", "extension", "library", "system", "type", "utility" ]
+print( '<' + __name__ + ' name=\'' +   __file__ + '\'>' )
+#__all__       = [ "constant", "core", "extension", "library", "system", "type", "utility" ]
 __name__      = "IceRayPy"
 __author__    = "I"
 __developer__ = "I"
@@ -9,7 +10,8 @@ __revision__  = ""
 __build__     = ""
 __buildsys__  = ""
 
-from IceRayPy.core import *
-from IceRayPy.type import *
+import IceRayPy.type
+import IceRayPy.core
 
-#print( '<' + __name__ + ' name=\'' +   __file__ + '\'/>' )
+
+print( '</' + __name__ + ' name=\'' +   __file__ + '\'>' )

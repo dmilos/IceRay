@@ -21,7 +21,7 @@ def print_blocked( P_blocked ):
 
     print
 
-blocked1 = IceRayCpp.LightBlocked()
+blocked1 = IceRayCpp.LightObstruct()
 
 print( blocked1.light( IceRayCpp.LightPoint() ) ) 
 print( blocked1.barrier( IceRayCpp.GeometrySimpleSphere() ) )

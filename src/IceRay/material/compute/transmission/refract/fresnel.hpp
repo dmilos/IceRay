@@ -47,16 +47,16 @@
                  public:
                    GC_fresnel
                     (
-                      T_size const& P_point      = 0
-                     ,T_size const& P_normal     = 1
+                      T_size const& P_inCoord_Point      = 0
+                     ,T_size const& P_inCoord_Normal     = 1
                      ,T_size const& P_ior        = 0
-                     ,T_size const& P_albedo = 0
+                     ,T_size const& P_albedo     = 0
                    //,T_size const& P_outSize_rayCount = 0,
                    //,T_size const& P_outRay_refracted = 1
                     )
                     {
-                     F_input<T_coord>(  En_inCoord_Point,       P_point      );
-                     F_input<T_coord>(  En_inCoord_Normal,      P_normal     );
+                     F_input<T_coord>(  En_inCoord_Point,       P_inCoord_Point      );
+                     F_input<T_coord>(  En_inCoord_Normal,      P_inCoord_Normal     );
                      F_input<T_color>(  En_inColor_Albedo,      P_albedo );
                      F_input<T_scalar>( En_inScalar_IOR,        P_ior        );
 
@@ -100,9 +100,9 @@
                          GS_DDMRM::S_IceRay::S_material::S_transmission::GC_fresnel I_fresnel( I_air, I_watter );
 
                          T_scalar  I_reflectance    ;
-                         T_scalar  I_transmittance  ;
+                         T_scalar  I_transparency  ;
 
-                         I_fresnel.F_process( I_reflectance, I_transmittance, I_reflected, I_refracted, I_normal );
+                         I_fresnel.F_process( I_reflectance, I_transparency, I_reflected, I_refracted, I_normal );
 
                          {
                           P_next.Fv_push();
@@ -114,8 +114,8 @@
                           I_ray.M_direction = I_refracted;
                           I_ray.M_type = T_ray::En_type1Refracted;
                           I_ray.M_ior  = I_watter;
-                          I_ray.M_intesity = I_transmittance * I_incoming.M_intesity;
-                          I_ray.M_coefficient = I_transmittance;
+                          I_ray.M_intesity = I_transparency * I_incoming.M_intesity;
+                          I_ray.M_coefficient = I_transparency;
                          }
                          {
                           P_next.Fv_push();

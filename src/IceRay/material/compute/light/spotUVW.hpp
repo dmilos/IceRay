@@ -1,6 +1,7 @@
 #ifndef Dh_DDMRM_Iceray_material_compute_light_UVW_HPP_
  #define Dh_DDMRM_Iceray_material_compute_light_UVW_HPP_
 
+// GS_DDMRM::S_IceRay::S_material::S_compute::S_light::GC_spotUVW
 
  #include "../../../type/basic/size.hpp"
  #include "../../../type/color.hpp"
@@ -20,10 +21,10 @@
       {
        namespace S_compute
         {
-         namespace S_light
+         namespace S_spot
           {
 
-           class GC_spotUVW //!< of incoming ray
+           class GC_UVW //!< of incoming ray
             : public GS_DDMRM::S_IceRay::S_material::S_compute::GC_instruction
             {
              public:
@@ -36,7 +37,6 @@
                typedef GS_DDMRM::S_IceRay::S_light::GC__pure             T_light;
 
                typedef GS_DDMRM::S_IceRay::S_geometry::S__type::GC_state      T_state;
-               typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_intersect T_geometry;
 
                typedef GS_DDMRM::S_IceRay::S_material::S_compute::GC_memory   T_memory;
 
@@ -48,16 +48,16 @@
                enum Ee_output{ En_outCoord_UVW = 2 };
 
              public:
-               GC_spotUVW
+               GC_UVW
                 (
                   T_size const& P_out        = 2
-                 ,T_size const& P_point      = 0
-                 ,T_size const& P_normal     = 1
+                 ,T_size const& P_inCoord_Point      = 0
+                 ,T_size const& P_inCoord_Normal     = 1
                  ,T_size const& P_spotIndex  = 1
                 )
                 {
-                 F_input<T_coord>(   En_inCoord_Point,  P_point     );
-                 F_input<T_coord>(   En_inCoord_Normal, P_normal    );
+                 F_input<T_coord>(   En_inCoord_Point,  P_inCoord_Point     );
+                 F_input<T_coord>(   En_inCoord_Normal, P_inCoord_Normal    );
                  F_input<T_spot>(    En_inSpot_Index,   P_spotIndex ); //!< Index of spot in memory
 
                  F_output<T_coord>( En_outCoord_UVW, P_out );

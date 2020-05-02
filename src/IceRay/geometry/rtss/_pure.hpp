@@ -50,7 +50,7 @@
              virtual void               Fv_prepare( T_coord const& P_point, T_state & P_state )const=0;
 
            public:
-             typedef GS_DDMRM::S_IceRay::S_geometry::GC_vacuum T_vacuum;
+             typedef GS_DDMRM::S_IceRay::S_geometry::S_volumetric::GC_vacuum T_vacuum;
              static T_vacuum & Fs_vacuum();
           };
 

@@ -49,8 +49,8 @@
                public:
                  GC_hexagon
                   (
-                    T_size const& P_normal    = 1
-                   ,T_size const& P_inLeader = 0
+                    T_size const& P_inCoord_Normal    = 1
+                   ,T_size const& P_inLeader  = 0
                    ,T_size const& P_inCount   = 1
                    ,T_size const& P_inAngle   = 0
                    ,T_size const& P_inGauss   = 1
@@ -58,7 +58,7 @@
                   {
                    static auto dummy = F2s_init();
 
-                   F_input<T_coord>(   En_inCoord_Normal,  P_normal    );
+                   F_input<T_coord>(   En_inCoord_Normal,  P_inCoord_Normal    );
                    F_input<T_size>(    En_inSize_Leader,   P_inLeader );
                    F_input<T_size>(    En_inSize_Count,    P_inCount   );
                    F_input<T_scalar>(  En_inScalar_Angle,  P_inAngle   );

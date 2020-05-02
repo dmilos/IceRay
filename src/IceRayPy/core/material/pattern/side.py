@@ -5,7 +5,7 @@ class Cube:
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Material_Pattern_Side_Cube0()
 
     def __del__(self):
-        self.m_cargo['dll'].IceRayC_Material_Pattern_Size_Release( self.m_cargo['this'] )
+        self.m_cargo['dll'].IceRayC_Material_Pattern_Release( self.m_cargo['this'] )
 
 
 class Dodecahedron:
@@ -15,7 +15,7 @@ class Dodecahedron:
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Material_Pattern_Side_Dodecahedron0()
 
     def __del__(self):
-        self.m_cargo['dll'].IceRayC_Material_Pattern_Size_Release( self.m_cargo['this'] )
+        self.m_cargo['dll'].IceRayC_Material_Pattern_Release( self.m_cargo['this'] )
 
 
 class Icosahedron:
@@ -25,7 +25,7 @@ class Icosahedron:
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Material_Pattern_Side_Icosahedron0()
 
     def __del__(self):
-        self.m_cargo['dll'].IceRayC_Material_Pattern_Size_Release( self.m_cargo['this'] )
+        self.m_cargo['dll'].IceRayC_Material_Pattern_Release( self.m_cargo['this'] )
 
 
 class Octahedron:
@@ -35,7 +35,7 @@ class Octahedron:
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Material_Pattern_Side_Octahedron0()
 
     def __del__(self):
-        self.m_cargo['dll'].IceRayC_Material_Pattern_Size_Release( self.m_cargo['this'] )
+        self.m_cargo['dll'].IceRayC_Material_Pattern_Release( self.m_cargo['this'] )
 
 
 class Tetrahedron:
@@ -45,5 +45,5 @@ class Tetrahedron:
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Material_Pattern_Side_Tetrahedron0()
 
     def __del__(self):
-        self.m_cargo['dll'].IceRayC_Material_Pattern_Size_Release( self.m_cargo['this'] )
+        self.m_cargo['dll'].IceRayC_Material_Pattern_Release( self.m_cargo['this'] )
 

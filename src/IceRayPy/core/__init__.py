@@ -1,4 +1,4 @@
-#print( '<' + __name__ + ' name=\'' +   __file__ + '\'>' )
+print( '<' + __name__ + ' name=\'' +   __file__ + '\'>' )
 
 #__all__=[
 #   'camera',
@@ -16,4 +16,4 @@ import IceRayPy.core.material
 import IceRayPy.core.object
 import IceRayPy.core.render
 
-#print( '</' + __name__ + ' name=\'' +   __file__ + '/>' )
+print( '</' + __name__ + ' name=\'' +   __file__ + '\'>' )

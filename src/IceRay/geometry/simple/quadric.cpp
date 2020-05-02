@@ -156,6 +156,7 @@ bool GC_quadric::Fv_intersect
       P_lambda = I_lambda;
       return I_intersect.M_hit = true;
      }
+    return I_intersect.M_hit = false;
    }
 
   return I_intersect.M_hit = false;

@@ -1,4 +1,8 @@
 #include "./object.h"
+
+#include "../material/pigment/pigment.hpp"
+#include "../material/medium/medium.hpp"
+
 #include "../geometry/geometry.hpp"
 
 #include "IceRay/object/object.hpp"
@@ -32,20 +36,34 @@ IceRayC_Object_Handle  IceRayC_Object0()
 
 IceRayC_Object_Handle  IceRayC_Object1( IceRayC_Geometry_Handle P_geometry )
  {
-  typedef GS_DDMRM::S_IceRay::S_object::S__pure::GC__pure   Tf__pure;
-  typedef GS_DDMRM::S_IceRay::S_object::GC_wrap             Tf_wrap;
-  typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__geometry;
+  typedef GS_DDMRM::S_IceRay::S_object::S__pure::GC__pure     Tf__pure;
+  typedef GS_DDMRM::S_IceRay::S_object::GC_wrap               Tf_wrap;
+  typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base   Tf__geometry;
 
   auto Ir_result = new Tf_wrap{ c2cpp( P_geometry ) } ;
 
   return cpp2c( Ir_result );
  }
 
-int IceRayC_Object_GeometrySet( IceRayC_Object_Handle P_that, IceRayC_Geometry_Handle  P_gemetry )
+IceRayC_Geometry_Handle      IceRayC_Object_Cast2Geometry( IceRayC_Object_Handle P_that )
+{
+  typedef GS_DDMRM::S_IceRay::S_object::S__pure::GC__pure     Tf__pure;
+  typedef GS_DDMRM::S_IceRay::S_object::GC_wrap               Tf_wrap;
+  typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base   Tf__geometry;
+
+  auto I_this = dynamic_cast< Tf_wrap *>( c2cpp( P_that ) );
+  if( nullptr == I_this )
+   {
+    return 0;
+   }
+  return cpp2c( dynamic_cast< Tf__geometry *>( I_this ) );
+}
+
+int IceRayC_Object_Geometry_Set( IceRayC_Object_Handle P_that, IceRayC_Geometry_Handle  P_gemetry )
 {
   typedef GS_DDMRM::S_IceRay::S_object::S__pure::GC__pure   Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_object::GC_wrap             Tf_wrap;
-  typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__geometry;
+  typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base   Tf__geometry;
 
   auto I_this = dynamic_cast< Tf_wrap *>( c2cpp( P_that ) );
   if( nullptr == I_this )
@@ -56,7 +74,7 @@ int IceRayC_Object_GeometrySet( IceRayC_Object_Handle P_that, IceRayC_Geometry_H
   return 1;
 }
 
-IceRayC_Geometry_Handle IceRayC_Object_GeometryGet( IceRayC_Object_Handle P_that )
+IceRayC_Geometry_Handle IceRayC_Object_Geometry_Get( IceRayC_Object_Handle P_that )
 {
   typedef GS_DDMRM::S_IceRay::S_object::S__pure::GC__pure   Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_object::GC_wrap             Tf_wrap;
@@ -79,7 +97,7 @@ int IceRayC_Object_Pigment( IceRayC_Object_Handle P_that, IceRayC_Material_Pigme
     return 0;
    }
 
-  I_this->F_pigment( reinterpret_cast<Tf__pigment*> ( P_pigment ) );
+  I_this->F_pigment( c2cpp( P_pigment ) );
   return 1;
  }
 
@@ -95,7 +113,7 @@ int IceRayC_Object_Medium( IceRayC_Object_Handle P_that, IceRayC_Material_Medium
     return 0;
    }
 
-  I_this->F_medium( reinterpret_cast<Tf__medium*> ( P_medium ) );
+  I_this->F_medium( c2cpp( P_medium ) );
   return 1;
  }
 

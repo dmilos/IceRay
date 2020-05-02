@@ -39,6 +39,40 @@ GS_DDMRM::S_IceRay::S_type::S_interval:: GT_scalar4D c2cpp( IceRayC_TypeInterval
  }
 
 
+GS_DDMRM::S_IceRay::S_type::S_interval::GT_size1D c2cpp( IceRayC_Type_Interval_Size1D P_that )
+ {
+  GS_DDMRM::S_IceRay::S_type::S_interval::GT_size1D Ir_result;
+  Ir_result[0] = P_that.value[0].value[0]; //!< TODO
+  Ir_result[1] = P_that.value[1].value[0]; //!< TODO
+  return Ir_result;
+ }
+
+GS_DDMRM::S_IceRay::S_type::S_interval:: GT_size2D c2cpp( IceRayC_Type_Interval_Size2D P_that )
+ {
+  GS_DDMRM::S_IceRay::S_type::S_interval::GT_size2D Ir_result;
+  Ir_result[0] = c2cpp( P_that.value[0] );
+  Ir_result[1] = c2cpp( P_that.value[1] );
+  return Ir_result;
+ }
+
+GS_DDMRM::S_IceRay::S_type::S_interval:: GT_size3D c2cpp( IceRayC_Type_Interval_Size3D P_that )
+ {
+  GS_DDMRM::S_IceRay::S_type::S_interval::GT_size3D Ir_result;
+  Ir_result[0] = c2cpp( P_that.value[0] );
+  Ir_result[1] = c2cpp( P_that.value[1] );
+  return Ir_result;
+ }
+
+GS_DDMRM::S_IceRay::S_type::S_interval:: GT_size4D c2cpp( IceRayC_Type_Interval_Size4D P_that )
+ {
+  GS_DDMRM::S_IceRay::S_type::S_interval::GT_size4D Ir_result;
+  Ir_result[0] = c2cpp( P_that.value[0] );
+  Ir_result[1] = c2cpp( P_that.value[1] );
+  return Ir_result;
+ }
+
+
+
 int IceRayC_Type_Math_Interval3D_Center(   )
  {
   return 0;

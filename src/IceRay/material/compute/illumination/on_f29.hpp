@@ -35,7 +35,7 @@
                  enum Ee_input
                   {
                    En_inColor_rho = 0, En_inColor_sigma = 1,
-                   En_inSize_SpotCount=0,
+                   En_inSize_SpotBegin=0, En_inSize_SpotEnd=1,
                    En_inCoord_Point=0, En_inCoord_Normal=1
                   };
                  enum Ee_output{ En_outColor_result=0 };
@@ -43,17 +43,19 @@
                public:
                  GC_f29
                   (
-                    T_size const& P_point      = 0
-                   ,T_size const& P_normal     = 1
-                   ,T_size const& P_spotCount  = 0
-                   ,T_size const& P_rho        = 0
-                   ,T_size const& P_sigma      = 0
-                   ,T_size const& P_result     = 0
+                    T_size const& P_result            = 0
+                   ,T_size const& P_inCoord_Point     = 0
+                   ,T_size const& P_inCoord_Normal    = 1
+                   ,T_size const& P_inSize_SpotBegin  = 0
+                   ,T_size const& P_inSize_SpotEnd    = 0
+                   ,T_size const& P_rho               = 0
+                   ,T_size const& P_sigma             = 0
                   )
                   {
-                   F_input<T_coord>( En_inCoord_Point,     P_point );
-                   F_input<T_coord>( En_inCoord_Normal,    P_normal );
-                   F_input<T_size>(  En_inSize_SpotCount,  P_spotCount );
+                   F_input<T_coord>( En_inCoord_Point,     P_inCoord_Point );
+                   F_input<T_coord>( En_inCoord_Normal,    P_inCoord_Normal );
+                   F_input<T_size>(   En_inSize_SpotBegin,  P_inSize_SpotBegin   );
+                   F_input<T_size>(   En_inSize_SpotEnd,    P_inSize_SpotEnd     );
 
                    F_input<T_color>(    En_inColor_rho,     P_rho );
                    F_input<T_color>(    En_inColor_sigma,   P_sigma );
@@ -68,7 +70,8 @@
 
                    T_color const& I_rho       = M2_memoryColor->Fv_load( F_input()[ T_memory::En_color ][ En_inColor_rho ] );
                    T_color const& I_sigma     = M2_memoryColor->Fv_load( F_input()[ T_memory::En_color ][ En_inColor_sigma ] );
-                   T_size         I_spotCount = M2_memorySize->Fv_load(  F_input()[ T_memory::En_size  ][ En_inSize_SpotCount ] );
+                   T_size         I_spotBegin  = M2_memorySize->Fv_load(  F_input<T_size>( En_inSize_SpotBegin ) );
+                   T_size         I_spotEnd    = M2_memorySize->Fv_load(  F_input<T_size>( En_inSize_SpotEnd ) );
                    T_coord const& I_point     = M2_memoryCoord->Fv_load( F_input()[ T_memory::En_coord ][ En_inCoord_Point     ] );
                    T_coord const& I_normal    = M2_memoryCoord->Fv_load( F_input()[ T_memory::En_coord ][ En_inCoord_Normal    ] );
 
@@ -79,7 +82,7 @@
                    T_coord I_2light;
                    T_color I_energy;
 
-                   for( T_size I_spotIndex=0; I_spotIndex < I_spotCount; ++I_spotIndex )
+                   for( T_size I_spotIndex = I_spotBegin; I_spotIndex < I_spotEnd; ++I_spotIndex )
                     {
                      T_spot const& I_spot = M2_memorySpot->Fv_load( I_spotIndex );
 

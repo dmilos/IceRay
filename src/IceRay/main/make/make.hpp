@@ -95,7 +95,6 @@ namespace GS_DDMRM
       extern GTs_light * make_light_sun( GTs_spot const& P_spot );
       extern GTs_light * make_light_line( GTs_spot const& P_spot, GTs_coord const& P_end );
       extern GTs_light * make_light_spline( GTs_spot const& P_spot, GTs_coord const& P_1, GTs_coord const& P_2, GTs_coord const& P_3 );
-      extern GTs_light * make_light_blocked( GTs_light *, GTs_geometry * );
 
       extern GTs_pigment *make_ambient(    GTs_geometry *,  GTs_color const& P_color );
       extern GTs_pigment *make_lambert(    GTs_geometry * , GTs_light *, GTs_color const& P_diffuse );

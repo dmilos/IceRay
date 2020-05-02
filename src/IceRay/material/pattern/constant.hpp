@@ -2,6 +2,9 @@
  #define Dh_IceRay_material_pattern_constant_hpp_
 
 //! GS_DDMRM::S_IceRay::S_material::S_pattern::GC_constant<N_type>
+//! GS_DDMRM::S_IceRay::S_material::S_pattern::S_constant::GT_size
+//! GS_DDMRM::S_IceRay::S_material::S_pattern::S_constant::GT_scalar
+//! GS_DDMRM::S_IceRay::S_material::S_pattern::S_constant::GT_coord3D
 
 
 #include "./_pure.hpp"
@@ -52,11 +55,9 @@
            typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GC_constant<GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar3D > GT_coord3D;
            typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GC_constant<GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar4D > GT_coord4D;
 
-           typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GC_constant<GS_DDMRM::S_IceRay::S_type::S_coord::GT_size2D > GT_cell2D;
-           typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GC_constant<GS_DDMRM::S_IceRay::S_type::S_coord::GT_size3D > GT_cell3D;
-           typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GC_constant<GS_DDMRM::S_IceRay::S_type::S_coord::GT_size4D > GT_cell4D;
-
-
+           typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GC_constant<GS_DDMRM::S_IceRay::S_type::S_coord::GT_size2D > GT_cell2D, GT_size2D;
+           typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GC_constant<GS_DDMRM::S_IceRay::S_type::S_coord::GT_size3D > GT_cell3D, GT_size3D;
+           typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GC_constant<GS_DDMRM::S_IceRay::S_type::S_coord::GT_size4D > GT_cell4D, GT_size4D;
           }
 
         }

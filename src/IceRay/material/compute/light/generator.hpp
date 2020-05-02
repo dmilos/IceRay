@@ -1,8 +1,10 @@
 #ifndef Dh_DDMRM_Iceray_material_compute_light_generator_HPP_
  #define Dh_DDMRM_Iceray_material_compute_light_generator_HPP_
 
+// GS_DDMRM::S_IceRay::S_material::S_compute::S_light::GC_generator
 
  #include "../../../light/_pure.hpp"
+ #include "../../../light/point.hpp"
 
  #include "../instruction.hpp"
 
@@ -31,7 +33,6 @@
                typedef GS_DDMRM::S_IceRay::S_light::GC__pure             T_light;
 
                typedef GS_DDMRM::S_IceRay::S_geometry::S__type::GC_state      T_state;
-               typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_intersect T_geometry;
 
                typedef GS_DDMRM::S_IceRay::S_material::S_compute::GC_memory      T_memory;
                typedef GS_DDMRM::S_IceRay::S_material::S_compute::GC_instruction T_instruction;
@@ -46,7 +47,11 @@
                 {
                 }
 
-               explicit GC_generator( T_light * P_light, T_size const& P_result = 0 )
+               explicit GC_generator
+                (
+                  T_light * P_light
+                 ,T_size const& P_result = 0
+                )
                :M2_light( P_light )
                 {
                  F_output<T_light>( En_outLight_Result, P_result );
@@ -64,6 +69,10 @@
                bool              F_light( T_light* P_light )
                 {
                  M2_light = P_light;
+                 if( nullptr == M2_light )
+                  {
+                   M2_light = &F2s_light();
+                  }
                  return true;
                 }
              protected:
@@ -80,9 +89,14 @@
                  T_instruction::Fv_memory( P_memory );
                  M2_memoryLight  = dynamic_cast<T2_memoryLight * >( P_memory->F_get( T_memory::En_light ) );
                 }
-
              private:
                T2_memoryLight    *M2_memoryLight;
+             private:
+               static T_light & F2s_light()
+                {
+                 static GS_DDMRM::S_IceRay::S_light::GC_point Is_light;
+                 return Is_light;
+                }
            };
 
           }

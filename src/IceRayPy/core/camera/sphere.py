@@ -1,6 +1,8 @@
 import ctypes
 
-Scalar = ctypes.c_double
+import IceRayPy
+
+Scalar = IceRayPy.type.basic.Scalar
 
 class Fisheye:
     def __init__(self, P_dll ):

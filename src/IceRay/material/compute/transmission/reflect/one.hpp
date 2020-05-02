@@ -46,16 +46,16 @@
                  public:
                    GC_one
                     (
-                      T_size const& P_point     = 0
-                     ,T_size const& P_normal    = 1
+                      T_size const& P_inCoord_Point     = 0
+                     ,T_size const& P_inCoord_Normal    = 1
                      ,T_size const& P_albedo    = 0
                    //,T_size const& P_outSize_rayCount = 0,
                    //,T_size const& P_outRay_reflected = 1
                     )
                     {
-                     F_input<T_coord>( En_inCoord_Point,  P_point     );
-                     F_input<T_coord>( En_inCoord_Normal, P_normal    );
-                     F_input<T_color>( En_inColor_Albedo, P_albedo    );
+                     F_input<T_coord>( En_inCoord_Point,  P_inCoord_Point  );
+                     F_input<T_coord>( En_inCoord_Normal, P_inCoord_Normal );
+                     F_input<T_color>( En_inColor_Albedo, P_albedo );
 
                    //F_output<T_size>( En_outSize_RayCount,     P_outSize_RayCount );
                    //F_output<T_ray>(  En_outRay_Reflected,     P_outRay_Reflected );

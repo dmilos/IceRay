@@ -6,7 +6,7 @@
 #include "IceRay/material/medium/exponential.hpp"
 #include "IceRay/material/medium/linear.hpp"
 
-#include "IceRay/material/pigment/simple.hpp"
+#include "IceRay/material/pigment/constant.hpp"
 
 #include "../geometry/volumetric/vacuum.hpp"
 
@@ -166,7 +166,7 @@ bool        GC_wrap::F_geometry( T_geometry * P_geometry )
 
 GC_wrap::T_geometry & GC_wrap::F1s_geometry()
  {
-  static GS_DDMRM::S_IceRay::S_geometry::GC_vacuum Is_vacuum;
+  static GS_DDMRM::S_IceRay::S_geometry::S_volumetric::GC_vacuum Is_vacuum;
   return Is_vacuum;
  }
 
@@ -197,8 +197,8 @@ bool   GC_wrap::F_pigment( T_pigment * P_pigment )
 
 GC_wrap::T_pigment & GC_wrap::F1s_pigment()
  {
-  static GS_DDMRM::S_IceRay::S_material::S_pigment::GC_default Is_default;
-  return Is_default;
+  static GS_DDMRM::S_IceRay::S_material::S_pigment::GC_constant Is_constant;
+  return Is_constant;
  }
 
 bool  GC_wrap::F_medium( T_medium * P_medium )

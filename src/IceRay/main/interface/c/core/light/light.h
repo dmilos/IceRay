@@ -27,8 +27,12 @@ IceRayC__EXPORT IceRayC__DECLSPEC  int                  IceRayC_Light_Area_Origi
 IceRayC__EXPORT IceRayC__DECLSPEC  int                  IceRayC_Light_Area_X(      IceRayC_Light_Handle P_this, IceRayC_TypeCoordScalar3D*  P_X );
 IceRayC__EXPORT IceRayC__DECLSPEC  int                  IceRayC_Light_Area_Y(      IceRayC_Light_Handle P_this, IceRayC_TypeCoordScalar3D*  P_Y );
 
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Light_Handle IceRayC_Light_Blocked0( );
-IceRayC__EXPORT IceRayC__DECLSPEC  int                  IceRayC_Light_Blocked_Barrier( IceRayC_Light_Handle P_this, IceRayC_Geometry_Handle P_barrier  );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Light_Handle IceRayC_Light_Obstruct0( );
+// TODO IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Light_Handle IceRayC_Light_Obstruct1( IceRayC_Light_Handle P_child );
+// TODO IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Light_Handle IceRayC_Light_Obstruct2( IceRayC_Light_Handle P_child, IceRayC_Geometry_Handle P_barrier );
+
+IceRayC__EXPORT IceRayC__DECLSPEC  int                  IceRayC_Light_Obstruct_Child( IceRayC_Light_Handle P_this, IceRayC_Light_Handle P_child );
+IceRayC__EXPORT IceRayC__DECLSPEC  int                  IceRayC_Light_Obstruct_Barrier( IceRayC_Light_Handle P_this, IceRayC_Geometry_Handle P_barrier  );
 
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Light_Handle IceRayC_Light_Chandelier0( );
 IceRayC__EXPORT IceRayC__DECLSPEC  int                  IceRayC_Light_Chandelier_Push( IceRayC_Light_Handle P_this, IceRayC_Light_Handle P_child );
@@ -97,3 +101,6 @@ IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Light_Handle IceRayC_Light_SunG1( Ice
 IceRayC__EXPORT IceRayC__DECLSPEC  int                  IceRayC_Light_SunG_Child ( IceRayC_Light_Handle P_this, IceRayC_Light_Handle P_child );
 
 #endif
+
+
+#include "./transform.h"

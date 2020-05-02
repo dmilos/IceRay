@@ -35,7 +35,7 @@
                   {
                    En_inColor_Specular = 0, En_inColor_AlphaX = 1, En_inColor_AlphaY = 2,
                    En_inCoord_Direction = 2,
-                   En_inSize_SpotCount=0,
+                   En_inSize_SpotBegin=0, En_inSize_SpotEnd=1,
                    En_inCoord_Point = 0, En_inCoord_Normal = 1
                   };
                  enum Ee_output{ En_outColor_result=0 };
@@ -43,24 +43,26 @@
                public:
                  GC_real
                   (
-                    T_size const& P_point       = 0
-                   ,T_size const& P_normal      = 1
-                   ,T_size const& P_spotCount   = 0
-                   ,T_size const& P_specular    = 0
-                   ,T_size const& P_alphaX      = 1
-                   ,T_size const& P_alphaY      = 2
-                   ,T_size const& P_direction   = 2
-                   ,T_size const& P_result      = 0
+                    T_size const& P_result            = 0
+                   ,T_size const& P_inCoord_Point     = 0
+                   ,T_size const& P_inCoord_Normal    = 1
+                   ,T_size const& P_inSize_SpotBegin  = 0
+                   ,T_size const& P_inSize_SpotEnd    = 0
+                   ,T_size const& P_specular          = 0
+                   ,T_size const& P_alphaX            = 1
+                   ,T_size const& P_alphaY            = 2
+                   ,T_size const& P_direction         = 2
                   )
                   {
-                   F_input<T_coord>( En_inCoord_Point,     P_point );
-                   F_input<T_coord>( En_inCoord_Normal,    P_normal );
-                   F_input<T_size>(  En_inSize_SpotCount,  P_spotCount );
+                   F_input<T_coord>( En_inCoord_Point,     P_inCoord_Point     );
+                   F_input<T_coord>( En_inCoord_Normal,    P_inCoord_Normal    );
+                   F_input<T_size>(   En_inSize_SpotBegin,  P_inSize_SpotBegin   );
+                   F_input<T_size>(   En_inSize_SpotEnd,    P_inSize_SpotEnd     );
 
-                   F_input<T_color>( En_inColor_Specular,    P_specular );
-                   F_input<T_color>( En_inColor_AlphaX,      P_alphaX );
-                   F_input<T_color>( En_inColor_AlphaY,      P_alphaY );
-                   F_input<T_coord>( En_inCoord_Direction,   P_direction );
+                   F_input<T_color>( En_inColor_Specular,  P_specular );
+                   F_input<T_color>( En_inColor_AlphaX,    P_alphaX   );
+                   F_input<T_color>( En_inColor_AlphaY,    P_alphaY   );
+                   F_input<T_coord>( En_inCoord_Direction, P_direction );
 
                    F_output<T_color>( En_outColor_result, P_result );
                   }
@@ -74,9 +76,10 @@
                    T_color const& I_alphaX     = M2_memoryColor->Fv_load( F_input()[ T_memory::En_color ][ En_inColor_AlphaX    ] );
                    T_color const& I_alphaY     = M2_memoryColor->Fv_load( F_input()[ T_memory::En_color ][ En_inColor_AlphaY    ] );
                    T_coord const& I_direction  = M2_memoryCoord->Fv_load( F_input()[ T_memory::En_coord ][ En_inCoord_Direction ] );
-                   T_size         I_spotCount  = M2_memorySize->Fv_load(  F_input()[ T_memory::En_size  ][ En_inSize_SpotCount ] );
                    T_coord const& I_normal     = M2_memoryCoord->Fv_load( F_input()[ T_memory::En_coord ][ En_inCoord_Normal    ] );
                    T_coord const& I_point      = M2_memoryCoord->Fv_load( F_input()[ T_memory::En_coord ][ En_inCoord_Point     ] );
+                   T_size         I_spotBegin  = M2_memorySize->Fv_load(  F_input<T_size>( En_inSize_SpotBegin ) );
+                   T_size         I_spotEnd    = M2_memorySize->Fv_load(  F_input<T_size>( En_inSize_SpotEnd ) );
 
                    GS_DDMRM::S_IceRay::S_material::S_illumination::S_ward::GC_real I_real( I_direction, I_specular, I_alphaX, I_alphaY );
 
@@ -86,14 +89,14 @@
                    T_coord I_half;
                    T_color I_energy;
 
-                   for( T_size I_spotIndex=0; I_spotIndex < I_spotCount; ++I_spotIndex )
+                   for( T_size I_spotIndex = I_spotBegin; I_spotIndex < I_spotEnd; ++I_spotIndex )
                     {
                      T_spot const& I_spot = M2_memorySpot->Fv_load( I_spotIndex );
 
+                     I_spot.F_energy( I_energy, I_point );
                      ::math::linear::vector::subtraction( I_2light, I_spot.F_center(), I_point );
                      ::math::linear::vector::length( I_2light, T_scalar(1) );
 
-                     I_spot.F_energy( I_energy, I_point );
 
                      ::math::linear::vector::subtraction( I_half, I_2light, I_incoming.M_direction );
                      ::math::linear::vector::length( I_half, T_scalar(1) );

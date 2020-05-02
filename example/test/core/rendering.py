@@ -10,47 +10,53 @@ import room
 import surface
 import light
 
+import material
+
+from material.illumination.lambert.unit          import *
+
+MakeLambert = material.illumination.lambert.unit.make
+
 
 def work( P_name, P_room, P_config, P_geometry, P_light, P_camera, P_surface, P_medium ):
     surface_global={}
     surface_global['room']={}
 
-    surface_global['room'][  'background'] = surface.make_lambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.00,  0.50,  0.00 ) ) # green
-    surface_global['room'][  'foreground'] = surface.make_lambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.00,  0.50,  0.00 ) ) # green
-    surface_global['room'][  'floor'     ] = surface.make_lambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.50,  0.50,  0.50 ) ) # gray
-    surface_global['room'][  'right'     ] = surface.make_lambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.00,  0.00,  0.75 ) ) # blue
-    surface_global['room'][  'left'      ] = surface.make_lambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.75,  0.00,  0.00 ) ) # red
-    surface_global['room'][  'ceil'      ] = surface.make_lambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.0,   0.5,   0.0 ) ) # gray
-    surface_global['room'][  'bubble'    ] = surface.make_lambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.10,  0.10,  0.10 ) ) # white
-    surface_global['room'][  'fence'     ] = surface.make_lambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.10,  0.10,  0.10 ) ) # white
-    surface_global['room'][  'box'       ] = surface.make_lambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.10,  0.10,  0.10 ) ) # white
+    surface_global['room'][  'background'] = MakeLambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.00,  0.50,  0.00 ) ) # green
+    surface_global['room'][  'foreground'] = MakeLambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.00,  0.50,  0.00 ) ) # green
+    surface_global['room'][  'floor'     ] = MakeLambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.50,  0.50,  0.50 ) ) # gray
+    surface_global['room'][  'right'     ] = MakeLambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.00,  0.00,  0.75 ) ) # blue
+    surface_global['room'][  'left'      ] = MakeLambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.75,  0.00,  0.00 ) ) # red
+    surface_global['room'][  'ceil'      ] = MakeLambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.0,   0.5,   0.0 ) ) # gray
+    surface_global['room'][  'bubble'    ] = MakeLambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.10,  0.10,  0.10 ) ) # white
+    surface_global['room'][  'fence'     ] = MakeLambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.10,  0.10,  0.10 ) ) # white
+    surface_global['room'][  'box'       ] = MakeLambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.10,  0.10,  0.10 ) ) # white
 
-    surface_global['room'][  'Side0'  ] = surface.make_lambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.5, 0.5, 0.5 ) ) # white
-    surface_global['room'][  'Side1'  ] = surface.make_lambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.5, 0.5, 0.5 ) ) # white
-    surface_global['room'][  'Side2'  ] = surface.make_lambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.5, 0.5, 0.5 ) ) # white
-    surface_global['room'][  'Side3'  ] = surface.make_lambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.5, 0.5, 0.5 ) ) # white
-    surface_global['room'][  'Side4'  ] = surface.make_lambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.5, 0.5, 0.5 ) ) # white
-    surface_global['room'][  'Side5'  ] = surface.make_lambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.5, 0.5, 0.5 ) ) # white
-    surface_global['room'][  'Side6'  ] = surface.make_lambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.5, 0.5, 0.5 ) ) # white
-    surface_global['room'][  'Side7'  ] = surface.make_lambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.5, 0.5, 0.5 ) ) # white
-    surface_global['room'][  'Side8'  ] = surface.make_lambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.5, 0.5, 0.5 ) ) # white
-    surface_global['room'][  'Side9'  ] = surface.make_lambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.5, 0.5, 0.5 ) ) # white
-    surface_global['room'][  'Side10' ] = surface.make_lambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.5, 0.5, 0.5 ) ) # white
-    surface_global['room'][  'Side11' ] = surface.make_lambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.5, 0.5, 0.5 ) ) # white
-    surface_global['room'][  'Side12' ] = surface.make_lambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.5, 0.5, 0.5 ) ) # white
-    surface_global['room'][  'Side13' ] = surface.make_lambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.5, 0.5, 0.5 ) ) # white
-    surface_global['room'][  'Side14' ] = surface.make_lambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.5, 0.5, 0.5 ) ) # white
-    surface_global['room'][  'Side15' ] = surface.make_lambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.5, 0.5, 0.5 ) ) # white
-    surface_global['room'][  'Side16' ] = surface.make_lambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.5, 0.5, 0.5 ) ) # white
-    surface_global['room'][  'Side17' ] = surface.make_lambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.5, 0.5, 0.5 ) ) # white
-    surface_global['room'][  'Side18' ] = surface.make_lambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.5, 0.5, 0.5 ) ) # white
-    surface_global['room'][  'Side19' ] = surface.make_lambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.5, 0.5, 0.5 ) ) # white
-    surface_global['room'][  'Side20' ] = surface.make_lambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.5, 0.5, 0.5 ) ) # white
+    surface_global['room'][  'Side0'  ] = MakeLambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.5, 0.5, 0.5 ) ) # white
+    surface_global['room'][  'Side1'  ] = MakeLambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.5, 0.5, 0.5 ) ) # white
+    surface_global['room'][  'Side2'  ] = MakeLambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.5, 0.5, 0.5 ) ) # white
+    surface_global['room'][  'Side3'  ] = MakeLambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.5, 0.5, 0.5 ) ) # white
+    surface_global['room'][  'Side4'  ] = MakeLambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.5, 0.5, 0.5 ) ) # white
+    surface_global['room'][  'Side5'  ] = MakeLambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.5, 0.5, 0.5 ) ) # white
+    surface_global['room'][  'Side6'  ] = MakeLambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.5, 0.5, 0.5 ) ) # white
+    surface_global['room'][  'Side7'  ] = MakeLambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.5, 0.5, 0.5 ) ) # white
+    surface_global['room'][  'Side8'  ] = MakeLambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.5, 0.5, 0.5 ) ) # white
+    surface_global['room'][  'Side9'  ] = MakeLambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.5, 0.5, 0.5 ) ) # white
+    surface_global['room'][  'Side10' ] = MakeLambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.5, 0.5, 0.5 ) ) # white
+    surface_global['room'][  'Side11' ] = MakeLambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.5, 0.5, 0.5 ) ) # white
+    surface_global['room'][  'Side12' ] = MakeLambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.5, 0.5, 0.5 ) ) # white
+    surface_global['room'][  'Side13' ] = MakeLambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.5, 0.5, 0.5 ) ) # white
+    surface_global['room'][  'Side14' ] = MakeLambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.5, 0.5, 0.5 ) ) # white
+    surface_global['room'][  'Side15' ] = MakeLambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.5, 0.5, 0.5 ) ) # white
+    surface_global['room'][  'Side16' ] = MakeLambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.5, 0.5, 0.5 ) ) # white
+    surface_global['room'][  'Side17' ] = MakeLambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.5, 0.5, 0.5 ) ) # white
+    surface_global['room'][  'Side18' ] = MakeLambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.5, 0.5, 0.5 ) ) # white
+    surface_global['room'][  'Side19' ] = MakeLambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.5, 0.5, 0.5 ) ) # white
+    surface_global['room'][  'Side20' ] = MakeLambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.5, 0.5, 0.5 ) ) # white
 
-    surface_global['room'][  'lambert-red'   ] = surface.make_lambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 1.0,  0.0,  0.0 ) )
-    surface_global['room'][  'lambert-green' ] = surface.make_lambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.0,  1.0,  0.0 ) )
-    surface_global['room'][  'lambert-blue'  ] = surface.make_lambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.0,  0.0,  1.0 ) )
-    surface_global['room'][  'lambert-white' ] = surface.make_lambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 1.0,  1.0,  1.0 ) )
+    surface_global['room'][  'lambert-red'   ] = MakeLambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 1.0,  0.0,  0.0 ) )
+    surface_global['room'][  'lambert-green' ] = MakeLambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.0,  1.0,  0.0 ) )
+    surface_global['room'][  'lambert-blue'  ] = MakeLambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.0,  0.0,  1.0 ) )
+    surface_global['room'][  'lambert-white' ] = MakeLambert(P_light, IceRayCpp.GraphTypeColorRGB().load( 1.0,  1.0,  1.0 ) )
 
     #surface_global['room'][  'background'] = surface.make_ambient(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.5, 0.5, 0.5 ) ) # green
     #surface_global['room'][  'foreground'] = surface.make_ambient(P_light, IceRayCpp.GraphTypeColorRGB().load( 0.0, 0.5, 0.5 ) ) # green

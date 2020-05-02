@@ -39,14 +39,16 @@
                public:
                  GC_corrector
                   (
-                    T_size const& P_inNormal  = 1
-                   ,T_size const& P_inBump    = 2
-                   ,T_size const& P_inCorrect = 2
+                    T_size const& P_inCoord_Normal  = 1
+                   ,T_size const& P_inCoord_Bump    = 2
+                   ,T_size const& P_inCount = 2
+                   ,T_size const& P_inStart = 2
                   )
-                  {
-                   F_input<T_coord>(    En_inCoord_Normal,   P_inNormal   );
-                   F_input<T_coord>(    En_inCoord_Bump ,    P_inBump     );
-                   F_output<T_coord>(  En_outCoord_Correct, P_inCorrect  );
+                  { // TODO
+                   F_input<T_coord>(    En_inCoord_Normal,   P_inCoord_Normal   );
+                   F_input<T_coord>(    En_inCoord_Bump ,    P_inCoord_Bump     );
+                   F_input<T_coord>(    En_inCoord_Bump ,    P_inCoord_Bump     );
+                   //F_output<T_coord>(  En_outCoord_Correct, P_inCorrect  );
                   }
 
                public:

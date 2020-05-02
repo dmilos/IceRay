@@ -45,13 +45,13 @@
                public:
                  explicit GC_UVW
                   (
-                    T_size const& P_point      = 0
-                   ,T_size const& P_result     = 0
+                    T_size const& P_result        = 0
+                   ,T_size const& P_inCoord_Point = 0
                   )
                   {
-                   F_input<T_coord>( En_inCoord_Point,     P_point );
-
                    F_output<T_coord>( En_outCoord_result, P_result );
+
+                   F_input<T_coord>( En_inCoord_Point,    P_inCoord_Point );
                   }
 
                public:

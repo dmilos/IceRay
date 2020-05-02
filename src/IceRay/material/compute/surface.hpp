@@ -42,29 +42,41 @@
              };
 
            public:
-             GC_surface()
+             GC_surface
+              (
+                T_size const& P_result = 0
+               ,T_size const& P_lambda = 0
+               ,T_size const& P_inCoord_Point  = 0
+               ,T_size const& P_inCoord_Normal = 1
+              )
               {
                M2_scalar = dynamic_cast< T2_scalar*> (  M2_pocessor.F_memory().F_get( T_memory::En_scalar  ) );
                M2_color  = dynamic_cast< T2_color *> (  M2_pocessor.F_memory().F_get( T_memory::En_color   ) );
                M2_coord  = dynamic_cast< T2_coord *> (  M2_pocessor.F_memory().F_get( T_memory::En_coord   ) );
              //M2_ray    = dynamic_cast< T2_ray   *> (  M2_pocessor.F_memory().F_get( T_memory::En_ray     ) );
+
+               M2_result = P_result;
+               M2_lambda = P_lambda;
+               M2_point  = P_inCoord_Point;
+               M2_normal = P_inCoord_Normal;
               }
 
            public:
              bool Fv_color( T_color & P_color, T_beam &P_next, T_pigment::T_intersect const& P_intersect, T_state const& P_state )const
              {
-              M2_scalar->Fv_store( En_inScalar_Lambda, P_intersect.M_intersection.M_lambda );
-              M2_coord->Fv_store(  En_inCoord_Point,   P_intersect.M_intersection.M_point  );
-              M2_coord->Fv_store(  En_inCoord_Normal,  P_intersect.M_intersection.M_normal );
-            //M2_color->Fv_store(  En_inRay_Incoming,  P_intersect.M_ray    );
-            //M2_color->Fv_store(  En_outColor_Result, ::color:constant::black_t{} );
+              M2_scalar->Fv_store( M2_lambda,   P_intersect.M_intersection.M_lambda );
+              M2_coord->Fv_store(  M2_point,    P_intersect.M_intersection.M_point  );
+              M2_coord->Fv_store(  M2_normal,   P_intersect.M_intersection.M_normal );
+            //M2_color->Fv_store(  M2_incoming, P_intersect.M_ray    );
+            //M2_color->Fv_store(  M2_result, ::color:constant::black_t{} );
+            //M2_color->Fv_store(  M2_result, P_color );
 
               if( false == M2_pocessor.Fv_execute( P_next, P_intersect, P_state ) )
                {
                 return false;
                }
 
-              P_color = M2_color->Fv_load( En_outColor_Result );
+              P_color = M2_color->Fv_load( M2_result );
               return true;
              }
 
@@ -91,10 +103,59 @@
               }
 
            public:
+             T_size  const& F_result()const{ return M2_result; }
+             bool           F_result( T_size const& P_result )
+              {
+               M2_result = P_result;
+               return true;
+              }
+
+           protected:
+             T_size       & F1_result()    { return M2_result; }
+           private:
+             T_size M2_result;
+
+           public:
+             T_size  const& F_lambda()const{ return M2_lambda; }
+             bool           F_lambda( T_size const& P_lambda )
+              {
+               M2_lambda = P_lambda;
+               return true;
+              }
+           protected:
+             T_size       & F1_lambda()    { return M2_lambda; }
+           private:
+             T_size M2_lambda;
+
+           public:
+             T_size  const& F_point()const{ return M2_point; }
+             bool           F_point( T_size const& P_point )
+              {
+               M2_point = P_point;
+               return true;
+              }
+           protected:
+             T_size       & F1_point()    { return M2_point; }
+           private:
+             T_size M2_point;
+
+           public:
+             T_size  const& F_normal()const{ return M2_normal; }
+             bool           F_normal( T_size const& P_normal )
+              {
+               M2_normal = P_normal;
+               return true;
+              }
+           protected:
+             T_size       & F1_normal()    { return M2_normal; }
+           private:
+             T_size M2_normal;
+
+           public:
              T_processor  const& F_pocessor()const{ return M2_pocessor; }
              T_processor       & F_pocessor()     { return M2_pocessor; }
            protected:
-             T_processor        & F1_pocessor(){ return M2_pocessor; }
+             T_processor      & F1_pocessor()     { return M2_pocessor; }
            private:
              T_processor M2_pocessor;
 

@@ -1,0 +1,8 @@
+_BEGIN = 0
+
+BLACK=0
+WHITE=1
+GRAY=2
+
+
+_END = 10

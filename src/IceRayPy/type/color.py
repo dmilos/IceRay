@@ -1,6 +1,10 @@
 import ctypes
 
-Scalar = ctypes.c_double
+print( '<' + __name__ + ' name=\'' +   __file__ + '\'>' )
+
+import IceRayPy.type.basic
+
+Scalar = ctypes.c_double # TODO
 
 class RGB(ctypes.Structure):
     _fields_ = [("r", Scalar),
@@ -14,3 +18,5 @@ class RGBA(ctypes.Structure):
                 ("b", Scalar),
                 ("a", Scalar)
                 ]
+
+print( '</' + __name__ + ' name=\'' +   __file__ + '\'>' )

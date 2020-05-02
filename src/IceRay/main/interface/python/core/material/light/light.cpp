@@ -89,7 +89,7 @@ void expose_IceRay_material_light_spotSwarm()
  
    boost::python::object I_this = Tf_this( "MaterialLightSpotSwarmC" )
      .def( boost::python::init<>() )
-     .def( boost::python::init<GTs_size,GTs_size,GTs_size,GTs_size>() )
+     .def( boost::python::init< GTs__pure*, GTs_size,GTs_size,GTs_size,GTs_size>() )
    ;
   }
 
@@ -102,7 +102,7 @@ void expose_IceRay_material_light_spotUVW()
   MAKE_SUBMODULE( material );
   MAKE_SUBMODULE( light );
 
-  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_light::GC_spotUVW     GTs_spotUVW;
+  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_spot::GC_UVW     GTs_spotUVW;
 
   typedef boost::python::class_<GTs_spotUVW, boost::python::bases< GTs_instruction  > > Tf_this;
 
@@ -131,12 +131,12 @@ void expose_IceRay_material_light_spotCull()
   MAKE_SUBMODULE( material );
   MAKE_SUBMODULE( light );
 
-  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_light::GC_spotCull  Ts_cull;
+  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_spot::GC_cull  Ts_cull;
   typedef boost::python::class_<Ts_cull, boost::python::bases< GTs_instruction  > > Tf_this;
 
   boost::python::object I_this = Tf_this( "MaterialLightSpotCull" )
     .def( boost::python::init<>() )
-    .def( boost::python::init< GTs_size,GTs_size,GTs_size,GTs_size>() )
+    .def( boost::python::init< GTs_size,GTs_size,GTs_size,GTs_size,GTs_size>() )
     ;
 
   boost::python::scope I_scope = I_this;

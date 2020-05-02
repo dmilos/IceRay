@@ -72,7 +72,7 @@ GC_parallel::F_range( T_range const& P_range )
     I_coord[1] = I_bottom;
     I_range.hi() =  I_coord;
 
-    I_job.M_scanner.F_range( I_range );
+    I_job.M_scanner.F_window( I_range );
    }
 
   return T_report( true );
