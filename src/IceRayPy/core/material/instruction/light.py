@@ -25,7 +25,7 @@ class SpotConfine:
     def __init__(self, P_dll, P_geometry, P_outSpotEnd, P_spotBegin, P_spotEnd ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
-        self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Material_Pigment_Surface_Instruction_Spot_Confine0( P_geometry.m_cargo['this'], P_outSpotEnd,P_spotBegin, P_spotCount )
+        self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Material_Pigment_Surface_Instruction_Spot_Confine0( P_geometry.m_cargo['this'], P_outSpotEnd, P_spotBegin, P_spotEnd )
         self.m_cargo['geometry'] = P_geometry
 
     def __del__(self):

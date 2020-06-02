@@ -15,7 +15,7 @@ import room
 
 
 camera_list = {
-      'flat-Perspective'          : core.camera.flat.Perspective,
+       'flat-Perspective'          : core.camera.flat.Perspective,
       #'flat-orthogonal'           : core.camera.flat.Orthogonal,
       #'flat-Super'                : core.camera.flat.Super,
       #'sphere-horizontal'         : core.camera.sphere.Horizontal,
@@ -27,25 +27,24 @@ camera_list = {
      }
 
 light_list = {
-       #'dark'       : light.dark.unit.make,
-       #'point'      : core.light.Point ,
+       #'dark'       : core.light.Dark,
+       'point'      : core.light.Point ,
        #'reflector'  : core.light.Reflector ,
-       #'sunPoint'   : utility.light.sun.general.point,
-       #'sunSpot'    : utility.light.sun.spot,
-       #'sunArea'    : utility.light.sun.general.area,
-       #'sunLine'    : utility.light.sun.general.line,
-       #'sunCircle'  : utility.light.sun.general.circle,
-       #'sunDisc'    : utility.light.sun.general.disc,
        #'line'       : core.light.Line,
        #'spline'     : core.light.Spline ,
-       'circle'     : core.light.Circle ,
+       #'circle'     : core.light.Circle ,
        #'area'       : core.light.Area ,
        #'disc'       : core.light.Disc,
-       #'confine'       : core.light.Confine,
-       #'sphere'     : util.light.sphere.unit.make,
-       #'chandelier-H'  : util.light.chandelier.unit.hexa,
-       #'chandelier-T'  : util.light.chandelier.unit.tetra,
-       #'chandelier-O'  : util.light.chandelier.unit.octa
+       #'confine'    : core.light.Confine,
+       #'sunPoint'   : utility.light.sun.Point,
+       #'sunArea'    : utility.light.sun.Area,
+       #'sunLine'    : utility.light.sun.Line,
+       #'sunCircle'  : utility.light.sun.Circle,
+       #'sunDisc'    : utility.light.sun.Disc,
+       #'sphere'     : utility.light.sphere.unit.make,    # TODO NYI
+       #'chandelier-H'  : utility.light.chandelier.Hexa,  # TODO NYI
+       #'chandelier-T'  : utility.light.chandelier.Tetra, # TODO NYI
+       #'chandelier-O'  : utility.light.chandelier.Octa   # TODO NYI
     }
 
 medium_list = {
@@ -56,63 +55,108 @@ medium_list = {
     }
 
 geometry_list = {
-      #'simple-usphere'    : core.geometry.simple.USphere,
-      #'simple-box'           : core.geometry.simple.Box,
-      #'simple-Cone'           : core.geometry.simple.Cone,
-      #'simple-Cylinder'           : core.geometry.simple.Cylinder,
-      #'simple-Disc'           : core.geometry.simple.Disc,
-      #'simple-Ellipsoid'           : core.geometry.simple.Ellipsoid,
-      #'simple-Hyperboloid'           : core.geometry.simple.Hyperboloid,
-      #'simple-Paraboloid'           : core.geometry.simple.Paraboloid,
-      #'simple-Plane'           : core.geometry.simple.Plane,
-      #'simple-Quadric'           : core.geometry.simple.Quadric,
-      #'simple-Torus'           : core.geometry.simple.Torus,
-      #'simple-Triangle'           : core.geometry.simple.Triangle,
-      #'simple-Saddle'           : core.geometry.simple.Saddle,
-      #'simple-ucylinder'    : core.geometry.simple.UCylinder,
-      'simple-USphere'    : core.geometry.simple.USphere,
-      #'complex-Intersect'    : core.geometry.complex.Intersect,
-      #'complex-Enclose'    : core.geometry.complex.Enclose,
-      #'transform-Identity'    : core.geometry.transform.Identity,
-      #'transform-Translate'   : core.geometry.transform.Translate,
-      #'transform-Affine'     : core.geometry.transform.Affine,
-      #'volumetric-Vacuum'     : core.geometry.volumetric.Vacuum,
-      #'volumetric-Mist'     : core.geometry.volumetric.Mist,
-      #'volumetric-Smoke'     : core.geometry.volumetric.Smoke
+      'simple-usphere'       : core.geometry.simple.USphere,
+      'simple-box'           : core.geometry.simple.Box,
+      'simple-Cone'          : core.geometry.simple.Cone,
+      'simple-Cylinder'      : core.geometry.simple.Cylinder,
+      'simple-Disc'          : core.geometry.simple.Disc,
+      'simple-Ellipsoid'     : core.geometry.simple.Ellipsoid,
+      'simple-Hyperboloid'   : core.geometry.simple.Hyperboloid,
+      'simple-Paraboloid'    : core.geometry.simple.Paraboloid,
+      'simple-Plane'         : core.geometry.simple.Plane,
+      'simple-Quadric'       : core.geometry.simple.Quadric,
+      'simple-Torus'         : core.geometry.simple.Torus,
+      'simple-Triangle'      : core.geometry.simple.Triangle,
+      'simple-Saddle'        : core.geometry.simple.Saddle,
+      'simple-ucylinder'     : core.geometry.simple.UCylinder,
+      'hyper-nuke'           : utility.geometry.simple.hyperboloid.Nuke,
+      'hyper-sphere'         : utility.geometry.simple.hyperboloid.Sphere,
+      'hyper-cone'           : utility.geometry.simple.hyperboloid.Cone,
+      'hyper-cylinder'       : utility.geometry.simple.hyperboloid.Cylinder,
+      'hyper-negative'       : utility.geometry.simple.hyperboloid.Negative,
+      
+      'complex-Intersect'    : core.geometry.complex.Intersect,
+      'complex-Enclose'      : core.geometry.complex.Enclose,
+      'transform-Identity'   : core.geometry.transform.Identity,
+      'transform-Translate'  : core.geometry.transform.Translate,
+      'transform-Affine'     : core.geometry.transform.Affine,
+      'volumetric-Vacuum'    : core.geometry.volumetric.Vacuum,
+      'volumetric-Mist'      : core.geometry.volumetric.Mist,
+      'volumetric-Smoke'     : core.geometry.volumetric.Smoke
+
      }
 
 pigment_list = {
       #'default'                 : core.material.pigment.Constant,
       #'surface'                 : core.material.pigment.Surface,
-      #'pattern-image'           : utility.material.pattern.Image,
-       #'pattern-checker'         : utility.material.pattern.Checker,
-       #'pattern-hexagon'         : utility.material.pattern.Hexagon,
-       #'illumination-ambient'    : utility.material.illumination.Ambient,
-       'illumination-lambert'    : utility.material.illumination.Lambert,
-       #'illumination-phong'      : utility.material.illumination.Phong,
-       #'illumination-ALP'        : utility.material.illumination.Alp,
-       #'mapping-ID'         : utility.material.operation.mapping.Identity,
-       #'mapping-Cartesian2Cylindric'        : utility.material.operation.mapping.Cartesian2Cylindric,
-       #'mapping-Cartesian2Package'        : utility.material.operation.mapping.Cartesian2Package,
-       #'mapping-Cartesian2Spherical'        : utility.material.operation.mapping.Cartesian2Spherical,
-       #'mapping-Cartesian2Torus'        : utility.material.operation.mapping.Cartesian2Torus,
-       #'mapping-Cartesian2Tablecloth'        : utility.material.operation.mapping.Cartesian2Tablecloth,
-       #'mapping-Cartesian2WoodX'        : utility.material.operation.mapping.Cartesian2WoodX,
-       #'mapping-Cartesian2WoodY'        : utility.material.operation.mapping.Cartesian2WoodY,
-       #'mapping-Cartesian2WoodZ'        : utility.material.operation.mapping.Cartesian2WoodZ,
-       #'mapping-Cylindric2Cartesian'        : utility.material.operation.mapping.Cylindric2Cartesian,
-       #'mapping-Cylindric2Spherical'        : utility.material.operation.mapping.Cylindric2Spherical,
-       #'mapping-Spherical2Cartesian'        : utility.material.operation.mapping.Spherical2Cartesian,
-       #'mapping-Spherical2Cylindric'        : utility.material.operation.mapping.Spherical2Cylindric,
-       #'mapping-Euclid2Max'        : utility.material.operation.mapping.Euclid2Max,
-       #'mapping-Max2Euclid'        : utility.material.operation.mapping.Max2Euclid,
-       #'mapping-Cartesian2Fisheye'        : utility.material.operation.mapping.Cartesian2Fisheye
-    }
+
+    #'pattern-noise-cells'      : utility.material.pattern.noise.Cells,
+    #'pattern-noise-crackle'    : utility.material.pattern.noise.Crackle,
+    #'pattern-noise-perlin'     : utility.material.pattern.noise.Perlin,
+    #'pattern-noise-random'     : utility.material.pattern.noise.Random,
+    #'pattern-noise-value'      : utility.material.pattern.noise.Value,
+    #'pattern-noise-vdc'        : utility.material.pattern.noise.VDC,
+    #'pattern-image'            : utility.material.pattern.Image,
+    #'pattern-checker'          : utility.material.pattern.Checker,
+    #'pattern-hexagon'          : utility.material.pattern.Hexagon,
+    #'pattern-onion'            : utility.material.pattern.Onion, #TODO check
+    #'pattern-level'            : utility.material.pattern.Level, #TODO check
+
+     'illumination-ALP'           : utility.material.illumination.Alp, # OK
+    #'illumination-ambient'       : utility.material.illumination.Ambient, # OK
+    #'illumination-AsDiffuse'     : utility.material.illumination.AsDiffuse,  # TODO
+    #'illumination-AsSpecular'    : utility.material.illumination.AsSpecular, # TODO
+    #'illumination-Beckmann'      : utility.material.illumination.Beckmann, # TODO problem on terminator
+    #'illumination-Blinn'         : utility.material.illumination.Blinn,    # TODO problem on terminator
+    #'illumination-Gaussian'      : utility.material.illumination.Gaussian, # TODO problem on terminator
+    #'illumination-HsLambert'     : utility.material.illumination.HsLambert, # TODO
+    #'illumination-HsPhong'       : utility.material.illumination.HsPhong,   # TODO problem on terminator
+    #'illumination-Lambert'       : utility.material.illumination.Lambert, #OK
+    #'illumination-OnF29'         : utility.material.illumination.OnF29,  # TODO
+    #'illumination-OnP44'         : utility.material.illumination.OnP44,  # TODO
+    #'illumination-OnYF'          : utility.material.illumination.OnYF,   # TODO
+    #'illumination-Phong'         : utility.material.illumination.Phong, #OK
+    #'illumination-WardApprox'    : utility.material.illumination.WardApprox,    # TODO
+    #'illumination-WardIsotropic' : utility.material.illumination.WardIsotropic, # TODO
+    #'illumination-WardReal'      : utility.material.illumination.WardReal,      # TODO
+
+    #'mapping-o-ID'                     : utility.material.operation.mapping.Identity,             #TODO check
+    #'mapping-o-Cartesian2Cylindric'    : utility.material.operation.mapping.Cartesian2Cylindric,  #TODO check
+    #'mapping-o-Cartesian2Package'      : utility.material.operation.mapping.Cartesian2Package,    #TODO check
+    #'mapping-o-Cartesian2Spherical'    : utility.material.operation.mapping.Cartesian2Spherical,  #TODO check
+    #'mapping-o-Cartesian2Torus'        : utility.material.operation.mapping.Cartesian2Torus,      #TODO check
+    #'mapping-o-Cartesian2Tablecloth'   : utility.material.operation.mapping.Cartesian2Tablecloth, #TODO check
+    #'mapping-o-Cartesian2WoodX'        : utility.material.operation.mapping.Cartesian2WoodX,      #TODO check
+    #'mapping-o-Cartesian2WoodY'        : utility.material.operation.mapping.Cartesian2WoodY,      #TODO check
+    #'mapping-o-Cartesian2WoodZ'        : utility.material.operation.mapping.Cartesian2WoodZ,      #TODO check
+    #'mapping-o-Cylindric2Cartesian'    : utility.material.operation.mapping.Cylindric2Cartesian,  #TODO check
+    #'mapping-o-Cylindric2Spherical'    : utility.material.operation.mapping.Cylindric2Spherical,  #TODO check
+    #'mapping-o-Spherical2Cartesian'    : utility.material.operation.mapping.Spherical2Cartesian,  #TODO check
+    #'mapping-o-Spherical2Cylindric'    : utility.material.operation.mapping.Spherical2Cylindric,  #TODO check
+    #'mapping-o-Euclid2Max'             : utility.material.operation.mapping.Euclid2Max,           #TODO check
+    #'mapping-o-Max2Euclid'             : utility.material.operation.mapping.Max2Euclid,           #TODO check
+    #'mapping-o-Cartesian2Fisheye'      : utility.material.operation.mapping.Cartesian2Fisheye,    #TODO check
+
+
+     #'transmission-reflect-One'              : utility.material.transmission.reflect.One,      #OK
+     #'transmission-reflect-Schlick'          : utility.material.transmission.reflect.Schlick,  #OK
+     #'transmission-reflect-blossom-Hexagon'  : utility.material.transmission.blossom.Hexagon,  #OK
+     #'transmission-reflect-blossom-Grid'     : utility.material.transmission.blossom.Grid,     #TODO
+     #'transmission-reflect-blossom-Rand'     : utility.material.transmission.blossom.Random,   #OK
+     #'transmission-reflect-blossom-VDC'      : utility.material.transmission.blossom.VDC,      #OK
+     #'transmission-refract-Arbitrary'        : utility.material.transmission.refract.Arbitrary,#TODO check
+     #'transmission-refract-Fresnel'          : utility.material.transmission.refract.Fresnel,  #TODO
+     #'transmission-refract-One'              : utility.material.transmission.refract.One,      #OK
+     #'transmission-refract-Schlick'          : utility.material.transmission.refract.Schlick,  #OK
+
+}
 
 room_list = {
       #'vacuum'    : room.vacuum,
       'plane'     : room.plane,
-      #'cornel'    : room.cornel
+      #'plate'     : room.plate,
+      #'cornel'    : room.cornel_open
+      #'cornel'    : room.cornel_close
     }
 
 
@@ -126,10 +170,10 @@ def doRendering(P_config):
                    for key_light, data_light in light_list.items():
                        name = key_room +"-"+ key_camera +'-'+ key_geometry +"-"+ key_pigment+"-" + key_light
                        filen_name = folder + "\\" + name + '_'+ "{:04d}".format(P_config['index']) + '.ppm'
+                       print ( filen_name )
 
                        my_file = pathlib.Path(filen_name)
                        if my_file.is_file():
-                           print ( filen_name )
                            continue
 
                        geometry = data_geometry( P_config['dll'] )
@@ -140,7 +184,10 @@ def doRendering(P_config):
                        light_blocked = core.light.Obstruct( P_config['dll'], light_enclose, geometry );
                        light_final = light_blocked
 
-                       pigment = data_pigment( P_config['dll'], light_enclose, geometry )
+                       P_config['light'] = light_enclose
+                       P_config['geometry'] = geometry
+
+                       pigment = data_pigment( P_config['dll'], P_config )
                        medium = medium_list['constant']( P_config['dll'] )
                        object = composer.object( P_config['dll'], geometry, pigment, medium )
 
@@ -187,8 +234,8 @@ config['dll'] = cdll.LoadLibrary(r"z:\work\code\cpp\prj\github\IceRay\work\bin\I
 config['index'] = 0
 
 config['picture'] = {}
-config['picture']['width']  = int( 900 )
-config['picture']['height'] = int( 900 )
+config['picture']['width']  = int( 512 + 256 )
+config['picture']['height'] = int( 512 + 256 )
 
 config['camera'] = {}
 config['camera']['width']  = 1
@@ -201,8 +248,8 @@ config['ray-trace']={}
 config['ray-trace']['depth'] = 12
 config['ray-trace']['trash'] = 0.001
 config['hot'] = {}
-config['hot']['x'] = 256
-config['hot']['y'] = 221
+config['hot']['x'] = 241
+config['hot']['y'] = 171
 
 config['window'] = {}
 config['window'] = {}
@@ -219,14 +266,14 @@ for index in range( start, 360, step ):
 
     config['index'] = index
     t = index/360.0
-    alpha = t * ( 2 * 3.1415926 ) * 0
+    alpha = t * ( 2 * 3.1415926 )
 
     height =     ( math.cos( 2* alpha ) + 1 )/2 ;
     height = 3 * ( math.cos(    alpha ) + 1 )/2 *  height;
 
     x = 2 * math.cos( alpha );
     y = ( 3*( math.cos( alpha ) +1)/2 + 1 ) * math.sin( alpha );
-    config['camera']['eye'] = IceRayPy.type.math.coord.Scalar3D( x*0.8, y*0.8, height*0.8 );
+    config['camera']['eye']  = IceRayPy.type.math.coord.Scalar3D( x*0.8, y*0.8, height*0.8 );
     config['camera']['view'] = IceRayPy.type.math.coord.Scalar3D( 0, 0, 0 )
 
     print( "Index:" + str(index) + "[" + os.getcwd() + "]" )

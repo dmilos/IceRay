@@ -7,6 +7,7 @@ import IceRayPy.core.material.instruction.light
 import IceRayPy.core.material.instruction.label
 import IceRayPy.core.material.instruction.operation
 import IceRayPy.core.material.instruction.constant
+import IceRayPy.core.material.instruction.convert
 
 class NOP:
     def __init__(self, P_dll ):

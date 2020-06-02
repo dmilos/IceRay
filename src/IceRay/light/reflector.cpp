@@ -21,13 +21,13 @@ GC_reflector::GC_reflector
  (
    T_coord  const& P_position
   ,T_coord  const& P_direction
-  ,T_scalar const& P_in
-  ,T_scalar const& P_out 
+  ,T_scalar const& P_inner
+  ,T_scalar const& P_outter
  )
  :M2_spot( P_position )
  ,M2_direction( P_direction )
- ,M2_inner( P_in )
- ,M2_outter( P_out )
+ ,M2_inner( P_inner )
+ ,M2_outter( P_outter )
  {
   M2_inner = cos( M2_inner );
   M2_outter = cos( M2_outter );
@@ -46,11 +46,6 @@ GC_reflector::GC_reflector
  ,M2_outter( P_out )
  {
   ::math::linear::vector::length( M2_direction, P_direction, T_scalar(1) );
-
-  if( M2_inner > M2_outter )
-   {
-    std::swap( M2_inner, M2_outter );
-   }
 
   M2_inner = cos( M2_inner );
   M2_outter = cos( M2_outter );
@@ -75,7 +70,7 @@ GC_reflector::Fv_swarm
 
   I_alfa /= I_d;
 
-  if( M2_outter < I_alfa )
+  if( I_alfa < M2_outter )
    return 0;  //!< nothig
 
   if( I_alfa < Is_small )
@@ -83,9 +78,9 @@ GC_reflector::Fv_swarm
     I_alfa = Is_small;
    }
 
-  if( M2_inner < I_alfa  )
+  if( M2_inner < I_alfa )
    {
-    I_alfa = T_scalar( 1 ) ;
+    I_alfa = T_scalar( 1 );
    }
    else
     {

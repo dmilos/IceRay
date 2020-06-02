@@ -59,7 +59,7 @@
              protected:
                T_coord        & F1_size(){ return M2_size; }
              private:
-               T_coord      M2_size; //!< Number of fields. Like grid.
+               T_coord      M2_size; //!< Number of fields. Like grid. 1x1 is vertical line, 2x2 is cube. 3x3 is four cubes, ...
              public:
             };
 

@@ -238,12 +238,15 @@ if( True ):
 
 cc_files += [ os.path.join( 'render', 'engine.cpp' ) ]
 
+cc_files += [ os.path.join( 'type', 'type.cpp'    ) ]
+if( False ):
+    cc_files += [ os.path.join( 'type', 'general', 'child.cpp'   ) ]
+    cc_files += [ os.path.join( 'type', 'general', 'parent.cpp'   ) ]
+
 cc_files += [ os.path.join( 'utility', 'utility.cpp'    ) ]
 if( False ):
     cc_files += [ os.path.join( 'utility', 'random.cpp'    ) ]
     cc_files += [ os.path.join( 'utility', 'table', 'table.cpp'   ) ]
-
-
 
 cc_submodule_memory_files = []
 #cc_submodule_files += [ os.path.join(  'math', 'random', 'sobol2D.cpp' ) ]

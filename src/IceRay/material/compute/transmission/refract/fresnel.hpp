@@ -49,16 +49,16 @@
                     (
                       T_size const& P_inCoord_Point      = 0
                      ,T_size const& P_inCoord_Normal     = 1
-                     ,T_size const& P_ior        = 0
-                     ,T_size const& P_albedo     = 0
-                   //,T_size const& P_outSize_rayCount = 0,
-                   //,T_size const& P_outRay_refracted = 1
+                     ,T_size const& P_ior                = 0
+                     ,T_size const& P_albedo             = 0
+                   //,T_size const& P_outSize_rayCount   = 0,
+                   //,T_size const& P_outRay_refracted   = 1
                     )
                     {
                      F_input<T_coord>(  En_inCoord_Point,       P_inCoord_Point      );
                      F_input<T_coord>(  En_inCoord_Normal,      P_inCoord_Normal     );
-                     F_input<T_color>(  En_inColor_Albedo,      P_albedo );
-                     F_input<T_scalar>( En_inScalar_IOR,        P_ior        );
+                     F_input<T_color>(  En_inColor_Albedo,      P_albedo             );
+                     F_input<T_scalar>( En_inScalar_IOR,        P_ior                );
 
                    //F_output<T_size>( En_outSize_RayCount,     P_outSize_RayCount );
                    //F_output( T_memory::En_ray,   En_outRay_refracted,     P_outRay_refracted );
@@ -99,8 +99,8 @@
                         {
                          GS_DDMRM::S_IceRay::S_material::S_transmission::GC_fresnel I_fresnel( I_air, I_watter );
 
-                         T_scalar  I_reflectance    ;
-                         T_scalar  I_transparency  ;
+                         T_scalar  I_reflectance;
+                         T_scalar  I_transparency;
 
                          I_fresnel.F_process( I_reflectance, I_transparency, I_reflected, I_refracted, I_normal );
 

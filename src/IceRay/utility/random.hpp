@@ -119,7 +119,7 @@
             public:
               typedef GS_DDMRM::S_IceRay::S_type::GT_size   T_size;
               typedef GS_DDMRM::S_IceRay::S_type::GT_scalar T_scalar;
-              typedef std::array<T_scalar,30> T_table;
+              typedef std::array<T_scalar,32> T_table;
 
               GC_table1D(){  M2_counter = 0; }
               T_scalar operator()()

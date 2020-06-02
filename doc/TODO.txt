@@ -1,15 +1,12 @@
+- HField
 - medium handling
-- cameras
 - lights
 -- test for sphere
 - illuminations
-- computing
-- geometryes
+- geometries
 --blobby
 -- etc
 - pattern
-- blobby
-- HField
 - CSG
 - bezier
 - projective

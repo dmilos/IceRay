@@ -1,2 +1,2 @@
 #include "./diffuse.hpp"
-//#include "./specular.hpp"
+#include "./specular.hpp"

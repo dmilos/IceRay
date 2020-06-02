@@ -1,7 +1,7 @@
 #include "./child.hpp"
 #include "./parent.hpp"
 
-using namespace GS_DDMRM::S_IceRay::S_geometry::S__pure;
+using namespace GS_DDMRM::S_type::S_general;
 
 
 GC_child::GC_child(T_parent *P_parent)

@@ -10,10 +10,10 @@ class Sphere:
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Geometry_Blobby_Element_Sphere0()
 
-        # TODOif None == P_center:
+        # TODOif None != P_center:
         # TODO    self.m_cargo['dll'].IceRayC_Geometry_Sphere_Center()
         # TODO
-        # TODOif None == P_radius:
+        # TODOif None != P_radius:
         # TODO    slef.m_cargo['this'] = IceRayC_Geometry_Sphere_Radius( P_radius )
         # TODO    return
 
@@ -35,10 +35,10 @@ class Cylinder:
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Geometry_Blobby_Element_Cylinder0()
 
-        # TODOif None == P_center:
+        # TODOif None != P_center:
         # TODO    self.m_cargo['dll'].IceRayC_Geometry_Cylinder_Center()
         # TODO
-        # TODOif None == P_radius:
+        # TODOif None != P_radius:
         # TODO    slef.m_cargo['this'] = IceRayC_Geometry_Cylinder_Radius( P_radius )
         # TODO    return
 
@@ -63,10 +63,10 @@ class WatterZ:
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Geometry_Blobby_Element_Cylinder0()
 
-        # TODOif None == P_center:
+        # TODOif None != P_center:
         # TODO    self.m_cargo['dll'].IceRayC_Geometry_Cylinder_Center()
         # TODO
-        # TODOif None == P_radius:
+        # TODOif None != P_radius:
         # TODO    slef.m_cargo['this'] = IceRayC_Geometry_Cylinder_Radius( P_radius )
         # TODO    return
 
@@ -85,10 +85,10 @@ class Vacuum:
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Geometry_Blobby_Element_Vacuum0()
 
-        # TODOif None == P_center:
+        # TODOif None != P_center:
         # TODO    self.m_cargo['dll'].IceRayC_Geometry_Vacuum_Center()
         # TODO
-        # TODOif None == P_radius:
+        # TODOif None != P_radius:
         # TODO    slef.m_cargo['this'] = IceRayC_Geometry_Vacuum_Radius( P_radius )
         # TODO    return
 
@@ -107,10 +107,10 @@ class Affine:
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Geometry_Blobby_Element_Affine0()
 
-        # TODOif None == P_center:
+        # TODOif None != P_center:
         # TODO    self.m_cargo['dll'].IceRayC_Geometry_Affine_Center()
         # TODO
-        # TODOif None == P_radius:
+        # TODOif None != P_radius:
         # TODO    slef.m_cargo['this'] = IceRayC_Geometry_Affine_Radius( P_radius )
         # TODO    return
 

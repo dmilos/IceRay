@@ -2,7 +2,11 @@ import ctypes
 
 import IceRayPy
 
-SizeType   = IceRayPy.type.basic.Size
+import IceRayPy
+
+AddresOf = ctypes.addressof
+
+SizeType = IceRayPy.type.basic.Size
 ScalarType   = IceRayPy.type.basic.Scalar
 
 class Identity:

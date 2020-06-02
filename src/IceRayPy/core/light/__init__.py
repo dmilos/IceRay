@@ -7,7 +7,7 @@ AddresOf = ctypes.addressof
 
 Coord3D  = IceRayPy.type.math.coord.Scalar3D
 Color    = IceRayPy.type.color.RGB
-SizeType = IceRayPy.type.basic.Unsigned
+SizeType = IceRayPy.type.basic.Size
 ScalarType   = IceRayPy.type.basic.Scalar
 
 
@@ -43,6 +43,7 @@ class Area:
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Light_Area0()
+        self.sample( 32 )
 
     def __del__( self ):
         self.m_cargo['dll'].IceRayC_Light_Release( self.m_cargo['this'] )
@@ -61,28 +62,6 @@ class Area:
 
     def Y( self, P_Y: Coord3D ):
         self.m_cargo['dll'].IceRayC_Light_Area_Y( self.m_cargo['this'], AddresOf(P_Y) )
-
-
-class Obstruct:
-    def __init__( self, P_dll, P_child = None, P_barrier = None ):
-        self.m_cargo = {}
-        self.m_cargo['dll'] = P_dll
-        self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Light_Obstruct0()
-        if( None != P_child ):
-            self.child( P_child )
-        if( None != P_barrier ):
-            self.barrier( P_barrier )
-
-    def __del__( self ):
-        self.m_cargo['dll'].IceRayC_Light_Release( self.m_cargo['this'] )
-
-    def barrier( self, P_barrier ):
-        self.m_cargo['dll'].IceRayC_Light_Obstruct_Barrier( self.m_cargo['this'], P_barrier.m_cargo['this'] )
-        self.m_cargo['barrier'] = P_barrier
-
-    def child( self, P_child ):
-        self.m_cargo['dll'].IceRayC_Light_Obstruct_Child( self.m_cargo['this'], P_child.m_cargo['this'] )
-        self.m_cargo['barrier'] = P_child
 
 
 class Chandelier:
@@ -105,8 +84,7 @@ class Circle:
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Light_Circle0()
-        self.sample( 1 )
-
+        self.sample( 32 )
 
     def __del__( self ):
         self.m_cargo['dll'].IceRayC_Light_Release( self.m_cargo['this'] )
@@ -142,9 +120,12 @@ class Confine:
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Light_Confine0()
-        if( None == P_child ):
+
+        P_child = Point( P_dll )
+
+        if( None != P_child ):
             self.child( P_child )
-        if( None == P_hull ):
+        if( None != P_hull ):
             self.hull( P_hull )
 
     def __del__( self ):
@@ -177,6 +158,7 @@ class Disc:
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Light_Disc0()
+        self.sample( 32 )
 
     def __del__( self ):
         self.m_cargo['dll'].IceRayC_Light_Release( self.m_cargo['this'] )
@@ -202,7 +184,7 @@ class Line:
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Light_Line0()
-        self.sample( 1 )
+        self.sample( 32 )
 
     def __del__( self ):
         self.m_cargo['dll'].IceRayC_Light_Release( self.m_cargo['this'] )
@@ -238,6 +220,30 @@ class Point:
         self.m_cargo['dll'].IceRayC_Light_Point_Center( self.m_cargo['this'], AddresOf( P_center ) )
 
 
+class Obstruct:
+    def __init__( self, P_dll, P_child = None, P_barrier = None ):
+        self.m_cargo = {}
+        self.m_cargo['dll'] = P_dll
+        self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Light_Obstruct0()
+        if( None == P_child ):
+            P_child = Point( P_dll )
+        if( None != P_child ):
+            self.child( P_child )
+        if( None != P_barrier ):
+            self.barrier( P_barrier )
+
+    def __del__( self ):
+        self.m_cargo['dll'].IceRayC_Light_Release( self.m_cargo['this'] )
+
+    def barrier( self, P_barrier ):
+        self.m_cargo['dll'].IceRayC_Light_Obstruct_Barrier( self.m_cargo['this'], P_barrier.m_cargo['this'] )
+        self.m_cargo['barrier'] = P_barrier
+
+    def child( self, P_child ):
+        self.m_cargo['dll'].IceRayC_Light_Obstruct_Child( self.m_cargo['this'], P_child.m_cargo['this'] )
+        self.m_cargo['barrier'] = P_child
+
+
 class Reflector:
     def __init__( self, P_dll ):
         self.m_cargo = {}
@@ -265,6 +271,7 @@ class Sphere:
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Light_Sphere0()
+        self.sample( 100 )
 
     def __del__( self ):
         self.m_cargo['dll'].IceRayC_Light_Release( self.m_cargo['this'] )
@@ -284,6 +291,7 @@ class Spline:
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Light_Spline0()
+        self.sample( 100 )
 
     def __del__( self ):
         self.m_cargo['dll'].IceRayC_Light_Release( self.m_cargo['this'] )
@@ -296,6 +304,7 @@ class Spline:
 
     def cp( self, P_index, P_p0 : Coord3D ):
         self.m_cargo['dll'].IceRayC_Light_Spline_CP( self.m_cargo['this'], SizeType( P_index ), AddresOf( P_p0 ) )
+
 
 class SunS:
     def __init__( self, P_dll ):
@@ -310,6 +319,7 @@ class SunS:
         self.m_cargo['dll'].IceRayC_Light_SunS_Spot( self.m_cargo['this'], AddresOf( P_spot ) )
     def center( self, P_spot: Spot ):
         self.m_cargo['dll'].IceRayC_Light_SunS_Center( self.m_cargo['this'], AddresOf( P_spot ) )
+
 
 class SunG:
     def __init__( self, P_dll, P_child = None ):

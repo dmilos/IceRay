@@ -43,8 +43,8 @@ GC_line::Fv_swarm( T_swarm &P_swarm,  T_coord const& P_point )const
     T_scalar I_thetaV = M2_randVDC.next();
     //T_scalar I_theta = M2_randSobol1D.next();
     //T_scalar I_theta = M2_randStandard1D.next();
-    //T_scalar I_theta  = M2_randTable1D.next();
-    T_scalar I_theta = I_thetaV ;
+    //T_scalar I_thetaT  = M2_randTable1D.next();
+    T_scalar I_theta = I_thetaV;
 
     //static bool I_flip = true; I_flip = ! I_flip;
     // static unsigned I_index = 0; ++I_index;     ::math::linear::vector::convex( I_center, T_scalar( (I_index % 100)/100.0 ), M2_spot.F_center(), M2_end );

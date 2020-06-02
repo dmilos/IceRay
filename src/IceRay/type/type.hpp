@@ -7,3 +7,4 @@
 #include "./ray/ray.hpp"
 #include "./color.hpp"
 #include "./nothing.hpp"
+#include "./general/general.hpp"

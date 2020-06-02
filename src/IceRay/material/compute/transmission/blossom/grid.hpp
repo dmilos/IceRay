@@ -5,6 +5,7 @@
 
 #include "../../instruction.hpp"
 #include "IceRay/utility/random.hpp"
+
 #include "math/geometry/deg2rad.hpp"
 
  namespace GS_DDMRM
@@ -55,11 +56,11 @@
                    ,T_size const& P_inGauss   = 1
                   )
                   {
-                   F_input<T_coord>(   En_inCoord_Normal,  P_inCoord_Normal    );
-                   F_input<T_size>(    En_inSize_Leader,   P_inLeader );
-                   F_input<T_size>(    En_inSize_Count,    P_inCount   );
-                   F_input<T_scalar>(  En_inScalar_Angle,  P_inAngle   );
-                   F_input<T_scalar>(  En_inScalar_Gauss,  P_inGauss   );
+                   F_input<T_coord>(   En_inCoord_Normal,  P_inCoord_Normal );
+                   F_input<T_size>(    En_inSize_Leader,   P_inLeader       );
+                   F_input<T_size>(    En_inSize_Count,    P_inCount        );
+                   F_input<T_scalar>(  En_inScalar_Angle,  P_inAngle        );
+                   F_input<T_scalar>(  En_inScalar_Gauss,  P_inGauss        );
 
                  //F_output<T_size>( En_outSize_RayCount,     P_outSize_RayCount );
                   }
@@ -67,11 +68,11 @@
                public:
                  bool    Fv_execute( T_beam &P_next, T_pigment::T_intersect const& P_intersect, T_state const& P_state )const
                   {
-                   T_coord  const& I_normal    = M2_memoryCoord->Fv_load(  F_input<T_coord >( En_inCoord_Normal ) );
-                   T_size   const& I_leader   = M2_memorySize->Fv_load(   F_input<T_scalar>( En_inSize_Leader   ) );
-                   T_size   const& I_count     = M2_memorySize->Fv_load(   F_input<T_size  >( En_inSize_Count   ) );
-                   T_scalar const& I_angle     = M2_memoryScalar->Fv_load( F_input<T_scalar>( En_inScalar_Angle ) );
-                   T_scalar const& I_gauss     = M2_memoryScalar->Fv_load( F_input<T_scalar>( En_inScalar_Gauss ) );
+                   T_coord  const& I_normal   = M2_memoryCoord->Fv_load(  F_input<T_coord >( En_inCoord_Normal ) );
+                   T_size   const& I_leader   = M2_memorySize->Fv_load(   F_input<T_size  >( En_inSize_Leader  ) );
+                   T_size   const& I_count    = M2_memorySize->Fv_load(   F_input<T_size  >( En_inSize_Count   ) );
+                   T_scalar const& I_angle    = M2_memoryScalar->Fv_load( F_input<T_scalar>( En_inScalar_Angle ) );
+                   T_scalar const& I_gauss    = M2_memoryScalar->Fv_load( F_input<T_scalar>( En_inScalar_Gauss ) );
 
                    auto      & I_original = P_next.Fv_expose( I_leader );
                    F_execute
@@ -139,7 +140,7 @@
                      T_coord2D I_disc2d;
                      I_disc2d[0] =( T_scalar(2) * I_u / (T_scalar(P_size)-T_scalar(1)) - T_scalar(1));
                      I_disc2d[1] =( T_scalar(2) * I_v / (T_scalar(P_size)-T_scalar(1)) - T_scalar(1));
- 
+
                      T_scalar I_length2 = ::math::linear::vector::dot( I_disc2d, I_disc2d );
                      if( T_scalar(1.000001)< I_length2 )
                      {

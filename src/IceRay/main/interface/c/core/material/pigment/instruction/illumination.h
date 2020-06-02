@@ -9,6 +9,7 @@
 #define E IceRayC__EXPORT
 #define D IceRayC__DECLSPEC
 
+
 E D H F( ALP0           )( S( result ), S( point     ), S( normal    ), S( spotBegin ), S( spotEnd ), S( emission  ), S( diffuse    ), S( specular   ), S( shininess ) );
 E D H F( Ambient0       )( S( result ), S( emission  ) );
 E D H F( AsDiffuse0     )( S( result ), S( point     ), S( normal    ), S( spotBegin ), S( spotEnd ), S( diffuse    ), S( specular   )  );
@@ -19,13 +20,14 @@ E D H F( Gaussian0      )( S( result ), S( point     ), S( normal    ), S( spotB
 E D H F( Lambert0       )( S( result ), S( point     ), S( normal    ), S( spotBegin ), S( spotEnd ), S( diffuse    ) );
 E D H F( Phong0         )( S( result ),                                 S( spotBegin ), S( spotEnd ), S( specular   ), S( shininess  )  );
 
-
 E D H F( HsLambert0     )( S( result ), S( point     ), S( normal    ), S( spotBegin  ), S( spotEnd ), S( groove ), S( diffuse ) );
 E D H F( HsNormal0      )( S( result ),                 S( normal    ),                                S( groove ) );
 E D H F( HsPhong0       )( S( result ), S( point     ), S( normal    ), S( spotBegin  ), S( spotEnd ), S( groove ), S( specular   ), S( shininess  ) );
+
 E D H F( OnF29          )( S( result ), S( point     ), S( normal    ), S( spotBegin  ), S( spotEnd ), S( rho ), S( sigma ) );
 E D H F( OnP44          )( S( result ), S( point     ), S( normal    ), S( spotBegin  ), S( spotEnd ), S( A ), S( B ) );
 E D H F( OnYF           )( S( result ), S( point     ), S( normal    ), S( spotBegin  ), S( spotEnd ), S( A ), S( B ) );
+
 E D H F( WardApprox0    )( S( result ), S( point     ), S( normal    ), S( spotBegin  ), S( spotEnd ), S( specular ), S( alphaX  ), S( alphaY ), S( direction ) );
 E D H F( WardIsotropic0 )( S( result ), S( point     ), S( normal    ), S( spotBegin  ), S( spotEnd ), S( specular ), S( alpha   ) );
 E D H F( WardReal0      )( S( result ), S( point     ), S( normal    ), S( spotBegin  ), S( spotEnd ), S( specular ), S( alphaX  ), S( alphaY ), S( direction ) );

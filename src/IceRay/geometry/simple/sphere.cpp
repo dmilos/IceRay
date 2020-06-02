@@ -216,3 +216,19 @@ bool   GC_sphere::F_center( T_coord const& P_center )
 
   return bool( true );
  }
+
+GC_sphere::T__base*        GC_sphere::Fv_blank()const
+ {
+  return new GC_sphere();
+ }
+
+GC_sphere::T__base*        GC_sphere::Fv_clone()const
+ {
+  return new GC_sphere( F_center(), F_radius() );
+ }
+
+void            GC_sphere::Fv_release( T__base* P_this )const
+ {
+  delete  P_this;
+ }
+

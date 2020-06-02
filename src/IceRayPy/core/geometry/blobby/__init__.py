@@ -7,10 +7,10 @@ class System:
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Geometry_Blobby_System0()
 
-        # TODOif None == P_center:
+        # TODOif None != P_center:
         # TODO    self.m_cargo['dll'].IceRayC_Geometry_Sphere_Center()
         # TODO
-        # TODOif None == P_radius:
+        # TODOif None != P_radius:
         # TODO    slef.m_cargo['this'] = IceRayC_Geometry_Sphere_Radius( P_radius )
         # TODO    return
 

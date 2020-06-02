@@ -9,7 +9,7 @@ class Intersect:
         self.m_cargo['dll'].IceRayC_Geometry_Release( self.m_cargo['this'] )
 
     def left( self, P_left, P_where = None ):
-        if( None == P_where ):
+        if( None != P_where ):
             self.m_cargo['dll'].IceRayC_Geometry_Complex_Intersect_Left0( self.m_cargo['this'], P_left.m_cargo['this'] )
         else:
             self.m_cargo['dll'].IceRayC_Geometry_Complex_Intersect_Left1( self.m_cargo['this'], P_left.m_cargo['this'], P_where )

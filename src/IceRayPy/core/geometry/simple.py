@@ -23,10 +23,10 @@ class Sphere : #( IceRayPy.core.geometry.Generic ):
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Geometry_Sphere0()
 
-        # TODOif None == P_center:
+        # TODOif None != P_center:
         # TODO    self.m_cargo['dll'].IceRayC_Geometry_Sphere_Center()
         # TODO
-        # TODOif None == P_radius:
+        # TODOif None != P_radius:
         # TODO    slef.m_cargo['this'] = IceRayC_Geometry_Sphere_Radius( P_radius )
         # TODO    return
 
@@ -46,7 +46,7 @@ class Box: #( IceRayPy.core.geometry.Generic ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Geometry_Box0()
-        #self.hi( Coord3D(1,1,0) ) #TODO remove 
+        #self.hi( Coord3D(1,1,0) ) #TODO remove
 
     def __del__( self ):
         self.m_cargo['dll'].IceRayC_Geometry_Release( self.m_cargo['this'] )
@@ -135,10 +135,12 @@ class Ellipsoid:  #( IceRayPy.core.geometry.Generic ):
 
 class Hyperboloid:  #( IceRayPy.core.geometry.Generic ):
 
-    def __init__( self, P_dll ):
+    def __init__( self, P_dll, P_core = None ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Geometry_Hyperboloid0()
+        if(  None != P_core ):
+            self.core( P_core )
 
     def __del__( self ):
         self.m_cargo['dll'].IceRayC_Geometry_Release( self.m_cargo['this'] )

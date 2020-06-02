@@ -58,11 +58,11 @@
                   {
                    static auto dummy = F2s_init();
 
-                   F_input<T_coord>(   En_inCoord_Normal,  P_inCoord_Normal    );
-                   F_input<T_size>(    En_inSize_Leader,   P_inLeader );
-                   F_input<T_size>(    En_inSize_Count,    P_inCount   );
-                   F_input<T_scalar>(  En_inScalar_Angle,  P_inAngle   );
-                   F_input<T_scalar>(  En_inScalar_Gauss,  P_inGauss   );
+                   F_input<T_coord>(   En_inCoord_Normal,  P_inCoord_Normal );
+                   F_input<T_size>(    En_inSize_Leader,   P_inLeader       );
+                   F_input<T_size>(    En_inSize_Count,    P_inCount        );
+                   F_input<T_scalar>(  En_inScalar_Angle,  P_inAngle        );
+                   F_input<T_scalar>(  En_inScalar_Gauss,  P_inGauss        );
 
                  //F_output<T_size>( En_outSize_RayCount,     P_outSize_RayCount );
                   }
@@ -71,7 +71,7 @@
                  bool    Fv_execute( T_beam &P_next, T_pigment::T_intersect const& P_intersect, T_state const& P_state )const
                   {
                    T_coord  const& I_normal   = M2_memoryCoord->Fv_load(  F_input<T_coord >( En_inCoord_Normal ) );
-                   T_size   const& I_leader   = M2_memorySize->Fv_load(   F_input<T_scalar>( En_inSize_Leader   ) );
+                   T_size   const& I_leader   = M2_memorySize->Fv_load(   F_input<T_size  >( En_inSize_Leader  ) );
                    T_size   const& I_count    = M2_memorySize->Fv_load(   F_input<T_size  >( En_inSize_Count   ) );
                    T_scalar const& I_angle    = M2_memoryScalar->Fv_load( F_input<T_scalar>( En_inScalar_Angle ) );
                    T_scalar const& I_gauss    = M2_memoryScalar->Fv_load( F_input<T_scalar>( En_inScalar_Gauss ) );

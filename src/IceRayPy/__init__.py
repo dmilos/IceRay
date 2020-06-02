@@ -10,8 +10,10 @@ __revision__  = ""
 __build__     = ""
 __buildsys__  = ""
 
+
 import IceRayPy.type
 import IceRayPy.core
+import IceRayPy.constant
 
 
 print( '</' + __name__ + ' name=\'' +   __file__ + '\'>' )

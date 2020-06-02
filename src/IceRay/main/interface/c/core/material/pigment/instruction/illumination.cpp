@@ -28,7 +28,7 @@ H F( AsDiffuse0 )( S( result ), S( point     ), S( normal    ), S( spotBegin ), 
 H F( AsSpecular0 )( S( result ), S( point     ), S( normal    ), S( spotBegin ), S( spotEnd ), S( specular   ), S( nu         ), S( nv        )  )
  {
   typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_illumination::S_AshikhminShirley::GC_specular Tf_this;
-  auto I_this = new Tf_this{ P_result, P_point     ,P_normal    ,P_spotBegin , P_spotEnd, P_specular,P_nu  ,P_nv  };
+  auto I_this = new Tf_this{ P_result, P_point     ,P_normal    ,P_spotBegin , P_spotEnd, P_specular, P_nu  ,P_nv  };
   return cpp2c( I_this );
  }
 H F( Beckmann0    )( S( result ), S( point     ), S( normal    ), S( spotBegin ), S( spotEnd ), S( specular   ), S( roughness  ) )

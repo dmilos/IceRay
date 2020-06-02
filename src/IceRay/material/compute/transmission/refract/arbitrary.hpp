@@ -36,7 +36,7 @@
                      ,En_inCoord_Normal = 1
                      ,En_inScalar_IOR   = 0
                      ,En_inColor_Albedo = 0
-                     ,En_inColor_Transparency  = 1
+                     ,En_inColor_Attenuation  = 1
                     };
                    enum Ee_output
                     {
@@ -51,7 +51,7 @@
                      ,T_size const& P_inCoord_Normal = T_memory::En_inCoord3D_DynamicNormal
                      ,T_size const& P_ior            = 0
                      ,T_size const& P_albedo         = 1
-                     ,T_size const& P_transparency   = 2
+                     ,T_size const& P_attenuation    = 2
                    //,T_size const& P_outSize_rayCount = 0,
                    //,T_size const& P_outRay_refracted = 1
                     )
@@ -60,7 +60,7 @@
                      F_input<T_coord>(  En_inCoord_Normal,        P_inCoord_Normal     );
                      F_input<T_scalar>( En_inScalar_IOR,          P_ior                );
                      F_input<T_color>(  En_inColor_Albedo,        P_albedo             );
-                     F_input<T_color>(  En_inColor_Transparency,  P_transparency       );
+                     F_input<T_color>(  En_inColor_Attenuation,   P_attenuation        );
 
                    //F_output<T_size>( En_outSize_RayCount,     P_outSize_RayCount );
                    //F_output( T_memory::En_ray,   En_outRay_refracted,     P_outRay_refracted );
@@ -94,7 +94,7 @@
                       }
 
                      {
-                      T_color  const& I_transparency  = M2_memoryColor->Fv_load( F_input<T_color>(  En_inColor_Transparency ) );
+                      T_color  const& I_attenuation  = M2_memoryColor->Fv_load( F_input<T_color>(  En_inColor_Attenuation ) );
                       P_next.Fv_push();
                       T_ray & I_refracted = P_next.Fv_top();
                       I_refracted.M_depth = I_incoming.M_depth + 1;
@@ -120,14 +120,14 @@
 
                       ::math::linear::vector::length( I_refracted.M_direction, T_scalar(1) );
 
-                      ::color::operation::multiply( I_refracted.M_intesity, I_transparency, I_incoming.M_intesity );
+                      ::color::operation::multiply( I_refracted.M_intesity, I_attenuation, I_incoming.M_intesity );
 
                       I_refracted.M_coefficient = T_scalar(1);
                       I_refracted.M_geometryID = I_intersection.M_geometryID;
                      }
 
                      {
-                      T_color  const& I_reflectance    = M2_memoryColor->Fv_load( F_input<T_color>(  En_inColor_Albedo   ) );
+                      T_color  const& I_albedo    = M2_memoryColor->Fv_load( F_input<T_color>(  En_inColor_Albedo   ) );
                       P_next.Fv_push();
                       T_ray & I_reflected = P_next.Fv_top();
                       I_reflected.M_depth = I_incoming.M_depth + 1;
@@ -135,7 +135,7 @@
                       ::math::linear::vector::reflect( I_reflected.M_direction, I_incoming.M_direction, I_normal );
                       ::math::linear::vector::length( I_reflected.M_direction, T_scalar(1) );
 
-                      ::color::operation::multiply( I_reflected.M_intesity, I_reflectance, I_incoming.M_intesity );
+                      ::color::operation::multiply( I_reflected.M_intesity, I_albedo, I_incoming.M_intesity );
 
                       I_reflected.M_type = T_ray::En_type1Reflected;
                       I_reflected.M_ior = I_incoming.M_ior;

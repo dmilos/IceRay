@@ -31,6 +31,30 @@
              }
            };
 
+         struct GC_color2bool
+          {
+           typedef GS_DDMRM::S_IceRay::S_type::GT_bool  T_result;
+           typedef GS_DDMRM::S_IceRay::S_type::S_color::GT_scalar T_input, T_first;
+
+           T_result operator()( T_input const& P_input )const
+            {
+             typedef GS_DDMRM::S_IceRay::S_type::S_color::S_gray::GT_scalar T_gray;
+
+             return P_input != ::color::constant::black_t{};
+            }
+          };
+
+         struct GC_bool2color
+          {
+           typedef GS_DDMRM::S_IceRay::S_type::S_color::GT_scalar  T_result; 
+           typedef GS_DDMRM::S_IceRay::S_type::GT_bool  T_input, T_first;
+
+           T_result operator()( T_input const& P_input )const
+            {
+             return P_input ? T_result( ::color::constant::white_t{} ) : T_result( ::color::constant::black_t{} );
+            }
+          };
+
          struct GC_color2scalar
           {
            typedef GS_DDMRM::S_IceRay::S_type::GT_scalar  T_result;

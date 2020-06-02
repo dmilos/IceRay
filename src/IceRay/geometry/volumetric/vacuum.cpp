@@ -65,3 +65,20 @@ GC_vacuum::T_scalar  GC_vacuum::Fv_distance( T_coord const& P_point )const
   static T_scalar Is_infinity = 1e+16;
   return Is_infinity;
  }
+
+
+GC_vacuum::T__base*        GC_vacuum::Fv_blank()const
+ {
+  return new GC_vacuum();
+ }
+
+GC_vacuum::T__base*        GC_vacuum::Fv_clone()const
+ {
+  return new GC_vacuum();
+ }
+
+void            GC_vacuum::Fv_release( T__base* P_this )const
+ {
+  delete  P_this;
+ }
+

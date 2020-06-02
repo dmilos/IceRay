@@ -67,6 +67,5 @@ void expose_IceRay_camera_flat_super()
   boost::python::object  I_this = Tf_this( "CameraFlatSuper" )
     .def( boost::python::init<>() )
     .def( boost::python::init<Ts_coord2D,Ts_coord2D>() )
-    .def( boost::python::init<Ts_coord2D,Ts_coord2D,Ts_coord2D>() )
   ;
  }

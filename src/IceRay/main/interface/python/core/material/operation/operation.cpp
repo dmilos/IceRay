@@ -294,14 +294,14 @@ void expose_IceRay_material_compute_operation_convert()
     .def( boost::python::init< GTs_size,GTs_size>( ) )
   ;
 
-  typedef  GS_DDMRM::S_IceRay::S_material::S_compute::S_convert::GT_color2coord GTs_color2coord;
-  typedef boost::python::class_< GTs_color2coord, boost::python::bases< GTs_instruction > > ( "MaterialConvertColor2Coord3D" )
+  typedef  GS_DDMRM::S_IceRay::S_material::S_compute::S_convert::GT_color2coord3D GTs_color2coord3D;
+  typedef boost::python::class_< GTs_color2coord3D, boost::python::bases< GTs_instruction > > ( "MaterialConvertColor2Coord3D" )
     .def( boost::python::init<>() )
     .def( boost::python::init< GTs_size,GTs_size>( ) )
   ;
 
-  typedef  GS_DDMRM::S_IceRay::S_material::S_compute::S_convert::GT_coord2color GTs_coord2color;
-  typedef boost::python::class_< GTs_coord2color, boost::python::bases< GTs_instruction > > ( "MaterialConvertCoord3D2Color" )
+  typedef  GS_DDMRM::S_IceRay::S_material::S_compute::S_convert::GT_coord3D2color GTs_coord3D2color;
+  typedef boost::python::class_< GTs_coord3D2color, boost::python::bases< GTs_instruction > > ( "MaterialConvertCoord3D2Color" )
     .def( boost::python::init<>() )
     .def( boost::python::init< GTs_size,GTs_size>( ) )
   ;

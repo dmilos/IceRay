@@ -2,9 +2,12 @@ print( '<' + __name__ + ' name=\'' +   __file__ + '\'>' )
 
 import ctypes
 
-SizeType = ctypes.c_uint
-ScalarType = ctypes.c_uint
+import IceRayPy
+
 AddresOf = ctypes.addressof
+
+SizeType = IceRayPy.type.basic.Size
+ScalarType   = IceRayPy.type.basic.Scalar
 
 class Grid:
     def __init__(self, P_dll, P_normal, P_leader, P_count, P_angle, P_gauss ):
@@ -57,7 +60,7 @@ class VDC:
     def __init__(self, P_dll, P_normal, P_leader, P_count, P_angle, P_gauss ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
-        self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Material_Pigment_Surface_Instruction_Transmission_Blossom_Vdc0(
+        self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Material_Pigment_Surface_Instruction_Transmission_Blossom_VDC0(
             SizeType( P_normal )
            ,SizeType( P_leader )
            ,SizeType( P_count )

@@ -24,7 +24,7 @@
              typedef GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar    T_coord;
 
            public:
-             GC_beckmann( T_color const&  P_specular, T_color const&  P_roughness )
+             GC_beckmann( T_color const&  P_specular, T_color const& P_roughness )
               : M2_specular( P_specular )
               , M2_roughness( P_roughness )
               {

@@ -2,9 +2,13 @@ print( '<' + __name__ + ' name=\'' +   __file__ + '\'>' )
 
 import ctypes
 
-SizeType = ctypes.c_uint
-ScalarType = ctypes.c_uint
+import IceRayPy
+
 AddresOf = ctypes.addressof
+
+SizeType = IceRayPy.type.basic.Size
+ScalarType   = IceRayPy.type.basic.Scalar
+
 
 class Arbitrary:
     def __init__(self, P_dll, P_point, P_normal, P_ior, P_reflection, P_transparency ):

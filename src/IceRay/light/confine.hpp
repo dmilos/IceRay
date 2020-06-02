@@ -29,7 +29,7 @@
 
          public:  // property hull  hull
            //T__pure    const& F_hull()const{ return M2_hull; }
-           bool             F_hull( T_inside * P_hull ){ M2_hull = P_hull; return bool( true ); }
+           bool             F_hull( T_inside * P_hull );
          protected:
         //T__pure        & F1_hull(){ return M2_hull; }
          private:
@@ -37,7 +37,7 @@
 
          public:  // property child  child
            //T__pure    const& F_child()const{ return M2_child; }
-           bool             F_child( T__pure * P_child ){ M2_child = P_child; return bool( true ); }
+           bool             F_child( T__pure * P_child );
          protected:
         //T__pure        & F1_child(){ return M2_child; }
          private:

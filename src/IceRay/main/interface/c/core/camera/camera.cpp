@@ -92,6 +92,76 @@ IceRayC_Camera_Handle IceRayC_Camera_Flat_Super0( )
   return cpp2c( Ir_result );
  }
 
+int                   IceRayC_Camera_Flat_Super_Eye(        IceRayC_Camera_Handle P_that, IceRayC_Type_Coord_Scalar2D* P_eye )
+ {
+  typedef GS_DDMRM::S_IceRay::S_camera::GC__pure Tf__pure;
+  typedef GS_DDMRM::S_IceRay::S_camera::S_flat::GC_super Tf_this;
+
+  auto I_this = dynamic_cast< Tf_this *>( c2cpp( P_that ) );
+  if( nullptr == I_this )
+   {
+    return 0;
+   }
+  I_this->F_eye( c2cpp( *P_eye ) );
+  return 1;
+ }
+int                   IceRayC_Camera_Flat_Super_Ocular(     IceRayC_Camera_Handle P_that, IceRayC_Type_Coord_Scalar2D* P_ocular )
+ {
+  typedef GS_DDMRM::S_IceRay::S_camera::GC__pure Tf__pure;
+  typedef GS_DDMRM::S_IceRay::S_camera::S_flat::GC_super Tf_this;
+
+  auto I_this = dynamic_cast< Tf_this *>( c2cpp( P_that ) );
+  if( nullptr == I_this )
+   {
+    return 0;
+   }
+  I_this->F_ocular( c2cpp( *P_ocular ) );
+  return 1;
+ }
+
+int                   IceRayC_Camera_Flat_Super_View(       IceRayC_Camera_Handle P_that, IceRayC_Type_Coord_Scalar2D* P_view )
+ {
+  typedef GS_DDMRM::S_IceRay::S_camera::GC__pure Tf__pure;
+  typedef GS_DDMRM::S_IceRay::S_camera::S_flat::GC_super Tf_this;
+
+  auto I_this = dynamic_cast< Tf_this *>( c2cpp( P_that ) );
+  if( nullptr == I_this )
+   {
+    return 0;
+   }
+  I_this->F_view( c2cpp( *P_view ) );
+  return 1;
+ }
+
+int                   IceRayC_Camera_Flat_Super_Objective(  IceRayC_Camera_Handle P_that, IceRayC_Type_Coord_Scalar2D* P_objective )
+ {
+  typedef GS_DDMRM::S_IceRay::S_camera::GC__pure Tf__pure;
+  typedef GS_DDMRM::S_IceRay::S_camera::S_flat::GC_super Tf_this;
+
+  auto I_this = dynamic_cast< Tf_this *>( c2cpp( P_that ) );
+  if( nullptr == I_this )
+   {
+    return 0;
+   }
+  I_this->F_objective( c2cpp( *P_objective ) );
+  return 1;
+ }
+
+int                   IceRayC_Camera_Flat_Super_Focus(  IceRayC_Camera_Handle P_that, IceRayC_Type_Coord_Scalar2D* P_focus )
+ {
+  typedef GS_DDMRM::S_IceRay::S_camera::GC__pure Tf__pure;
+  typedef GS_DDMRM::S_IceRay::S_camera::S_flat::GC_super Tf_this;
+
+  auto I_this = dynamic_cast< Tf_this *>( c2cpp( P_that ) );
+  if( nullptr == I_this )
+   {
+    return 0;
+   }
+  I_this->F_focus( c2cpp( *P_focus ) );
+  return 1;
+ }
+
+
 IceRayC_Camera_Handle IceRayC_Camera_Flat_Orthogonal0( )
  {
   typedef GS_DDMRM::S_IceRay::S_camera::GC__pure Tf__pure;

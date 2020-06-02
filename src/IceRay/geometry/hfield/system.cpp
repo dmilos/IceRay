@@ -73,7 +73,7 @@ bool GC_system::Fv_intersect
    }
 
   T_scalar I_infinum  = std::max<T_scalar>( std::get<1>( I_interval ), Is_epsilon );
-  T_scalar I_supremum = std::min<T_scalar>( std::get<3>( I_interval ), P_lambda*I_length );
+  T_scalar I_supremum = std::min<T_scalar>( std::get<3>( I_interval ), P_lambda * I_length );
 
   T_cell3D I_cell;
   I_cell[2] = 0;
@@ -180,6 +180,7 @@ bool GC_system::Fv_intersect
         return true;
        }
      }
+
     if( -1 == I_axis )
      {
       break;

@@ -54,3 +54,16 @@ GC_confine::Fv_swarm
 
   return Ir_count;
  }
+
+bool GC_confine::F_hull( T_inside * P_hull )
+ {
+  M2_hull = P_hull; 
+  return bool( true ); 
+ }
+
+bool GC_confine::F_child( T__pure * P_child )
+ {
+  M2_child = P_child;
+  return bool( true );
+ }
+

@@ -2,8 +2,10 @@ import ctypes
 
 import IceRayPy
 
+Coord3D     = IceRayPy.type.math.coord.Scalar3D
 
 Scalar = IceRayPy.type.basic.Scalar
+AddresOf = ctypes.addressof
 
 class Perspective:
     def __init__( self, P_dll ):
@@ -61,3 +63,25 @@ class Orthogonal:
     def aspect(self, P_aspect):
         return self.m_cargo['dll'].IceRayC_Camera_Flat_Orthogonal_Height(self.m_cargo['this'], Scalar( P_aspect ) )
 
+
+
+class Super:
+    def __init__( self, P_dll ):
+        self.m_cargo = {}
+        self.m_cargo['dll'] = P_dll
+        self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Camera_Flat_Orthogonal0()
+
+    def eye(self, P_eye : Coord3D ):
+        self.m_cargo['dll'].IceRayC_Camera_Flat_Super_Eye(self.m_cargo['this'], AddresOf( P_eye ) )
+
+    def ocular(self, P_ocular : Coord3D):
+        self.m_cargo['dll'].IceRayC_Camera_Flat_Super_Ocular(self.m_cargo['this'], AddresOf( P_ocular ) )
+
+    def view(self, P_view : Coord3D):
+        self.m_cargo['dll'].IceRayC_Camera_Flat_Super_View(self.m_cargo['this'], AddresOf( P_view ) )
+
+    def objective(self, P_objective : Coord3D):
+        self.m_cargo['dll'].IceRayC_Camera_Flat_Super_Objective(self.m_cargo['this'], AddresOf( P_objective ) )
+
+    def focus(self, P_focus : Coord3D):
+        self.m_cargo['dll'].IceRayC_Camera_Flat_Super_Focus(self.m_cargo['this'], AddresOf( P_focus ) )

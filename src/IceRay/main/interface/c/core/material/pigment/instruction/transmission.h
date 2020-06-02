@@ -21,10 +21,10 @@ IceRayC__EXPORT IceRayC__DECLSPEC  H F( Jitter0)( S P_cout, S P_begin, S P_angle
 IceRayC__EXPORT IceRayC__DECLSPEC  H F( Reflect_One0)( S P_point, S P_normal, S P_albedo );
 IceRayC__EXPORT IceRayC__DECLSPEC  H F( Reflect_Schlick0)( S P_point, S P_normal, S P_ior );
 
-IceRayC__EXPORT IceRayC__DECLSPEC  H F( Refract_Arbitrary0)( S P_point, S P_normal, S P_ior, S P_ref, S P_trans );
+IceRayC__EXPORT IceRayC__DECLSPEC  H F( Refract_Arbitrary0)( S P_point, S P_normal, S P_ior, S P_albedo, S P_attenuation );
 IceRayC__EXPORT IceRayC__DECLSPEC  H F( Refract_Fresnel0)(   S P_point, S P_normal, S P_ior, S P_albedo );
 IceRayC__EXPORT IceRayC__DECLSPEC  H F( Refract_Multi0)(     S P_point, S P_normal, S P_ior, S P_albedo );
-IceRayC__EXPORT IceRayC__DECLSPEC  H F( Refract_One0)(       S P_point, S P_normal, S P_ior, S P_trans  );
+IceRayC__EXPORT IceRayC__DECLSPEC  H F( Refract_One0)(       S P_point, S P_normal, S P_ior, S P_attenuation  );
 IceRayC__EXPORT IceRayC__DECLSPEC  H F( Refract_Schlick0)(   S P_point, S P_normal, S P_ior, S P_albedo );
 
 #undef H

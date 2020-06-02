@@ -7,7 +7,6 @@
 #include "./normal.hpp"
 #include "./uvw.hpp"
 
-#include "./child.hpp"
-#include "./parent.hpp"
+#include "./general/general.hpp"
 
 #include "./transform.hpp"

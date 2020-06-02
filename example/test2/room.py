@@ -10,6 +10,31 @@ def vacuum( P_dll, P_config = None, P_light = None, P_exponat = None ):
     wrapper.geometrySet( geometry )
     return wrapper
 
+def plate( P_dll, P_config = { 'level':  - 1, 'size' : 3 }, P_light = None, P_exponat = None ):
+
+    level = -1;
+    if( 'level' in P_config ):
+        level = P_config['level']
+    size = 3;
+    if( 'size' in P_config ):
+        size = P_config['size']
+
+    geometry = IceRayPy.core.geometry.simple.Box( P_dll )
+    geometry.box(        Coord3D(  -size, -size, level - 0.1) , Coord3D( size,      size, level ) )
+
+    wrapper = IceRayPy.core.object.Wrapper( P_dll )
+
+    I_scene = { 'light': P_light, 'barrier' : P_exponat   }
+    pigment = IceRayPy.utility.material.illumination.Lambert( P_dll, I_scene, IceRayPy.type.color.RGB( 0.5, 0.5, 0.5 ) )
+
+    wrapper.pigment( pigment )
+
+    wrapper.geometrySet( geometry )
+
+    return wrapper
+
+
+
 def plane( P_dll, P_config = { 'level':  - 1 }, P_light = None, P_exponat = None ):
 
     level = -1;
@@ -20,7 +45,8 @@ def plane( P_dll, P_config = { 'level':  - 1 }, P_light = None, P_exponat = None
 
     wrapper = IceRayPy.core.object.Wrapper( P_dll )
 
-    pigment = IceRayPy.utility.material.illumination.Lambert( P_dll, P_light, P_exponat, IceRayPy.type.color.RGB( 0.5, 0.5, 0.5 ) )
+    I_scene = { 'light': P_light, 'barrier' : P_exponat   }
+    pigment = IceRayPy.utility.material.illumination.Lambert( P_dll, I_scene, IceRayPy.type.color.RGB( 0.5, 0.5, 0.5 ) )
 
     wrapper.pigment( pigment )
 

@@ -13,6 +13,7 @@
 //#include "../_pure/pierce.hpp"
  //#include "../_pure/valid.hpp"
 #include "../_pure/solid.hpp"
+#include "../_pure/general/prototype.hpp"
 
 
  namespace GS_DDMRM
@@ -34,10 +35,12 @@
           , public GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_uvw
           , public GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_transform
           , public GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_solid
+          , public GS_DDMRM::S_IceRay::S_geometry::S__pure::S_general::GT_prototype
         //, public GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_pierce
         //, public GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_valid
          {
            public:
+             typedef GS_DDMRM::S_IceRay::S_type::GT_size                         T_size;
              typedef GS_DDMRM::S_IceRay::S_type::GT_scalar                       T_scalar;
              typedef GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar3D            T_coord;
 
@@ -66,6 +69,11 @@
              T_location  Fv_inside   ( T_coord const& P_point/*, T_state const&P_intersect*/ )const;
              T_scalar    Fv_distance ( T_coord const& P_point )const;
            //bool        Fv_uvw      ( T_coord & P_uvw, T_coord const& P_point, T_state const&P_state )const;
+
+           public:
+             virtual T__base*        Fv_blank()const;
+             virtual T__base*        Fv_clone()const;
+             virtual void            Fv_release( T__base* P_this )const;
 
            private:
              struct C_intersect;
