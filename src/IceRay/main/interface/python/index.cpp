@@ -60,7 +60,6 @@ BOOST_PYTHON_MODULE(IceRayCpp)
   EXTERN_AND_CALL( expose_IceRay_light_Spline );
   EXTERN_AND_CALL( expose_IceRay_light_SunSpot );
   EXTERN_AND_CALL( expose_IceRay_light_SunGeneral );
-  EXTERN_AND_CALL( expose_IceRay_light_Clipped );
   EXTERN_AND_CALL( expose_IceRay_light_confine );
 
   EXTERN_AND_CALL( expose_IceRay_geometry__pure      );

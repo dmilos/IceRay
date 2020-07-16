@@ -4,7 +4,8 @@ import IceRayPy
 
 Pointer = ctypes.POINTER
 AddresOf = ctypes.addressof
-SizeType = ctypes.c_uint
+
+SizeType = IceRayPy.type.basic.Size
 
 class Size:
     def __init__(self, P_dll, P_pattern, P_result, P_input ):

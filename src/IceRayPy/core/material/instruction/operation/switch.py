@@ -1,6 +1,8 @@
 import ctypes
 
-SizeType = ctypes.c_uint
+import IceRayPy
+
+SizeType = IceRayPy.type.basic.Size
 
 class Size:
     def __init__(self, P_dll, P_result, P_input, P_candidate ):

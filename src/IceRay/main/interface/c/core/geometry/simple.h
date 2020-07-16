@@ -12,11 +12,6 @@ IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Sphe
 IceRayC__EXPORT IceRayC__DECLSPEC  int                     IceRayC_Geometry_Sphere_Center( IceRayC_Geometry_Handle P_that, IceRayC_TypeCoordScalar3D* center );
 IceRayC__EXPORT IceRayC__DECLSPEC  int                     IceRayC_Geometry_Sphere_Radius( IceRayC_Geometry_Handle P_that, IceRayC_TypeScalar radius );
 
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Box0();
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Box1( IceRayC_TypeCoordScalar3D* lo, IceRayC_TypeCoordScalar3D* hi );
-IceRayC__EXPORT IceRayC__DECLSPEC  int                     IceRayC_Geometry_Box_Lo( IceRayC_Geometry_Handle P_that, IceRayC_TypeCoordScalar3D* P_lo );
-IceRayC__EXPORT IceRayC__DECLSPEC  int                     IceRayC_Geometry_Box_Hi( IceRayC_Geometry_Handle P_that, IceRayC_TypeCoordScalar3D* P_hi );
-
 
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Ellipsoid0();
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Ellipsoid1( IceRayC_TypeCoordScalar3D* P_center, IceRayC_TypeScalar P_radius );
@@ -32,28 +27,12 @@ IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Toru
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Torus1( IceRayC_TypeScalar P_minor );
 IceRayC__EXPORT IceRayC__DECLSPEC  int                     IceRayC_Geometry_Torus_Minor( IceRayC_Geometry_Handle P_that, IceRayC_TypeScalar P_minor );
 
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Triangle0();
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Triangle1( IceRayC_TypeCoordScalar3D* e0, IceRayC_TypeCoordScalar3D* ex, IceRayC_TypeCoordScalar3D* ey );
-IceRayC__EXPORT IceRayC__DECLSPEC  int                     IceRayC_Geometry_Triangle_Origin( IceRayC_Geometry_Handle P_that, IceRayC_TypeCoordScalar3D* P_origin );
-IceRayC__EXPORT IceRayC__DECLSPEC  int                     IceRayC_Geometry_Triangle_eX( IceRayC_Geometry_Handle P_that, IceRayC_TypeCoordScalar3D* P_eX );
-IceRayC__EXPORT IceRayC__DECLSPEC  int                     IceRayC_Geometry_Triangle_eY( IceRayC_Geometry_Handle P_that, IceRayC_TypeCoordScalar3D* P_eY );
 
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Quadric0();
-
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Disc0();
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Disc1(  IceRayC_TypeCoordScalar3D* P_center, IceRayC_TypeCoordScalar3D* P_normal, IceRayC_TypeScalar P_radius );
-IceRayC__EXPORT IceRayC__DECLSPEC  int                     IceRayC_Geometry_Disc_Center( IceRayC_Geometry_Handle P_that, IceRayC_TypeCoordScalar3D* P_center );
-IceRayC__EXPORT IceRayC__DECLSPEC  int                     IceRayC_Geometry_Disc_Normal( IceRayC_Geometry_Handle P_that, IceRayC_TypeCoordScalar3D* P_normal );
-IceRayC__EXPORT IceRayC__DECLSPEC  int                     IceRayC_Geometry_Disc_Radius( IceRayC_Geometry_Handle P_that, IceRayC_TypeScalar P_radius );
 
 
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Transform_MotionBlur0();
 IceRayC__EXPORT IceRayC__DECLSPEC  int                     IceRayC_Geometry_Transform_MotionBlur_Child( IceRayC_Geometry_Handle P_that, IceRayC_Geometry_Handle P_child );
-
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Plane0( );
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Plane1( IceRayC_TypeCoordScalar3D* P_origin, IceRayC_TypeCoordScalar3D* P_normal );
-IceRayC__EXPORT IceRayC__DECLSPEC  int                     IceRayC_Geometry_Plane_Origin( IceRayC_Geometry_Handle P_that, IceRayC_TypeCoordScalar3D* P_origin );
-IceRayC__EXPORT IceRayC__DECLSPEC  int                     IceRayC_Geometry_Plane_Normal( IceRayC_Geometry_Handle P_that, IceRayC_TypeCoordScalar3D* P_normal );
 
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_HField();
 

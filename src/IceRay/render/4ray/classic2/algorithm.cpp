@@ -26,7 +26,7 @@ GC_algorithm::GC_algorithm( )
 
 GC_algorithm::~GC_algorithm( )
  {
-  if( true ) return;
+  if( false ) return;
   std::cout << "Total:      " << PRINT(M2_stack.F_total() )       << std::endl;
   std::cout << "Traced:     " << PRINT(M2_statistic.M_traced    ) << std::endl;
   std::cout << "Discarded:  " << PRINT(M2_statistic.M_discarded ) << std::endl;
@@ -82,7 +82,7 @@ bool GC_algorithm::F_depth( T_size const& P_depth )
   M2_allocator.F_weight( F1_object().Fv_weight() );
   M2_allocator.F_reserve( I_reseve );
   M2_allocator.F_clear();
-  M2_statistic.M_depth.resize( M2_depth, 0 );
+  M2_statistic.M_depth.resize( M2_depth + 3, 0 );
 
   return true;
  }

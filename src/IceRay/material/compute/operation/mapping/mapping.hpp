@@ -29,7 +29,28 @@
                   GS_DDMRM::S_IceRay::S_utility::S_mapping::GC_identity
                  ,GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar
                  ,GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar
-               > GT_identity;
+               > GT_identity3D;
+
+             typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::GC_unary
+               <
+                  GS_DDMRM::S_IceRay::S_utility::S_mapping::GC_translate
+                 ,GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar
+                 ,GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar
+               > GT_translate3D;
+
+             typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::GC_unary
+               <
+                  GS_DDMRM::S_IceRay::S_utility::S_mapping::GC_affine
+                 ,GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar
+                 ,GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar
+               > GT_affine3D;
+
+             typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::GC_unary
+               <
+                  GS_DDMRM::S_IceRay::S_utility::S_mapping::GC_homography
+                 ,GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar
+                 ,GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar
+               > GT_homography3D;
 
              typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::GC_unary
                <
@@ -115,7 +136,6 @@
                  ,GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar
                > GT_spherical2cylindric;
 
-
              typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::GC_unary
                <
                   GS_DDMRM::S_IceRay::S_utility::S_mapping::GC_euclid2max
@@ -147,7 +167,3 @@
   }
 
 #endif
-
-#include "./translate.hpp"
-#include "./homography.hpp"
-#include "./affine.hpp"

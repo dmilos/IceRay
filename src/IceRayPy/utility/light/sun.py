@@ -6,7 +6,8 @@ Coord3D  = IceRayPy.type.math.coord.Scalar3D
 
 class Point:
     def __init__( self, P_dll, P_center = None ):
-        self.m_implementation = IceRayPy.core.light.SunG( P_dll, IceRayPy.core.light.Point( P_dll ) )
+        self.m_implementation = IceRayPy.core.light.SunG( P_dll, IceRayPy.core.light.Point( P_dll, Coord3D( 0, 0, 10 ) ) )
+        #self.m_implementation = IceRayPy.core.light.SunS( P_dll  )
         self.m_cargo = self.m_implementation.m_cargo
         if( None != P_center ):
             self.m_cargo.center( P_center )

@@ -17,14 +17,15 @@
         : public GS_DDMRM::S_IceRay::S_light::GC__pure
         {
          public:
-           GC_suns( T_spot const& P_spot = T_spot() );
+                    GC_suns( );
+           explicit GC_suns( T_spot const& P_spot );
 
          public:
            T_size  Fv_swarm( T_swarm &P_swarm,  T_coord const& P_point )const;
 
          public:  // property spot  spot
              T_spot  const& F_spot()const{ return M2_spot; }
-           bool             F_spot( T_spot const& P_spot ){ M2_spot = P_spot; return bool( true ); }
+           bool             F_spot( T_spot const& P_spot );
          protected:
         //T__pure        & F1_spot(){ return M2_spot; }
          private:
@@ -32,8 +33,7 @@
 
          public:
            T_coord  const& F_center()const{ return M2_spot.F_center(); }
-           bool             F_center( T_coord const& P_center ){ M2_spot.F_center( P_center ); return bool( true ); }
-
+           bool            F_center( T_coord const& P_center ){ M2_spot.F_center( P_center ); return bool( true ); }
         };
 
       }

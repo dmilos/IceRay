@@ -35,7 +35,7 @@
              {
               return P_point;
              }
-         };
+          };
 
          class GC_translate
           {
@@ -56,19 +56,52 @@
              T_coord M_move;
           };
 
-         // TODO class GC_affine
-         // TODO  {
-         // TODO   public:
-         // TODO    typedef GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar T_coord;
-         // TODO    typedef GS_DDMRM::S_IceRay::S_type::S_affine::GT_scalar T_affine;
-         // TODO
-         // TODO    GC_translate( T_affine const& P_affine = ::math::linear::affine::id<T_scalar, 3 >() )
-         // TODO    T_coord   operator()( T_coord const& P_point )const
-         // TODO     {
-         // TODO
-         // TODO      return P_point;
-         // TODO     }
-         // TODO };
+         class GC_affine
+          {
+           public:
+             typedef GS_DDMRM::S_IceRay::S_type::GT_scalar            T_scalar;
+             typedef GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar   T_coord;
+             typedef GS_DDMRM::S_IceRay::S_type::S_affine::GT_scalar  T_affine;
+
+           public:
+             GC_affine( T_affine const& P_affine =  T_affine{} )
+              :M_affine( P_affine )
+              {
+               M_affine = ::math::linear::affine::id<T_scalar,3>();
+              }
+             T_coord   operator()( T_coord const& P_point )const
+              {
+               T_coord Ir_result;
+               ::math::linear::affine::transform( Ir_result, M_affine, P_point );
+               return P_point;
+              }
+           public:
+             T_affine M_affine;
+          };
+
+         class GC_homography
+          {
+           public:
+             typedef GS_DDMRM::S_IceRay::S_type::GT_scalar                  T_scalar;
+             typedef GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar         T_coord;
+             typedef GS_DDMRM::S_IceRay::S_type::S_homography::GT_homography T_homography;
+
+             GC_homography( T_homography const& P_homography = T_homography{} )
+              :M_homography( P_homography )
+              { 
+               //::math::linear::matrix::id<T_scalar,3>()
+              }
+
+             T_coord   operator()( T_coord const& P_point )const
+              {
+               T_coord Ir_result;
+               ::math::linear::homography::transform( Ir_result, M_homography, P_point );
+               return P_point;
+              }
+           public:
+             T_homography M_homography;
+          };
+
 
          class GC_cartesian2cylindric
           {

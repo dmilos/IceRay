@@ -37,8 +37,8 @@ void expose_IceRay_geometry_transform_translate()
 
   typedef  GTs_coord3D const& (Tf_translate::*Tf_getMove  )(void) const;
   typedef  bool (Tf_translate::*Tf_setMove  )(GTs_coord3D const&);
-  Tf_getMove I_getMove = &Tf_translate::F_move;
-  Tf_setMove I_setMove = &Tf_translate::F_move;
+  Tf_getMove I_getMove = &Tf_translate::F_2world;
+  Tf_setMove I_setMove = &Tf_translate::F_2world;
 
 //typedef  GTs__base const& (Tf_translate::*Tf_getChild )(void) const;
   typedef  bool (Tf_translate::*Tf_setChild  )( GTs__base * );

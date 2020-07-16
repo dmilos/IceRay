@@ -41,7 +41,11 @@
 
          public:  // property coord  pivot
            T_coord    const& F_pivot()const{ return M2_pivot; }
-           bool              F_pivot( T_coord const& P_pivot ){ M2_pivot = P_pivot; return bool( true ); }
+           bool              F_pivot( T_coord const& P_pivot )
+            {
+             M2_pivot = P_pivot; 
+             return bool( true ); 
+            }
          protected:
            T_coord        & F1_pivot(){ return M2_pivot; }
          private:
@@ -49,7 +53,11 @@
 
          public:
            T_coord    const& F_normal()const{ return M2_normal; }
-           bool              F_normal( T_coord const& P_normal ){ M2_normal = P_normal; return bool( true ); }
+           bool              F_normal( T_coord const& P_normal )
+            {
+             M2_normal = P_normal; 
+             return bool( true ); 
+            }
          protected:
            T_coord        & F1_normal(){ return M2_normal; }
          private:

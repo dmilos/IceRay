@@ -35,10 +35,10 @@
 
              virtual ~GC_quadratic(){ ; }
 
-             virtual bool Fv_attenuate( T_color & P_color, T_color & P_deplete, T_coord const& P_start, T_coord const& P_end, T_state const& P_state )const
+             virtual bool Fv_attenuate( T_color & P_color, T_color & P_deplete, T_coord const& P_start, T_coord const& P_end, T_state const& P_state )const override
               {
-               auto distance = ::math::linear::vector::distance( P_start, P_end );
-               auto I_deplete =  distance*distance*this->F_a()+ distance*this->F_b() + this->F_c();
+               auto I_distance = ::math::linear::vector::distance( P_start, P_end );
+               auto I_deplete =  I_distance*I_distance*this->F_a()+ I_distance*this->F_b() + this->F_c();
                if( T_scalar(1) < I_deplete ) I_deplete = T_scalar(1);
                P_deplete = T_gray( { T_scalar(1) - I_deplete } );
                P_color =  I_deplete * this->F_value();

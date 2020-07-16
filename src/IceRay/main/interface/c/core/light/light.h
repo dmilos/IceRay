@@ -20,6 +20,9 @@ typedef IceRayC_Light_Struct* IceRayC_Light_Handle;
 
 IceRayC__EXPORT IceRayC__DECLSPEC  void IceRayC_Light_Release( IceRayC_Light_Handle P_this );
 
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Light_Handle IceRayC_Light_Dark0( );
+
+
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Light_Handle IceRayC_Light_Area0( );
 IceRayC__EXPORT IceRayC__DECLSPEC  int                  IceRayC_Light_Area_Spot(   IceRayC_Light_Handle P_this, IceRayC_TypeSpot*           P_spot );
 IceRayC__EXPORT IceRayC__DECLSPEC  int                  IceRayC_Light_Area_Sample( IceRayC_Light_Handle P_this, IceRayC_TypeSize            P_sample );
@@ -28,8 +31,8 @@ IceRayC__EXPORT IceRayC__DECLSPEC  int                  IceRayC_Light_Area_X(   
 IceRayC__EXPORT IceRayC__DECLSPEC  int                  IceRayC_Light_Area_Y(      IceRayC_Light_Handle P_this, IceRayC_TypeCoordScalar3D*  P_Y );
 
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Light_Handle IceRayC_Light_Obstruct0( );
-// TODO IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Light_Handle IceRayC_Light_Obstruct1( IceRayC_Light_Handle P_child );
-// TODO IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Light_Handle IceRayC_Light_Obstruct2( IceRayC_Light_Handle P_child, IceRayC_Geometry_Handle P_barrier );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Light_Handle IceRayC_Light_Obstruct1( IceRayC_Light_Handle P_child );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Light_Handle IceRayC_Light_Obstruct2( IceRayC_Light_Handle P_child, IceRayC_Geometry_Handle P_barrier );
 
 IceRayC__EXPORT IceRayC__DECLSPEC  int                  IceRayC_Light_Obstruct_Child( IceRayC_Light_Handle P_this, IceRayC_Light_Handle P_child );
 IceRayC__EXPORT IceRayC__DECLSPEC  int                  IceRayC_Light_Obstruct_Barrier( IceRayC_Light_Handle P_this, IceRayC_Geometry_Handle P_barrier  );
@@ -43,10 +46,6 @@ IceRayC__EXPORT IceRayC__DECLSPEC  int                  IceRayC_Light_Circle_Spo
 IceRayC__EXPORT IceRayC__DECLSPEC  int                  IceRayC_Light_Circle_Center( IceRayC_Light_Handle P_this, IceRayC_TypeCoordScalar3D* P_center );
 IceRayC__EXPORT IceRayC__DECLSPEC  int                  IceRayC_Light_Circle_X( IceRayC_Light_Handle P_this, IceRayC_TypeCoordScalar3D* P_X );
 IceRayC__EXPORT IceRayC__DECLSPEC  int                  IceRayC_Light_Circle_Y( IceRayC_Light_Handle P_this, IceRayC_TypeCoordScalar3D* P_Y );
-
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Light_Handle IceRayC_Light_Clipped0( );
-IceRayC__EXPORT IceRayC__DECLSPEC  int                  IceRayC_Light_Clipped_Child( IceRayC_Light_Handle P_this, IceRayC_Light_Handle P_child );
-IceRayC__EXPORT IceRayC__DECLSPEC  int                  IceRayC_Light_Clipped_Hull( IceRayC_Light_Handle P_this, IceRayC_Geometry_Handle P_shell );
 
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Light_Handle IceRayC_Light_Confine0( );
 IceRayC__EXPORT IceRayC__DECLSPEC  int                  IceRayC_Light_Confine_Child( IceRayC_Light_Handle P_this, IceRayC_Light_Handle P_child );

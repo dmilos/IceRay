@@ -12,6 +12,9 @@ def Arbitrary(
     ,P_attenuation : IceRayPy.type.color.RGB = IceRayPy.type.color.RGB( 0.5, 0.5, 0.5 )
     ):
 
+    P_albedo      : IceRayPy.type.color.RGB = IceRayPy.type.color.RGB( 0, 0, 0 )
+    P_attenuation : IceRayPy.type.color.RGB = IceRayPy.type.color.RGB( 1, 1, 1 )
+
     result     = IceRayPy.core.material.instruction.label.color.dynamic.RESULT
     point      = IceRayPy.core.material.instruction.label.coord3d.dynamic.POINT
     normal     = IceRayPy.core.material.instruction.label.coord3d.dynamic.NORMAL
@@ -29,6 +32,7 @@ def Arbitrary(
     I_surface.append( IceRayPy.core.material.instruction.transmission.refract.Arbitrary( P_dll, point, normal, tempScalar + 0, tempColor + 0, tempColor + 1 ) )
 
     return I_surface
+
 
 def Fresnel(
      P_dll
@@ -89,7 +93,7 @@ def One(
     ,P_light     = None
     ,P_barrier   = None #= IceRayPy.core.light.Point( P_dll, IceRayPy.type.math.coord.Scalar3D( 0, 0, 5 ) )
     ,P_ior          = 1
-    ,P_attenuation : IceRayPy.type.color.RGB = IceRayPy.type.color.RGB( 0.5, 0.5, 0.5 )
+    ,P_attenuation : IceRayPy.type.color.RGB = IceRayPy.type.color.RGB( 1, 1, 1 )
     ):
 
     result     = IceRayPy.core.material.instruction.label.color.dynamic.RESULT

@@ -149,8 +149,9 @@ bool        GC_wrap::F_geometry( T_geometry * P_geometry )
     for( T_size I_index = 0 ; I_index < M2_cluster->Fv_quantity(); ++I_index )
      {
       auto & I_marble = M2_marbles[ I_index ];
-      I_marble.M_pigment = dynamic_cast< T_pigment* >( M2_cluster->Fv_base( I_index ) ); //if( nullptr == I_marble.M_pigment ) I_marble.M_pigment = &Fs_pigment();
-      I_marble.M_medium  = dynamic_cast< T_medium* >(  M2_cluster->Fv_base( I_index ) ); //if( nullptr == I_marble.M_medium  ) I_marble.M_medium  = &F1s_medium();
+      auto I_base = M2_cluster->Fv_base( I_index );
+      I_marble.M_pigment = dynamic_cast< T_pigment* >( I_base ); //if( nullptr == I_marble.M_pigment ) I_marble.M_pigment = &Fs_pigment();
+      I_marble.M_medium  = dynamic_cast< T_medium* >(  I_base ); //if( nullptr == I_marble.M_medium  ) I_marble.M_medium  = &F1s_medium();
      }
    }
 

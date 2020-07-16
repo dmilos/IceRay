@@ -25,6 +25,9 @@ class Object:
         self.m_cargo['dll'].IceRayC_Geometry_RTSS_Object_Push( self.m_cargo['this'], P_child.m_cargo['this'] )
         self.m_cargo['child'].append( P_child )
 
+    def clear( self ):
+        self.m_cargo['dll'].IceRayC_Geometry_RTSS_Object_Push( self.m_cargo['this'] )
+
     def rtss( self, P_rtss ):
         self.m_cargo['dll'].IceRayC_Geometry_RTSS_Object_Rtss( self.m_cargo['this'], P_rtss.m_cargo['this'] )
         self.m_cargo['rtss'] = P_rtss

@@ -1,6 +1,7 @@
 import ctypes
+import IceRayPy
 
-SizeType = ctypes.c_uint
+SizeType = IceRayPy.type.basic.Size
 
 class Ramp:
     def __init__(self, P_dll,  P_result, P_input ):

@@ -55,6 +55,15 @@ class Affine:
     def toWorldSet( self, P_2world : Affine3D ):
         return self.m_cargo['dll'].IceRayC_Camera_Transform_Affine_2World_Set( self.m_cargo['this'], AddresOf( P_2world ) )
 
+    def toLocalGet( self ):
+        I_2local = Affine3D()
+        self.m_cargo['dll'].IceRayC_Camera_Transform_Affine_2Local_Get( self.m_cargo['this'], AddresOf( I_2local ) )
+        return I_2local
+
+    def toLocalSet( self, P_2local : Affine3D ):
+        return self.m_cargo['dll'].IceRayC_Camera_Transform_Affine_2Local_Set( self.m_cargo['this'], AddresOf( P_2local ) )
+
+
     def lookAt( self, P_eye : Coord3D, P_view: Coord3D, P_up: Coord3D ):
         self.toWorldSet( IceRayPy.type.math.affine.lookAt( self.m_cargo['dll'], P_eye, P_view, P_up ) )
         return True

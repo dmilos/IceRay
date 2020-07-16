@@ -14,6 +14,7 @@ VoidPtr = IceRayPy.type.basic.VoidPtr
 Integer = IceRayPy.type.basic.Integer
 Coord3D = IceRayPy.type.math.coord.Scalar3D
 Affine3D = IceRayPy.type.math.affine.Scalar3D
+Matrix4D = IceRayPy.type.math.matrix.Scalar4D
 
 
 
@@ -38,6 +39,7 @@ class Identity:
         self.m_cargo['dll'].IceRayC_Light_Transform_Identity_Child( self.m_cargo['this'], P_child.m_cargo['this'] )
         self.m_cargo['child'] = P_child
 
+
 class Translate:
     def __init__( self, P_dll, P_child = None , P_move = None ):
         self.m_cargo = {}
@@ -48,7 +50,7 @@ class Translate:
             self.child( P_child )
 
         if( None != P_move ):
-            self.move( P_move )
+            self.toWorldSet( P_move )
 
     def __del__( self ):
         self.m_cargo['dll'].IceRayC_Light_Release( self.m_cargo['this'] )
@@ -61,9 +63,21 @@ class Translate:
         self.m_cargo['dll'].IceRayC_Light_Transform_Translate_Child( self.m_cargo['this'], P_child.m_cargo['this'] )
         self.m_cargo['child'] = P_child
 
+    def toWorldGet( self ):
+        result = Coord3D()
+        self.m_cargo['dll'].IceRayC_Light_Transform_Translate_2World_Get( self.m_cargo['this'], AddresOf( result ) )
+        return result
 
-    def move(self, P_move : Coord3D ):
-        return self.m_cargo['dll'].IceRayC_Light_Transform_Translate_Move( self.m_cargo['this'], AddresOf( P_move ) )
+    def toWorldSet( self, P_2world: Coord3D ):
+        return self.m_cargo['dll'].IceRayC_Light_Transform_Translate_2World_Set( self.m_cargo['this'], AddresOf( P_2world ) )
+
+    def toLocalGet( self ):
+        result = Coord3D()
+        self.m_cargo['dll'].IceRayC_Light_Transform_Translate_2Local_Get( self.m_cargo['this'], AddresOf( result ) )
+        return result
+
+    def toLocalSet( self, P_2local: Coord3D ):
+        return self.m_cargo['dll'].IceRayC_Light_Transform_Translate_2Local_Set( self.m_cargo['this'], AddresOf( P_2local ) )
 
 
 class Affine:
@@ -78,7 +92,6 @@ class Affine:
 
         if( None != P_2world ):
             self.toWorldSet( P_2world )
-
 
     def __del__( self ):
         self.m_cargo['dll'].IceRayC_Light_Release( self.m_cargo['this'] )
@@ -97,24 +110,42 @@ class Affine:
         return result
 
     def toWorldSet( self, P_2world: Affine3D ):
-        return self.m_cargo['dll'].IceRayC_Light_Transform_Affine_2World( self.m_cargo['this'], AddresOf( P_2world ) )
+        return self.m_cargo['dll'].IceRayC_Light_Transform_Affine_2World_Set( self.m_cargo['this'], AddresOf( P_2world ) )
+
+    def toLocalGet( self ):
+        result = Affine3D()
+        self.m_cargo['dll'].IceRayC_Light_Transform_Affine_2Local_Get( self.m_cargo['this'], AddresOf( result ) )
+        return result
 
     def toLocalSet( self, P_2local: Affine3D ):
-        return self.m_cargo['dll'].IceRayC_Light_Transform_Affine_2Local( self.m_cargo['this'], AddresOf( P_2local ) )
+        return self.m_cargo['dll'].IceRayC_Light_Transform_Affine_2Local_Set( self.m_cargo['this'], AddresOf( P_2local ) )
 
-    def move(self, P_move : Coord3D ):
-        pass #TODO;
 
-    def scaleV(self, P_move : Coord3D ):
-        pass #TODO;
+class Homography:
+    def __init__( self, P_dll, P_child = None ):
+        self.m_cargo = {}
+        self.m_cargo['dll'] = P_dll
+        self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Light_Transform_Homography0()
+        if( None != P_child ):
+            self.child( P_child )
 
-    def rotateX(self, P_alpha ):
-        pass #TODO;
+    def __del__( self ):
+        self.m_cargo['dll'].IceRayC_Light_Release( self.m_cargo['this'] )
+        self.m_cargo['child'] = None
 
-    def rotateY(self, P_alpha ):
-        pass #TODO;
+    def toWorldGet( self ):
+        result = Matrix4D()
+        self.m_cargo['dll'].IceRayC_Light_Transform_Homography_2World_Get( self.m_cargo['this'], AddresOf( result ) )
+        return result
 
-    def rotateZ(self, P_alpha ):
-        pass #TODO;
-    def rotateA(self, P_direction : Coord3D, P_alpha ):
-        pass #TODO;
+    def toWorldSet( self, P_2world: Matrix4D ):
+        return self.m_cargo['dll'].IceRayC_Light_Transform_Homography_2World_Set( self.m_cargo['this'], AddresOf( P_2world ) )
+
+    def toLocalGet( self ):
+        result = Matrix4D()
+        self.m_cargo['dll'].IceRayC_Light_Transform_Homography_2Local_Get( self.m_cargo['this'], AddresOf( result ) )
+        return result
+
+    def toLocalSet( self, P_2local: Matrix4D ):
+        return self.m_cargo['dll'].IceRayC_Light_Transform_Homography_2Local_Set( self.m_cargo['this'], AddresOf( P_2local ) )
+

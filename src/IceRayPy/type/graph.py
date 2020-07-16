@@ -4,9 +4,7 @@ print( '<' + __name__ + ' name=\'' +   __file__ + '\'>' )
 
 import IceRayPy
 
-import IceRayPy.type.basic
-
-SizeType = ctypes.c_uint # TODO
+SizeType = IceRayPy.type.basic.Size
 
 AddresOf = ctypes.addressof
 

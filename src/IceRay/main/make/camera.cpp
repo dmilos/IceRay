@@ -1,4 +1,4 @@
-#include "IceRay/camera/transform.hpp"
+#include "IceRay/camera/transform/transform.hpp"
 #include "IceRay/camera/sphere/vertical.hpp"
 #include "IceRay/camera/invert.hpp"
 #include "IceRay/camera/flat/orthogonal.hpp"

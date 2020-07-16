@@ -146,17 +146,26 @@ cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'geometry', '
 
 cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'geometry', 'simple', 'simple.cpp' ) ]
 if( False ):
-    cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'geometry', 'simple', 'box.cpp' ) ]
     cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'geometry', 'simple', 'cone.cpp' ) ]
     cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'geometry', 'simple', 'cylinder.cpp' ) ]
-    cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'geometry', 'simple', 'disc.cpp' ) ]
-    cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'geometry', 'simple', 'plane.cpp' ) ]
     cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'geometry', 'simple', 'sphere.cpp' ) ]
     cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'geometry', 'simple', 'torus.cpp' ) ]
-    cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'geometry', 'simple', 'triangle.cpp' ) ]
     cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'geometry', 'simple', 'usphere.cpp' ) ]
     cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'geometry', 'simple', 'quadric.cpp' ) ]
     cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'geometry', 'simple', 'paraboloid.cpp' ) ]
+    cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'geometry', 'simple', 'box.cpp' ) ]
+    cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'geometry', 'simple', 'disc.cpp' ) ]
+    cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'geometry', 'simple', 'plane.cpp' ) ]
+    cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'geometry', 'simple', 'triangle.cpp' ) ]
+
+
+#cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'geometry', 'flat', 'flat.cpp' ) ]
+#if( False ):
+#    cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'geometry', 'flat', 'box.cpp' ) ]
+#    cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'geometry', 'flat', 'disc.cpp' ) ]
+#    cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'geometry', 'flat', 'plane.cpp' ) ]
+#    cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'geometry', 'flat', 'triangle.cpp' ) ]
+
 
 cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'geometry', 'transform', 'transform.cpp' ) ]
 if( False ):

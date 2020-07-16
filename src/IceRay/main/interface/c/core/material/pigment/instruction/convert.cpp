@@ -62,34 +62,30 @@ H F( Bool2Coord3D0      )( S( result ), S( left ) )
 
 H F( Integer2Bool0         )( S( result ), S( left ) )
  {
-  //typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_convert::GT_integer2bool    Tf_this;
-  //auto Ir_result = new Tf_this{ P_result, P_left  };
-  //return cpp2c( Ir_result );
-  return nullptr;// TODO
+  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_convert::GT_integer2bool    Tf_this;
+  auto Ir_result = new Tf_this{ P_result, P_left  };
+  return cpp2c( Ir_result );
  }
 
 H F( Integer2Integer0      )( S( result ), S( left ) )
  {
-  //typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_convert::GT_integer2integer    Tf_this;
-  //auto Ir_result = new Tf_this{ P_result, P_left  };
-  //return cpp2c( Ir_result );
-  return nullptr;// TODO
+  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_convert::GT_integer2integer    Tf_this;
+  auto Ir_result = new Tf_this{ P_result, P_left  };
+  return cpp2c( Ir_result );
  }
 
 H F( Integer2Size0         )( S( result ), S( left ) )
  {
-  //typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_convert::GT_integer2size    Tf_this;
-  //auto Ir_result = new Tf_this{ P_result, P_left  };
-  //return cpp2c( Ir_result );
-  return nullptr;// TODO
+  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_convert::GT_integer2size    Tf_this;
+  auto Ir_result = new Tf_this{ P_result, P_left  };
+  return cpp2c( Ir_result );
  }
 
 H F( Integer2Scalar0       )( S( result ), S( left ) )
  {
-  //typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_convert::GT_integer2scalar   Tf_this;
-  //auto Ir_result = new Tf_this{ P_result, P_left  };
-  //return cpp2c( Ir_result );
-  return nullptr;// TODO
+  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_convert::GT_integer2scalar   Tf_this;
+  auto Ir_result = new Tf_this{ P_result, P_left  };
+  return cpp2c( Ir_result );
  }
 
 H F( Integer2Color0        )( S( result ), S( left ) )

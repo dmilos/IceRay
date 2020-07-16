@@ -5,6 +5,13 @@
 
 using namespace GS_DDMRM::S_IceRay::S_light;
 
+GC_suns::GC_suns
+ (
+ )
+ {
+  M2_spot.F_center()[2] = 1;
+  F1_max() = 1;
+ }
 
 GC_suns::GC_suns
  (
@@ -29,4 +36,10 @@ GC_suns::Fv_swarm
   ::math::linear::vector::addition( P_swarm.F_back().F_center(), P_point );
 
   return 1;
+ }
+
+bool  GC_suns::F_spot( T_spot const& P_spot )
+ {
+  M2_spot = P_spot; 
+  return bool( true ); 
  }

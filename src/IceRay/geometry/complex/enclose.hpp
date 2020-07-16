@@ -16,7 +16,6 @@
 #include "../_pure/uvw.hpp"
 
 
-#include "../volumetric/vacuum.hpp"
 
 
 
@@ -93,6 +92,7 @@
               {
                T_size        M_weight;
                T__base      *M__base;
+               T2_normal    *M_normal;
                T2_intersect *M_intersect;
                T2_inside    *M_inside;
                T2_distance  *M_distance;
@@ -100,8 +100,7 @@
              C2_child  M2_child;
 
            public:
-             typedef GS_DDMRM::S_IceRay::S_geometry::S_volumetric::GC_vacuum T_vacuum;
-             static T_vacuum & Fs_vacuum();
+             static T__base & Fs_vacuum();
            private:
              struct C_intersect;
           };

@@ -1,5 +1,6 @@
 #include <limits>
 #include "./enclose.hpp"
+#include "../volumetric/vacuum.hpp"
 
 using namespace GS_DDMRM::S_IceRay::S_geometry::S_complex;
 
@@ -29,10 +30,16 @@ GC_enclose::~GC_enclose( )
  }
 
 void
-GC_enclose::Fv_reset( T_state &P_intersect )const
+GC_enclose::Fv_reset( T_state &P_state )const
  {
-  C_intersect &I_intersect = P_intersect.F_content<C_intersect>();
-  // TODO
+  C_intersect &I_intersect = P_state.F_content<C_intersect>();
+
+  T_state I_hull;       P_state.F_tail<C_intersect>( I_hull );
+  F_hull().Fv_reset( I_hull );
+
+  T_state I_child;   I_hull.F_tail( I_child,   M2_hull.M_weight );
+  F_child().Fv_reset( I_child );
+
   return;
  }
 
@@ -50,23 +57,46 @@ GC_enclose::Fv_weight( )const
 
 GC_enclose::T_size const& GC_enclose::Fv_id( T_state const&P_state )const
  {
-  return M2_child.M__base->F_id();
+  C_intersect const&I_head = P_state.F_content<C_intersect>();
+  T_state I_hull;       P_state.F_tail<C_intersect>( I_hull );
+  T_state I_child;   I_hull.F_tail( I_child,   M2_hull.M_weight );
+
+  return M2_child.M__base->Fv_id( I_child );
  }
 
 GC_enclose::T_size const&    GC_enclose::Fv_quantity()const
  {
-  static T_size Irs_size = 0;
-  return Irs_size; //!< TODO
+  static T_size Irs_size = 1;
+  return Irs_size;
  }
 
 GC_enclose::T__base*    GC_enclose::Fv_base( T_size const& P_index )const
  {
-  return nullptr; //!< TODO
+  if( 0 != P_index )
+   {
+    return nullptr;
+   }
+  return M2_child.M__base;
  }
 
 bool                    GC_enclose::Fv_fragment( T_fragment & P_fragment, T_state const& P_state )const
  {
-  return false ;//!< TODO
+  C_intersect const&I_head = P_state.F_content<C_intersect>();
+  if( false == I_head.M_hit )
+   {
+    return false ;
+   }
+
+  ++P_fragment.M_depth;
+
+  T_state I_hull;       P_state.F_tail<C_intersect>( I_hull );
+  T_state I_child;   I_hull.F_tail( I_child,   M2_hull.M_weight );
+
+  P_fragment.M_index = 0;
+  P_fragment.M_state = I_child;
+  P_fragment.M__base = M2_child.M__base;
+
+  return true;
  }
 
 bool GC_enclose::Fv_intersect
@@ -80,57 +110,56 @@ bool GC_enclose::Fv_intersect
 
   T_scalar I_lam_inf=0, I_lam_sup=P_lambda;
 
-  // T_scalar I_bound[2];
-  // auto count = F_hull().Fv_pierce( 2, I_bound, I_intersect.F_tail<C_intersect>(), P_ray ) )
-  // if( 2 != count )
-  //  {
-  //   return false;
-  //  }
-
-
-  C_intersect const&I_intersect = P_state.F_content<C_intersect>();
-
+  C_intersect    &I_intersect = P_state.F_content<C_intersect>();
+  I_intersect.M_hit = false;
   T_state I_mainHit;      P_state.F_tail<C_intersect>( I_mainHit );
   T_state I_hullTemp;   I_mainHit.F_tail( I_hullTemp,   M2_hull.M_weight );
   T_state I_childTemp; I_hullTemp.F_tail( I_childTemp,  M2_child.M_weight );
 
-
-  bool I_hit1 = M2_hull.M_intersect->Fv_intersect( I_lam_sup, I_hullTemp, P_ray );
-
   auto I_location = M2_hull.M_inside->Fv_inside( P_ray.M_origin /*, P_intersect */ );
 
-   switch( I_location )
-    {
-     case( T_location::En_in  ):  break;
-     case( T_location::En_out ):
-      {
-       if( false == I_hit1 )
-        {
-         return false;
-        }
+  switch( I_location )
+   {
+    case( T_location::En_in  ):
+     {
+     }break;
+    case( T_location::En_out ):
+     {
+      auto I_lambda = P_lambda;
+      if( false == M2_hull.M_intersect->Fv_intersect( I_lambda, I_hullTemp, P_ray ) )
+       {
+        return false;
+       }
+      break;
+     }
+    default: return false;
+   }
 
-       I_lam_inf = I_lam_sup;
-       I_lam_sup = P_lambda - I_lam_inf;
-       auto I_ray = P_ray;
-       ::math::linear::vector::combine( I_ray.M_origin, P_ray.M_origin, I_lam_inf, P_ray.M_origin );
-       bool I_hit2 = M2_hull.M_intersect->Fv_intersect( I_lam_sup, I_childTemp, I_ray );
-       break;
-      }
-     default: return false;
-    }
+  if( true ==  M2_child.M_intersect->Fv_intersect( P_lambda, I_childTemp, P_ray ) )
+   {
+     I_intersect.M_hit = true;
+   }
 
-  // TODO M2_child.M_intersect->Fv_intersect( TODO, TODO, I_ray );
-  return false;
+  return I_intersect.M_hit;
  }
 
 void GC_enclose::Fv_normal
  (
    T_coord           & P_normal
   ,T_coord      const& P_point
-  ,T_state  const& P_intersect
+  ,T_state      const& P_state
  )const
  {
-  // TODO
+  C_intersect const&I_head = P_state.F_content<C_intersect>();
+  if( false == I_head.M_hit )
+   {
+    return;
+   }
+
+  T_state I_hull;       P_state.F_tail<C_intersect>( I_hull );
+  T_state I_child;   I_hull.F_tail( I_child,   M2_hull.M_weight );
+
+  return M2_child.M_normal->Fv_normal( P_normal, P_point, I_child );
  }
 
 GC_enclose::T_location GC_enclose::Fv_inside
@@ -138,7 +167,18 @@ GC_enclose::T_location GC_enclose::Fv_inside
   T_coord const& P_point
  )const
  {
-  return  M2_hull.M_inside->Fv_inside( P_point /*, P_intersect */ );
+  auto I_location = M2_hull.M_inside->Fv_inside( P_point /*, P_intersect */ );
+
+  switch( I_location )
+   {
+    case( T_location::En_in  ):
+     {
+      return  M2_child.M_inside->Fv_inside( P_point /*, P_intersect */ );
+     }break;
+    default: return T_location::En_out;
+   }
+
+  return T_location::En_out;
  }
 
 GC_enclose::T_scalar
@@ -153,8 +193,9 @@ bool  GC_enclose::Fv_uvw( T_coord & P_uvw, T_coord const& P_point, T_state const
   return false;
  }
 
-GC_enclose::T_vacuum & GC_enclose::Fs_vacuum()
+GC_enclose::T__base & GC_enclose::Fs_vacuum()
  {
+  typedef GS_DDMRM::S_IceRay::S_geometry::S_volumetric::GC_vacuum T_vacuum;
   static T_vacuum Is_vacuum;
   return Is_vacuum;
  }
@@ -204,6 +245,7 @@ bool GC_enclose::F_child( T__base * P_child )
   M2_child.M_weight    = P_child->Fv_weight();
   M2_child.M__base     = P_child ;
   M2_child.M_intersect = dynamic_cast< T2_intersect*>( P_child );
+  M2_child.M_normal    = dynamic_cast< T2_normal*>( P_child );
   M2_child.M_inside    = dynamic_cast< T2_inside*>( P_child );
 
   if( ( nullptr == M2_child.M_intersect ) || ( nullptr == M2_child.M_inside ) )

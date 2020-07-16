@@ -47,11 +47,7 @@
               }
 
            public:
-             static T_affine const& Fs_identity ()
-              {
-               static T_affine Irs_identity  = ::math::linear::affine::id( T_affine{} );
-               return  Irs_identity;
-              }
+             static T_affine const& Fs_identity();
           };
 
         }

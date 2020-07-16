@@ -1,5 +1,6 @@
 print( '<' + __name__ + ' name=\'' +   __file__ + '\'/>' )
 import ctypes
+import IceRayPy
 
 Scalar  = IceRayPy.type.basic.Scalar
 Coord3D = IceRayPy.type.math.coord.Scalar3D

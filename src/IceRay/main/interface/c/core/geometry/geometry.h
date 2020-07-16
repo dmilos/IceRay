@@ -4,3 +4,4 @@
 #include "./transform.h"
 #include "./volumetric.h"
 #include "./simple.h"
+#include "./flat.h"

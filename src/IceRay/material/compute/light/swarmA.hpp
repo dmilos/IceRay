@@ -56,7 +56,7 @@
              public:
                explicit GC_swarmA
                 (
-                  T_size const& P_outSize_SpotEnd    = 0
+                  T_size const& P_outSize_SpotEnd    = 1
                  ,T_size const& P_inSize_SpotBegin   = 0
                  ,T_size const& P_inLight_Light      = 0
                  ,T_size const& P_inCoord_Point      = 0
@@ -67,8 +67,6 @@
                  F_input<T_size>(   En_inSize_SpotBegin,   P_inSize_SpotBegin  );
                  F_input<T_light>(  En_inLight_Light,      P_inLight_Light     );
                  F_input<T_coord>(  En_inCoord_Point,      P_inCoord_Point     );
-
-
                 }
 
              public:

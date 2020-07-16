@@ -6,29 +6,29 @@ import IceRayPy.type.math.coord
 
 AddresOf = ctypes.addressof
 
-Scalar  = ctypes.c_double
+SizeType = IceRayPy.type.basic.Scalar
 Coord3D = IceRayPy.type.math.coord.Scalar3D
 
 class Scalar1D(ctypes.Structure):
-    _fields_ = [ ("11", Scalar), ("12", Scalar)
+    _fields_ = [ ("11", SizeType), ("12", SizeType)
                 ]
 
 class Scalar2D(ctypes.Structure):
-    _fields_ = [ ("11", Scalar), ("12", Scalar), ("13", Scalar),
-                 ("21", Scalar), ("22", Scalar), ("23", Scalar)
+    _fields_ = [ ("11", SizeType), ("12", SizeType), ("13", SizeType),
+                 ("21", SizeType), ("22", SizeType), ("23", SizeType)
                 ]
 
 class Scalar3D(ctypes.Structure):
-    _fields_ = [ ("11", Scalar), ("12", Scalar), ("13", Scalar), ("14", Scalar),
-                 ("21", Scalar), ("22", Scalar), ("23", Scalar), ("24", Scalar),
-                 ("31", Scalar), ("32", Scalar), ("33", Scalar), ("34", Scalar)
+    _fields_ = [ ("11", SizeType), ("12", SizeType), ("13", SizeType), ("14", SizeType),
+                 ("21", SizeType), ("22", SizeType), ("23", SizeType), ("24", SizeType),
+                 ("31", SizeType), ("32", SizeType), ("33", SizeType), ("34", SizeType)
                 ]
 
 class Scalar4D(ctypes.Structure):
-    _fields_ = [ ("11", Scalar), ("12", Scalar), ("13", Scalar), ("14", Scalar), ("15", Scalar),
-                 ("21", Scalar), ("22", Scalar), ("23", Scalar), ("24", Scalar), ("25", Scalar),
-                 ("31", Scalar), ("32", Scalar), ("33", Scalar), ("34", Scalar), ("35", Scalar),
-                 ("41", Scalar), ("42", Scalar), ("43", Scalar), ("44", Scalar), ("45", Scalar)
+    _fields_ = [ ("11", SizeType), ("12", SizeType), ("13", SizeType), ("14", SizeType), ("15", SizeType),
+                 ("21", SizeType), ("22", SizeType), ("23", SizeType), ("24", SizeType), ("25", SizeType),
+                 ("31", SizeType), ("32", SizeType), ("33", SizeType), ("34", SizeType), ("35", SizeType),
+                 ("41", SizeType), ("42", SizeType), ("43", SizeType), ("44", SizeType), ("45", SizeType)
                 ]
 
 
@@ -82,7 +82,7 @@ def rotateA( P_dll, P_direction : Coord3D, P_alpha ):
     result = Scalar3D()
     f = P_dll.IceRayC_Type_Math_Affine3D_RotateA( AddresOf( result ), AddresOf( P_direction ), Scalar( P_alpha ) )
     f.argtypes = [ ctypes.POINTER( Scalar3D ), ctypes.POINTER( Scalar3D ), ctypes.POINTER( Scalar3D ) ]
-    f.restype = ctypes.c_int
+    f.restype = IceRayPy.type.basic.Integer
 
     return result
 

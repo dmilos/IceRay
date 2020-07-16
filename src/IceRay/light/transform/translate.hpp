@@ -23,22 +23,30 @@
 
            public:
                       GC_translate( );
-             explicit GC_translate( T_pure * P_child, T_coord const& P_move = T_coord{0} );
+             explicit GC_translate( T_pure * P_child, T_coord const& P_2world = T_coord{0} );
                      ~GC_translate();
 
            public:
              T_size  Fv_swarm( T_swarm &P_spot,  T_coord const& P_point )const;
 
            public:
-             T_coord    const& F_move()const{ return M2_move; }
-             bool              F_move( T_coord const& P_move ){ M2_move = P_move; return bool( true ); }
+             T_coord    const& F_2local()const{ return M2_2local; }
+             bool              F_2local( T_coord const& P_2local );
            protected:
-             T_coord        & F1_move(){ return M2_move; }
+             T_coord        & F1_2local(){ return M2_2local; }
            private:
-             T_coord M2_move;
+             T_coord M2_2local;
+
+           public:
+             T_coord    const& F_2world()const{ return M2_2world; }
+             bool              F_2world( T_coord const& P_2world );
+           protected:
+             T_coord        & F1_2world(){ return M2_2world; }
+           private:
+             T_coord M2_2world;
          };
 
-        }
+         }
        }
      }
    }

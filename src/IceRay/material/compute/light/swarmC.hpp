@@ -48,7 +48,7 @@
 
                   En_inCoord_Point    = 0
                  ,En_inCoord_Normal   = 1
-                 ,En_inSize_SpotBegin     = 0
+                 ,En_inSize_SpotBegin = 0
 
                 };
                enum Ee_output{ En_outSize_SpotEnd = 1 };
@@ -57,11 +57,11 @@
                explicit GC_swarmC
                 (
                   T_light * P_light = nullptr
-                 ,T_size const& P_outSize_SpotEnd       = 0
-                 ,T_size const& P_inCoord_Point     = 0
-                 ,T_size const& P_inCoord_Normal    = 0
-                 ,T_size const& P_inSize_SpotEnd      = 0
-               //,T_size const& P_inBool_Cull       = 0
+                 ,T_size const& P_outSize_SpotEnd    = 0
+                 ,T_size const& P_inCoord_Point      = 0
+                 ,T_size const& P_inCoord_Normal     = 1
+                 ,T_size const& P_inSize_SpotEnd     = 0
+               //,T_size const& P_inBool_Cull        = 0
                 )
                :M2_light( P_light )
                 {

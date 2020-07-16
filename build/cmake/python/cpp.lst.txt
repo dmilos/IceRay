@@ -23,6 +23,7 @@ main/interface/python/core/geometry/rtss/object.cpp
 main/interface/python/core/geometry/rtss/uniform.cpp
 
 main/interface/python/core/geometry/simple/simple.cpp
+main/interface/python/core/geometry/flat/flat.cpp
 main/interface/python/core/geometry/transform/transform.cpp
 main/interface/python/core/geometry/volumetric/smoke.cpp
 main/interface/python/core/geometry/volumetric/vacuum.cpp

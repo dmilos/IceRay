@@ -32,7 +32,7 @@
                ,En_type1Reflected
                ,En_type1Refracted
                ,En_type1Teleported
-               ,En_type1Broken
+               ,En_type1Broken  //! Pass to thin object like plane. Same medium but different direction.
               };
 
              enum Ee_status

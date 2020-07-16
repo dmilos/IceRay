@@ -1,5 +1,6 @@
 #include "./_pure.hpp"
 #include "./transparent.hpp"
+#include "./solid.hpp"
 #include "./constant.hpp"
 #include "./linear.hpp"
 #include "./quadratic.hpp"

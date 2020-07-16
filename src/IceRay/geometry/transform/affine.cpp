@@ -8,21 +8,19 @@ struct GC_affine::C_intersect
   bool M_hit;
  };
 
-
-
-
-
 GC_affine::GC_affine()
  {
-  F_child( &Fs_vacuum() );
+  F_child( nullptr );
+  F_2world( ::math::linear::affine::id( T_affine{} ) );
  }
 
 GC_affine::GC_affine
  (
    T_geometry    * P_child
  )
- :GC_affine( P_child, ::math::linear::affine::id( T_affine{} ) )
  {
+  F_child( P_child );
+  F_2world( ::math::linear::affine::id( T_affine{} ) );
  }
 
 GC_affine::GC_affine
@@ -31,7 +29,6 @@ GC_affine::GC_affine
   ,T_matrix       const& P_linear
   ,T_coord        const& P_center
  )
- :GC_affine()
  {
   F_child( P_child );
 
@@ -49,7 +46,6 @@ GC_affine::GC_affine
    T_geometry    * P_child
   ,T_affine const& P_2world
  )
- :GC_affine()
  {
   F_child( P_child );
   F_2world( P_2world );

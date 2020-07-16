@@ -22,4 +22,5 @@ void GC_all::Fv_do( T_color &P_color, T_beam  const& P_beam )
     F1v_ray()->Fv_trace( I_color, I_ray2 );
     P_color += I_color;
    }
+  P_color /= P_beam.size();
  }

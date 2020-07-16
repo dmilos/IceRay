@@ -14,22 +14,22 @@ H F(Generator0)( IceRayC_Light_Handle P_light, S P_result )
   return cpp2c( Ir_result );
  }
 
-H F(SwarmA0)(                 S P_outSpot_Count, S P_inSpot_Begin, S P_inLight_Light, S P_inCoord_Point )
+H F(SwarmA0)(                 S P_outSpot_End, S P_inSpot_Begin, S P_inLight_Light, S P_inCoord_Point )
  {
   typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_light::GC_swarmA    Tf_this;
-  auto Ir_result = new Tf_this{ P_outSpot_Count,   P_inSpot_Begin,   P_inLight_Light,   P_inCoord_Point };
+  auto Ir_result = new Tf_this{ P_outSpot_End,   P_inSpot_Begin,   P_inLight_Light,   P_inCoord_Point };
   return cpp2c( Ir_result );
  }
-H F(SwarmB0)(                 S P_outSpot_Count, S P_inSpot_Begin, S P_inLight_Light, S P_inCoord_Point, S P_inCoord_Normal,  S P_inBool_Cull )
+H F(SwarmB0)(                 S P_outSpot_End, S P_inSpot_Begin, S P_inLight_Light, S P_inCoord_Point, S P_inCoord_Normal,  S P_inBool_Cull )
  {
   typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_light::GC_swarmB    Tf_this;
-  auto Ir_result = new Tf_this{ P_outSpot_Count,   P_inSpot_Begin,   P_inLight_Light,   P_inCoord_Point,   P_inCoord_Normal,    P_inBool_Cull };
+  auto Ir_result = new Tf_this{ P_outSpot_End,   P_inSpot_Begin,   P_inLight_Light,   P_inCoord_Point,   P_inCoord_Normal,    P_inBool_Cull };
   return cpp2c( Ir_result );
  }
-H F(SwarmC0)                ( IceRayC_Light_Handle P_light, S P_outSpot_Count, S P_inSpot_Begin,                    S P_inCoord_Point, S P_inCoord_Normal )
+H F(SwarmC0)                ( IceRayC_Light_Handle P_light, S P_outSpot_End, S P_inSpot_Begin,                    S P_inCoord_Point, S P_inCoord_Normal )
  {
   typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_light::GC_swarmC    Tf_this;
-  auto Ir_result = new Tf_this{ c2cpp( P_light ), P_outSpot_Count,   P_inSpot_Begin,                      P_inCoord_Point,   P_inCoord_Normal };
+  auto Ir_result = new Tf_this{ c2cpp( P_light ), P_outSpot_End,   P_inSpot_Begin,                      P_inCoord_Point,   P_inCoord_Normal };
   return cpp2c( Ir_result );
  }
 

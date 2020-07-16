@@ -23,7 +23,7 @@
           typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_intersect T_barrier;
         public:
           GC_obstruct(  );
-          GC_obstruct( T__pure *P_light, T_barrier * P_geometry );
+          explicit GC_obstruct( T__pure *P_light, T_barrier * P_geometry = nullptr );
 
          public:
            T_size  Fv_swarm( T_swarm &P_spot,  T_coord const& P_point )const;

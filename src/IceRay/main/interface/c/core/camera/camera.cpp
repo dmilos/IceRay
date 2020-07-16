@@ -590,7 +590,7 @@ int                        IceRayC_Camera_Transform_Affine_2World_Set( IceRayC_C
   I_this->F_2world( c2cpp( *P_2world ) );
   return 1;
  }
-int IceRayC_Camera_Transform_Affine_2Local_Get( IceRayC_Camera_Handle P_that, IceRayC_Type_Math_Affine3D *P_2local )
+int                        IceRayC_Camera_Transform_Affine_2Local_Get( IceRayC_Camera_Handle P_that, IceRayC_Type_Math_Affine3D *P_2local )
  {
   typedef GS_DDMRM::S_IceRay::S_camera::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_camera::S_transform::GC_affine Tf_affine;
@@ -624,63 +624,18 @@ IceRayC_Camera_Handle IceRayC_Camera_DOF_Focus0()
   auto Ir_result = new GS_DDMRM::S_IceRay::S_camera::S_dof::GC_focus{};
   return cpp2c( dynamic_cast< Tf__pure *> ( Ir_result ) );
  }
-
 IceRayC_Camera_Handle IceRayC_Camera_DOF_Focus1( IceRayC_TypeSize P_sample, IceRayC_TypeInterval1D P_aperture, IceRayC_TypeInterval1D P_focus, IceRayC_TypeScalar P_gauss )
  {
   typedef GS_DDMRM::S_IceRay::S_camera::GC__pure Tf__pure;
   auto Ir_result = new GS_DDMRM::S_IceRay::S_camera::S_dof::GC_focus{ P_sample, c2cpp( P_aperture ), c2cpp(P_focus), P_gauss };
   return cpp2c( dynamic_cast< Tf__pure *> ( Ir_result ) );
  }
-
 IceRayC_Camera_Handle IceRayC_Camera_DOF_Focus2( IceRayC_Camera_Handle P_child, IceRayC_TypeSize P_sample, IceRayC_TypeInterval1D P_aperture, IceRayC_TypeInterval1D P_focus, IceRayC_TypeScalar P_gauss )
  {
   typedef GS_DDMRM::S_IceRay::S_camera::GC__pure Tf__pure;
   auto Ir_result = new GS_DDMRM::S_IceRay::S_camera::S_dof::GC_focus{ c2cpp( P_child ), P_sample, c2cpp( P_aperture ), c2cpp(P_focus), P_gauss };
   return cpp2c( dynamic_cast< Tf__pure *> ( Ir_result ) );
  }
-
-int            IceRayC_Camera_DOF_Focus_Aperture( IceRayC_Camera_Handle P_that, IceRayC_TypeInterval1D P_aperture )
- {
-  typedef GS_DDMRM::S_IceRay::S_camera::GC__pure Tf__pure;
-  typedef GS_DDMRM::S_IceRay::S_camera::S_dof::GC_focus Tf_focus;
-
-  auto I_this = dynamic_cast< Tf_focus *>( c2cpp( P_that ) );
-  if( nullptr == I_this )
-   {
-    return 0;
-   }
-  I_this->F_aperture( c2cpp( P_aperture ) );
-  return 1;
- }
-
-int IceRayC_Camera_DOF_Focus_Focus( IceRayC_Camera_Handle P_that, IceRayC_TypeInterval1D P_focus )
- {
-  typedef GS_DDMRM::S_IceRay::S_camera::GC__pure Tf__pure;
-  typedef GS_DDMRM::S_IceRay::S_camera::S_dof::GC_focus Tf_focus;
-
-  auto I_this = dynamic_cast< Tf_focus *>( c2cpp( P_that ) );
-  if( nullptr == I_this )
-   {
-    return 0;
-   }
-  I_this->F_focus( c2cpp( P_focus ) );
-  return 1;
- }
-
-int IceRayC_Camera_DOF_Focus_Gauss( IceRayC_Camera_Handle P_that, IceRayC_TypeScalar P_gauss )
- {
-  typedef GS_DDMRM::S_IceRay::S_camera::GC__pure Tf__pure;
-  typedef GS_DDMRM::S_IceRay::S_camera::S_dof::GC_focus Tf_focus;
-
-  auto I_this = dynamic_cast< Tf_focus *>( c2cpp( P_that ) );
-  if( nullptr == I_this )
-   {
-    return 0;
-   }
-  I_this->F_gauss( P_gauss );
-  return 1;
- }
-
 int IceRayC_Camera_DOF_Focus_Child( IceRayC_Camera_Handle P_that, IceRayC_Camera_Handle P_child )
  {
   typedef GS_DDMRM::S_IceRay::S_camera::GC__pure Tf__pure;
@@ -694,7 +649,58 @@ int IceRayC_Camera_DOF_Focus_Child( IceRayC_Camera_Handle P_that, IceRayC_Camera
   I_this->F_child( c2cpp( P_child ) );
   return 1;
  }
+int           IceRayC_Camera_DOF_Focus_Sample(   IceRayC_Camera_Handle P_that, IceRayC_Type_Size P_sample )
+ {
+  typedef GS_DDMRM::S_IceRay::S_camera::GC__pure Tf__pure;
+  typedef GS_DDMRM::S_IceRay::S_camera::S_dof::GC_focus Tf_focus;
 
+  auto I_this = dynamic_cast< Tf_focus *>( c2cpp( P_that ) );
+  if( nullptr == I_this )
+   {
+    return 0;
+   }
+  I_this->F_sample( P_sample );
+  return 1;
+ }
+int            IceRayC_Camera_DOF_Focus_Aperture( IceRayC_Camera_Handle P_that, IceRayC_TypeInterval1D P_aperture )
+ {
+  typedef GS_DDMRM::S_IceRay::S_camera::GC__pure Tf__pure;
+  typedef GS_DDMRM::S_IceRay::S_camera::S_dof::GC_focus Tf_focus;
+
+  auto I_this = dynamic_cast< Tf_focus *>( c2cpp( P_that ) );
+  if( nullptr == I_this )
+   {
+    return 0;
+   }
+  I_this->F_aperture( c2cpp( P_aperture ) );
+  return 1;
+ }
+int IceRayC_Camera_DOF_Focus_Focus( IceRayC_Camera_Handle P_that, IceRayC_TypeInterval1D P_focus )
+ {
+  typedef GS_DDMRM::S_IceRay::S_camera::GC__pure Tf__pure;
+  typedef GS_DDMRM::S_IceRay::S_camera::S_dof::GC_focus Tf_focus;
+
+  auto I_this = dynamic_cast< Tf_focus *>( c2cpp( P_that ) );
+  if( nullptr == I_this )
+   {
+    return 0;
+   }
+  I_this->F_focus( c2cpp( P_focus ) );
+  return 1;
+ }
+int IceRayC_Camera_DOF_Focus_Gauss( IceRayC_Camera_Handle P_that, IceRayC_TypeScalar P_gauss )
+ {
+  typedef GS_DDMRM::S_IceRay::S_camera::GC__pure Tf__pure;
+  typedef GS_DDMRM::S_IceRay::S_camera::S_dof::GC_focus Tf_focus;
+
+  auto I_this = dynamic_cast< Tf_focus *>( c2cpp( P_that ) );
+  if( nullptr == I_this )
+   {
+    return 0;
+   }
+  I_this->F_gauss( P_gauss );
+  return 1;
+ }
 
 IceRayC_Camera_Handle IceRayC_Camera_DOF_Cone0()
  {

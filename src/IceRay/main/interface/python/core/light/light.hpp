@@ -40,7 +40,6 @@ typedef GS_DDMRM::S_IceRay::S_light::GC_sphere         GTs_sphere;
 typedef GS_DDMRM::S_IceRay::S_light::GC_reflector      GTs_reflector;
 typedef GS_DDMRM::S_IceRay::S_light::GC_point          GTs_point;
 typedef GS_DDMRM::S_IceRay::S_light::GC_dark           GTs_dark;
-typedef GS_DDMRM::S_IceRay::S_light::GC_clipped        GTs_clipped;
 typedef GS_DDMRM::S_IceRay::S_light::GC_circle         GTs_circle;
 typedef GS_DDMRM::S_IceRay::S_light::GC_chandelier     GTs_chandelier;
 typedef GS_DDMRM::S_IceRay::S_light::GC_obstruct       GTs_obstruct;

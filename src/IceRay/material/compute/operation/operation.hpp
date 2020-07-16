@@ -1,4 +1,3 @@
-#include "./binary.hpp"
 #include "./clamp.hpp"
 
 #include "./color/color.hpp"
@@ -17,6 +16,10 @@
 #include "./mapping/mapping.hpp"
 #include "./operator.hpp"
 #include "./switch.hpp"
-#include "./ternary.hpp"
+
+#include "./generator.hpp"
 #include "./unary.hpp"
+#include "./binary.hpp"
+#include "./ternary.hpp"
+
 #include "./tile.hpp"

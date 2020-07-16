@@ -31,20 +31,16 @@ GC_obstruct::Fv_swarm
     return 0;
    }
 
+  if( nullptr == M2_barrier )
+   {
+    return M2_child->Fv_swarm( P_swarm, P_point );
+   }
+
   T_size I_start = P_swarm.F_size();
   M2_swarm.F_clear();
   M2_child->Fv_swarm( M2_swarm, P_point );
 
   T_size Ir_count = 0;
-  if( nullptr == M2_barrier )
-   {
-    for( auto const& I_spot: M2_swarm )
-     {
-       P_swarm.F_push( I_spot );
-      ++Ir_count;
-     }
-    return Ir_count;
-   }
 
    //if( M2_stateMemory.size() != M2_barrier->Fv_weight() )
    // {

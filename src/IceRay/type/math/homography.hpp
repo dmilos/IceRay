@@ -1,6 +1,8 @@
 #ifndef Dh_DDMM_IceRay_type_homography_HPP_
  #define Dh_DDMM_IceRay_type_homography_HPP_
+
 // GS_DDMRM::S_IceRay::S_type::S_homography::GC__model<N_number, N_dimension>
+// GS_DDMRM::S_IceRay::S_type::S_homography::GT_homography,
 // GS_DDMRM::S_IceRay::S_type::S_homography::GT_scalar1D,
 // GS_DDMRM::S_IceRay::S_type::S_homography::GT_scalar2D,
 // GS_DDMRM::S_IceRay::S_type::S_homography::GT_scalar3D,
@@ -21,14 +23,14 @@
        namespace S_homography
         {
 
-         template< typename N_number, unsigned N_size >
+         template< typename N_scalar, unsigned N_size >
           struct GC__model
            : public S_DDMRM::S_type::GC_nothing
            {
             public:
               typedef GS_DDMRM::S_IceRay::S_type::GT_report T_report;
 
-              typedef ::math::linear::homography::structure< N_number, N_size > T_typedef;
+              typedef ::math::linear::homography::structure< N_scalar, N_size > T_typedef;
            };
 
          typedef GC__model< GS_DDMRM::S_IceRay::S_type::GT_scalar, 1 >::T_typedef GT_scalar1D;
@@ -41,12 +43,12 @@
     }
   }
 
-  //namespace  GS_DDMRM{namespace S_math{namespace S_LA{namespace S_homography 
+  //namespace  GS_DDMRM{namespace S_math{namespace S_LA{namespace S_homography
   // {
-  //  template< typename scalar_name , unsigned dimension_number > 
-  //    using GF_transform = ::math::linear::homography::trasform<scalar_name,dimension_number>; } 
+  //  template< typename scalar_name , unsigned dimension_number >
+  //    using GF_transform = ::math::linear::homography::trasform<scalar_name,dimension_number>; }
   //
-  //  } } } 
+  //  } } }
 
 
 #endif

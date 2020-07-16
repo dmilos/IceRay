@@ -57,20 +57,20 @@
                explicit GC_swarmB
                 (
                   T_size const& P_outSize_SpotEnd    = 0
-                 ,T_size const& P_inCoord_Point    = 0
-                 ,T_size const& P_inCoord_Normal   = 0
-                 ,T_size const& P_inSize_SpotBegin     = 0
-                 ,T_size const& P_inLight_Light    = 0
-                 ,T_size const& P_inBool_Cull      = 0
+                 ,T_size const& P_inCoord_Point      = 0
+                 ,T_size const& P_inCoord_Normal     = 1
+                 ,T_size const& P_inSize_SpotBegin   = 0
+                 ,T_size const& P_inLight_Light      = 0
+                 ,T_size const& P_inBool_Cull        = 0
                 )
                 {
                  F_output<T_size>( En_outSize_SpotEnd, P_outSize_SpotEnd );
 
-                 F_input<T_coord>( En_inCoord_Point,  P_inCoord_Point  );
-                 F_input<T_coord>( En_inCoord_Normal, P_inCoord_Normal );
-                 F_input<T_size>(  En_inSize_SpotBegin,   P_inSize_SpotBegin   );
-                 F_input<T_light>( En_inLight_Light,  P_inLight_Light  );
-                 F_input<T_bool>(  En_inBool_Cull,    P_inBool_Cull    );
+                 F_input<T_coord>( En_inCoord_Point,    P_inCoord_Point  );
+                 F_input<T_coord>( En_inCoord_Normal,   P_inCoord_Normal );
+                 F_input<T_size>(  En_inSize_SpotBegin, P_inSize_SpotBegin   );
+                 F_input<T_light>( En_inLight_Light,    P_inLight_Light  );
+                 F_input<T_bool>(  En_inBool_Cull,      P_inBool_Cull    );
                 }
 
              public:

@@ -30,7 +30,7 @@
 
              virtual ~GC_pattern(){ ; }
 
-             virtual bool Fv_attenuate( T_color & P_color, T_color & P_deplete, T_coord const& P_start, T_coord const& P_end, T_state const& P_state )const
+             virtual bool Fv_attenuate( T_color & P_color, T_color & P_deplete, T_coord const& P_start, T_coord const& P_end, T_state const& P_state )const override
               {
                T_coord3D I_direction; ::math::linear::vector::subtraction( I_direction, P_end, P_start );
 

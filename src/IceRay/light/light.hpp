@@ -12,7 +12,6 @@
 #include "./spline.hpp"
 #include "./suns.hpp"
 #include "./sung.hpp"
-#include "./clipped.hpp"
 #include "./confine.hpp"
 #include "./transform/transform.hpp"
 #include "./_pure.hpp"

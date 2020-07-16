@@ -10,9 +10,9 @@ def vacuum( P_dll, P_config = None, P_light = None, P_exponat = None ):
     wrapper.geometrySet( geometry )
     return wrapper
 
-def plate( P_dll, P_config = { 'level':  - 1, 'size' : 3 }, P_light = None, P_exponat = None ):
+def plate( P_dll, P_config = { 'level':  - 1.01, 'size' : 3, 'shadow': False, 'pigment': None }, P_light = None, P_exponat = None ):
 
-    level = -1;
+    level = -1.00001;
     if( 'level' in P_config ):
         level = P_config['level']
     size = 3;
@@ -25,7 +25,15 @@ def plate( P_dll, P_config = { 'level':  - 1, 'size' : 3 }, P_light = None, P_ex
     wrapper = IceRayPy.core.object.Wrapper( P_dll )
 
     I_scene = { 'light': P_light, 'barrier' : P_exponat   }
+    if( 'shadow' in P_config ):
+        if( False == P_config['shadow'] ):
+            I_scene['barrier'] = IceRayPy.core.geometry.volumetric.Vacuum( P_dll )
+
     pigment = IceRayPy.utility.material.illumination.Lambert( P_dll, I_scene, IceRayPy.type.color.RGB( 0.5, 0.5, 0.5 ) )
+    if( 'pigment' in P_config ):
+        pigment = P_config['pigment'] #utility.material.pattern.Checker( P_dll, I_scene )
+
+    #pigment = IceRayPy.utility.material.pattern.Checker( P_dll, I_scene )
 
     wrapper.pigment( pigment )
 
@@ -34,10 +42,9 @@ def plate( P_dll, P_config = { 'level':  - 1, 'size' : 3 }, P_light = None, P_ex
     return wrapper
 
 
+def plane( P_dll, P_config = { 'level':  - 1.001, 'shadow': False, 'pigment': None }, P_light = None, P_exponat = None ):
 
-def plane( P_dll, P_config = { 'level':  - 1 }, P_light = None, P_exponat = None ):
-
-    level = -1;
+    level = -1.0001;
     if( 'level' in P_config ):
         level = P_config['level']
     geometry = IceRayPy.core.geometry.simple.Plane( P_dll )
@@ -45,9 +52,16 @@ def plane( P_dll, P_config = { 'level':  - 1 }, P_light = None, P_exponat = None
 
     wrapper = IceRayPy.core.object.Wrapper( P_dll )
 
-    I_scene = { 'light': P_light, 'barrier' : P_exponat   }
-    pigment = IceRayPy.utility.material.illumination.Lambert( P_dll, I_scene, IceRayPy.type.color.RGB( 0.5, 0.5, 0.5 ) )
+    I_scene = { 'light': P_light, 'barrier' : P_exponat }
+    if( 'shadow' in P_config ):
+        if( False == P_config['shadow'] ):
+            I_scene['barrier'] = IceRayPy.core.geometry.volumetric.Vacuum( P_dll )
 
+    pigment = IceRayPy.utility.material.illumination.Lambert( P_dll, I_scene, IceRayPy.type.color.RGB( 0.5, 0.5, 0.5 ) )
+    if( 'pigment' in P_config ):
+        pigment = P_config['pigment'] #utility.material.pattern.Checker( P_dll, I_scene )
+
+    #pigment = IceRayPy.utility.material.pattern.Checker( P_dll, I_scene )
     wrapper.pigment( pigment )
 
     wrapper.geometrySet( geometry )

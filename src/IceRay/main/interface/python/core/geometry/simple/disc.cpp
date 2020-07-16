@@ -4,7 +4,7 @@
 #include "../../../def_submodule.hpp"
 
 
-#include "IceRay/geometry/simple/disc.hpp"
+#include "IceRay/geometry/flat/disc.hpp"
 
 
 #include "./simple.hpp"

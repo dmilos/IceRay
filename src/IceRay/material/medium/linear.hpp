@@ -36,7 +36,7 @@
 
              virtual ~GC_linear(){ ; }
 
-             virtual bool Fv_attenuate( T_color & P_color, T_color & P_deplete, T_coord const& P_start, T_coord const& P_end, T_state const& P_state )const
+             virtual bool Fv_attenuate( T_color & P_color, T_color & P_deplete, T_coord const& P_start, T_coord const& P_end, T_state const& P_state )const override
               {
                auto distance = ::math::linear::vector::distance( P_start, P_end );
                auto I_deplete = distance * this->F_a() + this->F_b();
@@ -56,7 +56,7 @@
 
            public:
              T_scalar    const& F_a()const{ return M2_a; }
-             bool              F_a( T_scalar const& P_a ){ M2_a = P_a; return true; }
+             bool               F_a( T_scalar const& P_a ){ M2_a = P_a; return true; }
            protected:
              T_scalar        & F1_a(){ return M2_a; }
            private:
@@ -64,7 +64,7 @@
 
            public:
              T_scalar    const& F_b()const{ return M2_b; }
-             bool              F_b( T_scalar const& P_b ){ M2_b = P_b; return true; }
+             bool               F_b( T_scalar const& P_b ){ M2_b = P_b; return true; }
            protected:
              T_scalar        & F1_b(){ return M2_b; }
            private:

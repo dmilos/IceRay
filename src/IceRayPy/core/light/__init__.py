@@ -105,16 +105,6 @@ class Circle:
         self.m_cargo['dll'].IceRayC_Light_Circle_Y( self.m_cargo['this'], AddresOf(P_Y) )
 
 
-class Clipped:
-    def __init__( self, P_dll ):
-        self.m_cargo = {}
-        self.m_cargo['dll'] = P_dll
-        self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Light_Clipped0()
-
-    def __del__( self ):
-        self.m_cargo['dll'].IceRayC_Light_Release( self.m_cargo['this'] )
-
-
 class Confine:
     def __init__( self, P_dll, P_child = None, P_hull = None ):
         self.m_cargo = {}

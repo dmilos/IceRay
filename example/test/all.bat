@@ -137,7 +137,6 @@
 %prg_python37%  core\material\medium\constant.py
 %prg_python37%  core\camera\cone-render.py
 %prg_python37%  core\camera\cone-invoke.py
-%prg_python37%  core\light\clipped_invoke.py
 %prg_python37%  core\geometry\simple\camera.py
 %prg_python37%  core\render\0scanner\block.py
 %prg_python37%  core\render\2pierce\base.py

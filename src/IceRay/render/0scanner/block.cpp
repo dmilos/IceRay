@@ -92,7 +92,7 @@ GC_block::F1v_render( T_picture & P_picture )
         if( 0 == ( I_cell[0] % 100 ) ) { std::cout << "*"; }
        }
      }
-
    }
+
   std::cout << std::endl;
  }

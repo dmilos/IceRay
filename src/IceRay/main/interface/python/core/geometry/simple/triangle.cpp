@@ -4,7 +4,7 @@
 #include "../../../def_submodule.hpp"
 
 
-#include "IceRay/geometry/simple/triangle.hpp"
+#include "IceRay/geometry/flat/triangle.hpp"
 
 
 #include "./simple.hpp"

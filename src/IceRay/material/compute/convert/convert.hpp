@@ -29,36 +29,48 @@
               >;
 
            typedef GT_direct< GS_DDMRM::S_IceRay::S_type::GT_bool,   GS_DDMRM::S_IceRay::S_type::GT_bool    > GT_bool2bool;
-           typedef GT_direct< GS_DDMRM::S_IceRay::S_type::GT_bool,   GS_DDMRM::S_IceRay::S_type::GT_size    > GT_bool2size;
            typedef GT_direct< GS_DDMRM::S_IceRay::S_type::GT_bool,   GS_DDMRM::S_IceRay::S_type::GT_integer > GT_bool2integer;
+           typedef GT_direct< GS_DDMRM::S_IceRay::S_type::GT_bool,   GS_DDMRM::S_IceRay::S_type::GT_size    > GT_bool2size;
            typedef GT_direct< GS_DDMRM::S_IceRay::S_type::GT_bool,   GS_DDMRM::S_IceRay::S_type::GT_scalar  > GT_bool2scalar;
-         //typedef GT_direct< GS_DDMRM::S_IceRay::S_type::GT_bool,   GS_DDMRM::S_IceRay::S_type::GT_scalar  > GT_bool2color;
+         //typedef GT_direct< GS_DDMRM::S_IceRay::S_type::GT_bool,   GS_DDMRM::S_IceRay::S_type::S_color::GT_scalar  > GT_bool2color;
          //typedef GT_direct< GS_DDMRM::S_IceRay::S_type::GT_bool,   GS_DDMRM::S_IceRay::S_type::GT_scalar  > GT_bool2Coord2D;
          //typedef GT_direct< GS_DDMRM::S_IceRay::S_type::GT_bool,   GS_DDMRM::S_IceRay::S_type::GT_scalar  > GT_bool2Coord3D;
          //typedef GT_direct< GS_DDMRM::S_IceRay::S_type::GT_bool,   GS_DDMRM::S_IceRay::S_type::GT_scalar  > GT_bool2Coord4D;
 
+           typedef GT_direct< GS_DDMRM::S_IceRay::S_type::GT_integer,   GS_DDMRM::S_IceRay::S_type::GT_bool    > GT_integer2bool;
+           typedef GT_direct< GS_DDMRM::S_IceRay::S_type::GT_integer,   GS_DDMRM::S_IceRay::S_type::GT_integer > GT_integer2integer;
+           typedef GT_direct< GS_DDMRM::S_IceRay::S_type::GT_integer,   GS_DDMRM::S_IceRay::S_type::GT_size    > GT_integer2size;
+           typedef GT_direct< GS_DDMRM::S_IceRay::S_type::GT_integer,   GS_DDMRM::S_IceRay::S_type::GT_scalar  > GT_integer2scalar;
+         //typedef GT_direct< GS_DDMRM::S_IceRay::S_type::GT_integer,   GS_DDMRM::S_IceRay::S_type::S_color::GT_scalar    > GT_integer2color;
+         //typedef GT_direct< GS_DDMRM::S_IceRay::S_type::GT_integer,   GS_DDMRM::S_IceRay::S_type::GT_bool    > GT_integer2Coord2D;
+         //typedef GT_direct< GS_DDMRM::S_IceRay::S_type::GT_integer,   GS_DDMRM::S_IceRay::S_type::GT_bool    > GT_integer2Coord3D;
+         //typedef GT_direct< GS_DDMRM::S_IceRay::S_type::GT_integer,   GS_DDMRM::S_IceRay::S_type::GT_bool    > GT_integer2Coord4D;
+
            typedef GT_direct< GS_DDMRM::S_IceRay::S_type::GT_size,   GS_DDMRM::S_IceRay::S_type::GT_bool    > GT_size2bool;
-           typedef GT_direct< GS_DDMRM::S_IceRay::S_type::GT_size,   GS_DDMRM::S_IceRay::S_type::GT_size    > GT_size2size;
            typedef GT_direct< GS_DDMRM::S_IceRay::S_type::GT_size,   GS_DDMRM::S_IceRay::S_type::GT_integer > GT_size2integer;
+           typedef GT_direct< GS_DDMRM::S_IceRay::S_type::GT_size,   GS_DDMRM::S_IceRay::S_type::GT_integer > GT_size2integer;
+           typedef GT_direct< GS_DDMRM::S_IceRay::S_type::GT_size,   GS_DDMRM::S_IceRay::S_type::GT_size    > GT_size2size;
            typedef GT_direct< GS_DDMRM::S_IceRay::S_type::GT_size,   GS_DDMRM::S_IceRay::S_type::GT_scalar  > GT_size2scalar;
-         //typedef GT_direct< GS_DDMRM::S_IceRay::S_type::GT_size,   GS_DDMRM::S_IceRay::S_type::GT_bool    > GT_size2color;
+         //typedef GT_direct< GS_DDMRM::S_IceRay::S_type::GT_size,   GS_DDMRM::S_IceRay::S_type::S_color::GT_scalar    > GT_size2color;
          //typedef GT_direct< GS_DDMRM::S_IceRay::S_type::GT_size,   GS_DDMRM::S_IceRay::S_type::GT_bool    > GT_size2Coord2D;
          //typedef GT_direct< GS_DDMRM::S_IceRay::S_type::GT_size,   GS_DDMRM::S_IceRay::S_type::GT_bool    > GT_size2Coord3D;
          //typedef GT_direct< GS_DDMRM::S_IceRay::S_type::GT_size,   GS_DDMRM::S_IceRay::S_type::GT_bool    > GT_size2Coord4D;
 
            typedef GT_direct< GS_DDMRM::S_IceRay::S_type::GT_scalar, GS_DDMRM::S_IceRay::S_type::GT_bool   > GT_scalar2bool;
+           typedef GT_direct< GS_DDMRM::S_IceRay::S_type::GT_scalar, GS_DDMRM::S_IceRay::S_type::GT_integer> GT_scalar2integer;
            typedef GT_direct< GS_DDMRM::S_IceRay::S_type::GT_scalar, GS_DDMRM::S_IceRay::S_type::GT_size   > GT_scalar2size;
            typedef GT_direct< GS_DDMRM::S_IceRay::S_type::GT_scalar, GS_DDMRM::S_IceRay::S_type::GT_scalar > GT_scalar2scalar;
-         //typedef GT_direct< GS_DDMRM::S_IceRay::S_type::GT_scalar, GS_DDMRM::S_IceRay::S_type::GT_bool   > GT_scalar2color;
+         //typedef GT_direct< GS_DDMRM::S_IceRay::S_type::GT_scalar, GS_DDMRM::S_IceRay::S_type::S_color::GT_scalar   > GT_scalar2color;
          //typedef GT_direct< GS_DDMRM::S_IceRay::S_type::GT_scalar, GS_DDMRM::S_IceRay::S_type::GT_bool   > GT_scalar2Coord2D;
          //typedef GT_direct< GS_DDMRM::S_IceRay::S_type::GT_scalar, GS_DDMRM::S_IceRay::S_type::GT_bool   > GT_scalar2Coord3D;
 
-         //typedef GT_direct< GS_DDMRM::S_IceRay::S_type::GT_scalar, GS_DDMRM::S_IceRay::S_type::GT_bool > GT_color2bool;
-         //typedef GT_direct< GS_DDMRM::S_IceRay::S_type::GT_scalar, GS_DDMRM::S_IceRay::S_type::GT_size > GT_color2size;
-         //typedef GT_direct< GS_DDMRM::S_IceRay::S_type::GT_scalar, GS_DDMRM::S_IceRay::S_type::GT_size > GT_color2scalar;
-           typedef GT_direct< GS_DDMRM::S_IceRay::S_type::GT_scalar, GS_DDMRM::S_IceRay::S_type::GT_bool > GT_color2color;
-         //typedef GT_direct< GS_DDMRM::S_IceRay::S_type::GT_scalar, GS_DDMRM::S_IceRay::S_type::GT_bool > GT_color2Coord2D;
-         //typedef GT_direct< GS_DDMRM::S_IceRay::S_type::GT_scalar, GS_DDMRM::S_IceRay::S_type::GT_bool > GT_color2Coord3D;
+         //typedef GT_direct< GS_DDMRM::S_IceRay::S_type::S_color::GT_scalar, GS_DDMRM::S_IceRay::S_type::GT_bool > GT_color2bool;
+         //typedef GT_direct< GS_DDMRM::S_IceRay::S_type::S_color::GT_scalar, GS_DDMRM::S_IceRay::S_type::GT_size > GT_color2size;
+         //typedef GT_direct< GS_DDMRM::S_IceRay::S_type::S_color::GT_scalar, GS_DDMRM::S_IceRay::S_type::GT_size > GT_color2size;
+         //typedef GT_direct< GS_DDMRM::S_IceRay::S_type::S_color::GT_scalar, GS_DDMRM::S_IceRay::S_type::GT_size > GT_color2scalar;
+           typedef GT_direct< GS_DDMRM::S_IceRay::S_type::S_color::GT_scalar, GS_DDMRM::S_IceRay::S_type::S_color::GT_scalar > GT_color2color;
+         //typedef GT_direct< GS_DDMRM::S_IceRay::S_type::S_color::GT_scalar, GS_DDMRM::S_IceRay::S_type::GT_bool > GT_color2Coord2D;
+         //typedef GT_direct< GS_DDMRM::S_IceRay::S_type::S_color::GT_scalar, GS_DDMRM::S_IceRay::S_type::GT_bool > GT_color2Coord3D;
 
            typedef GT_direct< GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar2D, GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar2D > GT_coord2D2coord2D;
            typedef GT_direct< GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar3D, GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar3D > GT_coord3D2coord3D;

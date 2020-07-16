@@ -45,7 +45,7 @@
                 {
                 }
 
-               T_size       M_index = Fs_invalid();
+               T_size       M_index = Fs_invalid(); //!< index in enclosed object. Not ID.
                T_size       M_depth = 0;
                T__base *    M__base = nullptr;
                T_state      M_state; //!< Use nullptr for manager

@@ -4,7 +4,7 @@
 #include "./handle.h"
 #include "../../../../type/coord.h"
 #include "../../../../type/affine.h"
-// TODO #include "../../../../type/homography.h"
+#include "../../../../type/homography.h"
 
 #define P(D_P) IceRayC_##D_P
 #define F(D_P) IceRayC_Material_Pigment_Surface_Instruction_Operation_Switch_##D_P
@@ -46,7 +46,20 @@ IceRayC__EXPORT IceRayC__DECLSPEC  H F( Relu0     )( S P_result, S P_input );
 #define H IceRayC_Material_Pigment_Surfcace_Instruction_Handle
 
 
-IceRayC__EXPORT IceRayC__DECLSPEC H F(Identity0            )( S P_result, S P_left );
+IceRayC__EXPORT IceRayC__DECLSPEC H   F(Identity3D0        )( S P_result, S P_left );
+
+IceRayC__EXPORT IceRayC__DECLSPEC H   F(Translate3D0       )( S P_result, S P_left );
+IceRayC__EXPORT IceRayC__DECLSPEC H   F(Translate3D1       )(           IceRayC_Type_Coord_Scalar3D   * P_translate, S P_result, S P_left );
+IceRayC__EXPORT IceRayC__DECLSPEC int F(Translate3D_Move   )( H P_that, IceRayC_Type_Coord_Scalar3D   * P_translate );
+
+IceRayC__EXPORT IceRayC__DECLSPEC H   F(Affine3D0            )( S P_result, S P_left );
+IceRayC__EXPORT IceRayC__DECLSPEC H   F(Affine3D1            )(           IceRayC_Type_Math_Affine3D    * P_affine, S P_result, S P_left );
+IceRayC__EXPORT IceRayC__DECLSPEC int F(Affine3D_2World_Set  )( H P_that, IceRayC_Type_Math_Affine3D    * P_affine );
+
+IceRayC__EXPORT IceRayC__DECLSPEC H   F(Homography3D0             )( S P_result, S P_left );
+IceRayC__EXPORT IceRayC__DECLSPEC H   F(Homography3D1             )(           IceRayC_Type_Math_Homography3D     * P_homography, S P_result, S P_left );
+IceRayC__EXPORT IceRayC__DECLSPEC int F(Homography3D_2World_Set   )( H P_that, IceRayC_Type_Math_Homography3D     * P_homography );
+
 IceRayC__EXPORT IceRayC__DECLSPEC H F(Cartesian2Cylindric0 )( S P_result, S P_left );
 IceRayC__EXPORT IceRayC__DECLSPEC H F(Cartesian2Package0   )( S P_result, S P_left );
 IceRayC__EXPORT IceRayC__DECLSPEC H F(Cartesian2Spherical0 )( S P_result, S P_left );
@@ -62,11 +75,6 @@ IceRayC__EXPORT IceRayC__DECLSPEC H F(Spherical2Cylindric0 )( S P_result, S P_le
 IceRayC__EXPORT IceRayC__DECLSPEC H F(Euclid2Max0          )( S P_result, S P_left );
 IceRayC__EXPORT IceRayC__DECLSPEC H F(Max2Euclid0          )( S P_result, S P_left );
 IceRayC__EXPORT IceRayC__DECLSPEC H F(Cartesian2Fisheye0   )( S P_result, S P_left );
-
-IceRayC__EXPORT IceRayC__DECLSPEC H F(Translate0           )( IceRayC_Type_Coord_Scalar3D   * P_translate,  S P_result, S P_left );
-IceRayC__EXPORT IceRayC__DECLSPEC H F(Affine0              )( IceRayC_Type_Math_Affine3D    * P_affine,     S P_result, S P_left );
-//IceRayC__EXPORT IceRayC__DECLSPEC H F(Homography0          )( IceRayC_Type_Homography3D     * P_homography, S P_result, S P_left );
-
 
 #undef H
 #undef S

@@ -37,7 +37,7 @@
           , public GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_inside
           , public GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_distance
           , public GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_uvw
-          , public GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_transform
+     // TODO, public GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_transform
           {
            public:
              typedef GS_DDMRM::S_IceRay::S_type::GT_scalar              T_scalar;
@@ -67,16 +67,21 @@
              T_location       Fv_inside( T_coord const& P_point/*, T_state const&P_state*/ )const;
              T_scalar         Fv_distance( T_coord const& P_point )const;
              bool             Fv_uvw( T_coord & P_uvw, T_coord const& P_point, T_state const& P_state)const;
-             T_affine const&  Fv_2world( T_state const&P_state )const;
-             T_affine const&  Fv_2local( T_state const&P_state )const;
+           // TODO T_affine const&  Fv_2world( T_state const&P_state )const;
+           // TODO T_affine const&  Fv_2local( T_state const&P_state )const;
 
            public:
-             T_coord    const& F_move()const;
-             bool              F_move( T_coord const& P_move );
+             T_coord    const& F_2world()const{ return M2_2local; }
+             bool              F_2local( T_coord const& P_2local );
            private:
-             T_coord   M2_re, M2_im;
+             T_coord   M2_2local;
+           public:
+             T_coord    const& F_2local()const{ return M2_2world; }
+             bool              F_2world( T_coord const& P_2world );
            private:
-             T_affine M2_2world, M2_2local;
+             T_coord   M2_2world;
+           private:
+             // T_affine M2_2world, M2_2local;
 
            public:
              bool  F_child( T__base *P_child );

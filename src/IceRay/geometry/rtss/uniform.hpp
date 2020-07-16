@@ -6,7 +6,7 @@
 
 #include "./_pure.hpp"
 
-#include "../simple/box.hpp"
+#include "../flat/box.hpp"
 
 namespace GS_DDMRM
  {

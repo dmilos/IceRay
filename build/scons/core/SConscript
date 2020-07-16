@@ -149,24 +149,28 @@ if( False ):
 
 cc_files += [ os.path.join( 'geometry', 'simple', 'simple.cpp' ) ]
 if( False ):
-    cc_files += [ os.path.join( 'geometry', 'simple', 'box.cpp' ) ]
-    cc_files += [ os.path.join( 'geometry', 'simple', 'cone.cpp' ) ]
-    cc_files += [ os.path.join( 'geometry', 'simple', 'cylinder.cpp' ) ]
-    cc_files += [ os.path.join( 'geometry', 'simple', 'disc.cpp' ) ]
+    cc_files += [ os.path.join( 'geometry', 'simple', 'cone.cpp'       ) ]
+    cc_files += [ os.path.join( 'geometry', 'simple', 'cylinder.cpp'   ) ]
     cc_files += [ os.path.join( 'geometry', 'simple', 'paraboloid.cpp' ) ]
-    cc_files += [ os.path.join( 'geometry', 'simple', 'plane.cpp' ) ]
-    cc_files += [ os.path.join( 'geometry', 'simple', 'sphere.cpp' ) ]
-    cc_files += [ os.path.join( 'geometry', 'simple', 'torus.cpp' ) ]
-    cc_files += [ os.path.join( 'geometry', 'simple', 'triangle.cpp' ) ]
-    cc_files += [ os.path.join( 'geometry', 'simple', 'usphere.cpp' ) ]
-    cc_files += [ os.path.join( 'geometry', 'simple', 'quadric.cpp' ) ]
+    cc_files += [ os.path.join( 'geometry', 'simple', 'sphere.cpp'     ) ]
+    cc_files += [ os.path.join( 'geometry', 'simple', 'torus.cpp'      ) ]
+    cc_files += [ os.path.join( 'geometry', 'simple', 'usphere.cpp'    ) ]
+    cc_files += [ os.path.join( 'geometry', 'simple', 'quadric.cpp'    ) ]
 
-#cc_files += [ os.path.join( 'geometry', 'spline', 'spline.cpp' ) ]
+cc_files += [ os.path.join( 'geometry', 'flat', 'flat.cpp' ) ]
+if( False ):
+    cc_files += [ os.path.join( 'geometry', 'flat', 'box.cpp'      ) ]
+    cc_files += [ os.path.join( 'geometry', 'flat', 'disc.cpp'     ) ]
+    cc_files += [ os.path.join( 'geometry', 'flat', 'plane.cpp'    ) ]
+    cc_files += [ os.path.join( 'geometry', 'flat', 'triangle.cpp' ) ]
+
+
+#TODO cc_files += [ os.path.join( 'geometry', 'spline', 'spline.cpp' ) ]
 
 cc_files += [ os.path.join( 'geometry', 'volumetric', 'volumetric.cpp' ) ]
 if( False ):
-    cc_files += [ os.path.join( 'geometry', 'volumetric', 'mist.cpp' ) ]
-    cc_files += [ os.path.join( 'geometry', 'volumetric', 'smoke.cpp' ) ]
+    cc_files += [ os.path.join( 'geometry', 'volumetric', 'mist.cpp'   ) ]
+    cc_files += [ os.path.join( 'geometry', 'volumetric', 'smoke.cpp'  ) ]
     cc_files += [ os.path.join( 'geometry', 'volumetric', 'vacuum.cpp' ) ]
 
 cc_files += [ os.path.join( 'light', 'light.cpp' ) ]

@@ -43,7 +43,10 @@ IceRayC__EXPORT IceRayC__DECLSPEC  int IceRayC_Geometry_Blobby_Translate_Child( 
 
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Blobby_Element_Handle IceRayC_Geometry_Blobby_Affine0(  );
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Blobby_Element_Handle IceRayC_Geometry_Blobby_Affine1(    IceRayC_Geometry_Blobby_Element_Handle P_element, IceRayC_Type_Math_Affine3D P_2world );
-IceRayC__EXPORT IceRayC__DECLSPEC  int IceRayC_Geometry_Blobby_Affine_2World( IceRayC_Geometry_Blobby_Element_Handle P_that,  IceRayC_Type_Math_Affine3D P_2world );
+IceRayC__EXPORT IceRayC__DECLSPEC  int IceRayC_Geometry_Blobby_Affine_2World_Get( IceRayC_Geometry_Blobby_Element_Handle P_that,  IceRayC_Type_Math_Affine3D P_2world );
+IceRayC__EXPORT IceRayC__DECLSPEC  int IceRayC_Geometry_Blobby_Affine_2World_Set( IceRayC_Geometry_Blobby_Element_Handle P_that,  IceRayC_Type_Math_Affine3D P_2world );
+IceRayC__EXPORT IceRayC__DECLSPEC  int IceRayC_Geometry_Blobby_Affine_2World_Get( IceRayC_Geometry_Blobby_Element_Handle P_that,  IceRayC_Type_Math_Affine3D P_2world );
+IceRayC__EXPORT IceRayC__DECLSPEC  int IceRayC_Geometry_Blobby_Affine_2World_Set( IceRayC_Geometry_Blobby_Element_Handle P_that,  IceRayC_Type_Math_Affine3D P_2world );
 IceRayC__EXPORT IceRayC__DECLSPEC  int IceRayC_Geometry_Blobby_Affine_Child( IceRayC_Geometry_Blobby_Element_Handle P_that, IceRayC_Geometry_Blobby_Element_Handle P_child );
 
 #endif

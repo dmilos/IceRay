@@ -2,72 +2,96 @@
 
 #include "../../../../type/coord.hpp"
 #include "../../../../type/affine.hpp"
-// TODO #include "../../../../type/homography.hpp"
+#include "../../../../type/matrix.hpp"
+#include "../../../../type/homography.hpp"
 
 
 #include "IceRay/material/compute/operation/operation.hpp"
 
-IceRayC_Material_Pigment_Surfcace_Instruction_Handle IceRayC_Material_Pigment_Surface_Instruction_Operation_Switch_Size0(     IceRayC_TypeSize P_result, IceRayC_TypeSize P_input, IceRayC_TypeSize P_candidate )
+
+#define P(D_P) IceRayC_##D_P
+#define F(D_P) IceRayC_Material_Pigment_Surface_Instruction_Operation_Switch_##D_P
+#define S IceRayC_Type_Size
+#define H IceRayC_Material_Pigment_Surfcace_Instruction_Handle
+
+
+H F( Size0 )(     S P_result, S P_input, S P_candidate )
  {
   typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_switch::GT_size    Tf_this;
   auto Ir_result = new Tf_this{ P_result, P_input, P_candidate };
   return cpp2c( Ir_result );
  }
-IceRayC_Material_Pigment_Surfcace_Instruction_Handle IceRayC_Material_Pigment_Surface_Instruction_Operation_Switch_Scalar0(   IceRayC_TypeSize P_result, IceRayC_TypeSize P_input, IceRayC_TypeSize P_candidate )
+H F( Scalar0 )(   S P_result, S P_input, S P_candidate )
  {
   typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_switch::GT_scalar    Tf_this;
   auto Ir_result = new Tf_this{ P_result, P_input, P_candidate };
   return cpp2c( Ir_result );
  }
-IceRayC_Material_Pigment_Surfcace_Instruction_Handle IceRayC_Material_Pigment_Surface_Instruction_Operation_Switch_Color0(    IceRayC_TypeSize P_result, IceRayC_TypeSize P_input, IceRayC_TypeSize P_candidate )
+H F( Color0 )(    S P_result, S P_input, S P_candidate )
  {
   typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_switch::GT_color    Tf_this;
   auto Ir_result = new Tf_this{ P_result, P_input, P_candidate };
   return cpp2c( Ir_result );
  }
-IceRayC_Material_Pigment_Surfcace_Instruction_Handle IceRayC_Material_Pigment_Surface_Instruction_Operation_Switch_Coord2D0(  IceRayC_TypeSize P_result, IceRayC_TypeSize P_input, IceRayC_TypeSize P_candidate )
+H F( Coord2D0 )(  S P_result, S P_input, S P_candidate )
  {
   typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_switch::GT_coord2D    Tf_this;
   auto Ir_result = new Tf_this{ P_result, P_input, P_candidate };
   return cpp2c( Ir_result );
  }
-IceRayC_Material_Pigment_Surfcace_Instruction_Handle IceRayC_Material_Pigment_Surface_Instruction_Operation_Switch_Coord3D0(  IceRayC_TypeSize P_result, IceRayC_TypeSize P_input, IceRayC_TypeSize P_candidate )
+H F( Coord3D0 )(  S P_result, S P_input, S P_candidate )
  {
   typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_switch::GT_coord3D    Tf_this;
   auto Ir_result = new Tf_this{ P_result, P_input, P_candidate };
   return cpp2c( Ir_result );
  }
 
-IceRayC_Material_Pigment_Surfcace_Instruction_Handle IceRayC_Material_Pigment_Surface_Instruction_Operation_Clamp_Ramp0(      IceRayC_TypeSize P_result, IceRayC_TypeSize P_input )
+#undef F
+#define F(D_P) IceRayC_Material_Pigment_Surface_Instruction_Operation_Clamp_##D_P
+
+H F( Ramp0 )(      S P_result, S P_input )
  {
   typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_clamp::GT_ramp    Tf_this;
   auto Ir_result = new Tf_this{ P_result, P_input };
   return cpp2c( Ir_result );
  }
-IceRayC_Material_Pigment_Surfcace_Instruction_Handle IceRayC_Material_Pigment_Surface_Instruction_Operation_Clamp_Saw0(       IceRayC_TypeSize P_result, IceRayC_TypeSize P_input )
+H F( Saw0 )(       S P_result, S P_input )
  {
   typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_clamp::GT_saw    Tf_this;
   auto Ir_result = new Tf_this{ P_result, P_input };
   return cpp2c( Ir_result );
  }
-IceRayC_Material_Pigment_Surfcace_Instruction_Handle IceRayC_Material_Pigment_Surface_Instruction_Operation_Clamp_Wave0(      IceRayC_TypeSize P_result, IceRayC_TypeSize P_input )
+H F( Wave0 )(      S P_result, S P_input )
  {
   typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_clamp::GT_wave    Tf_this;
   auto Ir_result = new Tf_this{ P_result, P_input };
   return cpp2c( Ir_result );
  }
-IceRayC_Material_Pigment_Surfcace_Instruction_Handle IceRayC_Material_Pigment_Surface_Instruction_Operation_Clamp_Sinkhole0(  IceRayC_TypeSize P_result, IceRayC_TypeSize P_input )
+H F( Sinkhole0 )(  S P_result, S P_input )
  {
   typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_clamp::GT_sinkhole    Tf_this;
   auto Ir_result = new Tf_this{ P_result, P_input };
   return cpp2c( Ir_result );
  }
-IceRayC_Material_Pigment_Surfcace_Instruction_Handle IceRayC_Material_Pigment_Surface_Instruction_Operation_Clamp_Relu0(      IceRayC_TypeSize P_result, IceRayC_TypeSize P_input )
+H F( Relu0 )(      S P_result, S P_input )
  {
   typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_clamp::GT_relu    Tf_this;
   auto Ir_result = new Tf_this{ P_result, P_input };
   return cpp2c( Ir_result );
  }
+
+H F( Color_Divide0 )(      S P_result, S P_left, S P_right )
+ {
+  typedef  GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_color::GT_divides    Tf_this;
+  auto Ir_result = new Tf_this{ P_result, P_left, P_right };
+  return cpp2c( Ir_result );
+ }
+
+
+#undef H
+#undef S
+#undef F
+#undef P
 
 #define P(D_P) IceRayC_##D_P
 #define F(D_P) IceRayC_Material_Pigment_Surface_Instruction_Operation_Mapping_##D_P
@@ -75,12 +99,76 @@ IceRayC_Material_Pigment_Surfcace_Instruction_Handle IceRayC_Material_Pigment_Su
 #define H IceRayC_Material_Pigment_Surfcace_Instruction_Handle
 
 
-H F(Identity0            )( S P_result, S P_left )
+H F(Identity3D0            )( S P_result, S P_left )
  {
-  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_mapping::GT_identity    Tf_this;
+  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_mapping::GT_identity3D    Tf_this;
   auto Ir_result = new Tf_this{ P_result, P_left };
   return cpp2c( Ir_result );
  }
+
+H F(Translate3D0            )(S P_result, S P_left )
+ {
+  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_mapping::GT_translate3D    Tf_this;
+  auto Ir_result = new Tf_this{ P_result, P_left };
+  return cpp2c( Ir_result );
+ }
+H F(Translate3D1            )(IceRayC_Type_Coord_Scalar3D   * P_translate, S P_result, S P_left )
+ {
+  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_mapping::GT_translate3D    Tf_this;
+  auto Ir_result = new Tf_this{ Tf_this::T_operation( c2cpp(*P_translate) ), P_result, P_left };
+  return cpp2c( Ir_result );
+ }
+int F(Translate3D_Move            )( H P_that, IceRayC_Type_Coord_Scalar3D   * P_translate )
+ {
+  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_mapping::GT_translate3D    Tf_this;
+  auto I_this= dynamic_cast<Tf_this* >( c2cpp( P_that ) );
+  if( nullptr == I_this ) return 0;
+  // TODO I_this->F_structure( c2cpp( * P_translate ) )
+  return 0; // TODO
+ }
+
+H F(Affine3D0            )( S P_result, S P_left )
+ {
+  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_mapping::GT_affine3D    Tf_this;
+  auto Ir_result = new Tf_this{ P_result, P_left };
+  return cpp2c( Ir_result );
+ }
+H F(Affine3D1            )(IceRayC_Type_Math_Affine3D    * P_affine, S P_result, S P_left )
+ {
+  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_mapping::GT_affine3D    Tf_this;
+  auto Ir_result = new Tf_this{ Tf_this::T_operation( c2cpp(*P_affine) ), P_result, P_left };
+  return cpp2c( Ir_result );
+ }
+int F(Affine3D_Structure            )( H P_that, IceRayC_Type_Math_Affine3D   * P_translate )
+ {
+  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_mapping::GT_affine3D    Tf_this;
+  auto I_this= dynamic_cast<Tf_this* >( c2cpp( P_that ) );
+  if( nullptr == I_this ) return 0;
+  // TODO I_this->F_structure( c2cpp( * P_translate ) )
+  return 0; // TODO
+ }
+
+H F(Homography3D0        )( S P_result, S P_left )
+ {
+  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_mapping::GT_homography3D    Tf_this;
+  auto Ir_result = new Tf_this{ P_result, P_left };
+  return cpp2c( Ir_result );
+ }
+H F(Homography3D1        )(IceRayC_Type_Math_Homography3D     * P_homography, S P_result, S P_left )
+ {
+  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_mapping::GT_homography3D    Tf_this;
+  auto Ir_result = new Tf_this{  Tf_this::T_operation( c2cpp(*P_homography) ),  P_result, P_left };
+  return cpp2c( Ir_result );
+ }
+int F(Homography3D_Structure            )( H P_that, IceRayC_Type_Math_Homography3D  * P_structure )
+ {
+  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_mapping::GT_homography3D    Tf_this;
+  auto I_this= dynamic_cast<Tf_this* >( c2cpp( P_that ) );
+  if( nullptr == I_this ) return 0;
+  // TODO I_this->F_structure( c2cpp( * P_translate ) )
+  return 0; // TODO
+ }
+
 H F(Cartesian2Cylindric0 )( S P_result, S P_left )
  {
   typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_mapping::GT_cartesian2cylindric    Tf_this;
@@ -171,29 +259,6 @@ H F(Cartesian2Fisheye0   )( S P_result, S P_left )
   auto Ir_result = new Tf_this{ P_result, P_left };
   return cpp2c( Ir_result );
  }
-
-H F(Translate0   )( IceRayC_Type_Coord_Scalar3D * P_translate, S P_result, S P_left )
- {
-  // typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_mapping::GT_translate    Tf_this;
-  // auto Ir_result = new Tf_this{ c2cpp(*P_translate), P_result, P_left };
-  //return cpp2c( nullptr );
-  return nullptr;
- }
-H F(Affine0   )( IceRayC_Type_Math_Affine3D *P_affine,              S P_result, S P_left )
- {
-  // typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_mapping::GT_affine    Tf_this;
-  // auto Ir_result = new Tf_this{ c2cpp(*P_affine), P_result, P_left };
-  //return cpp2c( nullptr );
-  return nullptr;
- }
-// TODO H F(Homography0   )( IceRayC_Type_Math_Homography3D *P_homography,      S P_result, S P_left )
-// TODO  {
-// TODO   typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_mapping::GT_homography    Tf_this;
-// TODO   auto Ir_result = new Tf_this{ c2cpp(*P_homography), P_result, P_left };
-// TODO   //return cpp2c( nullptr );
-// TODO   return nullptr;
-// TODO  }
-
 
 #undef H
 #undef S

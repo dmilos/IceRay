@@ -1,6 +1,8 @@
 #ifndef Dh_DDMRM_Iceray_medium_constant_HPP_
  #define Dh_DDMRM_Iceray_medium_constant_HPP_
 
+// GS_DDMRM::S_IceRay::S_material::S_medium::GC_constant
+
  #include "./_pure.hpp"
 
  namespace GS_DDMRM
@@ -30,7 +32,7 @@
 
              virtual ~GC_constant(){ ; }
 
-             virtual bool Fv_attenuate( T_color & P_color, T_color & P_deplete, T_coord const& P_start, T_coord const& P_end )const
+             virtual bool Fv_attenuate( T_color & P_color, T_color & P_deplete, T_coord const& P_start, T_coord const& P_end, T_state const& P_state )const
               {
                P_deplete = F_deplete();
                ::color::operation::multiply( P_color, P_deplete, this->F_value() );

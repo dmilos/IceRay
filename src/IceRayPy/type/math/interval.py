@@ -1,10 +1,11 @@
-print( '<' + __name__ + ' name=\'' +   __file__ + '\'/>' )
+print( '<' + __name__ + ' file=\'' +   __file__ + '\'>' )
 import ctypes
 
 import IceRayPy
 import IceRayPy.type
 import IceRayPy.type.math
 import IceRayPy.type.math.coord
+
 
 CoordScalar1D = IceRayPy.type.math.coord.Scalar1D
 CoordScalar2D = IceRayPy.type.math.coord.Scalar2D
@@ -56,3 +57,4 @@ class Size4D(ctypes.Structure):
     _fields_ = [
                 ("lo", CoordSize4D), ("hi", CoordSize4D )
                 ]
+print( '<' + __name__ + ' file=\'' +   __file__ + '\'/>' )

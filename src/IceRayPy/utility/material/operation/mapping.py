@@ -1,8 +1,8 @@
 import ctypes
-
-SizeType = ctypes.c_uint
-
 import IceRayPy
+
+SizeType = IceRayPy.type.basic.Size
+
 
 def _Generic(
         P_dll
@@ -23,8 +23,18 @@ def _Generic(
     return I_surface
 
 
-def Identity( P_dll, P_config, P_filename = "z:\\work\\code\\cpp\\prj\\github\\IceRay\\work\\data\\di.pnm" ):
-    return _Generic( P_dll, IceRayPy.core.material.instruction.operation.mapping.Identity, P_filename )
+def Identity3D( P_dll, P_config, P_filename = "z:\\work\\code\\cpp\\prj\\github\\IceRay\\work\\data\\di.pnm" ):
+    return _Generic( P_dll, IceRayPy.core.material.instruction.operation.mapping.Identity3D, P_filename )
+
+def Translate3D( P_dll, P_config, P_filename = "z:\\work\\code\\cpp\\prj\\github\\IceRay\\work\\data\\di.pnm" ):
+    return _Generic( P_dll, IceRayPy.core.material.instruction.operation.mapping.Translate3D, P_filename )
+
+def Affine3D( P_dll, P_config, P_filename = "z:\\work\\code\\cpp\\prj\\github\\IceRay\\work\\data\\di.pnm" ):
+    return _Generic( P_dll, IceRayPy.core.material.instruction.operation.mapping.Affine3D, P_filename )
+
+def Homography3D( P_dll, P_config, P_filename = "z:\\work\\code\\cpp\\prj\\github\\IceRay\\work\\data\\di.pnm" ):
+    return _Generic( P_dll, IceRayPy.core.material.instruction.operation.mapping.Homography3D, P_filename )
+
 
 def Cartesian2Cylindric( P_dll, P_config, P_filename = "z:\\work\\code\\cpp\\prj\\github\\IceRay\\work\\data\\di.pnm" ):
     return _Generic( P_dll, IceRayPy.core.material.instruction.operation.mapping.Cartesian2Cylindric, P_filename )

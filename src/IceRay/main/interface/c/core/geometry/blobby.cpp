@@ -152,12 +152,14 @@ IceRayC_Geometry_Blobby_Element_Handle IceRayC_Geometry_Blobby_Affine1(    IceRa
   return cpp2c( Ir_result );
  }
 
-int IceRayC_Geometry_Blobby_Affine_2World( IceRayC_Geometry_Blobby_Element_Handle P_that,  IceRayC_Type_Math_Affine3D P_2world )
+int IceRayC_Geometry_Blobby_Affine_2World_Get( IceRayC_Geometry_Blobby_Element_Handle P_that,  IceRayC_Type_Math_Affine3D P_2world )
  {
+  // TODO
   return 0;
  }
 int IceRayC_Geometry_Blobby_Affine_Child( IceRayC_Geometry_Blobby_Element_Handle P_that, IceRayC_Geometry_Blobby_Element_Handle P_child )
  {
+  // TODO
   return 0;
  }
 

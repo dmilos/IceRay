@@ -25,7 +25,7 @@
              explicit GC_WrapFunctt( T_function const& P_function = GC_WrapFunctt::Fs_nothing ):M2_function(P_function){ ; }
              virtual ~GC_WrapFunctt(){ ; }
 
-             virtual bool Fv_attenuate( T_color & P_color, T_color & P_deplete, T_coord const& P_start, T_coord const& P_end, T_state const& P_state )const
+             virtual bool Fv_attenuate( T_color & P_color, T_color & P_deplete, T_coord const& P_start, T_coord const& P_end, T_state const& P_state )const override
               {
                return M2_function( P_color, P_deplete, P_start, P_end, P_state );
               }

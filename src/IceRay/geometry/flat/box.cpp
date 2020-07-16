@@ -54,99 +54,33 @@ bool GC_box::Fv_intersect
 
   C_intersect &I_intersect = P_state.F_content<C_intersect>();
 
-  std::tuple<unsigned, T_scalar, unsigned, T_scalar > intersect;
+  std::tuple<unsigned, T_scalar, unsigned, T_scalar > I_line;
 
-  if( false == ::math::geometry::interval::intersect( intersect, F_box(), {P_ray.M_origin, P_ray.M_direction}, Is_epsilon ) )
+  if( false == ::math::geometry::interval::intersect( I_line, F_box(), {P_ray.M_origin, P_ray.M_direction}, Is_epsilon ) )
    {
     return false;
    }
 
-  if( ( Is_epsilon < std::get<1>( intersect ) ) && ( std::get<1>( intersect ) < P_lambda ) )
+  if( ( Is_epsilon < std::get<1>( I_line ) ) && ( std::get<1>( I_line ) < P_lambda ) )
    {
-    P_lambda = std::get<1>( intersect );
-    I_intersect.M_min  = std::get<1>( intersect );
-    I_intersect.M_max  = std::get<3>( intersect );
-    I_intersect.M_side = std::get<0>( intersect );
+    P_lambda = std::get<1>( I_line );
+    I_intersect.M_min  = std::get<1>( I_line );
+    I_intersect.M_max  = std::get<3>( I_line );
+    I_intersect.M_side = std::get<0>( I_line );
     return true;
    }
 
-  if( ( Is_epsilon <  std::get<3>( intersect ) ) && (  std::get<3>( intersect ) < P_lambda ) )
+  if( ( Is_epsilon <  std::get<3>( I_line ) ) && (  std::get<3>( I_line ) < P_lambda ) )
    {
-    P_lambda = std::get<3>( intersect );
-    I_intersect.M_min = std::get<1>( intersect );
-    I_intersect.M_max = std::get<3>( intersect );
-    I_intersect.M_side = std::get<2>( intersect );
+    P_lambda = std::get<3>( I_line );
+    I_intersect.M_min = std::get<1>(  I_line );
+    I_intersect.M_max = std::get<3>(  I_line );
+    I_intersect.M_side = std::get<2>( I_line );
     return true;
    }
 
   return false;
  }
-
-/*
-bool GC_box::Fv_sint
- (
-  T_coord const&   P_dir,
-  T_coord const&   P_pos,
-  T_scalar        *P_lambda,
-  T_state         *P_state
- )const
- {
-  C_intersect *I_intersect = dynamic_cast<C_intersect*>(P_state);
-  if( NULL == I_intersect ) return false;
-
-
-  if( 1 == (I_intersect->M_side % 2) )
-   {
-    if( P_dir[ ( I_intersect->M_side - 1 ) / 2] <  std::numeric_limits<T_scalar>::epsilon() ) return false;
-   }
-  else
-   {
-    if( P_dir[ ( I_intersect->M_side - 1 ) / 2] > -std::numeric_limits<T_scalar>::epsilon() ) return false;
-   }
-
-
-  T_size   I_side = 0;
-  T_scalar I_inf, I_tinf;
-
-
-  T_coord I_lo( F_box().F_lo() - P_pos );
-  T_coord I_hi( F_box().F_hi() - P_pos );
-
-  I_inf = std::numeric_limits<T_scalar>::max();
-
-  for( T_size I_dim=0; I_dim < T_coord::dimension(); I_dim++ )
-   {
-    if( std::numeric_limits<T_scalar>::epsilon() < P_dir[ I_dim ] )
-     {
-      if( std::numeric_limits<T_scalar>::epsilon() < I_hi[ I_dim ] ) continue;
-
-      I_tinf = I_hi[ I_dim ] / P_dir[ I_dim ];
-      if( I_tinf < I_inf )
-       {
-        I_side = 2 * I_dim + 2;
-        I_inf = I_tinf;
-       }
-
-       continue;
-      }
-
-    if( P_dir[ I_dim ] < -std::numeric_limits<T_scalar>::epsilon() )
-     {
-      if( I_lo[ I_dim ] < -std::numeric_limits<T_scalar>::epsilon() ) continue;
-      I_tinf = I_lo[ I_dim ] / P_dir[ I_dim ];
-      if( I_tinf < I_inf )
-       {
-        I_side = 2 * I_dim + 1;
-        I_inf = I_tinf;
-       }
-     }
-
-   }
-
-  I_intersect->M_side = I_side;
-  return (I_side==0)?false:true;
- }
-*/
 
 void GC_box::Fv_normal
  (

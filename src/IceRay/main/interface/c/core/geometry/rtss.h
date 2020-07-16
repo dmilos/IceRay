@@ -17,7 +17,7 @@ IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_RTSS
 
 IceRayC__EXPORT IceRayC__DECLSPEC  int                     IceRayC_Geometry_RTSS_Object_Rtss( IceRayC_Geometry_Handle P_that, IceRayC_Geometry_RTSS_Handle P_rtss );
 IceRayC__EXPORT IceRayC__DECLSPEC  int                     IceRayC_Geometry_RTSS_Object_Push( IceRayC_Geometry_Handle P_that, IceRayC_Geometry_Handle P_child );
-// TODO IceRayC__EXPORT IceRayC__DECLSPEC  int                     IceRayC_Geometry_RTSS_Object_Clear( IceRayC_Geometry_Handle P_that );
+IceRayC__EXPORT IceRayC__DECLSPEC  int                     IceRayC_Geometry_RTSS_Object_Clear( IceRayC_Geometry_Handle P_that );
 
 
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_RTSS_Handle IceRayC_Geometry_RTSS_Uniform0( );

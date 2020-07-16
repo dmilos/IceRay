@@ -45,20 +45,29 @@ void IceRayC_Light_Release( IceRayC_Light_Handle P_this )
   delete I_this;
  }
 
+IceRayC_Light_Handle IceRayC_Light_Dark0( )
+ {
+  typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
+  typedef GS_DDMRM::S_IceRay::S_light::GC_dark Tf_this;
+  auto Ir_result = new Tf_this{};
+  return cpp2c( Ir_result );
+ }
+
+
 IceRayC_Light_Handle IceRayC_Light_Area0( )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
-  typedef GS_DDMRM::S_IceRay::S_light::GC_area Tf_area;
-  auto Ir_result = new Tf_area{};
+  typedef GS_DDMRM::S_IceRay::S_light::GC_area Tf_this;
+  auto Ir_result = new Tf_this{};
   return cpp2c( Ir_result );
  }
 
 int IceRayC_Light_Area_Spot( IceRayC_Light_Handle P_this, IceRayC_TypeSpot* P_spot )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
-  typedef GS_DDMRM::S_IceRay::S_light::GC_area Tf_area;
+  typedef GS_DDMRM::S_IceRay::S_light::GC_area Tf_this;
 
-  auto I_this = dynamic_cast< Tf_area *>( c2cpp( P_this ) );
+  auto I_this = dynamic_cast< Tf_this *>( c2cpp( P_this ) );
   if( nullptr == I_this )
    {
     return 0;
@@ -69,9 +78,9 @@ int IceRayC_Light_Area_Spot( IceRayC_Light_Handle P_this, IceRayC_TypeSpot* P_sp
 int IceRayC_Light_Area_Sample( IceRayC_Light_Handle P_this, IceRayC_TypeSize P_sample )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
-  typedef GS_DDMRM::S_IceRay::S_light::GC_area Tf_area;
+  typedef GS_DDMRM::S_IceRay::S_light::GC_area Tf_this;
 
-  auto I_this = dynamic_cast< Tf_area *>( c2cpp( P_this ) );
+  auto I_this = dynamic_cast< Tf_this *>( c2cpp( P_this ) );
   if( nullptr == I_this )
    {
     return 0;
@@ -82,9 +91,9 @@ int IceRayC_Light_Area_Sample( IceRayC_Light_Handle P_this, IceRayC_TypeSize P_s
 int IceRayC_Light_Area_Origin( IceRayC_Light_Handle P_this, IceRayC_TypeCoordScalar3D *P_origin )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
-  typedef GS_DDMRM::S_IceRay::S_light::GC_area Tf_area;
+  typedef GS_DDMRM::S_IceRay::S_light::GC_area Tf_this;
 
-  auto I_this = dynamic_cast< Tf_area *>( c2cpp( P_this ) );
+  auto I_this = dynamic_cast< Tf_this *>( c2cpp( P_this ) );
   if( nullptr == I_this )
    {
     return 0;
@@ -95,9 +104,9 @@ int IceRayC_Light_Area_Origin( IceRayC_Light_Handle P_this, IceRayC_TypeCoordSca
 int IceRayC_Light_Area_X( IceRayC_Light_Handle P_this, IceRayC_TypeCoordScalar3D* P_X )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
-  typedef GS_DDMRM::S_IceRay::S_light::GC_area Tf_area;
+  typedef GS_DDMRM::S_IceRay::S_light::GC_area Tf_this;
 
-  auto I_this = dynamic_cast< Tf_area *>( c2cpp( P_this ) );
+  auto I_this = dynamic_cast< Tf_this *>( c2cpp( P_this ) );
   if( nullptr == I_this )
    {
     return 0;
@@ -124,6 +133,20 @@ IceRayC_Light_Handle IceRayC_Light_Obstruct0( )
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_obstruct Tf_this;
   auto Ir_result = new Tf_this{};
+  return cpp2c( Ir_result );
+ }
+IceRayC_Light_Handle IceRayC_Light_Obstruct1( IceRayC_Light_Handle P_child )
+ {
+  typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
+  typedef GS_DDMRM::S_IceRay::S_light::GC_obstruct Tf_this;
+  auto Ir_result = new Tf_this{ c2cpp( P_child ) };
+  return cpp2c( Ir_result );
+ }
+IceRayC_Light_Handle IceRayC_Light_Obstruct2( IceRayC_Light_Handle P_child, IceRayC_Geometry_Handle P_barrier )
+ {
+  typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
+  typedef GS_DDMRM::S_IceRay::S_light::GC_obstruct Tf_this;
+  auto Ir_result = new Tf_this{ c2cpp( P_child ), dynamic_cast<Tf_this::T_barrier*> ( c2cpp( P_barrier ) ) };
   return cpp2c( Ir_result );
  }
 int IceRayC_Light_Obstruct_Child( IceRayC_Light_Handle P_this, IceRayC_Light_Handle P_child )
@@ -252,45 +275,6 @@ int IceRayC_Light_Circle_Y( IceRayC_Light_Handle P_this, IceRayC_TypeCoordScalar
   I_this->F_x( c2cpp( *P_Y ) ) ;
   return 1;
  }
-
-IceRayC_Light_Handle IceRayC_Light_Clipped0( )
- {
-  typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
-  typedef GS_DDMRM::S_IceRay::S_light::GC_clipped Tf_clipped;
-  auto Ir_result = new Tf_clipped{};
-  return cpp2c( Ir_result );
- }
-
-int IceRayC_Light_Clipped_Child( IceRayC_Light_Handle P_this, IceRayC_Light_Handle P_child )
- {
-  typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
-  typedef GS_DDMRM::S_IceRay::S_light::GC_clipped Tf_clipped;
-
-  auto I_this = dynamic_cast< Tf_clipped *>( c2cpp( P_this ) );
-  if( nullptr == I_this )
-   {
-    return 0;
-   }
-  I_this->F_child( c2cpp( P_child ) );
-  return 1;
- }
-
-int IceRayC_Light_Clipped_Shell( IceRayC_Light_Handle P_this, IceRayC_Geometry_Handle P_shell )
- {
-  typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
-  typedef GS_DDMRM::S_IceRay::S_light::GC_clipped Tf_clipped;
-  typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base  Tf_geometry;
-  typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_inside Tf_inside;
-
-  auto I_this = dynamic_cast< Tf_clipped *>( c2cpp( P_this ) );
-  if( nullptr == I_this )
-   {
-    return 0;
-   }
-  I_this->F_shell( dynamic_cast< Tf_inside *>( c2cpp ( P_shell ) ) );
-  return 1;
- }
-
 
 IceRayC_Light_Handle IceRayC_Light_Confine0( )
  {
@@ -745,7 +729,7 @@ IceRayC_Light_Handle IceRayC_Light_SunG1( IceRayC_Light_Handle P_child )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_sung Tf_sun;
-  auto Ir_result = new Tf_sun{};
+  auto Ir_result = new Tf_sun{ c2cpp( P_child )};
   return cpp2c( Ir_result );
  }
 int IceRayC_Light_SunG_Child ( IceRayC_Light_Handle P_this, IceRayC_Light_Handle P_child )

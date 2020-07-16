@@ -31,11 +31,11 @@ GC_translate::GC_translate( T_coord const& P_move )
 
 GC_translate::GC_translate( T_geometry *P_child, T_coord const& P_move )
  {
-  ::math::linear::vector::fill( M2_re, T_scalar( 0 ) );
-  ::math::linear::vector::fill( M2_im, T_scalar( 0 ) );
+  ::math::linear::vector::fill( M2_2world, T_scalar( 0 ) );
+  ::math::linear::vector::fill( M2_2local, T_scalar( 0 ) );
   F_child( nullptr );
 
-  F_move( P_move );
+  F_2world( P_move );
   F_child( P_child );
  }
 
@@ -79,7 +79,7 @@ bool GC_translate::Fv_intersect( T_scalar &P_lambda, T_state &P_state , T_ray co
   T_state      I_tail;  P_state.F_tail<C_intersect>(I_tail);
 
   T2_intersect::T_ray I_ray = P_ray;
-  ::math::linear::vector::addition( I_ray.M_origin, M2_im );
+  ::math::linear::vector::addition( I_ray.M_origin, M2_2local );
   return I_head.M_hit = M2_geometry.M2_intersect->Fv_intersect( P_lambda, I_tail, I_ray );
  }
 
@@ -89,7 +89,7 @@ void GC_translate::Fv_normal( T_coord &P_normal, T_coord const& P_point, T_state
   T_state           I_tail;  P_state.F_tail<C_intersect>(I_tail);
 
   T_coord I_point( P_point );
-   ::math::linear::vector::addition( I_point, M2_im );
+   ::math::linear::vector::addition( I_point, M2_2local );
    M2_geometry.M2_normal->Fv_normal( P_normal, I_point, I_tail );
  }
 
@@ -99,7 +99,7 @@ GC_translate::T_location GC_translate::Fv_inside( T_coord const& P_point/*, T_st
   // T_state           I_tail;  P_state.F_tail<C_intersect>(I_tail);
 
   T_coord I_point( P_point );
-  ::math::linear::vector::addition( I_point, M2_im );
+  ::math::linear::vector::addition( I_point, M2_2local );
   return M2_geometry.M2_inside->Fv_inside( I_point );
  }
 
@@ -107,7 +107,7 @@ GC_translate::T_scalar
 GC_translate::Fv_distance( T_coord const& P_point )const
  {
   T_coord I_point( P_point );
-  ::math::linear::vector::addition( I_point, M2_im );
+  ::math::linear::vector::addition( I_point, M2_2local );
   return M2_geometry.M2_distance->Fv_distance( I_point );
  }
 
@@ -118,7 +118,7 @@ GC_translate::Fv_uvw( T_coord & P_uvw, T_coord const& P_point, T_state const & P
   T_state           I_tail;  P_state.F_tail<C_intersect>(I_tail);
 
   T_coord I_point( P_point );
-  ::math::linear::vector::addition( I_point, M2_im );
+  ::math::linear::vector::addition( I_point, M2_2local );
   return M2_geometry.M2_uvw->Fv_uvw( P_uvw,  I_point, I_tail );
  }
 
@@ -147,29 +147,31 @@ GC_translate::T_size const& GC_translate::Fv_id( T_state const&P_state )const
   return M2_geometry.M2__base->Fv_id( P_state );
  }
 
-GC_translate::T_affine const&  GC_translate::Fv_2world( T_state const&P_state )const
+// TODO GC_translate::T_affine const&  GC_translate::Fv_2world( T_state const&P_state )const
+// TODO  {
+// TODO   return this->M2_2world;
+// TODO  }
+// TODO 
+// TODO GC_translate::T_affine const&  GC_translate::Fv_2local( T_state const&P_state )const
+// TODO {
+// TODO   return this->M2_2local;
+// TODO }
+
+bool              GC_translate::F_2local( T_coord const& P_2local )
  {
-  return this->M2_2world;
+  T_coord I_2world;
+  ::math::linear::vector::negate( I_2world, P_2local );
+  return F_2world( I_2world );
  }
 
-GC_translate::T_affine const&  GC_translate::Fv_2local( T_state const&P_state )const
-{
-  return this->M2_2local;
-}
-
-GC_translate::T_coord    const& GC_translate::F_move()const
+bool              GC_translate::F_2world( T_coord const& P_2world )
  {
-  return M2_re;
- }
-
-bool                            GC_translate::F_move( T_coord const& P_move )
- {
-  M2_re = P_move; ::math::linear::vector::negate( M2_im, P_move );
-  M2_2world.vector() = M2_re;
-  M2_2local.vector() = M2_im;
+  M2_2world = P_2world; ::math::linear::vector::negate( M2_2local, M2_2world );
+  // M2_2world.vector() = M2_2world;
+  // M2_2local.vector() = M2_2local;
 
   T_box I_box;
-  ::math::geometry::interval::translate( I_box, M2_geometry.M2__base->F_box(), M2_re );
+  ::math::geometry::interval::translate( I_box, M2_geometry.M2__base->F_box(), M2_2world );
   F1_box( I_box );
 
   return bool( true );
@@ -186,7 +188,7 @@ bool GC_translate::F_child( T_geometry *P_child )
   M2_geometry.M2_uvw       = dynamic_cast<T2_uvw      *>( M2_geometry.M2__base ); if( nullptr == M2_geometry.M2_uvw      ) M2_geometry.M2_uvw       = & Fs_vacuum();
 
   T_box I_box;
-  ::math::geometry::interval::translate( I_box, M2_geometry.M2__base->F_box(), M2_re );
+  ::math::geometry::interval::translate( I_box, M2_geometry.M2__base->F_box(), M2_2world );
   F1_box( I_box );
   return true;
  }

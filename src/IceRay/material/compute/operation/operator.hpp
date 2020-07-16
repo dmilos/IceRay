@@ -4,7 +4,7 @@
 
 
 #include "./binary.hpp"
-
+#include <functional>
 
  namespace GS_DDMRM
   {
@@ -21,16 +21,16 @@
            class    A2R
            {
            public:
-             typedef typename acumulator_name::result_type result_type;
-             typedef typename acumulator_name::left_type left_type;
-             typedef typename acumulator_name::right_type right_type;
+             typedef typename acumulator_name::result_type     result_type;
+             typedef typename acumulator_name::left_type         left_type;
+             typedef typename acumulator_name::right_type       right_type;
 
-             result_type operator()( left_type const& left, right_type const& right )
-             {
+             result_type operator()( left_type const& left, right_type const& right )const
+              {
                result_type result;
                acumulator_name{}( result, left, right );
                return result;
-             }
+              }
            };
 
 

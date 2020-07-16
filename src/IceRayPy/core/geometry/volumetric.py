@@ -26,11 +26,8 @@ class Vacuum:
         self.m_cargo['dll'].IceRayC_Geometry_Volumetric_Vacuum_Hi( self.m_cargo['this'], AddresOf(P_hi) )
 
     def box( self, P_box :Interval3D ):
-        pass #TODO
+        self.m_cargo['dll'].IceRayC_Geometry_Volumetric_Vacuum_Box( self.m_cargo['this'], AddresOf( P_box ) )
 
-    def box( self, P_lo : Coord3D, P_hi :Coord3D ):
-        self.lo( P_lo )
-        self.hi( P_hi )
 
 class Mist:
     def __init__( self, P_dll ):
@@ -63,3 +60,4 @@ class Smoke:
     def hull( self, P_hull ):
         self.m_cargo['dll'].IceRayC_Geometry_Volumetric_Smoke_Hull( self.m_cargo['this'], P_hull.m_cargo['this'] )
         self.m_cargo['hull'] = P_hull
+

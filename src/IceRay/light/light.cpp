@@ -11,7 +11,6 @@
 #include "./spline.cpp"
 #include "./suns.cpp"
 #include "./sung.cpp"
-#include "./clipped.cpp"
 #include "./confine.cpp"
 #include "./transform/transform.cpp"
 #include "./_parent.cpp"

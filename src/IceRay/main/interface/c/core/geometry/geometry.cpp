@@ -5,6 +5,7 @@
 #include "../../type/affine.hpp"
 
 #include "IceRay/geometry/simple/simple.hpp"
+#include "IceRay/geometry/flat/flat.hpp"
 #include "IceRay/geometry/hfield/hfield.hpp"
 
 #include "./handle.hpp"
@@ -42,48 +43,6 @@ int IceRayC_Geometry_Sphere_Radius( IceRayC_Geometry_Handle P_that, IceRayC_Type
   typedef GS_DDMRM::S_IceRay::S_geometry::GC_sphere Tf_sphere;
   auto I_this = dynamic_cast< Tf_sphere *>( c2cpp( P_that ) );
   I_this->F_radius( P_radius );
-  return 1;
- }
-
-
-IceRayC_Geometry_Handle IceRayC_Geometry_Box0()
- {
-  typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;
-  typedef GS_DDMRM::S_IceRay::S_geometry::GC_box Tf_box;
-  auto Ir_result = new Tf_box{};
-  return cpp2c( Ir_result );
- }
-IceRayC_Geometry_Handle IceRayC_Geometry_Box1( IceRayC_TypeCoordScalar3D* P_lo, IceRayC_TypeCoordScalar3D* P_hi )
- {
-  typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;
-  typedef GS_DDMRM::S_IceRay::S_geometry::GC_box Tf_box;
-  auto Ir_result = new Tf_box{ c2cpp( *P_lo ), c2cpp( *P_hi ) };
-  return cpp2c( Ir_result );
-}
-
-int IceRayC_Geometry_Box_Lo( IceRayC_Geometry_Handle P_that, IceRayC_TypeCoordScalar3D* P_lo )
- {
-  typedef GS_DDMRM::S_IceRay::S_geometry::GC_box Tf_box;
-
-  auto I_this = dynamic_cast< Tf_box *>( c2cpp( P_that ) );
-  if( nullptr == I_this )
-   {
-    return 0;
-   }
-  I_this->F_lo( c2cpp( *P_lo ) );
-  return 1;
- }
-
-int IceRayC_Geometry_Box_Hi( IceRayC_Geometry_Handle P_this, IceRayC_TypeCoordScalar3D* P_hi )
- {
-  typedef GS_DDMRM::S_IceRay::S_geometry::GC_box Tf_box;
-
-  auto I_this = dynamic_cast< Tf_box *>( c2cpp( P_this ) );
-  if( nullptr == I_this )
-   {
-    return 0;
-   }
-  I_this->F_hi( c2cpp( *P_hi ) );
   return 1;
  }
 
@@ -294,59 +253,6 @@ IceRayC_Geometry_Handle IceRayC_Geometry_HField()
   typedef GS_DDMRM::S_IceRay::S_geometry::S_hfield::GC_system Tf_hfield;
   auto Ir_result = new Tf_hfield{};
   return cpp2c( Ir_result );
- }
-
-
-IceRayC_Geometry_Handle IceRayC_Geometry_Disc0()
- {
-  typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;
-  typedef GS_DDMRM::S_IceRay::S_geometry::GC_disc Tf_disc;
-  auto Ir_result = new Tf_disc{};
-  return cpp2c( Ir_result );
- }
-IceRayC_Geometry_Handle IceRayC_Geometry_Disc1( IceRayC_TypeCoordScalar3D* P_center, IceRayC_TypeCoordScalar3D* P_normal, IceRayC_TypeScalar P_radius )
- {
-  typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;
-  typedef GS_DDMRM::S_IceRay::S_geometry::GC_disc Tf_disc;
-  auto Ir_result = new Tf_disc{ c2cpp( *P_center ), c2cpp( *P_normal ), P_radius };
-  return cpp2c( Ir_result );
- }
-int IceRayC_Geometry_Disc_Center(IceRayC_Geometry_Handle P_this, IceRayC_TypeCoordScalar3D* P_center )
- {
-  typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;
-  typedef GS_DDMRM::S_IceRay::S_geometry::GC_disc Tf_disc;
-
-  auto I_this = dynamic_cast< Tf_disc *>( c2cpp( P_this ) );
-  if( nullptr == I_this )
-   {
-    return 0;
-   }
-  return I_this->F_center( c2cpp( *P_center ) );
-}
-
-int IceRayC_Geometry_Disc_Normal(IceRayC_Geometry_Handle P_this, IceRayC_TypeCoordScalar3D* P_normal )
- {
-  typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;
-  typedef GS_DDMRM::S_IceRay::S_geometry::GC_disc Tf_disc;
-
-  auto I_this = dynamic_cast< Tf_disc *>( c2cpp( P_this ) );
-  if( nullptr == I_this )
-   {
-    return 0;
-   }
-  return I_this->F_normal( c2cpp( *P_normal ) );
- }
-int IceRayC_Geometry_Disc_Radius(IceRayC_Geometry_Handle P_this, IceRayC_TypeScalar P_radius )
- {
-  typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;
-  typedef GS_DDMRM::S_IceRay::S_geometry::GC_disc Tf_disc;
-
-  auto I_this = dynamic_cast< Tf_disc *>( c2cpp( P_this ) );
-  if( nullptr == I_this )
-   {
-    return 0;
-   }
-  return I_this->F_radius( P_radius );
  }
 
 IceRayC_Geometry_Handle IceRayC_Geometry_Cylinder0()

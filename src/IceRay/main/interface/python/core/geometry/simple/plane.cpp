@@ -4,7 +4,7 @@
 #include "../../../def_submodule.hpp"
 
 
-#include "IceRay/geometry/simple/plane.hpp"
+#include "IceRay/geometry/flat/plane.hpp"
 
 
 #include "./simple.hpp"

@@ -114,7 +114,7 @@ GC_focus::Fv_beam
     T_coord & I_direction = P_beam[I_index].M_direction;
     T_coord & I_origin    = P_beam[I_index].M_origin;
 
-    I_back[0] =  I_x0* F_aperture().lo();
+    I_back[0] =  I_x0 * F_aperture().lo();
     I_back[1] =  0;
     I_back[2] =  I_y0 * F_aperture().lo();
 
@@ -137,7 +137,7 @@ GC_focus::Fv_beam
     }
    }
 
-   I_summae /= F_size();
+  I_summae /= F_size();
 
   for( T_size I_index =0; I_index < F_size(); I_index++ )
    {
