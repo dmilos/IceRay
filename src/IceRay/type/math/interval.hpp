@@ -14,8 +14,6 @@
  #include "../basic/integer.hpp"
  #include "../basic/scalar.hpp"
 
- #include "../basic/report.hpp"
-
 
  namespace GS_DDMRM
   {
@@ -33,8 +31,6 @@
             public:
               typedef N_number T_number;
 
-              typedef GS_DDMRM::S_IceRay::S_type::GT_report T_report;
-
               typedef ::math::geometry::interval::structure<T_number, N_dimension > T_typedef;
            };
 
@@ -44,8 +40,6 @@
            {
             public:
               typedef N_number T_number;
-
-              typedef GS_DDMRM::S_IceRay::S_type::GT_report T_report;
 
               typedef ::math::geometry::interval::structure<T_number, 1 > T_typedef;
            };

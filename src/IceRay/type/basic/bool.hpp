@@ -1,6 +1,6 @@
 #ifndef Dh_DDMM_IceRay_type_bool_HPP_
  #define Dh_DDMM_IceRay_type_bool_HPP_
-// GS_DDMRM::S_IceRay::S_type::GT_bool;
+// GS_DDMRM::S_IceRay::S_type::GT_bool
 
 
 

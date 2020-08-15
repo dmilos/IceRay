@@ -1,6 +1,6 @@
 #ifndef Dh_DDMM_IceRay_type_integer_HPP_
  #define Dh_DDMM_IceRay_type_integer_HPP_
-// GS_DDMRM::S_IceRay::S_type::GT_integer;
+// GS_DDMRM::S_IceRay::S_type::GT_integer
 
 
  #include <cstddef>

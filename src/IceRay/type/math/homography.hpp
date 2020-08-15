@@ -9,7 +9,6 @@
 // GS_DDMRM::S_IceRay::S_type::S_homography::GT_scalar4D
 
 
- #include "../basic/report.hpp"
  #include "../basic/scalar.hpp"
 #include "math/math.hpp"
 
@@ -28,8 +27,6 @@
            : public S_DDMRM::S_type::GC_nothing
            {
             public:
-              typedef GS_DDMRM::S_IceRay::S_type::GT_report T_report;
-
               typedef ::math::linear::homography::structure< N_scalar, N_size > T_typedef;
            };
 

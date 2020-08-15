@@ -28,7 +28,6 @@
            {
             public:
 
-              //typedef GS_DDMRM::S_math::S_LA::S_matrix::GT_struct< GT_scalar, N_width, N_height > T_typedef;
               typedef ::math::linear::matrix::structure<N_number, N_width, N_height > T_typedef;
            };
 

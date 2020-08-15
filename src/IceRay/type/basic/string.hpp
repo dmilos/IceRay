@@ -1,6 +1,6 @@
 #ifndef Dh_DDMM_IceRay_type_std_string_HPP_
  #define Dh_DDMM_IceRay_type_std_string_HPP_
-// GS_DDMRM::S_IceRay::S_type::GT_string;
+// GS_DDMRM::S_IceRay::S_type::GT_string
  
  
  #include <string>

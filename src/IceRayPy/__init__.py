@@ -22,6 +22,7 @@ import IceRayPy.type.math.coord
 import IceRayPy.type.math.interval
 import IceRayPy.type.math.matrix
 import IceRayPy.type.math.affine
+import IceRayPy.type.math.homography
 import IceRayPy.type.color
 import IceRayPy.type.graph
 
