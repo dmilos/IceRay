@@ -26,10 +26,10 @@
              public:
                typedef GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar3D       T_coord;
                typedef GS_DDMRM::S_IceRay::S_type::GT_scalar                  T_scalar;
+               typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_normal     T_geometry;
 
                typedef GS_DDMRM::S_IceRay::S_material::S_compute::GC_memory   T_memory;
 
-               typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_normal  T_geometry;
                enum Ee_input{  En_inCoord_Point  = 0 };
                enum Ee_output{ En_outCoord_Normal = 0 };
 

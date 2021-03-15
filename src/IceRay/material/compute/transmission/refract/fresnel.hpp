@@ -29,6 +29,8 @@
                    typedef GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar    T_coord;
                    typedef GS_DDMRM::S_IceRay::S_type::S_color::GT_scalar    T_color;
 
+                   typedef GS_DDMRM::S_IceRay::S_material::S_compute::GT_jurisdiction T_jurisdiction;
+
                    typedef GS_DDMRM::S_IceRay::S_material::S_compute::GC_memory   T_memory;
 
                    enum Ee_input
@@ -79,16 +81,25 @@
                      T_color  I_intensity; 
                      ::color::operation::multiply( I_intensity, I_albedo, I_incoming.M_intesity );
 
-
-                     T_scalar I_air = 1.000277;
-                     T_scalar I_watter = I_IOR;
-
-                     if( 1.000277 != I_incoming.M_ior )
-                      {
-                       I_air = I_IOR;
-                       I_watter = 1.000277;
-                      }
-
+                     T_scalar I_air   ;
+                     T_scalar I_watter;
+                     {
+                      auto const& I_jurisdiction = P_next.F_jurisdiction();
+                      switch( I_jurisdiction.F_in( P_intersect.M_intersection.M_geometryID ) )
+                       {
+                        case( T_jurisdiction::En_unused ):
+                        case( T_jurisdiction::En_close ):
+                         {
+                          I_air    = I_jurisdiction.F_data( I_jurisdiction.F_head() );
+                          I_watter = I_IOR;
+                         }break;
+                        case( T_jurisdiction::En_open ):
+                         {
+                          I_air    = I_IOR;
+                          I_watter = I_jurisdiction.F_data( I_jurisdiction.F_previous( I_jurisdiction.F_head() ) );
+                         }break;
+                       }
+                     }
 
                      T_coord I_reflected; ::math::linear::vector::reflect( I_reflected, I_incoming.M_direction, I_normal );
                      T_coord I_refracted;
@@ -112,7 +123,8 @@
                           I_ray.M_origin = I_point;
                           I_ray.M_state = I_intersection.M_state;
                           I_ray.M_direction = I_refracted;
-                          I_ray.M_type = T_ray::En_type1Refracted;
+                          I_ray.M_type = T_ray::Ee_type1::En_Refracted;
+                          I_ray.M_hierarchy = T_ray::Ee_hierarchy::En_solo;
                           I_ray.M_ior  = I_watter;
                           I_ray.M_intesity = I_transparency * I_incoming.M_intesity;
                           I_ray.M_coefficient = I_transparency;
@@ -125,7 +137,8 @@
                           I_ray.M_origin = I_point;
                           I_ray.M_state = I_intersection.M_state;
                           I_ray.M_direction  = I_reflected;
-                          I_ray.M_type = T_ray::En_type1Reflected;
+                          I_ray.M_type = T_ray::Ee_type1::En_Reflected;
+                          I_ray.M_hierarchy = T_ray::Ee_hierarchy::En_solo;
                           I_ray.M_ior  = I_air;
                           I_ray.M_intesity = I_reflectance * I_incoming.M_intesity;
                           I_ray.M_coefficient = I_reflectance;
@@ -148,7 +161,8 @@
                          I_ray.M_origin = I_point;
                          I_ray.M_state = I_intersection.M_state;
                          I_ray.M_direction  = I_reflected;
-                         I_ray.M_type = T_ray::En_type1Reflected;
+                         I_ray.M_type = T_ray::Ee_type1::En_Reflected;
+                         I_ray.M_hierarchy = T_ray::Ee_hierarchy::En_solo;
                          I_ray.M_ior  = I_air;
                          I_ray.M_intesity=  I_reflectance * I_incoming.M_intesity;
                          I_ray.M_coefficient = I_reflectance;

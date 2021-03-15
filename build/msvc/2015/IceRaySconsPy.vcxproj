@@ -250,15 +250,13 @@
     <ClInclude Include="..\..\..\src\IceRay\material\compute\raw.hpp" />
     <ClInclude Include="..\..\..\src\IceRay\material\compute\surface.hpp" />
     <ClInclude Include="..\..\..\src\IceRay\material\compute\transmission\blossom.hpp" />
-    <ClInclude Include="..\..\..\src\IceRay\material\compute\transmission\reflect\one.hpp" />
     <ClInclude Include="..\..\..\src\IceRay\material\compute\transmission\reflect\reflect.hpp" />
     <ClInclude Include="..\..\..\src\IceRay\material\compute\transmission\reflect\split.hpp" />
     <ClInclude Include="..\..\..\src\IceRay\material\compute\transmission\refract\arbitrary.hpp" />
     <ClInclude Include="..\..\..\src\IceRay\material\compute\transmission\refract\fresnel.hpp" />
-    <ClInclude Include="..\..\..\src\IceRay\material\compute\transmission\refract\multi.hpp" />
-    <ClInclude Include="..\..\..\src\IceRay\material\compute\transmission\refract\one.hpp" />
     <ClInclude Include="..\..\..\src\IceRay\material\compute\transmission\refract\refract.hpp" />
     <ClInclude Include="..\..\..\src\IceRay\material\compute\transmission\refract\schlick.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\transmission\refract\snell.hpp" />
     <ClInclude Include="..\..\..\src\IceRay\material\compute\transmission\refract\split.hpp" />
     <ClInclude Include="..\..\..\src\IceRay\material\compute\transmission\transmission.hpp" />
     <ClInclude Include="..\..\..\src\IceRay\material\data.hpp" />

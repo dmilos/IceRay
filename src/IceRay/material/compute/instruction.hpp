@@ -11,7 +11,6 @@
  #include "../../material/pigment/_pure.hpp"
 
  #include "./memory.hpp"
- #include "./medium.hpp"
 
 
 
@@ -34,10 +33,10 @@
              typedef GS_DDMRM::S_IceRay::S_geometry::S__type::GC_state    T_state;
 
              typedef GS_DDMRM::S_IceRay::S_material::S_pigment::GC__pure  T_pigment;
+
              typedef GS_DDMRM::S_IceRay::S_material::GT_beam T_beam;
 
              typedef GS_DDMRM::S_IceRay::S_material::S_compute::GC_memory               T_memory;
-             typedef GS_DDMRM::S_IceRay::S_material::S_compute::GT_medium               T_medium;
 
 
              typedef GS_DDMRM::S_IceRay::S_material::S_compute::GC_memory::Ee_component T_component;
@@ -160,7 +159,10 @@
              T_signature M2_output;
 
            public:
-             virtual void    Fv_memory( T_memory * P_memory ){ M2_memory = P_memory; }
+             virtual void    Fv_memory( T_memory * P_memory )
+              {
+               M2_memory = P_memory; 
+              }
            protected:
              T_memory * & F1_memory()
               {
@@ -168,13 +170,6 @@
               }
            private:
              T_memory *M2_memory;
-
-           public:
-             virtual void    Fv_medium( T_medium * P_medium ){ M2_medium = P_medium; }
-           protected:
-             T_medium * & F1_medium(){ return M2_medium; }
-           private:
-             T_medium *M2_medium;
           };
 
         }

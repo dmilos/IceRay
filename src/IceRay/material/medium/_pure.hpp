@@ -34,7 +34,7 @@
 
              /*! Calculate Absorption. Result always exists
               @param P_result,  - result color
-              @param P_deplete  - result depletion, black: total deplete, white : no deplete
+              @param P_deplete  - result depletion; black: total deplete, white : no deplete
               @param P_start    - begin point
               @param P_end      - end point
               @param P_state    - state is in start point

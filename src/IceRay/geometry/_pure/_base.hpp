@@ -68,8 +68,14 @@
              T_coord M2_size;
 
            public:
-              virtual T_size const& Fv_id( T_state const&P_state )const{ return M2_ID; }
-                      T_size const& F_id()const{ return M2_ID; }
+             virtual T_size const& Fv_id( T_state const&P_state )const
+              {
+               return M2_ID; 
+              }
+             T_size const& F_id()const
+              {
+               return M2_ID; 
+              }
            private:
              T_size M2_ID;
            private:

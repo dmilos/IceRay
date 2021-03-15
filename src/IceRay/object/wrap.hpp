@@ -132,7 +132,6 @@
             };
            typedef  std::vector< C2_marble > T2_marbles;
            T2_marbles M2_marbles;
-
         };
 
       }

@@ -14,9 +14,8 @@ from IceRayPy import utility
 import composer
 import room
 
-
 camera_list = {
-      'flat-perspective'          : core.camera.flat.Perspective,
+       'flat-perspective'          : core.camera.flat.Perspective,
       #'flat-orthogonal'           : core.camera.flat.Orthogonal,
       #'flat-super'                : core.camera.flat.Super,
       #'sphere-horizontal'         : core.camera.sphere.Horizontal,
@@ -24,7 +23,7 @@ camera_list = {
       #'sphere-fisheye'            : core.camera.sphere.Fisheye,
       #'cylinder-vertical'         : core.camera.cylinder.Vertical,
       #'cylinder-horizontal'       : core.camera.cylinder.Horizontal,
-      #'invert-cylinder-vertical'  : core.camera.transform.Invert,
+      #'invert-cylinder-vertical'   : utility.camera.invert.CylinderVertical,
       #'dof-perspective'  : core.camera.dof.Focus,
      }
 
@@ -67,7 +66,7 @@ medium_list = {
 geometry_list = {
       'simple-usphere'       : core.geometry.simple.USphere,
       #'simple-sphere'       : core.geometry.simple.Sphere,
-      #'simple-box'           : core.geometry.simple.Box,
+       'simple-box'           : core.geometry.simple.Box,
       #'simple-Cone'          : core.geometry.simple.Cone,
       #'simple-Cylinder'      : core.geometry.simple.Cylinder,
       #'simple-Disc'          : core.geometry.simple.Disc,
@@ -76,7 +75,7 @@ geometry_list = {
       #'simple-Paraboloid'    : core.geometry.simple.Paraboloid,
       #'simple-Plane'         : core.geometry.simple.Plane,
       #'simple-Quadric'       : core.geometry.simple.Quadric,
-      #'simple-Torus'         : core.geometry.simple.Torus,
+       'simple-Torus'         : core.geometry.simple.Torus,
       #'simple-Triangle'      : core.geometry.simple.Triangle,
       #'simple-Saddle'        : core.geometry.simple.Saddle,
       #'simple-ucylinder'     : core.geometry.simple.UCylinder,
@@ -103,74 +102,75 @@ pigment_list = {
      #'default'                 : core.material.pigment.Constant,
      #'surface'                 : core.material.pigment.Surface,
 
-      'pattern-noise-cells'      : utility.material.pattern.noise.Cells,
-      'pattern-noise-crackle'    : utility.material.pattern.noise.Crackle,
-      'pattern-noise-perlin'     : utility.material.pattern.noise.Perlin,
-      'pattern-noise-random'     : utility.material.pattern.noise.Random,
-      'pattern-noise-value'      : utility.material.pattern.noise.Value,
-      'pattern-noise-vdc'        : utility.material.pattern.noise.VDC,
-      'pattern-image'            : utility.material.pattern.Image,
-      'pattern-checker'          : utility.material.pattern.Checker,
-      'pattern-hexagon'          : utility.material.pattern.Hexagon,
-      'pattern-onion'            : utility.material.pattern.Onion, #TODO check
-      'pattern-level'            : utility.material.pattern.Level, #TODO check
+     #'pattern-noise-cells'      : utility.material.pattern.noise.Cells,
+     #'pattern-noise-crackle'    : utility.material.pattern.noise.Crackle,
+     #'pattern-noise-perlin'     : utility.material.pattern.noise.Perlin,
+     #'pattern-noise-random'     : utility.material.pattern.noise.Random,
+     #'pattern-noise-value'      : utility.material.pattern.noise.Value,
+     #'pattern-noise-vdc'        : utility.material.pattern.noise.VDC,
+     #'pattern-image'            : utility.material.pattern.Image,
+     #'pattern-checker'          : utility.material.pattern.Checker,
+     #'pattern-hexagon'          : utility.material.pattern.Hexagon,
+     #'pattern-onion'            : utility.material.pattern.Onion, #TODO check
+     #'pattern-level'            : utility.material.pattern.Level, #TODO check
 
-     'illum-ALP'           : utility.material.illumination.Alp, # OK
-     'illum-ambient'       : utility.material.illumination.Ambient, # OK
-     'illum-AsDiffuse'     : utility.material.illumination.AsDiffuse,  # TODO
-     'illum-AsSpecular'    : utility.material.illumination.AsSpecular, # TODO
-     'illum-Beckmann'      : utility.material.illumination.Beckmann, # TODO problem on terminator
-     'illum-Blinn'         : utility.material.illumination.Blinn,    # TODO problem on terminator
-     'illum-Gaussian'      : utility.material.illumination.Gaussian, # TODO problem on terminator
-     'illum-HsLambert'     : utility.material.illumination.HsLambert, # TODO
-     'illum-HsPhong'       : utility.material.illumination.HsPhong,   # TODO problem on terminator
-     'illum-Lambert'       : utility.material.illumination.Lambert, #OK
-     'illum-OnF29'         : utility.material.illumination.OnF29,  # TODO
-     'illum-OnP44'         : utility.material.illumination.OnP44,  # TODO
-     'illum-OnYF'          : utility.material.illumination.OnYF,   # TODO
-     'illum-Phong'         : utility.material.illumination.Phong, #OK
-     'illum-WardApprox'    : utility.material.illumination.WardApprox,    # TODO
-     'illum-WardIsotropic' : utility.material.illumination.WardIsotropic, # TODO
-     'illum-WardReal'      : utility.material.illumination.WardReal,      # TODO
-     
-     'mapping-o-ID'                     : utility.material.operation.mapping.Identity3D,
-     'mapping-o-translate'              : utility.material.operation.mapping.Translate3D,
-     'mapping-o-affine'                 : utility.material.operation.mapping.Affine3D,
-     'mapping-o-homography'             : utility.material.operation.mapping.Homography3D,
-     
-     'mapping-o-Cartesian2Cylindric'    : utility.material.operation.mapping.Cartesian2Cylindric,  #TODO check
-     'mapping-o-Cartesian2Package'      : utility.material.operation.mapping.Cartesian2Package,    #TODO check
-     'mapping-o-Cartesian2Spherical'    : utility.material.operation.mapping.Cartesian2Spherical,  #TODO check
-     'mapping-o-Cartesian2Torus'        : utility.material.operation.mapping.Cartesian2Torus,      #TODO check
-     'mapping-o-Cartesian2Tablecloth'   : utility.material.operation.mapping.Cartesian2Tablecloth, #TODO check
-     'mapping-o-Cartesian2WoodX'        : utility.material.operation.mapping.Cartesian2WoodX,      #TODO check
-     'mapping-o-Cartesian2WoodY'        : utility.material.operation.mapping.Cartesian2WoodY,      #TODO check
-     'mapping-o-Cartesian2WoodZ'        : utility.material.operation.mapping.Cartesian2WoodZ,      #TODO check
-     'mapping-o-Cylindric2Cartesian'    : utility.material.operation.mapping.Cylindric2Cartesian,  #TODO check
-     'mapping-o-Cylindric2Spherical'    : utility.material.operation.mapping.Cylindric2Spherical,  #TODO check
-     'mapping-o-Spherical2Cartesian'    : utility.material.operation.mapping.Spherical2Cartesian,  #TODO check
-     'mapping-o-Spherical2Cylindric'    : utility.material.operation.mapping.Spherical2Cylindric,  #TODO check
-     'mapping-o-Euclid2Max'             : utility.material.operation.mapping.Euclid2Max,           #TODO check
-     'mapping-o-Max2Euclid'             : utility.material.operation.mapping.Max2Euclid,           #TODO check
-     'mapping-o-Cartesian2Fisheye'      : utility.material.operation.mapping.Cartesian2Fisheye,    #TODO check
-     
-     'transmission-reflect-One'              : utility.material.transmission.reflect.One,      #OK
-     'transmission-reflect-Schlick'          : utility.material.transmission.reflect.Schlick,  #OK
-     'transmission-reflect-blossom-Hexagon'  : utility.material.transmission.blossom.Hexagon,  #OK
-     'transmission-reflect-blossom-Grid'     : utility.material.transmission.blossom.Grid,     #TODO
-     'transmission-reflect-blossom-Rand'     : utility.material.transmission.blossom.Random,   #OK
-     'transmission-reflect-blossom-VDC'      : utility.material.transmission.blossom.VDC,      #OK
+     #'illum-ALP'           : utility.material.illumination.Alp, # OK
+     #'illum-ambient'       : utility.material.illumination.Ambient, # OK
+     #'illum-AsDiffuse'     : utility.material.illumination.AsDiffuse,  # TODO
+     #'illum-AsSpecular'    : utility.material.illumination.AsSpecular, # TODO
+     #'illum-Beckmann'      : utility.material.illumination.Beckmann, # TODO problem on terminator
+     #'illum-Blinn'         : utility.material.illumination.Blinn,    # TODO problem on terminator
+     #'illum-Gaussian'      : utility.material.illumination.Gaussian, # TODO problem on terminator
+     #'illum-HsLambert'     : utility.material.illumination.HsLambert, # TODO
+     #'illum-HsPhong'       : utility.material.illumination.HsPhong,   # TODO problem on terminator
+     #'illum-Lambert'       : utility.material.illumination.Lambert, #OK
+     #'illum-OnF29'         : utility.material.illumination.OnF29,  # TODO
+     #'illum-OnP44'         : utility.material.illumination.OnP44,  # TODO
+     #'illum-OnYF'          : utility.material.illumination.OnYF,   # TODO
+     #'illum-Phong'         : utility.material.illumination.Phong, #OK
+     #'illum-WardApprox'    : utility.material.illumination.WardApprox,    # TODO
+     #'illum-WardIsotropic' : utility.material.illumination.WardIsotropic, # TODO
+     #'illum-WardReal'      : utility.material.illumination.WardReal,      # TODO
+
+     #'mapping-o-ID'                     : utility.material.operation.mapping.Identity3D,
+     #'mapping-o-translate'              : utility.material.operation.mapping.Translate3D,
+     #'mapping-o-affine'                 : utility.material.operation.mapping.Affine3D,
+     #'mapping-o-homography'             : utility.material.operation.mapping.Homography3D,
+
+     #'mapping-o-Cartesian2Cylindric'    : utility.material.operation.mapping.Cartesian2Cylindric,  #TODO check
+     #'mapping-o-Cartesian2Package'      : utility.material.operation.mapping.Cartesian2Package,    #TODO check
+     #'mapping-o-Cartesian2Spherical'    : utility.material.operation.mapping.Cartesian2Spherical,  #TODO check
+     #'mapping-o-Cartesian2Torus'        : utility.material.operation.mapping.Cartesian2Torus,      #TODO check
+     #'mapping-o-Cartesian2Tablecloth'   : utility.material.operation.mapping.Cartesian2Tablecloth, #TODO check
+     #'mapping-o-Cartesian2WoodX'        : utility.material.operation.mapping.Cartesian2WoodX,      #TODO check
+     #'mapping-o-Cartesian2WoodY'        : utility.material.operation.mapping.Cartesian2WoodY,      #TODO check
+     #'mapping-o-Cartesian2WoodZ'        : utility.material.operation.mapping.Cartesian2WoodZ,      #TODO check
+     #'mapping-o-Cylindric2Cartesian'    : utility.material.operation.mapping.Cylindric2Cartesian,  #TODO check
+     #'mapping-o-Cylindric2Spherical'    : utility.material.operation.mapping.Cylindric2Spherical,  #TODO check
+     #'mapping-o-Spherical2Cartesian'    : utility.material.operation.mapping.Spherical2Cartesian,  #TODO check
+     #'mapping-o-Spherical2Cylindric'    : utility.material.operation.mapping.Spherical2Cylindric,  #TODO check
+     #'mapping-o-Euclid2Max'             : utility.material.operation.mapping.Euclid2Max,           #TODO check
+     #'mapping-o-Max2Euclid'             : utility.material.operation.mapping.Max2Euclid,           #TODO check
+     #'mapping-o-Cartesian2Fisheye'      : utility.material.operation.mapping.Cartesian2Fisheye,    #TODO check
+
+     #'transmission-reflect-One'              : utility.material.transmission.reflect.One,      #OK
+     #'transmission-reflect-Schlick'          : utility.material.transmission.reflect.Schlick,  #OK
+     #'transmission-reflect-blossom-Hexagon'  : utility.material.transmission.blossom.Hexagon,  #OK
+     #'transmission-reflect-blossom-Grid'     : utility.material.transmission.blossom.Grid,     #TODO
+     #'transmission-reflect-blossom-Rand'     : utility.material.transmission.blossom.Random,   #OK
+     #'transmission-reflect-blossom-VDC'      : utility.material.transmission.blossom.VDC,      #OK
      'transmission-refract-Arbitrary'        : utility.material.transmission.refract.Arbitrary,#TODO check
-     'transmission-refract-Fresnel'          : utility.material.transmission.refract.Fresnel,  #TODO
-     'transmission-refract-One'              : utility.material.transmission.refract.One,      #OK
-     'transmission-refract-Schlick'          : utility.material.transmission.refract.Schlick,  #OK
+     #'transmission-refract-Fresnel'          : utility.material.transmission.refract.Fresnel,  #TODO
+     #'transmission-refract-Snell'            : utility.material.transmission.refract.Snell,    #OK
+     #'transmission-refract-Schlick'          : utility.material.transmission.refract.Schlick,  #OK
 }
 
 room_list = {
       #'vacuum'    : room.vacuum,
-      'plane'     : room.plane,
+      #'plane'     : room.plane,
       #'plate'     : room.plate,
-      #'cornel'    : room.cornel_open
+       'cornel'    : room.cornel,
+      #'cornel'    : room.cornel_open,
       #'cornel'    : room.cornel_close
     }
 
@@ -247,11 +247,12 @@ if( 2 < len( sys.argv ) ):
 config={}
 config['folder'] = '_out'
 config['dll'] = cdll.LoadLibrary(r"z:\work\code\cpp\prj\github\IceRay\work\bin\IceRayCDLL-x86-Release\IceRayCDLL-1.0.0.0-dynamic.dll")
+#config['dll'] = cdll.LoadLibrary(r"z:\work\code\cpp\prj\github\IceRay\work\bin\IceRayCDLL-x86-Debug\IceRayCDLL-1.0.0.0-dynamic.dll")
 config['index'] = 0
 
 config['picture'] = {}
-config['picture']['width']  = int( 256 * 2 )
-config['picture']['height'] = int( 256 * 2 )
+config['picture']['width']  = int( 256 * 3 )
+config['picture']['height'] = int( 256 * 3 )
 
 config['camera'] = {}
 config['camera']['width']  = 1
@@ -264,8 +265,8 @@ config['ray-trace']={}
 config['ray-trace']['depth'] = 12
 config['ray-trace']['trash'] = 0.001
 config['hot'] = {}
-config['hot']['x'] = 50
-config['hot']['y'] = 50
+config['hot']['x'] = 256
+config['hot']['y'] = 256
 
 config['window'] = {}
 config['window'] = {}

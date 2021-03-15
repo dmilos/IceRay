@@ -75,24 +75,24 @@ void expose_IceRay_material_transmission_blossom()
 
 
 
-void expose_IceRay_material_transmission_refract_one()
+void expose_IceRay_material_transmission_refract_snell()
  {
   //MAKE_SUBMODULE( IceRay );
   MAKE_SUBMODULE( core );
   MAKE_SUBMODULE( material );
   MAKE_SUBMODULE( transmission );
 
-  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_transmission::S_refract::GC_one   GTs_one;
+  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_transmission::S_refract::GC_snell   GTs_snell;
 
-  typedef  bool                (GTs_one::*Tf_setScalar   )( GTs_scalar const& );
-  typedef  GTs_scalar const&   (GTs_one::*Tf_getScalar   )( void ) const;
-  typedef  bool                (GTs_one::*Tf_setColor    )( GTs_color const& );
-  typedef  GTs_color const&    (GTs_one::*Tf_getColor    )( void ) const;
-  typedef  bool                (GTs_one::*Tf_setCoord3D  )( GTs_coord3D const& );
-  typedef  GTs_coord3D const&  (GTs_one::*Tf_getCoord3D  )( void ) const;
+  typedef  bool                (GTs_snell::*Tf_setScalar   )( GTs_scalar const& );
+  typedef  GTs_scalar const&   (GTs_snell::*Tf_getScalar   )( void ) const;
+  typedef  bool                (GTs_snell::*Tf_setColor    )( GTs_color const& );
+  typedef  GTs_color const&    (GTs_snell::*Tf_getColor    )( void ) const;
+  typedef  bool                (GTs_snell::*Tf_setCoord3D  )( GTs_coord3D const& );
+  typedef  GTs_coord3D const&  (GTs_snell::*Tf_getCoord3D  )( void ) const;
 
 
-  typedef boost::python::class_<GTs_one, boost::python::bases< GTs_instruction > > Tf_this;
+  typedef boost::python::class_<GTs_snell, boost::python::bases< GTs_instruction > > Tf_this;
 
   boost::python::object I_this = Tf_this( "MaterialTransmissionRefractOne", boost::python::no_init )
     .def( boost::python::init<>() )
@@ -101,54 +101,17 @@ void expose_IceRay_material_transmission_refract_one()
 
   boost::python::scope I_scope = I_this;
 
-  boost::python::enum_<GTs_one::Ee_input>( "Input" )
-    .value( "point",          GTs_one::En_inCoord_Point    )
-    .value( "normal",         GTs_one::En_inCoord_Normal   )
+  boost::python::enum_<GTs_snell::Ee_input>( "Input" )
+    .value( "point",          GTs_snell::En_inCoord_Point    )
+    .value( "normal",         GTs_snell::En_inCoord_Normal   )
     .export_values()
    ;
 
-  //boost::python::enum_<GTs_one::Ee_output>( "Output" )
+  //boost::python::enum_<GTs_snell::Ee_output>( "Output" )
   //  .value( "count",     GTs_split::En_outSize_RayCount )
   //  .value( "count",     GTs_split::En_outRay_Refracted )
   //  .export_values()
   // ;
- }
-
-void expose_IceRay_material_transmission_refract_multi()
- {
-  //MAKE_SUBMODULE( IceRay );
-  MAKE_SUBMODULE( core );
-  MAKE_SUBMODULE( material );
-  MAKE_SUBMODULE( transmission );
-
-  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_transmission::S_refract::GC_multi   GTs_multi;
-
-  typedef  bool                (GTs_multi::*Tf_setScalar   )( GTs_scalar const& );
-  typedef  GTs_scalar const&   (GTs_multi::*Tf_getScalar   )( void ) const;
-  typedef  bool                (GTs_multi::*Tf_setColor    )( GTs_color const& );
-  typedef  GTs_color const&    (GTs_multi::*Tf_getColor    )( void ) const;
-  typedef  bool                (GTs_multi::*Tf_setCoord3D  )( GTs_coord3D const& );
-  typedef  GTs_coord3D const&  (GTs_multi::*Tf_getCoord3D  )( void ) const;
-
-
-  typedef boost::python::class_<GTs_multi, boost::python::bases< GTs_instruction > > Tf_this;
-
-  boost::python::object I_this = Tf_this( "MaterialTransmissionRefractMulti", boost::python::no_init )
-    .def( boost::python::init<>() )
-    .def( boost::python::init< GTs_size,GTs_size,GTs_size,GTs_size>() )
-  ;
-
-  boost::python::scope I_scope = I_this;
-
- // boost::python::enum_<GTs_multi::Ee_input>( "Input" )
- //   .value( "point",          GTs_multi::En_inCoord_Point    )
- //   .value( "normal",         GTs_multi::En_inCoord_Normal   )
- //   .value( "transparency",   GTs_multi::En_inColor_Transparency   )
- //   .value( "angle",          GTs_multi::En_inScalar_Angle   )
- //   .value( "count",          GTs_multi::En_inSize_RayCount  )
- //   .export_values()
- //  ;
-
  }
 
 void expose_IceRay_material_transmission_refract_fresnel()

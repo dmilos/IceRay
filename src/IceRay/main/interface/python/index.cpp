@@ -172,7 +172,7 @@ BOOST_PYTHON_MODULE(IceRayCpp)
   EXTERN_AND_CALL( expose_IceRay_material_transmission_reflect_one );
   EXTERN_AND_CALL( expose_IceRay_material_transmission_reflect_schlick );
 
-  EXTERN_AND_CALL( expose_IceRay_material_transmission_refract_one );
+  EXTERN_AND_CALL( expose_IceRay_material_transmission_refract_snell );
   EXTERN_AND_CALL( expose_IceRay_material_transmission_refract_multi );
   EXTERN_AND_CALL( expose_IceRay_material_transmission_refract_fresnel );
   EXTERN_AND_CALL( expose_IceRay_material_transmission_refract_schlick );

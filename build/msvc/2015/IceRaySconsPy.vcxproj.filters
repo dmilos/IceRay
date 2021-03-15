@@ -977,15 +977,6 @@
     <ClInclude Include="..\..\..\src\IceRay\material\compute\transmission\refract\fresnel.hpp">
       <Filter>Source Files\src\material\compute\transmission</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\src\IceRay\material\compute\transmission\refract\multi.hpp">
-      <Filter>Source Files\src\material\compute\transmission</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\src\IceRay\material\compute\transmission\reflect\one.hpp">
-      <Filter>Source Files\src\material\compute\transmission</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\src\IceRay\material\compute\transmission\refract\one.hpp">
-      <Filter>Source Files\src\material\compute\transmission</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\src\IceRay\material\compute\transmission\reflect\reflect.hpp">
       <Filter>Source Files\src\material\compute\transmission</Filter>
     </ClInclude>
@@ -1021,6 +1012,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\src\IceRay\object\object.hpp">
       <Filter>Source Files\src\object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\transmission\refract\snell.hpp">
+      <Filter>Source Files\src\material\compute\transmission</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -84,7 +84,7 @@
 
                      I_reflected.M_coefficient = T_scalar(1);
                      I_reflected.M_ior  = I_incoming.M_ior;
-                     I_reflected.M_type = T_ray::En_type1Reflected;
+                     I_reflected.M_type = T_ray::Ee_type1::En_Reflected;
                      I_reflected.M_geometryID = I_intersect.M_geometryID;
                      I_reflected.M_state = I_intersect.M_state;
 

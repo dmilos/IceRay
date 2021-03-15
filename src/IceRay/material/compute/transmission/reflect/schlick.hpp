@@ -29,6 +29,8 @@
                    typedef GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar    T_coord;
                    typedef GS_DDMRM::S_IceRay::S_type::S_color::GT_scalar    T_color;
 
+                   typedef GS_DDMRM::S_IceRay::S_material::S_compute::GT_jurisdiction T_jurisdiction;
+
                    typedef GS_DDMRM::S_IceRay::S_material::S_compute::GC_memory   T_memory;
 
                    enum Ee_input
@@ -74,13 +76,12 @@
                      T_scalar const& I_IOR      = M2_memoryScalar->Fv_load( F_input<T_scalar>( En_inScalar_IOR  ) );
 
 
-                     T_scalar I_air = 1.000277;
+                     T_scalar I_air    = P_next.F_jurisdiction().F_data( P_next.F_jurisdiction().F_head() );  //!< TODO
                      T_scalar I_watter = I_IOR;
 
-                     if( 1.000277 != I_incoming.M_ior )
+                     if( T_jurisdiction::En_open == P_next.F_jurisdiction().F_in( P_intersect.M_intersection.M_geometryID ) )
                       {
-                       I_air = I_IOR;
-                       I_watter = 1.000277;
+                       std::swap( I_air, I_watter );
                       }
 
                      P_next.Fv_push();
@@ -100,9 +101,10 @@
 
                      I_reflected.M_coefficient = T_scalar(1);
                      I_reflected.M_ior  = I_incoming.M_ior;
-                     I_reflected.M_type = T_ray::En_type1Reflected;
+                     I_reflected.M_type = T_ray::Ee_type1::En_Reflected;
                      I_reflected.M_geometryID = I_intersect.M_geometryID;
                      I_reflected.M_state = I_intersect.M_state;
+                     I_reflected.M_hierarchy = T_ray::Ee_hierarchy::En_solo;
 
                      //M2_memoryRay->Fv_store( F_output()[ T_memory::En_size][ En_outRay_RayReflected ], I_reflected );
                      //M2_memorySize->Fv_store( F_output()[ T_memory::En_size][ En_outSize_RayCount ], 1 );

@@ -40,7 +40,7 @@ S_cylinder::GC_vertical::Fv_beam
 
   I_direction[0] = M2_radius * cos(  Is_pi/2 - P_uv[0] * M2_phi/2 );
   I_direction[1] = M2_radius * sin(  Is_pi/2 - P_uv[0] * M2_phi/2 );
-  I_direction[2] =  0;
+  I_direction[2] = 0;
 
   return 1;
  }

@@ -4,6 +4,19 @@
 
 #include "IceRay/type/math/homography.hpp"
 
+int   IceRayC_Type_Math_Homography_Construct1D( IceRayC_Type_Math_Matrix3D *P_result, IceRayC_TypeCoordScalar1D *P_A, IceRayC_TypeCoordScalar1D *P_B )
+ {
+  GS_DDMRM::S_IceRay::S_type::S_matrix::GT_scalar3D I_result;
+
+  // TODO GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar1D I_point  = c2cpp( *P_A );
+  // TODO GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar1D I_point  = c2cpp( *P_B );
+  // TODO ::math::linear::homography::construct( I_result, c2cpp( *P_point ) );
+
+  // TODO *P_result = cpp2c( I_result );
+
+  return 1;
+ }
+
 
 int   IceRayC_Type_Math_Homography_Construct2D( IceRayC_Type_Math_Matrix3D *P_result, IceRayC_TypeCoordScalar2D *P_point )
  {

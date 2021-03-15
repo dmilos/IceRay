@@ -17,6 +17,7 @@
         {
          namespace S_filter
           {
+
            class GC__pure
             {
              public:
@@ -24,15 +25,17 @@
                typedef GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar2D    T_UV;
                typedef GS_DDMRM::S_IceRay::S_type::GT_size                 T_size;
 
-               enum Ee_action{ En_skip, En_break, En_process  };
+               enum class Ee_action{ En_skip, En_break, En_process  };
 
+             public:
                GC__pure(){}
                virtual ~GC__pure(){}
 
+             public:
                virtual void Fv_reset()=0;
                virtual Ee_action Fv_check( T_color & P_color, T_UV const& P_UV, T_size const& P_index )=0;
-
             };
+
          }
        }
      }

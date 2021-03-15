@@ -11,6 +11,13 @@
    namespace S_container
     {
 
+     /*
+        1. different brackets of
+        2. second insert means close
+        3. allow overlap    ( { ) }
+        4. simple undo
+    */
+
       template< typename N_data, typename N_allocator=std::allocator<N_data> >
        class GC_medium
         {
@@ -19,107 +26,86 @@
            typedef typename std::allocator<T_data>::size_type   T_size;
            typedef std::allocator<T_data>              T_allocator;
 
-
-         public:
-           enum Ee_COMMAND
-            {
-             En_cNOTHING, En_cPOP, En_cPUSH
-            };
+           enum  Ee_state { En_unused = -1, En_open = 0, En_close = 1 };
 
          public:
            GC_medium( T_size P_data = 1, T_size P_stack = 1 );
           ~GC_medium( );
 
-
          public:
-          int     F_push( T_size const& P_index, T_data const& P_data );
-          void    F_pop(  );
+           void    F_clear( );
+           int     F_push( T_size const& P_index, T_data const& P_data );
+           void    F_pop(  );
 
-          T_data      & F_prev_info( void );
-          T_data const& F_prev_info( void )const;
+           T_size const & F_previous( T_size const& P_index )const;
+           T_data const&  F_data( T_size const& P_index )const;
+           T_data&        F_data( T_size const& P_index );
+           T_size const&  F_head( void )const;
 
-          T_size  F_prev_index( );
+           Ee_state const&   F_in( T_size const& P_index )const;
 
-          T_data      & F_top_info( void );
-          T_data const& F_top_info( void )const;
-          T_size  F_top_index( void );
+           bool    F_empty( )const;
 
-          int     F_in( T_size i )const;
+           void    F_capacity_stack( T_size const& );
+           void    F_capacity_list( T_size const& );
 
-          bool    F_empty( )const;
-
-          void    F_view( );
-          void    F_reset( );
-
-
-          void    F_capacity_stack( T_size );
-          void    F_capacity_list( T_size );
-
-          void    F_print(  );
+           void    F_print(  );
 
          private:
-          //T_size s_stack;    C_stack  *stack;
+           static T_size const& Fs_infinity(){ static T_size Irs_infinity = -1; return Irs_infinity; }
+           static T_size const& Fs_abyss()   { static T_size Irs_abyss    = 0xeeeeeeee; return Irs_abyss;    }
+           static T_size const& Fs_invalid() { static T_size Irs_invalid  = 0x666999; return Irs_invalid;  }
+           //T_size const& F_alpha() { static T_size Irs_invalid  = 0x666999; return Irs_invalid;  }
+           //T_size const& F_omega() { static T_size Irs_invalid  = 0x666999; return Irs_invalid;  }
 
-          struct C_list;
-          struct C_stack;
-          typedef std::vector<C_stack, T_allocator> T1_stack_container;
-          typedef std::vector<C_list, T_allocator>  T1_list_container;
+         private:
+           struct C_list
+             {
+              Ee_state M_state = En_unused;
+              T_data M_data;
+              T_size prev = Fs_invalid();
+              T_size next = Fs_invalid();
+             };
+           typedef std::vector<C_list, T_allocator>  T2_list;
 
-
-          struct C_list
+           struct C_record
             {
-             C_list(){ flag = false; }
-             C_list( C_list const& P_original )
-              :flag  ( P_original.flag )
-              ,M_data( P_original.M_data )
-              ,prev( P_original.prev)
-              ,next( P_original.next)
-              {  }
-
-             bool flag;
-             T_data M_data;
-             T_size prev, next;
+             C_list entry;
+             T_size M_index;
+             T_size M_tail, M_head;
+             T_size prev_next = Fs_invalid();
+             T_size next_prev = Fs_invalid();
+             T_size head_next = Fs_invalid();
             };
+           typedef std::vector<C_record, T_allocator> T2_undo;
 
-          struct C_stack
-           {  // sve ono sto je pokvario prev, next, flag data
-            C_stack(){}
-            C_stack
-             (
-              T_size P_who,
-              C_list const& P_mem,
-              T_size P_tail
-             )
-             :mem(P_mem)
-             ,who(P_who)
-             ,M_tail( P_tail )
-              {
-              }
-
-            C_list    mem; // actualy what
-            T_size  who, M_tail;
-           };
-
-
-          T1_stack_container      M1_stack;
-          T1_list_container       M1_list;
-
-          T_size                  M1_lhead, M1_ltail;  //head n' tail of the list;
-
-        };
+           T2_undo       M2_undo;  // undo stack
+           T2_list       M1_list;   // actual
+           T_size        M2_head, M1_tail;  //head n' tail of the list;
+         };
 
       template< typename N_data, typename N_allocator >
-       GC_medium<N_data,N_allocator>::GC_medium( T_size P_data, T_size P_stack)
+       GC_medium<N_data,N_allocator>::GC_medium( T_size P_data, T_size P_stack )
         {
          if( P_data == 0 )  return;
-
-         M1_stack.reserve( P_stack );
+         M1_tail = Fs_abyss();
+         M2_head = Fs_infinity();
+         M2_undo.reserve( P_stack );
          M1_list.resize( P_data );
         }
 
       template< typename N_data, typename N_allocator >
       GC_medium<N_data,N_allocator>::~GC_medium( )
         {
+        }
+
+      template< typename N_data, typename N_allocator >
+       void GC_medium<N_data,N_allocator>::F_clear()
+        {
+         M1_tail = Fs_abyss();
+         M2_head = Fs_infinity();
+         M2_undo.clear();
+         fill( M1_list.begin(), M1_list.end(), C_list() );
         }
 
       template< typename N_data, typename N_allocator >
@@ -130,204 +116,220 @@
            M1_list.resize( P_id + 1 );
           }
 
-         auto p_i = this->M1_list.begin() + P_id;
+         auto & entry = this->M1_list[ P_id ];
+         M2_undo.emplace_back();
+         auto & record  = M2_undo.back();
+         record.entry = entry;
+         record.M_index = P_id;
+         record.M_tail = M1_tail;
+         record.M_head = M2_head;
 
-         if( true == M1_stack.empty() )
+         switch( entry.M_state )
           {
-           // sad je P_id glava
-           M1_ltail = P_id;
-           M1_lhead = P_id;
+           case( En_open ):
+            {
+             entry.M_state = En_close;
+             entry.M_data = P_data;
 
-           // pamti
-           M1_stack.push_back( C_stack( P_id, *p_i, M1_ltail ) );
+             if( Fs_abyss()    !=  entry.prev )
+              {
+               record.prev_next = M1_list[ entry.prev ].next;
+               M1_list[ entry.prev ].next = entry.next;
+              }
+             else
+              {
+               M1_tail = entry.next; if( Fs_infinity() == M1_tail ) M1_tail = Fs_abyss();
+              }
 
-           //popuni
-           p_i->next = P_id;
-           p_i->prev = P_id;
-           p_i->flag = true;
-           p_i->M_data = P_data;
+             if( Fs_infinity() != entry.next )
+              {
+               record.next_prev = M1_list[ entry.next ].prev;
+               M1_list[ entry.next ].prev = entry.prev;
+              }
+             else
+              {
+               M2_head = entry.prev; if( Fs_abyss() == M2_head ) M2_head = Fs_infinity();
+              }
+            } break;
 
-           return true;
+           case( En_unused ):
+           case( En_close ):
+            {
+             entry.M_state  = En_open;
+             entry.next     = Fs_infinity();
+             entry.M_data   = P_data;
+
+             if( Fs_infinity() != M2_head )
+              {
+               record.head_next = M1_list[ M2_head ].next;
+               M1_list[ M2_head ].next = P_id;
+               entry.prev   = M2_head;
+              }
+             else
+              {
+               entry.prev   = Fs_abyss();
+               M1_tail = P_id;
+              }
+
+             M2_head = P_id;
+           } break;
           }
-
-         if( true == p_i->flag )
-          { /* izbacivanje */
-             /*ide na stek */
-              M1_stack.push_back( C_stack( P_id, *p_i, M1_ltail ) );
-
-              // primopredaja duznosti
-              if( M1_ltail == P_id )
-                M1_ltail= M1_list[ M1_ltail ].next;
-
-
-             /* da prebodem */
-              M1_list[ p_i->prev ].next = p_i->next;
-              M1_list[ p_i->next ].prev = p_i->prev;
-             /* dokusurivanje */
-              p_i -> flag = false;
-
-             M1_lhead = M1_list[ M1_ltail ].prev;
-          }
-         else
-          { /* Ubacivanje */
-             /* inicijalizacija */
-              p_i->prev   = M1_lhead;
-              p_i->next   = M1_ltail;
-              p_i->M_data = P_data;
-
-              M1_list[ M1_lhead ].next = P_id;
-              M1_list[ M1_ltail ].prev = P_id;
-
-             /* na stek */
-              M1_stack.push_back( C_stack( P_id, *p_i, M1_ltail ) );
-
-             /* da zalijemo */
-             p_i->flag = true;
-             M1_lhead = P_id;
-          }
-
-          return true;
+         return true;
         }
 
       template< typename N_data, typename N_allocator >
-       void GC_medium<N_data,N_allocator>::F_pop(  )
+       void GC_medium<N_data,N_allocator>::F_pop()
         {
-         T_size who;
-
-         if( true == M1_stack.empty() ) return;
-
-         who    = M1_stack.back().who;
-
-         if(  M1_stack.back().mem.flag )
-          {   /* vracanje */
-           M1_list[ who ]           = M1_stack.back().mem;
-           M1_list[ M1_list[ who ].next].prev = who;
-           M1_list[ M1_list[ who ].prev].next = who;
-          }
-         else
+         if( true == M2_undo.empty() )
           {
-           /* izbacivanje da ga vise nema */
-           M1_list[ who ]. flag = false;
-
-           M1_list[ M1_list[ who ].next ].prev = M1_list[ who ].prev;
-           M1_list[ M1_list[ who ].prev].next = M1_list[ who ].next;
-
+           return;
           }
+         auto const& record = M2_undo.back();
+         auto const& entry = record.entry;
+         auto const& I_index = record.M_index;
+         M1_list[ I_index ] = entry;
+         M1_tail = record.M_tail;
+         M2_head = record.M_head;
 
-          M1_ltail = M1_stack.back().M_tail;
-          M1_lhead = M1_list[ M1_ltail ].prev;
+         if( Fs_invalid() != record.prev_next) M1_list[ entry.prev ].next = record.prev_next;
+         if( Fs_invalid() != record.next_prev) M1_list[ entry.next ].prev = record.next_prev;
+         if( Fs_invalid() != record.head_next) M1_list[ M2_head    ].next = record.head_next;
 
-
-          M1_stack.pop_back();
-
+         M2_undo.pop_back( );
         }
 
       template< typename N_data, typename N_allocator >
-       typename GC_medium<N_data,N_allocator>::T_data& GC_medium<N_data,N_allocator>::F_prev_info( void )
+       typename GC_medium<N_data,N_allocator>::T_size const& GC_medium<N_data,N_allocator>::F_previous( T_size const& P_index )const
         {
-         return M1_list[M1_list[ M1_lhead ].prev].M_data;
+         return M1_list[ P_index ].prev;
         }
 
       template< typename N_data, typename N_allocator >
-       typename GC_medium<N_data,N_allocator>::T_data const& GC_medium<N_data,N_allocator>::F_prev_info( void )const
+       typename GC_medium<N_data,N_allocator>::T_data const& GC_medium<N_data,N_allocator>::F_data( T_size const& P_index )const
         {
-         return M1_list[M1_list[ M1_lhead ].prev].M_data;
-        }
-
-
-      template< typename N_data, typename N_allocator >
-      typename GC_medium<N_data,N_allocator>::T_data& GC_medium<N_data,N_allocator>::F_top_info()
-        {
-         return M1_list[ M1_lhead ].M_data;
+         return M1_list[ P_index ].M_data;
         }
 
       template< typename N_data, typename N_allocator >
-      typename GC_medium<N_data,N_allocator>::T_data const& GC_medium<N_data,N_allocator>::F_top_info( )const
+       typename GC_medium<N_data,N_allocator>::T_data  & GC_medium<N_data,N_allocator>::F_data( T_size const& P_index )
         {
-         return M1_list[ M1_lhead ].M_data;
+         return M1_list[ P_index ].M_data;
         }
 
       template< typename N_data, typename N_allocator >
-      typename GC_medium<N_data,N_allocator>::T_size GC_medium<N_data,N_allocator>::F_prev_index()
+       typename GC_medium<N_data,N_allocator>::T_size const& GC_medium<N_data,N_allocator>::F_head()const
         {
-         return M1_list[ M1_lhead ].prev;
+         return M2_head;
         }
 
       template< typename N_data, typename N_allocator >
-       typename GC_medium<N_data,N_allocator>::T_size GC_medium<N_data,N_allocator>::F_top_index()
+       typename GC_medium<N_data,N_allocator>::Ee_state const&  GC_medium<N_data,N_allocator>::F_in( T_size const& P_id )const
         {
-         return M1_lhead;
-        }
-
-      template< typename N_data, typename N_allocator >
-       int   GC_medium<N_data,N_allocator>::F_in( T_size P_id )const
-        {
-         return M1_list[ P_id ].flag;
+         static Ee_state Irs_state = En_unused;
+         if( P_id < M1_list.size() ) 
+          {
+           return M1_list[ P_id ].M_state;
+          }
+         return Irs_state;
         }
 
       template< typename N_data, typename N_allocator >
        bool GC_medium<N_data,N_allocator>::F_empty( )const
         {
-         return M1_stack.empty();
-        }
-
-      template< typename N_data, typename N_allocator >
-       void GC_medium<N_data,N_allocator>::F_view(  )
-        {
-        }
-
-      template< typename N_data, typename N_allocator >
-       void GC_medium<N_data,N_allocator>::F_reset(  )
-        {
-         M1_stack.clear();
-         fill( M1_list.begin(), M1_list.end(), C_list() );
+         return M2_undo.empty();
         }
 
       template< typename N_data, typename N_allocator >
        void GC_medium<N_data,N_allocator>::F_print( )
         {
-         T_size ll = M1_ltail;
-         int c=0;
 
-         do{
-
-            // printf( " %2i",ll );
-
-            ll = M1_list[ ll ].next;
-
-             c++;//if( 20 < c ) break;
-           } while( ll != M1_ltail );
-
-        }
-
-       /*
-       void medium_main(void)
-        {
-         int i , a;
-
-         GC_medium med(10,10);
-
-         for( i=1;i < 60;i++ )
+         T_size ll = M1_tail;
+         if( Fs_abyss() == ll )
           {
-           a = rand()%6+1;
-
-           if( 30 < i ) { a=0;}
-
-           if( a != 0 )
-            med.F_push( a, 1.6f );
-           else
-            med.F_pop(  );
-
-
-           printf( " %2i",a );
-           med.F_print(  );
-
-           cout <<'\n';
+           std::cout << "{";
+           std::cout << "};";
+           std::cout << std::endl;
+           return;
           }
 
-         getch();
+         if( Fs_infinity() == ll )
+          {
+           std::cout << "{";
+           std::cout << "};";
+           std::cout << std::endl;
+           return;
+          }
+
+        std::cout << "{";
+         std::cout << std::endl;
+
+         std::cout << "  Tail: " << M1_tail; std::cout << std::endl;
+         std::cout << "  Head: " << M2_head; std::cout << std::endl;
+
+         std::cout << "  List: ";
+            std::cout << std::endl;
+         std::cout << "    { ";
+
+         int c=0;
+         do
+          {
+           std::cout << std::endl;
+           std::cout << "      " << "{ ";
+           std::cout << "      " << "i: " << ll << "; ";
+           std::cout << "      " << "s: " << M1_list[ ll ].M_state << "; ";
+
+           std::cout << "      " << "p: ";
+           if( Fs_abyss() == M1_list[ ll ].prev ) std::cout << "abyss"; else std::cout << std::setw(5) << M1_list[ ll ].prev ;
+           std::cout << "; ";
+
+           std::cout << "      " << "n: ";
+           if( Fs_infinity() == M1_list[ ll ].next ) std::cout << "infinity"; else std::cout << std::setw(8) << M1_list[ ll ].next ;
+           std::cout << "; ";
+
+           std::cout << "      " << "d: " << M1_list[ ll ].M_data << "; ";
+           std::cout << "      " << " }";
+
+           ll = M1_list[ ll ].next;
+           if( Fs_infinity() == ll )
+            {
+             break;
+            }
+           c++;//if( 20 < c ) break;
+           } while( ll != M1_tail  );
+          std::cout << std::endl;
+         std::cout << "    } ";
+
+        if( false )
+          {
+           std::cout << std::endl;
+            std::cout << "  Stack: ";
+            std::cout << std::endl;
+           std::cout << "    { ";
+            std::cout << std::endl;
+
+           for( auto const& I_item : M2_undo )
+            {
+             std::cout << std::endl;
+             std::cout << "      " << "{ ";
+             //std::cout << "      " << "f: " << I_item.mem.M_state << "; ";
+
+            std::cout << "      " << "p: ";
+            //if( Fs_abyss() == I_item.mem.prev ) std::cout << "abyss"; else std::cout << std::setw(5) << I_item.mem.prev ;
+            std::cout << "; ";
+
+            std::cout << "      " << "n: ";
+            //if( Fs_infinity() == I_item.mem.next ) std::cout << "infinity"; else std::cout << std::setw(8) << I_item.mem.next ;
+            std::cout << "; ";
+             //std::cout << "      " << "d: " << I_item.mem.M_data << "; ";
+             std::cout << "      " << " }";
+            }
+            std::cout << std::endl;
+           std::cout << "    } ";
+          }
+         std::cout << std::endl;
+         std::cout << "}; ";
+           std::cout << std::endl;
         }
-       */
 
     }
   }

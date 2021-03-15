@@ -30,13 +30,20 @@
            typedef GS_DDMRM::S_IceRay::S_geometry::S__type::GC_state  T_state;
            typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base  T_geometry;
 
+         public:
            GC_intersect()
             {
              M_intersection.M_geometryID = 0;
             }
 
          public:
-           T_ray       M_incoming;
+
+           enum class Ee_consume
+            {
+              En_discard
+             ,En_spent
+             ,En_fresh
+            };
 
            struct C_intersection
             {
@@ -47,16 +54,11 @@
              T_size      M_geometryID;
             };
 
+         public:
+           T_ray          M_incoming;
            C_intersection M_intersection;
-
-           enum Ee_status
-           {
-             En_statusUsed
-            ,En_statusUnUsed
-           };
-
-           Ee_status M_status;
-       };
+           Ee_consume     M_consume;
+        };
 
       }
     }

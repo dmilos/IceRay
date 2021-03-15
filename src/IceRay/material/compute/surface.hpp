@@ -24,7 +24,7 @@
            public:
              typedef GS_DDMRM::S_IceRay::S_type::GT_size                     T_size;
 
-             typedef GS_DDMRM::S_IceRay::S_material::S_pigment::GC__pure            T_pigment;
+             typedef GS_DDMRM::S_IceRay::S_material::S_pigment::GC__pure       T_pigment;
 
              typedef GS_DDMRM::S_IceRay::S_material::S_compute::GC_instruction T_instruction;
              typedef GS_DDMRM::S_IceRay::S_material::S_compute::GC_processor   T_processor;
@@ -37,9 +37,9 @@
                En_inRay_Incoming=0
               };
              enum Ee_output
-             {
+              {
                En_outColor_Result=0
-             };
+              };
 
            public:
              GC_surface
@@ -67,7 +67,8 @@
               M2_scalar->Fv_store( M2_lambda,   P_intersect.M_intersection.M_lambda );
               M2_coord->Fv_store(  M2_point,    P_intersect.M_intersection.M_point  );
               M2_coord->Fv_store(  M2_normal,   P_intersect.M_intersection.M_normal );
-            //M2_color->Fv_store(  M2_incoming, P_intersect.M_ray    );
+            //M2_geometryBase->Fv_store(  M2_geometry, P_intersect.M_geometry );
+            //M2_ray->Fv_store(  M2_incoming, P_intersect.M_ray    );
             //M2_color->Fv_store(  M2_result, ::color:constant::black_t{} );
             //M2_color->Fv_store(  M2_result, P_color );
 
@@ -99,7 +100,7 @@
 
              void F_append( T_instruction * P_instruction )
               {
-                F_pocessor().F_append( P_instruction );
+               F_pocessor().F_append( P_instruction );
               }
 
            public:
@@ -167,7 +168,6 @@
              T2_color  *M2_color;
              T2_coord  *M2_coord;
           };
-
 
         }
       }

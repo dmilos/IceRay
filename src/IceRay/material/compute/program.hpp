@@ -7,7 +7,6 @@
 
  #include "./instruction.hpp"
  #include "./memory.hpp"
- #include "./medium.hpp"
 
  namespace GS_DDMRM
   {
@@ -21,10 +20,9 @@
          class GC_program
           {
            public:
-             typedef GS_DDMRM::S_IceRay::S_type::GT_size                  T_size;
-             typedef GS_DDMRM::S_IceRay::S_type::S_color::GT_scalar       T_color;
-             typedef GS_DDMRM::S_IceRay::S_material::S_compute::GC_memory T_memory;
-             typedef GS_DDMRM::S_IceRay::S_material::S_compute::GT_medium T_medium;
+             typedef GS_DDMRM::S_IceRay::S_type::GT_size                    T_size;
+             typedef GS_DDMRM::S_IceRay::S_type::S_color::GT_scalar         T_color;
+             typedef GS_DDMRM::S_IceRay::S_material::S_compute::GC_memory   T_memory;
 
              typedef GS_DDMRM::S_IceRay::S_material::S_compute::GC_instruction T_instruction;
 
@@ -33,8 +31,9 @@
              typedef T_instruction::T_ray    T_ray;
              typedef T_instruction::T_beam   T_beam;
 
-                      GC_program(){}
-             virtual ~GC_program(){}
+           public:
+                      GC_program();
+             virtual ~GC_program();
 
            public:
             T_size Fv_size( T_memory::T_component const& P_component )const;
@@ -61,20 +60,6 @@
               }
            private:
              T_memory   *M2_memory; //!< dumb_ptr;
-
-           public:
-             void             F_medium( T_medium * P_medium )
-              {
-               M2_medium = P_medium;
-              }
-             T_medium *       F_medium( )
-              {
-               return M2_medium; 
-              }
-           private:
-             T_medium   *M2_medium; //!< dumb_ptr;
-
-
           };
 
         }

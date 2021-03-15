@@ -79,9 +79,6 @@
                  void F_clear();
 
                public:
-                T_scalar F_IOR();
-
-               public:
                   T_size   const&  F_index()const{ return M2_index; }
                   void             Fv_mark()
                    {

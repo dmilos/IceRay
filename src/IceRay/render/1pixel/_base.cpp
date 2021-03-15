@@ -41,9 +41,9 @@ GC__base::Fv_render( T_color & P_color, T_cell const& P_cell )
    {
     switch( F1_filter().Fv_check( I_summae, I_dot, I_index++ ) )
      {
-      case( T_filter::En_skip    ): continue; break;
-      case( T_filter::En_process ): break;
-      case( T_filter::En_break   ): goto L_break; break;
+      case( T_filter::Ee_action::En_skip    ): continue; break;
+      case( T_filter::Ee_action::En_process ): break;
+      case( T_filter::Ee_action::En_break   ): goto L_break; break;
      }
 
     T_uv I_uv;

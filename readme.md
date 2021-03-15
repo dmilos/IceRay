@@ -144,10 +144,11 @@ TODO
   - git submodule update
   - modify ```build/set-env.bat``` according to your configuration
   - run ```build/set-env.bat```
-  - cd ./IceRay/work/build/scons/python
+  - cd ./IceRay/work/build/scons/cdll
   - scons
-  - rename *dll/*so from temp/IceRayLib-.../dll to IceRayCpp.pyd and copy in to your PYTHONPATH folder
-  - run some examples.
+  - use one of $\bin\...\IceRayCDLL-1.0.0.0-dynamic.dll
+  - set DLL path in example to point on IceRayCDLL-1.0.0.0-dynamic.dll
+  - run some examples in $\example\test2
 
 
 # Boost vs python pre-built binaries

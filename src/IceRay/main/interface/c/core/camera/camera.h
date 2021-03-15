@@ -68,6 +68,15 @@ IceRayC__EXPORT IceRayC__DECLSPEC  int                   IceRayC_Camera_Sphere_F
 
 // IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Camera_Handle IceRayC_Camera_Sphere_Package1( IceRayC_TypeScalar P_hfov, IceRayC_TypeScalar P_vfov );
 
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Camera_Handle IceRayC_Camera_Transform_Affine0( );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Camera_Handle IceRayC_Camera_Transform_Affine1( IceRayC_Camera_Handle P_child );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Camera_Handle IceRayC_Camera_Transform_Affine2( IceRayC_Camera_Handle P_child, IceRayC_Type_Math_Affine3D *P_2world );
+IceRayC__EXPORT IceRayC__DECLSPEC  int                   IceRayC_Camera_Transform_Affine_Child(      IceRayC_Camera_Handle P_that, IceRayC_Camera_Handle P_child );
+IceRayC__EXPORT IceRayC__DECLSPEC  int                   IceRayC_Camera_Transform_Affine_2Local_Get( IceRayC_Camera_Handle P_that, IceRayC_Type_Math_Affine3D * P_2world );
+IceRayC__EXPORT IceRayC__DECLSPEC  int                   IceRayC_Camera_Transform_Affine_2Local_Set( IceRayC_Camera_Handle P_that, IceRayC_Type_Math_Affine3D * P_2local );
+IceRayC__EXPORT IceRayC__DECLSPEC  int                   IceRayC_Camera_Transform_Affine_2World_Get( IceRayC_Camera_Handle P_that, IceRayC_Type_Math_Affine3D * P_2world );
+IceRayC__EXPORT IceRayC__DECLSPEC  int                   IceRayC_Camera_Transform_Affine_2World_Set( IceRayC_Camera_Handle P_that, IceRayC_Type_Math_Affine3D * P_2world );
+
 
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Camera_Handle IceRayC_Camera_DOF_Focus0();
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Camera_Handle IceRayC_Camera_DOF_Focus1( IceRayC_TypeSize P_sample, IceRayC_TypeInterval1D P_aperture, IceRayC_TypeInterval1D P_focus, IceRayC_TypeScalar P_gauss );
@@ -87,18 +96,9 @@ IceRayC__EXPORT IceRayC__DECLSPEC  int                   IceRayC_Camera_DOF_Conu
 IceRayC__EXPORT IceRayC__DECLSPEC  int                   IceRayC_Camera_DOF_Conus_Aperture( IceRayC_Camera_Handle P_that, IceRayC_TypeScalar P_aperture );
 IceRayC__EXPORT IceRayC__DECLSPEC  int                   IceRayC_Camera_DOF_Conus_Gauss(    IceRayC_Camera_Handle P_that, IceRayC_TypeScalar P_gauss );
 
-
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Camera_Handle IceRayC_Camera_Transform_Invert0();
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Camera_Handle IceRayC_Camera_Transform_Invert1( IceRayC_Camera_Handle P_child );
-
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Camera_Handle IceRayC_Camera_Transform_Affine0( );
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Camera_Handle IceRayC_Camera_Transform_Affine1( IceRayC_Camera_Handle P_child );
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Camera_Handle IceRayC_Camera_Transform_Affine2( IceRayC_Camera_Handle P_child, IceRayC_Type_Math_Affine3D *P_2world );
-IceRayC__EXPORT IceRayC__DECLSPEC  int                   IceRayC_Camera_Transform_Affine_Child(      IceRayC_Camera_Handle P_that, IceRayC_Camera_Handle P_child );
-IceRayC__EXPORT IceRayC__DECLSPEC  int                   IceRayC_Camera_Transform_Affine_2Local_Get( IceRayC_Camera_Handle P_that, IceRayC_Type_Math_Affine3D * P_2world );
-IceRayC__EXPORT IceRayC__DECLSPEC  int                   IceRayC_Camera_Transform_Affine_2Local_Set( IceRayC_Camera_Handle P_that, IceRayC_Type_Math_Affine3D * P_2local );
-IceRayC__EXPORT IceRayC__DECLSPEC  int                   IceRayC_Camera_Transform_Affine_2World_Get( IceRayC_Camera_Handle P_that, IceRayC_Type_Math_Affine3D * P_2world );
-IceRayC__EXPORT IceRayC__DECLSPEC  int                   IceRayC_Camera_Transform_Affine_2World_Set( IceRayC_Camera_Handle P_that, IceRayC_Type_Math_Affine3D * P_2world );
+IceRayC__EXPORT IceRayC__DECLSPEC  int                   IceRayC_Camera_Transform_Invert_Child( IceRayC_Camera_Handle P_that, IceRayC_Camera_Handle P_child );
 
 
 #endif

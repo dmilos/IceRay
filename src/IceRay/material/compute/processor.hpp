@@ -6,8 +6,8 @@
  #include "./instruction.hpp"
  #include "./program.hpp"
  #include "./memory.hpp"
- 
- #include "./medium.hpp"
+
+
 
  namespace GS_DDMRM
   {
@@ -25,7 +25,7 @@
              typedef   GS_DDMRM::S_IceRay::S_material::S_compute::GC_program   T_program;
              typedef   GS_DDMRM::S_IceRay::S_material::S_compute::GC_memory    T_memory;
 
-             typedef   GS_DDMRM::S_IceRay::S_material::S_compute::GT_medium     T_medium;
+             //typedef   GS_DDMRM::S_IceRay::S_material::S_compute::GT_medium     T_medium;
 
              typedef GS_DDMRM::S_IceRay::S_material::S_compute::GC_instruction T_instruction;
 
@@ -53,12 +53,6 @@
              T_memory const&  F_memory()const{ return M2_memory; }
            private:
              mutable T_memory   M2_memory;
-
-           public:
-             T_medium      &  F_medium()     { return M2_medium; }
-             T_medium const&  F_medium()const{ return M2_medium; }
-           private:
-             mutable T_medium   M2_medium;
           };
 
         }

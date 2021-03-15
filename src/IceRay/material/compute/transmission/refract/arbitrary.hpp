@@ -27,6 +27,8 @@
                    typedef GS_DDMRM::S_IceRay::S_type::GT_scalar             T_scalar;
                    typedef GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar    T_coord;
                    typedef GS_DDMRM::S_IceRay::S_type::S_color::GT_scalar    T_color;
+ 
+                   typedef GS_DDMRM::S_IceRay::S_material::S_compute::GT_jurisdiction T_jurisdiction;
 
                    typedef GS_DDMRM::S_IceRay::S_material::S_compute::GC_memory   T_memory;
 
@@ -77,21 +79,25 @@
                      T_coord  const& I_normal   = M2_memoryCoord->Fv_load( F_input<T_coord>(  En_inCoord_Normal) );
                      T_scalar const& I_IOR      = M2_memoryScalar->Fv_load( F_input<T_scalar>( En_inScalar_IOR  ) );
 
-
-                     T_scalar I_air = 1.000277;
-                     T_scalar I_watter = I_IOR;
-
-
-                     if( 1.000277 != I_incoming.M_ior )
-                      {
-                       I_air = I_IOR;
-                       I_watter = 1.000277;
-                      }
-
-                     if( I_intersection.M_geometryID != I_incoming.M_geometryID )
-                      {
-                       //TODO it is exit or enter
-                      }
+                     T_scalar I_air   ;
+                     T_scalar I_watter;
+                     {
+                      auto const& I_jurisdiction = P_next.F_jurisdiction();
+                      switch( I_jurisdiction.F_in( P_intersect.M_intersection.M_geometryID ) )
+                       {
+                        case( T_jurisdiction::En_unused ):
+                        case( T_jurisdiction::En_close ):
+                         {
+                          I_air    = I_jurisdiction.F_data( I_jurisdiction.F_head() );
+                          I_watter = I_IOR;
+                         }break;
+                        case( T_jurisdiction::En_open ):
+                         {
+                          I_air    = I_IOR;
+                          I_watter = I_jurisdiction.F_data( I_jurisdiction.F_previous( I_jurisdiction.F_head() ) );
+                         }break;
+                       }
+                     }
 
                      {
                       T_color  const& I_attenuation  = M2_memoryColor->Fv_load( F_input<T_color>(  En_inColor_Attenuation ) );
@@ -100,6 +106,7 @@
                       I_refracted.M_depth = I_incoming.M_depth + 1;
                       I_refracted.M_origin = I_point;
                       I_refracted.M_state =  I_intersection.M_state;
+                      I_refracted.M_hierarchy = T_ray::Ee_hierarchy::En_solo;
 
                       switch( ::math::linear::vector::refract( I_refracted.M_direction, I_incoming.M_direction, I_normal, I_air, I_watter ) )
                        {
@@ -108,12 +115,12 @@
                          {
                           ::math::linear::vector::reflect( I_refracted.M_direction, I_incoming.M_direction, I_normal );
                           ::math::linear::vector::length( I_refracted.M_direction, T_scalar(1) );
-                          I_refracted.M_type = T_ray::En_type1Reflected;
+                          I_refracted.M_type = T_ray::Ee_type1::En_Reflected;
                           I_refracted.M_ior  = I_air;
                          }break;
                         case( +1 ):
                          {
-                          I_refracted.M_type = T_ray::En_type1Refracted;
+                          I_refracted.M_type = T_ray::Ee_type1::En_Refracted;
                           I_refracted.M_ior  = I_watter;
                          }break;
                        }
@@ -137,7 +144,8 @@
 
                       ::color::operation::multiply( I_reflected.M_intesity, I_albedo, I_incoming.M_intesity );
 
-                      I_reflected.M_type = T_ray::En_type1Reflected;
+                      I_reflected.M_type = T_ray::Ee_type1::En_Reflected;
+                      I_reflected.M_hierarchy = T_ray::Ee_hierarchy::En_solo;
                       I_reflected.M_ior = I_incoming.M_ior;
                       I_reflected.M_coefficient = T_scalar(1);
                       I_reflected.M_geometryID = I_intersection.M_geometryID;

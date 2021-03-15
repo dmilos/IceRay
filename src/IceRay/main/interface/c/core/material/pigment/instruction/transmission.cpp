@@ -67,6 +67,13 @@ IceRayC__EXPORT IceRayC__DECLSPEC  H F( Reflect_Schlick0)( S P_point, S P_normal
  }
 
 
+IceRayC__EXPORT IceRayC__DECLSPEC  H F( Refract_Snell0)(     S P_point, S P_normal, S P_ior, S P_attenuation  )
+ {
+  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_transmission::S_refract::GC_snell    Tf_this;
+  auto Ir_result = new Tf_this{ P_point, P_normal, P_ior, P_attenuation };
+  return cpp2c( Ir_result );
+ }
+
 IceRayC__EXPORT IceRayC__DECLSPEC  H F( Refract_Arbitrary0)( S P_point, S P_normal, S P_ior, S P_albedo, S P_attenuation )
  {
   typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_transmission::S_refract::GC_arbitrary    Tf_this;
@@ -74,25 +81,10 @@ IceRayC__EXPORT IceRayC__DECLSPEC  H F( Refract_Arbitrary0)( S P_point, S P_norm
   return cpp2c( Ir_result );
  }
 
-
 IceRayC__EXPORT IceRayC__DECLSPEC  H F( Refract_Fresnel0)( S P_point, S P_normal, S P_ior, S P_albedo )
  {
   typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_transmission::S_refract::GC_fresnel    Tf_this;
   auto Ir_result = new Tf_this{ P_point, P_normal, P_ior, P_albedo };
-  return cpp2c( Ir_result );
- }
-
-IceRayC__EXPORT IceRayC__DECLSPEC  H F( Refract_Multi0)(   S P_point, S P_normal, S P_ior, S P_albedo )
- {
-  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_transmission::S_refract::GC_multi    Tf_this;
-  auto Ir_result = new Tf_this{ P_point, P_normal, P_ior, P_albedo };
-  return cpp2c( Ir_result );
- }
-
-IceRayC__EXPORT IceRayC__DECLSPEC  H F( Refract_One0)(     S P_point, S P_normal, S P_ior, S P_attenuation  )
- {
-  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_transmission::S_refract::GC_one    Tf_this;
-  auto Ir_result = new Tf_this{ P_point, P_normal, P_ior, P_attenuation };
   return cpp2c( Ir_result );
  }
 

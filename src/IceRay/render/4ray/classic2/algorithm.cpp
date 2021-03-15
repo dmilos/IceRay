@@ -1,5 +1,7 @@
 
 #include "./algorithm.hpp"
+#include "IceRay/material/compute/surface.hpp"
+
 #include <memory>
 #include <functional>
 #include <iostream>
@@ -54,6 +56,8 @@ GC_algorithm::~GC_algorithm( )
 bool GC_algorithm::F_object( T_object * P_object )
  {
   M2_object = P_object;
+  // TODO delete or modify typedef GS_DDMRM::S_IceRay::S_material::S_compute::GC_surface T_surface;
+  // TODO delete or modify T_surface const*I_surface = dynamic_cast< T_surface const* >( & M2_object->F_pigment() );
   return F_depth( F_depth() );
  }
 
@@ -100,7 +104,7 @@ void GC_algorithm::Fv_trace( T_color &P_color, T_ray const& P_incident )
    auto & I_accident = M2_stack.Fv_topAccident();
    auto & I_incoming = I_accident.M_incoming;
 
-    I_incoming.M_type = T2_ray::En_type1Eye;
+    I_incoming.M_type = T2_ray::Ee_type1::En_Eye;
     (T_ray&)I_incoming = P_incident;
 
    M2_allocator.F_new( I_incoming.M_state.F_chunk() ) ;
@@ -110,6 +114,7 @@ void GC_algorithm::Fv_trace( T_color &P_color, T_ray const& P_incident )
   F2_trace( P_color );
  }
 
+bool GI_debug = false;
 /*
 // puno zrakova svi su mali a treba sve pratiti.???
 // smanjiti trash ???
@@ -123,53 +128,102 @@ void GC_algorithm::F2_trace( T_color &P_color )
   T_color I_color, I_deplete, I_fog;
   P_color = ::color::constant::black_t{};
 
+  M2_stack.F_jurisdiction().F_clear();
+  M2_stack.F_jurisdiction().F_push( 0, 1.00027717 );
+
   while( 0 != M2_stack.Fv_occupancy() )
    {
     auto & I_accident     = M2_stack.Fv_topAccident();
-    auto & I_incoming     = I_accident.M_incoming;
-    auto & I_intersection = I_accident.M_intersection;
 
-    if( T_stack::T_accident::En_statusUsed == I_accident.M_status )
+    if( T_stack::T_accident::Ee_consume::En_discard == I_accident.M_consume )
      {
-      if( T2_ray::En_type1Refracted == I_incoming.M_type )
-       {
-        auto id = F1_object().F_geometry().Fv_id( I_intersection.M_state );
-        //if true == F1_object().F_geometry()->Fv_solid() )
-        //F_medium()->pop( id );
-       }
       M2_stack.Fv_pop(); continue;
      }
 
-    ++M2_statistic.M_depth[ I_incoming.M_depth ];
-    switch( I_incoming.M_type )
-     {
-      case( T2_ray::En_type1Eye        ) : ++M2_statistic.M_eye;        break;
-      case( T2_ray::En_type1Light      ) : ++M2_statistic.M_light;      break;
-      case( T2_ray::En_type1Reflected  ) : ++M2_statistic.M_reflected;  break;
-      case( T2_ray::En_type1Refracted  ) : ++M2_statistic.M_refracted;  break;
-      case( T2_ray::En_type1Teleported ) : ++M2_statistic.M_teleported; break;
-      case( T2_ray::En_type1Broken     ) : ++M2_statistic.M_broken;     break;
-     }
+    auto & I_incoming     = I_accident.M_incoming;
 
-    if( T2_ray::En_statusDiscarded == I_incoming.M_status )
+    if( T2_ray::Ee_status::En_abanded == I_incoming.M_status )
      {
       ++M2_statistic.M_discarded;
+      // I_accident.M_consume = T_stack::T_accident::Ee_consume::En_discard;
       M2_stack.Fv_pop(); continue;
      }
+
+   if( true == GI_debug )
+    {
+     std::cout << std::endl;
+     std::cout << (int)I_accident.M_consume << "; "; 
+     std::cout << (int)I_incoming.M_type << "; "; 
+     std::cout << I_incoming.M_geometryID  << "; "; 
+     std::cout << I_incoming.M_ior << "; "; 
+     std::cout << std::endl;
+    }
+        
+   if( T_stack::T_accident::Ee_consume::En_fresh == I_accident.M_consume )
+    {
+     ++M2_statistic.M_depth[ I_incoming.M_depth ];
+     switch( I_incoming.M_type )
+      {
+       case( T2_ray::Ee_type1::En_Eye        ) : ++M2_statistic.M_eye;        break;
+       case( T2_ray::Ee_type1::En_Light      ) : ++M2_statistic.M_light;      break;
+       case( T2_ray::Ee_type1::En_Reflected  ) : ++M2_statistic.M_reflected;  break;
+       case( T2_ray::Ee_type1::En_Refracted  ) : ++M2_statistic.M_refracted;  break;
+       case( T2_ray::Ee_type1::En_Teleported ) : ++M2_statistic.M_teleported; break;
+       case( T2_ray::Ee_type1::En_Broken     ) : ++M2_statistic.M_broken;     break;
+      }
+    }
 
     if( F_depth() < I_incoming.M_depth )
      {
       ++M2_statistic.M_2deep;
+      // I_accident.M_consume = T_stack::T_accident::Ee_consume::En_spent;
       M2_stack.Fv_pop(); continue;
      }
+
+    if( T_stack::T_accident::Ee_consume::En_spent == I_accident.M_consume )
+     {
+      if( T2_ray::Ee_type1::En_Refracted == I_incoming.M_type )
+       {
+        switch( I_incoming.M_hierarchy )
+          {
+           case( T2_ray::Ee_hierarchy::En_solo ): 
+           case( T2_ray::Ee_hierarchy::En_back ): 
+            {
+             M2_stack.F_jurisdiction().F_pop();
+            }break;
+           break;
+          }
+       }
+      // I_accident.M_consume = T_stack::T_accident::Ee_consume::En_discard;
+      M2_stack.Fv_pop(); continue;
+     }
+
+    I_accident.M_consume = T_stack::T_accident::Ee_consume::En_spent;
+
+
+    if( T2_ray::Ee_type1::En_Refracted == I_incoming.M_type )
+     {
+      switch( I_incoming.M_hierarchy )
+        {
+         case( T2_ray::Ee_hierarchy::En_solo ):
+         case( T2_ray::Ee_hierarchy::En_lead ):
+          {
+           M2_stack.F_jurisdiction().F_push( I_incoming.M_geometryID, I_incoming.M_ior );
+          }break;
+        }
+     }
+
+    M2_stack.Fv_mark();
 
     if( T2_gray( I_incoming.M_intesity ).get<0>() < F_trash() )
      {
       ++M2_statistic.M_under;
-      M2_stack.Fv_pop(); continue;
+      continue;
      }
 
     ++M2_statistic.M_traced;
+
+    auto & I_intersection = I_accident.M_intersection;
 
     I_intersection.M_lambda = Is_infinity;
     I_intersection.M_state = I_incoming.M_state;
@@ -187,18 +241,10 @@ void GC_algorithm::F2_trace( T_color &P_color )
     if( false == I_hit )
      {
       ++M2_statistic.M_miss;
-      M2_stack.Fv_pop(); continue;
+      continue;
      }
 
     I_intersection.M_geometryID = F1_object().F_geometry().Fv_id( I_intersection.M_state );
-
-    if( T2_ray::En_type1Refracted == I_incoming.M_type )
-     {
-      // if true == F1_object().F_geometry()->Fv_solid() )
-      //TODO F_medium()->push( I_accident.M_geometryID, I_incoming.M_IOR );
-     }
-
-    M2_stack.Fv_mark();
 
     F1_object().Fv_normal( I_intersection.M_normal, I_intersection.M_point, I_intersection.M_state );
     if( 0 < ::math::linear::vector::dot( I_intersection.M_normal, I_incoming.M_direction ) )
@@ -207,8 +253,6 @@ void GC_algorithm::F2_trace( T_color &P_color )
      }
 
     F1_object().F_material().Fv_color( I_color, M2_stack, I_accident, I_intersection.M_state );
-
-    I_accident.M_status = T_stack::T_accident::En_statusUsed;
 
     ::color::operation::multiply( I_color, I_incoming.M_intesity );
 

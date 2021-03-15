@@ -3,6 +3,10 @@
 
  #include "./input.hpp"
  #include "./output.hpp"
+ #include "./output.hpp"
+
+ #include "IceRay/material/compute/jurisdiction.hpp"
+
 
  namespace GS_DDMRM
   {
@@ -25,11 +29,24 @@
                  typedef GC__input   T__input;
                  typedef GC__output  T__output;
 
+               public:
+                 typedef GS_DDMRM::S_IceRay::S_material::S_compute::GT_jurisdiction T_jurisdiction;
+
+               public:
                           GC__beam(){}
                  virtual ~GC__beam(){}
 
+               public:
                  //using T__input::Fv_state;
                  //using T__output::Fv_state;
+
+               public:
+                 T_jurisdiction const& F_jurisdiction()const{ return M2_jurisdiction; }
+                 T_jurisdiction      & F_jurisdiction()     { return M2_jurisdiction; }
+               protected:
+                 T_jurisdiction      & F1_jurisdiction(){ return M2_jurisdiction; }
+               private:
+                 T_jurisdiction M2_jurisdiction;
               };
 
             }

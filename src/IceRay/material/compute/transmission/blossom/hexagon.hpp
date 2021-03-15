@@ -86,7 +86,7 @@
                      ,I_angle
                      ,I_gauss
                     );
-                   I_original.M_status = T_ray::En_statusDiscarded;
+                   I_original.M_status = T_ray::Ee_status::En_abanded;
                    return true;
                   }
 
@@ -163,6 +163,9 @@
                       I_ray.M_ior  = P_heading.M_ior;
                       I_ray.M_intesity = P_heading.M_intesity/ I_count;  //!< todo Not optimised
                       I_ray.M_coefficient = T_scalar(1)/ I_count;     //!< todo Not optimised
+                      I_ray.M_hierarchy = T_ray::Ee_hierarchy::En_solo;
+                      //if( 0 == I_index ) I_ray.M_hierarchy = T_ray::Ee_hierarchy::En_back;
+                      //if( (P_count-1) == I_index ) I_ray.M_hierarchy = T_ray::Ee_hierarchy::En_lead;
                      }
 
                     }

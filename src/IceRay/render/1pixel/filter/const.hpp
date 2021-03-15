@@ -28,7 +28,7 @@
 
                using GC__pure::Ee_action;
 
-               GC_const():M2_value( En_process ){}
+               GC_const():M2_value( Ee_action::En_process ){}
                virtual ~GC_const(){}
 
                void Fv_reset(){ }

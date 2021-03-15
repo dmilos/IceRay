@@ -27,21 +27,20 @@ bool  GC_processor::Fv_execute( T_beam &P_next, T_pigment::T_intersect const& P_
 
 void GC_processor::F_instruction( T_size const& P_index, T_instruction * P_instruction )
  {
-   F1_program().F_instruction( P_index, P_instruction );
+  F1_program().F_instruction( P_index, P_instruction );
  }
 
 void GC_processor::F_insert( T_size const& P_index, T_instruction * P_instruction  )
  {
-   F1_program().F_insert( P_index, P_instruction );
+  F1_program().F_insert( P_index, P_instruction );
  }
 
 void GC_processor::F_set( T_size const& P_index, T_instruction * P_instruction)
  {
-   F1_program().F_set( P_index, P_instruction );
+  F1_program().F_set( P_index, P_instruction );
  }
  
 void GC_processor::F_append( T_instruction * P_instruction )
  {
-   F1_program().F_append( P_instruction );
+  F1_program().F_append( P_instruction );
  }
-

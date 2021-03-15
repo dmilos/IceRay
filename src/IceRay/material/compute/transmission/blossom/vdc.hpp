@@ -84,7 +84,7 @@
                      ,I_angle
                      ,I_gauss
                     );
-                   I_original.M_status = T_ray::En_statusDiscarded;
+                   I_original.M_status = T_ray::Ee_status::En_abanded;
                    return true;
                   }
 
