@@ -1,1 +1,3 @@
-%prg_cmake% -B output
+mkdir build
+cd build
+%prg_cmake% ..

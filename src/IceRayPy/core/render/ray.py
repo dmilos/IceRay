@@ -57,3 +57,10 @@ class Trace:
 
     def trash( self, P_trash ):
         self.m_cargo['dll'].IceRayC_Render_Ray_Trace_Trash( self.m_cargo['this'], Scalar(P_trash) )
+
+    def next( self, P_next ):
+        self.m_cargo['dll'].IceRayC_Render_Ray_Trace_Next( self.m_cargo['this'], Unsigned(P_next) )
+
+    def IOR( self, P_IOR ):
+        self.m_cargo['dll'].IceRayC_Render_Ray_Trace_IOR( self.m_cargo['this'], Scalar(P_IOR) )
+

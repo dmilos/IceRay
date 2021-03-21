@@ -1,1 +1,4 @@
-%prg_cmake -B output
+mkdir tmpprj
+cd tmpprj
+%prg_cmake% ..
+pause

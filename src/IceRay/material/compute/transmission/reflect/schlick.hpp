@@ -29,7 +29,7 @@
                    typedef GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar    T_coord;
                    typedef GS_DDMRM::S_IceRay::S_type::S_color::GT_scalar    T_color;
 
-                   typedef GS_DDMRM::S_IceRay::S_material::S_compute::GT_jurisdiction T_jurisdiction;
+                   typedef GS_DDMRM::S_IceRay::S_material::S_medium::GT_jurisdiction T_jurisdiction;
 
                    typedef GS_DDMRM::S_IceRay::S_material::S_compute::GC_memory   T_memory;
 
@@ -76,13 +76,25 @@
                      T_scalar const& I_IOR      = M2_memoryScalar->Fv_load( F_input<T_scalar>( En_inScalar_IOR  ) );
 
 
-                     T_scalar I_air    = P_next.F_jurisdiction().F_data( P_next.F_jurisdiction().F_head() );  //!< TODO
-                     T_scalar I_watter = I_IOR;
-
-                     if( T_jurisdiction::En_open == P_next.F_jurisdiction().F_in( P_intersect.M_intersection.M_geometryID ) )
-                      {
-                       std::swap( I_air, I_watter );
-                      }
+                     T_scalar I_air   ;
+                     T_scalar I_watter;
+                     {
+                      auto const& I_jurisdiction = P_next.F_jurisdiction();
+                      switch( I_jurisdiction.F_in( P_intersect.M_intersection.M_geometryID ) )
+                       {
+                        case( T_jurisdiction::En_unused ):
+                        case( T_jurisdiction::En_close ):
+                         {
+                          I_air    = I_jurisdiction.F_data( I_jurisdiction.F_head() );
+                          I_watter = I_IOR;
+                         }break;
+                        case( T_jurisdiction::En_open ):
+                         {
+                          I_air    = I_IOR;
+                          I_watter = I_jurisdiction.F_data( I_jurisdiction.F_previous( I_jurisdiction.F_head() ) );
+                         }break;
+                       }
+                     }
 
                      P_next.Fv_push();
                      T_ray & I_reflected = P_next.Fv_top();

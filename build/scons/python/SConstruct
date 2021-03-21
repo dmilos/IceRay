@@ -51,7 +51,6 @@ settings.set_custom( 'directory:submodule:math',        os.path.join( settings.g
 settings.set_custom( 'directory:submodule:color',       os.path.join( settings.get_custom( 'directory:submodule:_root' ) ,"color",      "src"  ) )
 settings.set_custom( 'directory:submodule:PNM',         os.path.join( settings.get_custom( 'directory:submodule:_root' ) ,"pnm",        "src"  ) )
 settings.set_custom( 'directory:submodule:memory',      os.path.join( settings.get_custom( 'directory:submodule:_root' ) ,"memory",     "src"  ) )
-settings.set_custom( 'directory:submodule:type',        os.path.join( settings.get_custom( 'directory:submodule:_root' ) ,"type",       "src"  ) )
 settings.set_custom( 'directory:submodule:container',   os.path.join( settings.get_custom( 'directory:submodule:_root' ) ,"container",  "src"  ) )
 settings.set_custom( 'directory:submodule:counter',     os.path.join( settings.get_custom( 'directory:submodule:_root' ) ,"counter",    "src"  ) )
 

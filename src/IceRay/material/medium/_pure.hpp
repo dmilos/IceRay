@@ -5,6 +5,7 @@
 
  #include "IceRay/type/color.hpp"
  #include "IceRay/type/math/coord.hpp"
+ #include "IceRay/type/container/jurisdiction.hpp"
  #include "IceRay/geometry/_type/state.hpp"
 
 
@@ -26,7 +27,8 @@
              typedef GS_DDMRM::S_IceRay::S_type::S_color::S_gray::GT_scalar    T_gray;
              typedef GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar        T_coord,T_coord3D;
              typedef GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar4D      T_coord4D;
-             typedef GS_DDMRM::S_IceRay::S_geometry::S__type::GC_state     T_state;
+             typedef GS_DDMRM::S_IceRay::S_geometry::S__type::GC_state      T_state;
+             typedef GS_DDMRM::S_IceRay::S_type::S_container::GT_jurisdiction< T_scalar > T_jurisdiction;
 
            public:
              GC__pure(){ ; }
@@ -39,14 +41,18 @@
               @param P_end      - end point
               @param P_state    - state is in start point
              */
-             virtual bool Fv_attenuate( T_color & P_color, T_color & P_deplete, T_coord const& P_start, T_coord const& P_end, T_state const& P_state )const
+             virtual bool Fv_attenuate( T_color & P_result, T_color & P_deplete, T_coord const& P_start, T_coord const& P_end, T_state const& P_state )const
               {
                return false;
                // static T_color Is_black( ::color::constant::black_t{} );
                // static T_color Is_white( ::color::constant::white_t{} );
                //
-               // P_color   = Is_black; //!< fog does not exists
+               // P_result  = Is_black; //!< fog does not exists
                // P_deplete = Is_white; //!< No depletion at all
+              }
+
+             virtual void Fv_IOR( T_jurisdiction & P_jurisdiction, T_coord const& P_point )
+              {
               }
           };
 

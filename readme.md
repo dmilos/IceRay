@@ -53,15 +53,15 @@
 ![img](data/sample/geometry/quadric/usphere.png)
 
 #### Transformation
-![img](sample\geometry\transform\affine.png)
-![img](sample\geometry\transform\translate.png)
+![img](data/sample/geometry/transform/affine.png)
+![img](data/sample/geometry/transform/translate.png)
 
 #### Misc
-![img](data\sample\geometry\blobby.png)
-![img](data\sample\geometry\intersect.png)
-![img](data\sample\geometry\mblur.png)
-![img](data\sample\geometry\torus.png)
-![img](data\sample\geometry\vacuum.png)
+![img](data/sample/geometry/blobby.png)
+![img](data/sample/geometry/intersect.png)
+![img](data/sample/geometry/mblur.png)
+![img](data/sample/geometry/torus.png)
+![img](data/sample/geometry/vacuum.png)
 
 ### Light
 ![area](data/sample/light/area.png)

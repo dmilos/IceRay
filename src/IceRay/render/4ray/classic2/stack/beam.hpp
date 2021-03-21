@@ -5,7 +5,7 @@
  #include "./output.hpp"
  #include "./output.hpp"
 
- #include "IceRay/material/compute/jurisdiction.hpp"
+ #include "IceRay/material/medium/jurisdiction.hpp"
 
 
  namespace GS_DDMRM
@@ -30,7 +30,7 @@
                  typedef GC__output  T__output;
 
                public:
-                 typedef GS_DDMRM::S_IceRay::S_material::S_compute::GT_jurisdiction T_jurisdiction;
+                 typedef GS_DDMRM::S_IceRay::S_material::S_medium::GT_jurisdiction T_jurisdiction;
 
                public:
                           GC__beam(){}

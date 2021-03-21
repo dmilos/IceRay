@@ -82,7 +82,6 @@ main/make/geometry_rtss_list.cpp
 main/make/geometry_rtss_object.cpp
 main/make/geometry_rtss_uniform.cpp
 main/make/geometry_smoke.cpp
-main/make/geometry_sphere.cpp
 
 main/make/light.cpp
 

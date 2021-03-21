@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 2.8)
 set( name_bare       "IceRay" ) #!< TODO Take this from INI
 project( ${name_bare} )
 
-set( directory__root "${CMAKE_SOURCE_DIR}/../../.." )
+set( directory__root "${CMAKE_CURRENT_SOURCE_DIR}/../../.." )
 
 set( directory_source          "${directory__root}/src" )
 set( directory_submodule__root "${directory__root}/submodule" )
@@ -15,7 +15,7 @@ set( name_full ${name_bare}Lib-${project_version} )
 
 
 #secondary variables
-set( directory_output  ${name_bare}-${CMAKE_CXX_COMPILER}-${CMAKE_CXX_COMPILER_VERSION} )
+set( directory_output  ${name_bare}-${CMAKE_CXX_COMPILER_ID}-${CMAKE_CXX_COMPILER_VERSION} )
 
 set( directory_obj    "${directory_temp}/${directory_output}/obj" )
 set( directory_lib    "${directory_temp}/${directory_output}/lib" )
@@ -28,7 +28,7 @@ set( cpp_file_list    "./cpp.lst.txt" )
 
 #Processing
 
-file( GLOB_RECURSE SOURCE_HPP "${directory_source}/src/*.hpp")
+file( GLOB_RECURSE SOURCE_HPP "${directory_source}/*IceRay/.hpp")
 
 #file( STRINGS ${hpp_file_list} FILE_LIST )
 #message("${FILE_LIST}")
@@ -36,7 +36,7 @@ file( GLOB_RECURSE SOURCE_HPP "${directory_source}/src/*.hpp")
 #  message("${file_item}")
 #  list( APPEND hpp_files "${directory_source}/IceRay/${file_item}")
 #endforeach(file_item)
-source_group( TREE "${CMAKE_SOURCE_DIR}/../../../src/" FILES ${SOURCE_HPP} )
+source_group( TREE "${directory_source}" FILES ${SOURCE_HPP} )
 
 
 file( STRINGS ${cpp_file_list} FILE_LIST )
@@ -44,14 +44,15 @@ foreach(file_item IN LISTS FILE_LIST )
   list( APPEND SOURCE_CPP "${directory_source}/IceRay/${file_item}")
 endforeach(file_item)
 
-source_group( TREE "${CMAKE_SOURCE_DIR}/../../../src/" FILES ${SOURCE_CPP} )
+source_group( TREE "${directory_source}" FILES ${SOURCE_CPP} )
 
-include_directories( "${CMAKE_SOURCE_DIR}/../../../src")
+include_directories( "${directory_source}")
 
 include_directories( "${directory_submodule__root}/color/src")
 include_directories( "${directory_submodule__root}/container/src")
 include_directories( "${directory_submodule__root}/math/src")
 include_directories( "${directory_submodule__root}/memory/src")
+include_directories( "${directory_submodule__root}/PNM/src")
 include_directories( "${directory_submodule__root}/PNM/src")
 
 include_directories( "z:/work/code/cpp/prj/github/math/work/src"  )

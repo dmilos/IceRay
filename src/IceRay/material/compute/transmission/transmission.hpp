@@ -3,5 +3,5 @@
 #include "./blossom/blossom.hpp"
 
 #include "./corrector.hpp"
-#include "./jitter.hpp"
+#include "./jitter/jitter.hpp"
 

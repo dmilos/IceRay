@@ -150,6 +150,7 @@
                         I_check = I_check;
                         continue;
                        }
+
                      {
                       P_next.Fv_push();
                       auto & I_ray = P_next.Fv_top();
@@ -161,21 +162,18 @@
                       I_ray.M_direction = I_direction;
                       I_ray.M_type = P_heading.M_type;
                       I_ray.M_ior  = P_heading.M_ior;
-                      I_ray.M_intesity = P_heading.M_intesity/ I_count;  //!< todo Not optimised
-                      I_ray.M_coefficient = T_scalar(1)/ I_count;     //!< todo Not optimised
+                      I_ray.M_intesity = P_heading.M_intesity / I_count;  //!< todo Not optimised;  P_gauss?
+                      I_ray.M_coefficient = T_scalar(1)/ I_count;     //!< todo Not optimised; P_gauss?
                       I_ray.M_hierarchy = T_ray::Ee_hierarchy::En_solo;
                       //if( 0 == I_index ) I_ray.M_hierarchy = T_ray::Ee_hierarchy::En_back;
                       //if( (P_count-1) == I_index ) I_ray.M_hierarchy = T_ray::Ee_hierarchy::En_lead;
                      }
-
                     }
 
                   //M2_memoryRay->Fv_store(  F_output<T_size>(En_outRay_Reflected), I_rectified );
                   //M2_memorySize->Fv_store( F_output<T_size>(En_outSize_RayCount), 1 );
                   return I_count;
                  }
-
-               private:
 
                private:
                  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC__base<T_size>    T2_memorySize;

@@ -1,4 +1,4 @@
-print( '<' + __name__ + ' name=\'' +   __file__ + '\'/>' )
+print( '<' + __name__ + ' name=\'' +   __file__ + '\''+ '>' )
 import ctypes
 import IceRayPy
 
@@ -45,3 +45,5 @@ def transform3D( P_dll, P_result, P_matrix, P_point ):
     result = Matrix4D()
     P_dll.IceRayC_Type_Math_Homography_Transform3D( AddresOf( result ), AddresOf( P_matrix ), AddresOf( P_point ) )
     return result
+
+print( '</' + __name__ + ' name=\'' +   __file__ + '\''+ '>' )

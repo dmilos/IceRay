@@ -4,8 +4,7 @@ import IceRayPy
 
 def One(
      P_dll
-    ,P_light     = None
-    ,P_barrier   = None #= IceRayPy.core.light.Point( P_dll, IceRayPy.type.math.coord.Scalar3D( 0, 0, 5 ) )
+    ,P_config
     ,P_albedo : IceRayPy.type.color.RGB = IceRayPy.type.color.RGB( 0.5, 0.5, 0.5 )
     ):
 
@@ -24,8 +23,7 @@ def One(
 
 def Schlick(
      P_dll
-    ,P_light     = None
-    ,P_barrier   = None #= IceRayPy.core.light.Point( P_dll, IceRayPy.type.math.coord.Scalar3D( 0, 0, 5 ) )
+    ,P_config
     ,P_ior       = 1
     ):
 

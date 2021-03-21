@@ -15,8 +15,8 @@
  #include "../_pure.hpp"
 
  #include "./stack/implementation.hpp"
- 
- #include "IceRay/material/compute/jurisdiction.hpp"
+
+ #include "IceRay/material/medium/jurisdiction.hpp"
 
  namespace GS_DDMRM
   {
@@ -37,7 +37,7 @@
                typedef GS_DDMRM::S_IceRay::S_type::GT_scalar T_scalar;
                typedef GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar T_coord;
 
-               typedef GS_DDMRM::S_IceRay::S_material::S_compute::GT_jurisdiction T_jurisdiction;
+               typedef GS_DDMRM::S_IceRay::S_material::S_medium::GT_jurisdiction T_jurisdiction;
 
                typedef GS_DDMRM::S_IceRay::S_geometry::S__type::GC_state       T_state;
                typedef GS_DDMRM::S_IceRay::S_object::S__pure::GC__base         T_object;
@@ -75,6 +75,18 @@
                T_scalar M2_trash;
 
              public:
+               T_size const& F_next( )const{ return M2_next; }
+               bool          F_next( T_size const& P_next );
+             private:
+               T_size M2_next;
+
+             public:
+               T_scalar const& F_ior( )const{ return M2_ior; }
+               bool            F_ior( T_scalar const& P_ior );
+             private:
+               T_scalar M2_ior;
+
+             public:
                T_stack & F_stack(){ return M2_stack; }
              private:
                T_stack M2_stack;
@@ -90,19 +102,27 @@
              private:
                struct C_statistic
                 {
-                 T_size M_traced=0;
-                 T_size M_discarded=0;
-                 T_size M_light=0;
-                 T_size M_eye=0;
-                 T_size M_reflected=0;
-                 T_size M_teleported=0;
-                 T_size M_refracted=0;
-                 T_size M_broken=0;
-                 T_size M_2far=0;
-                 T_size M_2deep=0;
-                 T_size M_under=0;
-                 T_size M_miss=0;
-                 std::vector<T_size> M_depth;
+                 enum class Ee_type
+                  {
+                    En__begin = 0
+                   ,En_traced = En__begin
+                   ,En_eye
+                   ,En_abanded
+                   ,En_light
+                   ,En_reflected
+                   ,En_teleported
+                   ,En_refracted
+                   ,En_broken
+                   ,En_2far
+                   ,En_2deep
+                   ,En_under
+                   ,En_miss
+                   ,En__end
+                  };
+
+                 typedef std::array< T_size, static_cast<T_size>( Ee_type::En__end ) > T_info;
+
+                 std::vector<T_info> M_depth;
                 }M2_statistic;
             };
          }

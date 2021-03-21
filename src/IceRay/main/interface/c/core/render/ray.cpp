@@ -135,3 +135,30 @@ int   IceRayC_Render_Ray_Trace_Trash( IceRayC_Render_Ray_Handle P_this, IceRayC_
   return 1;
  }
 
+int   IceRayC_Render_Ray_Trace_Next( IceRayC_Render_Ray_Handle P_this, IceRayC_TypeSize P_next )
+ {
+  typedef GS_DDMRM::S_IceRay::S_render::S_ray::GC__pure  Tf__pure;
+  typedef GS_DDMRM::S_IceRay::S_render::S_ray::S_classic2::GC_algorithm  Tf_algorithm;
+
+  auto I_this = dynamic_cast< Tf_algorithm *>( c2cpp( P_this ) );
+  if( nullptr == I_this )
+   {
+    return 0;
+   }
+  I_this->F_next( P_next );
+  return 1;
+ }
+
+int   IceRayC_Render_Ray_Trace_IOR( IceRayC_Render_Ray_Handle P_this, IceRayC_TypeSize P_IOR )
+ {
+  typedef GS_DDMRM::S_IceRay::S_render::S_ray::GC__pure  Tf__pure;
+  typedef GS_DDMRM::S_IceRay::S_render::S_ray::S_classic2::GC_algorithm  Tf_algorithm;
+
+  auto I_this = dynamic_cast< Tf_algorithm *>( c2cpp( P_this ) );
+  if( nullptr == I_this )
+   {
+    return 0;
+   }
+  I_this->F_next( P_IOR );
+  return 1;
+ }

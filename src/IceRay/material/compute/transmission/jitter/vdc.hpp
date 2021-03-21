@@ -1,9 +1,9 @@
-#ifndef Dh_DDMRM_Iceray_material_compute_transmission_jitter_HPP_
- #define Dh_DDMRM_Iceray_material_compute_transmission_jitter_HPP_
+#ifndef Dh_DDMRM_Iceray_material_compute_transmission_jitter_vdc_HPP_
+ #define Dh_DDMRM_Iceray_material_compute_transmission_jitter_vdc_HPP_
 
-// GS_DDMRM::S_IceRay::S_material::S_compute::S_transmission::S_blossom::GC_blossom
+// GS_DDMRM::S_IceRay::S_material::S_compute::S_transmission::S_jitter::GC_vdc
 
-#include "../instruction.hpp"
+#include "../../instruction.hpp"
 #include "IceRay/utility/random.hpp"
 #include "math/geometry/deg2rad.hpp"
 
@@ -17,8 +17,10 @@
         {
          namespace S_transmission
           {
+           namespace S_jitter
+            {
 
-             class GC_jitter //! TODO everything. Use rays and randomly move them inside their cone.
+             class GC_vdc //! TODO everything. Use rays and randomly move them inside their cone.
               : public GS_DDMRM::S_IceRay::S_material::S_compute::GC_instruction
               {
                public:
@@ -31,17 +33,17 @@
 
                  enum Ee_input
                   {
-                    En_inRay_Begin    = 0
+                    En_inCoord_Normal = 1
+                   ,En_inRay_Begin    = 0
                    ,En_inRay_End      = 1
                    ,En_inScalar_Angle = 0
-                   ,En_inCoord_Normal = 1
                   };
                  enum Ee_output
                   {
                   };
 
                public:
-                 GC_jitter
+                 GC_vdc
                   (
                     T_size const& P_inCoord_Normal = 0
                    ,T_size const& P_RayBegin       = 0
@@ -82,6 +84,7 @@
                  T2_memoryCoord    *M2_memoryCoord; 
               };
 
+            }
           }
         }
       }

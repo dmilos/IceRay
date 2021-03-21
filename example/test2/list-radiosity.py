@@ -29,12 +29,12 @@ camera_list = {
      }
 
 light_list = {
-        #'dark'       : core.light.Dark, # No light at all
-         'point'      : core.light.Point ,
+         'dark'       : core.light.Dark, # No light at all
+        #'point'      : core.light.Point ,
         #'reflector'  : core.light.Reflector ,
         #'line'       : core.light.Line,
         #'spline'     : core.light.Spline ,
-         'circle'     : core.light.Circle ,
+        #'circle'     : core.light.Circle ,
         #'area'       : core.light.Area ,
         #'disc'       : core.light.Disc,
         #'confine'    : core.light.Confine,
@@ -42,7 +42,7 @@ light_list = {
         #'t-translate'  : core.light.transform.Translate,    # TODO NYI
         #'t-affine'     : core.light.transform.Affine,       # TODO NYI
         #'t-homography' : core.light.transform.Homography,   # TODO NYI
-        #
+
         #'sun-Point'   : utility.light.sun.Point,
         #'sun-Area'    : utility.light.sun.Area,
         #'sun-Line'    : utility.light.sun.Line,
@@ -54,6 +54,12 @@ light_list = {
         # #'chandelier-O'  : utility.light.chandelier.Octa   # TODO NYI
     }
 
+light_radiosity_list = {
+      #'vacuumacuum'    : core.geometry.volumetric.Vacuum,
+       'box'   : utility.light.radiosity.Box,
+    }
+
+
 medium_list = {
        'transparent'   : core.material.medium.Transparent,
        #'solid'         : core.material.medium.Solid,
@@ -64,20 +70,20 @@ medium_list = {
     }
 
 geometry_list = {
-      #'simple-usphere'       : core.geometry.simple.USphere,
-       'simple-sphere'       : core.geometry.simple.Sphere,
+      'simple-usphere'       : core.geometry.simple.USphere,
+      #'simple-sphere'       : core.geometry.simple.Sphere,
       #'simple-box'           : core.geometry.simple.Box,
-      #'simple-cone'          : core.geometry.simple.Cone,
-      #'simple-cylinder'      : core.geometry.simple.Cylinder,
-      #'simple-disc'          : core.geometry.simple.Disc,
-      #'simple-ellipsoid'     : core.geometry.simple.Ellipsoid,
-      #'simple-hyperboloid'   : core.geometry.simple.Hyperboloid,
-      #'simple-paraboloid'    : core.geometry.simple.Paraboloid,
-      #'simple-plane'         : core.geometry.simple.Plane,
-      #'simple-quadric'       : core.geometry.simple.Quadric,
-      #'simple-torus'         : core.geometry.simple.Torus,
-      #'simple-triangle'      : core.geometry.simple.Triangle,
-      #'simple-saddle'        : core.geometry.simple.Saddle,
+      #'simple-Cone'          : core.geometry.simple.Cone,
+      #'simple-Cylinder'      : core.geometry.simple.Cylinder,
+      #'simple-Disc'          : core.geometry.simple.Disc,
+      #'simple-Ellipsoid'     : core.geometry.simple.Ellipsoid,
+      #'simple-Hyperboloid'   : core.geometry.simple.Hyperboloid,
+      #'simple-Paraboloid'    : core.geometry.simple.Paraboloid,
+      #'simple-Plane'         : core.geometry.simple.Plane,
+      #'simple-Quadric'       : core.geometry.simple.Quadric,
+      #'simple-Torus'         : core.geometry.simple.Torus,
+      #'simple-Triangle'      : core.geometry.simple.Triangle,
+      #'simple-Saddle'        : core.geometry.simple.Saddle,
       #'simple-ucylinder'     : core.geometry.simple.UCylinder,
       #'hyper-nuke'           : utility.geometry.simple.hyperboloid.Nuke,
       #'hyper-sphere'         : utility.geometry.simple.hyperboloid.Sphere,
@@ -114,7 +120,7 @@ pigment_list = {
      #'pattern-onion'            : utility.material.pattern.Onion, #TODO check
      #'pattern-level'            : utility.material.pattern.Level, #TODO check
 
-      'illum-ALP'           : utility.material.illumination.Alp, # OK
+     #'illum-ALP'           : utility.material.illumination.Alp, # OK
      #'illum-ambient'       : utility.material.illumination.Ambient, # OK
      #'illum-AsDiffuse'     : utility.material.illumination.AsDiffuse,  # TODO
      #'illum-AsSpecular'    : utility.material.illumination.AsSpecular, # TODO
@@ -136,7 +142,7 @@ pigment_list = {
      #'mapping-o-translate'              : utility.material.operation.mapping.Translate3D,
      #'mapping-o-affine'                 : utility.material.operation.mapping.Affine3D,
      #'mapping-o-homography'             : utility.material.operation.mapping.Homography3D,
-     #
+
      #'mapping-o-Cartesian2Cylindric'    : utility.material.operation.mapping.Cartesian2Cylindric,  #TODO check
      #'mapping-o-Cartesian2Package'      : utility.material.operation.mapping.Cartesian2Package,    #TODO check
      #'mapping-o-Cartesian2Spherical'    : utility.material.operation.mapping.Cartesian2Spherical,  #TODO check
@@ -152,14 +158,14 @@ pigment_list = {
      #'mapping-o-Euclid2Max'             : utility.material.operation.mapping.Euclid2Max,           #TODO check
      #'mapping-o-Max2Euclid'             : utility.material.operation.mapping.Max2Euclid,           #TODO check
      #'mapping-o-Cartesian2Fisheye'      : utility.material.operation.mapping.Cartesian2Fisheye,    #TODO check
-     #
+
      #'transmission-reflect-One'              : utility.material.transmission.reflect.One,      #OK
      #'transmission-reflect-Schlick'          : utility.material.transmission.reflect.Schlick,  #OK
      #'transmission-reflect-blossom-Hexagon'  : utility.material.transmission.blossom.Hexagon,  #OK
      #'transmission-reflect-blossom-Grid'     : utility.material.transmission.blossom.Grid,     #TODO
      #'transmission-reflect-blossom-Rand'     : utility.material.transmission.blossom.Random,   #OK
      #'transmission-reflect-blossom-VDC'      : utility.material.transmission.blossom.VDC,      #OK
-     #'transmission-refract-Arbitrary'        : utility.material.transmission.refract.Arbitrary,#TODO check
+      'transmission-refract-Arbitrary'        : utility.material.transmission.refract.Arbitrary,#TODO check
      #'transmission-refract-Fresnel'          : utility.material.transmission.refract.Fresnel,  #TODO
      #'transmission-refract-Snell'            : utility.material.transmission.refract.Snell,    #OK
      #'transmission-refract-Schlick'          : utility.material.transmission.refract.Schlick,  #OK
@@ -169,7 +175,8 @@ room_list = {
       #'vacuum'    : room.vacuum,
       #'plane'     : room.plane,
       #'plate'     : room.plate,
-       'cornell'   : room.cornell,
+      #'cornell'   : room.cornell,
+       'cornell_radiosity'   : room.cornell_radiosity,
       #'cornel'    : room.cornel_open,
       #'cornel'    : room.cornel_close
     }
@@ -211,7 +218,7 @@ def doRendering(P_config):
 
                        room = data_room( P_config['dll'], P_config['room'], light_final, geometry )
 
-                       scene = composer.arange( P_config['dll'], object, room, None )
+                       scene = composer.arange( P_config['dll'], object, room, light_radiosity_list['box']( P_config['dll'] ) )
 
                        picture = IceRayPy.type.graph.Picture(P_config['dll'])
                        picture.size( P_config['picture']['width'], P_config['picture']['height'] )
@@ -220,7 +227,7 @@ def doRendering(P_config):
                        start = time.time()
                        manager.start( picture )
                        delta = time.time() - start
-                       print( "Time:" + str( delta ) )
+                       print( "Time:" + str( delta ), flush = True )
 
                        crop  = IceRayPy.type.graph.Picture( P_config['dll'])
 
@@ -248,13 +255,13 @@ if( 2 < len( sys.argv ) ):
 
 config={}
 config['folder'] = '_out'
-#config['dll'] = cdll.LoadLibrary(r"z:\work\code\cpp\prj\github\IceRay\work\bin\IceRayCDLL-x86-Release\IceRayCDLL-1.0.0.0-dynamic.dll")
-config['dll'] = cdll.LoadLibrary(r"z:\work\code\cpp\prj\github\IceRay\work\bin\IceRayCDLL-x86-Debug\IceRayCDLL-1.0.0.0-dynamic.dll")
+config['dll'] = cdll.LoadLibrary(r"z:\work\code\cpp\prj\github\IceRay\work\bin\IceRayCDLL-x86-Release\IceRayCDLL-1.0.0.0-dynamic.dll")
+#config['dll'] = cdll.LoadLibrary(r"z:\work\code\cpp\prj\github\IceRay\work\bin\IceRayCDLL-x86-Debug\IceRayCDLL-1.0.0.0-dynamic.dll")
 config['index'] = 0
 
 config['picture'] = {}
-config['picture']['width']  = int( 256 * 1 )
-config['picture']['height'] = int( 256 * 1 )
+config['picture']['width']  = int( 256 * 2 )
+config['picture']['height'] = int( 256 * 2 )
 
 config['camera'] = {}
 config['camera']['width']  = 1
@@ -300,6 +307,5 @@ for index in range( start, 360, step ):
     config['camera']['eye']  = IceRayPy.type.math.coord.Scalar3D( x*0.8, y*0.8, height*0.8 );
     config['camera']['view'] = IceRayPy.type.math.coord.Scalar3D( 0, 0, 0 )
 
-    print( "Index:" + str(index) + "[" + os.getcwd() + "]", flush = True  )
+    print( "Index:" + str(index) + "[" + os.getcwd() + "]" )
     doRendering( config )
-    break

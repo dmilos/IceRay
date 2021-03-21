@@ -147,6 +147,7 @@
                        I_check = I_check;
                        continue;
                       }
+
                      {
                       P_next.Fv_push();
                       auto & I_ray = P_next.Fv_top();
@@ -160,7 +161,6 @@
                       I_ray.M_ior  = P_heading.M_ior;
                       I_ray.M_intesity = P_heading.M_intesity / I_count;  //!< todo Not optimised;  P_gauss?
                       I_ray.M_coefficient = T_scalar(1)/ I_count;     //!< todo Not optimised; P_gauss?
-
                       I_ray.M_hierarchy = T_ray::Ee_hierarchy::En_solo;
                       //if( 0 == I_index ) I_ray.M_hierarchy = T_ray::Ee_hierarchy::En_back;
                       //if( (P_count-1) == I_index ) I_ray.M_hierarchy = T_ray::Ee_hierarchy::En_lead;
@@ -173,7 +173,7 @@
                  }
 
                private:
-               mutable GS_DDMRM::S_IceRay::S_utility::S_random::GC_standard2D    M2_randStandard2D;
+                 mutable GS_DDMRM::S_IceRay::S_utility::S_random::GC_standard2D    M2_randStandard2D;
 
                private:
                  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC__base<T_size>    T2_memorySize;

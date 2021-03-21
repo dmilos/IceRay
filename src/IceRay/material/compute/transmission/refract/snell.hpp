@@ -28,7 +28,7 @@
                    typedef GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar      T_coord;
                    typedef GS_DDMRM::S_IceRay::S_type::S_color::GT_scalar      T_color;
 
-                   typedef GS_DDMRM::S_IceRay::S_material::S_compute::GT_jurisdiction T_jurisdiction;
+                   typedef GS_DDMRM::S_IceRay::S_material::S_medium::GT_jurisdiction T_jurisdiction;
 
                    typedef GS_DDMRM::S_IceRay::S_material::S_compute::GC_memory   T_memory;
 

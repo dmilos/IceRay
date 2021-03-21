@@ -25,6 +25,8 @@ IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Render_Ray_Handle   IceRayC_Render_Ra
 IceRayC__EXPORT IceRayC__DECLSPEC  int                         IceRayC_Render_Ray_Trace_Object( IceRayC_Render_Ray_Handle P_this, IceRayC_Object_Handle P_object );
 IceRayC__EXPORT IceRayC__DECLSPEC  int                         IceRayC_Render_Ray_Trace_Depth( IceRayC_Render_Ray_Handle P_this, IceRayC_TypeSize P_depth );
 IceRayC__EXPORT IceRayC__DECLSPEC  int                         IceRayC_Render_Ray_Trace_Trash( IceRayC_Render_Ray_Handle P_this, IceRayC_TypeScalar P_trash );
+IceRayC__EXPORT IceRayC__DECLSPEC  int                         IceRayC_Render_Ray_Trace_Next( IceRayC_Render_Ray_Handle P_this, IceRayC_TypeSize P_next );
+IceRayC__EXPORT IceRayC__DECLSPEC  int                         IceRayC_Render_Ray_Trace_IOR( IceRayC_Render_Ray_Handle P_this, IceRayC_TypeScalar P_IOR );
 
 
 #endif

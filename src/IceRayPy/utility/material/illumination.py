@@ -152,7 +152,7 @@ def Beckmann(
     result     = IceRayPy.core.material.instruction.label.color.dynamic.RESULT
     point      = IceRayPy.core.material.instruction.label.coord3d.dynamic.POINT
     normal     = IceRayPy.core.material.instruction.label.coord3d.dynamic.NORMAL
-    tempColor       = IceRayPy.core.material.instruction.label.color.temp._BEGIN
+    tempColor  = IceRayPy.core.material.instruction.label.color.temp._BEGIN
     lightThe   = IceRayPy.core.material.instruction.label.light.temp._BEGIN
     spotBegin  = IceRayPy.core.material.instruction.label.size.dynamic.SpotBegin
     spotEnd    = IceRayPy.core.material.instruction.label.size.dynamic.SpotEnd

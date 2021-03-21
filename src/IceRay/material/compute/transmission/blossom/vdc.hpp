@@ -161,6 +161,7 @@
                        I_ray.M_ior  = P_heading.M_ior;
                        I_ray.M_intesity = P_heading.M_intesity/ I_count;  //!< todo Not optimised
                        I_ray.M_coefficient = T_scalar(1)/ I_count;     //!< todo Not optimised
+                       I_ray.M_hierarchy = T_ray::Ee_hierarchy::En_solo;
                      }
 
 

@@ -55,7 +55,6 @@ settings.accumulate( 'architecture' , { 'name' : settings.get_custom( 'architect
 
 settings.accumulate( 'include' , { 'math'       : settings.get_custom( 'directory:submodule:math'       ) } )
 settings.accumulate( 'include' , { 'color'      : settings.get_custom( 'directory:submodule:color'      ) } )
-settings.accumulate( 'include' , { 'type'       : settings.get_custom( 'directory:submodule:type'       ) } )
 settings.accumulate( 'include' , { 'memory'     : settings.get_custom( 'directory:submodule:memory'     ) } )
 settings.accumulate( 'include' , { 'PNM'        : settings.get_custom( 'directory:submodule:PNM'        ) } )
 settings.accumulate( 'include' , { 'container'  : settings.get_custom( 'directory:submodule:container'  ) } )
@@ -104,7 +103,6 @@ cc_files += [ os.path.join( 'main', 'make', 'geometry_rtss_add.cpp' ) ]
 cc_files += [ os.path.join( 'main', 'make', 'geometry_rtss_list.cpp' ) ]
 cc_files += [ os.path.join( 'main', 'make', 'geometry_rtss_object.cpp' ) ]
 cc_files += [ os.path.join( 'main', 'make', 'geometry_rtss_uniform.cpp' ) ]
-cc_files += [ os.path.join( 'main', 'make', 'geometry_sphere.cpp' ) ]
 
 cc_files += [ os.path.join( 'main', 'make', 'material.cpp' ) ]
 

@@ -20,7 +20,7 @@
                       GC_solid()
                        {
                         M2_black =::color::constant::black_t{};
-                        M2_white =::color::constant::white_t{};
+                        M2_white =::color::constant::black_t{};
                        }
              virtual ~GC_solid(){ ; }
 

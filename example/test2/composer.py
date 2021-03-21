@@ -3,6 +3,7 @@ import IceRayPy
 def arange(  P_dll
             ,P_exponat
             ,P_room
+            ,P_radiator = None
             ):
 
     rtss = IceRayPy.core.geometry.rtss.Object( P_dll )
@@ -13,6 +14,9 @@ def arange(  P_dll
 
     rtss.push( IceRayPy.core.geometry.Pretender( P_dll, P_room.cast2Geometry(),    P_room ) )
     rtss.push( IceRayPy.core.geometry.Pretender( P_dll, P_exponat.cast2Geometry(), P_exponat ) )
+
+    if( None != P_radiator ):
+        rtss.push( IceRayPy.core.geometry.Pretender( P_dll, P_radiator.cast2Geometry(), P_radiator ) )
 
     wrapper = IceRayPy.core.object.Wrapper( P_dll )
     wrapper.geometrySet( rtss )
@@ -56,8 +60,18 @@ def manager( P_config, P_camera, P_object ):
     pixel_basic = IceRayPy.core.render.pixel.Basic( P_config['dll'] )
 
     ray_trace    = IceRayPy.core.render.ray.Trace( P_config['dll'] )
+
     ray_trace.depth(20)
     ray_trace.trash( 0.001 )
+    ray_trace.next( 18 )
+    if( 'ray-trace' in P_config ):
+        if( 'depth' in P_config['ray-trace'] ):
+            ray_trace.depth( P_config['ray-trace']['depth'] )
+        if( 'trash' in P_config['ray-trace'] ):
+            ray_trace.trash( P_config['ray-trace']['trash'] )
+        if( 'next' in P_config['ray-trace'] ):
+            ray_trace.next( P_config['ray-trace']['next'] )
+
     ray_trace.object( P_object )
 
     scanner_all = IceRayPy.core.render.scanner.Block( P_config['dll'] )

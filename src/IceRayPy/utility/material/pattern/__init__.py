@@ -4,6 +4,21 @@ print( '<' + __name__ + ' name=\'' +   __file__ + '\'>' )
 import IceRayPy.utility.material.pattern.noise
 # TODO import IceRayPy.utility.material.pattern.size
 
+def Constant(
+      P_dll
+     ,P_config
+     ,P_color = IceRayPy.type.color.RGB(0.5,0.5,0.5)
+    ):
+    I_pattern = IceRayPy.core.material.pattern.Checker( P_dll )
+
+    result = IceRayPy.core.material.instruction.label.color.dynamic.RESULT
+
+    I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Color( P_dll, P_color, result ) )
+
+    return I_surface
+
+
 def Image(
       P_dll
      ,P_config

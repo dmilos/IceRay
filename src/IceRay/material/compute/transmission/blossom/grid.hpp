@@ -99,7 +99,7 @@
                   ,T_scalar const& P_gauss
                   )const
                   {
-
+                   // static T_scalar Is_epsilon = 1e-6;
 
                    T_coord I_y = P_heading.M_direction;
                    T_coord I_x; ::math::linear::vector::cross( I_x, I_y, P_normal ); ::math::linear::vector::length( I_x, T_scalar( 1 ) );
@@ -169,7 +169,7 @@
                       I_ray.M_direction = I_direction;
                       I_ray.M_type = P_heading.M_type;
                       I_ray.M_ior  = P_heading.M_ior;
-                      I_ray.M_intesity = P_heading.M_intesity;
+                      I_ray.M_intesity = P_heading.M_intesity; //!< todo Not optimised;  P_gauss?
                       I_ray.M_coefficient = T_scalar(1);
                       I_ray.M_hierarchy = T_ray::Ee_hierarchy::En_solo;
                       //if( 0 == I_index ) I_ray.M_hierarchy = T_ray::Ee_hierarchy::En_back;

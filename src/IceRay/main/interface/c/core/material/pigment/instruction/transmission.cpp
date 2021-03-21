@@ -36,18 +36,23 @@ IceRayC__EXPORT IceRayC__DECLSPEC  H F( Blossom_VDC0)(     S P_normal, S P_leade
   return cpp2c( Ir_result );
  }
 
-
-IceRayC__EXPORT IceRayC__DECLSPEC  H F( Corrector0)( S P_normal, S P_bump, S P_count, S P_start )
+IceRayC__EXPORT IceRayC__DECLSPEC  H F( Jitter_Random0)(     S P_normal, S P_begin, S P_end, S P_angle )
  {
-  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_transmission::GC_corrector    Tf_this;
-  auto Ir_result = new Tf_this{ P_normal, P_bump, P_count, P_start };
+  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_transmission::S_jitter::GC_random    Tf_this;
+  auto Ir_result = new Tf_this{ P_normal, P_begin, P_end, P_angle };
+  return cpp2c( Ir_result );
+ }
+IceRayC__EXPORT IceRayC__DECLSPEC  H F( Jitter_VDC0)(     S P_normal, S P_begin, S P_end, S P_angle )
+ {
+  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_transmission::S_jitter::GC_vdc    Tf_this;
+  auto Ir_result = new Tf_this{ P_normal, P_begin, P_end, P_angle };
   return cpp2c( Ir_result );
  }
 
-IceRayC__EXPORT IceRayC__DECLSPEC  H F( Jitter0)( S P_cout, S P_begin, S P_angle )
+IceRayC__EXPORT IceRayC__DECLSPEC  H F( Corrector0)( S P_normal, S P_bump, S P_begin, S P_end )
  {
-  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_transmission::GC_jitter    Tf_this;
-  auto Ir_result = new Tf_this{ P_cout, P_begin, P_angle };
+  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_transmission::GC_corrector    Tf_this;
+  auto Ir_result = new Tf_this{ P_normal, P_bump, P_begin, P_end };
   return cpp2c( Ir_result );
  }
 

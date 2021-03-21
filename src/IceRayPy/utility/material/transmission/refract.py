@@ -3,17 +3,14 @@ print( '<' + __name__ + ' name=\'' +   __file__ + '\'>' )
 
 import IceRayPy
 
+
 def Arbitrary(
      P_dll
-    ,P_light     = None
-    ,P_barrier   = None #= IceRayPy.core.light.Point( P_dll, IceRayPy.type.math.coord.Scalar3D( 0, 0, 5 ) )
-    ,P_ior          = 1.1
+    ,P_config
+    ,P_ior          = 2.42
     ,P_albedo      : IceRayPy.type.color.RGB = IceRayPy.type.color.RGB( 0.5, 0.5, 0.5 )
     ,P_attenuation : IceRayPy.type.color.RGB = IceRayPy.type.color.RGB( 0.5, 0.5, 0.5 )
     ):
-
-    #P_albedo      : IceRayPy.type.color.RGB = IceRayPy.type.color.RGB( 0, 0, 0 )
-    #P_attenuation : IceRayPy.type.color.RGB = IceRayPy.type.color.RGB( 1, 1, 1 )
 
     result     = IceRayPy.core.material.instruction.label.color.dynamic.RESULT
     point      = IceRayPy.core.material.instruction.label.coord3d.dynamic.POINT
@@ -36,8 +33,7 @@ def Arbitrary(
 
 def Fresnel(
      P_dll
-    ,P_light     = None
-    ,P_barrier   = None #= IceRayPy.core.light.Point( P_dll, IceRayPy.type.math.coord.Scalar3D( 0, 0, 5 ) )
+    ,P_config
     ,P_ior       = 1.1
     ,P_albedo   : IceRayPy.type.color.RGB = IceRayPy.type.color.RGB( 0.5, 0.5, 0.5 )
     ):
@@ -62,8 +58,7 @@ def Fresnel(
 
 def Snell(
      P_dll
-    ,P_light     = None
-    ,P_barrier   = None #= IceRayPy.core.light.Point( P_dll, IceRayPy.type.math.coord.Scalar3D( 0, 0, 5 ) )
+    ,P_config
     ,P_ior          = 1.1
     ,P_attenuation : IceRayPy.type.color.RGB = IceRayPy.type.color.RGB( 1, 1, 1 )
     ):
@@ -88,8 +83,7 @@ def Snell(
 
 def Schlick(
      P_dll
-    ,P_light     = None
-    ,P_barrier   = None #= IceRayPy.core.light.Point( P_dll, IceRayPy.type.math.coord.Scalar3D( 0, 0, 5 ) )
+    ,P_config
     ,P_ior          = 1.1
     ,P_attenuation   : IceRayPy.type.color.RGB = IceRayPy.type.color.RGB( 0.5, 0.5, 0.5 )
     ):

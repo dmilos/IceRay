@@ -1,6 +1,6 @@
 import ctypes
 
-print( '<' + __name__ + ' name=\'' +   __file__ + '\'>' )
+print( '<' + __name__ + ' name=\'' +   __file__ + '\''+ '>' )
 
 
 import IceRayPy.type
@@ -254,4 +254,4 @@ class USphere:  #( IceRayPy.core.geometry.Generic ):
         self.m_cargo['dll'].IceRayC_Geometry_Release( self.m_cargo['this'] )
 
 
-print( '</' + __name__ + ' name=\'' +   __file__ + '\'>' )
+print( '</' + __name__ + ' name=\'' +   __file__ + '\''+ '>' )

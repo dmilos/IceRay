@@ -7,7 +7,6 @@
 #include "./convert/convert.hpp"
 
 #include "./instruction.hpp"
-#include "./jurisdiction.hpp"
 #include "./memory.hpp"
 #include "./processor.hpp"
 #include "./program.hpp"

@@ -61,11 +61,13 @@
            {
             public:
               typedef GS_DDMRM::S_IceRay::S_type::GT_scalar T_scalar;
+            public:
               T_scalar operator()()
                {
                 return this->next();
                }
 
+            public:
               T_scalar next()
                {
                 return rand()/(T_scalar)(RAND_MAX);
@@ -79,11 +81,13 @@
               typedef GS_DDMRM::S_IceRay::S_type::GT_scalar T_scalar;
               typedef GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar2D T_coord2D;
 
+            public:
               void operator()( T_coord2D & P_coord )
                {
                 this->operator()(P_coord[0], P_coord[1] );
                }
 
+            public:
               void operator()( T_scalar & P_x, T_scalar & P_y )
                {
                 P_x = rand()/(T_scalar)(RAND_MAX);
@@ -98,18 +102,22 @@
               typedef GS_DDMRM::S_IceRay::S_type::GT_size   T_size;
               typedef GS_DDMRM::S_IceRay::S_type::GT_scalar T_scalar;
 
+            public:
               GC_gold1D():M2_position(0){}
 
+            public:
               void operator()( T_scalar & P_x )
                {
                 P_x = this->next();
                }
 
+            public:
               T_scalar next()
                {
-                return fmod( ++M2_position * ::math::constants::GOLD_inv, T_scalar(1) );
+                return fmod( ++M2_position * ( ::math::constants::GOLD_inv ), T_scalar(1) );
                }
 
+            private:
                T_size M2_position;
            };
 
@@ -121,12 +129,14 @@
               typedef GS_DDMRM::S_IceRay::S_type::GT_scalar T_scalar;
               typedef std::array<T_scalar,32> T_table;
 
+            public:
               GC_table1D(){  M2_counter = 0; }
               T_scalar operator()()
                {
                 return this->next();
                }
 
+            public:
               T_scalar next()
                {
                 return M2_table[ ++M2_counter % M2_table.size() ] / T_scalar(M2_table.size() -1 );

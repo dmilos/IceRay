@@ -35,9 +35,7 @@ GC_perspective::Fv_beam
  {
   T_coord & I_origin = P_beam[0].M_origin;
 
-  I_origin[0] = 0;
-  I_origin[1] = 0;
-  I_origin[2] = 0;
+  ::math::linear::vector::fill( I_origin, 0 );
 
   T_coord & I_direction = P_beam[0].M_direction;
 
