@@ -1,12 +1,12 @@
 [submodule "submodule/color"]
 	path = submodule/color
 	url = http://github.com/dmilos/color
-[submodule "submodule/math"]
-	path = submodule/math
-	url = http://github.com/dmilos/math
 [submodule "submodule/PNM"]
 	path = submodule/PNM
 	url = http://github.com/dmilos/PNM
 [submodule "submodule/counter"]
 	path = submodule/counter
 	url = http://github.com/dmilos/counter
+[submodule "submodule/math"]
+	path = submodule/math
+	url = http://github.com/dmilos/math
