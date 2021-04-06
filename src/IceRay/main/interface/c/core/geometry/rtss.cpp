@@ -97,6 +97,21 @@ int                     IceRayC_Geometry_RTSS_Object_Clear( IceRayC_Geometry_Han
   return 1;
  }
 
+int                     IceRayC_Geometry_RTSS_Object_Optimize( IceRayC_Geometry_Handle P_that )
+ {
+  typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;
+  typedef GS_DDMRM::S_IceRay::S_geometry::S_RTSS::GC_object Tf_object;
+
+  auto I_this = dynamic_cast< Tf_object *>( c2cpp( P_that ) );
+  if( nullptr == I_this )
+   {
+    return 0;
+   }
+
+  I_this->F_optimize( );
+  return 1;
+ }
+
 
 IceRayC_Geometry_RTSS_Handle IceRayC_Geometry_RTSS_List0(  )
  {

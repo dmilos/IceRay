@@ -11,6 +11,8 @@ import IceRayPy
 
 from IceRayPy import core
 from IceRayPy import utility
+from IceRayPy import library
+
 
 import composer
 import room
@@ -34,7 +36,7 @@ light_list = {
         #'reflector'  : core.light.Reflector ,
         #'line'       : core.light.Line,
         #'spline'     : core.light.Spline ,
-         'circle'     : core.light.Circle ,
+        #'circle'     : core.light.Circle ,
         #'area'       : core.light.Area ,
         #'disc'       : core.light.Disc,
         #'confine'    : core.light.Confine,
@@ -65,7 +67,7 @@ medium_list = {
 
 geometry_list = {
       #'simple-usphere'       : core.geometry.simple.USphere,
-       'simple-sphere'       : core.geometry.simple.Sphere,
+      #'simple-sphere'       : core.geometry.simple.Sphere,
       #'simple-box'           : core.geometry.simple.Box,
       #'simple-cone'          : core.geometry.simple.Cone,
       #'simple-cylinder'      : core.geometry.simple.Cylinder,
@@ -96,6 +98,9 @@ geometry_list = {
       #'volumetric-Vacuum'    : core.geometry.volumetric.Vacuum,
       #'volumetric-Mist'      : core.geometry.volumetric.Mist,
       #'volumetric-Smoke'     : core.geometry.volumetric.Smoke
+       'library-1m'     : library.geometry.OneM
+
+
      }
 
 pigment_list = {
@@ -114,7 +119,7 @@ pigment_list = {
      #'pattern-onion'            : utility.material.pattern.Onion, #TODO check
      #'pattern-level'            : utility.material.pattern.Level, #TODO check
 
-      'illum-ALP'           : utility.material.illumination.Alp, # OK
+     #'illum-ALP'           : utility.material.illumination.Alp, # OK
      #'illum-ambient'       : utility.material.illumination.Ambient, # OK
      #'illum-AsDiffuse'     : utility.material.illumination.AsDiffuse,  # TODO
      #'illum-AsSpecular'    : utility.material.illumination.AsSpecular, # TODO
@@ -162,7 +167,7 @@ pigment_list = {
      #'transmission-refract-Arbitrary'        : utility.material.transmission.refract.Arbitrary,#TODO check
      #'transmission-refract-Fresnel'          : utility.material.transmission.refract.Fresnel,  #TODO
      #'transmission-refract-Snell'            : utility.material.transmission.refract.Snell,    #OK
-     #'transmission-refract-Schlick'          : utility.material.transmission.refract.Schlick,  #OK
+      'transmission-refract-Schlick'          : utility.material.transmission.refract.Schlick,  #OK
 }
 
 room_list = {
@@ -248,13 +253,13 @@ if( 2 < len( sys.argv ) ):
 
 config={}
 config['folder'] = '_out'
-#config['dll'] = cdll.LoadLibrary(r"z:\work\code\cpp\prj\github\IceRay\work\bin\IceRayCDLL-x86-Release\IceRayCDLL-1.0.0.0-dynamic.dll")
-config['dll'] = cdll.LoadLibrary(r"z:\work\code\cpp\prj\github\IceRay\work\bin\IceRayCDLL-x86-Debug\IceRayCDLL-1.0.0.0-dynamic.dll")
+config['dll'] = cdll.LoadLibrary(r"z:\work\code\cpp\prj\github\IceRay\work\bin\IceRayCDLL-x86-Release\IceRayCDLL-1.0.0.0-dynamic.dll")
+#config['dll'] = cdll.LoadLibrary(r"z:\work\code\cpp\prj\github\IceRay\work\bin\IceRayCDLL-x86-Debug\IceRayCDLL-1.0.0.0-dynamic.dll")
 config['index'] = 0
 
 config['picture'] = {}
-config['picture']['width']  = int( 256 * 1 )
-config['picture']['height'] = int( 256 * 1 )
+config['picture']['width']  = int( 256 * 2 )
+config['picture']['height'] = int( 256 * 2 )
 
 config['camera'] = {}
 config['camera']['width']  = 1
@@ -288,11 +293,12 @@ radiusY = 3;
 for index in range( start, 360, step ):
 
     config['index'] = index
-    t = 60/360.0 #t = index/360.0
+    config['ray-trace']['depth'] = index
+    t = index/360.0
     alpha = t * ( 2 * 3.1415926 )
 
     height =     ( math.cos( 2* alpha ) + 1 )/2 ;
-    
+
     height = 3 * ( math.cos(    alpha ) + 1 )/2 *  height;
 
     x =   radiusX * math.cos( alpha );
@@ -302,4 +308,3 @@ for index in range( start, 360, step ):
 
     print( "Index:" + str(index) + "[" + os.getcwd() + "]", flush = True  )
     doRendering( config )
-    break

@@ -35,4 +35,7 @@ import IceRayPy.core.camera.dof
 # phase Three
 import IceRayPy.utility
 
+# phase Four
+import IceRayPy.library
+
 print( '</' + __name__ + ' file=\'' +   __file__ + '\'>' )

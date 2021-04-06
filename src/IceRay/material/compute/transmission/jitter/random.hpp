@@ -51,24 +51,42 @@
                    ,T_size const& P_inAngle        = 0
                   )
                   {
-                   F_input<T_coord>(    En_inCoord_Normal,   P_inCoord_Normal );
-                   F_input<T_ray>(      En_inRay_Begin,   P_RayBegin );
-                   F_input<T_ray>(      En_inRay_End,    P_RayEnd );
-                   F_input<T_scalar>(  En_inScalar_Angle, P_inAngle  );
+                   F_input<T_coord>(   En_inCoord_Normal,  P_inCoord_Normal );
+                   F_input<T_ray>(     En_inRay_Begin,     P_RayBegin );
+                   F_input<T_ray>(     En_inRay_End,       P_RayEnd );
+                   F_input<T_scalar>(  En_inScalar_Angle,  P_inAngle  );
                   }
 
                public:
                  bool    Fv_execute( T_beam &P_next, T_pigment::T_intersect const& P_intersect, T_state const& P_state )const
                   {
-                   T_coord const& I_normal = M2_memoryCoord->Fv_load( F_input<T_coord>( En_inCoord_Normal ) );
+                   T_coord const& I_normal = M2_memoryCoord->Fv_load(  F_input<T_coord> ( En_inCoord_Normal ) );
+                   T_scalar const& I_angle = M2_memoryScalar->Fv_load( F_input<T_scalar>( En_inScalar_Angle ) );
+                   T_size   const& I_begin = M2_memorySize->Fv_load(   F_input<T_size  >( En_inRay_Begin    ) );
+                   T_size   const& I_end   = M2_memorySize->Fv_load(   F_input<T_size  >( En_inRay_End      ) );
+
+                   T_coord2D I_disc2d;
+                   for( T_size I_index= I_begin; I_index < I_end; ++I_index )
+                    {
+                     auto      & I_original = P_next.Fv_expose( I_index );
+                     T_coord I_y = I_original.M_direction;
+                     T_coord I_x; ::math::linear::vector::cross( I_x, I_y, I_normal ); ::math::linear::vector::length( I_x, T_scalar( 1 ) );
+                     T_coord I_z; ::math::linear::vector::cross( I_z, I_x, I_y );      ::math::linear::vector::length( I_z, T_scalar( 1 ) );
+
+                     GS_DDMRM::S_IceRay::S_utility::S_random::GF_disc2D( I_disc2d, M2_randStandard2D );
+                     // 2. TODO calc new direction
+                     // 3. TODO correct
+                    }
 
                    return true;
                   }
 
                private:
+                 mutable GS_DDMRM::S_IceRay::S_utility::S_random::GC_standard2D    M2_randStandard2D;
+               private:
                  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC__base<T_size>    T2_memorySize;
                  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC__base<T_scalar>  T2_memoryScalar;
-                 typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC__base<T_coord>  T2_memoryCoord;
+                 typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC__base<T_coord>   T2_memoryCoord;
 
                public:
                  void    Fv_memory( T_memory * P_memory  )
@@ -80,8 +98,8 @@
                   }
                private:
                  T2_memorySize     *M2_memorySize;
-                 T2_memoryScalar   *M2_memoryScalar; 
-                 T2_memoryCoord    *M2_memoryCoord; 
+                 T2_memoryScalar   *M2_memoryScalar;
+                 T2_memoryCoord    *M2_memoryCoord;
               };
 
             }

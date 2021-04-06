@@ -18,18 +18,15 @@ IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_RTSS
 IceRayC__EXPORT IceRayC__DECLSPEC  int                     IceRayC_Geometry_RTSS_Object_Rtss( IceRayC_Geometry_Handle P_that, IceRayC_Geometry_RTSS_Handle P_rtss );
 IceRayC__EXPORT IceRayC__DECLSPEC  int                     IceRayC_Geometry_RTSS_Object_Push( IceRayC_Geometry_Handle P_that, IceRayC_Geometry_Handle P_child );
 IceRayC__EXPORT IceRayC__DECLSPEC  int                     IceRayC_Geometry_RTSS_Object_Clear( IceRayC_Geometry_Handle P_that );
+IceRayC__EXPORT IceRayC__DECLSPEC  int                     IceRayC_Geometry_RTSS_Object_Optimize( IceRayC_Geometry_Handle P_that );
 
+
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_RTSS_Handle IceRayC_Geometry_RTSS_List0( );
 
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_RTSS_Handle IceRayC_Geometry_RTSS_Uniform0( );
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_RTSS_Handle IceRayC_Geometry_RTSS_Uniform1( IceRayC_TypeCoordSize3D* P_size );
 
 IceRayC__EXPORT IceRayC__DECLSPEC  int                          IceRayC_Geometry_RTSS_Uniform_Dimension( IceRayC_Geometry_RTSS_Handle, IceRayC_TypeCoordSize3D* P_size);
-
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_RTSS_Handle IceRayC_Geometry_RTSS_List0( );
-
-
-
-
 
 #endif
 

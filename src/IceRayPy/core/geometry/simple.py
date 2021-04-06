@@ -23,12 +23,12 @@ class Sphere : #( IceRayPy.core.geometry.Generic ):
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Geometry_Sphere0()
 
-        # TODOif None != P_center:
-        # TODO    self.m_cargo['dll'].IceRayC_Geometry_Sphere_Center()
-        # TODO
-        # TODOif None != P_radius:
-        # TODO    slef.m_cargo['this'] = IceRayC_Geometry_Sphere_Radius( P_radius )
-        # TODO    return
+        if None != P_center:
+            self.center( P_center )
+
+        if None != P_radius:
+            self.radius( P_radius )
+            return
 
     def __del__( self ):
         self.m_cargo['dll'].IceRayC_Geometry_Release( self.m_cargo['this'] )
@@ -37,7 +37,7 @@ class Sphere : #( IceRayPy.core.geometry.Generic ):
         return self.m_cargo['dll'].IceRayC_Geometry_Sphere_Center( self.m_cargo['this'], AddresOf( P_center ) )
 
     def radius( self, P_radius ):
-        self.m_cargo['dll'].IceRayC_Geometry_Sphere_Radius( self.m_cargo['this'], Scalar( P_radius) )
+        self.m_cargo['dll'].IceRayC_Geometry_Sphere_Radius( self.m_cargo['this'], Scalar( P_radius ) )
 
 
 class Box: #( IceRayPy.core.geometry.Generic ):

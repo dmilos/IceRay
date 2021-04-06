@@ -137,11 +137,7 @@ void GC_algorithm::Fv_trace( T_color &P_color, T_ray const& P_incident )
  }
 
 bool GI_debug = false;
-/*
-// puno zrakova svi su mali a treba sve pratiti.???
-// smanjiti trash ???
-// Da. tokom renderinga nemamo vremena za dodatnu logiku
-*/
+
 void GC_algorithm::F2_trace( T_color &P_color )
  {
   static T_scalar Is_infinity = 1e+12;// T_scalar( std::numeric_limits<T_scalar>::???() );
