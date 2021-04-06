@@ -15,9 +15,9 @@ Matrix4D = IceRayPy.type.math.matrix.Scalar4D
 
 AddresOf = ctypes.addressof
 
-def construct1D( P_dll, P_TODO ):
+def construct1D( P_dll, P_A, P_B ):
     result = Matrix2D()
-    # TODO P_dll.IceRayC_Type_Math_Coord3D_Fill( AddresOf( result ), Scalar( P_scalar ) )
+    P_dll.IceRayC_Type_Math_Homography_Construct1D( AddresOf( result ), Scalar( P_A ), Scalar( P_B ) )
     return result
 
 def construct2D( P_dll, P_point ):
@@ -27,7 +27,7 @@ def construct2D( P_dll, P_point ):
 
 def construct3D( P_dll, P_point ):
     result = Matrix4D()
-    P_dll.IceRayC_Type_Math_Homography_Construct2D( AddresOf( result ), AddresOf( P_point ) )
+    P_dll.IceRayC_Type_Math_Homography_Construct3D( AddresOf( result ), AddresOf( P_point ) )
     return result
 
 
