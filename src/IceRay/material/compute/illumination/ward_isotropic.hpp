@@ -43,13 +43,13 @@
                public:
                  GC_isotropic
                   (
-                    T_size const& P_result           = 0
-                   ,T_size const& P_inCoord_Point    = 0
-                   ,T_size const& P_inCoord_Normal   = 1
-                   ,T_size const& P_inSize_SpotBegin = 0
-                   ,T_size const& P_inSize_SpotEnd   = 0
-                   ,T_size const& P_specular         = 0
-                   ,T_size const& P_alpha            = 1
+                    T_size const& P_result           // = 0
+                   ,T_size const& P_inCoord_Point    // = 0
+                   ,T_size const& P_inCoord_Normal   // = 1
+                   ,T_size const& P_inSize_SpotBegin // = 0
+                   ,T_size const& P_inSize_SpotEnd   // = 0
+                   ,T_size const& P_specular         // = 0
+                   ,T_size const& P_alpha            // = 1
                   )
                   {
                    F_input<T_coord>( En_inCoord_Point,     P_inCoord_Point );
@@ -68,17 +68,17 @@
                   {
                    auto const&  I_incoming = P_intersect.M_incoming;
 
-                   T_color const& I_specular = M2_memoryColor->Fv_load( F_input()[ T_memory::En_color ][ En_inColor_Specular] );
-                   T_color const& I_alpha    = M2_memoryColor->Fv_load( F_input()[ T_memory::En_color ][ En_inColor_Alpha  ] );
+                   T_coord const& I_point      = M2_memoryCoord->Fv_load( F_input()[ T_memory::En_coord ][ En_inCoord_Point  ] );
+                   T_coord const& I_normal     = M2_memoryCoord->Fv_load( F_input()[ T_memory::En_coord ][ En_inCoord_Normal ] );
                    T_size         I_spotBegin  = M2_memorySize->Fv_load(  F_input<T_size>( En_inSize_SpotBegin ) );
                    T_size         I_spotEnd    = M2_memorySize->Fv_load(  F_input<T_size>( En_inSize_SpotEnd ) );
-
-                   T_coord const& I_normal   = M2_memoryCoord->Fv_load( F_input()[ T_memory::En_coord ][ En_inCoord_Normal ] );
-                   T_coord const& I_point    = M2_memoryCoord->Fv_load( F_input()[ T_memory::En_coord ][ En_inCoord_Point ] );
+                   T_color const& I_specular   = M2_memoryColor->Fv_load( F_input()[ T_memory::En_color ][ En_inColor_Specular  ] );
+                   T_color const& I_alpha      = M2_memoryColor->Fv_load( F_input()[ T_memory::En_color ][ En_inColor_Alpha     ] );
 
                    GS_DDMRM::S_IceRay::S_material::S_illumination::S_ward::GC_isotropic I_isotropic( I_specular, I_alpha );
 
                    T_color I_summae( ::color::constant::black_t{} );
+                   T_coord I_2viewer; ::math::linear::vector::negate( I_2viewer, I_incoming.M_direction );
                    T_color I_color;
                    T_coord I_2light;
                    T_coord I_half;
@@ -91,18 +91,12 @@
                      ::math::linear::vector::subtraction( I_2light, I_spot.F_center(), I_point );
                      ::math::linear::vector::length( I_2light, T_scalar(1) );
 
-                     if( 0 < ::math::linear::vector::dot( I_incoming.M_direction, I_normal ) )
-                      {
-                       continue;
-                      }
-
                      I_spot.F_energy( I_energy, I_point );
 
                      ::math::linear::vector::subtraction( I_half, I_2light, I_incoming.M_direction );
                      ::math::linear::vector::length( I_half, T_scalar(1) );
 
-                     using namespace ::math::linear::vector;
-                     if( true == I_isotropic.F_process( I_color, I_energy, I_2light, I_normal, -I_incoming.M_direction, I_half ) )
+                     if( true == I_isotropic.F_process( I_color, I_energy, I_2light, I_normal, I_2viewer, I_half ) )
                       {
                        I_summae += I_color;
                       }

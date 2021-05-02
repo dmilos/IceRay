@@ -48,10 +48,9 @@
                I_x *= -I_x;
 
                T_scalar I_y =  Is_phi * pow( I_cos, 4 );
-
-               P_result.set( 0, P_light[0] * M2_specular[0] * exp( I_x / M2_roughness[0] / M2_roughness[0]) / ( I_y * M2_roughness[0] * M2_roughness[0] ) );
-               P_result.set( 1, P_light[1] * M2_specular[1] * exp( I_x / M2_roughness[1] / M2_roughness[1]) / ( I_y * M2_roughness[1] * M2_roughness[1] ) );
-               P_result.set( 2, P_light[2] * M2_specular[2] * exp( I_x / M2_roughness[2] / M2_roughness[2]) / ( I_y * M2_roughness[2] * M2_roughness[2] ) );
+               auto m2 = M2_roughness[0] * M2_roughness[0]; P_result.set( 0, P_light[0] * M2_specular[0] * exp( I_x / m2 ) / ( I_y * m2 ) );
+                    m2 = M2_roughness[1] * M2_roughness[1]; P_result.set( 1, P_light[1] * M2_specular[1] * exp( I_x / m2 ) / ( I_y * m2 ) );
+                    m2 = M2_roughness[2] * M2_roughness[2]; P_result.set( 2, P_light[2] * M2_specular[2] * exp( I_x / m2 ) / ( I_y * m2 ) );
                return true;
               }
 

@@ -46,14 +46,14 @@
                public:
                  GC_specular
                   (
-                    T_size const& P_result      = 0
-                   ,T_size const& P_inCoord_Point       = 0
-                   ,T_size const& P_inCoord_Normal      = 1
-                   ,T_size const& P_inSize_SpotEnd     = 0
-                   ,T_size const& P_inSize_SpotBegin   = 1
-                   ,T_size const& P_specular    = 1
-                   ,T_size const& P_nu          = 1
-                   ,T_size const& P_nv          = 2
+                    T_size const& P_result            = 0
+                   ,T_size const& P_inCoord_Point     = 0
+                   ,T_size const& P_inCoord_Normal    = 1
+                   ,T_size const& P_inSize_SpotBegin  = 1
+                   ,T_size const& P_inSize_SpotEnd    = 0
+                   ,T_size const& P_specular          = 1
+                   ,T_size const& P_nu                = 1
+                   ,T_size const& P_nv                = 2
                   )
                   {
                    F_input<T_coord>(  En_inCoord_Point,     P_inCoord_Point      );
@@ -70,10 +70,12 @@
                public:
                  bool    Fv_execute( T_beam &P_next, T_pigment::T_intersect const& P_intersect, T_state const& P_state )const
                   {
+                   auto const&  I_incoming = P_intersect.M_incoming;
+
                    T_coord  const& I_point      = M2_memoryCoord->Fv_load(   F_input<T_coord >( En_inCoord_Point     ) );
                    T_coord  const& I_normal     = M2_memoryCoord->Fv_load(   F_input<T_coord >( En_inCoord_Normal    ) );
-                   T_size         I_spotBegin  = M2_memorySize->Fv_load(  F_input<T_size>( En_inSize_SpotBegin ) );
-                   T_size         I_spotEnd    = M2_memorySize->Fv_load(  F_input<T_size>( En_inSize_SpotEnd ) );
+                   T_size          I_spotBegin  = M2_memorySize->Fv_load(    F_input<T_size>(   En_inSize_SpotBegin  ) );
+                   T_size          I_spotEnd    = M2_memorySize->Fv_load(    F_input<T_size>(   En_inSize_SpotEnd    ) );
                    T_color  const& I_specular   = M2_memoryColor->Fv_load(   F_input<T_color >( En_inColor_Specular  ) );
                    T_scalar const& I_nu         = M2_memoryScalar->Fv_load(  F_input<T_scalar>( En_inScalar_NU       ) );
                    T_scalar const& I_nv         = M2_memoryScalar->Fv_load(  F_input<T_scalar>( En_inScalar_NV       ) );
@@ -85,7 +87,7 @@
                    GS_DDMRM::S_IceRay::S_material::S_illumination::S_AshikhminShirley::GC_specular I_ass( I_specular, I_nu, I_nv );
 
                    T_color I_summae( ::color::constant::black_t{} );
-                   T_coord I_2viewer; ::math::linear::vector::negate( I_2viewer, P_intersect.M_incoming.M_direction );
+                   T_coord I_2viewer; ::math::linear::vector::negate( I_2viewer, I_incoming.M_direction );
                    T_color I_energy;
 
                    for( T_size I_spotIndex = I_spotBegin; I_spotIndex < I_spotEnd; ++I_spotIndex )

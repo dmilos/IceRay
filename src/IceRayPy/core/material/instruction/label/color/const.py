@@ -5,4 +5,4 @@ WHITE=1
 GRAY=2
 
 
-_END = 10
+_END = 12

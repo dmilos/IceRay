@@ -50,6 +50,14 @@ int IceRayC_Geometry_Box_Hi( IceRayC_Geometry_Handle P_this, IceRayC_TypeCoordSc
   return 1;
  }
 
+IceRayC_Geometry_Handle IceRayC_Geometry_UTriangle0()
+ {
+  typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;
+  typedef GS_DDMRM::S_IceRay::S_geometry::GC_utriangle Tf_utriangle;
+  auto Ir_result = new Tf_utriangle{};
+  return cpp2c( Ir_result );
+}
+
 IceRayC_Geometry_Handle IceRayC_Geometry_Triangle0()
  {
   typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;
@@ -195,3 +203,33 @@ int IceRayC_Geometry_Disc_Radius(IceRayC_Geometry_Handle P_this, IceRayC_TypeSca
    }
   return I_this->F_radius( P_radius );
  }
+
+IceRayC_Geometry_Handle IceRayC_Geometry_UDisc0()
+ {
+  typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;
+  typedef GS_DDMRM::S_IceRay::S_geometry::GC_udisc Tf_udisc;
+  auto Ir_result = new Tf_udisc{};
+  return cpp2c( Ir_result );
+ }
+
+IceRayC_Geometry_Handle IceRayC_Geometry_UDisc1( IceRayC_TypeScalar P_radius )
+ {
+  typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;
+  typedef GS_DDMRM::S_IceRay::S_geometry::GC_udisc Tf_udisc;
+  auto Ir_result = new Tf_udisc{ P_radius };
+  return cpp2c( Ir_result );
+ }
+
+int IceRayC_Geometry_UDisc_Radius(IceRayC_Geometry_Handle P_this, IceRayC_TypeScalar P_radius )
+ {
+  typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;
+  typedef GS_DDMRM::S_IceRay::S_geometry::GC_udisc Tf_udisc;
+
+  auto I_this = dynamic_cast< Tf_udisc *>( c2cpp( P_this ) );
+  if( nullptr == I_this )
+   {
+    return 0;
+   }
+  return I_this->F_radius( P_radius );
+ }
+

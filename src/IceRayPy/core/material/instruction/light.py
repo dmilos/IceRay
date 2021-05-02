@@ -14,10 +14,10 @@ class Generator: # generate light
         self.m_cargo['dll'].IceRayC_Material_Pigment_Surface_Instruction_Release( self.m_cargo['this'] )
 
 class SpotCull: # Triage the spots against normal
-    def __init__( self, P_dll, P_outSpotEnd, P_point, P_normal, P_spotBegin, P_spotEnd ):
+    def __init__( self, P_dll, P_point, P_normal, P_outSpotEnd, P_spotBegin, P_spotEnd ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
-        self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Material_Pigment_Surface_Instruction_Light_SpotCull0( P_outSpotEnd, P_point, P_normal, P_spotBegin, P_spotEnd )
+        self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Material_Pigment_Surface_Instruction_Spot_Cull0( P_point, P_normal, P_outSpotEnd, P_spotBegin, P_spotEnd )
 
     def __del__(self):
         self.m_cargo['dll'].IceRayC_Material_Pigment_Surface_Instruction_Release( self.m_cargo['this'] )

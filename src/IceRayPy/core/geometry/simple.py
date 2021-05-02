@@ -109,6 +109,21 @@ class Disc: #( IceRayPy.core.geometry.Generic ):
     def normal( self, P_normal: Coord3D  ):
         return self.m_cargo['dll'].IceRayC_Geometry_Disc_Normal( self.m_cargo['this'], AddresOf( P_normal ) )
 
+class UDisc: #( IceRayPy.core.geometry.Generic ):
+
+    def __init__( self, P_dll ):
+        self.m_cargo = {}
+        self.m_cargo['dll'] = P_dll
+        self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Geometry_UDisc0()
+
+        # TODO lo hi
+
+    def __del__( self ):
+        self.m_cargo['dll'].IceRayC_Geometry_Release( self.m_cargo['this'] )
+
+    def radius( self, P_radius ):
+        self.m_cargo['dll'].IceRayC_Geometry_UDisc_Radius( self.m_cargo['this'], Scalar( P_radius ) )
+
 
 class Ellipsoid:  #( IceRayPy.core.geometry.Generic ):
 
@@ -232,6 +247,15 @@ class Triangle:  #( IceRayPy.core.geometry.Generic ):
 
     def eY( self, P_eY: Coord3D  ):
         return self.m_cargo['dll'].IceRayC_Geometry_Triangle_eY( self.m_cargo['this'], AddresOf( P_eY ) )
+
+class UTriangle:  #( IceRayPy.core.geometry.Generic ):
+    def __init__( self, P_dll ):
+        self.m_cargo = {}
+        self.m_cargo['dll'] = P_dll
+        self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Geometry_UTriangle0()
+
+    def __del__( self ):
+        self.m_cargo['dll'].IceRayC_Geometry_Release( self.m_cargo['this'] )
 
 
 class UCylinder:  #( IceRayPy.core.geometry.Generic ):

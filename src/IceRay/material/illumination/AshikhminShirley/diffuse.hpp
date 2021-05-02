@@ -18,7 +18,7 @@
           {
 
            class GC_diffuse
-            { //https://www.cs.utah.edu/~shirley/papers/jgtbrdf.pdf
+            { // An Anisotropic Phong BRDF Model, Michael Ashikhmin Peter Shirley, page 5, term 5
              public:
                typedef GS_DDMRM::S_IceRay::S_type::GT_scalar             T_scalar;
                typedef GS_DDMRM::S_IceRay::S_type::S_color::GT_scalar    T_color;
@@ -40,14 +40,14 @@
                   ,T_coord const&  P_2viewer  //!< k2
                 )
                 {
-                 const T_scalar I_c0 = T_scalar(28)*math::constants::PHI/T_scalar(23);
+                 const T_scalar I_c0 = T_scalar(28)/( T_scalar(23) * math::constants::PHI );
                  T_scalar I_l = ::math::linear::vector::dot( P_normal, P_2light  );
                  T_scalar I_v = ::math::linear::vector::dot( P_normal, P_2viewer  );
 
                  I_l = T_scalar(1) -I_l/2;  I_l = I_l *I_l *I_l * I_l *I_l;
                  I_v = T_scalar(1) -I_v/2;  I_v = I_v *I_v *I_v * I_v *I_v;
 
-                 T_scalar I_c1 = ( T_scalar(1) - I_l  )*( T_scalar(1) -I_v );
+                 T_scalar I_c1 = ( T_scalar(1) - I_l  )*( T_scalar(1) - I_v );
 
                  T_color I_invert; ::color::operation::invert( I_invert, M2_specular );
                  ::color::operation::multiply( P_result, M2_diffuse, I_invert );

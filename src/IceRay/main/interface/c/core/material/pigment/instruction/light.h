@@ -22,8 +22,8 @@ IceRayC__EXPORT IceRayC__DECLSPEC H F(SwarmC0)( IceRayC_Light_Handle P_light, S 
 
 #define F(D_P) IceRayC_Material_Pigment_Surface_Instruction_Spot_##D_P
 
-IceRayC__EXPORT IceRayC__DECLSPEC H F(Cull0 )( S P_point, S P_normal, S P_inSize_SpotBegin, S P_inSize_SpotEnd );
-IceRayC__EXPORT IceRayC__DECLSPEC H F(UWV0  )( S P_out,   S P_point,  S P_normal,    S P_spotIndex );
+IceRayC__EXPORT IceRayC__DECLSPEC H F(Cull0 )( S P_point, S P_normal, S P_outSize_SpotEnd, S P_inSize_SpotBegin, S P_inSize_SpotEnd );
+IceRayC__EXPORT IceRayC__DECLSPEC H F(UWV0  )( S P_point, S P_normal, S P_out,    S P_spotIndex );
 
 IceRayC__EXPORT IceRayC__DECLSPEC H F(Confine0  )( IceRayC_Geometry_Handle P_geometry, S P_outSize_SpotEnd, S P_inSize_SpotBegin, S P_inSize_SpotEnd );
 IceRayC__EXPORT IceRayC__DECLSPEC H F(Obstruct0 )( IceRayC_Geometry_Handle P_geometry, S P_outSize_SpotEnd, S P_inSize_SpotBegin, S P_inSize_SpotEnd );

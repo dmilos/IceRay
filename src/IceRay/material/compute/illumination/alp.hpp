@@ -97,7 +97,7 @@
 
                    GS_DDMRM::S_IceRay::S_material::S_illumination::GC_ambient I_ambient( I_emission );
                    GS_DDMRM::S_IceRay::S_material::S_illumination::GC_lambert I_lambert( I_diffuse );
-                   GS_DDMRM::S_IceRay::S_material::S_illumination::GC_phong I_phong( I_specular, I_shininess );
+                   GS_DDMRM::S_IceRay::S_material::S_illumination::GC_phong   I_phong( I_specular, I_shininess );
 
                    T_color I_summae( ::color::constant::black_t{} );
                    T_color I_color;

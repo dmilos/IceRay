@@ -32,7 +32,7 @@ camera_list = {
 
 light_list = {
         #'dark'       : core.light.Dark, # No light at all
-         'point'      : core.light.Point ,
+        'point'      : core.light.Point ,
         #'reflector'  : core.light.Reflector ,
         #'line'       : core.light.Line,
         #'spline'     : core.light.Spline ,
@@ -50,10 +50,10 @@ light_list = {
         #'sun-Line'    : utility.light.sun.Line,
         #'sun-Circle'  : utility.light.sun.Circle,
         #'sun-Disc'    : utility.light.sun.Disc,
-        # #'sphere'     : utility.light.sphere.unit.make,    # TODO NYI
-        # #'chandelier-H'  : utility.light.chandelier.Hexa,  # TODO NYI
-        # #'chandelier-T'  : utility.light.chandelier.Tetra, # TODO NYI
-        # #'chandelier-O'  : utility.light.chandelier.Octa   # TODO NYI
+         #'sphere'     : utility.light.sphere.unit.make,    # TODO NYI
+         #'chandelier-H'  : utility.light.chandelier.Hexa,  # TODO NYI
+         #'chandelier-T'  : utility.light.chandelier.Tetra, # TODO NYI
+         #'chandelier-O'  : utility.light.chandelier.Octa   # TODO NYI
     }
 
 medium_list = {
@@ -66,12 +66,13 @@ medium_list = {
     }
 
 geometry_list = {
-      #'simple-usphere'       : core.geometry.simple.USphere,
+       'simple-usphere'       : core.geometry.simple.USphere,
       #'simple-sphere'       : core.geometry.simple.Sphere,
       #'simple-box'           : core.geometry.simple.Box,
       #'simple-cone'          : core.geometry.simple.Cone,
       #'simple-cylinder'      : core.geometry.simple.Cylinder,
       #'simple-disc'          : core.geometry.simple.Disc,
+      #'simple-udisc'          : core.geometry.simple.UDisc,
       #'simple-ellipsoid'     : core.geometry.simple.Ellipsoid,
       #'simple-hyperboloid'   : core.geometry.simple.Hyperboloid,
       #'simple-paraboloid'    : core.geometry.simple.Paraboloid,
@@ -79,6 +80,7 @@ geometry_list = {
       #'simple-quadric'       : core.geometry.simple.Quadric,
       #'simple-torus'         : core.geometry.simple.Torus,
       #'simple-triangle'      : core.geometry.simple.Triangle,
+      #'simple-utriangle'      : core.geometry.simple.UTriangle,
       #'simple-saddle'        : core.geometry.simple.Saddle,
       #'simple-ucylinder'     : core.geometry.simple.UCylinder,
       #'hyper-nuke'           : utility.geometry.simple.hyperboloid.Nuke,
@@ -98,7 +100,7 @@ geometry_list = {
       #'volumetric-Vacuum'    : core.geometry.volumetric.Vacuum,
       #'volumetric-Mist'      : core.geometry.volumetric.Mist,
       #'volumetric-Smoke'     : core.geometry.volumetric.Smoke
-       'library-1m'     : library.geometry.OneM
+      #'library-1m'     : library.geometry.OneM
 
 
      }
@@ -119,23 +121,23 @@ pigment_list = {
      #'pattern-onion'            : utility.material.pattern.Onion, #TODO check
      #'pattern-level'            : utility.material.pattern.Level, #TODO check
 
-     #'illum-ALP'           : utility.material.illumination.Alp, # OK
-     #'illum-ambient'       : utility.material.illumination.Ambient, # OK
-     #'illum-AsDiffuse'     : utility.material.illumination.AsDiffuse,  # TODO
-     #'illum-AsSpecular'    : utility.material.illumination.AsSpecular, # TODO
-     #'illum-Beckmann'      : utility.material.illumination.Beckmann, # TODO problem on terminator
-     #'illum-Blinn'         : utility.material.illumination.Blinn,    # TODO problem on terminator
-     #'illum-Gaussian'      : utility.material.illumination.Gaussian, # TODO problem on terminator
-     #'illum-HsLambert'     : utility.material.illumination.HsLambert, # TODO
-     #'illum-HsPhong'       : utility.material.illumination.HsPhong,   # TODO problem on terminator
-     #'illum-Lambert'       : utility.material.illumination.Lambert, #OK
-     #'illum-OnF29'         : utility.material.illumination.OnF29,  # TODO
-     #'illum-OnP44'         : utility.material.illumination.OnP44,  # TODO
-     #'illum-OnYF'          : utility.material.illumination.OnYF,   # TODO
-     #'illum-Phong'         : utility.material.illumination.Phong, #OK
-     #'illum-WardApprox'    : utility.material.illumination.WardApprox,    # TODO
-     #'illum-WardIsotropic' : utility.material.illumination.WardIsotropic, # TODO
-     #'illum-WardReal'      : utility.material.illumination.WardReal,      # TODO
+     '#illum-ALP'           : utility.material.illumination.Alp,       # OK OK
+     'illum-ambient'       : utility.material.illumination.Ambient,   # OK OK
+     'illum-AsDiffuse'     : utility.material.illumination.AsDiffuse,  # TODO BUG
+     'illum-AsSpecular'    : utility.material.illumination.AsSpecular, # TODO align with Ward
+     'illum-Beckmann'      : utility.material.illumination.Beckmann,  # OK OK TODO problem on terminator
+     'illum-Blinn'         : utility.material.illumination.Blinn,     # OK OK TODO fix color TODO problem on terminator
+     'illum-Gaussian'      : utility.material.illumination.Gaussian,  # OK OK TODO problem on terminator
+     'illum-HsLambert'     : utility.material.illumination.HsLambert, # OK OK TODO align with Lambert
+     'illum-HsPhong'       : utility.material.illumination.HsPhong,   # OK OK TODO align with Ward
+     'illum-Lambert'       : utility.material.illumination.Lambert, #OK OK
+     'illum-OnF29'         : utility.material.illumination.OnF29,  # TODO BUG
+     'illum-OnP44'         : utility.material.illumination.OnP44,  # TODO BUG
+     'illum-OnYF'          : utility.material.illumination.OnYF,   # TODO BUG
+     'illum-Phong'         : utility.material.illumination.Phong, #OK OK
+     'illum-WardApprox'    : utility.material.illumination.WardApprox,    # OK OK TODO problem with specular point !!!
+     'illum-WardIsotropic' : utility.material.illumination.WardIsotropic, # OK OK
+     'illum-WardReal'      : utility.material.illumination.WardReal,      # OK OK
 
      #'mapping-o-ID'                     : utility.material.operation.mapping.Identity3D,
      #'mapping-o-translate'              : utility.material.operation.mapping.Translate3D,
@@ -167,7 +169,7 @@ pigment_list = {
      #'transmission-refract-Arbitrary'        : utility.material.transmission.refract.Arbitrary,#TODO check
      #'transmission-refract-Fresnel'          : utility.material.transmission.refract.Fresnel,  #TODO
      #'transmission-refract-Snell'            : utility.material.transmission.refract.Snell,    #OK
-      'transmission-refract-Schlick'          : utility.material.transmission.refract.Schlick,  #OK
+     #'transmission-refract-Schlick'          : utility.material.transmission.refract.Schlick,  #OK
 }
 
 room_list = {
@@ -253,13 +255,14 @@ if( 2 < len( sys.argv ) ):
 
 config={}
 config['folder'] = '_out'
+
 config['dll'] = cdll.LoadLibrary(r"z:\work\code\cpp\prj\github\IceRay\work\bin\IceRayCDLL-x86-Release\IceRayCDLL-1.0.0.0-dynamic.dll")
 #config['dll'] = cdll.LoadLibrary(r"z:\work\code\cpp\prj\github\IceRay\work\bin\IceRayCDLL-x86-Debug\IceRayCDLL-1.0.0.0-dynamic.dll")
 config['index'] = 0
 
 config['picture'] = {}
-config['picture']['width']  = int( 256 * 2 )
-config['picture']['height'] = int( 256 * 2 )
+config['picture']['width']  = int( 256 * 4 )
+config['picture']['height'] = int( 256 * 4 )
 
 config['camera'] = {}
 config['camera']['width']  = 1
@@ -273,8 +276,8 @@ config['ray-trace']['depth'] = 4
 config['ray-trace']['trash'] = 1.0/10000.0
 config['ray-trace']['next'] = 17000
 config['hot'] = {}
-config['hot']['x'] = 256
-config['hot']['y'] = 256
+config['hot']['x'] = 512
+config['hot']['y'] = 403
 
 config['window'] = {}
 config['window'] = {}
@@ -287,19 +290,21 @@ config['window']['B']['y'] = int( config['picture']['height'] * 0.836 / 0.836 )
 
 config['room'] = {}
 
-radiusX = 5;
-radiusY = 3;
+radiusX    = 4;
+radiusY    = 3;
+dilatation = 1;
 
-for index in range( start, 360, step ):
+
+for index in range( start, 360 * int( dilatation ), step ):
 
     config['index'] = index
-    config['ray-trace']['depth'] = index
-    t = index/360.0
+    config['ray-trace']['depth'] = 32
+    t = index / 360.0 / dilatation
     alpha = t * ( 2 * 3.1415926 )
 
     height =     ( math.cos( 2* alpha ) + 1 )/2 ;
 
-    height = 3 * ( math.cos(    alpha ) + 1 )/2 *  height;
+    height = 2 * ( math.cos(    alpha ) + 1 )/2 *  height;
 
     x =   radiusX * math.cos( alpha );
     y = ( radiusY*( math.cos( alpha ) +1)/2 + 1 ) * math.sin( alpha );

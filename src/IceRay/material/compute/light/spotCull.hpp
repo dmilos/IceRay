@@ -50,11 +50,11 @@
              public:
                explicit GC_cull
                 (
-                  T_size const& P_outSize_SpotEnd   = 1
-                 ,T_size const& P_inCoord_Point     = 0
-                 ,T_size const& P_inCoord_Normal    = 1
-                 ,T_size const& P_inSize_SpotBegin  = 0
-                 ,T_size const& P_inSize_SpotEnd    = 1
+                  T_size const& P_inCoord_Point     //= 0
+                 ,T_size const& P_inCoord_Normal    //= 1
+                 ,T_size const& P_outSize_SpotEnd   //= 1
+                 ,T_size const& P_inSize_SpotBegin  //= 0
+                 ,T_size const& P_inSize_SpotEnd    //= 1
                 )
                 {
                  F_output<T_size>( En_outSize_SpotEnd, P_outSize_SpotEnd );

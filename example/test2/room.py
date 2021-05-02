@@ -77,7 +77,7 @@ def cornell(
     ): # non-classic
 
     global G_dimesion
-    I_dimension = [ 10, 10, 5 ]
+    I_dimension = [ 8, 8, 4 ] # [ 6, 6, 3.5 ]
     I_move = [ 0, 0, I_dimension[2]/2-1 ]
     wall = 0.1
 

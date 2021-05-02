@@ -87,7 +87,7 @@
                      T_spot const& I_spot = M2_memorySpot->Fv_load( I_spotBegin );
 
                      I_spot.F_energy( I_energy, I_point );
-                      ::math::linear::vector::subtraction( I_2light, I_spot.F_center(), I_point );
+                     ::math::linear::vector::subtraction( I_2light, I_spot.F_center(), I_point );
                      ::math::linear::vector::length( I_2light, T_scalar(1) );
 
                      if( true == I_HeidrichSeidel.F_process( I_color, I_energy, I_2light, I_normal ) )

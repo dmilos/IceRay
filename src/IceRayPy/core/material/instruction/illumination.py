@@ -56,9 +56,9 @@ class AsSpecular: #( S( result ), S( point     ), S( normal    ), S( spotBegin )
     def __init__(self, P_dll, P_result, P_point, P_normal, P_spotBegin, P_spotEnd, P_specular, P_nu, P_nv ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
-        self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Material_Pigment_Surface_Instruction_Illumination_AsDiffuse0(
+        self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Material_Pigment_Surface_Instruction_Illumination_AsSpecular0(
               SizeType( P_result )
-             ,SizeType( P_point     ), SizeType( P_normal    )
+             ,SizeType( P_point     ), SizeType( P_normal  )
              ,SizeType( P_spotBegin ), SizeType( P_spotEnd )
              ,SizeType( P_specular  ), SizeType( P_nu  ), SizeType( P_nv  )
         )

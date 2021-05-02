@@ -2,3 +2,5 @@
 #include "./disc.cpp"
 #include "./plane.cpp"
 #include "./triangle.cpp"
+#include "./udisc.cpp"
+#include "./utriangle.cpp"

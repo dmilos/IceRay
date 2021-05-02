@@ -25,7 +25,13 @@
                typedef GS_DDMRM::S_IceRay::S_type::S_ray::GC_simple      T_ray;
 
              public:
-               GC_real( T_coord const&  P_direction, T_color const&  P_specular, T_color const&  P_alphaX, T_color const&  P_alphaY )
+               GC_real
+                (
+                  T_coord const&  P_direction  //!< unit vector
+                 ,T_color const&  P_specular   //!< no limits
+                 ,T_color const&  P_alphaX     //!< 0 != P_alphaX[i] * P_alphaY[i]
+                 ,T_color const&  P_alphaY     //!< 0 != P_alphaX[i] * P_alphaY[i]
+                )
                 : M2_specular( P_specular )
                 , M2_alphaX( P_alphaX )
                 , M2_alphaY( P_alphaY )
@@ -62,7 +68,15 @@
                  static T_scalar Is_one_big   = T_scalar(1)+Is_epsilon;
 
                  T_scalar I_ln =  ::math::linear::vector::dot( P_2light,  P_normal );
+                 if( I_ln < 0 )
+                  {
+                   return false;
+                  }
                  T_scalar I_vn =  ::math::linear::vector::dot( P_viewer,  P_normal );
+                 if( I_vn < 0 )
+                  {
+                   return false;
+                  }
                  T_scalar I_hn =  ::math::linear::vector::dot( P_half,    P_normal );
 
                  T_scalar I_delta = acos( I_hn ); // ::math::linear::vector::angle<true>( P_half, P_normal )
@@ -75,10 +89,11 @@
                  ::math::linear::vector::project( I_half, P_half, P_normal );
                  ::math::linear::vector::length( I_half, Is_one_small );
 
-                 T_scalar I_phi =  ::math::linear::vector::dot( I_groove, I_half );
+                 T_scalar I_cos_phi = ::math::linear::vector::dot( I_groove, I_half );
                  T_scalar I_tan_delta = tan( I_delta );
-                 T_scalar I_eX = I_tan_delta * I_phi;  I_eX *= -I_eX;
-                 T_scalar I_eY = I_tan_delta * sqrt( 1 - I_phi*I_phi );  I_eY *= -I_eY;
+                 T_scalar I_eX = I_tan_delta * I_cos_phi;  I_eX *= -I_eX;
+                 T_scalar I_sin2_phi =  T_scalar(1) - I_cos_phi*I_cos_phi;
+                 T_scalar I_eY = I_tan_delta;  I_eY *= -I_eY * I_sin2_phi;
 
                  T_scalar I_c0 = 4 * Is_phi * sqrt( I_ln * I_vn );
 

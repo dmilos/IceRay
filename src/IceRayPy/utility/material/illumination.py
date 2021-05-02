@@ -8,10 +8,10 @@ def Alp(
       P_dll
      ,P_config
      ,P_albedo    = IceRayPy.type.color.RGB( 0.5, 0.5, 0.5 )
-     ,P_emission  = IceRayPy.type.color.RGB(0.1,0.1,0.1)
-     ,P_diffuse   = IceRayPy.type.color.RGB(0.5,0.5,0.5)
-     ,P_specular  = IceRayPy.type.color.RGB(0.5,0,1)
-     ,P_shininess = IceRayPy.type.color.RGB(50,5,50)
+     ,P_emission  = IceRayPy.type.color.RGB(1/32,1/32,1/32)
+     ,P_diffuse   = IceRayPy.type.color.RGB(0.39/4,0.39/4,0.39/4)
+     ,P_specular  = IceRayPy.type.color.RGB(1*2,2*2,3*2)
+     ,P_shininess = IceRayPy.type.color.RGB(10,100,1000)
     ):
 
     result     = IceRayPy.core.material.instruction.label.color.dynamic.RESULT
@@ -34,6 +34,7 @@ def Alp(
 
     I_surface.append( IceRayPy.core.material.instruction.light.Generator( P_dll, I_light, lightThe ) )
     I_surface.append( IceRayPy.core.material.instruction.light.SwarmA( P_dll, spotEnd, spotBegin, lightThe, point ) )
+    I_surface.append( IceRayPy.core.material.instruction.light.SpotCull( P_dll, point, normal, spotEnd, spotBegin, spotEnd ) )
     I_surface.append( IceRayPy.core.material.instruction.light.SpotObstruct( P_dll, I_barrier, spotEnd, spotBegin, spotEnd ) )
 
     I_surface.append( IceRayPy.core.material.instruction.constant.Color( P_dll, P_albedo,  tempColor + 0 ) )
@@ -53,7 +54,7 @@ def Alp(
 def Ambient(
       P_dll
      ,P_config
-     ,P_emmision : IceRayPy.type.color.RGB = IceRayPy.type.color.RGB( 0.5, 0, 1 )
+     ,P_emmision : IceRayPy.type.color.RGB = IceRayPy.type.color.RGB( 0.5, 0.5, 0.5 )
     ):
     result = IceRayPy.core.material.instruction.label.color.dynamic.RESULT
     tempColor   = IceRayPy.core.material.instruction.label.color.temp._BEGIN
@@ -67,7 +68,7 @@ def Ambient(
 def AsDiffuse(
      P_dll
     ,P_config
-    ,P_diffuse  = IceRayPy.type.color.RGB( 1, 2, 1 )
+    ,P_diffuse  = IceRayPy.type.color.RGB( 1, 2, 3 )
     ,P_specular = IceRayPy.type.color.RGB( 20, 200, 1 )
     ):
 
@@ -91,6 +92,7 @@ def AsDiffuse(
 
     I_surface.append( IceRayPy.core.material.instruction.light.Generator( P_dll, I_light, lightThe ) )
     I_surface.append( IceRayPy.core.material.instruction.light.SwarmA( P_dll, spotEnd, spotBegin, lightThe, point ) )
+    I_surface.append( IceRayPy.core.material.instruction.light.SpotCull( P_dll, point, normal, spotEnd, spotBegin, spotEnd ) )
     I_surface.append( IceRayPy.core.material.instruction.light.SpotObstruct( P_dll, I_barrier, spotEnd, spotBegin, spotEnd ) )
 
     I_surface.append( IceRayPy.core.material.instruction.constant.Color( P_dll, P_diffuse,   tempColor + 0 ) )
@@ -103,9 +105,9 @@ def AsDiffuse(
 def AsSpecular(
       P_dll
      ,P_config
-     ,P_specular = IceRayPy.type.color.RGB( 1, 2, 1 )
-     ,P_u = 10
-     ,P_v = 1000
+     ,P_specular = IceRayPy.type.color.RGB( 1, 2, 3 )
+     ,P_u = 1
+     ,P_v = 100
     ):
 
     result     = IceRayPy.core.material.instruction.label.color.dynamic.RESULT
@@ -129,11 +131,12 @@ def AsSpecular(
 
     I_surface.append( IceRayPy.core.material.instruction.light.Generator( P_dll, I_light, lightThe ) )
     I_surface.append( IceRayPy.core.material.instruction.light.SwarmA( P_dll, spotEnd, spotBegin, lightThe, point ) )
+    I_surface.append( IceRayPy.core.material.instruction.light.SpotCull( P_dll, point, normal, spotEnd, spotBegin, spotEnd ) )
     I_surface.append( IceRayPy.core.material.instruction.light.SpotObstruct( P_dll, I_barrier, spotEnd, spotBegin, spotEnd ) )
 
     #TODO reflect ???
 
-    I_surface.append( IceRayPy.core.material.instruction.constant.Color( P_dll, P_specular, tempColor + 0 ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Color(  P_dll, P_specular, tempColor + 0 ) )
     I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_u, tempScalar + 0 ) )
     I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_v, tempScalar + 1 ) )
     I_surface.append( IceRayPy.core.material.instruction.illumination.AsSpecular( P_dll, result, point, normal, spotBegin, spotEnd, tempColor + 0, tempScalar + 0, tempScalar + 1 ) )
@@ -144,9 +147,9 @@ def AsSpecular(
 def Beckmann(
       P_dll
      ,P_config
-     ,P_albedo    = IceRayPy.type.color.RGB( 0.75, 0.75, 0.75 )
-     ,P_specular  = IceRayPy.type.color.RGB( 0.9, 0.9, 0.9 )
-     ,P_roughness = IceRayPy.type.color.RGB( 0.4, 0.5, 0.6 )
+     ,P_albedo    = IceRayPy.type.color.RGB( 0.5, 0.5, 1.5 )
+     ,P_specular  = IceRayPy.type.color.RGB(1 ,1 ,1 )
+     ,P_roughness = IceRayPy.type.color.RGB(1/8.0,1/16.0,1/32.0)
     ):
 
     result     = IceRayPy.core.material.instruction.label.color.dynamic.RESULT
@@ -169,6 +172,7 @@ def Beckmann(
 
     I_surface.append( IceRayPy.core.material.instruction.light.Generator( P_dll, I_light, lightThe ) )
     I_surface.append( IceRayPy.core.material.instruction.light.SwarmA( P_dll, spotEnd, spotBegin, lightThe, point ) )
+    I_surface.append( IceRayPy.core.material.instruction.light.SpotCull( P_dll, point, normal, spotEnd, spotBegin, spotEnd ) )
     I_surface.append( IceRayPy.core.material.instruction.light.SpotObstruct( P_dll, I_barrier, spotEnd, spotBegin, spotEnd ) )
 
     I_surface.append( IceRayPy.core.material.instruction.constant.Color( P_dll, P_albedo,  tempColor + 2 ) )
@@ -176,7 +180,7 @@ def Beckmann(
 
     I_surface.append( IceRayPy.core.material.instruction.constant.Color( P_dll, P_specular,  tempColor + 0 ) )
     I_surface.append( IceRayPy.core.material.instruction.constant.Color( P_dll, P_roughness, tempColor + 1 ) )
-    I_surface.append( IceRayPy.core.material.instruction.illumination.Beckmann( P_dll, result, point, normal, spotBegin, spotEnd, tempColor +0, tempColor + 1 ) )
+    I_surface.append( IceRayPy.core.material.instruction.illumination.Beckmann( P_dll, result, point, normal, spotBegin, spotEnd, tempColor + 0, tempColor + 1 ) )
 
     return I_surface
 
@@ -209,6 +213,7 @@ def Blinn(
 
     I_surface.append( IceRayPy.core.material.instruction.light.Generator( P_dll, I_light, lightThe ) )
     I_surface.append( IceRayPy.core.material.instruction.light.SwarmA( P_dll, spotEnd, spotBegin, lightThe, point ) )
+    I_surface.append( IceRayPy.core.material.instruction.light.SpotCull( P_dll, point, normal, spotEnd, spotBegin, spotEnd ) )
     I_surface.append( IceRayPy.core.material.instruction.light.SpotObstruct( P_dll, I_barrier, spotEnd, spotBegin, spotEnd ) )
 
     I_surface.append( IceRayPy.core.material.instruction.constant.Color( P_dll, P_albedo,  tempColor + 2 ) )
@@ -225,10 +230,9 @@ def Gaussian(
       P_dll
      ,P_config
      ,P_albedo    = IceRayPy.type.color.RGB( 0.75, 0.75, 0.75 )
-     ,P_specular  = IceRayPy.type.color.RGB( 0.9, 0.9, 0.9 )
-     ,P_roughness = IceRayPy.type.color.RGB( 0.4, 0.5, 0.6 )
+     ,P_specular  = IceRayPy.type.color.RGB( 1, 1, 1 )
+     ,P_roughness = IceRayPy.type.color.RGB( 0.32, 0.16, 0.08 )
     ):
-
     result     = IceRayPy.core.material.instruction.label.color.dynamic.RESULT
     point      = IceRayPy.core.material.instruction.label.coord3d.dynamic.POINT
     normal     = IceRayPy.core.material.instruction.label.coord3d.dynamic.NORMAL
@@ -249,6 +253,7 @@ def Gaussian(
 
     I_surface.append( IceRayPy.core.material.instruction.light.Generator( P_dll, I_light, lightThe ) )
     I_surface.append( IceRayPy.core.material.instruction.light.SwarmA( P_dll, spotEnd, spotBegin, lightThe, point ) )
+    I_surface.append( IceRayPy.core.material.instruction.light.SpotCull( P_dll, point, normal, spotEnd, spotBegin, spotEnd ) )
     I_surface.append( IceRayPy.core.material.instruction.light.SpotObstruct( P_dll, I_barrier, spotEnd, spotBegin, spotEnd ) )
 
     I_surface.append( IceRayPy.core.material.instruction.constant.Color( P_dll, P_albedo, tempColor + 2 ) )
@@ -265,7 +270,7 @@ def HsLambert(
       P_dll
      ,P_config
      ,P_groove     = IceRayPy.type.math.coord.Scalar3D( 0, 0, 1 )
-     ,P_diffuse    = IceRayPy.type.color.RGB( 0.4, 0.5, 0.6 )
+     ,P_diffuse    = IceRayPy.type.color.RGB( 1, 1, 1 )
     ):
 
     result       = IceRayPy.core.material.instruction.label.color.dynamic.RESULT
@@ -289,11 +294,12 @@ def HsLambert(
 
     I_surface.append( IceRayPy.core.material.instruction.light.Generator( P_dll, I_light, lightThe ) )
     I_surface.append( IceRayPy.core.material.instruction.light.SwarmA( P_dll, spotEnd, spotBegin, lightThe, point ) )
+    I_surface.append( IceRayPy.core.material.instruction.light.SpotCull( P_dll, point, normal, spotEnd, spotBegin, spotEnd ) )
     I_surface.append( IceRayPy.core.material.instruction.light.SpotObstruct( P_dll, I_barrier, spotEnd, spotBegin, spotEnd ) )
 
     I_surface.append( IceRayPy.core.material.instruction.constant.Coord3D( P_dll, P_groove,  tempCoord3D + 0 ) )
     I_surface.append( IceRayPy.core.material.instruction.constant.Color(   P_dll, P_diffuse, tempColor + 0 ) )
-    I_surface.append( IceRayPy.core.material.instruction.illumination.Blinn( P_dll, result, point, normal, spotBegin, spotEnd, tempCoord3D + 0, tempColor + 0 ) )
+    I_surface.append( IceRayPy.core.material.instruction.illumination.HsLambert( P_dll, result, point, normal, spotBegin, spotEnd, tempCoord3D + 0, tempColor + 0 ) )
 
     return I_surface
 
@@ -326,6 +332,7 @@ def HsPhong(
 
     I_surface.append( IceRayPy.core.material.instruction.light.Generator( P_dll, I_light, lightThe ) )
     I_surface.append( IceRayPy.core.material.instruction.light.SwarmA( P_dll, spotEnd, spotBegin, lightThe, point ) )
+    I_surface.append( IceRayPy.core.material.instruction.light.SpotCull( P_dll, point, normal, spotEnd, spotBegin, spotEnd ) )
     I_surface.append( IceRayPy.core.material.instruction.light.SpotObstruct( P_dll, I_barrier, spotEnd, spotBegin, spotEnd ) )
 
     I_surface.append( IceRayPy.core.material.instruction.constant.Color( P_dll, P_albedo,  tempColor + 2 ) )
@@ -365,6 +372,7 @@ def Lambert(
 
     I_surface.append( IceRayPy.core.material.instruction.light.Generator(       P_dll, I_light, lightThe ) )
     I_surface.append( IceRayPy.core.material.instruction.light.SwarmA(          P_dll, spotEnd, spotBegin, lightThe, point ) )
+    I_surface.append( IceRayPy.core.material.instruction.light.SpotCull( P_dll, point, normal, spotEnd, spotBegin, spotEnd ) )
     I_surface.append( IceRayPy.core.material.instruction.light.SpotObstruct(    P_dll, I_barrier, spotEnd, spotBegin, spotEnd ) )
     I_surface.append( IceRayPy.core.material.instruction.constant.Color(        P_dll, P_diffuse, tempColor + 0 ) )
     I_surface.append( IceRayPy.core.material.instruction.illumination.Lambert(  P_dll, result, point, normal, spotBegin, spotEnd, tempColor + 0 ) )
@@ -395,6 +403,7 @@ def OnF29(
 
     I_surface.append( IceRayPy.core.material.instruction.light.Generator( P_dll, I_light, lightThe ) )
     I_surface.append( IceRayPy.core.material.instruction.light.SwarmA( P_dll, spotEnd, spotBegin, lightThe, point ) )
+    I_surface.append( IceRayPy.core.material.instruction.light.SpotCull( P_dll, point, normal, spotEnd, spotBegin, spotEnd ) )
     I_surface.append( IceRayPy.core.material.instruction.light.SpotObstruct( P_dll, I_barrier, spotEnd, spotBegin, spotEnd ) )
 
     # TODO I_surface.append( IceRayPy.core.material.instruction.illumination.TODO( P_dll, TODO, result, TODO ) )
@@ -425,6 +434,7 @@ def OnP44(
 
     I_surface.append( IceRayPy.core.material.instruction.light.Generator( P_dll, I_light, lightThe ) )
     I_surface.append( IceRayPy.core.material.instruction.light.SwarmA( P_dll, spotEnd, spotBegin, lightThe, point ) )
+    I_surface.append( IceRayPy.core.material.instruction.light.SpotCull( P_dll, point, normal, spotEnd, spotBegin, spotEnd ) )
     I_surface.append( IceRayPy.core.material.instruction.light.SpotObstruct( P_dll, I_barrier, spotEnd, spotBegin, spotEnd ) )
 
     # TODO I_surface.append( IceRayPy.core.material.instruction.illumination.TODO( P_dll, TODO, result, TODO ) )
@@ -455,6 +465,7 @@ def OnYF(
 
     I_surface.append( IceRayPy.core.material.instruction.light.Generator( P_dll, I_light, lightThe ) )
     I_surface.append( IceRayPy.core.material.instruction.light.SwarmA( P_dll, spotEnd, spotBegin, lightThe, point ) )
+    I_surface.append( IceRayPy.core.material.instruction.light.SpotCull( P_dll, point, normal, spotEnd, spotBegin, spotEnd ) )
     I_surface.append( IceRayPy.core.material.instruction.light.SpotObstruct( P_dll, I_barrier, spotEnd, spotBegin, spotEnd ) )
 
     # TODO I_surface.append( IceRayPy.core.material.instruction.illumination.TODO( P_dll, TODO, result, TODO ) )
@@ -465,9 +476,13 @@ def OnYF(
 def Phong(
      P_dll
     ,P_config
-    ,P_albedo    = IceRayPy.type.color.RGB( 0.5, 0.5, 0.5 )
-    ,P_specular  = IceRayPy.type.color.RGB( 1, 2, 1 )
-    ,P_shininess = IceRayPy.type.color.RGB( 20, 200, 1 )
+    #,P_albedo    = IceRayPy.type.color.RGB( 0.5, 0.5, 0.5 )
+    #,P_specular  = IceRayPy.type.color.RGB( 1, 2, 1 )
+    #,P_shininess = IceRayPy.type.color.RGB( 20, 200, 1 )
+
+     ,P_albedo    = IceRayPy.type.color.RGB( 0.5, 0.5, 0.5 )
+     ,P_specular  = IceRayPy.type.color.RGB(1*2,2*2,3*2)
+     ,P_shininess = IceRayPy.type.color.RGB(5,50,500)
     ):
 
     result    = IceRayPy.core.material.instruction.label.color.dynamic.RESULT
@@ -490,6 +505,7 @@ def Phong(
 
     I_surface.append( IceRayPy.core.material.instruction.light.Generator( P_dll, I_light, lightThe ) )
     I_surface.append( IceRayPy.core.material.instruction.light.SwarmA( P_dll, spotEnd, spotBegin, lightThe, point ) )
+    I_surface.append( IceRayPy.core.material.instruction.light.SpotCull( P_dll, point, normal, spotEnd, spotBegin, spotEnd ) )
     I_surface.append( IceRayPy.core.material.instruction.light.SpotObstruct( P_dll, I_barrier, spotEnd, spotBegin, spotEnd ) )
 
     I_surface.append( IceRayPy.core.material.instruction.constant.Color( P_dll, P_albedo,  tempColor + 2 ) )
@@ -505,14 +521,19 @@ def Phong(
 def WardApprox(
       P_dll
      ,P_config
+     ,P_specular   = IceRayPy.type.color.RGB( 1, 1, 1 )
+     ,P_alphaX     = IceRayPy.type.color.RGB( 0.1, 0.8, 0.1 )
+     ,P_alphaY     = IceRayPy.type.color.RGB( 0.1, 0.1, 0.8 )
+     ,P_direction  = IceRayPy.type.math.coord.Scalar3D( 0, 0, 1 )
     ):
-    result     = IceRayPy.core.material.instruction.label.color.dynamic.RESULT
-    point      = IceRayPy.core.material.instruction.label.coord3d.dynamic.POINT
-    normal     = IceRayPy.core.material.instruction.label.coord3d.dynamic.NORMAL
-    tempColor       = IceRayPy.core.material.instruction.label.color.temp._BEGIN
-    lightThe   = IceRayPy.core.material.instruction.label.light.temp._BEGIN
-    spotBegin  = IceRayPy.core.material.instruction.label.size.dynamic.SpotBegin
-    spotEnd    = IceRayPy.core.material.instruction.label.size.dynamic.SpotEnd
+    result      = IceRayPy.core.material.instruction.label.color.dynamic.RESULT
+    point       = IceRayPy.core.material.instruction.label.coord3d.dynamic.POINT
+    normal      = IceRayPy.core.material.instruction.label.coord3d.dynamic.NORMAL
+    tempColor   = IceRayPy.core.material.instruction.label.color.temp._BEGIN
+    tempCoord3D = IceRayPy.core.material.instruction.label.coord3d.temp._BEGIN
+    lightThe    = IceRayPy.core.material.instruction.label.light.temp._BEGIN
+    spotBegin   = IceRayPy.core.material.instruction.label.size.dynamic.SpotBegin
+    spotEnd     = IceRayPy.core.material.instruction.label.size.dynamic.SpotEnd
 
     I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
 
@@ -526,45 +547,22 @@ def WardApprox(
 
     I_surface.append( IceRayPy.core.material.instruction.light.Generator( P_dll, I_light, lightThe ) )
     I_surface.append( IceRayPy.core.material.instruction.light.SwarmA( P_dll, spotEnd, spotBegin, lightThe, point ) )
+    I_surface.append( IceRayPy.core.material.instruction.light.SpotCull( P_dll, point, normal, spotEnd, spotBegin, spotEnd ) )
     I_surface.append( IceRayPy.core.material.instruction.light.SpotObstruct( P_dll, I_barrier, spotEnd, spotBegin, spotEnd ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Coord3D( P_dll, P_direction,  tempCoord3D + 0 ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Color(   P_dll, P_specular, tempColor + 0 ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Color(   P_dll, P_alphaX,   tempColor + 1 ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Color(   P_dll, P_alphaY,   tempColor + 2 ) )
 
-    # TODO I_surface.append( IceRayPy.core.material.instruction.illumination.TODO( P_dll, TODO, result, TODO ) )
+    I_surface.append( IceRayPy.core.material.instruction.illumination.WardApprox( P_dll, result, point, normal, spotBegin, spotEnd, tempColor + 0, tempColor + 1, tempColor + 2, tempCoord3D + 0 ) )
 
     return I_surface
 
 def WardIsotropic(
       P_dll
      ,P_config
-    ):
-    result     = IceRayPy.core.material.instruction.label.color.dynamic.RESULT
-    point      = IceRayPy.core.material.instruction.label.coord3d.dynamic.POINT
-    normal     = IceRayPy.core.material.instruction.label.coord3d.dynamic.NORMAL
-    tempColor       = IceRayPy.core.material.instruction.label.color.temp._BEGIN
-    lightThe   = IceRayPy.core.material.instruction.label.light.temp._BEGIN
-    spotBegin  = IceRayPy.core.material.instruction.label.size.dynamic.SpotBegin
-    spotEnd    = IceRayPy.core.material.instruction.label.size.dynamic.SpotEnd
-
-    I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
-
-    I_light = IceRayPy.core.light.Point( P_dll, IceRayPy.type.math.coord.Scalar3D( 0, 0, 5 ) )
-    if( 'light' in P_config ):
-        I_light = P_config['light']
-
-    I_barrier = IceRayPy.core.geometry.volumetric.Vacuum( P_dll )
-    if( 'barrier' in P_config ):
-        I_barrier = P_config['barrier']
-
-    I_surface.append( IceRayPy.core.material.instruction.light.Generator( P_dll, I_light, lightThe ) )
-    I_surface.append( IceRayPy.core.material.instruction.light.SwarmA( P_dll, spotEnd, spotBegin, lightThe, point ) )
-    I_surface.append( IceRayPy.core.material.instruction.light.SpotObstruct( P_dll, I_barrier, spotEnd, spotBegin, spotEnd ) )
-
-    # TODO I_surface.append( IceRayPy.core.material.instruction.illumination.TODO( P_dll, TODO, result, TODO ) )
-
-    return I_surface
-
-def WardReal(
-      P_dll
-     ,P_config
+     ,P_specular   = IceRayPy.type.color.RGB( 0.5, 0.5, 0.5 )
+     ,P_alpha      = IceRayPy.type.color.RGB( 0.4, 0.20, 0.1 )
     ):
     result     = IceRayPy.core.material.instruction.label.color.dynamic.RESULT
     point      = IceRayPy.core.material.instruction.label.coord3d.dynamic.POINT
@@ -586,8 +584,51 @@ def WardReal(
 
     I_surface.append( IceRayPy.core.material.instruction.light.Generator( P_dll, I_light, lightThe ) )
     I_surface.append( IceRayPy.core.material.instruction.light.SwarmA( P_dll, spotEnd, spotBegin, lightThe, point ) )
+    I_surface.append( IceRayPy.core.material.instruction.light.SpotCull( P_dll, point, normal, spotEnd, spotBegin, spotEnd ) )
     I_surface.append( IceRayPy.core.material.instruction.light.SpotObstruct( P_dll, I_barrier, spotEnd, spotBegin, spotEnd ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Color(     P_dll, P_specular, tempColor + 0 ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Color(     P_dll, P_alpha,    tempColor + 1 ) )
 
-    # TODO I_surface.append( IceRayPy.core.material.instruction.illumination.TODO( P_dll, TODO, result, TODO ) )
+    I_surface.append( IceRayPy.core.material.instruction.illumination.WardIsotropic( P_dll, result, point, normal, spotBegin, spotEnd, tempColor + 0, tempColor + 1 ) )
+
+    return I_surface
+
+def WardReal(
+      P_dll
+     ,P_config
+     ,P_specular   = IceRayPy.type.color.RGB( 1, 1, 1 )
+     ,P_alphaX     = IceRayPy.type.color.RGB( 0.1, 0.8, 0.1 )
+     ,P_alphaY     = IceRayPy.type.color.RGB( 0.1, 0.1, 0.8 )
+     ,P_direction  = IceRayPy.type.math.coord.Scalar3D( 0, 0, 1 )
+    ):
+    result      = IceRayPy.core.material.instruction.label.color.dynamic.RESULT
+    point       = IceRayPy.core.material.instruction.label.coord3d.dynamic.POINT
+    normal      = IceRayPy.core.material.instruction.label.coord3d.dynamic.NORMAL
+    tempCoord3D = IceRayPy.core.material.instruction.label.coord3d.temp._BEGIN
+    tempColor   = IceRayPy.core.material.instruction.label.color.temp._BEGIN
+    lightThe    = IceRayPy.core.material.instruction.label.light.temp._BEGIN
+    spotBegin   = IceRayPy.core.material.instruction.label.size.dynamic.SpotBegin
+    spotEnd     = IceRayPy.core.material.instruction.label.size.dynamic.SpotEnd
+
+    I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
+
+    I_light = IceRayPy.core.light.Point( P_dll, IceRayPy.type.math.coord.Scalar3D( 0, 0, 5 ) )
+    if( 'light' in P_config ):
+        I_light = P_config['light']
+
+    I_barrier = IceRayPy.core.geometry.volumetric.Vacuum( P_dll )
+    if( 'barrier' in P_config ):
+        I_barrier = P_config['barrier']
+
+    I_surface.append( IceRayPy.core.material.instruction.light.Generator( P_dll, I_light, lightThe ) )
+    I_surface.append( IceRayPy.core.material.instruction.light.SwarmA( P_dll, spotEnd, spotBegin, lightThe, point ) )
+    I_surface.append( IceRayPy.core.material.instruction.light.SpotCull( P_dll, point, normal, spotEnd, spotBegin, spotEnd ) )
+    I_surface.append( IceRayPy.core.material.instruction.light.SpotObstruct( P_dll, I_barrier, spotEnd, spotBegin, spotEnd ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Coord3D( P_dll, P_direction,tempCoord3D + 0 ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Color(   P_dll, P_specular, tempColor + 0 ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Color(   P_dll, P_alphaX,   tempColor + 1 ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Color(   P_dll, P_alphaY,   tempColor + 2 ) )
+
+    I_surface.append( IceRayPy.core.material.instruction.illumination.WardReal( P_dll, result, point, normal, spotBegin, spotEnd, tempColor + 0, tempColor + 1, tempColor + 2, tempCoord3D + 0 ) )
 
     return I_surface

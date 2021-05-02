@@ -47,8 +47,17 @@
                   ::math::linear::vector::project( I_T, M2_groove, P_normal );
                   ::math::linear::vector::length( I_T, T_scalar(1) );
 
-                  //T_scalar I_ln = ::math::linear::vector::dot( P_2light, P_normal );
+                  // T_scalar I_ng = ::math::linear::vector::dot( M2_groove, P_normal );
+                  // if( I_ln < 0 )
+                  //  {
+                  //   return false;
+                  //  }
 
+                  T_scalar I_ln = ::math::linear::vector::dot( P_2light, P_normal );
+                  if( I_ln < 0 )
+                   {
+                    return false;
+                   }
                   //T_coord I_P;
                   //::math::linear::vector::project( I_P, P_2light, I_T );
                   //::math::linear::vector::length( I_P, T_scalar(1) );

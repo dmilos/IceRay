@@ -18,7 +18,7 @@
           {
 
            class GC_specular
-            {  //https://www.cs.utah.edu/~shirley/papers/jgtbrdf.pdf
+            { // An Anisotropic Phong BRDF Model, Michael Ashikhmin Peter Shirley, page 4, term 4
              public:
                typedef GS_DDMRM::S_IceRay::S_type::GT_scalar             T_scalar;
                typedef GS_DDMRM::S_IceRay::S_type::S_color::GT_scalar    T_color;
@@ -36,7 +36,7 @@
               (
                  T_color      &  P_result
                 ,T_coord const&  P_normal
-                ,T_coord const&  P_2light  //!< k1
+                ,T_coord const&  P_2light //!< k1
                 ,T_coord const&  P_viewer //!< k2
                 ,T_coord const&  P_half
                 ,T_coord const&  P_u

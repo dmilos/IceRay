@@ -101,19 +101,19 @@ H F( OnYF           )( S( result ), S( point     ), S( normal    ), S( spotBegin
 H F( WardApprox0    )( S( result ), S( point     ), S( normal    ), S( spotBegin  ), S( spotEnd ), S( specular ), S( alphaX  ), S( alphaY ), S( direction ) )
  {
   typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_illumination::S_ward::GC_approx Tf_this;
-  auto I_this = new Tf_this{ P_result, P_point     ,P_normal    ,P_spotBegin , P_spotEnd, P_alphaX, P_alphaY, P_direction };
+  auto I_this = new Tf_this{ P_result, P_point     ,P_normal    ,P_spotBegin , P_spotEnd, P_specular, P_alphaX, P_alphaY, P_direction };
   return cpp2c( I_this );
  }
 H F( WardIsotropic0 )( S( result ), S( point     ), S( normal    ), S( spotBegin  ), S( spotEnd ), S( specular ), S( alpha   ) )
  {
   typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_illumination::S_ward::GC_isotropic Tf_this;
-  auto I_this = new Tf_this{ P_result, P_point     ,P_normal    ,P_spotBegin , P_spotEnd, P_alpha };
+  auto I_this = new Tf_this{ P_result, P_point     ,P_normal    ,P_spotBegin , P_spotEnd, P_specular, P_alpha };
   return cpp2c( I_this );
  }
 H F( WardReal0      )( S( result ), S( point     ), S( normal    ), S( spotBegin  ), S( spotEnd ), S( specular ), S( alphaX  ), S( alphaY ), S( direction ) )
  {
   typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_illumination::S_ward::GC_real Tf_this;
-  auto I_this = new Tf_this{ P_result, P_point     ,P_normal    ,P_spotBegin , P_spotEnd, P_alphaX, P_alphaY, P_direction };
+  auto I_this = new Tf_this{ P_result, P_point     ,P_normal    ,P_spotBegin,  P_spotEnd, P_specular, P_alphaX, P_alphaY, P_direction };
   return cpp2c( I_this );
  }
 

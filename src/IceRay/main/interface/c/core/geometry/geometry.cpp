@@ -199,6 +199,14 @@ int IceRayC_Geometry_Triangle_eY( IceRayC_Geometry_Handle P_this, IceRayC_TypeCo
   return 1;
  }
 
+IceRayC_Geometry_Handle IceRayC_Geometry_UTriangle0()
+ {
+  typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;
+  typedef GS_DDMRM::S_IceRay::S_geometry::GC_utriangle Tf_utriangle;
+  auto Ir_result = new Tf_utriangle{};
+  return cpp2c( Ir_result );
+}
+
 IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Quadric0()
  {
   typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;

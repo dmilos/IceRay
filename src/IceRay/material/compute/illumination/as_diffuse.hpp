@@ -43,13 +43,13 @@
                public:
                  GC_diffuse
                   (
-                    T_size const& P_result      = 0
-                   ,T_size const& P_inCoord_Point    = 0
-                   ,T_size const& P_inCoord_Normal   = 1
-                   ,T_size const& P_inSize_SpotBegin = 0
-                   ,T_size const& P_inSize_SpotEnd   = 1
-                   ,T_size const& P_diffuse     = 1
-                   ,T_size const& P_specular    = 1
+                    T_size const& P_result           // = 0
+                   ,T_size const& P_inCoord_Point    // = 0
+                   ,T_size const& P_inCoord_Normal   // = 1
+                   ,T_size const& P_inSize_SpotBegin // = 0
+                   ,T_size const& P_inSize_SpotEnd   // = 1
+                   ,T_size const& P_diffuse          // = 1
+                   ,T_size const& P_specular         // = 1
                   )
                   {
                    F_input<T_coord>( En_inCoord_Point,      P_inCoord_Point      );
@@ -88,7 +88,7 @@
                      T_spot const& I_spot = M2_memorySpot->Fv_load( I_spotIndex );
                      I_spot.F_energy( I_energy, I_point );
 
-                      ::math::linear::vector::subtraction( I_2light, I_spot.F_center(), I_point );
+                     ::math::linear::vector::subtraction( I_2light, I_spot.F_center(), I_point );
                      ::math::linear::vector::length( I_2light , T_scalar(1) );
                      if( true == I_asd.F_process( I_color, I_normal, I_2light, I_2viewer ) )
                       {

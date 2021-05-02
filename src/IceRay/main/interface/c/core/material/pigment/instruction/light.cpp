@@ -36,14 +36,14 @@ H F(SwarmC0)                ( IceRayC_Light_Handle P_light, S P_outSpot_End, S P
 #undef F
 #define F(D_P) IceRayC_Material_Pigment_Surface_Instruction_Spot_##D_P
 
-H F(Cull0)( S P_point, S P_normal, S P_inSize_SpotBegin, S P_inSize_SpotEnd )
+H F(Cull0)( S P_point, S P_normal, S P_outSize_SpotEnd, S P_inSize_SpotBegin, S P_inSize_SpotEnd )
  {
   typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_spot::GC_cull    Tf_this;
-  auto Ir_result = new Tf_this{ P_point, P_normal, P_inSize_SpotBegin, P_inSize_SpotEnd };
+  auto Ir_result = new Tf_this{ P_point, P_normal, P_outSize_SpotEnd, P_inSize_SpotBegin, P_inSize_SpotEnd };
   return cpp2c( Ir_result );
  }
 
-H F(UWV0)  ( S P_out, S P_point, S P_normal, S P_spotIndex )
+H F(UWV0)  ( S P_point, S P_normal, S P_out, S P_spotIndex )
  {
   typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_spot::GC_UVW    Tf_this;
   auto Ir_result = new Tf_this{ P_out, P_point, P_normal, P_spotIndex };

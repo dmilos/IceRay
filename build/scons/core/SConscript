@@ -158,10 +158,12 @@ if( False ):
 
 cc_files += [ os.path.join( 'geometry', 'flat', 'flat.cpp' ) ]
 if( False ):
-    cc_files += [ os.path.join( 'geometry', 'flat', 'box.cpp'      ) ]
-    cc_files += [ os.path.join( 'geometry', 'flat', 'disc.cpp'     ) ]
-    cc_files += [ os.path.join( 'geometry', 'flat', 'plane.cpp'    ) ]
-    cc_files += [ os.path.join( 'geometry', 'flat', 'triangle.cpp' ) ]
+    cc_files += [ os.path.join( 'geometry', 'flat', 'box.cpp'       ) ]
+    cc_files += [ os.path.join( 'geometry', 'flat', 'disc.cpp'      ) ]
+    cc_files += [ os.path.join( 'geometry', 'flat', 'udisc.cpp'     ) ]
+    cc_files += [ os.path.join( 'geometry', 'flat', 'plane.cpp'     ) ]
+    cc_files += [ os.path.join( 'geometry', 'flat', 'triangle.cpp'  ) ]
+    cc_files += [ os.path.join( 'geometry', 'flat', 'utriangle.cpp' ) ]
 
 
 #TODO cc_files += [ os.path.join( 'geometry', 'spline', 'spline.cpp' ) ]

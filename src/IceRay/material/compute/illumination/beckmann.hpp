@@ -87,19 +87,19 @@
                      T_spot const& I_spot = M2_memorySpot->Fv_load( I_spotIndex );
 
                      ::math::linear::vector::subtraction( I_2light, I_spot.F_center(), I_point );
-                      ::math::linear::vector::length( I_2light, T_scalar(1) );
+                     ::math::linear::vector::length( I_2light, T_scalar(1) );
 
-                      I_spot.F_energy( I_energy, I_point );
+                     I_spot.F_energy( I_energy, I_point );
 
-                      ::math::linear::vector::subtraction( I_half, I_2light, I_incoming.M_direction );
-                      ::math::linear::vector::length( I_half, T_scalar(1) );
+                     ::math::linear::vector::subtraction( I_half, I_2light, I_incoming.M_direction );
+                     ::math::linear::vector::length( I_half, T_scalar(1) );
 
-                      if( true == I_beckmann.F_process( I_color, I_energy, I_normal, I_half ) )
-                       {
-                        I_summae += I_color;
-                        I_valid = true;
-                       }
-                     }
+                     if( true == I_beckmann.F_process( I_color, I_energy, I_normal, I_half ) )
+                      {
+                       I_summae += I_color;
+                       I_valid = true;
+                      }
+                    }
 
                    M2_memoryColor->Fv_store( F_output<T_color>( En_outColor_result ), I_summae );
                    return true;
