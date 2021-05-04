@@ -133,8 +133,8 @@ BOOST_PYTHON_MODULE(IceRayCpp)
   EXTERN_AND_CALL( expose_IceRay_material_illumination_hs_lambert );
   EXTERN_AND_CALL( expose_IceRay_material_illumination_hs_phong );
   EXTERN_AND_CALL( expose_IceRay_material_illumination_lambert );
-  EXTERN_AND_CALL( expose_IceRay_material_illumination_on_p44 );
   EXTERN_AND_CALL( expose_IceRay_material_illumination_on_f29 );
+  EXTERN_AND_CALL( expose_IceRay_material_illumination_on_f30 );
   EXTERN_AND_CALL( expose_IceRay_material_illumination_on_YF );
   EXTERN_AND_CALL( expose_IceRay_material_illumination_phong );
   EXTERN_AND_CALL( expose_IceRay_material_illumination_ward_approx );

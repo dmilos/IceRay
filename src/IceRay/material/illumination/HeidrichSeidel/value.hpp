@@ -42,7 +42,7 @@
                bool F_process
                 (
                  T_color      &  P_result,
-                 T_color const&  P_light,
+                 T_color const&  P_energy,
                  T_coord const&  P_2light,
                  T_coord const&  P_normal,
                  T_coord const&  P_viewer

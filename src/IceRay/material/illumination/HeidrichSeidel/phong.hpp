@@ -41,7 +41,7 @@
                bool F_process
                 (
                  T_color      &  P_result,
-                 T_color const&  P_light,
+                 T_color const&  P_energy,
                  T_coord const&  P_2light,
                  T_coord const&  P_normal,
                  T_coord const&  P_viewer
@@ -65,9 +65,9 @@
                     return true;
                    }
 
-                  P_result.set( 0, P_light[0] * M2_specular[0] * pow( I_value, M2_shininess[0] ) );
-                  P_result.set( 1, P_light[1] * M2_specular[1] * pow( I_value, M2_shininess[1] ) );
-                  P_result.set( 2, P_light[2] * M2_specular[2] * pow( I_value, M2_shininess[2] ) );
+                  P_result.set( 0, P_energy[0] * M2_specular[0] * pow( I_value, M2_shininess[0] ) );
+                  P_result.set( 1, P_energy[1] * M2_specular[1] * pow( I_value, M2_shininess[1] ) );
+                  P_result.set( 2, P_energy[2] * M2_specular[2] * pow( I_value, M2_shininess[2] ) );
 
                   return true;
                  }

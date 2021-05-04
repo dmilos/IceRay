@@ -585,10 +585,10 @@
     <ClInclude Include="..\..\..\src\IceRay\material\illumination\on_f29.hpp">
       <Filter>Source Files\material</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\src\IceRay\material\compute\illumination\on_p44.hpp">
+    <ClInclude Include="..\..\..\src\IceRay\material\compute\illumination\on_f30.hpp">
       <Filter>Source Files\material</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\src\IceRay\material\illumination\on_p44.hpp">
+    <ClInclude Include="..\..\..\src\IceRay\material\illumination\on_f30.hpp">
       <Filter>Source Files\material</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\src\IceRay\material\illumination\on_YasuhiroFujii.hpp">

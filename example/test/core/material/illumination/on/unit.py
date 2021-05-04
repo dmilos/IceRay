@@ -22,7 +22,7 @@ def AB( albedo, roughness ):
     return A, B
 
 
-def make_p44( P_light, albedo    = IceRayCpp.GraphTypeColorRGB().load( 3, 3, 3 )
+def make_f30( P_light, albedo    = IceRayCpp.GraphTypeColorRGB().load( 3, 3, 3 )
                      , roughness = IceRayCpp.GraphTypeColorRGB().load( 0.095, 0.095, 0.095 ) ):
 
     surface = IceRayCpp.MaterialSurface()
@@ -39,8 +39,8 @@ def make_p44( P_light, albedo    = IceRayCpp.GraphTypeColorRGB().load( 3, 3, 3 )
     cargo['5'] = IceRayCpp.MaterialPatternColorConstant( A, 1 )
     cargo['6'] = IceRayCpp.MaterialPatternColorConstant( B, 2 )
 
-    #MaterialIlluminationONp44( [coord]point, [coord]normal, [size]lightCount, [color]A, [color]B, [color]result )
-    cargo['7'] = IceRayCpp.MaterialIlluminationONp44( 0,1, 0, 1,2, 0 )
+    #MaterialIlluminationONf30( [coord]point, [coord]normal, [size]lightCount, [color]A, [color]B, [color]result )
+    cargo['7'] = IceRayCpp.MaterialIlluminationONf30( 0,1, 0, 1,2, 0 )
 
 
     surface.append( cargo['1'] )

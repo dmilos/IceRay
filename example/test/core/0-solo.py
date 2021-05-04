@@ -107,7 +107,7 @@ surface_list = {
      'phong'     : surface.make_phong,
      'hs-lambert' : material.illumination.hs.unit.make_HSLambert,
      'hs-phong'   : material.illumination.hs.unit.make_HSPhong,
-     'ONp44'      : material.illumination.on.unit.make_p44,
+     'ONf30'      : material.illumination.on.unit.make_f30,
      'ONf29'      : material.illumination.on.unit.make_f29,
 
      }

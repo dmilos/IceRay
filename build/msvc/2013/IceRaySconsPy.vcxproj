@@ -1232,7 +1232,7 @@
     <ClInclude Include="..\..\material\compute\illumination\hs_lambert.hpp" />
     <ClInclude Include="..\..\material\compute\illumination\hs_phong.hpp" />
     <ClInclude Include="..\..\material\compute\illumination\lambert.hpp" />
-    <ClInclude Include="..\..\material\compute\illumination\on_p44.hpp" />
+    <ClInclude Include="..\..\material\compute\illumination\on_f30.hpp" />
     <ClInclude Include="..\..\material\compute\illumination\phong.hpp" />
     <ClInclude Include="..\..\material\compute\illumination\ward_approx.hpp" />
     <ClInclude Include="..\..\material\compute\illumination\ward_isotropic.hpp" />
@@ -1265,7 +1265,7 @@
     <ClInclude Include="..\..\material\illumination\HeidrichSeidel\phong.hpp" />
     <ClInclude Include="..\..\material\illumination\lambert.hpp" />
     <ClInclude Include="..\..\material\illumination\on_f29.hpp" />
-    <ClInclude Include="..\..\material\illumination\on_p44.hpp" />
+    <ClInclude Include="..\..\material\illumination\on_f30.hpp" />
     <ClInclude Include="..\..\material\illumination\on_YasuhiroFujii.hpp" />
     <ClInclude Include="..\..\material\illumination\phong.hpp" />
     <ClInclude Include="..\..\material\illumination\ward\approx.hpp" />

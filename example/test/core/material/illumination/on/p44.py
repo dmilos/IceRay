@@ -17,24 +17,24 @@ def print_interval(P_interval):
     print_coord( P_interval.hi() )
     sys.stdout.write(' )')
 
-def print_ONp44(P_ONp44):
+def print_ONf30(P_ONf30):
     print
 
-def make_ONp44( P_emission, P_result ):
-    ONp441 = IceRayCpp.MaterialIlluminationONp44()
+def make_ONf30( P_emission, P_result ):
+    ONf301 = IceRayCpp.MaterialIlluminationONf30()
 
-    # TODO ONp441.input(  IceRayCpp.MaterialSurface_Instruction.color, IceRayCpp.MaterialIlluminationONp44.Input.emission, P_emission )
+    # TODO ONf301.input(  IceRayCpp.MaterialSurface_Instruction.color, IceRayCpp.MaterialIlluminationONf30.Input.emission, P_emission )
 
-    ONp441.output( IceRayCpp.MaterialSurface_Instruction.color, IceRayCpp.MaterialIlluminationONp44.Output.result,   P_result )
-    ONp441.output( IceRayCpp.MaterialSurface_Instruction.bool,  IceRayCpp.MaterialIlluminationONp44.Output.valid,    IceRayCpp.MaterialSurface_Instruction.ConstantBool.valid )
+    ONf301.output( IceRayCpp.MaterialSurface_Instruction.color, IceRayCpp.MaterialIlluminationONf30.Output.result,   P_result )
+    ONf301.output( IceRayCpp.MaterialSurface_Instruction.bool,  IceRayCpp.MaterialIlluminationONf30.Output.valid,    IceRayCpp.MaterialSurface_Instruction.ConstantBool.valid )
 
-    return ONp441
+    return ONf301
 
 print( '********************' )
 
-ONp441 = make_ONp44(0,0)
+ONf301 = make_ONf30(0,0)
 
 print( '------------' )
-print_ONp44( ONp441 )
+print_ONf30( ONf301 )
 print
 

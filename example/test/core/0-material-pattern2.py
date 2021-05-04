@@ -251,7 +251,7 @@ surface_list = {
        #'illum-beckmann'        : material.illumination.beckmann.unit.make,
        #'illum-hs-lambert'      : material.illumination.hs.unit.make_HSLambert,
        #'illum-hs-phong'        : material.illumination.hs.unit.make_HSPhong,
-       #'illum-ONp44'           : material.illumination.on.unit.make_p44,
+       #'illum-ONf30'           : material.illumination.on.unit.make_f30,
        #'illum-ONf29'           : material.illumination.on.unit.make_f29,
        #'illum-AshShiCmpl'      : material.illumination.AshShi.unit.make_complete,
        #'illum-AshShiDif'       : material.illumination.AshShi.unit.make_diffuse,

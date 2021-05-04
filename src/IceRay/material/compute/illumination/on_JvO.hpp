@@ -1,10 +1,10 @@
-#ifndef Dh_DDMRM_Iceray_material_compute_illumination_ON_p44_HPP_
- #define Dh_DDMRM_Iceray_material_compute_illumination_ON_p44_HPP_
+#ifndef Dh_DDMRM_Iceray_material_compute_illumination_ON_Ouwerkerk_HPP_
+ #define Dh_DDMRM_Iceray_material_compute_illumination_ON_Ouwerkerk_HPP_
 
  #include <tuple>
  #include <limits>
 
- #include "../../illumination/OrenNayar/p44.hpp"
+ #include "../../illumination/OrenNayar/ouwerkerk.hpp"
  #include "../instruction.hpp"
 
 
@@ -21,7 +21,7 @@
            namespace S_OrenNayar
             {
 
-             class GC_p44
+             class GC_Ouwerkerk
               : public GS_DDMRM::S_IceRay::S_material::S_compute::GC_instruction
               {
                public:
@@ -34,33 +34,33 @@
 
                  enum Ee_input
                   {
-                   En_inColor_A = 0, En_inColor_B = 1,
+                   En_inColor_Rho = 0, En_inColor_Sigma = 1,
                    En_inSize_SpotBegin=0, En_inSize_SpotEnd=1,
                    En_inCoord_Point=0, En_inCoord_Normal=1
                   };
                  enum Ee_output{ En_outColor_result=0 };
 
                public:
-                 GC_p44
+                 GC_Ouwerkerk
                   (
-                    T_size const& P_result            = 0
-                   ,T_size const& P_inCoord_Point     = 0
-                   ,T_size const& P_inCoord_Normal    = 1
-                   ,T_size const& P_inSize_SpotBegin  = 0
-                   ,T_size const& P_inSize_SpotEnd    = 1
-                   ,T_size const& P_A                 = 0
-                   ,T_size const& P_B                 = 0
+                    T_size const& P_result            //= 0
+                   ,T_size const& P_inCoord_Point     //= 0
+                   ,T_size const& P_inCoord_Normal    //= 1
+                   ,T_size const& P_inSize_SpotBegin  //= 0
+                   ,T_size const& P_inSize_SpotEnd    //= 1
+                   ,T_size const& P_rho               //= 0
+                   ,T_size const& P_sigma             //= 0
                   )
                   {
-                   F_input<T_coord>( En_inCoord_Point,     P_inCoord_Point );
-                   F_input<T_coord>( En_inCoord_Normal,    P_inCoord_Normal );
-                   F_input<T_size>(   En_inSize_SpotBegin,  P_inSize_SpotBegin   );
-                   F_input<T_size>(   En_inSize_SpotEnd,    P_inSize_SpotEnd     );
+                   F_input<T_coord>( En_inCoord_Point,    P_inCoord_Point    );
+                   F_input<T_coord>( En_inCoord_Normal,   P_inCoord_Normal   );
+                   F_input<T_size>(  En_inSize_SpotBegin, P_inSize_SpotBegin );
+                   F_input<T_size>(  En_inSize_SpotEnd,   P_inSize_SpotEnd   );
 
-                   F_input<T_color>(    En_inColor_A,         P_A );
-                   F_input<T_color>(    En_inColor_B,         P_B );
+                   F_input<T_color>( En_inColor_Rho,   P_rho   );
+                   F_input<T_color>( En_inColor_Sigma, P_sigma );
 
-                   F_output<T_color>( En_outColor_result,     P_result );
+                   F_output<T_color>( En_outColor_result, P_result );
                   }
 
                public:
@@ -68,16 +68,17 @@
                   {
                    auto const&  I_incoming = P_intersect.M_incoming;
 
-                   T_color const& I_A         = M2_memoryColor->Fv_load( F_input()[ T_memory::En_color ][ En_inColor_A ] );
-                   T_color const& I_B         = M2_memoryColor->Fv_load( F_input()[ T_memory::En_color ][ En_inColor_B ] );
-                   T_size         I_spotBegin  = M2_memorySize->Fv_load(  F_input<T_size>( En_inSize_SpotBegin ) );
-                   T_size         I_spotEnd    = M2_memorySize->Fv_load(  F_input<T_size>( En_inSize_SpotEnd ) );
-                   T_coord const& I_point     = M2_memoryCoord->Fv_load( F_input()[ T_memory::En_coord ][ En_inCoord_Point     ] );
-                   T_coord const& I_normal    = M2_memoryCoord->Fv_load( F_input()[ T_memory::En_coord ][ En_inCoord_Normal    ] );
+                   T_coord const& I_point     = M2_memoryCoord->Fv_load( F_input<T_coord>( En_inCoord_Point    ) );
+                   T_coord const& I_normal    = M2_memoryCoord->Fv_load( F_input<T_coord>( En_inCoord_Normal   ) );
+                   T_size  const& I_spotBegin = M2_memorySize->Fv_load(  F_input<T_size>(  En_inSize_SpotBegin ) );
+                   T_size  const& I_spotEnd   = M2_memorySize->Fv_load(  F_input<T_size>(  En_inSize_SpotEnd   ) );
+                   T_color const& I_rho       = M2_memoryColor->Fv_load( F_input<T_color>( En_inColor_Rho      ) );
+                   T_color const& I_sigma     = M2_memoryColor->Fv_load( F_input<T_color>( En_inColor_Sigma    ) );
 
-                   GS_DDMRM::S_IceRay::S_material::S_illumination::S_OrenNayar::GC_p44  I_on( I_A, I_B );
+                   GS_DDMRM::S_IceRay::S_material::S_illumination::S_OrenNayar::GC_ouwerkerk  I_ouwerkerk( I_rho, I_sigma );
 
                    T_color I_summae( ::color::constant::black_t{} );
+                   T_coord I_2viewer; ::math::linear::vector::negate( I_2viewer, I_incoming.M_direction );
                    T_color I_color;
                    T_coord I_2light;
                    T_color I_energy;
@@ -90,8 +91,7 @@
                      ::math::linear::vector::subtraction( I_2light, I_spot.F_center(), I_point );
                      ::math::linear::vector::length( I_2light, T_scalar(1) );
 
-                     using namespace ::math::linear::vector;
-                     if( true == I_on.F_process( I_color, I_energy, I_2light, I_normal, -I_incoming.M_direction ) )
+                     if( true == I_ouwerkerk.F_process( I_color, I_energy, I_2light, I_normal, I_2viewer ) )
                       {
                        I_summae += I_color;
                       }
@@ -100,7 +100,6 @@
                    M2_memoryColor->Fv_store( F_output<T_color>( En_outColor_result ), I_summae );
                    return true;
                   }
-
 
                private:
                  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC__base<T_size>    T2_memorySize;

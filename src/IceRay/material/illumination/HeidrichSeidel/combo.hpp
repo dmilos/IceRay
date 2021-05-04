@@ -1,5 +1,5 @@
-#ifndef Dh_IceRay_material_illumination_HeidrichSeidel_lp_hpp_
- #define Dh_IceRay_material_illumination_HeidrichSeidel_lp_hpp_
+#ifndef Dh_IceRay_material_illumination_HeidrichSeidel_combo_hpp_
+ #define Dh_IceRay_material_illumination_HeidrichSeidel_combo_hpp_
 
  #include "../../type/basic/scalar.hpp"
  #include "../../type/color.hpp"
@@ -17,7 +17,7 @@
          namespace S_HeidrichSeidel
           {
 
-           class GC_lambert
+           class GC_combo
           //: public S_IceRay::S_material::S_illumination::GC__pure
             {
              public:
@@ -26,7 +26,7 @@
                typedef GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar    T_coord;
 
              public:
-               GC_lambert( T_color const& P_diffuse, /* T_coord const& P_radius,*/ T_coord const& P_groove )
+               GC_combo( T_color const& P_diffuse, /* T_coord const& P_radius,*/ T_coord const& P_groove )
                 : M2_diffuse( P_diffuse )
                 , M2_specular( P_specular )
                 : M2_shininess( P_shininess )
@@ -42,7 +42,7 @@
                bool F_process
                 (
                  T_color      &  P_result,
-                 T_color const&  P_light,
+                 T_color const&  P_energy,
                  T_coord const&  P_2light,
                  T_coord const&  P_normal,
                  T_coord const&  P_viewer
@@ -63,9 +63,9 @@
                   T_scalar I_cos1 = cos( M2_radius[1] * I_summae );
                   T_scalar I_cos2 = cos( M2_radius[2] * I_summae );
 
-                  if( I_cos0 < 0 ){ P_result.F_set( 0, P_light[0] * M2_specular[0] * pow( -I_cos0, M2_shininess[0] ) ); }else{P_result.F_set( 0, 0 ); }
-                  if( I_cos1 < 0 ){ P_result.F_set( 1, P_light[1] * M2_specular[1] * pow( -I_cos1, M2_shininess[1] ) ); }else{P_result.F_set( 1, 0 ); }
-                  if( I_cos2 < 0 ){ P_result.F_set( 2, P_light[2] * M2_specular[2] * pow( -I_cos2, M2_shininess[2] ) ); }else{P_result.F_set( 2, 0 ); }
+                  if( I_cos0 < 0 ){ P_result.F_set( 0, P_energy[0] * M2_specular[0] * pow( -I_cos0, M2_shininess[0] ) ); }else{P_result.F_set( 0, 0 ); }
+                  if( I_cos1 < 0 ){ P_result.F_set( 1, P_energy[1] * M2_specular[1] * pow( -I_cos1, M2_shininess[1] ) ); }else{P_result.F_set( 1, 0 ); }
+                  if( I_cos2 < 0 ){ P_result.F_set( 2, P_energy[2] * M2_specular[2] * pow( -I_cos2, M2_shininess[2] ) ); }else{P_result.F_set( 2, 0 ); }
 
                   return true;
                  }

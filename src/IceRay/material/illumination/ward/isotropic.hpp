@@ -38,7 +38,7 @@
                bool F_process
                 (
                  T_color      &  P_result,
-                 T_color const&  P_light,
+                 T_color const&  P_energy,
                  T_coord const&  P_2light,
                  T_coord const&  P_normal,
                  T_coord const&  P_viewer,
@@ -56,16 +56,16 @@
                  T_scalar I_c = sqrt( I_ln * I_vn ) * 4 * Is_phi ;
                  T_scalar I_e = tan( I_delta ); I_e *= - I_e;
 
-                 P_result.set( 0, P_light[0] * M2_specular[0] * T_scalar(1) /( I_c * M2_iA2[0] ) * exp( I_e /( M2_iA2[0] ) ) );
-                 P_result.set( 1, P_light[1] * M2_specular[1] * T_scalar(1) /( I_c * M2_iA2[1] ) * exp( I_e /( M2_iA2[1] ) ) );
-                 P_result.set( 2, P_light[2] * M2_specular[2] * T_scalar(1) /( I_c * M2_iA2[2] ) * exp( I_e /( M2_iA2[2] ) ) );
+                 P_result.set( 0, P_energy[0] * M2_specular[0] * T_scalar(1) /( I_c * M2_iA2[0] ) * exp( I_e /( M2_iA2[0] ) ) );
+                 P_result.set( 1, P_energy[1] * M2_specular[1] * T_scalar(1) /( I_c * M2_iA2[1] ) * exp( I_e /( M2_iA2[1] ) ) );
+                 P_result.set( 2, P_energy[2] * M2_specular[2] * T_scalar(1) /( I_c * M2_iA2[2] ) * exp( I_e /( M2_iA2[2] ) ) );
 
                  return true;
                 }
 
              private:
                T_color const& M2_specular;
-               T_color const& M2_alpha;   
+               T_color const& M2_alpha;
                T_color M2_iA2;
             };
 

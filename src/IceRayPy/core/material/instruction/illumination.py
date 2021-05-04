@@ -168,11 +168,11 @@ class Lambert: # S( result ), S( point     ), S( normal    ), S( spotBegin ), S(
     def __del__(self):
         self.m_cargo['dll'].IceRayC_Material_Pigment_Surface_Instruction_Release( self.m_cargo['this'] )
 
-class OnF29:       # S( result ), S( point     ), S( normal    ), S( spotBegin  ), S( spotEnd ), S( rho ), S( sigma ) );
+class ON_f29:       # S( result ), S( point     ), S( normal    ), S( spotBegin  ), S( spotEnd ), S( rho ), S( sigma ) );
     def __init__( self, P_dll, P_result, P_point, P_normal, P_spotBegin, P_spotEnd, P_rho, P_sigma ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
-        self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Material_Pigment_Surface_Instruction_Illumination_OnF290(
+        self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Material_Pigment_Surface_Instruction_Illumination_ON_f29(
              SizeType( P_result )
             ,SizeType( P_point ) , SizeType( P_normal )
             ,SizeType( P_spotBegin ), SizeType( P_spotEnd )
@@ -182,34 +182,61 @@ class OnF29:       # S( result ), S( point     ), S( normal    ), S( spotBegin  
     def __del__(self):
         self.m_cargo['dll'].IceRayC_Material_Pigment_Surface_Instruction_Release( self.m_cargo['this'] )
 
-class OnP44:        # S( result ), S( point     ), S( normal    ), S( spotBegin  ), S( spotEnd ), S( A ), S( B ) );
-    def __init__( self, P_dll, P_result, P_point, P_normal, P_spotBegin, P_spotEnd, P_A, P_B ):
+class ON_f30:        # S( result ), S( point     ), S( normal    ), S( spotBegin  ), S( spotEnd ), S( rho ), S( sigma ) );
+    def __init__( self, P_dll, P_result, P_point, P_normal, P_spotBegin, P_spotEnd, P_rho, P_sigma ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
-        self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Material_Pigment_Surface_Instruction_Illumination_OnP440(
+        self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Material_Pigment_Surface_Instruction_Illumination_ON_f30(
              SizeType( P_result )
             ,SizeType( P_point ) , SizeType( P_normal )
             ,SizeType( P_spotBegin ), SizeType( P_spotEnd )
-            ,SizeType( P_A ), SizeType( P_B )
+            ,SizeType( P_rho ), SizeType( P_sigma )
             )
 
     def __del__(self):
         self.m_cargo['dll'].IceRayC_Material_Pigment_Surface_Instruction_Release( self.m_cargo['this'] )
 
-class OnYF:          # S( result ), S( point     ), S( normal    ), S( spotBegin  ), S( spotEnd ), S( A ), S( B ) );
-    def __init__( self, P_dll, P_result, P_point, P_normal, P_spotBegin, P_spotEnd, P_A, P_B ):
+class ON_Fujii_Proposed:          # S( result ), S( point     ), S( normal    ), S( spotBegin  ), S( spotEnd ), S( A ), S( B ) );
+    def __init__( self, P_dll, P_result, P_point, P_normal, P_spotBegin, P_spotEnd, P_rho, P_sigma ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
-        self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Material_Pigment_Surface_Instruction_Illumination_OnYF0(
+        self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Material_Pigment_Surface_Instruction_Illumination_ON_Fujii_Proposed(
              SizeType( P_result )
             ,SizeType( P_point ) , SizeType( P_normal )
             ,SizeType( P_spotBegin ), SizeType( P_spotEnd )
-            ,SizeType( P_A ), SizeType( P_B )
+            ,SizeType( P_rho ), SizeType( P_sigma )
             )
 
     def __del__(self):
         self.m_cargo['dll'].IceRayC_Material_Pigment_Surface_Instruction_Release( self.m_cargo['this'] )
 
+class ON_Fujii_Qualitative:          # S( result ), S( point     ), S( normal    ), S( spotBegin  ), S( spotEnd ), S( A ), S( B ) );
+    def __init__( self, P_dll, P_result, P_point, P_normal, P_spotBegin, P_spotEnd, P_rho, P_sigma ):
+        self.m_cargo = {}
+        self.m_cargo['dll'] = P_dll
+        self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Material_Pigment_Surface_Instruction_Illumination_ON_Fujii_Qualitative(
+             SizeType( P_result )
+            ,SizeType( P_point ) , SizeType( P_normal )
+            ,SizeType( P_spotBegin ), SizeType( P_spotEnd )
+            ,SizeType( P_rho ), SizeType( P_sigma )
+            )
+
+    def __del__(self):
+        self.m_cargo['dll'].IceRayC_Material_Pigment_Surface_Instruction_Release( self.m_cargo['this'] )
+
+class ON_Ouwerkerk:      # S( result ), S( point     ), S( normal    ), S( spotBegin  ), S( spotEnd ), S( rho ), S( sigma ) );
+    def __init__( self, P_dll, P_result, P_point, P_normal, P_spotBegin, P_spotEnd, P_rho, P_sigma ):
+        self.m_cargo = {}
+        self.m_cargo['dll'] = P_dll
+        self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Material_Pigment_Surface_Instruction_Illumination_ON_Ouwerkerk(
+             SizeType( P_result )
+            ,SizeType( P_point ) , SizeType( P_normal )
+            ,SizeType( P_spotBegin ), SizeType( P_spotEnd )
+            ,SizeType( P_rho ), SizeType( P_sigma )
+            )
+
+    def __del__(self):
+        self.m_cargo['dll'].IceRayC_Material_Pigment_Surface_Instruction_Release( self.m_cargo['this'] )
 
 class Phong: # S( result ),                                 S( spotBegin ), S( spotEnd ), S( specular   ), S( shininess  )
     def __init__(self, P_dll, P_result, P_spotBegin, P_spotEnd, P_specular, P_shininess ):

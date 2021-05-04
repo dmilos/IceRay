@@ -18,16 +18,16 @@ import composer
 import room
 
 camera_list = {
-       'flat-perspective'          : core.camera.flat.Perspective,
-      #'flat-orthogonal'           : core.camera.flat.Orthogonal,
-      #'flat-super'                : core.camera.flat.Super,
-      #'sphere-horizontal'         : core.camera.sphere.Horizontal,
-      #'sphere-vertical'           : core.camera.sphere.Vertical,
-      #'sphere-fisheye'            : core.camera.sphere.Fisheye,
-      #'cylinder-vertical'         : core.camera.cylinder.Vertical,
-      #'cylinder-horizontal'       : core.camera.cylinder.Horizontal,
-      #'invert-cylinder-vertical'   : utility.camera.invert.CylinderVertical,
-      #'dof-perspective'  : core.camera.dof.Focus,
+       'F-persp'        : core.camera.flat.Perspective,
+      #'F-orth'         : core.camera.flat.Orthogonal,
+      #'F-super'        : core.camera.flat.Super,
+      #'S-horizontal'   : core.camera.sphere.Horizontal,
+      #'S-vertical'     : core.camera.sphere.Vertical,
+      #'S-fisheye'      : core.camera.sphere.Fisheye,
+      #'C-vertical'     : core.camera.cylinder.Vertical,
+      #'C-horizontal'   : core.camera.cylinder.Horizontal,
+      #'I-C-vertical'   : utility.camera.invert.CylinderVertical,
+      #'DOF-persp'      : core.camera.dof.Focus,
      }
 
 light_list = {
@@ -121,21 +121,23 @@ pigment_list = {
      #'pattern-onion'            : utility.material.pattern.Onion, #TODO check
      #'pattern-level'            : utility.material.pattern.Level, #TODO check
 
-     '#illum-ALP'           : utility.material.illumination.Alp,       # OK OK
+     'illum-ALP'           : utility.material.illumination.Alp,       # OK OK
      'illum-ambient'       : utility.material.illumination.Ambient,   # OK OK
-     'illum-AsDiffuse'     : utility.material.illumination.AsDiffuse,  # TODO BUG
-     'illum-AsSpecular'    : utility.material.illumination.AsSpecular, # TODO align with Ward
-     'illum-Beckmann'      : utility.material.illumination.Beckmann,  # OK OK TODO problem on terminator
+     'illum-AsDiffuse'     : utility.material.illumination.AsDiffuse, # OK OK
+     'illum-AsSpecular'    : utility.material.illumination.AsSpecular,# OK OK
+     'illum-Beckmann'      : utility.material.illumination.Beckmann,  # OK Check again  TODO problem on terminator
      'illum-Blinn'         : utility.material.illumination.Blinn,     # OK OK TODO fix color TODO problem on terminator
      'illum-Gaussian'      : utility.material.illumination.Gaussian,  # OK OK TODO problem on terminator
      'illum-HsLambert'     : utility.material.illumination.HsLambert, # OK OK TODO align with Lambert
      'illum-HsPhong'       : utility.material.illumination.HsPhong,   # OK OK TODO align with Ward
-     'illum-Lambert'       : utility.material.illumination.Lambert, #OK OK
-     'illum-OnF29'         : utility.material.illumination.OnF29,  # TODO BUG
-     'illum-OnP44'         : utility.material.illumination.OnP44,  # TODO BUG
-     'illum-OnYF'          : utility.material.illumination.OnYF,   # TODO BUG
-     'illum-Phong'         : utility.material.illumination.Phong, #OK OK
-     'illum-WardApprox'    : utility.material.illumination.WardApprox,    # OK OK TODO problem with specular point !!!
+     'illum-Lambert'       : utility.material.illumination.Lambert,   #OK OK
+     'illum-ONf29'         : utility.material.illumination.ON_f29,       # TODO in progress
+     'illum-ONf30'         : utility.material.illumination.ON_f30,       # TODO in progress
+     'illum-ONYFP'         : utility.material.illumination.ON_Fujii_Proposed,     # OK OK
+     'illum-ONYFQ'         : utility.material.illumination.ON_Fujii_Qualitative,  # OK OK
+     'illum-ON-JvO'        : utility.material.illumination.ON_Ouwerkerk,  # OK OK
+     'illum-Phong'         : utility.material.illumination.Phong,         #OK OK
+     'illum-WardApprox'    : utility.material.illumination.WardApprox,    # OK OK 
      'illum-WardIsotropic' : utility.material.illumination.WardIsotropic, # OK OK
      'illum-WardReal'      : utility.material.illumination.WardReal,      # OK OK
 
@@ -176,7 +178,7 @@ room_list = {
       #'vacuum'    : room.vacuum,
       #'plane'     : room.plane,
       #'plate'     : room.plate,
-       'cornell'   : room.cornell,
+       'CRNL'   : room.cornell,
       #'cornel'    : room.cornel_open,
       #'cornel'    : room.cornel_close
     }
@@ -268,7 +270,7 @@ config['camera'] = {}
 config['camera']['width']  = 1
 config['camera']['height'] = config['picture']['height'] / config['picture']['width']
 
-config['camera']['eye'] = IceRayPy. type.math.coord.Scalar3D(  0, 4, 0.5 )
+config['camera']['eye']  = IceRayPy. type.math.coord.Scalar3D( 0, -3, 0 )
 config['camera']['view'] = IceRayPy.type.math.coord.Scalar3D( 0, 0, 0 )
 
 config['ray-trace']={}
@@ -276,8 +278,8 @@ config['ray-trace']['depth'] = 4
 config['ray-trace']['trash'] = 1.0/10000.0
 config['ray-trace']['next'] = 17000
 config['hot'] = {}
-config['hot']['x'] = 512
-config['hot']['y'] = 403
+config['hot']['x'] = 512 #int( (1024/2048) * config['picture']['width'] )
+config['hot']['y'] = 310 #int( ( 692/2048) * config['picture']['height'] )
 
 config['window'] = {}
 config['window'] = {}
@@ -290,10 +292,18 @@ config['window']['B']['y'] = int( config['picture']['height'] * 0.836 / 0.836 )
 
 config['room'] = {}
 
-radiusX    = 4;
-radiusY    = 3;
-dilatation = 1;
+dilatation  = 1;
 
+radiusX_lo = 1;
+radiusX_hi = 2;
+
+radiusY_lo = 2;
+radiusY_hi = 2;
+
+heightHi = 2;
+heightLo = 0;
+
+print( "Hot:",  config['hot']['x'] , ",", config['hot']['y'] )
 
 for index in range( start, 360 * int( dilatation ), step ):
 
@@ -302,14 +312,13 @@ for index in range( start, 360 * int( dilatation ), step ):
     t = index / 360.0 / dilatation
     alpha = t * ( 2 * 3.1415926 )
 
-    height =     ( math.cos( 2* alpha ) + 1 )/2 ;
+    height = heightLo + ( math.sin( alpha - math.pi/2 )*0.5 + 0.5 )*( heightHi - heightLo );
+    x =  math.cos( alpha - math.pi/2 ) * ( radiusX_lo + ( radiusX_hi - radiusX_lo ) * ( (  math.sin( alpha   ) + 1 )/2) );
+    y =  math.sin( alpha - math.pi/2 ) * ( radiusY_lo + ( radiusY_hi - radiusY_lo ) * ( (  math.cos( alpha - math.pi   ) + 1 )/2) );
 
-    height = 2 * ( math.cos(    alpha ) + 1 )/2 *  height;
-
-    x =   radiusX * math.cos( alpha );
-    y = ( radiusY*( math.cos( alpha ) +1)/2 + 1 ) * math.sin( alpha );
-    config['camera']['eye']  = IceRayPy.type.math.coord.Scalar3D( x*0.8, y*0.8, height*0.8 );
+    config['camera']['eye']  = IceRayPy.type.math.coord.Scalar3D( x, y, height );
     config['camera']['view'] = IceRayPy.type.math.coord.Scalar3D( 0, 0, 0 )
-
-    print( "Index:" + str(index) + "[" + os.getcwd() + "]", flush = True  )
+    #print( math.degrees( alpha), " _ " ,  x, ",", y, ",", height, "  ", math.sqrt( x*x+ y*y ) )
+    #print( "Index:" + str(index) + "[" + os.getcwd() + "]", flush = True  )
     doRendering( config )
+

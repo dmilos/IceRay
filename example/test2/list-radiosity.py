@@ -130,9 +130,9 @@ pigment_list = {
      #'illum-HsLambert'     : utility.material.illumination.HsLambert, # TODO
      #'illum-HsPhong'       : utility.material.illumination.HsPhong,   # TODO problem on terminator
      #'illum-Lambert'       : utility.material.illumination.Lambert, #OK
-     #'illum-OnF29'         : utility.material.illumination.OnF29,  # TODO
-     #'illum-OnP44'         : utility.material.illumination.OnP44,  # TODO
-     #'illum-OnYF'          : utility.material.illumination.OnYF,   # TODO
+     #'illum-ONf29'         : utility.material.illumination.ONf29,  # TODO
+     #'illum-ONf30'         : utility.material.illumination.ONf30,  # TODO
+     #'illum-OnYF'          : utility.material.illumination.ONYF,   # TODO
      #'illum-Phong'         : utility.material.illumination.Phong, #OK
      #'illum-WardApprox'    : utility.material.illumination.WardApprox,    # TODO
      #'illum-WardIsotropic' : utility.material.illumination.WardIsotropic, # TODO

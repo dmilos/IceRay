@@ -80,24 +80,40 @@ H F( HsPhong0       )( S( result ), S( point     ), S( normal    ), S( spotBegin
   auto I_this = new Tf_this{ P_result, P_point     ,P_normal    ,P_spotBegin , P_spotEnd, P_groove, P_specular, P_shininess };
   return cpp2c( I_this );
  }
-H F( OnF29          )( S( result ), S( point     ), S( normal    ), S( spotBegin  ), S( spotEnd ), S( rho ), S( sigma ) )
+H F( ON_f29          )( S( result ), S( point     ), S( normal    ), S( spotBegin  ), S( spotEnd ), S( rho ), S( sigma ) )
  {
   typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_illumination::S_OrenNayar::GC_f29 Tf_this;
   auto I_this = new Tf_this{ P_result, P_point     ,P_normal    ,P_spotBegin , P_spotEnd, P_rho, P_sigma  };
   return cpp2c( I_this );
  }
-H F( OnP44          )( S( result ), S( point     ), S( normal    ), S( spotBegin  ), S( spotEnd ), S( A ), S( B ) )
+H F( ON_f30          )( S( result ), S( point     ), S( normal    ), S( spotBegin  ), S( spotEnd ), S( rho ), S( sigma ) )
  {
-  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_illumination::S_OrenNayar::GC_p44 Tf_this;
-  auto I_this = new Tf_this{ P_result, P_point     ,P_normal    ,P_spotBegin , P_spotEnd, P_A, P_B };
+  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_illumination::S_OrenNayar::GC_f30 Tf_this;
+  auto I_this = new Tf_this{ P_result, P_point     ,P_normal    ,P_spotBegin , P_spotEnd, P_rho, P_sigma };
   return cpp2c( I_this );
  }
-H F( OnYF           )( S( result ), S( point     ), S( normal    ), S( spotBegin  ), S( spotEnd ), S( A ), S( B ) )
+
+H F( ON_Fujii_Proposed  )( S( result ), S( point     ), S( normal    ), S( spotBegin  ), S( spotEnd ), S( A ), S( B ) )
  {
-  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_illumination::S_OrenNayar::GC_YasuhiroFujii Tf_this;
+  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_illumination::S_OrenNayar::S_Fujii::GC_proposed Tf_this;
   auto I_this = new Tf_this{ P_result, P_point     ,P_normal    ,P_spotBegin , P_spotEnd, P_A, P_B  };
   return cpp2c( I_this );
  }
+
+H F( ON_Fujii_Qualitative  )( S( result ), S( point     ), S( normal    ), S( spotBegin  ), S( spotEnd ), S( A ), S( B ) )
+ {
+  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_illumination::S_OrenNayar::S_Fujii::GC_qualitative Tf_this;
+  auto I_this = new Tf_this{ P_result, P_point     ,P_normal    ,P_spotBegin , P_spotEnd, P_A, P_B  };
+  return cpp2c( I_this );
+ }
+
+H F( ON_Ouwerkerk           )( S( result ), S( point     ), S( normal    ), S( spotBegin  ), S( spotEnd ), S( A ), S( B ) )
+ {
+  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_illumination::S_OrenNayar::GC_Ouwerkerk Tf_this;
+  auto I_this = new Tf_this{ P_result, P_point     ,P_normal    ,P_spotBegin , P_spotEnd, P_A, P_B  };
+  return cpp2c( I_this );
+ }
+
 H F( WardApprox0    )( S( result ), S( point     ), S( normal    ), S( spotBegin  ), S( spotEnd ), S( specular ), S( alphaX  ), S( alphaY ), S( direction ) )
  {
   typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_illumination::S_ward::GC_approx Tf_this;

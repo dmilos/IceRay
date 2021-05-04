@@ -311,7 +311,7 @@ surface_list = {
          #'illum-hs-phong'        : material.illumination.hs.unit.make_HSPhong,
          'illum-lambert'         : material.illumination.lambert.unit.make,
          #'illum-phong'           : material.illumination.phong.unit.make,
-         #'illum-ONp44'           : material.illumination.on.unit.make_p44,
+         #'illum-ONf30'           : material.illumination.on.unit.make_f30,
          #'illum-ONf29'           : material.illumination.on.unit.make_f29,
          #'illum-ONYF'           : material.illumination.on.unit.make_YasuhiroFujii,
          #'illum-ward-aprox'      : material.illumination.ward.unit.make_aprox,

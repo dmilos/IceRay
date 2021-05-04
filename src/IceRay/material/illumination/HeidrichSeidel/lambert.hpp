@@ -36,7 +36,7 @@
                bool F_process
                 (
                  T_color      &  P_result,
-                 T_color const&  P_light,
+                 T_color const&  P_energy,
                  T_coord const&  P_2light,
                  T_coord const&  P_normal
                  )
@@ -70,9 +70,9 @@
 
                   //I_value *= I_ln * pow( I_value, 1 );
 
-                  P_result.set( 0, I_value * M2_diffuse[0] * P_light[0] );
-                  P_result.set( 1, I_value * M2_diffuse[1] * P_light[1] );
-                  P_result.set( 2, I_value * M2_diffuse[2] * P_light[2] );
+                  P_result.set( 0,P_energy[0] * M2_diffuse[0] * I_value  );
+                  P_result.set( 1,P_energy[1] * M2_diffuse[1] * I_value  );
+                  P_result.set( 2,P_energy[2] * M2_diffuse[2] * I_value  );
 
                   return true;
                  }

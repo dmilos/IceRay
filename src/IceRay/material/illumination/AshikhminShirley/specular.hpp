@@ -37,13 +37,13 @@
                  T_color      &  P_result
                 ,T_coord const&  P_normal
                 ,T_coord const&  P_2light //!< k1
-                ,T_coord const&  P_viewer //!< k2
+                ,T_coord const&  P_2viewer //!< k2
                 ,T_coord const&  P_half
                 ,T_coord const&  P_u
                 ,T_coord const&  P_v
                )
                {
-                T_coord const& I_k = P_viewer;
+                T_coord const& I_k = P_2viewer;
 
                 T_scalar I_hu = ::math::linear::vector::dot( P_half, P_u  );
                 T_scalar I_hv = ::math::linear::vector::dot( P_half, P_v  );
@@ -52,14 +52,16 @@
                 T_scalar I_hk = ::math::linear::vector::dot( P_half, I_k  );
 
                 T_scalar I_nL = ::math::linear::vector::dot( P_normal, P_2light  );
-                T_scalar I_nV = ::math::linear::vector::dot( P_normal, P_viewer  );
-
-                T_scalar I_power  = (M2_nu * ( I_hu * I_hu) + M2_nv * ( I_hv * I_hv ) )/( T_scalar(1) - (I_hn * I_hn ) );
+                T_scalar I_nV = ::math::linear::vector::dot( P_normal, P_2viewer );
 
                 T_scalar I_c0 = sqrt( (T_scalar(1)+M2_nu)*(T_scalar(1)+M2_nv) )/( T_scalar(8) * T_scalar(math::constants::PHI) );
+
+                T_scalar I_power  = (M2_nu * ( I_hu * I_hu) + M2_nv * ( I_hv * I_hv ) )/( T_scalar(1) - (I_hn * I_hn ) );
                 T_scalar I_c1 = pow( I_hn, I_power );
+
                 T_scalar I_c2 = I_hk * std::max<T_scalar>( I_nL, I_nV );
-                T_scalar I_F  = T_scalar(1)- I_hk*I_hk*I_hk*I_hk*I_hk;
+
+                T_scalar I_F  = T_scalar(1)- I_hk;   I_F *= I_F *I_F *I_F *I_F;
 
                 T_color I_invert; ::color::operation::invert( I_invert, M2_specular );
 

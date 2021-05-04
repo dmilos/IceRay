@@ -24,9 +24,11 @@ E D H F( HsLambert0     )( S( result ), S( point     ), S( normal    ), S( spotB
 E D H F( HsNormal0      )( S( result ),                 S( normal    ),                                S( groove ) );
 E D H F( HsPhong0       )( S( result ), S( point     ), S( normal    ), S( spotBegin  ), S( spotEnd ), S( groove ), S( specular   ), S( shininess  ) );
 
-E D H F( OnF29          )( S( result ), S( point     ), S( normal    ), S( spotBegin  ), S( spotEnd ), S( rho ), S( sigma ) );
-E D H F( OnP44          )( S( result ), S( point     ), S( normal    ), S( spotBegin  ), S( spotEnd ), S( A ), S( B ) );
-E D H F( OnYF           )( S( result ), S( point     ), S( normal    ), S( spotBegin  ), S( spotEnd ), S( A ), S( B ) );
+E D H F( ON_f29               )( S( result ), S( point     ), S( normal    ), S( spotBegin  ), S( spotEnd ), S( rho ), S( sigma ) );
+E D H F( ON_f30               )( S( result ), S( point     ), S( normal    ), S( spotBegin  ), S( spotEnd ), S( rho ), S( sigma ) );
+E D H F( ON_Fujii_Proposed    )( S( result ), S( point     ), S( normal    ), S( spotBegin  ), S( spotEnd ), S( rho ), S( sigma ) );
+E D H F( ON_Fujii_Qualitative )( S( result ), S( point     ), S( normal    ), S( spotBegin  ), S( spotEnd ), S( rho ), S( sigma ) );
+E D H F( ON_Ouwerkerk         )( S( result ), S( point     ), S( normal    ), S( spotBegin  ), S( spotEnd ), S( rho ), S( sigma ) );
 
 E D H F( WardApprox0    )( S( result ), S( point     ), S( normal    ), S( spotBegin  ), S( spotEnd ), S( specular ), S( alphaX  ), S( alphaY ), S( direction ) );
 E D H F( WardIsotropic0 )( S( result ), S( point     ), S( normal    ), S( spotBegin  ), S( spotEnd ), S( specular ), S( alpha   ) );

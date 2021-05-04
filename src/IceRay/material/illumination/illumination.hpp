@@ -7,3 +7,5 @@
 #include "./illumination.hpp"
 #include "./lambert.hpp"
 #include "./phong.hpp"
+
+#include "./HeidrichSeidel/HeidrichSeidel.hpp"

@@ -34,7 +34,7 @@
 
                  enum Ee_input
                   {
-                   En_inColor_Specular = 0, En_inColor_AlphaX = 1, En_inColor_AlphaY = 2,
+                   En_inColor_Specular = 0, En_inScalar_AlphaX = 1, En_inScalar_AlphaY = 2,
                    En_inCoord_Direction = 2,
                    En_inSize_SpotBegin=0, En_inSize_SpotEnd=1,
                    En_inCoord_Point = 0, En_inCoord_Normal = 1
@@ -48,7 +48,7 @@
                    ,T_size const& P_inCoord_Point     // = 0
                    ,T_size const& P_inCoord_Normal    // = 1
                    ,T_size const& P_inSize_SpotBegin  // = 0
-                   ,T_size const& P_inSize_SpotEnd    // = 0
+                   ,T_size const& P_inSize_SpotEnd    // = 1
                    ,T_size const& P_specular          // = 0
                    ,T_size const& P_alphaX            // = 1
                    ,T_size const& P_alphaY            // = 2
@@ -57,15 +57,15 @@
                   {
                    F_input<T_coord>( En_inCoord_Point,     P_inCoord_Point     );
                    F_input<T_coord>( En_inCoord_Normal,    P_inCoord_Normal    );
-                   F_input<T_size>(   En_inSize_SpotBegin,  P_inSize_SpotBegin   );
-                   F_input<T_size>(   En_inSize_SpotEnd,    P_inSize_SpotEnd     );
+                   F_input<T_size>(  En_inSize_SpotBegin,  P_inSize_SpotBegin  );
+                   F_input<T_size>(  En_inSize_SpotEnd,    P_inSize_SpotEnd    );
 
-                   F_input<T_color>( En_inColor_Specular,  P_specular );
-                   F_input<T_color>( En_inColor_AlphaX,    P_alphaX   );
-                   F_input<T_color>( En_inColor_AlphaY,    P_alphaY   );
-                   F_input<T_coord>( En_inCoord_Direction, P_direction );
+                   F_input<T_color>(  En_inColor_Specular,  P_specular  );
+                   F_input<T_scalar>( En_inScalar_AlphaX,   P_alphaX    );
+                   F_input<T_scalar>( En_inScalar_AlphaY,   P_alphaY    );
+                   F_input<T_coord>(  En_inCoord_Direction, P_direction );
 
-                   F_output<T_color>( En_outColor_result, P_result );
+                   F_output<T_color>(  En_outColor_result, P_result );
                   }
 
                public:
@@ -73,14 +73,14 @@
                   {
                    auto const&  I_incoming = P_intersect.M_incoming;
 
-                   T_coord const& I_point      = M2_memoryCoord->Fv_load( F_input<T_coord>( En_inCoord_Point     ) );
-                   T_coord const& I_normal     = M2_memoryCoord->Fv_load( F_input<T_coord>( En_inCoord_Normal    ) );
-                   T_size         I_spotBegin  = M2_memorySize->Fv_load(  F_input<T_size>(  En_inSize_SpotBegin  ) );
-                   T_size         I_spotEnd    = M2_memorySize->Fv_load(  F_input<T_size>(  En_inSize_SpotEnd    ) );
-                   T_color const& I_specular   = M2_memoryColor->Fv_load( F_input<T_color>( En_inColor_Specular  ) );
-                   T_color const& I_alphaX     = M2_memoryColor->Fv_load( F_input<T_color>( En_inColor_AlphaX    ) );
-                   T_color const& I_alphaY     = M2_memoryColor->Fv_load( F_input<T_color>( En_inColor_AlphaY    ) );
-                   T_coord const& I_direction  = M2_memoryCoord->Fv_load( F_input<T_coord>( En_inCoord_Direction ) );
+                   T_coord const& I_point      = M2_memoryCoord->Fv_load(  F_input<T_coord>(  En_inCoord_Point     ) );
+                   T_coord const& I_normal     = M2_memoryCoord->Fv_load(  F_input<T_coord>(  En_inCoord_Normal    ) );
+                   T_size         I_spotBegin  = M2_memorySize->Fv_load(   F_input<T_size>(   En_inSize_SpotBegin  ) );
+                   T_size         I_spotEnd    = M2_memorySize->Fv_load(   F_input<T_size>(   En_inSize_SpotEnd    ) );
+                   T_color const& I_specular   = M2_memoryColor->Fv_load(  F_input<T_color>(  En_inColor_Specular  ) );
+                   T_scalar const& I_alphaX    = M2_memoryScalar->Fv_load( F_input<T_scalar>( En_inScalar_AlphaX   ) );
+                   T_scalar const& I_alphaY    = M2_memoryScalar->Fv_load( F_input<T_scalar>( En_inScalar_AlphaY   ) );
+                   T_coord const& I_direction  = M2_memoryCoord->Fv_load(  F_input<T_coord>(  En_inCoord_Direction ) );
 
                    GS_DDMRM::S_IceRay::S_material::S_illumination::S_ward::GC_real I_real( I_direction, I_specular, I_alphaX, I_alphaY );
 
@@ -116,6 +116,7 @@
 
                private:
                  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC__base<T_size>    T2_memorySize;
+                 typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC__base<T_scalar>  T2_memoryScalar;
                  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC__base<T_color >  T2_memoryColor;
                  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC__base<T_coord>   T2_memoryCoord;
                  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC__base<T_spot>    T2_memorySpot;
@@ -124,14 +125,16 @@
                  void    Fv_memory( T_memory * P_memory  )
                   {
                    F1_memory() = P_memory;
-                   M2_memorySize   = dynamic_cast<T2_memorySize * >( P_memory->F_get<T_size>(    ) );
-                   M2_memoryCoord  = dynamic_cast<T2_memoryCoord* >( P_memory->F_get( T_memory::En_coord3D ) );
-                   M2_memoryColor  = dynamic_cast<T2_memoryColor* >( P_memory->F_get<T_color>(   ) );
-                   M2_memorySpot   = dynamic_cast<T2_memorySpot * >( P_memory->F_get( T_memory::En_spot    ) );
+                   M2_memorySize   = dynamic_cast<T2_memorySize * >(  P_memory->F_get<T_size>( ) );
+                   M2_memoryScalar = dynamic_cast<T2_memoryScalar* >( P_memory->F_get<T_scalar>( ) );
+                   M2_memoryCoord  = dynamic_cast<T2_memoryCoord* >(  P_memory->F_get<T_coord>( ) );
+                   M2_memoryColor  = dynamic_cast<T2_memoryColor* >(  P_memory->F_get<T_color>( ) );
+                   M2_memorySpot   = dynamic_cast<T2_memorySpot * >(  P_memory->F_get<T_spot>( ) );
                   }
 
                private:
                  T2_memorySize     *M2_memorySize;
+                 T2_memoryScalar   *M2_memoryScalar;
                  T2_memoryColor    *M2_memoryColor;
                  T2_memoryCoord    *M2_memoryCoord;
                  T2_memorySpot     *M2_memorySpot;
