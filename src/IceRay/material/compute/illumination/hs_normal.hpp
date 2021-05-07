@@ -77,7 +77,7 @@
                  void    Fv_memory( T_memory * P_memory  )
                   {
                    F1_memory() = P_memory;
-                   M2_memoryCoord  = dynamic_cast<T2_memoryCoord* >( P_memory->F_get( T_memory::En_coord3D ) );
+                   M2_memoryCoord  = P_memory->F_get<T_coord>( );
                   }
 
                private:

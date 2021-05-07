@@ -121,7 +121,7 @@ void GC_algorithm::Fv_trace( T_color &P_color, T_ray const& P_incident )
    auto & I_accident = M2_stack.Fv_topAccident();
    auto & I_incoming = I_accident.M_incoming;
 
-    I_incoming.M_type = T2_ray::Ee_type1::En_Eye;
+    I_incoming.M_derivation = T2_ray::Ee_derivation::En_Eye;
     (T_ray&)I_incoming = P_incident;
 
    M2_allocator.F_new( I_incoming.M_state.F_chunk() ) ;
@@ -149,93 +149,92 @@ void GC_algorithm::F2_trace( T_color &P_color )
 
   while( 0 != M2_stack.Fv_occupancy() )
    {
-    auto & I_accident     = M2_stack.Fv_topAccident();
-
-    if( T_stack::T_accident::Ee_consume::En_discard == I_accident.M_consume )
+    auto & I_accident = M2_stack.Fv_topAccident();
+    auto & I_incoming = I_accident.M_incoming;
+    if( true == GI_debug )
      {
-      M2_stack.Fv_pop(); continue;
+      std::cout << std::endl;
+      std::cout << (int)I_accident.M_consume << "; ";
+      std::cout << (int)I_incoming.M_derivation << "; ";
+      std::cout << I_incoming.M_geometryID  << "; ";
+      std::cout << I_incoming.M_ior << "; ";
+      std::cout << std::endl;
      }
 
-    auto & I_incoming     = I_accident.M_incoming;
+    switch( I_accident.M_consume )
+     {
+      case( T_stack::T_accident::Ee_consume::En_discard ):
+       {
+        M2_stack.Fv_pop();
+        continue;
+       } break;
+      case( T_stack::T_accident::Ee_consume::En_spent ):
+       {
+        if( T2_ray::Ee_derivation::En_Refracted == I_incoming.M_derivation )
+         {
+          switch( I_incoming.M_hierarchy )
+           {
+            case( T2_ray::Ee_hierarchy::En_solo ):
+            case( T2_ray::Ee_hierarchy::En_back ):
+             {
+              I_jurisdiction.F_pop();
+             }break;
+             break;
+           }
+         }
+        I_accident.M_consume = T_stack::T_accident::Ee_consume::En_discard;
+        continue;
+       } break;
+      //case( T_stack::T_accident::Ee_consume::En_skip ):
+      case( T_stack::T_accident::Ee_consume::En_fresh ):
+       {
+        //++M2_statistic.M_depth[ I_incoming.M_depth ];
+        switch( I_incoming.M_derivation )
+         {
+          case( T2_ray::Ee_derivation::En_Eye        ) : ++M2_statistic.M_depth[ I_incoming.M_depth ][ (T_size)C_statistic::Ee_type::En_eye];        break;
+          case( T2_ray::Ee_derivation::En_Light      ) : ++M2_statistic.M_depth[ I_incoming.M_depth ][ (T_size)C_statistic::Ee_type::En_light];      break;
+          case( T2_ray::Ee_derivation::En_Reflected  ) : ++M2_statistic.M_depth[ I_incoming.M_depth ][ (T_size)C_statistic::Ee_type::En_reflected];  break;
+          case( T2_ray::Ee_derivation::En_Refracted  ) : ++M2_statistic.M_depth[ I_incoming.M_depth ][ (T_size)C_statistic::Ee_type::En_refracted];  break;
+          case( T2_ray::Ee_derivation::En_Teleported ) : ++M2_statistic.M_depth[ I_incoming.M_depth ][ (T_size)C_statistic::Ee_type::En_teleported]; break;
+          case( T2_ray::Ee_derivation::En_Broken     ) : ++M2_statistic.M_depth[ I_incoming.M_depth ][ (T_size)C_statistic::Ee_type::En_broken];     break;
+         }
+       } break;
+     }
 
     if( T2_ray::Ee_status::En_abanded == I_incoming.M_status )
      {
       ++M2_statistic.M_depth[ I_incoming.M_depth ][ (int)C_statistic::Ee_type::En_abanded];
-      // I_accident.M_consume = T_stack::T_accident::Ee_consume::En_discard;
-      M2_stack.Fv_pop(); continue;
+      I_accident.M_consume = T_stack::T_accident::Ee_consume::En_discard;
+      continue;
      }
-
-   if( true == GI_debug )
-    {
-     std::cout << std::endl;
-     std::cout << (int)I_accident.M_consume << "; ";
-     std::cout << (int)I_incoming.M_type << "; ";
-     std::cout << I_incoming.M_geometryID  << "; ";
-     std::cout << I_incoming.M_ior << "; ";
-     std::cout << std::endl;
-    }
-
-   if( T_stack::T_accident::Ee_consume::En_fresh == I_accident.M_consume )
-    {
-     //++M2_statistic.M_depth[ I_incoming.M_depth ];
-     switch( I_incoming.M_type )
-      {
-       case( T2_ray::Ee_type1::En_Eye        ) : ++M2_statistic.M_depth[ I_incoming.M_depth ][ (T_size)C_statistic::Ee_type::En_eye];        break;
-       case( T2_ray::Ee_type1::En_Light      ) : ++M2_statistic.M_depth[ I_incoming.M_depth ][ (T_size)C_statistic::Ee_type::En_light];      break;
-       case( T2_ray::Ee_type1::En_Reflected  ) : ++M2_statistic.M_depth[ I_incoming.M_depth ][ (T_size)C_statistic::Ee_type::En_reflected];  break;
-       case( T2_ray::Ee_type1::En_Refracted  ) : ++M2_statistic.M_depth[ I_incoming.M_depth ][ (T_size)C_statistic::Ee_type::En_refracted];  break;
-       case( T2_ray::Ee_type1::En_Teleported ) : ++M2_statistic.M_depth[ I_incoming.M_depth ][ (T_size)C_statistic::Ee_type::En_teleported]; break;
-       case( T2_ray::Ee_type1::En_Broken     ) : ++M2_statistic.M_depth[ I_incoming.M_depth ][ (T_size)C_statistic::Ee_type::En_broken];     break;
-      }
-    }
 
     if( F_depth() < I_incoming.M_depth )
      {
       ++M2_statistic.M_depth[ I_incoming.M_depth ][ (T_size)C_statistic::Ee_type::En_2deep ];
-      // I_accident.M_consume = T_stack::T_accident::Ee_consume::En_spent;
-      M2_stack.Fv_pop(); continue;
+      I_accident.M_consume = T_stack::T_accident::Ee_consume::En_discard;
+      continue;
      }
-
-    if( T_stack::T_accident::Ee_consume::En_spent == I_accident.M_consume )
-     {
-      if( T2_ray::Ee_type1::En_Refracted == I_incoming.M_type )
-       {
-        switch( I_incoming.M_hierarchy )
-          {
-           case( T2_ray::Ee_hierarchy::En_solo ):
-           case( T2_ray::Ee_hierarchy::En_back ):
-            {
-             I_jurisdiction.F_pop();
-            }break;
-           break;
-          }
-       }
-      // I_accident.M_consume = T_stack::T_accident::Ee_consume::En_discard;
-      M2_stack.Fv_pop(); continue;
-     }
-
-    I_accident.M_consume = T_stack::T_accident::Ee_consume::En_spent;
-
-
-    if( T2_ray::Ee_type1::En_Refracted == I_incoming.M_type )
-     {
-      switch( I_incoming.M_hierarchy )
-        {
-         case( T2_ray::Ee_hierarchy::En_solo ):
-         case( T2_ray::Ee_hierarchy::En_lead ):
-          {
-           I_jurisdiction.F_push( I_incoming.M_geometryID, I_incoming.M_ior );
-          }break;
-        }
-     }
-
-    M2_stack.Fv_mark();
-
     if( T2_gray( I_incoming.M_intesity ).get<0>() < F_trash() )
      {
       ++M2_statistic.M_depth[ I_incoming.M_depth ][ (int)C_statistic::Ee_type::En_under ];
+      I_accident.M_consume = T_stack::T_accident::Ee_consume::En_discard;
       continue;
      }
+
+    I_accident.M_consume = T_stack::T_accident::Ee_consume::En_spent;
+    if( T2_ray::Ee_derivation::En_Refracted == I_incoming.M_derivation )
+     {
+      switch( I_incoming.M_hierarchy )
+       {
+        case( T2_ray::Ee_hierarchy::En_solo ):
+        case( T2_ray::Ee_hierarchy::En_lead ):
+         {
+          I_jurisdiction.F_push( I_incoming.M_geometryID, I_incoming.M_ior );
+         }break;
+       }
+     }
+
+    M2_stack.Fv_mark();
 
     ++M2_statistic.M_depth[ I_incoming.M_depth ][ (int)C_statistic::Ee_type::En_traced ];
 

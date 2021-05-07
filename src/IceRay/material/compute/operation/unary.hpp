@@ -89,8 +89,8 @@
                  void    Fv_memory( T_memory * P_memory )
                   {
                    F1_memory() = P_memory;
-                   M2_memoryResult  = dynamic_cast<T2_memoryResult* >( F1_memory()->template F_get<T_result>() );
-                   M2_memoryInput   = dynamic_cast<T2_memoryInput* >(  F1_memory()->template F_get<T_input>()  );
+                   M2_memoryResult  = F1_memory()->template F_get<T_result>();
+                   M2_memoryInput   = F1_memory()->template F_get<T_input>() ;
                   }
 
                private:

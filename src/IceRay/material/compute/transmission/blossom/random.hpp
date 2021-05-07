@@ -99,8 +99,6 @@
                    ,T_scalar const& P_gauss
                   )const
                   {
-                   auto const& I_count = P_count;
-
                    T_coord I_y = P_heading.M_direction;
                    T_coord I_x; ::math::linear::vector::cross( I_x, I_y, P_normal ); ::math::linear::vector::length( I_x, T_scalar( 1 ) );
                    T_coord I_z; ::math::linear::vector::cross( I_z, I_x, I_y );      ::math::linear::vector::length( I_z, T_scalar( 1 ) );
@@ -131,8 +129,9 @@
                    ::math::linear::vector::length( I_z, I_radius );
                    I_radius *= I_radius;
 
+                   auto const& I_count = P_count;
                    T_coord I_direction;
-                   for( T_size I_index=0; I_index < P_count; ++I_index )
+                   for( T_size I_index=0; I_index < I_count; ++I_index )
                     {
                      T_coord2D I_disc2d;
                      GS_DDMRM::S_IceRay::S_utility::S_random::GF_disc2D( I_disc2d, M2_randStandard2D );
@@ -152,16 +151,16 @@
                       P_next.Fv_push();
                       auto & I_ray = P_next.Fv_top();
 
-                      I_ray.M_geometryID = P_heading.M_geometryID;
-                      I_ray.M_depth  = P_heading.M_depth;
-                      I_ray.M_origin = P_heading.M_origin;
-                      I_ray.M_state = P_heading.M_state;
-                      I_ray.M_direction = I_direction;
-                      I_ray.M_type = P_heading.M_type;
-                      I_ray.M_ior  = P_heading.M_ior;
-                      I_ray.M_intesity = P_heading.M_intesity / I_count;  //!< todo Not optimised;  P_gauss?
+                      I_ray.M_geometryID  = P_heading.M_geometryID;
+                      I_ray.M_depth       = P_heading.M_depth;
+                      I_ray.M_origin      = P_heading.M_origin;
+                      I_ray.M_state       = P_heading.M_state;
+                      I_ray.M_direction   = I_direction;
+                      I_ray.M_derivation  = P_heading.M_derivation;
+                      I_ray.M_ior         = P_heading.M_ior;
+                      I_ray.M_intesity    = P_heading.M_intesity / I_count;  //!< todo Not optimised;  P_gauss?
                       I_ray.M_coefficient = T_scalar(1)/ I_count;     //!< todo Not optimised; P_gauss?
-                      I_ray.M_hierarchy = T_ray::Ee_hierarchy::En_solo;
+                      I_ray.M_hierarchy   = T_ray::Ee_hierarchy::En_solo;
                       //if( 0 == I_index ) I_ray.M_hierarchy = T_ray::Ee_hierarchy::En_back;
                       //if( (P_count-1) == I_index ) I_ray.M_hierarchy = T_ray::Ee_hierarchy::En_lead;
                      }
@@ -185,10 +184,10 @@
                  void    Fv_memory( T_memory * P_memory  )
                   {
                    F1_memory() = P_memory;
-                   M2_memorySize   = dynamic_cast<T2_memorySize * >( P_memory->F_get<T_size>() );
-                   M2_memoryCoord  = dynamic_cast<T2_memoryCoord* >( P_memory->F_get<T_coord>() );
-                   M2_memoryColor  = dynamic_cast<T2_memoryColor* >( P_memory->F_get<T_color>() );
-                   M2_memoryScalar = dynamic_cast<T2_memoryScalar* >( P_memory->F_get<T_scalar>() );
+                   M2_memorySize   = P_memory->F_get<T_size>();
+                   M2_memoryCoord  = P_memory->F_get<T_coord>();
+                   M2_memoryColor  = P_memory->F_get<T_color>();
+                   M2_memoryScalar = P_memory->F_get<T_scalar>();
                   }
                private:
                  T2_memorySize     *M2_memorySize;

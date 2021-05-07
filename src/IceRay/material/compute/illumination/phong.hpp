@@ -120,10 +120,10 @@
                void    Fv_memory( T_memory * P_memory  )
                 {
                  T_instruction::Fv_memory( P_memory );
-                 M2_memorySize   = dynamic_cast<T2_memorySize * >( P_memory->F_get<T_size>(    ) );
-                 M2_memoryColor  = dynamic_cast<T2_memoryColor* >( P_memory->F_get<T_color>(   ) );
+                 M2_memorySize   = P_memory->F_get<T_size>();
+                 M2_memoryColor  = P_memory->F_get<T_color>(   );
 
-                 M2_memorySpot   = dynamic_cast<T2_memorySpot * >( P_memory->F_get( T_memory::En_spot    ) );
+                 M2_memorySpot   = P_memory->F_get<T_spot>( );
                 }
 
              private:

@@ -165,9 +165,8 @@ pigment_list = {
      #'transmission-reflect-blossom-Grid'     : utility.material.transmission.blossom.Grid,     #TODO
      #'transmission-reflect-blossom-Rand'     : utility.material.transmission.blossom.Random,   #OK
      #'transmission-reflect-blossom-VDC'      : utility.material.transmission.blossom.VDC,      #OK
-      'transmission-refract-Arbitrary'        : utility.material.transmission.refract.Arbitrary,#TODO check
      #'transmission-refract-Fresnel'          : utility.material.transmission.refract.Fresnel,  #TODO
-     #'transmission-refract-Snell'            : utility.material.transmission.refract.Snell,    #OK
+     'transmission-refract-Snell'            : utility.material.transmission.refract.Snell,    #OK
      #'transmission-refract-Schlick'          : utility.material.transmission.refract.Schlick,  #OK
 }
 

@@ -34,15 +34,18 @@
            GC_intersect()
             {
              M_intersection.M_geometryID = 0;
+             M_consume = Ee_consume::En__unknown;
             }
 
          public:
 
            enum class Ee_consume
             {
-              En_discard
-             ,En_spent
-             ,En_fresh
+              En__unknown //!<< not traced
+             ,En_discard  //!<< not traced     ->()
+           //,En_skip     //!<< processed but not traced
+             ,En_spent    //!<< traced             ->( discard )
+             ,En_fresh    //!<< Wait to be processed  ->( discard, spent )
             };
 
            struct C_intersection

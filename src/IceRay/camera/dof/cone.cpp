@@ -112,7 +112,7 @@ void GC_cone::Fv_system( T_affine &P_affine, T_coord2D const& P_uv )
 
 bool GC_cone::Fv_size( T_size const& P_size )
 {
-  F1_size() = M2s_hexagon.F_index()[P_size];
+  F1_size() = M2s_hexagon.F_size()[P_size];
   M2_index = P_size;
   return true;
 }

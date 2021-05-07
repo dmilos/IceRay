@@ -3,17 +3,22 @@ print( '<' + __name__ + ' name=\'' +   __file__ + '\''+ '>' )
 import math
 import IceRayPy
 
+G_albedo = IceRayPy.type.color.RGB( 0.5, 0.5, 0.5 )
+G_angle = math.radians(45)
+G_gauss =  1
+G_count = 4
+G_countHex = 1
+G_sizeGrid = 3
 
 def Grid(
      P_dll
     ,P_config = None
-    ,P_albedo : IceRayPy.type.color.RGB = IceRayPy.type.color.RGB( 0.5, 0.5, 0.5 )
+    ,P_albedo : IceRayPy.type.color.RGB = G_albedo
     ,P_leader = 0
-    ,P_count = 8
-    ,P_angle = math.radians(180)
-    ,P_gauss = 0.5
+    ,P_size   = G_sizeGrid
+    ,P_angle  = G_angle
+    ,P_gauss  = G_gauss
     ):
-
     result     = IceRayPy.core.material.instruction.label.color.dynamic.RESULT
     point      = IceRayPy.core.material.instruction.label.coord3d.dynamic.POINT
     normal     = IceRayPy.core.material.instruction.label.coord3d.dynamic.NORMAL
@@ -29,10 +34,10 @@ def Grid(
     I_surface.append( IceRayPy.core.material.instruction.constant.Color( P_dll, P_albedo,  tempColor + 0 ) )
     I_surface.append( IceRayPy.core.material.instruction.transmission.reflect.One( P_dll, point, normal, tempColor + 0 ) )
 
-    I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, P_leader,tempSize + 0 ) )
-    I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, P_count, tempSize + 1 ) )
-    I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_angle, tempScalar + 0 ) )
-    I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_gauss, tempScalar + 1 ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, P_leader, tempSize + 0 ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, P_size,   tempSize + 1 ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_angle,  tempScalar + 0 ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_gauss,  tempScalar + 1 ) )
 
     I_surface.append( IceRayPy.core.material.instruction.transmission.blossom.Grid( P_dll, normal, tempSize+0, tempSize+1, tempScalar+0, tempScalar+1 ) )
     I_surface.append( IceRayPy.core.material.instruction.constant.Color(  P_dll, IceRayPy.type.color.RGB( 0, 0, 0 ), result ) )
@@ -43,11 +48,11 @@ def Grid(
 def Hexagon(
      P_dll
     ,P_config = None
-    ,P_albedo : IceRayPy.type.color.RGB = IceRayPy.type.color.RGB( 0.5, 0.5, 0.5 )
+    ,P_albedo : IceRayPy.type.color.RGB = G_albedo
     ,P_leader = 0
-    ,P_count = 36
-    ,P_angle = math.radians(180)
-    ,P_gauss = 0.5
+    ,P_count = G_countHex
+    ,P_angle = G_angle
+    ,P_gauss = G_gauss
     ):
 
     result     = IceRayPy.core.material.instruction.label.color.dynamic.RESULT
@@ -79,11 +84,11 @@ def Hexagon(
 def Random(
      P_dll
     ,P_config = None
-    ,P_albedo : IceRayPy.type.color.RGB = IceRayPy.type.color.RGB( 0.5, 0.5, 0.5 )
+    ,P_albedo : IceRayPy.type.color.RGB = G_albedo
     ,P_leader = 0
-    ,P_count = 64
-    ,P_angle = math.radians(180)
-    ,P_gauss = 0.5
+    ,P_count = G_count
+    ,P_angle = G_angle
+    ,P_gauss = G_gauss
     ):
     result     = IceRayPy.core.material.instruction.label.color.dynamic.RESULT
     point      = IceRayPy.core.material.instruction.label.coord3d.dynamic.POINT
@@ -114,11 +119,11 @@ def Random(
 def VDC(
      P_dll
     ,P_config = None
-    ,P_albedo : IceRayPy.type.color.RGB = IceRayPy.type.color.RGB( 0.5, 0.5, 0.5 )
+    ,P_albedo : IceRayPy.type.color.RGB = G_albedo
     ,P_leader = 0
-    ,P_count = 16
-    ,P_angle = math.radians(180)
-    ,P_gauss = 0.5
+    ,P_count = G_count
+    ,P_angle = G_angle
+    ,P_gauss = G_gauss
     ):
 
     result     = IceRayPy.core.material.instruction.label.color.dynamic.RESULT

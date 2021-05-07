@@ -64,8 +64,8 @@
                   void    Fv_memory( T_memory * P_memory )
                    {
                     F1_memory() = P_memory;
-                    M2_memorySize  = dynamic_cast<T2_memorySize* >( P_memory->template F_get<T_size>() );
-                    M2_memoryTYPE  = dynamic_cast<T2_memoryTYPE* >( P_memory->template F_get<T_type>() );
+                    M2_memorySize  = P_memory->template F_get<T_size>();
+                    M2_memoryTYPE  = P_memory->template F_get<T_type>();
                    }
 
                 private:

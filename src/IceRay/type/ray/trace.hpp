@@ -23,7 +23,7 @@
           {
            public:
 
-             enum class Ee_type1
+             enum class Ee_derivation
               {
                 En__Unknown,
                 En_Eye
@@ -31,7 +31,7 @@
                ,En_Reflected
                ,En_Refracted
                ,En_Teleported
-               ,En_Broken  //! Pass to thin object like plane. Same medium but different direction.
+               ,En_Broken      //! Pass to thin object like plane. Same medium but different direction.
               };
 
              enum class Ee_status
@@ -60,24 +60,24 @@
 
            public:
              GC_trace()
-              :GC_trace( T_simple( T_line{} ), Ee_type1::En__Unknown)
+              :GC_trace( T_simple( T_line{} ), Ee_derivation::En__Unknown)
               {
               }
 
              explicit GC_trace( T_line const& P_line )
-              :GC_trace( T_simple( P_line ), Ee_type1::En__Unknown )
+              :GC_trace( T_simple( P_line ), Ee_derivation::En__Unknown )
               {
               }
 
              explicit GC_trace( T_simple const& P_simple )
-              :GC_trace( P_simple, Ee_type1::En__Unknown )
+              :GC_trace( P_simple, Ee_derivation::En__Unknown )
               {
               }
 
-             GC_trace( T_simple const& P_simple, Ee_type1 const& P_type  )
+             GC_trace( T_simple const& P_simple, Ee_derivation const& P_derivation )
               :T_simple( P_simple )
               ,M_depth( 0 )
-              ,M_type( P_type )
+              ,M_derivation( P_derivation )
               ,M_coefficient( 1 )
               ,M_ior( 1.000277 )
               {
@@ -92,11 +92,11 @@
               }
 
            public:
-             T_size       M_depth;
-             T_uint64     M_UID;
-             Ee_type1     M_type;
-             Ee_status    M_status;
-             Ee_hierarchy M_hierarchy;
+             T_size         M_depth;
+             T_uint64       M_UID;
+             Ee_derivation  M_derivation;
+             Ee_status      M_status;
+             Ee_hierarchy   M_hierarchy;
 
              T_scalar  M_ior;
              T_scalar  M_coefficient;

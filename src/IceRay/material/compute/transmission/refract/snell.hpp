@@ -36,8 +36,9 @@
                     {
                       En_inCoord_Point  = 0
                      ,En_inCoord_Normal = 1
-                     ,En_inColor_Transparency = 0
                      ,En_inScalar_IOR   = 0
+                     ,En_inColor_Albedo = 0
+                     ,En_inColor_Transparency = 1
                      ,En_inGeometryBase   = 0
                     };
                    enum Ee_output
@@ -49,18 +50,20 @@
                  public:
                    GC_snell
                     (
-                      T_size const& P_inCoord_Point           = 0
-                     ,T_size const& P_inCoord_Normal          = 1
-                     ,T_size const& P_transparency            = 0
-                     ,T_size const& P_ior                     = 0
+                      T_size const& P_inCoord_Point           //= 0
+                     ,T_size const& P_inCoord_Normal          //= 1
+                     ,T_size const& P_ior                     //= 0
+                     ,T_size const& P_albedo                  //= 1
+                     ,T_size const& P_transparency            //= 0
                   //,T_size const& P_outSize_rayCount = 0,
                    //,T_size const& P_outRay_refracted = 1
                     )
                     {
                      F_input<T_coord>(  En_inCoord_Point,        P_inCoord_Point     );
                      F_input<T_coord>(  En_inCoord_Normal,       P_inCoord_Normal    );
-                     F_input<T_color>(  En_inColor_Transparency, P_transparency   );
                      F_input<T_scalar>( En_inScalar_IOR,         P_ior       );
+                     F_input<T_color>(  En_inColor_Albedo,       P_albedo   );
+                     F_input<T_color>(  En_inColor_Transparency, P_transparency   );
 
                    //F_output<T_size>( En_outSize_RayCount,     P_outSize_RayCount );
                    //F_output<T_ray>(  En_outRay_refracted,     P_outRay_refracted );
@@ -72,10 +75,11 @@
 
 
                      auto const&  I_incoming  = P_intersect.M_incoming;
-                     auto const&  I_intersect = P_intersect.M_intersection;
+                     auto const&  I_intersection = P_intersect.M_intersection;
                      T_coord  const& I_point         = M2_memoryCoord->Fv_load(  F_input<T_coord>(  En_inCoord_Point        ) );
                      T_coord  const& I_normal        = M2_memoryCoord->Fv_load(  F_input<T_coord>(  En_inCoord_Normal       ) );
                      T_scalar const& I_IOR           = M2_memoryScalar->Fv_load( F_input<T_scalar>( En_inScalar_IOR         ) );
+                     T_color  const& I_albedo        = M2_memoryColor->Fv_load(  F_input<T_color>(  En_inColor_Albedo       ) );
                      T_color  const& I_transparency  = M2_memoryColor->Fv_load(  F_input<T_color>(  En_inColor_Transparency ) );
 
                      T_scalar I_air   ;
@@ -99,12 +103,13 @@
                      }
 
                      P_next.Fv_push();
-                     auto &I_refracted = P_next.Fv_top();
+                     T_ray &I_refracted = P_next.Fv_top();
                      I_refracted.M_depth = I_incoming.M_depth + 1;
                      I_refracted.M_origin = I_point;
-                     I_refracted.M_state = I_intersect.M_state;
-                     I_refracted.M_geometryID = I_intersect.M_geometryID;
+                     I_refracted.M_state = I_intersection.M_state;
+                     I_refracted.M_geometryID = I_intersection.M_geometryID;
                      I_refracted.M_hierarchy = T_ray::Ee_hierarchy::En_solo;
+                     I_refracted.M_coefficient = T_scalar(1);
 
                      switch( ::math::linear::vector::refract( I_refracted.M_direction, I_incoming.M_direction, I_normal, I_air, I_watter ) )
                       {
@@ -112,23 +117,21 @@
                        case( -1 ):
                         {
                          ::math::linear::vector::reflect( I_refracted.M_direction, I_incoming.M_direction, I_normal );
-                          ::math::linear::vector::length( I_refracted.M_direction, T_scalar(1) );
-                         I_refracted.M_type = T_ray::Ee_type1::En_Reflected;
+                         ::math::linear::vector::length( I_refracted.M_direction, T_scalar(1) );
+                         ::color::operation::multiply( I_refracted.M_intesity, I_albedo, I_incoming.M_intesity );
+                         I_refracted.M_derivation = T_ray::Ee_derivation::En_Reflected;
                          I_refracted.M_ior  = I_air;
                         }break;
                        case( +1 ):
                         {
-                         I_refracted.M_type = T_ray::Ee_type1::En_Refracted;
+                         I_refracted.M_derivation = T_ray::Ee_derivation::En_Refracted;
                          I_refracted.M_ior  = I_watter;
-                         I_refracted.M_hierarchy = T_ray::Ee_hierarchy::En_solo;
+                         ::color::operation::multiply( I_refracted.M_intesity, I_transparency, I_incoming.M_intesity );
+                         ::math::linear::vector::length( I_refracted.M_direction, T_scalar(1) );
                         }break;
                       }
 
-                     ::math::linear::vector::length( I_refracted.M_direction, T_scalar(1) );
 
-                      ::color::operation::multiply( I_refracted.M_intesity, I_transparency, I_incoming.M_intesity );
-
-                     I_refracted.M_coefficient = T_scalar(1);
 
 
                      //M2_memoryRay->Fv_store( F_output()[ T_memory::En_size][ En_outRay_Rayrefracted ], I_refracted );
@@ -139,19 +142,19 @@
 
                  private:
                    typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC__base<T_size>    T2_memorySize;
+                   typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC__base<T_scalar>  T2_memoryScalar;
                    typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC__base<T_coord>   T2_memoryCoord;
                    typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC__base<T_color>   T2_memoryColor;
-                   typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC__base<T_scalar>  T2_memoryScalar;
                  //typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC__base<T_ray>     T2_memoryRay;
 
                  public:
                    void    Fv_memory( T_memory * P_memory  )
                     {
                      F1_memory() = P_memory;
-                     M2_memorySize   = dynamic_cast<T2_memorySize * >( P_memory->F_get<T_size>(    ) );
-                     M2_memoryCoord  = dynamic_cast<T2_memoryCoord* >( P_memory->F_get( T_memory::En_coord3D ) );
-                     M2_memoryColor  = dynamic_cast<T2_memoryColor* >( P_memory->F_get<T_color>(   ) );
-                     M2_memoryScalar = dynamic_cast<T2_memoryScalar* >( P_memory->F_get<T_scalar>(   ) );
+                     M2_memorySize   = P_memory->F_get<T_size>();
+                     M2_memoryScalar = P_memory->F_get<T_scalar>();
+                     M2_memoryCoord  = P_memory->F_get<T_coord>();
+                     M2_memoryColor  = P_memory->F_get<T_color>();
                    //M2_memoryRay    = dynamic_cast<T2_memoryRay  * >( P_memory->F_get( T_memory::En_ray     ) );
                     }
 

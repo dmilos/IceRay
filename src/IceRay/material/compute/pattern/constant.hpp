@@ -22,7 +22,6 @@
              : public GS_DDMRM::S_IceRay::S_material::S_compute::GC_instruction
              {
               public:
-
                 typedef N_type         T_type;
                 typedef GS_DDMRM::S_IceRay::S_material::S_compute::GC_memory   T_memory;
 
@@ -48,7 +47,11 @@
 
               public:
                 T_type    const& F_value()const{ return M2_value; }
-                bool              F_value( T_type const& P_value ){ M2_value = P_value; return bool( true ); }
+                bool              F_value( T_type const& P_value )
+                 {
+                  M2_value = P_value;
+                  return bool( true );
+                 }
               protected:
                 T_type        & F1_value(){ return M2_value; }
               private:
@@ -69,15 +72,15 @@
 
            typedef GC__model< GS_DDMRM::S_IceRay::S_type::GT_size       > GT_size;
            typedef GC__model< GS_DDMRM::S_IceRay::S_type::GT_scalar     > GT_scalar;
-           
+
            typedef GC__model< GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar2D  > GT_coord2D;
            typedef GC__model< GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar3D  > GT_coord3D;
            typedef GC__model< GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar4D  > GT_coord4D;
-           
+
            typedef GC__model< GS_DDMRM::S_IceRay::S_type::S_coord::GT_size2D  > GT_cell2D, GT_size2D;
            typedef GC__model< GS_DDMRM::S_IceRay::S_type::S_coord::GT_size3D  > GT_cell3D, GT_size3D;
            typedef GC__model< GS_DDMRM::S_IceRay::S_type::S_coord::GT_size4D  > GT_cell4D, GT_size4D;
-           
+
            typedef GC__model< GS_DDMRM::S_IceRay::S_type::S_color::GT_scalar    > GT_color;
 
           }

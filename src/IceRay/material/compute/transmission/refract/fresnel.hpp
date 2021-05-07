@@ -59,8 +59,8 @@
                     {
                      F_input<T_coord>(  En_inCoord_Point,       P_inCoord_Point      );
                      F_input<T_coord>(  En_inCoord_Normal,      P_inCoord_Normal     );
-                     F_input<T_color>(  En_inColor_Albedo,      P_albedo             );
                      F_input<T_scalar>( En_inScalar_IOR,        P_ior                );
+                     F_input<T_color>(  En_inColor_Albedo,      P_albedo             );
 
                    //F_output<T_size>( En_outSize_RayCount,     P_outSize_RayCount );
                    //F_output( T_memory::En_ray,   En_outRay_refracted,     P_outRay_refracted );
@@ -105,6 +105,28 @@
                      T_coord I_refracted;
                      switch( ::math::linear::vector::refract( I_refracted, I_incoming.M_direction, I_normal, I_air, I_watter ) )
                       {
+                       case( -1 ):
+                        {
+                         T_scalar I_s, I_r;
+                         GS_DDMRM::S_IceRay::S_material::S_transmission::GC_fresnel I_fresnel( I_air, I_watter );
+
+                         I_fresnel.F_reflectance( I_s, I_r, I_reflected, I_refracted, I_normal );
+                         T_scalar  I_reflectance = (I_s +I_r)/ T_scalar(2);
+
+                         P_next.Fv_push( );
+                         auto &I_ray = P_next.Fv_top();
+
+                         I_ray.M_geometryID = P_intersect.M_intersection.M_geometryID;
+                         I_ray.M_depth  = I_incoming.M_depth+1;
+                         I_ray.M_origin = I_point;
+                         I_ray.M_state = I_intersection.M_state;
+                         I_ray.M_direction  = I_reflected;
+                         I_ray.M_derivation = T_ray::Ee_derivation::En_Reflected;
+                         I_ray.M_hierarchy = T_ray::Ee_hierarchy::En_solo;
+                         I_ray.M_ior  = I_air;
+                         I_ray.M_intesity=  I_reflectance * I_incoming.M_intesity;
+                         I_ray.M_coefficient = I_reflectance;
+                        }break;
                        case( 0 ):
                        case( +1 ):
                         {
@@ -123,7 +145,7 @@
                           I_ray.M_origin = I_point;
                           I_ray.M_state = I_intersection.M_state;
                           I_ray.M_direction = I_refracted;
-                          I_ray.M_type = T_ray::Ee_type1::En_Refracted;
+                          I_ray.M_derivation = T_ray::Ee_derivation::En_Refracted;
                           I_ray.M_hierarchy = T_ray::Ee_hierarchy::En_solo;
                           I_ray.M_ior  = I_watter;
                           I_ray.M_intesity = I_transparency * I_incoming.M_intesity;
@@ -137,37 +159,15 @@
                           I_ray.M_origin = I_point;
                           I_ray.M_state = I_intersection.M_state;
                           I_ray.M_direction  = I_reflected;
-                          I_ray.M_type = T_ray::Ee_type1::En_Reflected;
+                          I_ray.M_derivation = T_ray::Ee_derivation::En_Reflected;
                           I_ray.M_hierarchy = T_ray::Ee_hierarchy::En_solo;
                           I_ray.M_ior  = I_air;
                           I_ray.M_intesity = I_reflectance * I_incoming.M_intesity;
                           I_ray.M_coefficient = I_reflectance;
                          }
                         } break; 
+                       }
 
-                       case( -1 ):
-                        {
-                         T_scalar I_s, I_r;
-                         GS_DDMRM::S_IceRay::S_material::S_transmission::GC_fresnel I_fresnel( I_air, I_watter );
-
-                         I_fresnel.F_reflectance( I_s, I_r, I_reflected, I_refracted, I_normal );
-                         T_scalar  I_reflectance = (I_s +I_r)/ T_scalar(2);
-
-                         P_next.Fv_push( );
-                         auto &I_ray = P_next.Fv_top();
-
-                         I_ray.M_geometryID = P_intersect.M_intersection.M_geometryID;
-                         I_ray.M_depth  = I_incoming.M_depth+1;
-                         I_ray.M_origin = I_point;
-                         I_ray.M_state = I_intersection.M_state;
-                         I_ray.M_direction  = I_reflected;
-                         I_ray.M_type = T_ray::Ee_type1::En_Reflected;
-                         I_ray.M_hierarchy = T_ray::Ee_hierarchy::En_solo;
-                         I_ray.M_ior  = I_air;
-                         I_ray.M_intesity=  I_reflectance * I_incoming.M_intesity;
-                         I_ray.M_coefficient = I_reflectance;
-                        }break;
-                      }
                      //M2_memoryRay->Fv_store( F_output()[ T_memory::En_size][ En_outRay_Rayrefracted ], I_refracted );
                      //M2_memorySize->Fv_store( F_output()[ T_memory::En_size][ En_outSize_RayCount ], 1 );
 
@@ -185,10 +185,10 @@
                    void    Fv_memory( T_memory * P_memory  )
                     {
                      F1_memory() = P_memory;
-                     M2_memorySize   = dynamic_cast<T2_memorySize * >( P_memory->F_get<T_size>(    ) );
-                     M2_memoryCoord  = dynamic_cast<T2_memoryCoord* >( P_memory->F_get( T_memory::En_coord3D ) );
-                     M2_memoryColor  = dynamic_cast<T2_memoryColor* >( P_memory->F_get<T_color>(   ) );
-                     M2_memoryScalar = dynamic_cast<T2_memoryScalar* >( P_memory->F_get<T_scalar>(   ) );
+                     M2_memorySize   = P_memory->F_get<T_size>();
+                     M2_memoryCoord  = P_memory->F_get<T_coord>();
+                     M2_memoryColor  = P_memory->F_get<T_color>();
+                     M2_memoryScalar = P_memory->F_get<T_scalar>();
                    //M2_memoryRay    = dynamic_cast<T2_memoryRay  * >( P_memory->F_get( T_memory::En_ray     ) );
                     }
 

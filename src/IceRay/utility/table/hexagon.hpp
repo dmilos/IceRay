@@ -6,6 +6,8 @@
 #include "IceRay/type/basic/size.hpp"
 #include "IceRay/type/math/coord.hpp"
 
+#include <iostream>
+#include <iomanip>
 
  namespace GS_DDMRM
   {
@@ -32,6 +34,11 @@
            public:
              bool F_init( T_size const& P_size )
               {
+               T_scalar I_epsilon = 0.000001;
+               M2_size.clear();
+               M2_radius.clear();
+               M2_spot.clear();
+
                T_size I_grid = P_size;
                T_scalar I_perimeter = I_grid/2 - 2;
                M2_spot.reserve( I_grid * I_grid );
@@ -62,28 +69,30 @@
                     }
                 );
 
-               M2_index.push_back( 0 );
-               M2_radius.push_back( 0 );
+               // TODO epsilon
 
+               M2_size.push_back( 0 );
+               M2_radius.push_back( 0 );
                for( auto const& I_spot: M2_spot )
                 {
                  auto I_radius = ::math::linear::vector::length( I_spot );
-                 if( I_radius < M2_radius.back() + 0.000001 )
+                 if( I_radius < M2_radius.back() + I_epsilon )
                   {
-                   ++M2_index.back();
+                   ++M2_size.back();
                    continue;
                   }
-                 M2_index.push_back(1+M2_index.back() );
+                 M2_size.push_back( 1+M2_size.back() );
                  M2_radius.push_back( I_radius );
+                 //std::cout<< M2_size[ M2_size.size() -2 ] << ", ";
                 }
-               //std::cout << "Max hexagon size: " << M2_index.size() << std::endl;
+               //std::cout<< std::endl << "Max hexagon size: " << M2_size.size() << std::endl;
                return true;
               }
 
            public:
-             std::vector<T_size> const& F_index()const{ return M2_index; }
+             std::vector<T_size> const& F_size()const{ return M2_size; }
            private:
-             std::vector<T_size>    M2_index;
+             std::vector<T_size>    M2_size;
            public:
              std::vector<T_scalar> const& F_radius()const{ return M2_radius; }
            private:

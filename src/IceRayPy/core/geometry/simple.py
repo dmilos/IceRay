@@ -28,7 +28,8 @@ class Sphere : #( IceRayPy.core.geometry.Generic ):
 
         if None != P_radius:
             self.radius( P_radius )
-            return
+
+        return
 
     def __del__( self ):
         self.m_cargo['dll'].IceRayC_Geometry_Release( self.m_cargo['this'] )
@@ -46,7 +47,10 @@ class Box: #( IceRayPy.core.geometry.Generic ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Geometry_Box0()
-        #self.hi( Coord3D(1,1,0) ) #TODO remove
+        if None != P_lo:
+            self.lo( P_lo )
+        if None != P_hi:
+            self.hi( P_hi )
 
     def __del__( self ):
         self.m_cargo['dll'].IceRayC_Geometry_Release( self.m_cargo['this'] )

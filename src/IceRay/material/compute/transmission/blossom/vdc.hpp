@@ -141,33 +141,31 @@
                      ::math::linear::vector::combine( I_direction, I_disc2d[0], I_x, I_height, I_y, I_disc2d[1], I_z );
                      ::math::linear::vector::length( I_direction, T_scalar( 1 ) );
 
-                      T_scalar I_check = ::math::linear::vector::dot( I_direction, P_normal );
-                      if( I_check < T_scalar(0) )
-                       {
-                        I_check = I_check;
-                        continue;
-                       }
+                     T_scalar I_check = ::math::linear::vector::dot( I_direction, P_normal );
+                     if( I_check < T_scalar(0) )
+                      {
+                       I_check = I_check;
+                       continue;
+                      }
 
                      {
-                       P_next.Fv_push();
-                       auto & I_ray = P_next.Fv_top();
+                      P_next.Fv_push();
+                      auto & I_ray = P_next.Fv_top();
 
-                       I_ray.M_geometryID = P_heading.M_geometryID;
-                       I_ray.M_depth  = P_heading.M_depth;
-                       I_ray.M_origin = P_heading.M_origin;
-                       I_ray.M_state = P_heading.M_state;
-                       I_ray.M_direction = I_direction;
-                       I_ray.M_type = P_heading.M_type;
-                       I_ray.M_ior  = P_heading.M_ior;
-                       I_ray.M_intesity = P_heading.M_intesity/ I_count;  //!< todo Not optimised
-                       I_ray.M_coefficient = T_scalar(1)/ I_count;     //!< todo Not optimised
-                       I_ray.M_hierarchy = T_ray::Ee_hierarchy::En_solo;
+                      I_ray.M_geometryID  = P_heading.M_geometryID;
+                      I_ray.M_depth       = P_heading.M_depth;
+                      I_ray.M_origin      = P_heading.M_origin;
+                      I_ray.M_state       = P_heading.M_state;
+                      I_ray.M_direction   = I_direction;
+                      I_ray.M_derivation  = P_heading.M_derivation;
+                      I_ray.M_ior         = P_heading.M_ior;
+                      I_ray.M_intesity    = P_heading.M_intesity / I_count;  //!< todo Not optimised;  P_gauss?
+                      I_ray.M_coefficient = T_scalar(1)/ I_count;     //!< todo Not optimised; P_gauss?
+                      I_ray.M_hierarchy   = T_ray::Ee_hierarchy::En_solo;
+                      //if( 0 == I_index ) I_ray.M_hierarchy = T_ray::Ee_hierarchy::En_back;
+                      //if( (P_count-1) == I_index ) I_ray.M_hierarchy = T_ray::Ee_hierarchy::En_lead;
                      }
-
-
-
-
-                    }
+                   }
 
                   //M2_memoryRay->Fv_store(  F_output<T_size>(En_outRay_Reflected), I_rectified );
                   //M2_memorySize->Fv_store( F_output<T_size>(En_outSize_RayCount), 1 );
@@ -187,10 +185,10 @@
                  void    Fv_memory( T_memory * P_memory  )
                   {
                    F1_memory() = P_memory;
-                   M2_memorySize   = dynamic_cast<T2_memorySize * >( P_memory->F_get<T_size>() );
-                   M2_memoryCoord  = dynamic_cast<T2_memoryCoord* >( P_memory->F_get<T_coord>() );
-                   M2_memoryColor  = dynamic_cast<T2_memoryColor* >( P_memory->F_get<T_color>() );
-                   M2_memoryScalar = dynamic_cast<T2_memoryScalar* >( P_memory->F_get<T_scalar>() );
+                   M2_memorySize   = P_memory->F_get<T_size>();
+                   M2_memoryCoord  = P_memory->F_get<T_coord>();
+                   M2_memoryColor  = P_memory->F_get<T_color>();
+                   M2_memoryScalar = P_memory->F_get<T_scalar>();
                   }
                private:
                  T2_memorySize     *M2_memorySize;

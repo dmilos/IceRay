@@ -68,8 +68,8 @@
                void    Fv_memory( T_memory * P_memory  )
                 {
                   F1_memory() = P_memory;
-                  M2_memoryScalar   = dynamic_cast<T2_memoryScalar* >( P_memory->F_get( T_memory::En_scalar   ) );
-                  M2_memoryCoord    = dynamic_cast<T2_memoryCoord * >( P_memory->F_get( T_memory::En_coord3D  ) );
+                  M2_memoryScalar   = P_memory->F_get<T_scalar>();
+                  M2_memoryCoord    = P_memory->F_get<T_coord>();
                   M2_memoryGeometry = dynamic_cast<T2_memoryGeometryDistance * >( P_memory->F_get( T_memory::En_geometryDistance ) );
                 }
 

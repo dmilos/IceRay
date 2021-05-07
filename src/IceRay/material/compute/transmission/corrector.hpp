@@ -83,8 +83,8 @@
                  void    Fv_memory( T_memory * P_memory  )
                   {
                    F1_memory() = P_memory;
-                   M2_memorySize    = dynamic_cast<T2_memorySize  *>( P_memory->F_get<T_size>()  );
-                   M2_memoryCoord   = dynamic_cast<T2_memoryCoord *>( P_memory->F_get<T_coord>() );
+                   M2_memorySize    = P_memory->F_get<T_size>();
+                   M2_memoryCoord   = P_memory->F_get<T_coord>();
                   }
                private:
                  T2_memorySize      *M2_memorySize;

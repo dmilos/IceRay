@@ -113,7 +113,7 @@
 
                      I_reflected.M_coefficient = T_scalar(1);
                      I_reflected.M_ior  = I_incoming.M_ior;
-                     I_reflected.M_type = T_ray::Ee_type1::En_Reflected;
+                     I_reflected.M_derivation = T_ray::Ee_derivation::En_Reflected;
                      I_reflected.M_geometryID = I_intersect.M_geometryID;
                      I_reflected.M_state = I_intersect.M_state;
                      I_reflected.M_hierarchy = T_ray::Ee_hierarchy::En_solo;
@@ -135,10 +135,10 @@
                    void    Fv_memory( T_memory * P_memory  )
                     {
                      F1_memory() = P_memory;
-                     M2_memorySize   = dynamic_cast<T2_memorySize * >( P_memory->F_get<T_size>(    ) );
-                     M2_memoryCoord  = dynamic_cast<T2_memoryCoord* >( P_memory->F_get( T_memory::En_coord3D ) );
-                     M2_memoryColor  = dynamic_cast<T2_memoryColor* >( P_memory->F_get<T_color>(   ) );
-                     M2_memoryScalar = dynamic_cast<T2_memoryScalar* >( P_memory->F_get<T_scalar>(   ) );
+                     M2_memorySize   = P_memory->F_get<T_size>();
+                     M2_memoryCoord  = P_memory->F_get<T_coord>();
+                     M2_memoryColor  = P_memory->F_get<T_color>();
+                     M2_memoryScalar = P_memory->F_get<T_scalar>();
                    //M2_memoryRay    = dynamic_cast<T2_memoryRay  * >( P_memory->F_get( T_memory::En_ray     ) );
                     }
 

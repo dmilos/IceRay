@@ -23,8 +23,7 @@ IceRayC__EXPORT IceRayC__DECLSPEC  H F( Corrector0)( S P_normal, S P_bump, S P_c
 IceRayC__EXPORT IceRayC__DECLSPEC  H F( Reflect_One0)( S P_point, S P_normal, S P_albedo );
 IceRayC__EXPORT IceRayC__DECLSPEC  H F( Reflect_Schlick0)( S P_point, S P_normal, S P_ior );
 
-IceRayC__EXPORT IceRayC__DECLSPEC  H F( Refract_Snell0)(     S P_point, S P_normal, S P_ior, S P_attenuation  );
-IceRayC__EXPORT IceRayC__DECLSPEC  H F( Refract_Arbitrary0)( S P_point, S P_normal, S P_ior, S P_albedo, S P_attenuation );
+IceRayC__EXPORT IceRayC__DECLSPEC  H F( Refract_Snell0)(     S P_point, S P_normal, S P_ior, S P_albedo, S P_transparency );
 IceRayC__EXPORT IceRayC__DECLSPEC  H F( Refract_Fresnel0)(   S P_point, S P_normal, S P_ior, S P_albedo );
 IceRayC__EXPORT IceRayC__DECLSPEC  H F( Refract_Schlick0)(   S P_point, S P_normal, S P_ior, S P_albedo );
 

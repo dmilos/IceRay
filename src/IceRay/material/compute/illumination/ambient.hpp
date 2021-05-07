@@ -76,7 +76,7 @@
                  void    Fv_memory( T_memory * P_memory  )
                   {
                    F1_memory() = P_memory;
-                   M2_memoryColor  = dynamic_cast<T2_memoryColor* >( P_memory->F_get<T_color>(   ) );
+                   M2_memoryColor  = P_memory->F_get<T_color>();
                   }
 
                private:

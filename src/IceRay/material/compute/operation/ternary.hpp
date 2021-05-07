@@ -90,10 +90,10 @@
                  void    Fv_memory( T_memory * P_memory )
                   {
                    F1_memory() = P_memory;
-                   M2_memoryResult  = dynamic_cast<T2_memoryResult* >( F1_memory()->template F_get<T_result    >() );
-                   M2_memoryMiddle  = dynamic_cast<T2_memoryMiddle* >( F1_memory()->template F_get<T_typeMiddle>() );
-                   M2_memoryLeft    = dynamic_cast<T2_memoryLeft  * >( F1_memory()->template F_get<T_typeLeft  >() );
-                   M2_memoryRight   = dynamic_cast<T2_memoryRight * >( F1_memory()->template F_get<T_typeRight >() );
+                   M2_memoryResult  = F1_memory()->template F_get<T_result    >();
+                   M2_memoryMiddle  = F1_memory()->template F_get<T_typeMiddle>();
+                   M2_memoryLeft    = F1_memory()->template F_get<T_typeLeft  >();
+                   M2_memoryRight   = F1_memory()->template F_get<T_typeRight >();
                   }
 
                private:

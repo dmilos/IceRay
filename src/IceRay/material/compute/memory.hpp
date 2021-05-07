@@ -210,7 +210,8 @@
                En_Ray__End = 100
               };
 
-
+              template< typename N_type >
+               using T__base = GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC__base<N_type>;
 
               typedef GS_DDMRM::S_IceRay::S_type::GT_bool               T_bool;
               typedef GS_DDMRM::S_IceRay::S_type::GT_int8               T_int8;
@@ -295,17 +296,17 @@
                }
 
               template< typename N_type >
-               T_raw   const* F_get()const
+               T__base<N_type>   const* F_get()const
                 {
                  static const T_component I_component = (T_component) C_type2component< N_type >::En_component;
-                 return M2_memory[ I_component ];
+                 return dynamic_cast< T__base<N_type> const* >( M2_memory[ I_component ] );
                 }
 
               template< typename N_type >
-               T_raw   * F_get()
+               T__base<N_type>   * F_get()
                 {
                  static const T_component I_component = (T_component) C_type2component< N_type >::En_component;
-                 return M2_memory[ I_component ];
+                 return dynamic_cast<T__base<N_type>*> ( M2_memory[ I_component ] );
                 }
 
               T_raw const* F_get( Ee_component const& P_component )const
