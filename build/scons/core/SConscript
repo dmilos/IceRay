@@ -193,10 +193,10 @@ if( False ):
 
 cc_files += [ os.path.join( 'material', 'material.cpp'    ) ]
 if( False ):
-    cc_files += [ os.path.join( 'material', 'medium',  'wrapcb.cpp'    ) ]
-    cc_files += [ os.path.join( 'material', 'compute', 'program.cpp'   ) ]
-    cc_files += [ os.path.join( 'material', 'compute', 'processor.cpp' ) ]
-    cc_files += [ os.path.join( 'material', 'compute', 'surface.cpp' ) ]
+    cc_files += [ os.path.join( 'material', 'compute',      'compute.cpp'      ) ]
+    cc_files += [ os.path.join( 'material', 'illumination', 'illumination.cpp' ) ]
+    cc_files += [ os.path.join( 'material', 'medium',       'medium.cpp'       ) ]
+    cc_files += [ os.path.join( 'material', 'pattern',      'pattern.cpp'      ) ]
 
 cc_files += [ os.path.join( 'object', 'object.cpp' ) ]
 if( False ):

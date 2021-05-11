@@ -22,9 +22,23 @@ IceRayC__EXPORT IceRayC__DECLSPEC  H F( Blossom_Hexagon0)( S P_normal, S P_leade
   return cpp2c( Ir_result );
  }
 
+IceRayC__EXPORT IceRayC__DECLSPEC  H F( Blossom_Pinwheel0)(  S P_normal, S P_leader, S P_count, S P_angle, S P_gauss )
+ {
+  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_transmission::S_blossom::GC_pinwheel    Tf_this;
+  auto Ir_result = new Tf_this{ P_normal, P_leader, P_count, P_angle, P_gauss };
+  return cpp2c( Ir_result );
+ }
+
 IceRayC__EXPORT IceRayC__DECLSPEC  H F( Blossom_Random0)(  S P_normal, S P_leader, S P_count, S P_angle, S P_gauss )
  {
   typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_transmission::S_blossom::GC_random    Tf_this;
+  auto Ir_result = new Tf_this{ P_normal, P_leader, P_count, P_angle, P_gauss };
+  return cpp2c( Ir_result );
+ }
+
+IceRayC__EXPORT IceRayC__DECLSPEC  H F( Blossom_Triangle0)(  S P_normal, S P_leader, S P_count, S P_angle, S P_gauss )
+ {
+  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_transmission::S_blossom::GC_triangle    Tf_this;
   auto Ir_result = new Tf_this{ P_normal, P_leader, P_count, P_angle, P_gauss };
   return cpp2c( Ir_result );
  }

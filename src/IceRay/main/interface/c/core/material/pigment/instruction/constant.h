@@ -1,7 +1,7 @@
 #ifndef _c719344dbb04491bab3d127f8af974e8
 #define _c719344dbb04491bab3d127f8af974e8
 
-#include "../../../type/size.h"
+#include "../../../../type/size.h"
 #include "../../../../type/color.hpp"
 #include "../../../../type/coord.h"
 

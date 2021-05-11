@@ -312,45 +312,6 @@
     <ClCompile Include="..\..\..\src\IceRay\geometry\volumetric\vacuum.cpp">
       <Filter>Source Files\src\geometry\volumetric</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\IceRay\light\all.cpp">
-      <Filter>Source Files\src\light</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\IceRay\light\area.cpp">
-      <Filter>Source Files\src\light</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\IceRay\light\basic.cpp">
-      <Filter>Source Files\src\light</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\IceRay\light\blocked.cpp">
-      <Filter>Source Files\src\light</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\IceRay\light\chandelier.cpp">
-      <Filter>Source Files\src\light</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\IceRay\light\circle.cpp">
-      <Filter>Source Files\src\light</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\IceRay\light\clipped.cpp">
-      <Filter>Source Files\src\light</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\IceRay\light\dark.cpp">
-      <Filter>Source Files\src\light</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\IceRay\light\line.cpp">
-      <Filter>Source Files\src\light</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\IceRay\light\point.cpp">
-      <Filter>Source Files\src\light</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\IceRay\light\reflector.cpp">
-      <Filter>Source Files\src\light</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\IceRay\light\sphere.cpp">
-      <Filter>Source Files\src\light</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\IceRay\light\spline.cpp">
-      <Filter>Source Files\src\light</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\IceRay\main\interface\handcode\main.cpp">
       <Filter>Source Files\src\main\interface\handcode</Filter>
     </ClCompile>
@@ -441,9 +402,6 @@
     <ClCompile Include="..\..\..\src\IceRay\camera\dof\focus.cpp">
       <Filter>Source Files\src\camera\dof</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\IceRay\light\suns.cpp">
-      <Filter>Source Files\src\light</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\IceRay\geometry\transform\identity.cpp">
       <Filter>Source Files\src\geometry\transform</Filter>
     </ClCompile>
@@ -458,6 +416,54 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\IceRay\object\object.cpp">
       <Filter>Source Files\src\object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\light\_parent.cpp">
+      <Filter>Source Files\src\light\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\light\area.cpp">
+      <Filter>Source Files\src\light\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\light\chandelier.cpp">
+      <Filter>Source Files\src\light\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\light\circle.cpp">
+      <Filter>Source Files\src\light\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\light\confine.cpp">
+      <Filter>Source Files\src\light\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\light\dark.cpp">
+      <Filter>Source Files\src\light\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\light\disc.cpp">
+      <Filter>Source Files\src\light\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\light\light.cpp">
+      <Filter>Source Files\src\light\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\light\line.cpp">
+      <Filter>Source Files\src\light\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\light\obstruct.cpp">
+      <Filter>Source Files\src\light\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\light\point.cpp">
+      <Filter>Source Files\src\light\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\light\reflector.cpp">
+      <Filter>Source Files\src\light\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\light\sphere.cpp">
+      <Filter>Source Files\src\light\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\light\spline.cpp">
+      <Filter>Source Files\src\light\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\light\sung.cpp">
+      <Filter>Source Files\src\light\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\light\suns.cpp">
+      <Filter>Source Files\src\light\type</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -764,45 +770,6 @@
     <ClInclude Include="..\..\..\src\IceRay\geometry\volumetric\vacuum.hpp">
       <Filter>Source Files\src\geometry\volumetric</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\src\IceRay\light\all.hpp">
-      <Filter>Source Files\src\light</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\src\IceRay\light\area.hpp">
-      <Filter>Source Files\src\light</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\src\IceRay\light\blocked.hpp">
-      <Filter>Source Files\src\light</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\src\IceRay\light\chandelier.hpp">
-      <Filter>Source Files\src\light</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\src\IceRay\light\circle.hpp">
-      <Filter>Source Files\src\light</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\src\IceRay\light\clipped.hpp">
-      <Filter>Source Files\src\light</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\src\IceRay\light\dark.hpp">
-      <Filter>Source Files\src\light</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\src\IceRay\light\line.hpp">
-      <Filter>Source Files\src\light</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\src\IceRay\light\point.hpp">
-      <Filter>Source Files\src\light</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\src\IceRay\light\reflector.hpp">
-      <Filter>Source Files\src\light</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\src\IceRay\light\sphere.hpp">
-      <Filter>Source Files\src\light</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\src\IceRay\light\spline.hpp">
-      <Filter>Source Files\src\light</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\src\IceRay\light\_pure.hpp">
-      <Filter>Source Files\src\light</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\src\IceRay\light\type\color.hpp">
       <Filter>Source Files\src\light\type</Filter>
     </ClInclude>
@@ -995,9 +962,6 @@
     <ClInclude Include="..\..\..\src\IceRay\material\compute\transmission\transmission.hpp">
       <Filter>Source Files\src\material\compute\transmission</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\src\IceRay\light\suns.hpp">
-      <Filter>Source Files\src\light</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\src\IceRay\geometry\transform\identity.hpp">
       <Filter>Source Files\src\geometry\transform</Filter>
     </ClInclude>
@@ -1015,6 +979,57 @@
     </ClInclude>
     <ClInclude Include="..\..\..\src\IceRay\material\compute\transmission\refract\snell.hpp">
       <Filter>Source Files\src\material\compute\transmission</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\light\_parent.hpp">
+      <Filter>Source Files\src\light\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\light\_pure.hpp">
+      <Filter>Source Files\src\light\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\light\area.hpp">
+      <Filter>Source Files\src\light\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\light\chandelier.hpp">
+      <Filter>Source Files\src\light\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\light\circle.hpp">
+      <Filter>Source Files\src\light\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\light\confine.hpp">
+      <Filter>Source Files\src\light\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\light\dark.hpp">
+      <Filter>Source Files\src\light\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\light\disc.hpp">
+      <Filter>Source Files\src\light\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\light\light.hpp">
+      <Filter>Source Files\src\light\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\light\line.hpp">
+      <Filter>Source Files\src\light\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\light\obstruct.hpp">
+      <Filter>Source Files\src\light\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\light\point.hpp">
+      <Filter>Source Files\src\light\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\light\reflector.hpp">
+      <Filter>Source Files\src\light\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\light\sphere.hpp">
+      <Filter>Source Files\src\light\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\light\spline.hpp">
+      <Filter>Source Files\src\light\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\light\sung.hpp">
+      <Filter>Source Files\src\light\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\light\suns.hpp">
+      <Filter>Source Files\src\light\type</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

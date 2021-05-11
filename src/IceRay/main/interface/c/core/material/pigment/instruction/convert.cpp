@@ -1,3 +1,4 @@
+#include "IceRay/material/compute/convert/convert.hpp"
 
 #include "./convert.hpp"
 

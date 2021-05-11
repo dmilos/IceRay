@@ -1,6 +1,6 @@
 #include "./medium.h"
 #include "../../../type/type.h"
-#include "../../type/color.hpp"
+#include "../../../type/color.hpp"
 
 #include "IceRay/material/medium/medium.hpp"
 

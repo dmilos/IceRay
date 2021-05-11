@@ -1,5 +1,4 @@
 - HField
-- medium handling
 - lights
 -- test for sphere
 - illuminations
@@ -14,3 +13,6 @@
 -- transform origin from point to line, or something else.
 --- calc point on screen. recalc direction = screen - new_origin
 - check sunLine
+- blossom has some bugs
+- rerender examples.
+- fix cornell room

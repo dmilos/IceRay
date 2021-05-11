@@ -1,11 +1,11 @@
-#ifndef Dh_DDMRM_Iceray_material_compute_transmission_blossom_grid_HPP_
- #define Dh_DDMRM_Iceray_material_compute_transmission_blossom_grid_HPP_
+#ifndef Dh_DDMRM_Iceray_material_compute_transmission_blossom_triangle_HPP_
+ #define Dh_DDMRM_Iceray_material_compute_transmission_blossom_triangle_HPP_
 
-// GS_DDMRM::S_IceRay::S_material::S_compute::S_transmission::S_blossom::GC_blossom
+// GS_DDMRM::S_IceRay::S_material::S_compute::S_transmission::S_blossom::GC_triangle
 
 #include "../../instruction.hpp"
 #include "IceRay/utility/random.hpp"
-#include "IceRay/utility/table/grid.hpp"
+#include "IceRay/utility/table/triangle.hpp"
 #include "math/geometry/deg2rad.hpp"
 
  namespace GS_DDMRM
@@ -21,7 +21,7 @@
            namespace S_blossom
             {
 
-             class GC_grid
+             class GC_triangle
               : public GS_DDMRM::S_IceRay::S_material::S_compute::GC_instruction
               {
                public:
@@ -47,13 +47,13 @@
                   };
 
                public:
-                 GC_grid
+                 GC_triangle
                   (
-                    T_size const& P_inCoord_Normal // = 1
-                   ,T_size const& P_inLeader       // = 0
-                   ,T_size const& P_inCount        // = 1
-                   ,T_size const& P_inAngle        // = 0
-                   ,T_size const& P_inGauss        // = 1
+                    T_size const& P_inCoord_Normal  //= 1
+                   ,T_size const& P_inLeader        //= 0
+                   ,T_size const& P_inCount         //= 1
+                   ,T_size const& P_inAngle         //= 0
+                   ,T_size const& P_inGauss         //= 1
                   )
                   {
                    static auto dummy = F2s_init();
@@ -92,13 +92,13 @@
 
                public:
                  T_size F_execute
-                 (
-                   T_beam        & P_next
-                  ,T_coord  const& P_normal
-                  ,T_ray    const& P_heading
-                  ,T_size   const& P_count
-                  ,T_scalar const& P_angle
-                  ,T_scalar const& P_gauss
+                  (
+                    T_beam        & P_next
+                   ,T_coord  const& P_normal
+                   ,T_ray    const& P_heading
+                   ,T_size   const& P_count
+                   ,T_scalar const& P_angle
+                   ,T_scalar const& P_gauss
                   )const
                   {
                    T_coord I_y = P_heading.M_direction;
@@ -167,7 +167,7 @@
                       //if( 0 == I_index ) I_ray.M_hierarchy = T_ray::Ee_hierarchy::En_back;
                       //if( (P_count-1) == I_index ) I_ray.M_hierarchy = T_ray::Ee_hierarchy::En_lead;
                      }
-                    }
+                   }
 
                   //M2_memoryRay->Fv_store(  F_output<T_size>(En_outRay_Reflected), I_rectified );
                   //M2_memorySize->Fv_store( F_output<T_size>(En_outSize_RayCount), 1 );
@@ -202,7 +202,7 @@
                    return true; 
                   }
                private:
-                 static GS_DDMRM::S_IceRay::S_utility::S_table::GC_grid    M2s_table;
+                 static GS_DDMRM::S_IceRay::S_utility::S_table::GC_triangle    M2s_table;
               };
 
             }

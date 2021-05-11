@@ -52,7 +52,6 @@
            public:
               void F_energy( T_color & P_color, T_coord const& P_point )const
                {
-
                 T_scalar I_distance = ::math::linear::vector::distance( P_point, F_center() );
               //P_color = M2_0 + ( M2_1 + M2_2 / I_distance ) / I_distance;
                 P_color = M2_2 / I_distance;

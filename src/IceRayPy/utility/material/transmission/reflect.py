@@ -2,6 +2,24 @@ print( '<' + __name__ + ' name=\'' +   __file__ + '\'>' )
 
 import IceRayPy
 
+
+def Mirror(
+     P_dll
+    ,P_config
+    ):
+    result     = IceRayPy.core.material.instruction.label.color.dynamic.RESULT
+    point      = IceRayPy.core.material.instruction.label.coord3d.dynamic.POINT
+    normal     = IceRayPy.core.material.instruction.label.coord3d.dynamic.NORMAL
+    tempColor  = IceRayPy.core.material.instruction.label.color.temp._BEGIN
+
+    I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
+
+    I_surface.append( IceRayPy.core.material.instruction.constant.Color(           P_dll, IceRayPy.type.color.RGB( 0, 0, 0 ), result ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Color(           P_dll, IceRayPy.type.color.RGB( 1, 1, 1 ),  tempColor + 0 ) )
+    I_surface.append( IceRayPy.core.material.instruction.transmission.reflect.One( P_dll, point, normal, tempColor + 0 ) )
+
+    return I_surface
+ 
 def One(
      P_dll
     ,P_config

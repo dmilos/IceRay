@@ -1,14 +1,11 @@
 #include "./instruction.h"
 
 #include "IceRay/material/compute/compute.hpp"
-#include "../../type/size.h"
 
-#include "../../../type/color.hpp"
-
-#include "../pattern/pattern.hpp"
-
-#include "../../../type/coord.hpp"
-#include "../../../utility/internal.hpp"
+#include "../../../../type/size.h"
+#include "../../../../type/color.hpp"
+#include "../../../../type/coord.hpp"
+// TODO #include "../../../../utility/internal.hpp"
 
 
 IceRayC_Material_Pigment_Surfcace_Instruction_Handle cpp2c( GS_DDMRM::S_IceRay::S_material::S_compute::GC_instruction * P_this )

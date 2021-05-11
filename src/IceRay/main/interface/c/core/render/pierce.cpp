@@ -1,5 +1,5 @@
-#include "./pierce.h"
 #include "./pierce.hpp"
+#include "./sheaf.hpp"
 #include "../camera/camera.hpp"
 
 #include "IceRay/render/2pierce/_pure.hpp"

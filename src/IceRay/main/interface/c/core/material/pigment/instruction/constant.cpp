@@ -1,8 +1,8 @@
-#include "IceRay/material/compute/compute.hpp"
+#include "IceRay/material/compute/pattern/constant.hpp"
 
-#include "../../../type/size.h"
-#include "../../../type/color.hpp"
-#include "../../../type/coord.hpp"
+#include "../../../../type/size.h"
+#include "../../../../type/color.hpp"
+#include "../../../../type/coord.hpp"
 
 #include "./handle.hpp"
 

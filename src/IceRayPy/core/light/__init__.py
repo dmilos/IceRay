@@ -18,11 +18,21 @@ class Spot(ctypes.Structure):
                 ,("m_c2", Color)
                 ]
 
-    def __init__( self ):
-         pass # do nothing
+    def __init__( self, P_center: Coord3D = None, P_c0 : Color = None, P_c1 :Color = None, P_c2 :Color = None ):
+        if( None != P_center ):
+           self.center( P_center )
+           
+        if( None != P_c0 ):
+           self.c0( P_c0 )
+
+        if( None != P_c1 ):
+           self.c1( P_c1 )
+
+        if( None != P_c2 ):
+           self.c2( P_c2 )
 
     def __del__( self ):
-         pass # do nothing
+        pass # do nothing
 
     def center( self, P_center : Coord3D ):
         self.m_center = P_center
@@ -37,6 +47,10 @@ class Spot(ctypes.Structure):
     def c2( self, P_c2 :Color ):
         self.m_c2 = P_c2
 
+    def c( self, P_c0 : Color, P_c1 :Color, P_c2 :Color ):
+        self.m_c0 = P_c0
+        self.m_c1 = P_c1
+        self.m_c2 = P_c2
 
 class Area:
     def __init__( self, P_dll ):
@@ -193,12 +207,12 @@ class Line:
 
 
 class Point:
-    def __init__( self, P_dll, P_center = None ):
+    def __init__( self, P_dll, P_spot: Spot = None ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Light_Point0()
-        if( None != P_center ):
-            self.center( P_center )
+        if( None != P_spot ):
+            self.spot( P_spot )
 
     def __del__( self ):
         self.m_cargo['dll'].IceRayC_Light_Release( self.m_cargo['this'] )

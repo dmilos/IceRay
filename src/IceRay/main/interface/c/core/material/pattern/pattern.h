@@ -1,7 +1,7 @@
 #ifndef _8dda9e634412443a8c4968b733b102d6
 #define _8dda9e634412443a8c4968b733b102d6
 
-#include "../../system/system.h"
+#include "../../../system/system.h"
 #include "../../../type/size.h"
 #include "../../../type/scalar.h"
 #include "../../../type/color.h"

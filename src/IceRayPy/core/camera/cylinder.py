@@ -11,6 +11,7 @@ class Horizontal:
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Camera_Cylinder_Horizontal0()
+
     def __del__(self):
         self.m_cargo['dll'].IceRayC_Camera_Release( self.m_cargo['this'] )
 

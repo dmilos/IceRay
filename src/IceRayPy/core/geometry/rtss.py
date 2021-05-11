@@ -12,11 +12,13 @@ Size3D = IceRayPy.type.math.coord.Size3D
 #Geometry = IceRayPy.core.geometry.Generic
 
 class Object:
-    def __init__( self, P_dll ):
+    def __init__( self, P_dll, P_rtss = None ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Geometry_RTSS_Object0()
         self.m_cargo['child']=[]
+        if( None != P_rtss ):
+            self.rtss( P_rtss )
 
     def __del__( self ):
         self.m_cargo['dll'].IceRayC_Geometry_Release( self.m_cargo['this'] )

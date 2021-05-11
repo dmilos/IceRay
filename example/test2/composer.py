@@ -3,6 +3,7 @@ import IceRayPy
 def arange(  P_dll
             ,P_exponat
             ,P_room
+            ,P_decoration = None
             ,P_radiator = None
             ):
 
@@ -15,6 +16,8 @@ def arange(  P_dll
     rtss.push( IceRayPy.core.geometry.Pretender( P_dll, P_room.cast2Geometry(),    P_room ) )
     rtss.push( IceRayPy.core.geometry.Pretender( P_dll, P_exponat.cast2Geometry(), P_exponat ) )
 
+    if( None != P_decoration ):
+        rtss.push( IceRayPy.core.geometry.Pretender( P_dll, P_decoration.cast2Geometry(), P_decoration ) )
     if( None != P_radiator ):
         rtss.push( IceRayPy.core.geometry.Pretender( P_dll, P_radiator.cast2Geometry(), P_radiator ) )
 

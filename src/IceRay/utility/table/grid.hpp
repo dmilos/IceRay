@@ -1,7 +1,7 @@
-#ifndef Dh_DDMRM_Iceray_utility_table_hexagon_HPP_
- #define Dh_DDMRM_Iceray_utility_table_hexagon_HPP_
+#ifndef Dh_DDMRM_Iceray_utility_table_grid_HPP_
+ #define Dh_DDMRM_Iceray_utility_table_grid_HPP_
 
- // GS_DDMRM::S_IceRay::S_utility::S_table::GC_hexagon
+ // GS_DDMRM::S_IceRay::S_utility::S_table::GC_grid
 
 #include "IceRay/type/basic/size.hpp"
 #include "IceRay/type/math/coord.hpp"
@@ -18,7 +18,7 @@
        namespace S_table
         {
 
-         class GC_hexagon
+         class GC_grid
           {
            public:
              typedef GS_DDMRM::S_IceRay::S_type::GT_size               T_size;
@@ -27,7 +27,7 @@
              typedef GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar2D  T_coord2D;
 
            public:
-             explicit GC_hexagon( T_size const& P_size = 10 )
+             explicit GC_grid( T_size const& P_size = 10 )
               {
                F_init( P_size );
               }
@@ -39,18 +39,16 @@
                M2_radius.clear();
                M2_point.clear();
 
-               T_size I_grid = P_size;
+               T_size I_grid = 2*( P_size / 2 ) +1;
                T_scalar I_perimeter = I_grid/2 - 2;
                M2_point.reserve( I_grid * I_grid );
-               T_scalar I_offset = T_scalar(1)/T_scalar(2);
-               T_scalar I_height = sqrt(T_scalar(3))/T_scalar(2);
 
                for( T_size I_v =0; I_v < I_grid; ++ I_v )
                for( T_size I_u =0; I_u < I_grid; ++ I_u )
                 {
                  T_coord2D I_spot;
-                 I_spot[0] = ( I_u - T_scalar(I_grid/2) ) + I_offset * abs( ( int(I_v) - int(I_grid/2) )%2 ) ;
-                 I_spot[1] = ( I_v - T_scalar(I_grid/2) ) *I_height ;
+                 I_spot[0] = T_scalar( I_u ) - T_scalar( I_grid /2 );
+                 I_spot[1] = T_scalar( I_v ) - T_scalar( I_grid /2 );
 
                  if( I_perimeter < ::math::linear::vector::length( I_spot ) )
                   {
@@ -85,7 +83,7 @@
                  M2_radius.push_back( I_radius );
                  //std::cout<< M2_size[ M2_size.size() -2 ] << ", ";
                 }
-               //std::cout<< std::endl << "Max hexagon size: " << M2_size.size() << std::endl;
+               //std::cout<< std::endl << "Max grid size: " << M2_size.size() << std::endl;
                return true;
               }
 

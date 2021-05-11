@@ -1,6 +1,7 @@
 #ifndef _ced3d944dea2429fa5dfd9ec844dd7a1
 #define _ced3d944dea2429fa5dfd9ec844dd7a1
 
+#include "../../../../system/system.h"
 
 struct IceRayC_Material_Pigment_Surfcace_Instruction_Struct {}; 
 typedef IceRayC_Material_Pigment_Surfcace_Instruction_Struct* IceRayC_Material_Pigment_Surfcace_Instruction_Handle;

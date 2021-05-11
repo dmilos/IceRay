@@ -1,3 +1,4 @@
+#include "./nop.hpp"
 #include "./handle.hpp"
 #include "./light.hpp"
 #include "./operation.hpp"

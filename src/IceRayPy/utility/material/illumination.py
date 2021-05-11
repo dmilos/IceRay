@@ -24,7 +24,7 @@ def Alp(
 
     I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
 
-    I_light = IceRayPy.core.light.Point( P_dll, IceRayPy.type.math.coord.Scalar3D( 0, 0, 5 ) )
+    I_light = IceRayPy.core.light.Point( P_dll, IceRayPy.core.light.Spot( IceRayPy.type.math.coord.Scalar3D( 0, 0, 5 ) ) )
     if( 'light' in P_config ):
         I_light = P_config['light']
 
@@ -82,7 +82,7 @@ def AsDiffuse(
 
     I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
 
-    I_light = IceRayPy.core.light.Point( P_dll, IceRayPy.type.math.coord.Scalar3D( 0, 0, 5 ) )
+    I_light = IceRayPy.core.light.Point( P_dll, IceRayPy.core.light.Spot( IceRayPy.type.math.coord.Scalar3D( 0, 0, 5 ) ) )
     if( 'light' in P_config ):
         I_light = P_config['light']
 
@@ -120,7 +120,7 @@ def AsSpecular(
 
     I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
 
-    I_light = IceRayPy.core.light.Point( P_dll, IceRayPy.type.math.coord.Scalar3D( 0, 0, 5 ) )
+    I_light = IceRayPy.core.light.Point( P_dll, IceRayPy.core.light.Spot( IceRayPy.type.math.coord.Scalar3D( 0, 0, 5 ) ) )
     if( 'light' in P_config ):
         I_light = P_config['light']
 
@@ -161,7 +161,7 @@ def Beckmann(
 
     I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
 
-    I_light = IceRayPy.core.light.Point( P_dll, IceRayPy.type.math.coord.Scalar3D( 0, 0, 5 ) )
+    I_light = IceRayPy.core.light.Point( P_dll, IceRayPy.core.light.Spot( IceRayPy.type.math.coord.Scalar3D( 0, 0, 5 ) ) )
     if( 'light' in P_config ):
         I_light = P_config['light']
 
@@ -202,7 +202,7 @@ def Blinn(
 
     I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
 
-    I_light = IceRayPy.core.light.Point( P_dll, IceRayPy.type.math.coord.Scalar3D( 0, 0, 5 ) )
+    I_light = IceRayPy.core.light.Point( P_dll, IceRayPy.core.light.Spot( IceRayPy.type.math.coord.Scalar3D( 0, 0, 5 ) ) )
     if( 'light' in P_config ):
         I_light = P_config['light']
 
@@ -242,7 +242,7 @@ def Gaussian(
 
     I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
 
-    I_light = IceRayPy.core.light.Point( P_dll, IceRayPy.type.math.coord.Scalar3D( 0, 0, 5 ) )
+    I_light = IceRayPy.core.light.Point( P_dll, IceRayPy.core.light.Spot( IceRayPy.type.math.coord.Scalar3D( 0, 0, 5 ) ) )
     if( 'light' in P_config ):
         I_light = P_config['light']
 
@@ -283,7 +283,7 @@ def HsLambert(
 
     I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
 
-    I_light = IceRayPy.core.light.Point( P_dll, IceRayPy.type.math.coord.Scalar3D( 0, 0, 5 ) )
+    I_light = IceRayPy.core.light.Point( P_dll, IceRayPy.core.light.Spot( IceRayPy.type.math.coord.Scalar3D( 0, 0, 5 ) ) )
     if( 'light' in P_config ):
         I_light = P_config['light']
 
@@ -321,7 +321,7 @@ def HsPhong(
 
     I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
 
-    I_light = IceRayPy.core.light.Point( P_dll, IceRayPy.type.math.coord.Scalar3D( 0, 0, 5 ) )
+    I_light = IceRayPy.core.light.Point( P_dll, IceRayPy.core.light.Spot( IceRayPy.type.math.coord.Scalar3D( 0, 0, 5 ) ) )
     if( 'light' in P_config ):
         I_light = P_config['light']
 
@@ -361,7 +361,7 @@ def Lambert(
     spotEnd   = IceRayPy.core.material.instruction.label.size.dynamic.SpotEnd
 
     I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
-    I_light = IceRayPy.core.light.Point( P_dll, IceRayPy.type.math.coord.Scalar3D( 0, 0, 5 ) )
+    I_light = IceRayPy.core.light.Point( P_dll, IceRayPy.core.light.Spot( IceRayPy.type.math.coord.Scalar3D( 0, 0, 5 ) ) )
     if( 'light' in P_config ):
         I_light = P_config['light']
 
@@ -394,7 +394,7 @@ def ON_f29(
 
     I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
 
-    I_light = IceRayPy.core.light.Point( P_dll, IceRayPy.type.math.coord.Scalar3D( 0, 0, 5 ) )
+    I_light = IceRayPy.core.light.Point( P_dll, IceRayPy.core.light.Spot( IceRayPy.type.math.coord.Scalar3D( 0, 0, 5 ) ) )
     if( 'light' in P_config ):
         I_light = P_config['light']
 
@@ -430,7 +430,7 @@ def ON_f30(
 
     I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
 
-    I_light = IceRayPy.core.light.Point( P_dll, IceRayPy.type.math.coord.Scalar3D( 0, 0, 5 ) )
+    I_light = IceRayPy.core.light.Point( P_dll, IceRayPy.core.light.Spot( IceRayPy.type.math.coord.Scalar3D( 0, 0, 5 ) ) )
     if( 'light' in P_config ):
         I_light = P_config['light']
 
@@ -468,7 +468,7 @@ def ON_Fujii_Proposed(
 
     I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
 
-    I_light = IceRayPy.core.light.Point( P_dll, IceRayPy.type.math.coord.Scalar3D( 0, 0, 5 ) )
+    I_light = IceRayPy.core.light.Point( P_dll, IceRayPy.core.light.Spot( IceRayPy.type.math.coord.Scalar3D( 0, 0, 5 ) ) )
     if( 'light' in P_config ):
         I_light = P_config['light']
 
@@ -506,7 +506,7 @@ def ON_Fujii_Qualitative(
 
     I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
 
-    I_light = IceRayPy.core.light.Point( P_dll, IceRayPy.type.math.coord.Scalar3D( 0, 0, 5 ) )
+    I_light = IceRayPy.core.light.Point( P_dll, IceRayPy.core.light.Spot( IceRayPy.type.math.coord.Scalar3D( 0, 0, 5 ) ) )
     if( 'light' in P_config ):
         I_light = P_config['light']
 
@@ -545,7 +545,7 @@ def ON_Ouwerkerk(
 
     I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
 
-    I_light = IceRayPy.core.light.Point( P_dll, IceRayPy.type.math.coord.Scalar3D( 0, 0, 5 ) )
+    I_light = IceRayPy.core.light.Point( P_dll, IceRayPy.core.light.Spot( IceRayPy.type.math.coord.Scalar3D( 0, 0, 5 ) ) )
     if( 'light' in P_config ):
         I_light = P_config['light']
 
@@ -588,7 +588,7 @@ def Phong(
 
     I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
 
-    I_light = IceRayPy.core.light.Point( P_dll, IceRayPy.type.math.coord.Scalar3D( 0, 0, 5 ) )
+    I_light = IceRayPy.core.light.Point( P_dll, IceRayPy.core.light.Spot( IceRayPy.type.math.coord.Scalar3D( 0, 0, 5 ) ) )
     if( 'light' in P_config ):
         I_light = P_config['light']
 
@@ -631,7 +631,7 @@ def WardApprox(
 
     I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
 
-    I_light = IceRayPy.core.light.Point( P_dll, IceRayPy.type.math.coord.Scalar3D( 0, 0, 5 ) )
+    I_light = IceRayPy.core.light.Point( P_dll, IceRayPy.core.light.Spot( IceRayPy.type.math.coord.Scalar3D( 0, 0, 5 ) ) )
     if( 'light' in P_config ):
         I_light = P_config['light']
 
@@ -668,7 +668,7 @@ def WardIsotropic(
 
     I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
 
-    I_light = IceRayPy.core.light.Point( P_dll, IceRayPy.type.math.coord.Scalar3D( 0, 0, 5 ) )
+    I_light = IceRayPy.core.light.Point( P_dll, IceRayPy.core.light.Spot( IceRayPy.type.math.coord.Scalar3D( 0, 0, 5 ) ) )
     if( 'light' in P_config ):
         I_light = P_config['light']
 
@@ -707,7 +707,7 @@ def WardReal(
 
     I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
 
-    I_light = IceRayPy.core.light.Point( P_dll, IceRayPy.type.math.coord.Scalar3D( 0, 0, 5 ) )
+    I_light = IceRayPy.core.light.Point( P_dll, IceRayPy.core.light.Spot( IceRayPy.type.math.coord.Scalar3D( 0, 0, 5 ) ) )
     if( 'light' in P_config ):
         I_light = P_config['light']
 

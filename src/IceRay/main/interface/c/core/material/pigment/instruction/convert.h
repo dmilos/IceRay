@@ -1,6 +1,10 @@
 #ifndef _68a061264ac04a16a22399b2d61ff8a8
 #define _68a061264ac04a16a22399b2d61ff8a8
 
+#include "../../../../system/system.h"
+#include "../../../../type/size.h"
+#include "./handle.h"
+
 #define F(D_P) IceRayC_Material_Pigment_Surface_Instruction_Convert_##D_P
 #define P(D_P) IceRayC_##D_P
 #define S(D_P) IceRayC_Type_Size P_##D_P

@@ -94,9 +94,6 @@
     <Filter Include="Source Files\src\geometry\simple">
       <UniqueIdentifier>{f903700c-85c2-4033-85d2-ba2407ab752a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\src\geometry\simple\sphere">
-      <UniqueIdentifier>{ea3fc2a7-1a09-4e3c-8b04-857a44c3d1d8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\src\geometry\spline">
       <UniqueIdentifier>{0aa97d71-462d-49b7-a9eb-275289618836}</UniqueIdentifier>
     </Filter>
@@ -465,24 +462,6 @@
     <ClInclude Include="..\..\..\src\IceRay\geometry\hfield\object-trg.hpp">
       <Filter>Source Files\src\geometry\hfiled</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\src\IceRay\geometry\rtss\_pure.hpp">
-      <Filter>Source Files\src\geometry\rtss</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\src\IceRay\geometry\rtss\list.hpp">
-      <Filter>Source Files\src\geometry\rtss</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\src\IceRay\geometry\rtss\object.hpp">
-      <Filter>Source Files\src\geometry\rtss</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\src\IceRay\geometry\rtss\rtss.hpp">
-      <Filter>Source Files\src\geometry\rtss</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\src\IceRay\geometry\rtss\rtss_list.hpp">
-      <Filter>Source Files\src\geometry\rtss</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\src\IceRay\geometry\rtss\uniform.hpp">
-      <Filter>Source Files\src\geometry\rtss</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\src\IceRay\geometry\simple\box.hpp">
       <Filter>Source Files\src\geometry\simple</Filter>
     </ClInclude>
@@ -593,6 +572,21 @@
     </ClInclude>
     <ClInclude Include="..\..\..\src\IceRay\material\compute\instruction.hpp">
       <Filter>Source Files\src\material\compute</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\rtss\_pure.hpp">
+      <Filter>Source Files\src\geometry\rtss</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\rtss\list.hpp">
+      <Filter>Source Files\src\geometry\rtss</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\rtss\object.hpp">
+      <Filter>Source Files\src\geometry\rtss</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\rtss\rtss.hpp">
+      <Filter>Source Files\src\geometry\rtss</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\geometry\rtss\uniform.hpp">
+      <Filter>Source Files\src\geometry\rtss</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -737,24 +731,6 @@
     <ClCompile Include="..\..\..\src\IceRay\geometry\hfield\hfield.cpp">
       <Filter>Source Files\src\geometry\hfiled</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\IceRay\geometry\rtss\_pure.cpp">
-      <Filter>Source Files\src\geometry\rtss</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\IceRay\geometry\rtss\list.cpp">
-      <Filter>Source Files\src\geometry\rtss</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\IceRay\geometry\rtss\object.cpp">
-      <Filter>Source Files\src\geometry\rtss</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\IceRay\geometry\rtss\rtss.cpp">
-      <Filter>Source Files\src\geometry\rtss</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\IceRay\geometry\rtss\rtss_list.cpp">
-      <Filter>Source Files\src\geometry\rtss</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\IceRay\geometry\rtss\uniform.cpp">
-      <Filter>Source Files\src\geometry\rtss</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\IceRay\geometry\simple\box.cpp">
       <Filter>Source Files\src\geometry\simple</Filter>
     </ClCompile>
@@ -847,6 +823,21 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\IceRay\material\compute\compute.cpp">
       <Filter>Source Files\src\material\compute</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\geometry\rtss\_pure.cpp">
+      <Filter>Source Files\src\geometry\rtss</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\geometry\rtss\list.cpp">
+      <Filter>Source Files\src\geometry\rtss</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\geometry\rtss\object.cpp">
+      <Filter>Source Files\src\geometry\rtss</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\geometry\rtss\rtss.cpp">
+      <Filter>Source Files\src\geometry\rtss</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\geometry\rtss\uniform.cpp">
+      <Filter>Source Files\src\geometry\rtss</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

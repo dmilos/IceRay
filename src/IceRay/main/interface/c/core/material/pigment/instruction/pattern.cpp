@@ -1,9 +1,9 @@
 
 #include "IceRay/material/compute/compute.hpp"
 
-#include "../../../type/size.h"
-#include "../../../type/coord.hpp"
-#include "../../../type/color.hpp"
+#include "../../../../type/size.h"
+#include "../../../../type/coord.hpp"
+#include "../../../../type/color.hpp"
 
 #include "../../pattern/pattern.hpp"
 

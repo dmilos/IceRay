@@ -1,7 +1,7 @@
-#ifndef Dh_DDMRM_Iceray_utility_table_hexagon_HPP_
- #define Dh_DDMRM_Iceray_utility_table_hexagon_HPP_
+#ifndef Dh_DDMRM_Iceray_utility_table_triangle_HPP_
+ #define Dh_DDMRM_Iceray_utility_table_triangle_HPP_
 
- // GS_DDMRM::S_IceRay::S_utility::S_table::GC_hexagon
+ // GS_DDMRM::S_IceRay::S_utility::S_table::GC_triangle
 
 #include "IceRay/type/basic/size.hpp"
 #include "IceRay/type/math/coord.hpp"
@@ -18,7 +18,7 @@
        namespace S_table
         {
 
-         class GC_hexagon
+         class GC_triangle
           {
            public:
              typedef GS_DDMRM::S_IceRay::S_type::GT_size               T_size;
@@ -27,13 +27,13 @@
              typedef GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar2D  T_coord2D;
 
            public:
-             explicit GC_hexagon( T_size const& P_size = 10 )
+             explicit GC_triangle( T_size const& P_size = 10 )
               {
                F_init( P_size );
               }
            public:
              bool F_init( T_size const& P_size )
-              {
+              { // TODO
                T_scalar I_epsilon = 0.000001;
                M2_size.clear();
                M2_radius.clear();
@@ -85,7 +85,7 @@
                  M2_radius.push_back( I_radius );
                  //std::cout<< M2_size[ M2_size.size() -2 ] << ", ";
                 }
-               //std::cout<< std::endl << "Max hexagon size: " << M2_size.size() << std::endl;
+               //std::cout<< std::endl << "Max triangle size: " << M2_size.size() << std::endl;
                return true;
               }
 

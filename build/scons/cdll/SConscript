@@ -96,17 +96,17 @@ cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'camera', 'camera.
 if( False ):
     pass
 
-#cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'geometry.cpp' ) ]
+#todo cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'geometry.cpp' ) ]
 if( True ):
-    cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'geometry.cpp' ) ]
-    cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'rtss.cpp' ) ]
-    cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'blobby.cpp' ) ]
+    cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'geometry.cpp'   ) ]
+    cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'rtss.cpp'       ) ]
+    cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'blobby.cpp'     ) ]
     cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'volumetric.cpp' ) ]
-    cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'transform.cpp' ) ]
-    cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'complex.cpp' ) ]
-    cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'simple.cpp'   ) ]
-    cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'flat.cpp'   ) ]
-    cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'handle.cpp'   ) ]
+    cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'transform.cpp'  ) ]
+    cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'complex.cpp'    ) ]
+    cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'simple.cpp'     ) ]
+    cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'flat.cpp'       ) ]
+    cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'handle.cpp'     ) ]
 
 cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'object', 'object.cpp' ) ]
 if( False ):
@@ -118,11 +118,34 @@ if( False ):
 
 cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'material', 'material.cpp' ) ]
 if( False ):
-    pass
+    cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'material', 'medium',  'medium.cpp'  ) ]
+    cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'material', 'pattern', 'pattern.cpp' ) ]
+
+    #cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'material', 'pigment', 'pigment.cpp' ) ]
+    if( True ):
+        cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'material', 'pigment', 'surface.cpp' ) ]
+        cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'material', 'pigment', 'handle.cpp' ) ]
+        #cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'material', 'pigment', 'instruction', 'instruction.cpp' ) ]
+        if( True ):
+            cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'material', 'pigment', 'instruction', 'constant.cpp' ) ]
+            cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'material', 'pigment', 'instruction', 'convert.cpp' ) ]
+            cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'material', 'pigment', 'instruction', 'handle.cpp' ) ]
+            cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'material', 'pigment', 'instruction', 'illumination.cpp' ) ]
+            cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'material', 'pigment', 'instruction', 'light.cpp' ) ]
+            cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'material', 'pigment', 'instruction', 'nop.cpp' ) ]
+            cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'material', 'pigment', 'instruction', 'operation.cpp' ) ]
+            cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'material', 'pigment', 'instruction', 'pattern.cpp' ) ]
+            cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'material', 'pigment', 'instruction', 'transmission.cpp' ) ]
 
 cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'render', 'render.cpp' ) ]
 if( False ):
-    pass
+    cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'render', 'engine.cpp'  ) ]
+    cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'render', 'pierce.cpp'  ) ]
+    cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'render', 'pixel.cpp'   ) ]
+    cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'render', 'ray.cpp'     ) ]
+    cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'render', 'scanner.cpp' ) ]
+    cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'render', 'sheaf.cpp'   ) ]
+
 
 cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'utility', 'utility.cpp' ) ]
 if( False ):

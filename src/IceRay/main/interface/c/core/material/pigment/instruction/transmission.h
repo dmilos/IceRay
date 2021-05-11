@@ -12,7 +12,9 @@
 
 IceRayC__EXPORT IceRayC__DECLSPEC  H F( Blossom_Grid0)(    S P_normal, S P_leader, S P_count, S P_angle, S P_gauss );
 IceRayC__EXPORT IceRayC__DECLSPEC  H F( Blossom_Hexagon0)( S P_normal, S P_leader, S P_count, S P_angle, S P_gauss );
+IceRayC__EXPORT IceRayC__DECLSPEC  H F( Blossom_Pinwheel0)(  S P_normal, S P_leader, S P_count, S P_angle, S P_gauss );
 IceRayC__EXPORT IceRayC__DECLSPEC  H F( Blossom_Random0)(  S P_normal, S P_leader, S P_count, S P_angle, S P_gauss );
+IceRayC__EXPORT IceRayC__DECLSPEC  H F( Blossom_Triangle0)(  S P_normal, S P_leader, S P_count, S P_angle, S P_gauss );
 IceRayC__EXPORT IceRayC__DECLSPEC  H F( Blossom_VDC0)(     S P_normal, S P_leader, S P_count, S P_angle, S P_gauss );
 
 IceRayC__EXPORT IceRayC__DECLSPEC  H F( Jitter_Random0)(  S P_normal, S P_begin, S P_end, S P_angle );

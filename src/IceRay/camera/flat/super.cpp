@@ -4,9 +4,9 @@ using namespace GS_DDMRM::S_IceRay::S_camera::S_flat;
 
 
 GC_super::GC_super()
- : GC_super( {0,0},{0,0}  )
+ : GC_super( {0,0},{0,0} )
  {
-}
+ }
 
 GC_super::GC_super( T_coord2D const& P_eye, T_coord2D const& P_view )
  {
@@ -34,9 +34,9 @@ GC_super::Fv_beam
 
   T_coord & I_direction = P_beam[0].M_direction;
 
-  I_direction[0] = M2_view[0] + M2_objective[0] *  P_uv[0];
+  I_direction[0] = M2_view[0] + (M2_objective[0]/T_scalar(2) ) * P_uv[0];
   I_direction[1] = M2_focus[1];
-  I_direction[2] = M2_view[1] + M2_objective[1] *  P_uv[1];
+  I_direction[2] = M2_view[1] + (M2_objective[1]/T_scalar(2) ) * P_uv[1];
 
   ::math::linear::vector::subtraction( I_direction, I_origin );
 

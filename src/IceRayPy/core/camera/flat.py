@@ -69,7 +69,7 @@ class Super:
     def __init__( self, P_dll ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
-        self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Camera_Flat_Orthogonal0()
+        self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Camera_Flat_Super0()
 
     def eye(self, P_eye : Coord3D ):
         self.m_cargo['dll'].IceRayC_Camera_Flat_Super_Eye(self.m_cargo['this'], AddresOf( P_eye ) )
