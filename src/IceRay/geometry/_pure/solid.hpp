@@ -4,7 +4,7 @@
 // GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_solid
 
 #include "./_base.hpp"
-#include "../../type/basic/bool.hpp"
+#include "IceRay/type/basic/bool.hpp"
 
 
 

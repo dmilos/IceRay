@@ -24,7 +24,7 @@
            class GC__pure
             {
              public:
-               typedef std::size_t T_size;
+               typedef GS_DDMRM::S_IceRay::S_type::GT_size T_size;
 
                virtual T_size const&  Fv_size()const=0;
                virtual bool           Fv_size( T_size const& P_size )=0;
@@ -35,7 +35,7 @@
             : public GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC__pure
             {
              public:
-               typedef std::size_t T_size;
+               typedef GS_DDMRM::S_IceRay::S_type::GT_size T_size;
 
                T_size const&  Fv_size()const{ return M2_size; }
                bool           Fv_size( T_size const& P_size ){ M2_size = P_size; return true; }

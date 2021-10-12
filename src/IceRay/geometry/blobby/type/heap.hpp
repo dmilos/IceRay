@@ -1,8 +1,8 @@
 #ifndef _DDMM_IceRAY_geometry_complex_blobby_type_heap_H_
  #define _DDMM_IceRAY_geometry_complex_blobby_type_heap_H_
 
-#include "../../../type/basic/size.hpp"
-#include "../../../type/basic/scalar.hpp"
+#include "IceRay/type/basic/size.hpp"
+#include "IceRay/type/basic/scalar.hpp"
 
 #include "./coefficient.hpp"
 

@@ -93,7 +93,6 @@
                 P_x = rand()/(T_scalar)(RAND_MAX);
                 P_y = rand()/(T_scalar)(RAND_MAX);
                }
-
            };
 
           class GC_gold1D

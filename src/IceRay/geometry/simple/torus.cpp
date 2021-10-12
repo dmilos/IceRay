@@ -91,7 +91,7 @@ bool GC_torus::Fv_intersect( T_scalar &P_lambda, T_state &P_state, T_ray const& 
 
   auto const & I_coefficient = I_general;
   std::array<T_scalar,4> I_root;
-  std::size_t I_count=0;
+  T_size I_count=0;
   switch( I_equation )
    {
     case( false ):

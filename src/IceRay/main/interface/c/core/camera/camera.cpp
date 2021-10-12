@@ -710,11 +710,11 @@ IceRayC_Camera_Handle IceRayC_Camera_DOF_Cone0()
  }
 
 IceRayC_Camera_Handle IceRayC_Camera_DOF_Cone1( IceRayC_TypeSize P_sample, IceRayC_TypeScalar P_aperture )
-{
-    typedef GS_DDMRM::S_IceRay::S_camera::GC__pure Tf__pure;
+ {
+  typedef GS_DDMRM::S_IceRay::S_camera::GC__pure Tf__pure;
     auto Ir_result = new GS_DDMRM::S_IceRay::S_camera::S_dof::GC_cone{ P_sample, P_aperture };
-    return cpp2c( Ir_result );
-}
+  return cpp2c( Ir_result );
+ }
 
 IceRayC_Camera_Handle IceRayC_Camera_DOF_Cone2( IceRayC_Camera_Handle P_child, IceRayC_TypeSize P_sample, IceRayC_TypeScalar P_aperture )
  {

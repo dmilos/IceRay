@@ -1,8 +1,8 @@
 #ifndef _DDMM_IceRAY_geometry_complex_identity_H_
  #define _DDMM_IceRAY_geometry_complex_identity_H_
 
-#include "../../type/basic/scalar.hpp"
-#include "../../type/math/coord.hpp"
+#include "IceRay/type/basic/scalar.hpp"
+#include "IceRay/type/math/coord.hpp"
 
 
 

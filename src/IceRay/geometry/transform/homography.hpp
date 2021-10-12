@@ -1,10 +1,10 @@
 #ifndef _DDMM_IceRAY_geometry_transfrom_homography_H_
  #define _DDMM_IceRAY_geometry_transfrom_homography_H_
 
-#include "../../type/basic/scalar.hpp"
-#include "../../type/math/coord.hpp"
-#include "../../type/math/matrix.hpp"
-#include "../../type/math/affine.hpp"
+#include "IceRay/type/basic/scalar.hpp"
+#include "IceRay/type/math/coord.hpp"
+#include "IceRay/type/math/matrix.hpp"
+#include "IceRay/type/math/affine.hpp"
 
 
 #include "../_pure/_base.hpp"

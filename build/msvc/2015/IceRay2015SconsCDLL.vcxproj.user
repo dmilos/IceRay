@@ -3,6 +3,11 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LocalDebuggerCommandArguments>$(SolutionDir)..\..\..\example\test2\list.py 250 1000</LocalDebuggerCommandArguments>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
-    <LocalDebuggerCommand>$(prg_python37) </LocalDebuggerCommand>
+    <LocalDebuggerCommand>$(prg_python378) </LocalDebuggerCommand>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LocalDebuggerCommandArguments>$(SolutionDir)..\..\..\example\test2\list.py 0 1</LocalDebuggerCommandArguments>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+    <LocalDebuggerCommand>$(prg_python37_x64) </LocalDebuggerCommand>
   </PropertyGroup>
 </Project>

@@ -1,7 +1,7 @@
 #ifndef _DDMM_IceRAY_geometry_utriangle_H_
  #define _DDMM_IceRAY_geometry_utriangle_H_
 
-#include "../../type/math/matrix.hpp"
+#include "IceRay/type/math/matrix.hpp"
 
 #include "../_pure/_base.hpp"
 #include "../_pure/intersect.hpp"

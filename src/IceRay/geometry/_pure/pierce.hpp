@@ -5,7 +5,7 @@
 
 #include "./intersect.hpp"
 
-#include "../../type/basic/scalar.hpp"
+#include "IceRay/type/basic/scalar.hpp"
 #include "../_type/ray.hpp"
 
 

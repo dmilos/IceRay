@@ -34,8 +34,8 @@ GC_AIFS::Fv_weight( )const
   Ir_size += M2_compartment; //<! hit
   Ir_size += M2_compartment; //<! candidate
   Ir_size += M2_compartment; //<! test subject
-  Ir_size += M2_depth * sizeof( std::size_t ) ; //<! original path
-  Ir_size += M2_depth * sizeof( std::size_t ); //<! current path
+  Ir_size += M2_depth * sizeof( T_size ) ; //<! original path
+  Ir_size += M2_depth * sizeof( T_size ); //<! current path
 
   return Ir_size;
 

@@ -1,5 +1,10 @@
 #ifndef Dh_DDMM_IceRay_type_integer_HPP_
  #define Dh_DDMM_IceRay_type_integer_HPP_
+// GS_DDMRM::S_IceRay::S_type::GT_uint8
+// GS_DDMRM::S_IceRay::S_type::GT_int8
+// GS_DDMRM::S_IceRay::S_type::GT_iint16
+// GS_DDMRM::S_IceRay::S_type::GT_uint16
+// ... ... ...
 // GS_DDMRM::S_IceRay::S_type::GT_integer
 
 

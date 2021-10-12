@@ -2,10 +2,10 @@
  #define _DDMM_IceRAY_geometry_ellipsoid_H_
  // GS_DDMRM::S_IceRay::S_geometry::GC_ellipsoid
 
-#include "../../type/basic/scalar.hpp"
-#include "../../type/math/coord.hpp"
-#include "../../type/math/matrix.hpp"
-#include "../../type/math/affine.hpp"
+#include "IceRay/type/basic/scalar.hpp"
+#include "IceRay/type/math/coord.hpp"
+#include "IceRay/type/math/matrix.hpp"
+#include "IceRay/type/math/affine.hpp"
 
 #include "../_pure/_base.hpp"
 #include "../_pure/intersect.hpp"

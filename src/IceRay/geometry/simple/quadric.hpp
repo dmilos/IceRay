@@ -3,9 +3,9 @@
 
 // GS_DDMRM::S_IceRay::S_geometr::GC_quadric
 
-#include "../../type/basic/scalar.hpp"
-#include "../../type/math/coord.hpp"
-#include "../../type/math/matrix.hpp"
+#include "IceRay/type/basic/scalar.hpp"
+#include "IceRay/type/math/coord.hpp"
+#include "IceRay/type/math/matrix.hpp"
 
 #include "../_pure/_base.hpp"
 #include "../_pure/intersect.hpp"

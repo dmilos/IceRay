@@ -6,6 +6,8 @@
 #include <cstddef>
 #include <cstdint>
 
+#include "IceRay/type/basic/size.hpp"
+#include "IceRay/type/basic/integer.hpp"
 #include "memory/allocator/chunk/managed.hpp"
 
  namespace GS_DDMRM
@@ -20,8 +22,8 @@
          class GC_state
           {
            public:
-             typedef std::size_t T_size;
-             typedef std::uint8_t T_uint8;
+             typedef GS_DDMRM::S_IceRay::S_type::GT_size  T_size;
+             typedef GS_DDMRM::S_IceRay::S_type::GT_uint8 T_uint8;
 
              typedef GS_DDMRM::S_system::S_allocator::S_chunk::GC_managed T_managed;
              typedef T_managed::T_ptr       T_ptr;

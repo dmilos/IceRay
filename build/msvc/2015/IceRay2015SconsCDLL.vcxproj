@@ -5,9 +5,17 @@
       <Configuration>Debug</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
     <ProjectConfiguration Include="Release|Win32">
       <Configuration>Release</Configuration>
       <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
@@ -269,7 +277,15 @@
     <ConfigurationType>Makefile</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Makefile</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
   </PropertyGroup>
@@ -279,7 +295,13 @@
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
@@ -293,6 +315,14 @@
     <IncludePath>../../../src;$(IncludePath)</IncludePath>
     <SourcePath>../../../src;$(SourcePath)</SourcePath>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>../../../src;$(IncludePath)</IncludePath>
+    <SourcePath>../../../src;$(SourcePath)</SourcePath>
+    <NMakeBuildCommandLine>$(prg_scons2) --directory=$(SolutionDir)/../../scons/cdll compiler:configuration=Debug architecture=x86_64</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine>$(prg_scons2) -c --directory=$(SolutionDir)/../../scons/cdll compiler:configuration=Debug architecture=x86_64</NMakeReBuildCommandLine>
+    <NMakeCleanCommandLine>$(prg_scons2) -c --directory=$(SolutionDir)/../../scons/cdll compiler:configuration=Debug architecture=x86_64</NMakeCleanCommandLine>
+    <NMakeOutput>$(SolutionDir)..\..\..\bin\IceRayCDLL-x86_64-Debug\IceRayCDLL-1.0.0.0-dynamic.dll</NMakeOutput>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)\out\bin\msvc$(MSBuildToolsVersion)-$(Configuration)-$(PROCESSOR_ARCHITECTURE)</OutDir>
@@ -301,6 +331,13 @@
     <NMakeReBuildCommandLine>$(prg_scons2) -c --directory=$(SolutionDir)/../../scons/cdll compiler:configuration=Release</NMakeReBuildCommandLine>
     <NMakeCleanCommandLine>$(prg_scons2) -c --directory=$(SolutionDir)/../../scons/cdll compiler:configuration=release</NMakeCleanCommandLine>
     <NMakeOutput>$(SolutionDir)\out\msvc$(MSBuildToolsVersion)-$(Configuration)-$(PROCESSOR_ARCHITECTURE)\test.exe</NMakeOutput>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <NMakeBuildCommandLine>$(prg_scons2) --directory=$(SolutionDir)/../../scons/cdll compiler:configuration=Release architecture=x86_64</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine>$(prg_scons2) -c --directory=$(SolutionDir)/../../scons/cdll compiler:configuration=Release architecture=x86_64</NMakeReBuildCommandLine>
+    <NMakeCleanCommandLine>$(prg_scons2) -c --directory=$(SolutionDir)/../../scons/cdll compiler:configuration=release architecture=x86_64</NMakeCleanCommandLine>
+    <NMakeOutput>$(SolutionDir)..\..\..\bin\IceRayCDLL-x86_64-release\IceRayCDLL-1.0.0.0-dynamic.dll</NMakeOutput>
+    <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

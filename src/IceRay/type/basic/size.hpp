@@ -1,6 +1,8 @@
 #ifndef Dh_DDMM_IceRay_type_size_HPP_
  #define Dh_DDMM_IceRay_type_size_HPP_
+
 // GS_DDMRM::S_IceRay::S_type::GT_size
+// GS_DDMRM::S_IceRay::S_type::GT_int
 
 
  #include <cstddef>

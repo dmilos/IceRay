@@ -6,7 +6,7 @@
 #include "../_pure/_base.hpp"
 #include "../_pure/intersect.hpp"
 #include "../_pure/cluster.hpp"
-#include "../../type/math/coord.hpp"
+#include "IceRay/type/math/coord.hpp"
 
 #include "../volumetric/vacuum.hpp"
 

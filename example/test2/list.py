@@ -34,7 +34,7 @@ camera_list = {
 
 light_list = {
         #'dark'       : core.light.Dark, # No light at all
-         'point'      : core.light.Point,
+        #'point'      : core.light.Point,
         #'reflector'  : core.light.Reflector,
         #'line'       : core.light.Line,
         #'spline'     : core.light.Spline,
@@ -69,20 +69,20 @@ medium_list = {
 
 geometry_list = {
       #'simple-sphere'       : core.geometry.simple.Sphere,
-       'simple-usphere'       : core.geometry.simple.USphere,
+      'simple-usphere'       : core.geometry.simple.USphere,
       'simple-cylinder'      : core.geometry.simple.Cylinder,
       'simple-box'           : core.geometry.simple.Box,
       'simple-plane'         : core.geometry.simple.Plane,
       'simple-torus'         : core.geometry.simple.Torus,
       'simple-cone'          : core.geometry.simple.Cone,
       'simple-disc'          : core.geometry.simple.Disc,
-      'simple-udisc'          : core.geometry.simple.UDisc,
+      'simple-udisc'         : core.geometry.simple.UDisc,
       'simple-ellipsoid'     : core.geometry.simple.Ellipsoid,
       'simple-hyperboloid'   : core.geometry.simple.Hyperboloid,
       'simple-paraboloid'    : core.geometry.simple.Paraboloid,
       'simple-quadric'       : core.geometry.simple.Quadric,
       'simple-triangle'      : core.geometry.simple.Triangle,
-      'simple-utriangle'      : core.geometry.simple.UTriangle,
+      'simple-utriangle'     : core.geometry.simple.UTriangle,
       'simple-saddle'        : core.geometry.simple.Saddle,
       'simple-ucylinder'     : core.geometry.simple.UCylinder,
       'hyper-nuke'           : utility.geometry.simple.hyperboloid.Nuke,
@@ -102,7 +102,7 @@ geometry_list = {
       #'volumetric-Vacuum'    : core.geometry.volumetric.Vacuum,
       #'volumetric-Mist'      : core.geometry.volumetric.Mist,
       #'volumetric-Smoke'     : core.geometry.volumetric.Smoke,
-      'library-1m'     : library.geometry.OneM
+      #'library-1m'     : library.geometry.OneM
       ##'library-intersect'     : library.geometry.Intersect NYI
      }
 
@@ -297,12 +297,17 @@ config['window']['B']['y'] =     int( config['picture']['height'] * 1 )
 
 config['room'] = {}
 
-if( -1 != os.getcwd().find( '2015' ) ):
-    config['dll'] = cdll.LoadLibrary(r"z:\work\code\cpp\prj\github\IceRay\work\bin\IceRayCDLL-x86-Debug\IceRayCDLL-1.0.0.0-dynamic.dll")
-    print( "DEBUG", flush = True  )
-else:
-    config['dll'] = cdll.LoadLibrary(r"z:\work\code\cpp\prj\github\IceRay\work\bin\IceRayCDLL-x86-Release\IceRayCDLL-1.0.0.0-dynamic.dll")
-    print( "Release", flush = True  )
+#if( -1 != os.getcwd().find( '2015' ) ):
+#    print( "DEBUG", flush = True  )
+#    #config['dll'] = cdll.LoadLibrary(r"z:\work\code\cpp\prj\github\IceRay\work\bin\IceRayCDLL-x86-Debug\IceRayCDLL-1.0.0.0-dynamic.dll")
+#    config['dll'] = cdll.LoadLibrary(r"z:\work\code\cpp\prj\github\IceRay\work\bin\IceRayCDLL-x86_64-Debug\IceRayCDLL-1.0.0.0-dynamic.dll")
+#else:
+#    print( "Release", flush = True  )
+#    #config['dll'] = cdll.LoadLibrary(r"z:\work\code\cpp\prj\github\IceRay\work\bin\IceRayCDLL-x86-Release\IceRayCDLL-1.0.0.0-dynamic.dll")
+#    #config['dll'] = cdll.LoadLibrary(r"z:\work\code\cpp\prj\github\IceRay\work\bin\IceRayCDLL-x86_64-release\IceRayCDLL-1.0.0.0-dynamic.dll")
+
+config['dll'] = cdll.LoadLibrary(r"z:\work\code\cpp\prj\github\IceRay\work\bin\IceRayCDLL-x86-Release\IceRayCDLL-1.0.0.0-dynamic.dll")
+#config['dll'] = cdll.LoadLibrary(r"z:\work\code\cpp\prj\github\IceRay\work\bin\IceRayCDLL-x86_64-Release\IceRayCDLL-1.0.0.0-dynamic.dll")
 
 dilatation  = 1;
 

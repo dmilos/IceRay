@@ -48,7 +48,7 @@ int IceRayC_Render_Engine_Scanner( IceRayC_Render_Engine_Handle P_this, IceRayC_
 
 int IceRayC_Render_Engine_Pixel(IceRayC_Render_Engine_Handle P_this, IceRayC_Render_Pixel_Handle P_pixel )
  {
-  auto I_this    = c2cpp(P_this);
+  auto I_this  = c2cpp(P_this);
   auto I_pixel = c2cpp(P_pixel);
   I_this-> F_pixel( I_pixel );
   return 1;
