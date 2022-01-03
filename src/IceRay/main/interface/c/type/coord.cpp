@@ -63,7 +63,7 @@ IceRayC_TypeCoordScalar4D                        cpp2c( GS_DDMRM::S_IceRay::S_ty
   I_that.value[0] = P_this[0];
   I_that.value[1] = P_this[1];
   I_that.value[2] = P_this[2];
-  I_that.value[23] = P_this[3];
+  I_that.value[3] = P_this[3];
   return I_that;
  }
 

@@ -78,8 +78,8 @@
               :T_simple( P_simple )
               ,M_depth( 0 )
               ,M_derivation( P_derivation )
-              ,M_coefficient( 1 )
               ,M_ior( 1.000277 )
+              ,M_coefficient( 1 )
               {
                M_status    = Ee_status::En_active;
                M_hierarchy = Ee_hierarchy::En_solo;

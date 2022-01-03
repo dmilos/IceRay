@@ -4,9 +4,9 @@ import IceRayPy
 
 def OneM( P_dll ):
 
-    X = 5
-    Y = 5
-    Z = 5
+    X = 40
+    Y = 40
+    Z = 40
     rtss = IceRayPy.core.geometry.rtss.Object( P_dll )
 
     rtss.rtss( IceRayPy.core.geometry.rtss.Uniform( P_dll, IceRayPy.type.math.coord.Size3D(X,Y,Z) ) )

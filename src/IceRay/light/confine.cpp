@@ -6,15 +6,15 @@ using namespace GS_DDMRM::S_IceRay::S_light;
 
 
 GC_confine::GC_confine( )
- :M2_child( nullptr )
- ,M2_hull( nullptr )
+ :M2_hull( nullptr )
+ ,M2_child( nullptr )
  ,M2_side( T_inside::En_in )
  {
  }
 
 GC_confine::GC_confine( T__pure *P_child, T_inside* P_hull )
- :M2_child( P_child )
- ,M2_hull( P_hull )
+ :M2_hull( P_hull )
+ ,M2_child( P_child )
  ,M2_side( T_inside::En_in )
  {
  }

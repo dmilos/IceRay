@@ -53,7 +53,7 @@ light_list = {
         #'sun-Circle'  : utility.light.sun.Circle,
         #'sun-Disc'    : utility.light.sun.Disc,
         #'sphere'     : utility.light.sphere.unit.make,    # TODO NYI
-         'chandelier-H'  : utility.light.chandelier.Hexa   # TODO NYI
+        'chandelier-H'  : utility.light.chandelier.Hexa   # TODO NYI
         #'chandelier-T'  : utility.light.chandelier.Tetra, # TODO NYI
         #'chandelier-O'  : utility.light.chandelier.Octa   # TODO NYI
     }
@@ -69,27 +69,27 @@ medium_list = {
 
 geometry_list = {
       #'simple-sphere'       : core.geometry.simple.Sphere,
-      'simple-usphere'       : core.geometry.simple.USphere,
-      'simple-cylinder'      : core.geometry.simple.Cylinder,
-      'simple-box'           : core.geometry.simple.Box,
-      'simple-plane'         : core.geometry.simple.Plane,
-      'simple-torus'         : core.geometry.simple.Torus,
-      'simple-cone'          : core.geometry.simple.Cone,
-      'simple-disc'          : core.geometry.simple.Disc,
-      'simple-udisc'         : core.geometry.simple.UDisc,
-      'simple-ellipsoid'     : core.geometry.simple.Ellipsoid,
-      'simple-hyperboloid'   : core.geometry.simple.Hyperboloid,
-      'simple-paraboloid'    : core.geometry.simple.Paraboloid,
-      'simple-quadric'       : core.geometry.simple.Quadric,
-      'simple-triangle'      : core.geometry.simple.Triangle,
-      'simple-utriangle'     : core.geometry.simple.UTriangle,
-      'simple-saddle'        : core.geometry.simple.Saddle,
-      'simple-ucylinder'     : core.geometry.simple.UCylinder,
-      'hyper-nuke'           : utility.geometry.simple.hyperboloid.Nuke,
-      'hyper-sphere'         : utility.geometry.simple.hyperboloid.Sphere,
-      'hyper-cone'           : utility.geometry.simple.hyperboloid.Cone,
-      'hyper-cylinder'       : utility.geometry.simple.hyperboloid.Cylinder,
-      'hyper-negative'       : utility.geometry.simple.hyperboloid.Negative,
+      #'simple-usphere'       : core.geometry.simple.USphere,
+      #'simple-cylinder'      : core.geometry.simple.Cylinder,
+      #'simple-box'           : core.geometry.simple.Box,
+      #'simple-plane'         : core.geometry.simple.Plane,
+      #'simple-torus'         : core.geometry.simple.Torus,
+      #'simple-cone'          : core.geometry.simple.Cone,
+      #'simple-disc'          : core.geometry.simple.Disc,
+      #'simple-udisc'         : core.geometry.simple.UDisc,
+      #'simple-ellipsoid'     : core.geometry.simple.Ellipsoid,
+      #'simple-hyperboloid'   : core.geometry.simple.Hyperboloid,
+      #'simple-paraboloid'    : core.geometry.simple.Paraboloid,
+      #'simple-quadric'       : core.geometry.simple.Quadric,
+      #'simple-triangle'      : core.geometry.simple.Triangle,
+      #'simple-utriangle'     : core.geometry.simple.UTriangle,
+      #'simple-saddle'        : core.geometry.simple.Saddle,
+      #'simple-ucylinder'     : core.geometry.simple.UCylinder,
+      #'hyper-nuke'           : utility.geometry.simple.hyperboloid.Nuke,
+      #'hyper-sphere'         : utility.geometry.simple.hyperboloid.Sphere,
+      #'hyper-cone'           : utility.geometry.simple.hyperboloid.Cone,
+      #'hyper-cylinder'       : utility.geometry.simple.hyperboloid.Cylinder,
+      #'hyper-negative'       : utility.geometry.simple.hyperboloid.Negative,
 
       #'complex-Intersect'    : core.geometry.complex.Intersect, #NYI
       #'complex-Enclose'      : core.geometry.complex.Enclose, #NYI
@@ -102,7 +102,7 @@ geometry_list = {
       #'volumetric-Vacuum'    : core.geometry.volumetric.Vacuum,
       #'volumetric-Mist'      : core.geometry.volumetric.Mist,
       #'volumetric-Smoke'     : core.geometry.volumetric.Smoke,
-      #'library-1m'     : library.geometry.OneM
+      'library-1m'     : library.geometry.OneM
       ##'library-intersect'     : library.geometry.Intersect NYI
      }
 
@@ -306,8 +306,8 @@ config['room'] = {}
 #    #config['dll'] = cdll.LoadLibrary(r"z:\work\code\cpp\prj\github\IceRay\work\bin\IceRayCDLL-x86-Release\IceRayCDLL-1.0.0.0-dynamic.dll")
 #    #config['dll'] = cdll.LoadLibrary(r"z:\work\code\cpp\prj\github\IceRay\work\bin\IceRayCDLL-x86_64-release\IceRayCDLL-1.0.0.0-dynamic.dll")
 
-config['dll'] = cdll.LoadLibrary(r"z:\work\code\cpp\prj\github\IceRay\work\bin\IceRayCDLL-x86-Release\IceRayCDLL-1.0.0.0-dynamic.dll")
-#config['dll'] = cdll.LoadLibrary(r"z:\work\code\cpp\prj\github\IceRay\work\bin\IceRayCDLL-x86_64-Release\IceRayCDLL-1.0.0.0-dynamic.dll")
+#config['dll'] = cdll.LoadLibrary(r"z:\work\code\cpp\prj\github\IceRay\work\bin\IceRayCDLL-x86-Release\IceRayCDLL-1.0.0.0-dynamic.dll")
+config['dll'] = cdll.LoadLibrary(r"z:\work\code\cpp\prj\github\IceRay\work\bin\IceRayCDLL-x86_64-Release\IceRayCDLL-1.0.0.0-dynamic.dll")
 
 dilatation  = 1;
 

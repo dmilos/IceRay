@@ -3,6 +3,7 @@
 #include <array>
 #include <iostream>
 #include <iomanip>
+#include <algorithm>
 
 
 #include "./torus.hpp"
