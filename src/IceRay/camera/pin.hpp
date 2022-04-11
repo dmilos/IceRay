@@ -1,1 +1,0 @@
-make camera to have eye in one point.

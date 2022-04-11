@@ -40,8 +40,8 @@ IceRayC__EXPORT IceRayC__DECLSPEC  int                   IceRayC_Camera_Cylinder
 IceRayC__EXPORT IceRayC__DECLSPEC  int                   IceRayC_Camera_Cylinder_Horizontal_Radius( IceRayC_Camera_Handle P_that, IceRayC_TypeScalar P_radius );
 
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Camera_Handle IceRayC_Camera_Cylinder_Vertical0( );
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Camera_Handle IceRayC_Camera_Cylinder_Vertical1( IceRayC_TypeScalar P_width, IceRayC_TypeScalar P_theta );
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Camera_Handle IceRayC_Camera_Cylinder_Vertical2( IceRayC_TypeScalar P_width, IceRayC_TypeScalar P_theta, IceRayC_TypeScalar P_radius );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Camera_Handle IceRayC_Camera_Cylinder_Vertical1( IceRayC_TypeScalar P_height, IceRayC_TypeScalar P_theta );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Camera_Handle IceRayC_Camera_Cylinder_Vertical2( IceRayC_TypeScalar P_height, IceRayC_TypeScalar P_theta, IceRayC_TypeScalar P_radius );
 IceRayC__EXPORT IceRayC__DECLSPEC  int                   IceRayC_Camera_Cylinder_Vertical_Phi(    IceRayC_Camera_Handle P_that, IceRayC_TypeScalar P_phi );
 IceRayC__EXPORT IceRayC__DECLSPEC  int                   IceRayC_Camera_Cylinder_Vertical_Height( IceRayC_Camera_Handle P_that, IceRayC_TypeScalar P_height );
 IceRayC__EXPORT IceRayC__DECLSPEC  int                   IceRayC_Camera_Cylinder_Vertical_Radius( IceRayC_Camera_Handle P_that, IceRayC_TypeScalar P_radius );
@@ -100,5 +100,9 @@ IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Camera_Handle IceRayC_Camera_Transfor
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Camera_Handle IceRayC_Camera_Transform_Invert1( IceRayC_Camera_Handle P_child );
 IceRayC__EXPORT IceRayC__DECLSPEC  int                   IceRayC_Camera_Transform_Invert_Child( IceRayC_Camera_Handle P_that, IceRayC_Camera_Handle P_child );
 
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Camera_Handle IceRayC_Camera_Transform_Pin0();
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Camera_Handle IceRayC_Camera_Transform_Pin1( IceRayC_Camera_Handle P_child );
+IceRayC__EXPORT IceRayC__DECLSPEC  int                   IceRayC_Camera_Transform_Pin_Child( IceRayC_Camera_Handle P_that, IceRayC_Camera_Handle P_child );
+IceRayC__EXPORT IceRayC__DECLSPEC  int                   IceRayC_Camera_Transform_Pin_Origin( IceRayC_Camera_Handle P_that, IceRayC_Type_Coord_Scalar3D * P_origin );
 
 #endif

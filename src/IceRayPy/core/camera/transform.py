@@ -14,6 +14,27 @@ Integer  = IceRayPy.type.basic.Integer
 Coord3D  = IceRayPy.type.math.coord.Scalar3D
 Affine3D = IceRayPy.type.math.affine.Scalar3D
 
+
+class Pin:
+    def __init__( self, P_dll, P_child = None ):
+        self.m_cargo={}
+        self.m_cargo['dll']= P_dll
+        self.m_cargo['child']= {}
+        self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Camera_Transform_Pin0()
+
+        if( None != P_child ):
+            self.chid( P_child )
+
+    def __del__( self ):
+        self.m_cargo['dll'].IceRayC_Camera_Release( self.m_cargo['this'] )
+
+    def child( self, P_child ):
+        self.m_cargo['child'] = P_child
+        self.m_cargo['dll'].IceRayC_Camera_Transform_Pin_Child(self.m_cargo['this'], P_child.m_cargo['this'] )
+
+    def origin( self, P_origin : Coord3D ):
+        self.m_cargo['dll'].IceRayC_Camera_Transform_Pin_Origin( self.m_cargo['this'], AddresOf( P_origin ) )
+
 class Invert:
     def __init__( self, P_dll, P_child = None ):
         self.m_cargo={}
@@ -28,8 +49,8 @@ class Invert:
         self.m_cargo['dll'].IceRayC_Camera_Release( self.m_cargo['this'] )
 
     def child( self, P_child ):
-        self.m_cargo['dll'].IceRayC_Camera_Transform_Invert_Child(self.m_cargo['this'], P_child.m_cargo['this'] )
         self.m_cargo['child'] = P_child
+        self.m_cargo['dll'].IceRayC_Camera_Transform_Invert_Child(self.m_cargo['this'], P_child.m_cargo['this'] )
 
 class Affine:
     def __init__( self, P_dll, P_child = None, P_2world = None ):
@@ -43,8 +64,8 @@ class Affine:
         self.m_cargo['dll'].IceRayC_Camera_Release( self.m_cargo['this'] )
 
     def child( self, P_child ):
-        self.m_cargo['dll'].IceRayC_Camera_Transform_Affine_Child(self.m_cargo['this'], P_child.m_cargo['this'] )
         self.m_cargo['child'] = P_child
+        self.m_cargo['dll'].IceRayC_Camera_Transform_Affine_Child(self.m_cargo['this'], P_child.m_cargo['this'] )
         pass
 
     def toWorldGet( self ):

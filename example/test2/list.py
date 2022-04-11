@@ -20,8 +20,8 @@ import room
 import decoration
 
 camera_list = {
-       'F-persp'        : core.camera.flat.Perspective,
-       #'F-orth'         : core.camera.flat.Orthogonal,
+       #'F-persp'        : core.camera.flat.Perspective,
+        'F-orth'         : core.camera.flat.Orthogonal,
        #'F-super'        : core.camera.flat.Super,
        #'S-horizontal'   : core.camera.sphere.Horizontal,
        #'S-vertical'     : core.camera.sphere.Vertical,
@@ -29,12 +29,13 @@ camera_list = {
        #'C-vertical'     : core.camera.cylinder.Vertical,
        #'C-horizontal'   : core.camera.cylinder.Horizontal,
        #'I-C-vertical'   : utility.camera.invert.CylinderVertical,
+       #'P-C-vertical'   : utility.camera.pin.PinCylinderVertical,
        #'DOF-persp'      : core.camera.dof.Focus,
      }
 
 light_list = {
         #'dark'       : core.light.Dark, # No light at all
-        #'point'      : core.light.Point,
+        'point'      : core.light.Point,
         #'reflector'  : core.light.Reflector,
         #'line'       : core.light.Line,
         #'spline'     : core.light.Spline,
@@ -42,20 +43,20 @@ light_list = {
         #'area'       : core.light.Area,
         #'disc'       : core.light.Disc,
         #'confine'    : core.light.Confine,
-        #'t-id'         : core.light.transform.Identity,     # TODO NYI
-        #'t-translate'  : core.light.transform.Translate,    # TODO NYI
-        #'t-affine'     : core.light.transform.Affine,       # TODO NYI
-        #'t-homography' : core.light.transform.Homography,   # TODO NYI
+        ##'t-id'         : core.light.transform.Identity,     # TODO NYI
+        ##'t-translate'  : core.light.transform.Translate,    # TODO NYI
+        ##'t-affine'     : core.light.transform.Affine,       # TODO NYI
+        ##'t-homography' : core.light.transform.Homography,   # TODO NYI
         #
         #'sun-Point'   : utility.light.sun.Point,
         #'sun-Area'    : utility.light.sun.Area,
         #'sun-Line'    : utility.light.sun.Line,
         #'sun-Circle'  : utility.light.sun.Circle,
-        #'sun-Disc'    : utility.light.sun.Disc,
-        #'sphere'     : utility.light.sphere.unit.make,    # TODO NYI
-        'chandelier-H'  : utility.light.chandelier.Hexa   # TODO NYI
-        #'chandelier-T'  : utility.light.chandelier.Tetra, # TODO NYI
-        #'chandelier-O'  : utility.light.chandelier.Octa   # TODO NYI
+        #'sun-Disc'    : utility.light.sun.Disc
+        ##'sphere'     : utility.light.sphere.unit.make,    # TODO NYI
+        ##'chandelier-H'  : utility.light.chandelier.Hexa   # TODO NYI
+        ##'chandelier-T'  : utility.light.chandelier.Tetra, # TODO NYI
+        ##'chandelier-O'  : utility.light.chandelier.Octa   # TODO NYI
     }
 
 medium_list = {
@@ -69,9 +70,9 @@ medium_list = {
 
 geometry_list = {
       #'simple-sphere'       : core.geometry.simple.Sphere,
-      #'simple-usphere'       : core.geometry.simple.USphere,
+      'simple-usphere'       : core.geometry.simple.USphere,
       #'simple-cylinder'      : core.geometry.simple.Cylinder,
-      #'simple-box'           : core.geometry.simple.Box,
+      # 'simple-box'           : core.geometry.simple.Box,
       #'simple-plane'         : core.geometry.simple.Plane,
       #'simple-torus'         : core.geometry.simple.Torus,
       #'simple-cone'          : core.geometry.simple.Cone,
@@ -90,10 +91,10 @@ geometry_list = {
       #'hyper-cone'           : utility.geometry.simple.hyperboloid.Cone,
       #'hyper-cylinder'       : utility.geometry.simple.hyperboloid.Cylinder,
       #'hyper-negative'       : utility.geometry.simple.hyperboloid.Negative,
-
+      #
       #'complex-Intersect'    : core.geometry.complex.Intersect, #NYI
       #'complex-Enclose'      : core.geometry.complex.Enclose, #NYI
-
+      #
       #'transform-identity'   : core.geometry.transform.Identity,
       #'transform-translate'  : core.geometry.transform.Translate,
       #'transform-affine'     : core.geometry.transform.Affine,
@@ -102,7 +103,7 @@ geometry_list = {
       #'volumetric-Vacuum'    : core.geometry.volumetric.Vacuum,
       #'volumetric-Mist'      : core.geometry.volumetric.Mist,
       #'volumetric-Smoke'     : core.geometry.volumetric.Smoke,
-      'library-1m'     : library.geometry.OneM
+      #'library-1m'           : library.geometry.OneM
       ##'library-intersect'     : library.geometry.Intersect NYI
      }
 
@@ -111,7 +112,7 @@ pigment_list = {
      #'surface'                 : core.material.pigment.Surface,  # TODO NYI
 
      #'pattern-noise-cells'      : utility.material.pattern.noise.Cells,
-     #'pattern-noise-crackle'    : utility.material.pattern.noise.Crackle,
+      'pattern-noise-crackle'    : utility.material.pattern.noise.Crackle,
      #'pattern-noise-perlin'     : utility.material.pattern.noise.Perlin,
      #'pattern-noise-random'     : utility.material.pattern.noise.Random,
      #'pattern-noise-value'      : utility.material.pattern.noise.Value,
@@ -137,7 +138,7 @@ pigment_list = {
      #'illum-ONYFP'         : utility.material.illumination.ON_Fujii_Proposed,     # OK OK
      #'illum-ONYFQ'         : utility.material.illumination.ON_Fujii_Qualitative,  # OK OK
      #'illum-ON-JvO'        : utility.material.illumination.ON_Ouwerkerk,  # OK OK
-      'illum-Phong'         : utility.material.illumination.Phong,         #OK OK
+     #'illum-Phong'         : utility.material.illumination.Phong,         #OK OK
      #'illum-WardApprox'    : utility.material.illumination.WardApprox,    # OK OK
      #'illum-WardIsotropic' : utility.material.illumination.WardIsotropic, # OK OK
      #'illum-WardReal'      : utility.material.illumination.WardReal,      # OK OK
@@ -223,7 +224,7 @@ def doRendering(P_config):
                        medium = data_medium( P_config['dll'] )
                        object = composer.object( P_config['dll'], geometry, pigment, medium )
 
-                       camera = composer.camera( P_config['dll'], data_camera( P_config['dll'] ), P_config['camera']['eye'], P_config['camera']['view'] )
+                       camera = composer.camera( P_config['dll'], data_camera( P_config['dll'] ), P_config['camera'] )
 
                        room = data_room( P_config['dll'], P_config['room'], light_final, geometry )
 
@@ -260,7 +261,7 @@ if( 1 < len( sys.argv ) ):
 
 step = 1
 if( 2 < len( sys.argv ) ):
-    step  = int( sys.argv[2] )
+    step = int( sys.argv[2] )
 
 config={}
 config['folder'] = '_out'
@@ -268,12 +269,12 @@ config['folder'] = '_out'
 config['index'] = 0
 
 config['picture'] = {}
-config['picture']['width']  = int( 256  * 1.5 )
-config['picture']['height'] = int( 256  * 1.5 )
+config['picture']['width']  = int( 1920 )
+config['picture']['height'] = int( 1280 )
 
 config['camera'] = {}
-config['camera']['width']  = 1
-config['camera']['height'] = config['picture']['height'] / config['picture']['width']
+config['camera']['angle-horizontal']  = 1
+config['camera']['angle-vertical'] = 1 # 0.66666666666666666666666666666667 #config['picture']['height'] / config['picture']['width']
 
 config['camera']['eye']  = IceRayPy. type.math.coord.Scalar3D( 0, -3, 0 )
 config['camera']['view'] = IceRayPy.type.math.coord.Scalar3D( 0, 0, 0 )
@@ -283,8 +284,8 @@ config['ray-trace']['depth'] = 16
 config['ray-trace']['trash'] = 1.0/10000.0
 config['ray-trace']['next'] = 17000
 config['hot'] = {}
-config['hot']['x'] = 512 #int( (1024/2048) * config['picture']['width'] )
-config['hot']['y'] = 310 #int( ( 692/2048) * config['picture']['height'] )
+config['hot']['x'] = 512 * 4 #int( (1024/2048) * config['picture']['width'] )
+config['hot']['y'] = 310 * 4 #int( ( 692/2048) * config['picture']['height'] )
 
 config['window'] = {}
 config['window'] = {}
@@ -306,16 +307,16 @@ config['room'] = {}
 #    #config['dll'] = cdll.LoadLibrary(r"z:\work\code\cpp\prj\github\IceRay\work\bin\IceRayCDLL-x86-Release\IceRayCDLL-1.0.0.0-dynamic.dll")
 #    #config['dll'] = cdll.LoadLibrary(r"z:\work\code\cpp\prj\github\IceRay\work\bin\IceRayCDLL-x86_64-release\IceRayCDLL-1.0.0.0-dynamic.dll")
 
-#config['dll'] = cdll.LoadLibrary(r"z:\work\code\cpp\prj\github\IceRay\work\bin\IceRayCDLL-x86-Release\IceRayCDLL-1.0.0.0-dynamic.dll")
-config['dll'] = cdll.LoadLibrary(r"z:\work\code\cpp\prj\github\IceRay\work\bin\IceRayCDLL-x86_64-Release\IceRayCDLL-1.0.0.0-dynamic.dll")
+config['dll'] = cdll.LoadLibrary(r"z:\work\code\cpp\prj\github\IceRay\work\bin\IceRayCDLL-x86-Release\IceRayCDLL-1.0.0.0-dynamic.dll")
+#config['dll'] = cdll.LoadLibrary(r"z:\work\code\cpp\prj\github\IceRay\work\bin\IceRayCDLL-x86_64-Release\IceRayCDLL-1.0.0.0-dynamic.dll")
 
 dilatation  = 1;
 
-radiusX_lo = 2;
-radiusX_hi = 2; #< sde whole position
+radiusX_lo = 1.2;
+radiusX_hi = 3; #< sde whole position
 
-radiusY_lo = 3; #< default unit position
-radiusY_hi = 2;
+#radiusY_lo = 3; #< default unit position
+#radiusY_hi = 2;
 
 heightHi = 2;
 heightLo = 0;
@@ -341,13 +342,37 @@ for index in range( start, 360 * int( dilatation ), step ):
     t = index / 360.0 / dilatation
     alpha = t * ( 2 * 3.1415926 )
     #alpha = math.radians( 57 )
-    height = heightLo + ( math.sin( alpha - math.pi/2 )*0.5 + 0.5 )*( heightHi - heightLo );
-    x =  math.cos( alpha - math.pi/2 ) * ( radiusX_lo + ( radiusX_hi - radiusX_lo ) * ( (  math.sin( alpha   ) + 1 )/2) );
-    y =  math.sin( alpha - math.pi/2 ) * ( radiusY_lo + ( radiusY_hi - radiusY_lo ) * ( (  math.cos( alpha - math.pi   ) + 1 )/2) );
+    height = heightLo #+ ( math.sin( alpha - math.pi/2 )*0.5 + 0.5 )*( heightHi - heightLo );
+    x =  math.cos( alpha - math.pi/2 )
+    y =  math.sin( alpha - math.pi/2 )
+
+    if( math.degrees(alpha) < 360 ):
+        radiusS = radiusX_lo + ( ( math.degrees(alpha) - 270.0)/90.0)*( radiusX_hi - radiusX_lo )
+        height = heightHi + ( ( math.degrees(alpha) -270.0)/90.0)*( heightLo - heightHi );
+
+    if( math.degrees(alpha) < 270 ):
+        radiusS = radiusX_lo
+        height = heightHi ;
+
+    if( math.degrees(alpha) < 180 ):
+        radiusS = radiusX_hi + ( ( math.degrees(alpha) -90.0)/90.0)*( radiusX_lo - radiusX_hi )
+        height = heightLo + ( ( math.degrees(alpha) -90.0)/90.0)*( heightHi - heightLo );
+
+    if( math.degrees(alpha) < 90 ):
+        radiusS = radiusX_hi
+        height = heightLo
+
+    x =  x * radiusS
+    y =  y * radiusS
+
+    # debg overide
+    #x =  3
+    #y =  0
+    #height = 0
 
     config['camera']['eye']  = IceRayPy.type.math.coord.Scalar3D( x, y, height );
     config['camera']['view'] = IceRayPy.type.math.coord.Scalar3D( 0, 0, 0 )
-    print( math.degrees( alpha), " _ " ,  x, ",", y, ",", height, "  ", math.sqrt( x*x+ y*y ) )
+    print( math.degrees(alpha), " _ " ,  x, ",", y, ",", height, "  ", math.sqrt( x*x+ y*y ) )
     print( "Hot: ", config['hot'], flush = True  )
     print( "Index:" + str(index) + "[" + os.getcwd() + "]", flush = True  )
     doRendering( config )

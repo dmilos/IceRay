@@ -40,6 +40,8 @@ class Orthogonal:
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Camera_Flat_Orthogonal0()
+        #self.width(4*1920/1280) # TODO test purpose only, Delete after use
+        #self.height(4)          # TODO test purpose only, Delete after use
 
     #def __init__( self, P_dll, P_aspect ):
     #    self.m_cargo = {}

@@ -6,7 +6,7 @@ using namespace GS_DDMRM::S_IceRay::S_camera;
 
 
 S_cylinder::GC_vertical::GC_vertical()
- : GC_vertical( ::math::geometry::deg2rad( 180 ), 2, 1 )
+ : GC_vertical( ::math::geometry::deg2rad( 360 ), 2, 1 )
  {
  }
 

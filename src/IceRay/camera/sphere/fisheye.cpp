@@ -6,7 +6,7 @@ using namespace GS_DDMRM::S_IceRay::S_camera;
 
 
 S_sphere::GC_fisheye::GC_fisheye()
-  :GC_fisheye( sin( ::math::geometry::deg2rad(90) ), sin( ::math::geometry::deg2rad(90) )  )
+  :GC_fisheye( ::math::geometry::deg2rad(180), ::math::geometry::deg2rad(180) )
  {
  }
 

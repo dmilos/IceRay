@@ -10,7 +10,7 @@ GC_perspective::GC_perspective()
  }
 
 GC_perspective::GC_perspective( T_scalar const& P_aspect )
- :GC_perspective( 1, P_aspect )
+ :GC_perspective( P_aspect, 1 )
  {
  }
 

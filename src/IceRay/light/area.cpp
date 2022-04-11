@@ -21,7 +21,7 @@ GC_area::GC_area( )
   M2_y[1] = 2;
 
   ::math::linear::vector::load( M2_spot.F_center(), -1, -1, 0 );
-
+  //M2_spot.F_0() = T_spot::T_gray( { T_scalar(4.0/3.0) } );
   F_sample( 1 );
  }
 

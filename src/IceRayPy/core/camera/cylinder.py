@@ -26,7 +26,7 @@ class Horizontal:
 
 
 class Vertical:
-    def __init__(self, P_dll ):
+    def __init__(self, P_dll):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Camera_Cylinder_Vertical0()
@@ -34,8 +34,8 @@ class Vertical:
     def __del__(self):
         self.m_cargo['dll'].IceRayC_Camera_Release( self.m_cargo['this'] )
 
-    def phi(self, P_height ):
-        return self.m_cargo['dll'].IceRayC_Camera_Cylinder_Vertical_Phi(self.m_cargo['this'], Scalar( P_height ) )
+    def phi(self, P_phi ):
+        return self.m_cargo['dll'].IceRayC_Camera_Cylinder_Vertical_Phi(self.m_cargo['this'], Scalar( P_phi ) )
 
     def height(self, P_height ):
         return self.m_cargo['dll'].IceRayC_Camera_Cylinder_Vertical_Height(self.m_cargo['this'], Scalar( P_height ) )

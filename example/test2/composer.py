@@ -28,17 +28,16 @@ def arange(  P_dll
 
 
 def camera( P_dll,
-          P_camera,
-          P_eye,  #= IceRayPy.type.math.coord.load3D( P_dll, 2, 5, 3 )*0.6,
-          P_view #= IceRayPy.type.math.coord.fill3D( P_dll, 0 ),
+          P_camera, # camera object
+          P_info,
           ):
     transform = IceRayPy.core.camera.transform.Affine( P_dll )
-
+    #P_camera.height( 6 ) # TODO this is hack. remove or comment
     transform.child( P_camera )
 
     I_up   = IceRayPy.type.math.coord.load3D( P_dll, 0, 0, 1 )
 
-    transform.toWorldSet( IceRayPy.type.math.affine.lookAt( P_dll, P_eye, P_view, I_up ) )
+    transform.toWorldSet( IceRayPy.type.math.affine.lookAt( P_dll, P_info['eye'], P_info['view'], I_up ) )
 
     return transform
 
