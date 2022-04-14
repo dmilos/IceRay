@@ -39,10 +39,13 @@ IceRayC__EXPORT IceRayC__DECLSPEC  int                     IceRayC_Geometry_Tran
 IceRayC__EXPORT IceRayC__DECLSPEC  int                     IceRayC_Geometry_Transform_Homography_2World_Get( IceRayC_Geometry_Handle P_that, IceRayC_Type_Math_Homography3D* P_2world );
 IceRayC__EXPORT IceRayC__DECLSPEC  int                     IceRayC_Geometry_Transform_Homography_2World_Set( IceRayC_Geometry_Handle P_that, IceRayC_Type_Math_Homography3D* P_2world );
 
-
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Transform_MotionBlur0();
-IceRayC__EXPORT IceRayC__DECLSPEC  int                     IceRayC_Geometry_Transform_MotionBlur_Child( IceRayC_Geometry_Handle P_that, IceRayC_Geometry_Handle P_child );
-
-
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Transform_MotionBlur1( IceRayC_Geometry_Handle P_child );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Transform_MotionBlur2( IceRayC_Geometry_Handle P_child, IceRayC_TypeCoordScalar3D* P_direction );
+IceRayC__EXPORT IceRayC__DECLSPEC  int                     IceRayC_Geometry_Transform_MotionBlur_Child(     IceRayC_Geometry_Handle P_that, IceRayC_Geometry_Handle P_child );
+IceRayC__EXPORT IceRayC__DECLSPEC  int                     IceRayC_Geometry_Transform_MotionBlur_Direction( IceRayC_Geometry_Handle P_that, IceRayC_TypeCoordScalar3D* P_direction );
 
 #endif
+
+
+

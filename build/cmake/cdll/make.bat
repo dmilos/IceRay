@@ -1,3 +1,3 @@
-mkdir tmpprj
-cd tmpprj
+mkdir tmpprjX
+cd tmpprjX
 %prg_cmake% ..

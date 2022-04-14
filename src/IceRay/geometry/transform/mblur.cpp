@@ -19,10 +19,10 @@ GC_mblur::GC_mblur()
 GC_mblur::GC_mblur
  (
    T_geometry *P_child
-  ,T_coord const& P_move
+  ,T_coord const& P_direction
  )
  {
-  M2_move = P_move;
+  M2_direction = P_direction;
 
   F_child( P_child );
  }
@@ -99,7 +99,7 @@ bool GC_mblur::Fv_intersect( T_scalar &P_lambda, T_state &P_intersect, T_ray con
   //I_head.M_t = M2_randVDC.next();
   //I_head.M_t = M2_randStandard1D();
 
-  ::math::linear::vector::combine( I_ray.M_origin, P_ray.M_origin, -I_head.M_t, M2_move);
+  ::math::linear::vector::combine( I_ray.M_origin, P_ray.M_origin, -I_head.M_t, F_direction() );
 
   //if( false == I_head.M_hit )
   // {
@@ -118,7 +118,7 @@ void GC_mblur::Fv_normal( T_coord &P_normal, T_coord const& P_point, T_state con
 
   T_coord I_point( P_point);
   using namespace ::math::linear::vector;
-  I_point  -= I_head.M_t * M2_move;
+  I_point  -= I_head.M_t * F_direction();
 
   return M2_geometry.M2_normal->Fv_normal( P_normal, I_point, I_tail );
  }
@@ -130,7 +130,7 @@ GC_mblur::T_location GC_mblur::Fv_inside( T_coord const& P_point/*, T_state &P_s
 
   T_coord I_point( P_point);
 
-  // TODO ::math::linear::vector::combine( I_point, I_point, -I_head.M_t, M2_move );
+  // TODO ::math::linear::vector::combine( I_point, I_point, -I_head.M_t, M2_direction );
 
   return M2_geometry.M2_inside->Fv_inside( P_point/*,I_tail*/ );
  }
@@ -151,7 +151,7 @@ GC_mblur::Fv_uvw( T_coord & P_uvw, T_coord const& P_point, T_state const & P_sta
 
   T_coord I_point( P_point);
   using namespace ::math::linear::vector;
-  I_point  -= I_head.M_t * M2_move;
+  I_point  -= I_head.M_t * F_direction();
 
   return M2_geometry.M2_uvw->Fv_uvw( P_uvw,  I_point, I_tail );
  }
@@ -182,18 +182,18 @@ bool GC_mblur::F_child( T_geometry * P_child )
   M2_geometry.M2_distance  = dynamic_cast<T2_distance *>( M2_geometry.M2__base ); if( nullptr == M2_geometry.M2_distance ) M2_geometry.M2_distance  = & Fs_vacuum();
   M2_geometry.M2_uvw       = dynamic_cast<T2_uvw      *>( M2_geometry.M2__base ); if( nullptr == M2_geometry.M2_uvw      ) M2_geometry.M2_uvw       = & Fs_vacuum();
 
-  F_move( M2_move );
+  F_direction( M2_direction );
   return true;
  }
 
 
-bool GC_mblur::F_move( T_coord const& P_move )
+bool GC_mblur::F_direction( T_coord const& P_direction )
  {
   auto I_boxA = M2_geometry.M2__base->F_box();
 
   auto I_boxB = M2_geometry.M2__base->F_box();
-  ::math::linear::vector::addition( I_boxB[0], M2_move );
-  ::math::linear::vector::addition( I_boxB[1], M2_move );
+  ::math::linear::vector::addition( I_boxB[0], M2_direction );
+  ::math::linear::vector::addition( I_boxB[1], M2_direction );
 
   ::math::geometry::interval::extend( I_boxA, I_boxB );
 

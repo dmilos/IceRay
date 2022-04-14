@@ -37,9 +37,9 @@
              */
              void Fv_render( T_color & P_color, T_cell const& P_cell )
               {
-               P_color.set( 0, 0*255*(P_cell[0]/(T_scalar)F_resolution()[0]) );
-               P_color.set( 1,   255*(P_cell[1]/(T_scalar)F_resolution()[1]) );
-               P_color.set( 2,  127 );
+               P_color.set( 0, (unsigned char)( 0*255*(P_cell[0]/(T_scalar)F_resolution()[0]) ) );
+               P_color.set( 1, (unsigned char)(   255*(P_cell[1]/(T_scalar)F_resolution()[1]) ) );
+               P_color.set( 2, (unsigned char)(  127 ) );
               }
 
           };

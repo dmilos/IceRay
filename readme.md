@@ -12,7 +12,6 @@
 ## Examples
 
 ### Camera
-
 ![cylinder-horizontal](data/sample/camera/cylinder-horizontal.png)
 ![cylinder-vertical](data/sample/camera/cylinder-vertical.png)
 ![dof-cone](data/sample/camera/dof-cone.png)
@@ -25,11 +24,9 @@
 ![sphere-horizontal](data/sample/camera/sphere-horizontal.png)
 ![sphere-vertica](data/sample/camera/sphere-vertical.png)
 
-
 ### Geometry
 
 #### Flat
-
 ![img](data/sample/geometry/flat/box.png)
 ![img](data/sample/geometry/flat/disc.png)
 ![img](data/sample/geometry/flat/plane.png)
@@ -55,11 +52,11 @@
 #### Transformation
 ![img](data/sample/geometry/transform/affine.png)
 ![img](data/sample/geometry/transform/translate.png)
+![img](data/sample/geometry/transform/mblur.png)
 
 #### Misc
 ![img](data/sample/geometry/blobby.png)
 ![img](data/sample/geometry/intersect.png)
-![img](data/sample/geometry/mblur.png)
 ![img](data/sample/geometry/torus.png)
 ![img](data/sample/geometry/vacuum.png)
 

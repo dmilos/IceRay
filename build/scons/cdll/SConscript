@@ -71,6 +71,7 @@ settings.accumulate( 'RTL', { 'configuration' : configuration, 'type': settings.
 settings.accumulate( 'exception' )
 
 settings.accumulate( 'source:c++', { 'dialect': 'c++11' } )
+#settings.accumulate( 'macro', { 'name' : 'COLOR_USE_PP2FILE' } )
 
 #permanently disabled
 settings.accumulate( 'compiler:warning', { 'base-class-destructor-is-inaccessible' : 'disable'  } )
@@ -91,6 +92,12 @@ settings.accumulate( 'compiler:warning', { 'unused-local-typedefs'      : 'disab
 # CPP files to build
 
 cc_files = []
+
+#cc_list = open( "./cpp.lst.txt", "r" )
+#for line in  cc_list :
+#    cc_files += [ line.rstrip() ]
+#
+#print( cc_files )
 
 cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'camera', 'camera.cpp' ) ]
 if( False ):

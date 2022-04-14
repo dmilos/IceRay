@@ -47,9 +47,9 @@
               static const T_size Ics_size = 64;
               T_coord I_coord = P_coord;
 
-              int x = floor( I_coord[0] );
-              int y = floor( I_coord[1] );
-              int z = floor( I_coord[2] );
+              int x = (int)floor( I_coord[0] );
+              int y = (int)floor( I_coord[1] );
+              int z = (int)floor( I_coord[2] );
 
               T_coord  I_fract{ I_coord[0] - x, I_coord[1] - y, I_coord[2] - z };
 

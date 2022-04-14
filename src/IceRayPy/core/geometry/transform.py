@@ -24,7 +24,9 @@ class Identity:
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Geometry_Transform_Identity0()
-        self.child(  IceRayPy.core.geometry.simple.Sphere( P_dll ) )
+        self.child( IceRayPy.core.geometry.simple.Sphere( P_dll ) ) #<! default
+        if( None != P_child ):
+            self.child( P_child )
 
     def __del__( self ):
         self.m_cargo['dll'].IceRayC_Geometry_Release( self.m_cargo['this'] )
@@ -155,3 +157,33 @@ class Homography:
 
     def toLocalSet( self, P_2local: Matrix4D ):
         return self.m_cargo['dll'].IceRayC_Geometry_Transform_Homography_2Local_Set( self.m_cargo['this'], AddresOf( P_2local ) )
+
+
+class MotionBlur:
+    def __init__( self, P_dll,  P_child = None , P_direction = None ):
+        self.m_cargo = {}
+        self.m_cargo['dll'] = P_dll
+        self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Geometry_Transform_MotionBlur0()
+        self.child(  IceRayPy.core.geometry.simple.Sphere( P_dll ) )
+
+        if( None != P_child ):
+            self.child( P_child )
+
+        if( None != P_direction ):
+            self.direction( P_direction )
+
+    def __del__( self ):
+        self.m_cargo['dll'].IceRayC_Geometry_Release( self.m_cargo['this'] )
+        self.m_cargo['child'] = None
+
+    def child(self):
+        return self.m_cargo['child'];
+
+    def child( self, P_child ):
+        self.m_cargo['child'] = P_child
+        self.m_cargo['dll'].IceRayC_Geometry_Transform_MotionBlur_Child( self.m_cargo['this'], P_child.m_cargo['this'] )
+
+    def direction(self, P_move : Coord3D ):
+        return self.m_cargo['dll'].IceRayC_Geometry_Transform_MotionBlur_Direction( self.m_cargo['this'], AddresOf( P_move ) )
+
+

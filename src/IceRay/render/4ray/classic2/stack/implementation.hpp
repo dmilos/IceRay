@@ -36,7 +36,7 @@
                  typedef GS_DDMRM::S_IceRay::S_type::GT_size   T_size;
                  typedef GS_DDMRM::S_IceRay::S_type::GT_scalar T_scalar;
                  typedef GS_DDMRM::S_IceRay::S_type::GT_int8   T_uint8;
-                 typedef GS_DDMRM::S_IceRay::S_type::GT_uint64   T_uint64;
+               //typedef GS_DDMRM::S_IceRay::S_type::GT_uint64 T_uint64;
 
                  //typedef GS_DDMRM::S_IceRay::S_type::S_ray::GC_state           T_ray;
 
@@ -88,9 +88,9 @@
                  T_size M2_index=0;
 
                public:
-                 T_uint64 F_total()const{ return M2_total; }
+                 T_size F_total()const{ return M2_total; }
                private:
-                 T_uint64 M2_total=0;
+                 T_size M2_total=0;
               };
             }
           }

@@ -1,7 +1,7 @@
-#ifndef _DDMRM_IceRAY_camera_cone_HPP_
- #define _DDMRM_IceRAY_camera_cone_HPP_
+#ifndef _DDMRM_IceRAY_camera_cylinder_HPP_
+ #define _DDMRM_IceRAY_camera_cylinder_HPP_
 
- // GS_DDMRM::S_IceRa::S_camera::GC_cone
+ // GS_DDMRM::S_IceRa::S_camera::GC_cylinder
 
  #include "IceRay/utility/random.hpp"
 
@@ -20,7 +20,7 @@
        namespace S_dof
         {
 
-         class GC_cone
+         class GC_cylinder
           : public GS_DDMRM::S_IceRay::S_camera::GC__parent
           {
            public:
@@ -29,11 +29,11 @@
              typedef GS_DDMRM::S_IceRay::S_type::S_color::S_gray::GT_scalar      T_gray;
 
            public:
-             GC_cone( );
-             GC_cone( T_size const& P_sample, T_scalar const& P_aperture );
-             GC_cone( T__pure *P_camera, T_size const& P_sample, T_scalar const& P_aperture );
-             GC_cone( T__pure *P_camera, T_size const& P_sample, T_scalar const& P_aperture, T_scalar const& P_gauss );
-             ~GC_cone();
+             GC_cylinder( );
+             GC_cylinder( T_size const& P_sample, T_scalar const& P_aperture );
+             GC_cylinder( T__pure *P_camera, T_size const& P_sample, T_scalar const& P_aperture );
+             GC_cylinder( T__pure *P_camera, T_size const& P_sample, T_scalar const& P_aperture, T_scalar const& P_gauss );
+             ~GC_cylinder();
 
            public:
              T_size   Fv_beam( T_beam & P_beam, T_coord2D const& P_uv )const;
@@ -46,21 +46,20 @@
            public:
              T_size const& F_sample( )const{ return F_size(); }
              bool          F_sample( T_size const& P_size ){ return this->Fv_size( P_size ); }
-
-           private:
+           
+            private:
             T_size M2_index;
-
-           public:
-             T_scalar const&  F_aperture( void )const{ return M2_aperture; }
-             bool             F_aperture( T_scalar const& P_aperture );
-           private:
-             T_scalar M2_aperture;
-
-           public:
-             T_scalar const&  F_gauss( void )const{ return M2_gauss; }
-             bool             F_gauss( T_scalar const& P_gauss );
-           private:
-             T_scalar M2_gauss;
+            public:
+              T_scalar const&  F_aperture( void )const{ return M2_aperture; }
+              bool             F_aperture( T_scalar const& P_aperture );
+            private:
+              T_scalar M2_aperture;
+           
+            public:
+              T_scalar const&  F_gauss( void )const{ return M2_gauss; }
+              bool             F_gauss( T_scalar const& P_gauss );
+            private:
+              T_scalar M2_gauss;
 
            private:
              mutable GS_DDMRM::S_IceRay::S_utility::S_random::GC_standard2D  M2_randStandard2D;

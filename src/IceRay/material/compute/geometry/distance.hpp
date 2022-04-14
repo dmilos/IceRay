@@ -37,7 +37,7 @@
              public:
                GC_distance
                 (
-                 T_scalar const& P_inCoord_Point = 0
+                 T_size const& P_inCoord_Point = 0
                 )
                 {
                  F_input( T_memory::En_geometryDistance, En_inGeometryDistance_This,  0 );

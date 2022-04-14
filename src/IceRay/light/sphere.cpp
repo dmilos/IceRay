@@ -51,7 +51,7 @@ GC_sphere::Fv_swarm( T_swarm &P_swarm, T_coord const& P_point )const
   ::math::linear::affine::system( I_affine, M2_spot.F_center(), I_x, I_y, I_z );
 
   T_coord I_uvw;
-  for(int I_index=0; I_index < M2_sample; ++ I_index )
+  for( T_size I_index=0; I_index < M2_sample; ++ I_index )
    {
     //T_scalar I_x, I_y; M2_randStandard2D( I_uvw[0], I_uvw[1] );
       M2_randSobol2D.next( I_uvw[0], I_uvw[1] );

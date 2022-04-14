@@ -729,12 +729,12 @@ IceRayC_Camera_Handle IceRayC_Camera_DOF_Cone3( IceRayC_Camera_Handle P_child, I
   return cpp2c( Ir_result );
  }
 
-int IceRayC_Camera_DOF_Conus_Sample( IceRayC_Camera_Handle P_that, IceRayC_TypeSize P_sample )
+int IceRayC_Camera_DOF_Cone_Sample( IceRayC_Camera_Handle P_that, IceRayC_TypeSize P_sample )
  {
   typedef GS_DDMRM::S_IceRay::S_camera::GC__pure Tf__pure;
-  typedef GS_DDMRM::S_IceRay::S_camera::S_dof::GC_cone Tf_conus;
+  typedef GS_DDMRM::S_IceRay::S_camera::S_dof::GC_cone Tf_cone;
 
-  auto I_this = dynamic_cast< Tf_conus *>( c2cpp( P_that ) );
+  auto I_this = dynamic_cast< Tf_cone *>( c2cpp( P_that ) );
   if( nullptr == I_this )
    {
     return 0;
@@ -743,12 +743,12 @@ int IceRayC_Camera_DOF_Conus_Sample( IceRayC_Camera_Handle P_that, IceRayC_TypeS
   return 1;
  }
 
-int IceRayC_Camera_DOF_Conus_Aperture( IceRayC_Camera_Handle P_that, IceRayC_TypeScalar P_aperture )
+int IceRayC_Camera_DOF_Cone_Aperture( IceRayC_Camera_Handle P_that, IceRayC_TypeScalar P_aperture )
  {
   typedef GS_DDMRM::S_IceRay::S_camera::GC__pure Tf__pure;
-  typedef GS_DDMRM::S_IceRay::S_camera::S_dof::GC_cone Tf_conus;
+  typedef GS_DDMRM::S_IceRay::S_camera::S_dof::GC_cone Tf_cone;
 
-  auto I_this = dynamic_cast< Tf_conus *>( c2cpp( P_that ) );
+  auto I_this = dynamic_cast< Tf_cone *>( c2cpp( P_that ) );
   if( nullptr == I_this )
    {
     return 0;
@@ -757,12 +757,12 @@ int IceRayC_Camera_DOF_Conus_Aperture( IceRayC_Camera_Handle P_that, IceRayC_Typ
   return 1;
  }
 
-int IceRayC_Camera_DOF_Conus_Gauss( IceRayC_Camera_Handle P_that, IceRayC_TypeScalar P_gauss )
+int IceRayC_Camera_DOF_Cone_Gauss( IceRayC_Camera_Handle P_that, IceRayC_TypeScalar P_gauss )
  {
   typedef GS_DDMRM::S_IceRay::S_camera::GC__pure Tf__pure;
-  typedef GS_DDMRM::S_IceRay::S_camera::S_dof::GC_cone Tf_conus;
+  typedef GS_DDMRM::S_IceRay::S_camera::S_dof::GC_cone Tf_cone;
 
-  auto I_this = dynamic_cast< Tf_conus *>( c2cpp( P_that ) );
+  auto I_this = dynamic_cast< Tf_cone *>( c2cpp( P_that ) );
   if( nullptr == I_this )
    {
     return 0;
@@ -771,12 +771,12 @@ int IceRayC_Camera_DOF_Conus_Gauss( IceRayC_Camera_Handle P_that, IceRayC_TypeSc
   return 1;
  }
 
-int IceRayC_Camera_DOF_Conus_Child( IceRayC_Camera_Handle P_that, IceRayC_Camera_Handle P_child )
+int IceRayC_Camera_DOF_Cone_Child( IceRayC_Camera_Handle P_that, IceRayC_Camera_Handle P_child )
  {
   typedef GS_DDMRM::S_IceRay::S_camera::GC__pure Tf__pure;
-  typedef GS_DDMRM::S_IceRay::S_camera::S_dof::GC_cone Tf_conus;
+  typedef GS_DDMRM::S_IceRay::S_camera::S_dof::GC_cone Tf_cone;
 
-  auto I_this = dynamic_cast< Tf_conus *>( c2cpp( P_that ) );
+  auto I_this = dynamic_cast< Tf_cone *>( c2cpp( P_that ) );
   if( nullptr == I_this )
    {
     return 0;
@@ -785,6 +785,90 @@ int IceRayC_Camera_DOF_Conus_Child( IceRayC_Camera_Handle P_that, IceRayC_Camera
   return 1;
  }
 
+
+IceRayC_Camera_Handle IceRayC_Camera_DOF_Cylinder0()
+ {
+  typedef GS_DDMRM::S_IceRay::S_camera::GC__pure Tf__pure;
+  auto Ir_result = new GS_DDMRM::S_IceRay::S_camera::S_dof::GC_cylinder{  };
+  return cpp2c( dynamic_cast< Tf__pure *> ( Ir_result ) );
+ }
+
+IceRayC_Camera_Handle IceRayC_Camera_DOF_Cylinder1( IceRayC_TypeSize P_sample, IceRayC_TypeScalar P_aperture )
+ {
+  typedef GS_DDMRM::S_IceRay::S_camera::GC__pure Tf__pure;
+    auto Ir_result = new GS_DDMRM::S_IceRay::S_camera::S_dof::GC_cylinder{ P_sample, P_aperture };
+  return cpp2c( Ir_result );
+ }
+
+IceRayC_Camera_Handle IceRayC_Camera_DOF_Cylinder2( IceRayC_Camera_Handle P_child, IceRayC_TypeSize P_sample, IceRayC_TypeScalar P_aperture )
+ {
+  typedef GS_DDMRM::S_IceRay::S_camera::GC__pure Tf__pure;
+  auto Ir_result = new GS_DDMRM::S_IceRay::S_camera::S_dof::GC_cylinder{ c2cpp( P_child ), P_sample, P_aperture };
+  return cpp2c( Ir_result );
+ }
+
+IceRayC_Camera_Handle IceRayC_Camera_DOF_Cylinder3( IceRayC_Camera_Handle P_child, IceRayC_TypeSize P_sample, IceRayC_TypeScalar P_aperture, IceRayC_TypeScalar P_gauss )
+ {
+  typedef GS_DDMRM::S_IceRay::S_camera::GC__pure Tf__pure;
+  auto Ir_result = new GS_DDMRM::S_IceRay::S_camera::S_dof::GC_cylinder{ c2cpp( P_child ), P_sample, P_aperture, P_gauss };
+  return cpp2c( Ir_result );
+ }
+
+int IceRayC_Camera_DOF_Cylinder_Sample( IceRayC_Camera_Handle P_that, IceRayC_TypeSize P_sample )
+ {
+  typedef GS_DDMRM::S_IceRay::S_camera::GC__pure Tf__pure;
+  typedef GS_DDMRM::S_IceRay::S_camera::S_dof::GC_cylinder Tf_cylinder;
+
+  auto I_this = dynamic_cast< Tf_cylinder *>( c2cpp( P_that ) );
+  if( nullptr == I_this )
+   {
+    return 0;
+   }
+  I_this->F_sample( P_sample );
+  return 1;
+ }
+
+int IceRayC_Camera_DOF_Cylinder_Aperture( IceRayC_Camera_Handle P_that, IceRayC_TypeScalar P_aperture )
+ {
+  typedef GS_DDMRM::S_IceRay::S_camera::GC__pure Tf__pure;
+  typedef GS_DDMRM::S_IceRay::S_camera::S_dof::GC_cylinder Tf_cylinder;
+
+  auto I_this = dynamic_cast< Tf_cylinder *>( c2cpp( P_that ) );
+  if( nullptr == I_this )
+   {
+    return 0;
+   }
+  I_this->F_aperture( P_aperture );
+  return 1;
+ }
+
+int IceRayC_Camera_DOF_Cylinder_Gauss( IceRayC_Camera_Handle P_that, IceRayC_TypeScalar P_gauss )
+ {
+  typedef GS_DDMRM::S_IceRay::S_camera::GC__pure Tf__pure;
+  typedef GS_DDMRM::S_IceRay::S_camera::S_dof::GC_cylinder Tf_cylinder;
+
+  auto I_this = dynamic_cast< Tf_cylinder *>( c2cpp( P_that ) );
+  if( nullptr == I_this )
+   {
+    return 0;
+   }
+  I_this->F_aperture( P_gauss );
+  return 1;
+ }
+
+int IceRayC_Camera_DOF_Cylinder_Child( IceRayC_Camera_Handle P_that, IceRayC_Camera_Handle P_child )
+ {
+  typedef GS_DDMRM::S_IceRay::S_camera::GC__pure Tf__pure;
+  typedef GS_DDMRM::S_IceRay::S_camera::S_dof::GC_cylinder Tf_cylinder;
+
+  auto I_this = dynamic_cast< Tf_cylinder *>( c2cpp( P_that ) );
+  if( nullptr == I_this )
+   {
+    return 0;
+   }
+  I_this->F_child( c2cpp( P_child ) );
+  return 1;
+ }
 
 IceRayC_Camera_Handle IceRayC_Camera_Transform_Invert0()
  {
@@ -813,7 +897,7 @@ int IceRayC_Camera_Transform_Invert_Child( IceRayC_Camera_Handle P_that, IceRayC
   I_this->F_child( c2cpp( P_child ) );
   return 1;
  }
- 
+
 IceRayC_Camera_Handle IceRayC_Camera_Transform_Pin0()
  {
   typedef GS_DDMRM::S_IceRay::S_camera::GC__pure Tf__pure;

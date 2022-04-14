@@ -45,7 +45,7 @@
              typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base  T_geometry, T__base;
 
              GC_mblur( );
-             GC_mblur( T_geometry *P_victim, T_coord const& P_move );
+             GC_mblur( T_geometry *P_child, T_coord const& P_move );
             ~GC_mblur( );
 
            public:
@@ -66,10 +66,10 @@
              T_affine const&  Fv_2local( T_state const&P_state )const;
 
            public:
-             bool           F_move( T_coord const& P_move );
-             T_coord const& F_move( T_coord const& P_move )const{ return M2_move; }
+             T_coord const& F_direction( )const{ return M2_direction; }
+             bool           F_direction( T_coord const& P_move );
            protected:
-            T_coord  M2_move;
+            T_coord  M2_direction;
 
            public:
              bool F_child( T_geometry * P_child );

@@ -465,6 +465,9 @@
     <ClCompile Include="..\..\..\src\IceRay\light\suns.cpp">
       <Filter>Source Files\src\light\type</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\IceRay\camera\dof\cylinder.cpp">
+      <Filter>Source Files\src\camera\dof</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\src\IceRay\camera\focus.hpp">
@@ -1030,6 +1033,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\src\IceRay\light\suns.hpp">
       <Filter>Source Files\src\light\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IceRay\camera\dof\cylinder.hpp">
+      <Filter>Source Files\src\camera\dof</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

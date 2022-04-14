@@ -5,7 +5,7 @@ using namespace GS_DDMRM::S_IceRay::S_camera::S_flat;
 
 
 GC_orthogonal::GC_orthogonal()
- : GC_orthogonal(1,1)
+ : GC_orthogonal( 1, 1 )
  {
 
  }

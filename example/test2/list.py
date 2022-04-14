@@ -20,8 +20,8 @@ import room
 import decoration
 
 camera_list = {
-       #'F-persp'        : core.camera.flat.Perspective,
-        'F-orth'         : core.camera.flat.Orthogonal,
+        'F-persp'        : core.camera.flat.Perspective,
+       #'F-orth'         : core.camera.flat.Orthogonal,
        #'F-super'        : core.camera.flat.Super,
        #'S-horizontal'   : core.camera.sphere.Horizontal,
        #'S-vertical'     : core.camera.sphere.Vertical,
@@ -31,11 +31,13 @@ camera_list = {
        #'I-C-vertical'   : utility.camera.invert.CylinderVertical,
        #'P-C-vertical'   : utility.camera.pin.PinCylinderVertical,
        #'DOF-persp'      : core.camera.dof.Focus,
+       #'DOF-cone'        : core.camera.dof.Cone,
+       #'DOF-cylinder'    : core.camera.dof.Cylinder,
      }
 
 light_list = {
         #'dark'       : core.light.Dark, # No light at all
-        'point'      : core.light.Point,
+         'point'      : core.light.Point,
         #'reflector'  : core.light.Reflector,
         #'line'       : core.light.Line,
         #'spline'     : core.light.Spline,
@@ -47,7 +49,7 @@ light_list = {
         ##'t-translate'  : core.light.transform.Translate,    # TODO NYI
         ##'t-affine'     : core.light.transform.Affine,       # TODO NYI
         ##'t-homography' : core.light.transform.Homography,   # TODO NYI
-        #
+
         #'sun-Point'   : utility.light.sun.Point,
         #'sun-Area'    : utility.light.sun.Area,
         #'sun-Line'    : utility.light.sun.Line,
@@ -69,37 +71,39 @@ medium_list = {
     }
 
 geometry_list = {
-      #'simple-sphere'       : core.geometry.simple.Sphere,
+      'simple-sphere'        : core.geometry.simple.Sphere,
       'simple-usphere'       : core.geometry.simple.USphere,
-      #'simple-cylinder'      : core.geometry.simple.Cylinder,
-      # 'simple-box'           : core.geometry.simple.Box,
-      #'simple-plane'         : core.geometry.simple.Plane,
-      #'simple-torus'         : core.geometry.simple.Torus,
-      #'simple-cone'          : core.geometry.simple.Cone,
-      #'simple-disc'          : core.geometry.simple.Disc,
-      #'simple-udisc'         : core.geometry.simple.UDisc,
-      #'simple-ellipsoid'     : core.geometry.simple.Ellipsoid,
-      #'simple-hyperboloid'   : core.geometry.simple.Hyperboloid,
-      #'simple-paraboloid'    : core.geometry.simple.Paraboloid,
-      #'simple-quadric'       : core.geometry.simple.Quadric,
-      #'simple-triangle'      : core.geometry.simple.Triangle,
-      #'simple-utriangle'     : core.geometry.simple.UTriangle,
-      #'simple-saddle'        : core.geometry.simple.Saddle,
-      #'simple-ucylinder'     : core.geometry.simple.UCylinder,
-      #'hyper-nuke'           : utility.geometry.simple.hyperboloid.Nuke,
-      #'hyper-sphere'         : utility.geometry.simple.hyperboloid.Sphere,
-      #'hyper-cone'           : utility.geometry.simple.hyperboloid.Cone,
-      #'hyper-cylinder'       : utility.geometry.simple.hyperboloid.Cylinder,
-      #'hyper-negative'       : utility.geometry.simple.hyperboloid.Negative,
-      #
+      'simple-cylinder'      : core.geometry.simple.Cylinder,
+      'simple-box'           : core.geometry.simple.Box,
+     #'simple-plane'         : core.geometry.simple.Plane,
+       'simple-torus'        : core.geometry.simple.Torus,
+       'simple-cone'         : core.geometry.simple.Cone,
+     #'simple-disc'          : core.geometry.simple.Disc,
+     #'simple-udisc'         : core.geometry.simple.UDisc,
+      'simple-ellipsoid'     : core.geometry.simple.Ellipsoid,
+      'simple-hyperboloid'   : core.geometry.simple.Hyperboloid,
+      'simple-paraboloid'    : core.geometry.simple.Paraboloid,
+      'simple-quadric'       : core.geometry.simple.Quadric,
+     #'simple-triangle'      : core.geometry.simple.Triangle,
+     #'simple-utriangle'     : core.geometry.simple.UTriangle,
+      'simple-saddle'        : core.geometry.simple.Saddle,
+      'simple-ucylinder'     : core.geometry.simple.UCylinder,
+
+      'hyper-nuke'           : utility.geometry.simple.hyperboloid.Nuke,
+     #'hyper-sphere'         : utility.geometry.simple.hyperboloid.Sphere,
+      'hyper-cone'           : utility.geometry.simple.hyperboloid.Cone,
+     #'hyper-cylinder'       : utility.geometry.simple.hyperboloid.Cylinder,
+      'hyper-negative'       : utility.geometry.simple.hyperboloid.Negative,
+
       #'complex-Intersect'    : core.geometry.complex.Intersect, #NYI
       #'complex-Enclose'      : core.geometry.complex.Enclose, #NYI
-      #
-      #'transform-identity'   : core.geometry.transform.Identity,
-      #'transform-translate'  : core.geometry.transform.Translate,
-      #'transform-affine'     : core.geometry.transform.Affine,
-      #'transform-homography' : core.geometry.transform.Homography,
-      #
+
+      'transform-identity'   : core.geometry.transform.Identity,
+      'transform-translate'  : core.geometry.transform.Translate,
+      'transform-affine'     : core.geometry.transform.Affine,
+      'transform-hgraphy'    : core.geometry.transform.Homography,
+      'transform-mblur'      : core.geometry.transform.MotionBlur,
+
       #'volumetric-Vacuum'    : core.geometry.volumetric.Vacuum,
       #'volumetric-Mist'      : core.geometry.volumetric.Mist,
       #'volumetric-Smoke'     : core.geometry.volumetric.Smoke,
@@ -269,12 +273,13 @@ config['folder'] = '_out'
 config['index'] = 0
 
 config['picture'] = {}
-config['picture']['width']  = int( 1920 )
-config['picture']['height'] = int( 1280 )
+config['picture']['width']  = int( 800 )
+config['picture']['height'] = int( 800 )
 
 config['camera'] = {}
 config['camera']['angle-horizontal']  = 1
-config['camera']['angle-vertical'] = 1 # 0.66666666666666666666666666666667 #config['picture']['height'] / config['picture']['width']
+config['camera']['angle-vertical']    = 1 # 0.66666666666666666666666666666667 #config['picture']['height'] / config['picture']['width']
+config['camera']['aspect']    = 1 # config['picture']['width'] / config['picture']['height']
 
 config['camera']['eye']  = IceRayPy. type.math.coord.Scalar3D( 0, -3, 0 )
 config['camera']['view'] = IceRayPy.type.math.coord.Scalar3D( 0, 0, 0 )
@@ -298,17 +303,27 @@ config['window']['B']['y'] =     int( config['picture']['height'] * 1 )
 
 config['room'] = {}
 
+project_root     = "../../"                              # direct run
+dll_name         = "IceRayCDLL-1.0.0.0-dynamic.dll"
+bin_debug_name   = "bin/IceRayCDLL-x86-Debug"
+bin_release_name = "bin/IceRayCDLL-x86-Release"
+
+project_root     = "../../../.."                   #!< FromVS
+bin_debug_name   = "build/cmake/_make/cdll/Debug"  #!< FromVS
+
+
 #if( -1 != os.getcwd().find( '2015' ) ):
 #    print( "DEBUG", flush = True  )
-#    #config['dll'] = cdll.LoadLibrary(r"z:\work\code\cpp\prj\github\IceRay\work\bin\IceRayCDLL-x86-Debug\IceRayCDLL-1.0.0.0-dynamic.dll")
-#    config['dll'] = cdll.LoadLibrary(r"z:\work\code\cpp\prj\github\IceRay\work\bin\IceRayCDLL-x86_64-Debug\IceRayCDLL-1.0.0.0-dynamic.dll")
+#config['dll'] = cdll.LoadLibrary( project_root + r"bin/IceRayCDLL-x86-Debug/" + dll_name )
+#    config['dll'] = cdll.LoadLibrary(project_root + r"bin\IceRayCDLL-x86_64-Debug/" + dll_name)
 #else:
 #    print( "Release", flush = True  )
-#    #config['dll'] = cdll.LoadLibrary(r"z:\work\code\cpp\prj\github\IceRay\work\bin\IceRayCDLL-x86-Release\IceRayCDLL-1.0.0.0-dynamic.dll")
-#    #config['dll'] = cdll.LoadLibrary(r"z:\work\code\cpp\prj\github\IceRay\work\bin\IceRayCDLL-x86_64-release\IceRayCDLL-1.0.0.0-dynamic.dll")
+#    #config['dll'] = cdll.LoadLibrary(project_root + r"bin\IceRayCDLL-x86-Release/" + dll_name)
+#    #config['dll'] = cdll.LoadLibrary(project_root + r"bin\IceRayCDLL-x86_64-release/" + dll_name)
 
-config['dll'] = cdll.LoadLibrary(r"z:\work\code\cpp\prj\github\IceRay\work\bin\IceRayCDLL-x86-Release\IceRayCDLL-1.0.0.0-dynamic.dll")
-#config['dll'] = cdll.LoadLibrary(r"z:\work\code\cpp\prj\github\IceRay\work\bin\IceRayCDLL-x86_64-Release\IceRayCDLL-1.0.0.0-dynamic.dll")
+config['dll'] = cdll.LoadLibrary( project_root + "/" + bin_release_name + "/" + dll_name )
+#config['dll'] = cdll.LoadLibrary(project_root + r"bin\IceRayCDLL-x86_64-Release/" + dll_name )
+
 
 dilatation  = 1;
 

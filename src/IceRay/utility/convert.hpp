@@ -19,6 +19,7 @@
       {
        namespace S_convert
         {
+
          template < typename N_result, typename N_input >
           struct GC_direct
            {
@@ -27,7 +28,7 @@
 
             T_result operator()(  T_input const& P_input )const
              {
-              return T_result( P_input );
+              return static_cast<T_result>( P_input );
              }
            };
 

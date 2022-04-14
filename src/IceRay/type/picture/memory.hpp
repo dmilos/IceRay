@@ -44,11 +44,13 @@
               {
                this->F1_size() = P_size;
                M2_data.resize( P_size[0] * P_size[1]);
-               return true; 
+               return true;
               }
 
-             virtual T_color const* Fv_data(  )const{ return M2_data.data(); }
-
+             virtual T_color const* Fv_data(  )const
+              {
+               return M2_data.data();
+              }
 
            private:
              std::vector<T_color> M2_data;

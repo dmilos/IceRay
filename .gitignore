@@ -33,3 +33,7 @@ _!*
 /example/test/core/*.ppm
 /example/test/core/_!out
 __pycache__
+/example/test2/_out
+/example/test2/_out2
+/build/cmake/_make
+/build/cmake/tmpprj

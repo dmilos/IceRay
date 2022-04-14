@@ -1,3 +1,3 @@
-mkdir build
-cd build
+mkdir _build
+cd _build
 %prg_cmake% ..

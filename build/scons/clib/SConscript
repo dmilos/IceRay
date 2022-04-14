@@ -71,7 +71,7 @@ settings.accumulate( 'RTL', { 'configuration' : configuration, 'type': settings.
 settings.accumulate( 'exception' )
 
 settings.accumulate( 'source:c++', { 'dialect': 'c++11' } )
-settings.accumulate( 'macro', { 'name' : 'COLOR_USE_PP2FILE' } )
+#settings.accumulate( 'macro', { 'name' : 'COLOR_USE_PP2FILE' } )
 
 #permanently disabled
 settings.accumulate( 'compiler:warning', { 'base-class-destructor-is-inaccessible' : 'disable'  } )
@@ -93,49 +93,56 @@ settings.accumulate( 'compiler:warning', { 'unused-local-typedefs'      : 'enabl
 
 cc_files = []
 
-cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'camera', 'camera.cpp' ) ]
-if( False ):
-    pass
 
-#cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'geometry.cpp' ) ]
-if( True ):
-    cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'geometry.cpp' ) ]
-    cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'rtss.cpp'     ) ]
-    cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'blobby.cpp'   ) ]
-    cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'volumetric.cpp'   ) ]
-    cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'transform.cpp'   ) ]
-    cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'complex.cpp'   ) ]
-    cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'simple.cpp'   ) ]
-    cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'flat.cpp'   ) ]
-    cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'handle.cpp'   ) ]
+cc_list = open( "./cpp.lst.txt", "r" )
+for line in  cc_list :
+    cc_files += [ line.rstrip() ]
 
-cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'object', 'object.cpp' ) ]
-if( False ):
-    pass
+print( cc_files )
 
-cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'light', 'light.cpp' ) ]
-if( False ):
-    pass
-
-cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'material', 'material.cpp' ) ]
-if( False ):
-    pass
-
-cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'render', 'render.cpp' ) ]
-if( False ):
-    pass
-
-cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'utility', 'utility.cpp' ) ]
-if( False ):
-    pass
-
-cc_files += [ os.path.join( 'main', 'interface', 'c', 'type', 'type.cpp' ) ]
-if( False ):
-    pass
-
-cc_files += [ os.path.join( 'main', 'interface', 'c', 'utility', 'utility.cpp' ) ]
-if( False ):
-    pass
+#cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'camera', 'camera.cpp' ) ]
+#if( False ):
+#    pass
+#
+##cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'geometry.cpp' ) ]
+#if( True ):
+#    cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'geometry.cpp' ) ]
+#    cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'rtss.cpp'     ) ]
+#    cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'blobby.cpp'   ) ]
+#    cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'volumetric.cpp'   ) ]
+#    cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'transform.cpp'   ) ]
+#    cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'complex.cpp'   ) ]
+#    cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'simple.cpp'   ) ]
+#    cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'flat.cpp'   ) ]
+#    cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'handle.cpp'   ) ]
+#
+#cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'object', 'object.cpp' ) ]
+#if( False ):
+#    pass
+#
+#cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'light', 'light.cpp' ) ]
+#if( False ):
+#    pass
+#
+#cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'material', 'material.cpp' ) ]
+#if( False ):
+#    pass
+#
+#cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'render', 'render.cpp' ) ]
+#if( False ):
+#    pass
+#
+#cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'utility', 'utility.cpp' ) ]
+#if( False ):
+#    pass
+#
+#cc_files += [ os.path.join( 'main', 'interface', 'c', 'type', 'type.cpp' ) ]
+#if( False ):
+#    pass
+#
+#cc_files += [ os.path.join( 'main', 'interface', 'c', 'utility', 'utility.cpp' ) ]
+#if( False ):
+#    pass
 
 ### Deal with Scons ###
 

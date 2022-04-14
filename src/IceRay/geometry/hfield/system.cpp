@@ -102,7 +102,7 @@ bool GC_system::Fv_intersect
           I_cell[I_projection] = 0;
           continue;
          }
-        if( I_cell[I_projection] +1 < I_size[I_projection] )
+        if( I_cell[I_projection] + 1 < I_size[I_projection] )
          {
           continue;
          }

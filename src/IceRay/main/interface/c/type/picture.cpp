@@ -105,9 +105,23 @@ int IceRayC_Type_Picture_StorePNM( IceRayC_Type_Picture_Handle P_this, char cons
    {
     return 0;
    }
-  std::ofstream ofs( P_filename, std::ios_base::binary );
 
+  std::ofstream ofs( P_filename, std::ios_base::binary );
   ofs << PNM::save( (const uint8_t *)I_this->Fv_data(), I_this->F_size()[0], I_this->F_size()[1], PNM::P6 );
   return true;
  }
 
+IceRayC__EXPORT IceRayC__DECLSPEC int IceRayC_Type_Picture_Bits( IceRayC_Type_Picture_Handle P_this, unsigned char const** P_bits )
+ {
+  typedef GS_DDMRM::S_IceRay::S_type::S_picture::GC__pure      Tf__pure;
+  typedef GS_DDMRM::S_IceRay::S_type::S_picture::GC_memory    Tf_memory;
+
+  auto I_this = dynamic_cast<Tf_memory*>( reinterpret_cast<Tf__pure*> ( P_this ) );
+  if( nullptr == I_this )
+   {
+    return 0;
+   }
+
+  *P_bits = reinterpret_cast< unsigned char const *> ( I_this->Fv_data() );
+  return true;
+ }

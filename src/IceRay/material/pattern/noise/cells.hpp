@@ -38,9 +38,9 @@
            public:
              void  Fv_process( T_result &P_result, T_coord const& P_coord )const
               {
-               int x = floor( P_coord[0] );
-               int y = floor( P_coord[1] );
-               int z = floor( P_coord[2] );
+               int x = (int)floor( P_coord[0] );
+               int y = (int)floor( P_coord[1] );
+               int z = (int)floor( P_coord[2] );
 
                P_result = Fs_table( x, y, z );
               }

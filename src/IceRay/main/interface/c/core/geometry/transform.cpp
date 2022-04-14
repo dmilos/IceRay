@@ -272,6 +272,23 @@ IceRayC_Geometry_Handle IceRayC_Geometry_Transform_MotionBlur0()
   return cpp2c( Ir_result );
  }
 
+IceRayC_Geometry_Handle IceRayC_Geometry_Transform_MotionBlur1( IceRayC_Geometry_Handle P_child )
+ {
+  typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;
+  typedef GS_DDMRM::S_IceRay::S_geometry::S_transform::GC_mblur Tf_this;
+  auto Ir_result = new Tf_this{  };
+  Ir_result->F_child( c2cpp( P_child ) );
+  return cpp2c( Ir_result );
+ }
+
+IceRayC_Geometry_Handle IceRayC_Geometry_Transform_MotionBlur2( IceRayC_Geometry_Handle P_child, IceRayC_TypeCoordScalar3D* P_direction )
+ {
+  typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;
+  typedef GS_DDMRM::S_IceRay::S_geometry::S_transform::GC_mblur Tf_this;
+  auto Ir_result = new Tf_this{ c2cpp( P_child ), c2cpp( *P_direction ) };
+  return cpp2c( Ir_result );
+ }
+
 int IceRayC_Geometry_Transform_MotionBlur_Child( IceRayC_Geometry_Handle P_that, IceRayC_Geometry_Handle P_child )
  {
   typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;
@@ -283,5 +300,19 @@ int IceRayC_Geometry_Transform_MotionBlur_Child( IceRayC_Geometry_Handle P_that,
     return 0;
    }
   I_this->F_child( c2cpp( P_child ) );
+  return 1;
+ }
+
+int IceRayC_Geometry_Transform_MotionBlur_Direction( IceRayC_Geometry_Handle P_that, IceRayC_TypeCoordScalar3D* P_direction )
+ {
+  typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;
+  typedef GS_DDMRM::S_IceRay::S_geometry::S_transform::GC_mblur Tf_this;
+
+  auto I_this = dynamic_cast< Tf_this *>( c2cpp( P_that ) );
+  if( nullptr == I_this )
+   {
+    return 0;
+   }
+  I_this->F_direction( c2cpp( *P_direction ) );
   return 1;
  }

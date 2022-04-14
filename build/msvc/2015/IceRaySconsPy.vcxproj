@@ -22,6 +22,7 @@
     <ClCompile Include="..\..\..\src\IceRay\camera\cylindric\cylindric_h.cpp" />
     <ClCompile Include="..\..\..\src\IceRay\camera\cylindric\cylindric_v.cpp" />
     <ClCompile Include="..\..\..\src\IceRay\camera\dof\cone.cpp" />
+    <ClCompile Include="..\..\..\src\IceRay\camera\dof\cylinder.cpp" />
     <ClCompile Include="..\..\..\src\IceRay\camera\dof\focus.cpp" />
     <ClCompile Include="..\..\..\src\IceRay\camera\flat\general.cpp" />
     <ClCompile Include="..\..\..\src\IceRay\camera\flat\hybrid.cpp" />
@@ -130,6 +131,7 @@
     <ClInclude Include="..\..\..\src\IceRay\camera\cylindric\cylindric_h.hpp" />
     <ClInclude Include="..\..\..\src\IceRay\camera\cylindric\cylindric_v.hpp" />
     <ClInclude Include="..\..\..\src\IceRay\camera\dof\cone.hpp" />
+    <ClInclude Include="..\..\..\src\IceRay\camera\dof\cylinder.hpp" />
     <ClInclude Include="..\..\..\src\IceRay\camera\dof\focus.hpp" />
     <ClInclude Include="..\..\..\src\IceRay\camera\flat\general.hpp" />
     <ClInclude Include="..\..\..\src\IceRay\camera\flat\hybrid.hpp" />

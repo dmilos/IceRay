@@ -1,44 +1,44 @@
-#include   "./cone.hpp"
+#include   "./cylinder.hpp"
 #include "IceRay/utility/random.hpp"
 #include "math/function/function.hpp"
 
 using namespace GS_DDMRM::S_IceRay::S_camera::S_dof;
 
-GS_DDMRM::S_IceRay::S_utility::S_table::GC_hexagon GC_cone::M2s_hexagon( 20 );
+GS_DDMRM::S_IceRay::S_utility::S_table::GC_hexagon GC_cylinder::M2s_hexagon( 20 );
 
 
-GC_cone::GC_cone()
- :GC_cone( &Fs_child(), 1, 0, 1 )
+GC_cylinder::GC_cylinder()
+ :GC_cylinder( &Fs_child(), 1, 0, 1 )
  {
  }
 
-GC_cone::GC_cone( T_size const& P_sample, T_scalar const& P_aperture )
+GC_cylinder::GC_cylinder( T_size const& P_sample, T_scalar const& P_aperture )
   :GC__parent( nullptr, P_sample )
 {
   F_aperture( P_aperture );
   F_gauss( 1 );
 }
 
-GC_cone::GC_cone( T__pure *P_camera, T_size const& P_sample, T_scalar const& P_aperture )
+GC_cylinder::GC_cylinder( T__pure *P_camera, T_size const& P_sample, T_scalar const& P_aperture )
   :GC__parent( P_camera, P_sample )
 {
   F_aperture( P_aperture );
   F_gauss( 1 );
 }
 
-GC_cone::GC_cone( T__pure *P_camera, T_size const& P_sample, T_scalar const& P_aperture, T_scalar const& P_gauss )
+GC_cylinder::GC_cylinder( T__pure *P_camera, T_size const& P_sample, T_scalar const& P_aperture, T_scalar const& P_gauss )
  :GC__parent( P_camera, P_sample )
  {
   F_aperture( P_aperture );
   F_gauss( P_gauss );
  }
 
-GC_cone::~GC_cone()
+GC_cylinder::~GC_cylinder()
  {
  }
 
-GC_cone::T_size
-GC_cone::Fv_beam
+GC_cylinder::T_size
+GC_cylinder::Fv_beam
  (
    T_beam         & P_beam
   ,T_coord2D const& P_uv
@@ -71,25 +71,24 @@ GC_cone::Fv_beam
     T_scalar const& I_y = I_disc[1];
 
     T_coord & I_direction = P_beam[I_index].M_direction;
-    T_coord & I_origin = P_beam[I_index].M_origin;
+    T_coord & I_origin    = P_beam[I_index].M_origin;
 
-    I_back[0] = 0;
-    I_back[1] = 0;
-    I_back[2] = 0;
+    I_back[0] = I_x * F_aperture();
+    I_back[1] =                  0;
+    I_back[2] = I_y * F_aperture();
 
     I_front[0] =  I_x * F_aperture();
     I_front[1] =                   1;
     I_front[2] =  I_y * F_aperture();
 
-    I_origin = I_affine.vector();
+   ::math::linear::affine::transform( I_origin,    I_affine, I_back );
+   ::math::linear::affine::transform( I_direction, I_affine, I_front );
 
-    ::math::linear::affine::transform( I_direction, I_affine, I_front );
     ::math::linear::vector::subtraction( I_direction, I_origin );
-
-    ::math::linear::vector::length( I_direction, T_scalar( 1 ) );
+    auto I_len = ::math::linear::vector::length( I_direction );
 
     {
-     T_scalar I_intesity = ::math::linear::vector::dot( I_heading, I_direction );
+     T_scalar I_intesity = ::math::linear::vector::dot( I_heading, I_direction ) / I_len;
      I_intesity = ( 1 < I_intesity ? 1: I_intesity );
      I_intesity = ::math::function::pdf<T_scalar>( acos( I_intesity ), F_gauss() );
      P_beam[I_index].M_intesity = T_gray{ {I_intesity} };
@@ -107,13 +106,13 @@ GC_cone::Fv_beam
   return F_size();
  }
 
-void GC_cone::Fv_system( T_affine &P_affine, T_coord2D const& P_uv )
+void GC_cylinder::Fv_system( T_affine &P_affine, T_coord2D const& P_uv )
  {
   F_child().Fv_system( P_affine, P_uv );
  }
 
-bool GC_cone::Fv_size( T_size const& P_size )
- {
+bool GC_cylinder::Fv_size( T_size const& P_size )
+{
   T_size I_size  = P_size; 
   if( M2s_hexagon.F_size().size() <= I_size )
    {
@@ -124,7 +123,7 @@ bool GC_cone::Fv_size( T_size const& P_size )
   return true;
 }
 
-bool GC_cone::F_aperture
+bool GC_cylinder::F_aperture
  (
   T_scalar const& P_aperture
  )
@@ -136,7 +135,7 @@ bool GC_cone::F_aperture
   return true;
  }
 
-bool      GC_cone::F_gauss( T_scalar const& P_gauss )
+bool      GC_cylinder::F_gauss( T_scalar const& P_gauss )
  {
   M2_gauss = P_gauss;
   return true;

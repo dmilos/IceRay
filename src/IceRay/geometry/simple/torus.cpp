@@ -15,7 +15,7 @@ using namespace GS_DDMRM::S_IceRay::S_geometry;
 struct GC_torus::C_intersect
  {
   bool M_hit;
-  float M_control = 1.123456789;
+  float M_control = 1.123456789f;
  };
 
 GC_torus::T_scalar GC_torus::M2s_worst;
@@ -129,7 +129,7 @@ bool GC_torus::Fv_intersect( T_scalar &P_lambda, T_state &P_state, T_ray const& 
    }
 
   std::sort( I_root.begin(), I_root.begin() + I_count );
-  for( int I_index=0; I_index < I_count; ++I_index )
+  for( T_size I_index=0; I_index < I_count; ++I_index )
    {
     if( ( Is_epsilon_lambda < I_root[I_index] ) && ( I_root[I_index] < P_lambda ) )
      {
@@ -198,7 +198,7 @@ GC_torus::Fv_reset( T_state &P_state )const
  {
   C_intersect &I_intersect = P_state.F_content<C_intersect>();
   I_intersect.M_hit = false;
-  I_intersect.M_control = 9.87654321;
+  I_intersect.M_control = 9.87654321f;
   return;
  }
 

@@ -91,10 +91,19 @@ IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Camera_Handle IceRayC_Camera_DOF_Cone
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Camera_Handle IceRayC_Camera_DOF_Cone1( IceRayC_TypeSize P_sample, IceRayC_TypeScalar P_aperture );
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Camera_Handle IceRayC_Camera_DOF_Cone2( IceRayC_Camera_Handle P_child, IceRayC_TypeSize P_sample, IceRayC_TypeScalar P_aperture );
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Camera_Handle IceRayC_Camera_DOF_Cone3( IceRayC_Camera_Handle P_child, IceRayC_TypeSize P_sample, IceRayC_TypeScalar P_aperture, IceRayC_TypeScalar P_gauss );
-IceRayC__EXPORT IceRayC__DECLSPEC  int                   IceRayC_Camera_DOF_Conus_Child(    IceRayC_Camera_Handle P_that, IceRayC_Camera_Handle P_child );
-IceRayC__EXPORT IceRayC__DECLSPEC  int                   IceRayC_Camera_DOF_Conus_Sample(   IceRayC_Camera_Handle P_that, IceRayC_TypeSize P_sample );
-IceRayC__EXPORT IceRayC__DECLSPEC  int                   IceRayC_Camera_DOF_Conus_Aperture( IceRayC_Camera_Handle P_that, IceRayC_TypeScalar P_aperture );
-IceRayC__EXPORT IceRayC__DECLSPEC  int                   IceRayC_Camera_DOF_Conus_Gauss(    IceRayC_Camera_Handle P_that, IceRayC_TypeScalar P_gauss );
+IceRayC__EXPORT IceRayC__DECLSPEC  int                   IceRayC_Camera_DOF_Cone_Child(    IceRayC_Camera_Handle P_that, IceRayC_Camera_Handle P_child );
+IceRayC__EXPORT IceRayC__DECLSPEC  int                   IceRayC_Camera_DOF_Cone_Sample(   IceRayC_Camera_Handle P_that, IceRayC_TypeSize P_sample );
+IceRayC__EXPORT IceRayC__DECLSPEC  int                   IceRayC_Camera_DOF_Cone_Aperture( IceRayC_Camera_Handle P_that, IceRayC_TypeScalar P_aperture );
+IceRayC__EXPORT IceRayC__DECLSPEC  int                   IceRayC_Camera_DOF_Cone_Gauss(    IceRayC_Camera_Handle P_that, IceRayC_TypeScalar P_gauss );
+
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Camera_Handle IceRayC_Camera_DOF_Cylinder0();
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Camera_Handle IceRayC_Camera_DOF_Cylinder1( IceRayC_TypeSize P_sample, IceRayC_TypeScalar P_aperture );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Camera_Handle IceRayC_Camera_DOF_Cylinder2( IceRayC_Camera_Handle P_child, IceRayC_TypeSize P_sample, IceRayC_TypeScalar P_aperture );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Camera_Handle IceRayC_Camera_DOF_Cylinder3( IceRayC_Camera_Handle P_child, IceRayC_TypeSize P_sample, IceRayC_TypeScalar P_aperture, IceRayC_TypeScalar P_gauss );
+IceRayC__EXPORT IceRayC__DECLSPEC  int                   IceRayC_Camera_DOF_Cylinder_Child(    IceRayC_Camera_Handle P_that, IceRayC_Camera_Handle P_child );
+IceRayC__EXPORT IceRayC__DECLSPEC  int                   IceRayC_Camera_DOF_Cylinder_Sample(   IceRayC_Camera_Handle P_that, IceRayC_TypeSize P_sample );
+IceRayC__EXPORT IceRayC__DECLSPEC  int                   IceRayC_Camera_DOF_Cylinder_Aperture( IceRayC_Camera_Handle P_that, IceRayC_TypeScalar P_aperture );
+IceRayC__EXPORT IceRayC__DECLSPEC  int                   IceRayC_Camera_DOF_Cylinder_Gauss(    IceRayC_Camera_Handle P_that, IceRayC_TypeScalar P_gauss );
 
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Camera_Handle IceRayC_Camera_Transform_Invert0();
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Camera_Handle IceRayC_Camera_Transform_Invert1( IceRayC_Camera_Handle P_child );
