@@ -1,5 +1,4 @@
-#include "math/random/vdc.hpp"
-#include "math/constants.hpp"
+#include "math/math.hpp"
 #include "./line.hpp"
 
 using namespace GS_DDMRM::S_IceRay::S_light;

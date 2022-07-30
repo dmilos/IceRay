@@ -53,13 +53,14 @@ def object( P_dll, P_geometry, P_pigment, P_medium ):
 
 
 def manager( P_config, P_camera, P_object ):
-    sheaf_all = IceRayPy.core.render.sheaf.ALL( P_config['dll'] )
 
+    pixel_basic = IceRayPy.core.render.pixel.Basic( P_config['dll'] )
+    
     pierce_projector = IceRayPy.core.render.pierce.Projector( P_config['dll'] )
 
     pierce_projector.camera( P_camera )
 
-    pixel_basic = IceRayPy.core.render.pixel.Basic( P_config['dll'] )
+    sheaf_all = IceRayPy.core.render.sheaf.ALL( P_config['dll'] )
 
     ray_trace    = IceRayPy.core.render.ray.Trace( P_config['dll'] )
 

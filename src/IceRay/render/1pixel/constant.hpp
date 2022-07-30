@@ -45,9 +45,16 @@
               }
 
            public:
-             T_color const&         F_color()const{ return M2_color; }
+             T_color const&         F_color()const
+              {
+               return M2_color; 
+              }
            protected:
-             bool   F_color( T_color const& P_color ){ M2_color = P_color; return true ; }
+             bool   F_color( T_color const& P_color )
+              { 
+               M2_color = P_color; 
+               return true; 
+              }
            private:
              T_color  M2_color;
           };

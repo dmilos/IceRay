@@ -23,13 +23,13 @@
              typedef GS_DDMRM::S_IceRay::S_type::S_color::GT_char   T_color;
              typedef GS_DDMRM::S_IceRay::S_type::S_coord::GT_size2D T_coord;
 
-              virtual T_report Fv_pixel( T_color      & color, T_coord const& coord )const=0;
-              virtual T_report Fv_pixel( T_coord const& coord, T_color const& color )=0;
+             virtual T_report Fv_pixel( T_color      & color, T_coord const& coord )const=0;
+             virtual T_report Fv_pixel( T_coord const& coord, T_color const& color )=0;
 
-              virtual T_coord const& F_size(  )const{ return M2_size; }
-              virtual T_report Fv_size( T_coord const& P_size )=0;
+             virtual T_coord const& F_size(  )const{ return M2_size; }
+             virtual T_report Fv_size( T_coord const& P_size )=0;
 
-              virtual T_color const* Fv_data()const=0;
+             virtual T_color const* Fv_data()const=0;
 
            protected:
              T_coord & F1_size()

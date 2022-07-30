@@ -16,11 +16,13 @@ def vacuum( P_dll, P_config = None, P_light = None, P_exponat = None ):
 
 def pointers( P_dll, P_config = { 'shadow': False, 'pigment': None }, P_light = None, P_exponat = None ):
 
-    distance = 1.2
+    distance = 1
     radius = 0.05
 
     colorX={
+        'dark'   : IceRayPy.type.color.RGB( 0.1, 0.1, 0.1 ),
         'gray'   : IceRayPy.type.color.RGB( 0.5, 0.5, 0.5 ),
+        'white'  : IceRayPy.type.color.RGB( 1.0, 1.0, 1.0 ),
         'red'    : IceRayPy.type.color.RGB( 1.0, 0.0, 0.0 ),
         'green'  : IceRayPy.type.color.RGB( 0.0, 1.0, 0.0 ),
         'blue'   : IceRayPy.type.color.RGB( 0.0, 0.0, 1.0 ),
@@ -29,9 +31,17 @@ def pointers( P_dll, P_config = { 'shadow': False, 'pigment': None }, P_light = 
         'yellow' : IceRayPy.type.color.RGB( 1.0, 1.0, 0.0 ),
      }
 
+    white = IceRayPy.core.object.Wrapper( P_dll )
+    white.pigment( IceRayPy.utility.material.pattern.Constant( P_dll,{}, colorX['white'] ) )
+    white.geometrySet( IceRayPy.core.geometry.simple.Sphere( P_dll, Coord3D( +distance, +distance, +distance ) , radius ) )
+
+    dark = IceRayPy.core.object.Wrapper( P_dll )
+    dark.pigment( IceRayPy.utility.material.pattern.Constant( P_dll,{}, colorX['dark'] ) )
+    dark.geometrySet( IceRayPy.core.geometry.simple.Sphere( P_dll, Coord3D( -distance, -distance, -distance ) , radius ) )
+
     gray = IceRayPy.core.object.Wrapper( P_dll )
     gray.pigment( IceRayPy.utility.material.pattern.Constant( P_dll,{}, colorX['gray'] ) )
-    gray.geometrySet( IceRayPy.core.geometry.simple.Sphere( P_dll, Coord3D(  0, 0, 0) , radius ) )
+    gray.geometrySet( IceRayPy.core.geometry.simple.Sphere( P_dll, Coord3D(  0,  0,  0 ) , radius ) )
 
     red = IceRayPy.core.object.Wrapper( P_dll )
     red.pigment( IceRayPy.utility.material.pattern.Constant( P_dll,{},  colorX['red'] ) )
@@ -39,15 +49,15 @@ def pointers( P_dll, P_config = { 'shadow': False, 'pigment': None }, P_light = 
 
     cyan = IceRayPy.core.object.Wrapper( P_dll )
     cyan.pigment( IceRayPy.utility.material.pattern.Constant( P_dll,{}, colorX['cyan'] ) )
-    cyan.geometrySet( IceRayPy.core.geometry.simple.Sphere( P_dll, Coord3D(  -distance, 0, 0) , radius ) )
+    cyan.geometrySet( IceRayPy.core.geometry.simple.Sphere( P_dll, Coord3D(  -distance, 0, 0 ) , radius ) )
 
     green = IceRayPy.core.object.Wrapper( P_dll )
     green.pigment( IceRayPy.utility.material.pattern.Constant( P_dll,{}, colorX['green'] ) )
-    green.geometrySet( IceRayPy.core.geometry.simple.Sphere( P_dll, Coord3D(  0, distance, 0) , radius ) )
+    green.geometrySet( IceRayPy.core.geometry.simple.Sphere( P_dll, Coord3D(  0, distance, 0 ) , radius ) )
 
     magenta = IceRayPy.core.object.Wrapper( P_dll )
     magenta.pigment( IceRayPy.utility.material.pattern.Constant( P_dll,{}, colorX['magenta'] ) )
-    magenta.geometrySet( IceRayPy.core.geometry.simple.Sphere( P_dll, Coord3D( 0, -distance, 0) , radius ) )
+    magenta.geometrySet( IceRayPy.core.geometry.simple.Sphere( P_dll, Coord3D( 0, -distance, 0 ) , radius ) )
 
     blue = IceRayPy.core.object.Wrapper( P_dll )
     blue.pigment( IceRayPy.utility.material.pattern.Constant( P_dll,{}, colorX['blue'] ) )
@@ -59,7 +69,9 @@ def pointers( P_dll, P_config = { 'shadow': False, 'pigment': None }, P_light = 
 
     rtss = IceRayPy.core.geometry.rtss.Object( P_dll, IceRayPy.core.geometry.rtss.List( P_dll ))
 
-    rtss.push( IceRayPy.core.geometry.Pretender( P_dll, gray.cast2Geometry(),  gray  ) )
+    rtss.push( IceRayPy.core.geometry.Pretender( P_dll, white.cast2Geometry(),  white  ) )
+    rtss.push( IceRayPy.core.geometry.Pretender( P_dll, dark.cast2Geometry(),  dark  ) )
+    rtss.push( IceRayPy.core.geometry.Pretender( P_dll, gray.cast2Geometry(),   gray  ) )
 
     rtss.push( IceRayPy.core.geometry.Pretender( P_dll, red.cast2Geometry(),   red   ) )
     rtss.push( IceRayPy.core.geometry.Pretender( P_dll, green.cast2Geometry(), green ) )

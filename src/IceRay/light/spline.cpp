@@ -1,6 +1,5 @@
 #include "./spline.hpp"
-#include "math/random/vdc.hpp"
-#include "math/random/sobol1d.hpp"
+#include "math/math.hpp"
 
 using namespace GS_DDMRM::S_IceRay::S_light;
 

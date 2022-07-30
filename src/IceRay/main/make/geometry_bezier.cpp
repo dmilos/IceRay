@@ -1,5 +1,5 @@
 
-#include "math/geometry/spline/bezier3/bezier.hpp"
+#include "math/math.hpp"
 
 
 #include "../../geometry/spline/spline.hpp"

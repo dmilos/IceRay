@@ -12,7 +12,7 @@ struct GC_mblur::C_intersect
  };
 
 GC_mblur::GC_mblur()
- :GC_mblur(nullptr, ::math::linear::vector::fill( T_coord{}, 0 ) )
+ :GC_mblur( nullptr, ::math::linear::vector::fill( T_coord{}, 0 ) )
  {
  }
 
@@ -23,7 +23,7 @@ GC_mblur::GC_mblur
  )
  {
   M2_direction = P_direction;
-
+  M_index = 0;
   F_child( P_child );
  }
 
@@ -94,10 +94,13 @@ bool GC_mblur::Fv_intersect( T_scalar &P_lambda, T_state &P_intersect, T_ray con
 
   T_ray I_ray;
   I_ray.M_direction = P_ray.M_direction;
-
-   I_head.M_t = M2_randSobol1D.next(); // Winner
-  //I_head.M_t = M2_randVDC.next();
-  //I_head.M_t = M2_randStandard1D();
+  switch( M_index++ % 4 )
+   {
+    case( 0 ): I_head.M_t =  M2_randStandard1D();   break;
+    case( 1 ): I_head.M_t = M2_randSobol1D.next();  break;
+    case( 2 ): I_head.M_t =  M2_randVDC.next();     break;
+    case( 3 ): I_head.M_t = M2_randGold1D.next();    break;
+   }
 
   ::math::linear::vector::combine( I_ray.M_origin, P_ray.M_origin, -I_head.M_t, F_direction() );
 
@@ -189,15 +192,16 @@ bool GC_mblur::F_child( T_geometry * P_child )
 
 bool GC_mblur::F_direction( T_coord const& P_direction )
  {
-  auto I_boxA = M2_geometry.M2__base->F_box();
+  M2_direction = P_direction;
 
+  auto I_box0 = M2_geometry.M2__base->F_box();
   auto I_boxB = M2_geometry.M2__base->F_box();
   ::math::linear::vector::addition( I_boxB[0], M2_direction );
   ::math::linear::vector::addition( I_boxB[1], M2_direction );
 
-  ::math::geometry::interval::extend( I_boxA, I_boxB );
+  ::math::geometry::interval::extend( I_box0, I_boxB );
 
-  F1_box( I_boxA );
+  F1_box( I_box0 );
   return true;
  }
 

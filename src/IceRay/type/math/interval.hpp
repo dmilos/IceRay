@@ -7,7 +7,7 @@
 // GT_size4D, GT_scalar4D,
 
  #include "IceRay/type/nothing.hpp"
- #include "math/geometry/interval/interval.hpp"
+ #include "math/math.hpp"
 
 
  #include "../basic/size.hpp"

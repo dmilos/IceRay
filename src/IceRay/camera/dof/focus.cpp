@@ -1,5 +1,5 @@
 #include   "./focus.hpp"
-#include "math/function/function.hpp"
+#include "math/math.hpp"
 
 using namespace GS_DDMRM::S_IceRay::S_camera::S_dof;
 

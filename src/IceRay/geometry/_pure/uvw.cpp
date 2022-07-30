@@ -1,5 +1,5 @@
 #include "./uvw.hpp"
-#include "math/function/function.hpp"
+#include "math/math.hpp"
 
 
 using namespace GS_DDMRM::S_IceRay::S_geometry::S__pure;

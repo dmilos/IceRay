@@ -1,6 +1,6 @@
 #include <cmath>
 #include "math/constants.hpp"
-#include "math/geometry/deg2rad.hpp"
+#include "math/math.hpp"
 #include "./reflector.hpp"
 
 using namespace GS_DDMRM::S_IceRay::S_light;

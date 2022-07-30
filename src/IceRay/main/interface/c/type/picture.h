@@ -27,4 +27,7 @@ IceRayC__EXPORT IceRayC__DECLSPEC int IceRayC_Type_Picture_StorePNM( IceRayC_Typ
 IceRayC__EXPORT IceRayC__DECLSPEC int IceRayC_Type_Picture_Bits( IceRayC_Type_Picture_Handle P_this, unsigned char const** P_bits );
 
 
+IceRayC__EXPORT IceRayC__DECLSPEC int IceRayC_Type_Picture_Default( IceRayC_Type_Picture_Handle P_this );
+
+
 #endif

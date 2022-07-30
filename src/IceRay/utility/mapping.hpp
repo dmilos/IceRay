@@ -12,7 +12,7 @@
 #include "IceRay/type/math/coord.hpp"
 #include "IceRay/type/math/affine.hpp"
 #include "IceRay/type/math/homography.hpp"
-#include "math/geometry/geometry.hpp"
+#include "math/math.hpp"
 
 
 

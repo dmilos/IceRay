@@ -7,10 +7,14 @@ SizeType = IceRayPy.type.basic.Size
 def _Generic(
         P_dll
       , P_function
-      , P_filename = "z:\\work\\code\\cpp\\prj\\github\\IceRay\\work\\data\\di.pnm"
+      , P_filename = None
       ):
     I_picture   = IceRayPy.type.graph.Picture( P_dll )
-    I_picture.load( P_filename )
+    if( None != P_filename ):
+        I_picture.load( P_filename )
+    else:
+        I_picture.size( 16, 16 )
+        IceRayPy.type.graph.Default( I_picture )
     I_image = IceRayPy.core.material.pattern.Image( P_dll, I_picture )
     result = IceRayPy.core.material.instruction.label.color.dynamic.RESULT
     point = IceRayPy.core.material.instruction.label.coord3d.dynamic.POINT
@@ -23,62 +27,62 @@ def _Generic(
     return I_surface
 
 
-def Identity3D( P_dll, P_config, P_filename = "z:\\work\\code\\cpp\\prj\\github\\IceRay\\work\\data\\di.pnm" ):
+def Identity3D( P_dll, P_config, P_filename = None ):
     return _Generic( P_dll, IceRayPy.core.material.instruction.operation.mapping.Identity3D, P_filename )
 
-def Translate3D( P_dll, P_config, P_filename = "z:\\work\\code\\cpp\\prj\\github\\IceRay\\work\\data\\di.pnm" ):
+def Translate3D( P_dll, P_config, P_filename = None ):
     return _Generic( P_dll, IceRayPy.core.material.instruction.operation.mapping.Translate3D, P_filename )
 
-def Affine3D( P_dll, P_config, P_filename = "z:\\work\\code\\cpp\\prj\\github\\IceRay\\work\\data\\di.pnm" ):
+def Affine3D( P_dll, P_config, P_filename = None ):
     return _Generic( P_dll, IceRayPy.core.material.instruction.operation.mapping.Affine3D, P_filename )
 
-def Homography3D( P_dll, P_config, P_filename = "z:\\work\\code\\cpp\\prj\\github\\IceRay\\work\\data\\di.pnm" ):
+def Homography3D( P_dll, P_config, P_filename = None ):
     return _Generic( P_dll, IceRayPy.core.material.instruction.operation.mapping.Homography3D, P_filename )
 
 
-def Cartesian2Cylindric( P_dll, P_config, P_filename = "z:\\work\\code\\cpp\\prj\\github\\IceRay\\work\\data\\di.pnm" ):
+def Cartesian2Cylindric( P_dll, P_config, P_filename = None ):
     return _Generic( P_dll, IceRayPy.core.material.instruction.operation.mapping.Cartesian2Cylindric, P_filename )
 
-def Euclid2Max( P_dll, P_config, P_filename = "z:\\work\\code\\cpp\\prj\\github\\IceRay\\work\\data\\di.pnm" ):
+def Euclid2Max( P_dll, P_config, P_filename = None ):
     return _Generic( P_dll, IceRayPy.core.material.instruction.operation.mapping.Euclid2Max, P_filename )
 
-def Max2Euclid( P_dll, P_config, P_filename = "z:\\work\\code\\cpp\\prj\\github\\IceRay\\work\\data\\di.pnm" ):
+def Max2Euclid( P_dll, P_config, P_filename = None ):
     return _Generic( P_dll, IceRayPy.core.material.instruction.operation.mapping.Max2Euclid, P_filename )
 
 
 
-def Cartesian2Package( P_dll, P_config, P_filename = "z:\\work\\code\\cpp\\prj\\github\\IceRay\\work\\data\\di.pnm" ):
+def Cartesian2Package( P_dll, P_config, P_filename = None ):
     return _Generic( P_dll, IceRayPy.core.material.instruction.operation.mapping.Cartesian2Package, P_filename )
 
-def Cartesian2Spherical( P_dll, P_config, P_filename = "z:\\work\\code\\cpp\\prj\\github\\IceRay\\work\\data\\di.pnm" ):
+def Cartesian2Spherical( P_dll, P_config, P_filename = None ):
     return _Generic( P_dll, IceRayPy.core.material.instruction.operation.mapping.Cartesian2Spherical, P_filename )
 
-def Cartesian2Torus( P_dll, P_config, P_filename = "z:\\work\\code\\cpp\\prj\\github\\IceRay\\work\\data\\di.pnm" ):
+def Cartesian2Torus( P_dll, P_config, P_filename = None ):
     return _Generic( P_dll, IceRayPy.core.material.instruction.operation.mapping.Cartesian2Torus, P_filename )
 
-def Cartesian2Tablecloth( P_dll, P_config, P_filename = "z:\\work\\code\\cpp\\prj\\github\\IceRay\\work\\data\\di.pnm" ):
+def Cartesian2Tablecloth( P_dll, P_config, P_filename = None ):
     return _Generic( P_dll, IceRayPy.core.material.instruction.operation.mapping.Cartesian2Tablecloth, P_filename )
 
-def Cartesian2WoodX( P_dll, P_config, P_filename = "z:\\work\\code\\cpp\\prj\\github\\IceRay\\work\\data\\di.pnm" ):
+def Cartesian2WoodX( P_dll, P_config, P_filename = None ):
     return _Generic( P_dll, IceRayPy.core.material.instruction.operation.mapping.Cartesian2WoodX, P_filename )
 
-def Cartesian2WoodY( P_dll, P_config, P_filename = "z:\\work\\code\\cpp\\prj\\github\\IceRay\\work\\data\\di.pnm" ):
+def Cartesian2WoodY( P_dll, P_config, P_filename = None ):
     return _Generic( P_dll, IceRayPy.core.material.instruction.operation.mapping.Cartesian2WoodY, P_filename )
 
-def Cartesian2WoodZ( P_dll, P_config, P_filename = "z:\\work\\code\\cpp\\prj\\github\\IceRay\\work\\data\\di.pnm" ):
+def Cartesian2WoodZ( P_dll, P_config, P_filename = None ):
     return _Generic( P_dll, IceRayPy.core.material.instruction.operation.mapping.Cartesian2WoodZ, P_filename )
 
-def Cylindric2Cartesian( P_dll, P_config, P_filename = "z:\\work\\code\\cpp\\prj\\github\\IceRay\\work\\data\\di.pnm" ):
+def Cylindric2Cartesian( P_dll, P_config, P_filename = None ):
     return _Generic( P_dll, IceRayPy.core.material.instruction.operation.mapping.Cylindric2Cartesian, P_filename )
 
-def Cylindric2Spherical( P_dll, P_config, P_filename = "z:\\work\\code\\cpp\\prj\\github\\IceRay\\work\\data\\di.pnm" ):
+def Cylindric2Spherical( P_dll, P_config, P_filename = None ):
     return _Generic( P_dll, IceRayPy.core.material.instruction.operation.mapping.Cylindric2Spherical, P_filename )
 
-def Spherical2Cartesian( P_dll, P_config, P_filename = "z:\\work\\code\\cpp\\prj\\github\\IceRay\\work\\data\\di.pnm" ):
+def Spherical2Cartesian( P_dll, P_config, P_filename = None ):
     return _Generic( P_dll, IceRayPy.core.material.instruction.operation.mapping.Spherical2Cartesian, P_filename )
 
-def Spherical2Cylindric( P_dll, P_config, P_filename = "z:\\work\\code\\cpp\\prj\\github\\IceRay\\work\\data\\di.pnm" ):
+def Spherical2Cylindric( P_dll, P_config, P_filename = None ):
     return _Generic( P_dll, IceRayPy.core.material.instruction.operation.mapping.Spherical2Cylindric, P_filename )
 
-def Cartesian2Fisheye( P_dll, P_config, P_filename = "z:\\work\\code\\cpp\\prj\\github\\IceRay\\work\\data\\di.pnm" ):
+def Cartesian2Fisheye( P_dll, P_config, P_filename = None ):
     return _Generic( P_dll, IceRayPy.core.material.instruction.operation.mapping.Cartesian2Fisheye, P_filename )

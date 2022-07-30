@@ -22,10 +22,16 @@ def Constant(
 def Image(
       P_dll
      ,P_config
-     ,P_filename = "z:\\work\\code\\cpp\\prj\\github\\IceRay\\work\\data\\di.pnm"
+     ,P_filename = None
     ):
     I_picture   = IceRayPy.type.graph.Picture( P_dll )
-    I_picture.load( P_filename )
+
+    if( None != P_filename ):
+        I_picture.load( P_filename )
+    else:
+        I_picture.size( 16, 16 )
+        IceRayPy.type.graph.Default( I_picture )
+
     I_image = IceRayPy.core.material.pattern.Image( P_dll, I_picture )
     I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
     result = IceRayPy.core.material.instruction.label.color.dynamic.RESULT

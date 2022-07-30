@@ -1,7 +1,7 @@
 #ifndef _DDMM_IceRAY_geometry_hfield_object_quad_H_
  #define _DDMM_IceRAY_geometry_hfield_object_quad_H_
 
-#include "math/polynomial/quadric/solve.hpp"
+#include "math/math.hpp"
 
 #include "./_pure.hpp"
 

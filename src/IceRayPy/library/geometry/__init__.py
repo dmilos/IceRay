@@ -1,6 +1,8 @@
 print( '<' + __name__ + ' name=\'' +   __file__ + '\'>' )
 
 import IceRayPy
+import math
+Coord3D = IceRayPy.type.math.coord.Scalar3D
 
 def OneM( P_dll ):
 
@@ -27,6 +29,19 @@ def OneM( P_dll ):
     rtss.optimize()
 
     return rtss
+
+def MotionBlur( P_dll ):
+    radius = 0.5
+    center = Coord3D( -1+radius, 0, 0 )
+    direction = Coord3D( -center[0]-center[0], -center[1]-center[1], -center[2]-center[2] )
+
+    result = IceRayPy.core.geometry.transform.MotionBlur( P_dll )
+    child = IceRayPy.core.geometry.simple.Sphere( P_dll, center, radius )
+
+    result.direction( direction )
+    result.child( child )
+
+    return result
 
 
 print( '</' + __name__ + ' name=\'' +   __file__ + '>' )

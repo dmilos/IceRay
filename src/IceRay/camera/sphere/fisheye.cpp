@@ -1,5 +1,5 @@
 #include   "./fisheye.hpp"
-#include   "math/geometry/deg2rad.hpp"
+#include   "math/math.hpp"
 
 
 using namespace GS_DDMRM::S_IceRay::S_camera;

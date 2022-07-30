@@ -7,7 +7,7 @@
 
 
 #include "./torus.hpp"
-#include "math/polynomial/polynomial.hpp"
+#include "math/math.hpp"
 
 using namespace GS_DDMRM::S_IceRay::S_geometry;
 

@@ -9,7 +9,7 @@
  // GS_DDMRM::S_IceRay::S_utility::S_random::GT_sobol2D
 
 
-#include "math/random/random.hpp"
+#include "math/math.hpp"
 #include "IceRay/type/math/coord.hpp"
 
 
@@ -119,7 +119,6 @@
             private:
                T_size M2_position;
            };
-
 
           class GC_table1D
            {

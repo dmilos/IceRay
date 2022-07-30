@@ -5,7 +5,7 @@
 
 #include "../../instruction.hpp"
 #include "IceRay/utility/random.hpp"
-#include "math/geometry/deg2rad.hpp"
+#include "math/math.hpp"
 
  namespace GS_DDMRM
   {

@@ -125,3 +125,19 @@ IceRayC__EXPORT IceRayC__DECLSPEC int IceRayC_Type_Picture_Bits( IceRayC_Type_Pi
   *P_bits = reinterpret_cast< unsigned char const *> ( I_this->Fv_data() );
   return true;
  }
+
+IceRayC__EXPORT IceRayC__DECLSPEC int IceRayC_Type_Picture_Default( IceRayC_Type_Picture_Handle P_this )
+ {
+  typedef GS_DDMRM::S_IceRay::S_type::S_picture::GC__pure      Tf__pure;
+  typedef GS_DDMRM::S_IceRay::S_type::S_picture::GC_memory    Tf_memory;
+
+  auto I_this = dynamic_cast<Tf_memory*>( reinterpret_cast<Tf__pure*> ( P_this ) );
+  if( nullptr == I_this )
+   {
+    return 0;
+   }
+
+  GS_DDMRM::S_IceRay::S_type::S_picture::GF_default( *I_this );
+  return true;
+ }
+

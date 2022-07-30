@@ -15,7 +15,7 @@
         {
 
          class GC_memory
-         : public GS_DDMRM::S_IceRay::S_type::S_picture::GC__pure
+          : public GS_DDMRM::S_IceRay::S_type::S_picture::GC__pure
           {
            public:
              typedef GS_DDMRM::S_IceRay::S_type::GT_report          T_report;
