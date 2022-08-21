@@ -42,8 +42,8 @@
                  enum Ee_output{ En_outTYPE_ResultValue= 3 };
 
                  enum Ee_input{  En_inTYPE_LeftValue   = 0
-                                 En_inTYPE_MiddleValue = 1
-                                 En_inTYPE_RightValue  = 2 };
+                                ,En_inTYPE_MiddleValue = 1
+                                ,En_inTYPE_RightValue  = 2 };
 
                public:
                  GC_ternary
@@ -70,7 +70,7 @@
 
                    T_result I_result = M2_operation( I_left, I_middle, I_right );
 
-                   M2_memoryResult->Fv_store( this->template F_output<T_typeResult>()[ En_outTYPE_ResultValue ], I_result );
+                   M2_memoryResult->Fv_store( this->template F_output<T_result>()[ En_outTYPE_ResultValue ], I_result );
 
                    return true;
                   }
@@ -110,4 +110,3 @@
   }
 
 #endif
-

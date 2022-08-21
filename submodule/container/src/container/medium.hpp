@@ -5,6 +5,8 @@
 
  #include <vector>
  #include <memory>
+ #include <iostream>
+ #include <iomanip>
 
  namespace GS_DDMRM
   {

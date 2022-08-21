@@ -28,8 +28,14 @@
            : public GS_DDMRM::S_IceRay::S_material::S_pattern::GC__special< N_type >
            { // DONE
             public:
-             typedef N_type T_type, T_result;
+              typedef N_type T_type, T_result;
 
+            public:
+              typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GC__special< N_type > T__special;
+            public:
+              /*TODO try to remove this line*/typedef typename T__special::T_coord T_coord;
+
+            public:
               explicit GC_constant( T_type const& P_result )
                :M2_result( P_result )
                {

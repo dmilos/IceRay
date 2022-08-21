@@ -3,6 +3,9 @@
 
  #include <tuple>
  #include <limits>
+ //#if defined ( __GNUC__ )
+ #include <cfloat> // MSVC
+ //#endif
 
  #include "../../../type/basic/size.hpp"
  #include "../../../geometry/_pure/intersect.hpp"

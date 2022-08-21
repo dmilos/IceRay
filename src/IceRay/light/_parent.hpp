@@ -3,7 +3,7 @@
 
  // GS_DDMRM::S_IceRay::S_light::GC__parent
 
- #include "../_pure.hpp"
+ #include "./_pure.hpp"
 
 
  namespace GS_DDMRM

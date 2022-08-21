@@ -53,7 +53,8 @@ bool GC_hyperboloid::Fv_intersect( T_scalar     & P_lambda ,T_state      & P_sta
     if( ( ( Is_epsilon < I_lambda ) && ( I_lambda < P_lambda ) ) && ( ( T_scalar( -1 ) < I_height ) && ( I_height < T_scalar( 1 ) ) ) )
      {
       P_lambda = I_lambda;
-      Fv_inside( ::math::linear::vector::combine( T_coord{}, I_origin, P_lambda, I_direction ) );
+      T_coord I_point;
+      Fv_inside( ::math::linear::vector::combine( I_point, I_origin, P_lambda, I_direction ) );
       return I_intersect.M_hit = true;
      }
 
@@ -80,7 +81,8 @@ bool GC_hyperboloid::Fv_intersect( T_scalar     & P_lambda ,T_state      & P_sta
    if( ( ( Is_epsilon < I_lambda ) && ( I_lambda < P_lambda ) ) && ( ( T_scalar( -1 ) < I_height ) && ( I_height < T_scalar( 1 ) ) ) )
     {
      P_lambda = I_lambda;
-     Fv_inside( ::math::linear::vector::combine( T_coord{}, I_origin, P_lambda, I_direction ) );
+     T_coord I_point;
+     Fv_inside( ::math::linear::vector::combine( I_point, I_origin, P_lambda, I_direction ) );
      return I_intersect.M_hit = true;
     }
   }
@@ -91,7 +93,8 @@ bool GC_hyperboloid::Fv_intersect( T_scalar     & P_lambda ,T_state      & P_sta
    if( ( ( Is_epsilon < I_lambda ) && ( I_lambda < P_lambda ) ) && ( ( T_scalar( -1 ) < I_height ) && ( I_height < T_scalar( 1 ) ) ) )
     {
      P_lambda = I_lambda;
-     Fv_inside( ::math::linear::vector::combine( T_coord{}, I_origin, P_lambda, I_direction ) );
+     T_coord I_point;
+     Fv_inside( ::math::linear::vector::combine( I_point, I_origin, P_lambda, I_direction ) );
      return I_intersect.M_hit = true;
     }
   }

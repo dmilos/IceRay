@@ -57,6 +57,10 @@
               typedef N_result       T_result;
 
             public:
+               typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GC__pure T__pure;
+              /*TODO try to remove this line*/typedef typename T__pure::T_coord T_coord;
+
+            public:
               virtual void Fv_process( T_result &P_result, T_coord const& P_coord )const=0;
            };
 

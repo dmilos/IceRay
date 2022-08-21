@@ -1,5 +1,5 @@
-mkdir _make
-cd _make
+mkdir _makeVS
+cd _makeVS
 
 %prg_cmake% ..
 

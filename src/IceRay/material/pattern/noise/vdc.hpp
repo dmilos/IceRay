@@ -5,7 +5,7 @@
 
 #include "../_pure.hpp"
 
-#include "IceRay\utility\random.hpp"
+#include "IceRay/utility/random.hpp"
 
 
 

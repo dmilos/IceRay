@@ -1,14 +1,14 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.10)
 
+#primary variables
+set( PROJECT_NAME_BARE            "IceRay" ) #!< TODO Take this from INI
+set( PROJECT_NAME_DECOR_POSTFIX      "DLL" )
+set( ICERAY_PROJECT_VERSION      "1.0.0.0" )#!< TODO Take this from INI
 
-set( PROJECT_NAME_BARE "IceRay" ) #!< TODO Take this from INI
-set( PROJECT_VERSION   "1.0.0.0" )#!< TODO Take this from INI
+set( ICERAY_PROJECT_NAME_FULL                  ${PROJECT_NAME_BARE}${PROJECT_NAME_DECOR_POSTFIX}-${ICERAY_PROJECT_VERSION} )
+set( ICERAY_CORE_DLL_PROJECT_NAME_FULL         ${ICERAY_PROJECT_NAME_FULL} CACHE INTERNAL "" )
 
-set( PROJECT_DLL_NAME_FULL ${PROJECT_NAME_BARE}DLL-${PROJECT_VERSION} )
-set( PROJECT_DLL           ${PROJECT_DLL_NAME_FULL} )
-
-project( ${PROJECT_DLL_NAME_FULL} )
-
+project( ${ICERAY_PROJECT_NAME_FULL} )
 
 set( directory__root "${CMAKE_CURRENT_SOURCE_DIR}/../../.." )
 
@@ -65,12 +65,13 @@ set( COMMAND_ARG64_RELEASE  ${directory__root}"/example/test2/list.py" )
 
 set( COMMAND_ENVIRONMENT_RELEASE "PATH=%PATH%" )
 set( COMMAND_ENVIRONMENT_DEBUG   "PATH=%PATH%" )
-configure_file( template.vcxproj.user.in ${CMAKE_BINARY_DIR}/cdll/${PROJECT_DLL_NAME_FULL}.vcxproj.user @ONLY )
+configure_file( template.vcxproj.user.in ${CMAKE_BINARY_DIR}/cdll/${PROJECT_NAME_BARE}.vcxproj.user @ONLY )
 
 
-add_library( ${PROJECT_DLL_NAME_FULL} SHARED ${SOURCE_CPP} ${SOURCE_HPP}  )
+add_library( ${ICERAY_PROJECT_NAME_FULL} SHARED ${SOURCE_CPP} ${SOURCE_HPP}  )
 
-target_include_directories(  ${PROJECT_DLL_NAME_FULL} PRIVATE "${directory_include}")
+target_include_directories(  ${ICERAY_PROJECT_NAME_FULL} PRIVATE "${directory_include}")
 
-target_link_libraries(${PROJECT_DLL_NAME_FULL} PRIVATE ${PROJECT_NAME_BARE}Lib-${PROJECT_VERSION} )
-add_dependencies(     ${PROJECT_DLL_NAME_FULL}         ${PROJECT_NAME_BARE}Lib-${PROJECT_VERSION} )
+target_link_libraries(${ICERAY_PROJECT_NAME_FULL} PRIVATE ${ICERAY_CORE_LIBRARY_PROJECT_NAME_FULL} )
+
+add_dependencies(     ${ICERAY_PROJECT_NAME_FULL}         ${ICERAY_CORE_LIBRARY_PROJECT_NAME_FULL} )

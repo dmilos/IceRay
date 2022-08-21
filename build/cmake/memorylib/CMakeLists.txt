@@ -1,12 +1,14 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.10)
 
 #primary variables
-set( PROJECT_NAME_BARE       "Memory" ) #!< TODO Take this from INI
-set( PROJECT_VERSION    "1.0.0.0" )#!< TODO Take this from INI
+set( PROJECT_NAME_BARE            "Memory" ) #!< TODO Take this from INI
+set( PROJECT_NAME_DECOR_POSTFIX      "Lib" )
+set( ICERAY_PROJECT_VERSION      "1.0.0.0" )#!< TODO Take this from INI
 
-project( ${PROJECT_NAME_BARE} )
-set( PROJECT_NAME_FULL ${PROJECT_NAME_BARE}Lib-${PROJECT_VERSION} )
-set( PROJECT_CORE_NAME_FULL ${PROJECT_NAME_FULL} )
+set( ICERAY_PROJECT_NAME_FULL                  ${PROJECT_NAME_BARE}${PROJECT_NAME_DECOR_POSTFIX}-${ICERAY_PROJECT_VERSION} )
+set( ICERAY_SUBMODULE_MEMORY_PROJECT_NAME_FULL ${ICERAY_PROJECT_NAME_FULL} CACHE INTERNAL "" )
+
+project( ${ICERAY_PROJECT_NAME_FULL} )
 
 set( directory__root  "${CMAKE_CURRENT_SOURCE_DIR}/../../.." )
 
@@ -60,5 +62,5 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${directory_obj}/arc)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${directory_lib}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${directory_dll}/bin)
 
-add_library(${PROJECT_NAME_FULL} STATIC ${SOURCE_CPP} ${SOURCE_HPP})
+add_library(${ICERAY_PROJECT_NAME_FULL} STATIC ${SOURCE_CPP} ${SOURCE_HPP})
 

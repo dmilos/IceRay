@@ -8,7 +8,7 @@
 #include <iostream>
 #include <iomanip>
 
-#include "IceRay\utility\random.hpp"
+#include "IceRay/utility/random.hpp"
 
 
 

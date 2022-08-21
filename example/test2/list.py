@@ -73,41 +73,41 @@ medium_list = {
 
 geometry_list = {
       'simple-sphere'        : core.geometry.simple.Sphere,
-      'simple-usphere'       : core.geometry.simple.USphere,
-      'simple-cylinder'      : core.geometry.simple.Cylinder,
-      'simple-box'           : core.geometry.simple.Box,
-      'simple-plane'         : core.geometry.simple.Plane,
-      'simple-torus'         : core.geometry.simple.Torus,
+      #'simple-usphere'       : core.geometry.simple.USphere,
+      #'simple-cylinder'      : core.geometry.simple.Cylinder,
+      #'simple-box'           : core.geometry.simple.Box,
+      #'simple-plane'         : core.geometry.simple.Plane,
+      #'simple-torus'         : core.geometry.simple.Torus,
       'simple-cone'          : core.geometry.simple.Cone,
-      'simple-disc'          : core.geometry.simple.Disc,
-      'simple-udisc'         : core.geometry.simple.UDisc,
-      'simple-ellipsoid'     : core.geometry.simple.Ellipsoid,
-      'simple-hyperboloid'   : core.geometry.simple.Hyperboloid,
-      'simple-paraboloid'    : core.geometry.simple.Paraboloid,
-      'simple-quadric'       : core.geometry.simple.Quadric,
-      'simple-triangle'      : core.geometry.simple.Triangle,
-      'simple-utriangle'     : core.geometry.simple.UTriangle,
-      'simple-saddle'        : core.geometry.simple.Saddle,
-      'simple-ucylinder'     : core.geometry.simple.UCylinder,
-
-      'hyper-nuke'           : utility.geometry.simple.hyperboloid.Nuke,
-      'hyper-sphere'         : utility.geometry.simple.hyperboloid.Sphere,
-      'hyper-cone'           : utility.geometry.simple.hyperboloid.Cone,
-      'hyper-cylinder'       : utility.geometry.simple.hyperboloid.Cylinder,
-      'hyper-negative'       : utility.geometry.simple.hyperboloid.Negative,
-
-      'complex-Intersect'    : core.geometry.complex.Intersect, #NYI
-      'complex-Enclose'      : core.geometry.complex.Enclose, #NYI
-
-      'transform-identity'   : core.geometry.transform.Identity,
-      'transform-translate'  : core.geometry.transform.Translate,
-      'transform-affine'     : core.geometry.transform.Affine,
-      'transform-hgraphy'    : core.geometry.transform.Homography,
-      'transform-mblur'      : library.geometry.MotionBlur,
-
-      'volumetric-Vacuum'    : core.geometry.volumetric.Vacuum,
-      'volumetric-Mist'      : core.geometry.volumetric.Mist,
-      'volumetric-Smoke'     : core.geometry.volumetric.Smoke,
+      #'simple-disc'          : core.geometry.simple.Disc,
+      #'simple-udisc'         : core.geometry.simple.UDisc,
+      #'simple-ellipsoid'     : core.geometry.simple.Ellipsoid,
+      #'simple-hyperboloid'   : core.geometry.simple.Hyperboloid,
+      #'simple-paraboloid'    : core.geometry.simple.Paraboloid,
+      #'simple-quadric'       : core.geometry.simple.Quadric,
+      #'simple-triangle'      : core.geometry.simple.Triangle,
+      #'simple-utriangle'     : core.geometry.simple.UTriangle,
+      #'simple-saddle'        : core.geometry.simple.Saddle,
+      #'simple-ucylinder'     : core.geometry.simple.UCylinder,
+      #
+      #'hyper-nuke'           : utility.geometry.simple.hyperboloid.Nuke,
+      #'hyper-sphere'         : utility.geometry.simple.hyperboloid.Sphere,
+      #'hyper-cone'           : utility.geometry.simple.hyperboloid.Cone,
+      #'hyper-cylinder'       : utility.geometry.simple.hyperboloid.Cylinder,
+      #'hyper-negative'       : utility.geometry.simple.hyperboloid.Negative,
+      #
+      #'complex-Intersect'    : core.geometry.complex.Intersect, #NYI
+      #'complex-Enclose'      : core.geometry.complex.Enclose, #NYI
+      #
+      #'transform-identity'   : core.geometry.transform.Identity,
+      #'transform-translate'  : core.geometry.transform.Translate,
+      #'transform-affine'     : core.geometry.transform.Affine,
+      #'transform-hgraphy'    : core.geometry.transform.Homography,
+      #'transform-mblur'      : library.geometry.MotionBlur,
+      #
+      #'volumetric-Vacuum'    : core.geometry.volumetric.Vacuum,
+      #'volumetric-Mist'      : core.geometry.volumetric.Mist,
+      #'volumetric-Smoke'     : core.geometry.volumetric.Smoke,
       'library-1m'           : library.geometry.OneM
       ##'library-intersect'     : library.geometry.Intersect NYI
      }
@@ -128,25 +128,25 @@ pigment_list = {
      #'pattern-onion'            : utility.material.pattern.Onion, #TODO check
      #'pattern-level'            : utility.material.pattern.Level, #TODO check
 
-      'illum-ALP'           : utility.material.illumination.Alp,       # OK OK
-     #'illum-ambient'       : utility.material.illumination.Ambient,   # OK OK TODO align with ALP
-     #'illum-AsDiffuse'     : utility.material.illumination.AsDiffuse, # OK OK TODO align with ALP
-     #'illum-AsSpecular'    : utility.material.illumination.AsSpecular,# OK OK TODO align with ALP
-     #'illum-Beckmann'      : utility.material.illumination.Beckmann,  # OK Check again  TODO problem on terminator
-     #'illum-Blinn'         : utility.material.illumination.Blinn,     # OK OK TODO fix color TODO problem on terminator
-     #'illum-Gaussian'      : utility.material.illumination.Gaussian,  # OK OK TODO problem on terminator
-     #'illum-HsLambert'     : utility.material.illumination.HsLambert, # OK OK TODO align with Alp
-     #'illum-HsPhong'       : utility.material.illumination.HsPhong,   # OK OK TODO align with Alp
-     #'illum-Lambert'       : utility.material.illumination.Lambert,   #OK OK  TODO align with ALP
-     #'illum-ONf29'         : utility.material.illumination.ON_f29,       # TODO in progress
-     #'illum-ONf30'         : utility.material.illumination.ON_f30,       # TODO in progress
-     #'illum-ONYFP'         : utility.material.illumination.ON_Fujii_Proposed,     # OK OK TODO align with Alp
-     #'illum-ONYFQ'         : utility.material.illumination.ON_Fujii_Qualitative,  # OK OK TODO align with ALP
-     #'illum-ON-JvO'        : utility.material.illumination.ON_Ouwerkerk,  # OK OK TODO align with ???
-     #'illum-Phong'         : utility.material.illumination.Phong,         # OK OK TODO align with ALP
-     #'illum-WardApprox'    : utility.material.illumination.WardApprox,    # OK OK TODO align with ALP
-     #'illum-WardIsotropic' : utility.material.illumination.WardIsotropic, # OK OK TODO align with ALP
-     #'illum-WardReal'      : utility.material.illumination.WardReal,      # OK OK TODO align with ALP
+     'illum-ALP'           : utility.material.illumination.Alp,       # OK OK
+     'illum-ambient'       : utility.material.illumination.Ambient,   # OK OK TODO align with ALP
+     'illum-AsDiffuse'     : utility.material.illumination.AsDiffuse, # OK OK TODO align with ALP
+     'illum-AsSpecular'    : utility.material.illumination.AsSpecular,# OK OK TODO align with ALP
+     'illum-Beckmann'      : utility.material.illumination.Beckmann,  # OK Check again  TODO problem on terminator
+     'illum-Blinn'         : utility.material.illumination.Blinn,     # OK OK TODO fix color TODO problem on terminator
+     'illum-Gaussian'      : utility.material.illumination.Gaussian,  # OK OK TODO problem on terminator
+     'illum-HsLambert'     : utility.material.illumination.HsLambert, # OK OK TODO align with Alp
+     'illum-HsPhong'       : utility.material.illumination.HsPhong,   # OK OK TODO align with Alp
+     'illum-Lambert'       : utility.material.illumination.Lambert,   #OK OK  TODO align with ALP
+     'illum-ONf29'         : utility.material.illumination.ON_f29,       # TODO in progress
+     'illum-ONf30'         : utility.material.illumination.ON_f30,       # TODO in progress
+     'illum-ONYFP'         : utility.material.illumination.ON_Fujii_Proposed,     # OK OK TODO align with Alp
+     'illum-ONYFQ'         : utility.material.illumination.ON_Fujii_Qualitative,  # OK OK TODO align with ALP
+     'illum-ON-JvO'        : utility.material.illumination.ON_Ouwerkerk,  # OK OK TODO align with ???
+     'illum-Phong'         : utility.material.illumination.Phong,         # OK OK TODO align with ALP
+     'illum-WardApprox'    : utility.material.illumination.WardApprox,    # OK OK TODO align with ALP
+     'illum-WardIsotropic' : utility.material.illumination.WardIsotropic, # OK OK TODO align with ALP
+     'illum-WardReal'      : utility.material.illumination.WardReal,      # OK OK TODO align with ALP
 
      #'mapping-o-ID'                     : utility.material.operation.mapping.Identity3D,
      #'mapping-o-translate'              : utility.material.operation.mapping.Translate3D,
@@ -312,9 +312,9 @@ bin_dir = "bin/IceRayCDLL-x86-Release"
 bin_dll = "IceRayCDLL-1.0.0.0-dynamic.dll"
 
 
-#bin_root  = "../.."                     #!< cmake VS
-#bin_dir   = "build/cmake/_make/cdll/Release"  #!< cmake VS
-#bin_dll   = "IceRayDLL-1.0.0.0.dll"           #!< cmake VS
+bin_root  = "../.."                     #!< cmake VS
+bin_dir   = "build/cmake/_make/cdll/Release"  #!< cmake VS
+bin_dll   = "IceRayDLL-1.0.0.0.dll"           #!< cmake VS
 
 #if( -1 != os.getcwd().find( '2015' ) ):
 #    print( "DEBUG", flush = True  )

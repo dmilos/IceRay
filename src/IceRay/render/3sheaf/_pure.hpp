@@ -3,9 +3,9 @@
 
 // GS_DDMRM::S_IceRay::S_render::S_sheaf::GC__pure
 
- #include "..\..\type\color.hpp"
- #include "..\..\type\ray\beam.hpp"
- #include "..\4ray\_pure.hpp"
+ #include "../../type/color.hpp"
+ #include "../../type/ray/beam.hpp"
+ #include "../4ray/_pure.hpp"
 
  namespace GS_DDMRM
   {

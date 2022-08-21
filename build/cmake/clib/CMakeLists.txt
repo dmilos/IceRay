@@ -1,7 +1,14 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.10)
 
-set( PROJECT_NAME "IceRayLib" )
-set( PROJECT_LIB "IceRayLib" )
+#primary variables
+set( PROJECT_NAME_BARE            "IceRay" ) #!< TODO Take this from INI
+set( PROJECT_NAME_DECOR_POSTFIX      "Lib" )
+set( ICERAY_PROJECT_VERSION      "1.0.0.0" )#!< TODO Take this from INI
+
+set( ICERAY_PROJECT_NAME_FULL                  ${PROJECT_NAME_BARE}${PROJECT_NAME_DECOR_POSTFIX}-${ICERAY_PROJECT_VERSION} )
+set( ICERAY_CORE_LIBRARY_PROJECT_NAME_FULL     ${ICERAY_PROJECT_NAME_FULL} CACHE INTERNAL "" )
+
+project( ${ICERAY_PROJECT_NAME_FULL} )
 
 
 set( directory__root "${CMAKE_CURRENT_SOURCE_DIR}/../../.." )
@@ -22,7 +29,7 @@ set( cpp_file_list    "./cpp.lst.txt" )
 #Processing
 
 file( GLOB_RECURSE SOURCE_HPP "${directory_source}/*IceRay/.hpp")
-source_group( TREE "${directory_include}/" PREFIX "Header Files\\${PROJECT_NAME}" FILES ${SOURCE_HPP} )
+source_group( TREE "${directory_include}/" PREFIX "Header Files\\${PROJECT_NAME_BARE}" FILES ${SOURCE_HPP} )
 
 file( STRINGS ${cpp_file_list} FILE_LIST )
 foreach(file_item IN LISTS FILE_LIST )
@@ -38,9 +45,17 @@ include_directories( "${directory_submodule__root}/math/src")
 include_directories( "${directory_submodule__root}/memory/src")
 include_directories( "${directory_submodule__root}/PNM/src")
 
-add_library( ${PROJECT_LIB} ${SOURCE_CPP} ${SOURCE_HPP}  )
+add_library( ${ICERAY_PROJECT_NAME_FULL} ${SOURCE_CPP} ${SOURCE_HPP}  )
 
-target_include_directories(  ${PROJECT_LIB} PRIVATE "${directory_include}")
+target_include_directories(  ${ICERAY_PROJECT_NAME_FULL} PRIVATE "${directory_include}")
 
-target_link_libraries(${PROJECT_LIB} PRIVATE IceRayCoreLib )
-add_dependencies( ${PROJECT_LIB} IceRayCoreLib )
+target_link_libraries(  ${ICERAY_PROJECT_NAME_FULL} PRIVATE ${ICERAY_CORE_CORE_PROJECT_NAME_FULL} )
+add_dependencies(       ${ICERAY_PROJECT_NAME_FULL}         ${ICERAY_CORE_CORE_PROJECT_NAME_FULL} )
+
+if(MSVC)
+    target_compile_options( ${ICERAY_PROJECT_NAME_FULL}
+        PRIVATE
+            "/wd4624;"
+    )
+endif()
+

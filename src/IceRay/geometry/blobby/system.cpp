@@ -89,7 +89,7 @@ bool GC_system::Fv_intersect
     T_scalar I_shift = 0; //::math::polynomial::quartic::depressing( I_depressed.data(), I_monic.data() );
 
     {
-      ::math::polynomial::optimize( I_optimal, I_state_this.M_coefficient, 1e-5 );
+      ::math::polynomial::optimize<T_scalar,5>( I_optimal, I_state_this.M_coefficient, 1e-5 );
      // monic
 
      // depress

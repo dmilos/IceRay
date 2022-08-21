@@ -1,7 +1,7 @@
 #ifndef _DDMRM_IceRAY_camera_transform_pin_HPP_
  #define _DDMRM_IceRAY_camera_transform_pin_HPP_
 
-  #include "./_parent.hpp"
+  #include "../_parent.hpp"
 
   namespace GS_DDMRM
    {

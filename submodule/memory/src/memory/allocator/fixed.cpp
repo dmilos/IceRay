@@ -141,7 +141,7 @@ bool GC_manager::F_release( T_data & P_data )
     }
 
   T2_hat *I_hat = & this->F2_hat( P_data );
-  void * I_head = I_hat+1;
+  // unused void * I_head = I_hat + 1;
   if( Fs_invalid() == I_hat->M_index )
    {
     P_data.F_allocator( nullptr );

@@ -30,16 +30,16 @@
                       ~GC__model();
 
             public:
-              T_size  Fv_swarm( T_swarm &P_swarm,  T_coord const& P_point )const
+              T_size  Fv_swarm( T_swarm &P_swarm, T_coord const& P_point )const
                {
                 M2_swarm.F_clear();
-                F_child()->Fv_swarm( M2_swarm, P_point );
+                F_child().Fv_swarm( M2_swarm, P_point );
 
                 for( auto & I_spot: M2_swarm )
                  {
                   auto I_center = I_spot.F_center();
                   I_spot.F_center() = M2_mapping( I_center );
-                  P_swarm.Fv_push( I_spot );
+                  P_swarm.F_push( I_spot );
                  }
                 return M2_swarm.F_size();
                }
@@ -52,7 +52,7 @@
            private:
              T_mapping M2_mapping;
            private:
-              T_swarm M2_swarm;
+              mutable T_swarm M2_swarm;
            };
 
            typedef GS_DDMRM::S_IceRay::S_light::S_transform::GC__model< GS_DDMRM::S_IceRay::S_utility::S_mapping::GC_identity>  GT_identity;

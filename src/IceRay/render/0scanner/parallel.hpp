@@ -3,6 +3,7 @@
 
  #include <vector>
  #include <thread>
+ #include <memory>
 
  #include "./_pure.hpp"
  #include "./block.hpp"

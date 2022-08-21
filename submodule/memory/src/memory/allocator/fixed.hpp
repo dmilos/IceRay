@@ -73,7 +73,7 @@
               typedef std::vector< T_size >  T2_available;
               T2_available M2_vacant;
               T_size M2_acquired, M2_available, M2_top;
-              static T_index Fs_invalid(){ return T_size(-1); }
+              static T_index Fs_invalid(){ return T_index(-1); }
             private:
               struct C2_hat;
               typedef C2_hat T2_hat;

@@ -3,7 +3,7 @@
 
 //! GS_DDMRM::S_IceRay::S_material::S_pattern::S_expression::GC_scalar
 
-#include "./_pure.hpp"
+#include "../_pure.hpp"
 
 
 
