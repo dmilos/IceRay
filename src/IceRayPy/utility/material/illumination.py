@@ -1,4 +1,5 @@
 import ctypes
+import sys
 
 import IceRayPy
 
@@ -32,9 +33,9 @@ def Alp(
     if( 'barrier' in P_config ):
         I_barrier = P_config['barrier']
 
-    I_surface.append( IceRayPy.core.material.instruction.light.Generator( P_dll, I_light, lightThe ) )
-    I_surface.append( IceRayPy.core.material.instruction.light.SwarmA( P_dll, spotEnd, spotBegin, lightThe, point ) )
-    I_surface.append( IceRayPy.core.material.instruction.light.SpotCull( P_dll, point, normal, spotEnd, spotBegin, spotEnd ) )
+    I_surface.append( IceRayPy.core.material.instruction.light.Generator(    P_dll, I_light, lightThe ) )
+    I_surface.append( IceRayPy.core.material.instruction.light.SwarmA(       P_dll, spotEnd, spotBegin, lightThe, point ) )
+    I_surface.append( IceRayPy.core.material.instruction.light.SpotCull(     P_dll, point, normal, spotEnd, spotBegin, spotEnd ) )
     I_surface.append( IceRayPy.core.material.instruction.light.SpotObstruct( P_dll, I_barrier, spotEnd, spotBegin, spotEnd ) )
 
     I_surface.append( IceRayPy.core.material.instruction.constant.Color( P_dll, P_albedo,  tempColor + 0 ) )
@@ -45,9 +46,7 @@ def Alp(
     I_surface.append( IceRayPy.core.material.instruction.constant.Color( P_dll, P_specular , tempColor+2 ) )
     I_surface.append( IceRayPy.core.material.instruction.constant.Color( P_dll, P_shininess, tempColor+3 ) )
 
-
     I_surface.append( IceRayPy.core.material.instruction.illumination.ALP( P_dll, result, point, normal, spotBegin, spotEnd, tempColor+0, tempColor+1, tempColor+2, tempColor+3 ) )
-
     return I_surface
 
 

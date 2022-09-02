@@ -16,9 +16,9 @@ IceRayC__EXPORT IceRayC__DECLSPEC  int  IceRayC_Type_Math_Matrix3D_Zero( IceRayC
 
 IceRayC__EXPORT IceRayC__DECLSPEC  int  IceRayC_Type_Math_Matrix3D_Move( IceRayC_Type_Math_Matrix3D *P_that, IceRayC_TypeCoordScalar3D* P_move );
 
-IceRayC__EXPORT IceRayC__DECLSPEC  int  IceRayC_Type_Math_Matrix3D_ScaleS( IceRayC_Type_Math_Matrix3D *P_that, IceRayC_TypeScalar P_move );
+IceRayC__EXPORT IceRayC__DECLSPEC  int  IceRayC_Type_Math_Matrix3D_ScaleS( IceRayC_Type_Math_Matrix3D *P_that, IceRayC_TypeScalar P_scale );
 
-IceRayC__EXPORT IceRayC__DECLSPEC  int  IceRayC_Type_Math_Matrix3D_ScaleV( IceRayC_Type_Math_Matrix3D *P_that, IceRayC_TypeCoordScalar3D* P_move );
+IceRayC__EXPORT IceRayC__DECLSPEC  int  IceRayC_Type_Math_Matrix3D_ScaleV( IceRayC_Type_Math_Matrix3D *P_that, IceRayC_TypeCoordScalar3D* P_scale );
 
 IceRayC__EXPORT IceRayC__DECLSPEC  int  IceRayC_Type_Math_Matrix3D_RotateX( IceRayC_Type_Math_Matrix3D *P_that, IceRayC_TypeScalar P_alpha );
 

@@ -31,6 +31,10 @@
 
              virtual T_color const* Fv_data()const=0;
 
+           public:
+                      GC__pure():M2_size{1,1}{ }
+             virtual ~GC__pure(){ }
+
            protected:
              T_coord & F1_size()
               {

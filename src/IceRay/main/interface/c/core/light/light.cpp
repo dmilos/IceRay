@@ -8,13 +8,14 @@
 #include "../../type/color.hpp"
 
 
-GS_DDMRM::S_IceRay::S_light::S_type::GC_spot c2cpp( IceRayC_TypeSpot P_that )
+
+GS_DDMRM::S_IceRay::S_light::S_type::GC_spot c2cpp( IceRayC_TypeSpot P_this )
  {
   GS_DDMRM::S_IceRay::S_light::S_type::GC_spot Ir_result;
-  Ir_result.F_center( c2cpp( P_that.m_coord ) );
-  Ir_result.F_0( c2cpp( P_that.m_c0 ) );
-  Ir_result.F_1( c2cpp( P_that.m_c1 ) );
-  Ir_result.F_2( c2cpp( P_that.m_c2 ) );
+  Ir_result.F_center( c2cpp( P_this.m_coord ) );
+  Ir_result.F_0( c2cpp( P_this.m_c0 ) );
+  Ir_result.F_1( c2cpp( P_this.m_c1 ) );
+  Ir_result.F_2( c2cpp( P_this.m_c2 ) );
 
   return Ir_result;
  }
@@ -33,16 +34,17 @@ IceRayC_Light_Handle cpp2c( GS_DDMRM::S_IceRay::S_light::GC__pure* P_this )
  {
   return reinterpret_cast< IceRayC_Light_Handle >( P_this );
  }
-GS_DDMRM::S_IceRay::S_light::GC__pure * c2cpp( IceRayC_Light_Handle P_that )
+GS_DDMRM::S_IceRay::S_light::GC__pure * c2cpp( IceRayC_Light_Handle P_this )
  {
-  return  reinterpret_cast<GS_DDMRM::S_IceRay::S_light::GC__pure*> ( P_that );
+  return  reinterpret_cast<GS_DDMRM::S_IceRay::S_light::GC__pure*> ( P_this );
  }
 
-void IceRayC_Light_Release( IceRayC_Light_Handle P_this )
+int IceRayC_Light_Release( IceRayC_Light_Handle P_this )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   auto I_this = c2cpp( P_this );
   delete I_this;
+  return 1;
  }
 
 IceRayC_Light_Handle IceRayC_Light_Dark0( )
@@ -296,7 +298,7 @@ int IceRayC_Light_Confine_Child( IceRayC_Light_Handle P_this, IceRayC_Light_Hand
   I_this->F_child( c2cpp ( P_child ) );
   return 1;
  }
-int IceRayC_Light_Confine_Hull( IceRayC_Light_Handle P_this, IceRayC_Geometry_Handle P_shell )
+int IceRayC_Light_Confine_Shell( IceRayC_Light_Handle P_this, IceRayC_Geometry_Handle P_shell )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_confine Tf_confine;

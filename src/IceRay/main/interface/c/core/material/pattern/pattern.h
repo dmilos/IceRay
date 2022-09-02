@@ -12,7 +12,7 @@
 struct  IceRayC_Material_Pattern_Struct {};
 typedef IceRayC_Material_Pattern_Struct* IceRayC_Material_Pattern_Handle;
 
-IceRayC__EXPORT IceRayC__DECLSPEC   void IceRayC_Material_Pattern_Release( IceRayC_Material_Pattern_Handle  P_this );
+IceRayC__EXPORT IceRayC__DECLSPEC   int  IceRayC_Material_Pattern_Release( IceRayC_Material_Pattern_Handle  P_this );
 
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Brick0( );
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Checker0( );
@@ -23,7 +23,7 @@ IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Material_Pattern_Handle IceRayC_Mater
 
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Image0( );
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Image1( IceRayC_Type_Picture_Handle P_picture );
-IceRayC__EXPORT IceRayC__DECLSPEC  int                             IceRayC_Material_Pattern_Image_Picture( IceRayC_Material_Pattern_Handle P_that, IceRayC_Type_Picture_Handle P_picture );
+IceRayC__EXPORT IceRayC__DECLSPEC  int                             IceRayC_Material_Pattern_Image_Picture( IceRayC_Material_Pattern_Handle P_this, IceRayC_Type_Picture_Handle P_picture );
 
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Noise_Cells0( );
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Noise_Crackle0( );

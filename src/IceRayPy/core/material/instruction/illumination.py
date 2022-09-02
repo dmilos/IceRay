@@ -295,7 +295,4 @@ class WardReal: # S( result ), S( point     ), S( normal    ), S( spotBegin  ), 
     def __del__(self):
         self.m_cargo['dll'].IceRayC_Material_Pigment_Surface_Instruction_Release( self.m_cargo['this'] )
 
-
-
-
 print( '</' + __name__ + ' name=\'' +   __file__ + '>' )

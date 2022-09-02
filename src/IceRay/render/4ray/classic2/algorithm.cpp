@@ -163,6 +163,7 @@ void GC_algorithm::F2_trace( T_color &P_color )
 
     switch( I_accident.M_consume )
      {
+      case( T_stack::T_accident::Ee_consume::En__unknown ): /*TODO some comment or action */break;
       case( T_stack::T_accident::Ee_consume::En_discard ):
        {
         M2_stack.Fv_pop();
@@ -179,7 +180,10 @@ void GC_algorithm::F2_trace( T_color &P_color )
              {
               I_jurisdiction.F_pop();
              }break;
-             break;
+
+            case( T2_ray::Ee_hierarchy::En_lead   ): /*TODO some comment or action */break;
+            case( T2_ray::Ee_hierarchy::En_middle ): /*TODO some comment or action */break;
+
            }
          }
         I_accident.M_consume = T_stack::T_accident::Ee_consume::En_discard;
@@ -197,6 +201,8 @@ void GC_algorithm::F2_trace( T_color &P_color )
           case( T2_ray::Ee_derivation::En_Refracted  ) : ++M2_statistic.M_depth[ I_incoming.M_depth ][ (T_size)C_statistic::Ee_type::En_refracted];  break;
           case( T2_ray::Ee_derivation::En_Teleported ) : ++M2_statistic.M_depth[ I_incoming.M_depth ][ (T_size)C_statistic::Ee_type::En_teleported]; break;
           case( T2_ray::Ee_derivation::En_Broken     ) : ++M2_statistic.M_depth[ I_incoming.M_depth ][ (T_size)C_statistic::Ee_type::En_broken];     break;
+
+          case( T2_ray::Ee_derivation::En__Unknown   ) : /*TODO some comment or action */break;
          }
        } break;
      }
@@ -231,6 +237,8 @@ void GC_algorithm::F2_trace( T_color &P_color )
          {
           I_jurisdiction.F_push( I_incoming.M_geometryID, I_incoming.M_ior );
          }break;
+        case( T2_ray::Ee_hierarchy::En_middle ):  /*TODO some comment or action */break;
+        case( T2_ray::Ee_hierarchy::En_back   ):  /*TODO some comment or action */break;
        }
      }
 

@@ -254,8 +254,9 @@ if( 2 < len( sys.argv ) ):
 
 config={}
 config['folder'] = '_out'
-config['dll'] = cdll.LoadLibrary(r"c:\work\code\cpp\prj\github\IceRay\work\bin\IceRayCDLL-x86-Release\IceRayCDLL-1.0.0.0-dynamic.dll")
-#config['dll'] = cdll.LoadLibrary(r"z:\work\code\cpp\prj\github\IceRay\work\bin\IceRayCDLL-x86-Debug\IceRayCDLL-1.0.0.0-dynamic.dll")
+
+config['dll'] = IceRayPy.system.LoadCDLL( IceRayPy.system.SearchCDLL() )
+
 config['index'] = 0
 
 config['picture'] = {}

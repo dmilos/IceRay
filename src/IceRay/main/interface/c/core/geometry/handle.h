@@ -9,7 +9,7 @@ struct  IceRayC_Geometry_Struct {};
 typedef IceRayC_Geometry_Struct* IceRayC_Geometry_Handle;
 
 
-IceRayC__EXPORT IceRayC__DECLSPEC  void IceRayC_Geometry_Release( IceRayC_Geometry_Handle );
+IceRayC__EXPORT IceRayC__DECLSPEC  int IceRayC_Geometry_Release( IceRayC_Geometry_Handle );
 
 
 #endif

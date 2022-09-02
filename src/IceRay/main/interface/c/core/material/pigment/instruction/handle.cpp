@@ -19,8 +19,9 @@ GS_DDMRM::S_IceRay::S_material::S_compute::GC_instruction * c2cpp(  IceRayC_Mate
  }
 
 
-void IceRayC_Material_Pigment_Surface_Instruction_Release( IceRayC_Material_Pigment_Surfcace_Instruction_Handle P_that )
+int IceRayC_Material_Pigment_Surface_Instruction_Release( IceRayC_Material_Pigment_Surfcace_Instruction_Handle P_that )
  {
   auto I_this = c2cpp( P_that );
   delete I_this;
+  return 1;
  }

@@ -18,7 +18,7 @@ struct IceRayC_Light_Struct {};
 typedef IceRayC_Light_Struct* IceRayC_Light_Handle;
 
 
-IceRayC__EXPORT IceRayC__DECLSPEC  void IceRayC_Light_Release( IceRayC_Light_Handle P_this );
+IceRayC__EXPORT IceRayC__DECLSPEC  int IceRayC_Light_Release( IceRayC_Light_Handle P_this );
 
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Light_Handle IceRayC_Light_Dark0( );
 
@@ -66,7 +66,7 @@ IceRayC__EXPORT IceRayC__DECLSPEC  int                  IceRayC_Light_Line_Start
 IceRayC__EXPORT IceRayC__DECLSPEC  int                  IceRayC_Light_Line_End( IceRayC_Light_Handle P_this,    IceRayC_TypeCoordScalar3D* P_end );
 
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Light_Handle IceRayC_Light_Point0();
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Light_Handle IceRayC_Light_Point1( IceRayC_TypeCoordScalar3D* center, IceRayC_TypeColorRGB* c0, IceRayC_TypeColorRGB* c1, IceRayC_TypeColorRGB c2 );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Light_Handle IceRayC_Light_Point1( IceRayC_TypeCoordScalar3D* center, IceRayC_TypeColorRGB* c0, IceRayC_TypeColorRGB* c1, IceRayC_TypeColorRGB *c2 );
 IceRayC__EXPORT IceRayC__DECLSPEC  int                  IceRayC_Light_Point_Spot( IceRayC_Light_Handle P_this, IceRayC_TypeSpot* P_spot );
 IceRayC__EXPORT IceRayC__DECLSPEC  int                  IceRayC_Light_Point_Center( IceRayC_Light_Handle P_this, IceRayC_TypeCoordScalar3D* P_center );
 

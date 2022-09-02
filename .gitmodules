@@ -10,3 +10,6 @@
 [submodule "submodule/math"]
 	path = submodule/math
 	url = http://github.com/dmilos/math
+[submodule "submodule/TopLog"]
+	path = submodule/TopLog
+	url = http://github.com/dmilos/TopLog

@@ -18,11 +18,12 @@ GS_DDMRM::S_IceRay::S_render::S_ray::GC__pure * c2cpp( IceRayC_Render_Ray_Handle
   return  reinterpret_cast<GS_DDMRM::S_IceRay::S_render::S_ray::GC__pure*> ( P_that );
  }
 
-void IceRayC_Render_Ray_Release( IceRayC_Render_Ray_Handle P_this )
+IceRayC_Type_Bool IceRayC_Render_Ray_Release( IceRayC_Render_Ray_Handle P_this )
  {
   typedef GS_DDMRM::S_IceRay::S_render::S_ray::GC__pure  Tf__pure;
   auto I_this = c2cpp( P_this );
   delete I_this;
+  return 1;
  }
 
 IceRayC_Render_Ray_Handle   IceRayC_Render_Ray_Direction0()
@@ -50,7 +51,7 @@ IceRayC_Render_Ray_Handle   IceRayC_Render_Ray_Distance1( IceRayC_Geometry_Handl
   Tf__pure* I_this = new Tf_distance{ c2cpp( P_geometry ) };
   return cpp2c( I_this );
  }
-int   IceRayC_Render_Ray_Distance_Geometry( IceRayC_Render_Ray_Handle P_this, IceRayC_Geometry_Handle P_geometry )
+IceRayC_Type_Bool   IceRayC_Render_Ray_Distance_Geometry( IceRayC_Render_Ray_Handle P_this, IceRayC_Geometry_Handle P_geometry )
  {
   typedef GS_DDMRM::S_IceRay::S_render::S_ray::GC__pure  Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_render::S_ray::GC_distance  Tf_distance;
@@ -66,7 +67,7 @@ int   IceRayC_Render_Ray_Distance_Geometry( IceRayC_Render_Ray_Handle P_this, Ic
   return 1;
  }
 
-int                         IceRayC_Render_Ray_Distance_Clip( IceRayC_Render_Ray_Handle P_this, IceRayC_TypeInterval1D P_clip )
+IceRayC_Type_Bool                         IceRayC_Render_Ray_Distance_Clip( IceRayC_Render_Ray_Handle P_this, IceRayC_TypeInterval1D* P_clip )
  {
   typedef GS_DDMRM::S_IceRay::S_render::S_ray::GC__pure  Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_render::S_ray::GC_distance  Tf_distance;
@@ -77,10 +78,9 @@ int                         IceRayC_Render_Ray_Distance_Clip( IceRayC_Render_Ray
     return 0;
    }
 
-  I_this->F_clip( c2cpp ( P_clip ) );
+  I_this->F_clip( c2cpp ( *P_clip ) );
   return 1;
  }
-
 
 IceRayC_Render_Ray_Handle   IceRayC_Render_Ray_Trace0()
  {
@@ -90,7 +90,7 @@ IceRayC_Render_Ray_Handle   IceRayC_Render_Ray_Trace0()
   return cpp2c( I_this );
  }
 
-int   IceRayC_Render_Ray_Trace_Object( IceRayC_Render_Ray_Handle P_this, IceRayC_Object_Handle P_object )
+IceRayC_Type_Bool   IceRayC_Render_Ray_Trace_Object( IceRayC_Render_Ray_Handle P_this, IceRayC_Object_Handle P_object )
  {
   typedef GS_DDMRM::S_IceRay::S_render::S_ray::GC__pure  Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_render::S_ray::S_classic2::GC_algorithm  Tf_algorithm;
@@ -107,7 +107,7 @@ int   IceRayC_Render_Ray_Trace_Object( IceRayC_Render_Ray_Handle P_this, IceRayC
   return 1;
  }
 
-int   IceRayC_Render_Ray_Trace_Depth( IceRayC_Render_Ray_Handle P_this, IceRayC_TypeSize P_depth )
+IceRayC_Type_Bool   IceRayC_Render_Ray_Trace_Depth( IceRayC_Render_Ray_Handle P_this, IceRayC_TypeSize P_depth )
  {
   typedef GS_DDMRM::S_IceRay::S_render::S_ray::GC__pure  Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_render::S_ray::S_classic2::GC_algorithm  Tf_algorithm;
@@ -121,7 +121,7 @@ int   IceRayC_Render_Ray_Trace_Depth( IceRayC_Render_Ray_Handle P_this, IceRayC_
   return 1;
  }
 
-int   IceRayC_Render_Ray_Trace_Trash( IceRayC_Render_Ray_Handle P_this, IceRayC_TypeScalar P_trash )
+IceRayC_Type_Bool   IceRayC_Render_Ray_Trace_Trash( IceRayC_Render_Ray_Handle P_this, IceRayC_TypeScalar P_trash )
  {
   typedef GS_DDMRM::S_IceRay::S_render::S_ray::GC__pure  Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_render::S_ray::S_classic2::GC_algorithm  Tf_algorithm;
@@ -135,7 +135,7 @@ int   IceRayC_Render_Ray_Trace_Trash( IceRayC_Render_Ray_Handle P_this, IceRayC_
   return 1;
  }
 
-int   IceRayC_Render_Ray_Trace_Next( IceRayC_Render_Ray_Handle P_this, IceRayC_TypeSize P_next )
+IceRayC_Type_Bool   IceRayC_Render_Ray_Trace_Next( IceRayC_Render_Ray_Handle P_this, IceRayC_TypeSize P_next )
  {
   typedef GS_DDMRM::S_IceRay::S_render::S_ray::GC__pure  Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_render::S_ray::S_classic2::GC_algorithm  Tf_algorithm;
@@ -149,7 +149,7 @@ int   IceRayC_Render_Ray_Trace_Next( IceRayC_Render_Ray_Handle P_this, IceRayC_T
   return 1;
  }
 
-int   IceRayC_Render_Ray_Trace_IOR( IceRayC_Render_Ray_Handle P_this, IceRayC_TypeSize P_IOR )
+IceRayC_Type_Bool   IceRayC_Render_Ray_Trace_IOR( IceRayC_Render_Ray_Handle P_this, IceRayC_TypeScalar P_IOR )
  {
   typedef GS_DDMRM::S_IceRay::S_render::S_ray::GC__pure  Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_render::S_ray::S_classic2::GC_algorithm  Tf_algorithm;

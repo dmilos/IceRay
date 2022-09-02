@@ -85,14 +85,14 @@ bool      GC_uniform::Fv_intersect( T_scalar &P_lambda, T_state &P_state, T_ray 
 
     if( Is_epsilon < I_direction[I_projection] )
      {
-      I_step[I_projection] = +1;
-      I_fence[ I_projection] = M2_dimension[I_projection];
+      I_step[ I_projection ] = +1;
+      I_fence[ I_projection ] = M2_dimension[I_projection];
       I_orientation[I_projection] = +1;
       continue;
      }
 
-    I_step[I_projection] = 0;
-    I_fence[ I_projection] = -1;
+    I_step[ I_projection ] = 0;
+    I_fence[ I_projection ] = -1;
 
     continue;
    }
@@ -136,7 +136,7 @@ bool      GC_uniform::Fv_intersect( T_scalar &P_lambda, T_state &P_state, T_ray 
        }
      }
 
-    T_size   I_axis = -1;
+    T_size   I_axis = T_size(-1);
     T_scalar I_wall = P_lambda;
     for( T_size I_projection=0; I_projection < T_coord().size(); ++ I_projection )
      {
@@ -170,7 +170,7 @@ bool      GC_uniform::Fv_intersect( T_scalar &P_lambda, T_state &P_state, T_ray 
       return true;
      }
 
-    if( -1 == I_axis )
+    if( T_size(-1) == I_axis )
      {
       goto L_false;
      }

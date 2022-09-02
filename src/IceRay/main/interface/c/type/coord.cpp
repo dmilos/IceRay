@@ -128,7 +128,7 @@ int  IceRayC_Type_Math_Coord4D_Fill( IceRayC_TypeCoordScalar4D *P_that, IceRayC_
   return 1;
  }
 
-int  IceRayC_Type_Math_Coord1D_Load( IceRayC_TypeCoordScalar2D *P_that, IceRayC_TypeScalar P_x)
+int  IceRayC_Type_Math_Coord1D_Load( IceRayC_TypeCoordScalar1D *P_that, IceRayC_TypeScalar P_x)
  {
   P_that->value[0] = P_x;
   return 0;

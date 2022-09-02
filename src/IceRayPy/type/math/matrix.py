@@ -48,7 +48,7 @@ def scaleS( P_scale ):
 
 def scaleV( P_scale : Coord3D ):
     result = Scalar3D()
-    P_dll.IceRayC_Type_Math_Matrix3D_ScaleV( AddresOf( result ), P_scale )
+    P_dll.IceRayC_Type_Math_Matrix3D_ScaleV( AddresOf( result ), AddresOf( P_scale ) )
     return result
 
 def rotateX( P_alpha ):
@@ -68,7 +68,7 @@ def rotateZ( P_alpha ):
 
 def rotateA( P_direction : Coord3D, P_alpha ):
     result = Scalar3D()
-    P_dll.IceRayC_Type_Math_Matrix3D_RotateA( AddresOf( result ), P_direction, Scalar( P_alpha ) )
+    P_dll.IceRayC_Type_Math_Matrix3D_RotateA( AddresOf( result ), AddresOf( P_direction ), Scalar( P_alpha ) )
     return result
 
 def compose( P_left : Scalar3D,  P_right : Scalar3D ):

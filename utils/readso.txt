@@ -1,0 +1,8 @@
+readelf -s libIceRayDLL-1.0.0.0.so
+objdump -T libIceRayDLL-1.0.0.0.so
+objdump -T --demangle libIceRayDLL-1.0.0.0.so
+nm -D --demangle libIceRayDLL-1.0.0.0.so
+
+/proc/sys/kernel/core_pattern
+
+sudo service apport stop

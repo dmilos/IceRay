@@ -17,9 +17,10 @@ GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base * c2cpp( IceRayC_Geometry_Hand
  }
 
 
-void IceRayC_Geometry_Release( IceRayC_Geometry_Handle P_that )
+int IceRayC_Geometry_Release( IceRayC_Geometry_Handle P_that )
  {
   typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;
   auto I_this = c2cpp( P_that );
   delete I_this;
+  return 1;
  }

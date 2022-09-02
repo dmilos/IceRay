@@ -13,6 +13,7 @@ __buildsys__  = ""
 
 # phase One
 import IceRayPy.constant
+import IceRayPy.system
 
 # phase One
 import IceRayPy.type

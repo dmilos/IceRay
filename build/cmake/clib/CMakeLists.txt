@@ -44,8 +44,28 @@ include_directories( "${directory_submodule__root}/container/src")
 include_directories( "${directory_submodule__root}/math/src")
 include_directories( "${directory_submodule__root}/memory/src")
 include_directories( "${directory_submodule__root}/PNM/src")
+include_directories( "${directory_submodule__root}/TopLog/src")
 
-add_library( ${ICERAY_PROJECT_NAME_FULL} ${SOURCE_CPP} ${SOURCE_HPP}  )
+add_library( ${ICERAY_PROJECT_NAME_FULL} STATIC ${SOURCE_CPP} ${SOURCE_HPP}  )
+
+set_property( TARGET ${ICERAY_PROJECT_NAME_FULL} PROPERTY POSITION_INDEPENDENT_CODE ON )
+set_property( TARGET ${ICERAY_PROJECT_NAME_FULL} PROPERTY CXX_VISIBILITY_PRESET hidden )
+
+#set_target_properties( ${ICERAY_PROJECT_NAME_FULL} PROPERTIES CXX_VISIBILITY_PRESET hidden )
+
+if( UNIX )
+    target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -frtti )
+    target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -fexceptions )
+    target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -Wno-unused-local-typedefs )
+    target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -Wno-unused-variable )
+    if( ICERAY_SWITCH_DEBUG )
+        #target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -fsanitize=address )
+        #target_link_options(    ${ICERAY_PROJECT_NAME_FULL} PRIVATE -fsanitize=address )
+        target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -ggdb )
+        target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -g3 )
+        target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -O0 )
+    endif()
+endif()
 
 target_include_directories(  ${ICERAY_PROJECT_NAME_FULL} PRIVATE "${directory_include}")
 

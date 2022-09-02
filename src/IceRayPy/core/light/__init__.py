@@ -1,3 +1,5 @@
+print( '<' + __name__ + ' file=\'' +   __file__ + ' >' )
+
 import ctypes
 
 import IceRayPy
@@ -21,7 +23,7 @@ class Spot(ctypes.Structure):
     def __init__( self, P_center: Coord3D = None, P_c0 : Color = None, P_c1 :Color = None, P_c2 :Color = None ):
         if( None != P_center ):
            self.center( P_center )
-           
+
         if( None != P_c0 ):
            self.c0( P_c0 )
 
@@ -51,6 +53,7 @@ class Spot(ctypes.Structure):
         self.m_c0 = P_c0
         self.m_c1 = P_c1
         self.m_c2 = P_c2
+
 
 class Area:
     def __init__( self, P_dll ):
@@ -120,7 +123,7 @@ class Circle:
 
 
 class Confine:
-    def __init__( self, P_dll, P_child = None, P_hull = None ):
+    def __init__( self, P_dll, P_child = None, P_shell = None ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Light_Confine0()
@@ -129,8 +132,8 @@ class Confine:
 
         if( None != P_child ):
             self.child( P_child )
-        if( None != P_hull ):
-            self.hull( P_hull )
+        if( None != P_shell ):
+            self.shell( P_shell )
 
     def __del__( self ):
         self.m_cargo['dll'].IceRayC_Light_Release( self.m_cargo['this'] )
@@ -139,9 +142,9 @@ class Confine:
         self.m_cargo['dll'].IceRayC_Light_Confine_Child( self.m_cargo['this'], P_child.m_cargo['this'] )
         self.m_cargo['child'] = P_child
 
-    def hull( self, P_hull ):
-        self.m_cargo['dll'].IceRayC_Light_Confine_Hull( self.m_cargo['this'], P_hull.m_cargo['this'] )
-        self.m_cargo['hull'] = P_hull
+    def shell( self, P_shell ):
+        self.m_cargo['dll'].IceRayC_Light_Confine_Shell( self.m_cargo['this'], P_shell.m_cargo['this'] )
+        self.m_cargo['shell'] = P_shell
 
     def location( self, P_location ):
         self.m_cargo['dll'].IceRayC_Light_Confine_Location( self.m_cargo['this'], SizeType(  self, P_location ) )
@@ -343,4 +346,5 @@ class SunG:
 
 import IceRayPy.core.light.transform
 
-#print( '<' + __name__ + ' name=\'' +   __file__ + '\'>' )
+
+print( '</' + __name__ + ' file=\'' +   __file__ + '\' >' )

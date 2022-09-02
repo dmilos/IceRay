@@ -99,6 +99,7 @@ int IceRayC_Geometry_Triangle_eX( IceRayC_Geometry_Handle P_this, IceRayC_TypeCo
   I_this->F_eX( c2cpp( *P_eX ) );
   return 1;
  }
+
 int IceRayC_Geometry_Triangle_eY( IceRayC_Geometry_Handle P_this, IceRayC_TypeCoordScalar3D* P_eY )
  {
   typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;

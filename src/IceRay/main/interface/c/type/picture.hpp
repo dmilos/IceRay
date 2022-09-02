@@ -7,6 +7,6 @@
 
 extern GS_DDMRM::S_IceRay::S_type::S_picture::GC__pure* c2cpp( IceRayC_Type_Picture_Handle P_this );
 
-extern IceRayC_Type_Picture_Handle                              cpp2c(  GS_DDMRM::S_IceRay::S_type::S_picture::GC__pure* P_this );
+extern IceRayC_Type_Picture_Handle                      cpp2c(  GS_DDMRM::S_IceRay::S_type::S_picture::GC__pure* P_this );
 
 #endif

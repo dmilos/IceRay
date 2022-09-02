@@ -15,11 +15,12 @@ GS_DDMRM::S_IceRay::S_type::S_picture::GC__pure * c2cpp( IceRayC_Type_Picture_Ha
   return  reinterpret_cast<GS_DDMRM::S_IceRay::S_type::S_picture::GC__pure*> ( P_that );
  }
 
-void                       IceRayC_Type_Picture_Release( IceRayC_Type_Picture_Handle P_this )
+IceRayC_Type_Bool           IceRayC_Type_Picture_Release( IceRayC_Type_Picture_Handle P_this )
  {
   typedef GS_DDMRM::S_IceRay::S_type::S_picture::GC__pure      Tf__pure;
   auto I_this = reinterpret_cast<Tf__pure*> ( P_this );
   delete I_this;
+  return 1;
  }
 
 IceRayC_Type_Picture_Handle IceRayC_Type_Picture0(  )
@@ -38,7 +39,7 @@ IceRayC_Type_Picture_Handle IceRayC_Type_Picture1( char * P_fileName )
   return Ir_result;
 }
 
-int IceRayC_Type_Picture_Size(     IceRayC_Type_Picture_Handle P_this, unsigned width, unsigned height )
+IceRayC_Type_Bool IceRayC_Type_Picture_Size(     IceRayC_Type_Picture_Handle P_this, IceRayC_TypeSize width, IceRayC_TypeSize height )
  {
   typedef GS_DDMRM::S_IceRay::S_type::S_picture::GC__pure      Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_type::S_picture::GC_memory    Tf_memory;
@@ -52,13 +53,13 @@ int IceRayC_Type_Picture_Size(     IceRayC_Type_Picture_Handle P_this, unsigned 
   return 1;
  }
 
-int IceRayC_Type_Picture_Crop0( IceRayC_Type_Picture_Handle P_this, IceRayC_TypeCoordSize2D const* P_A, IceRayC_TypeCoordSize2D const* P_B )
+IceRayC_Type_Bool IceRayC_Type_Picture_Crop0( IceRayC_Type_Picture_Handle P_this, IceRayC_TypeCoordSize2D const* P_A, IceRayC_TypeCoordSize2D const* P_B )
  {
   auto I_this = c2cpp( P_this );
   return GS_DDMRM::S_IceRay::S_type::S_picture::GF_crop( *I_this, { c2cpp( *P_A ), c2cpp( *P_B ) } );
  }
 
-int IceRayC_Type_Picture_Crop( IceRayC_Type_Picture_Handle P_target, IceRayC_Type_Picture_Handle P_source, IceRayC_TypeCoordSize2D const* P_A, IceRayC_TypeCoordSize2D const* P_B )
+IceRayC_Type_Bool IceRayC_Type_Picture_Crop( IceRayC_Type_Picture_Handle P_target, IceRayC_Type_Picture_Handle P_source, IceRayC_TypeCoordSize2D const* P_A, IceRayC_TypeCoordSize2D const* P_B )
  {
   auto I_target = c2cpp( P_target );
   auto I_source = c2cpp( P_source );
@@ -66,7 +67,7 @@ int IceRayC_Type_Picture_Crop( IceRayC_Type_Picture_Handle P_target, IceRayC_Typ
  }
 
 
-int IceRayC_Type_Picture_Load( IceRayC_Type_Picture_Handle P_this, char const* P_fileName )
+IceRayC_Type_Bool IceRayC_Type_Picture_Load( IceRayC_Type_Picture_Handle P_this, char const* P_fileName )
  {
   typedef GS_DDMRM::S_IceRay::S_type::S_picture::GC__pure      Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_type::S_picture::GC_memory    Tf_memory;
@@ -95,7 +96,7 @@ int IceRayC_Type_Picture_Load( IceRayC_Type_Picture_Handle P_this, char const* P
   return 1;
  }
 
-int IceRayC_Type_Picture_StorePNM( IceRayC_Type_Picture_Handle P_this, char const* P_filename )
+IceRayC_Type_Bool IceRayC_Type_Picture_StorePNM( IceRayC_Type_Picture_Handle P_this, char const* P_filename )
  {
   typedef GS_DDMRM::S_IceRay::S_type::S_picture::GC__pure      Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_type::S_picture::GC_memory    Tf_memory;
@@ -108,10 +109,10 @@ int IceRayC_Type_Picture_StorePNM( IceRayC_Type_Picture_Handle P_this, char cons
 
   std::ofstream ofs( P_filename, std::ios_base::binary );
   ofs << PNM::save( (const uint8_t *)I_this->Fv_data(), I_this->F_size()[0], I_this->F_size()[1], PNM::P6 );
-  return true;
+  return 1;
  }
 
-IceRayC__EXPORT IceRayC__DECLSPEC int IceRayC_Type_Picture_Bits( IceRayC_Type_Picture_Handle P_this, unsigned char const** P_bits )
+IceRayC_Type_Bool IceRayC_Type_Picture_Bits( IceRayC_Type_Picture_Handle P_this, unsigned char const** P_bits )
  {
   typedef GS_DDMRM::S_IceRay::S_type::S_picture::GC__pure      Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_type::S_picture::GC_memory    Tf_memory;
@@ -126,7 +127,7 @@ IceRayC__EXPORT IceRayC__DECLSPEC int IceRayC_Type_Picture_Bits( IceRayC_Type_Pi
   return true;
  }
 
-IceRayC__EXPORT IceRayC__DECLSPEC int IceRayC_Type_Picture_Default( IceRayC_Type_Picture_Handle P_this )
+IceRayC_Type_Bool IceRayC_Type_Picture_Default( IceRayC_Type_Picture_Handle P_this )
  {
   typedef GS_DDMRM::S_IceRay::S_type::S_picture::GC__pure      Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_type::S_picture::GC_memory    Tf_memory;

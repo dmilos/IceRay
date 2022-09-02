@@ -39,3 +39,4 @@ __pycache__
 /build/cmake/tmpprj
 /build/cmake/_makeGcc
 /build/cmake/_makeVS
+/build/cmake/sizeof/_tmpprj

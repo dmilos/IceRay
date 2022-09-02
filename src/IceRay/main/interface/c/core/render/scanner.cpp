@@ -15,11 +15,12 @@ IceRayC_Render_Scanner_Handle                       cpp2c( GS_DDMRM::S_IceRay::S
   return reinterpret_cast< IceRayC_Render_Scanner_Handle >( P_this );
  }
 
-void IceRayC_Render_Scanner_Release( IceRayC_Render_Scanner_Handle P_this )
+IceRayC_Type_Bool IceRayC_Render_Scanner_Release( IceRayC_Render_Scanner_Handle P_this )
  {
   typedef GS_DDMRM::S_IceRay::S_render::S_scanner::GC__pure Tf__pure;
   auto I_this = c2cpp( P_this );
   delete I_this;
+  return 1;
  }
 
 IceRayC_Render_Scanner_Handle IceRayC_Render_Scanner_Block0()
@@ -29,7 +30,7 @@ IceRayC_Render_Scanner_Handle IceRayC_Render_Scanner_Block0()
   return cpp2c( I_pure );
  }
 
-int IceRayC_Render_Scanner_Block_Hot( IceRayC_Render_Scanner_Handle P_this, IceRayC_TypeCoordSize2D* P_hot )
+IceRayC_Type_Bool IceRayC_Render_Scanner_Block_Hot( IceRayC_Render_Scanner_Handle P_this, IceRayC_TypeCoordSize2D* P_hot )
  {
   typedef GS_DDMRM::S_IceRay::S_render::S_scanner::GC__pure  Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_render::S_scanner::GC_block Tf_block;
@@ -43,7 +44,7 @@ int IceRayC_Render_Scanner_Block_Hot( IceRayC_Render_Scanner_Handle P_this, IceR
   return 1;
  }
 
-int IceRayC_Render_Scanner_Block_Window( IceRayC_Render_Scanner_Handle P_this, IceRayC_TypeCoordSize2D* P_a, IceRayC_TypeCoordSize2D* P_b )
+IceRayC_Type_Bool IceRayC_Render_Scanner_Block_Window( IceRayC_Render_Scanner_Handle P_this, IceRayC_TypeCoordSize2D* P_a, IceRayC_TypeCoordSize2D* P_b )
  {
   typedef GS_DDMRM::S_IceRay::S_render::S_scanner::GC__pure  Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_render::S_scanner::GC_block Tf_block;

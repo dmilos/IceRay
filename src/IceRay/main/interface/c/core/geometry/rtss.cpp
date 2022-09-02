@@ -15,11 +15,12 @@ GS_DDMRM::S_IceRay::S_geometry::S_RTSS::GC__pure * c2cpp( IceRayC_Geometry_RTSS_
  }
 
 
-void IceRayC_Geometry_RTSS_Release( IceRayC_Geometry_RTSS_Handle P_that )
+int IceRayC_Geometry_RTSS_Release( IceRayC_Geometry_RTSS_Handle P_that )
  {
   typedef GS_DDMRM::S_IceRay::S_geometry::S_RTSS::GC__pure Tf__base;
   auto I_this = c2cpp( P_that );
   delete I_this;
+  return 1;
  }
 
 IceRayC_Geometry_Handle IceRayC_Geometry_RTSS_Object0(  )

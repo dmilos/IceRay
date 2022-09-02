@@ -18,11 +18,12 @@ GS_DDMRM::S_IceRay::S_material::S_pattern::GC__pure * c2cpp( IceRayC_Material_Pa
   return  reinterpret_cast<GS_DDMRM::S_IceRay::S_material::S_pattern::GC__pure*> ( P_that );
  }
 
-void IceRayC_Material_Pattern_Release( IceRayC_Material_Pattern_Handle  P_this )
+int IceRayC_Material_Pattern_Release( IceRayC_Material_Pattern_Handle  P_this )
  {
   typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GC__pure Tf__pure;
   auto I_this = c2cpp( P_this );
   delete I_this;
+  return 1;
  }
 
 

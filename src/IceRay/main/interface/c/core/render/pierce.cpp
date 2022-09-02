@@ -14,11 +14,12 @@ IceRayC_Render_Pierce_Handle                       cpp2c( GS_DDMRM::S_IceRay::S_
   return reinterpret_cast< IceRayC_Render_Pierce_Handle >( P_this );
  }
 
-void IceRayC_Render_Pierce_Release( IceRayC_Render_Pierce_Handle P_that )
+IceRayC_Type_Bool IceRayC_Render_Pierce_Release( IceRayC_Render_Pierce_Handle P_that )
  {
   typedef GS_DDMRM::S_IceRay::S_render::S_pierce::GC__pure  Tf__pure;
   auto I_this = c2cpp( P_that );
   delete I_this;
+  return 1;
  }
 
 IceRayC_Render_Pierce_Handle IceRayC_Render_Pierce_UV0()
@@ -35,7 +36,7 @@ IceRayC_Render_Pierce_Handle IceRayC_Render_Pierce_Projector0()
   return cpp2c( I_pure );
  }
 
-int  IceRayC_Render_Pierce_Projector_Camera( IceRayC_Render_Pierce_Handle P_this, IceRayC_Camera_Handle P_camera )
+IceRayC_Type_Bool  IceRayC_Render_Pierce_Projector_Camera( IceRayC_Render_Pierce_Handle P_this, IceRayC_Camera_Handle P_camera )
  {
   typedef GS_DDMRM::S_IceRay::S_render::S_pierce::GC__pure  Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_render::S_pierce::GC_projector Tf_projector;
@@ -51,7 +52,7 @@ int  IceRayC_Render_Pierce_Projector_Camera( IceRayC_Render_Pierce_Handle P_this
   return 1;
  }
 
-int  IceRayC_Render_Pierce_Projector_Sheaf( IceRayC_Render_Pierce_Handle P_this, IceRayC_Render_Sheaf_Handle P_sheaf )
+IceRayC_Type_Bool  IceRayC_Render_Pierce_Projector_Sheaf( IceRayC_Render_Pierce_Handle P_this, IceRayC_Render_Sheaf_Handle P_sheaf )
  {
   typedef GS_DDMRM::S_IceRay::S_render::S_pierce::GC__pure  Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_render::S_pierce::GC_projector Tf_projector;

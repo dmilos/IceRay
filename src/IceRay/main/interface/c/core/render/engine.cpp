@@ -25,11 +25,12 @@ IceRayC_Render_Engine_Handle                       cpp2c( GS_DDMRM::S_IceRay::S_
   return reinterpret_cast< IceRayC_Render_Engine_Handle >( P_this );
  }
 
-void IceRayC_Render_Engine_Release( IceRayC_Render_Engine_Handle P_this )
+IceRayC_Type_Bool IceRayC_Render_Engine_Release( IceRayC_Render_Engine_Handle P_this )
  {
   typedef GS_DDMRM::S_IceRay::S_render::GC_engine Tf_engine;
   auto I_this = c2cpp( P_this );
   delete I_this;
+  return 1;
  }
 
 IceRayC_Render_Engine_Handle IceRayC_Render_Engine0()
@@ -38,7 +39,7 @@ IceRayC_Render_Engine_Handle IceRayC_Render_Engine0()
   return cpp2c( new Tf_engine{} );
  }
 
-int IceRayC_Render_Engine_Scanner( IceRayC_Render_Engine_Handle P_this, IceRayC_Render_Scanner_Handle P_scanner )
+IceRayC_Type_Bool IceRayC_Render_Engine_Scanner( IceRayC_Render_Engine_Handle P_this, IceRayC_Render_Scanner_Handle P_scanner )
  {
   auto I_this    = c2cpp( P_this );
   auto I_scanner = c2cpp(P_scanner);
@@ -46,7 +47,7 @@ int IceRayC_Render_Engine_Scanner( IceRayC_Render_Engine_Handle P_this, IceRayC_
   return 1;
  }
 
-int IceRayC_Render_Engine_Pixel(IceRayC_Render_Engine_Handle P_this, IceRayC_Render_Pixel_Handle P_pixel )
+IceRayC_Type_Bool IceRayC_Render_Engine_Pixel(IceRayC_Render_Engine_Handle P_this, IceRayC_Render_Pixel_Handle P_pixel )
  {
   auto I_this  = c2cpp(P_this);
   auto I_pixel = c2cpp(P_pixel);
@@ -54,7 +55,7 @@ int IceRayC_Render_Engine_Pixel(IceRayC_Render_Engine_Handle P_this, IceRayC_Ren
   return 1;
  }
 
-int IceRayC_Render_Engine_Pierce(IceRayC_Render_Engine_Handle P_this, IceRayC_Render_Pierce_Handle P_perce )
+IceRayC_Type_Bool IceRayC_Render_Engine_Pierce(IceRayC_Render_Engine_Handle P_this, IceRayC_Render_Pierce_Handle P_perce )
  {
   auto I_this   = c2cpp(P_this);
   auto I_pierce = c2cpp(P_perce);
@@ -62,7 +63,7 @@ int IceRayC_Render_Engine_Pierce(IceRayC_Render_Engine_Handle P_this, IceRayC_Re
   return 1;
  }
 
-int IceRayC_Render_Engine_Sheaf(IceRayC_Render_Engine_Handle P_this, IceRayC_Render_Sheaf_Handle P_sheaf )
+IceRayC_Type_Bool IceRayC_Render_Engine_Sheaf(IceRayC_Render_Engine_Handle P_this, IceRayC_Render_Sheaf_Handle P_sheaf )
  {
   auto I_this  = c2cpp(P_this);
   auto I_sheaf = c2cpp(P_sheaf);
@@ -70,7 +71,7 @@ int IceRayC_Render_Engine_Sheaf(IceRayC_Render_Engine_Handle P_this, IceRayC_Ren
   return 1;
  }
 
-int IceRayC_Render_Engine_Ray( IceRayC_Render_Engine_Handle P_this, IceRayC_Render_Ray_Handle P_ray )
+IceRayC_Type_Bool IceRayC_Render_Engine_Ray( IceRayC_Render_Engine_Handle P_this, IceRayC_Render_Ray_Handle P_ray )
  {
   auto I_this = c2cpp(P_this);
   auto I_ray  = c2cpp(P_ray);
@@ -78,7 +79,7 @@ int IceRayC_Render_Engine_Ray( IceRayC_Render_Engine_Handle P_this, IceRayC_Rend
   return 1;
  }
 
-int IceRayC_Render_Engine_Start( IceRayC_Render_Engine_Handle P_this, IceRayC_Type_Picture_Handle P_picture )
+IceRayC_Type_Bool IceRayC_Render_Engine_Start( IceRayC_Render_Engine_Handle P_this, IceRayC_Type_Picture_Handle P_picture )
  {
   typedef GS_DDMRM::S_IceRay::S_type::S_picture::GC__pure       Tf_picture;
 
@@ -88,14 +89,14 @@ int IceRayC_Render_Engine_Start( IceRayC_Render_Engine_Handle P_this, IceRayC_Ty
   return 0;
  }
 
-int IceRayC_Render_Engine_Stop(IceRayC_Render_Engine_Handle P_this)
+IceRayC_Type_Bool IceRayC_Render_Engine_Stop(IceRayC_Render_Engine_Handle P_this)
  {
   auto I_this    = c2cpp(P_this);
   I_this->F_stop();
   return 0;
 }
 
-int IceRayC_Render_Engine_Progress(IceRayC_Render_Engine_Handle P_this)
+IceRayC_Type_Bool IceRayC_Render_Engine_Progress(IceRayC_Render_Engine_Handle P_this)
  {
   auto I_this    = c2cpp(P_this);
   return I_this->F_progress();

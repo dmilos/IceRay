@@ -1,8 +1,10 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
+
 import sys
 import time
 import math
 import os
+import platform
 import pathlib
 import inspect
 import types
@@ -207,7 +209,7 @@ def doRendering(P_config):
                 for key_pigment, data_pigment in pigment_list.items():
                    for key_light, data_light in light_list.items():
                        name = key_room +"-"+ key_camera +'-'+ key_geometry +"-"+ key_medium +"-"+ key_pigment+"-" + key_light
-                       filen_name = folder + "\\" + name + '_'+ "{:04d}".format(P_config['index']) + '.ppm'
+                       filen_name = folder + "/" + name + '_'+ "{:04d}".format(P_config['index']) + '.ppm'
                        print( filen_name, flush = True  )
 
                        my_file = pathlib.Path(filen_name)
@@ -275,8 +277,8 @@ config['folder'] = '_out'
 config['index'] = 0
 
 config['picture'] = {}
-config['picture']['width']  = int( 800 * 3 )
-config['picture']['height'] = int( 800 * 3 )
+config['picture']['width']  = int( 800 * 0.5 )
+config['picture']['height'] = int( 800 * 0.5 )
 #config['pixel']['type'] = 'basic'
 
 config['camera'] = {}
@@ -293,8 +295,8 @@ config['ray-trace']['trash'] = 1.0/10000.0
 config['ray-trace']['next'] = 17000
 
 config['hot'] = {}
-config['hot']['x'] = 512 * 4 #int( (1024/2048) * config['picture']['width'] )
-config['hot']['y'] = 310 * 4 #int( ( 692/2048) * config['picture']['height'] )
+config['hot']['x'] = 512 * 1 #int( (1024/2048) * config['picture']['width'] )
+config['hot']['y'] = 310 * 1 #int( ( 692/2048) * config['picture']['height'] )
 
 config['window'] = {}
 config['window'] = {}
@@ -307,29 +309,11 @@ config['window']['B']['y'] =     int( config['picture']['height'] * 1 )
 
 config['room'] = {}
 
-bin_root     = "../../"                              # direct run
-bin_dir = "bin/IceRayCDLL-x86-Release"
-bin_dll = "IceRayCDLL-1.0.0.0-dynamic.dll"
+print( os.getcwd(), flush = True  )
+print( platform.system(), flush = True  )
 
 
-bin_root  = "../.."                     #!< cmake VS
-bin_dir   = "build/cmake/_make/cdll/Release"  #!< cmake VS
-bin_dll   = "IceRayDLL-1.0.0.0.dll"           #!< cmake VS
-
-#if( -1 != os.getcwd().find( '2015' ) ):
-#    print( "DEBUG", flush = True  )
-#    bin_root  = "../../../.."
-#    bin_dir   = "build/cmake/_make/cdll/Debug"
-#else:
-#    print( "Release", flush = True  )
-#    #config['dll'] = cdll.LoadLibrary(bin_root + bin_dir + bin_dll)
-#    #config['dll'] = cdll.LoadLibrary(bin_root + r"bin\IceRayCDLL-x86_64-release/" + bin_dll)
-
-bin_path = bin_root +'/'+ bin_dir +'/'+ bin_dll
-print( "DLL path: " + bin_path , flush = True  )
-
-config['dll'] = cdll.LoadLibrary( bin_path )
-
+config['dll'] = IceRayPy.system.LoadCDLL( IceRayPy.system.SearchCDLL() )
 
 dilatation  = 1;
 
@@ -403,3 +387,4 @@ for index in range( start, 360 * int( dilatation ), step ):
 
 
 #time.sleep( 20 )
+

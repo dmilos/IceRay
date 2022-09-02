@@ -3,7 +3,7 @@
 
 
 template < typename N_handle, typename N_class >
-inline void IceRayC__Internal_Release( N_handle P_this )
+ inline void IceRayC__Internal_Release( N_handle P_this )
   {
    typedef N_class Tf_class;
    auto I_this = reinterpret_cast<Tf_class*> ( P_this );

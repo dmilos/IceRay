@@ -10,6 +10,7 @@ set( ICERAY_CORE_DLL_PROJECT_NAME_FULL         ${ICERAY_PROJECT_NAME_FULL} CACHE
 
 project( ${ICERAY_PROJECT_NAME_FULL} )
 
+
 set( directory__root "${CMAKE_CURRENT_SOURCE_DIR}/../../.." )
 
 set( directory_include          "${directory__root}/src" )
@@ -42,6 +43,7 @@ include_directories( "${directory_submodule__root}/container/src")
 include_directories( "${directory_submodule__root}/math/src")
 include_directories( "${directory_submodule__root}/memory/src")
 include_directories( "${directory_submodule__root}/PNM/src")
+include_directories( "${directory_submodule__root}/TopLog/src")
 
 if ( CMAKE_COMPILER_IS_GNUCC )
     set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -Wall")
@@ -53,22 +55,40 @@ endif()
 
 set( COMMAND_ARGUMENTS "0 1" )
 set( COMMAND_CMD32_DEBUG    "$(prg_python38)" )
-set( COMMAND_ARG32_DEBUG    ${directory__root}"/example/test2/list.py" )
+set( COMMAND_ARG32_DEBUG    ${directory__root}"/example/test2/hello.py" )
 set( COMMAND_CMD32_RELEASE  "$(prg_python38) " )
-set( COMMAND_ARG32_RELEASE  ${directory__root}"/example/test2/list.py" )
+set( COMMAND_ARG32_RELEASE  ${directory__root}"/example/test2/hello.py" )
 
 set( COMMAND_CMD64_DEBUG    "$(prg_python38)" )
-set( COMMAND_ARG64_DEBUG    ${directory__root}"/example/test2/list.py" )
+set( COMMAND_ARG64_DEBUG    ${directory__root}"/example/test2/hello.py" )
 set( COMMAND_CMD64_RELEASE  "$(prg_python38) " )
-set( COMMAND_ARG64_RELEASE  ${directory__root}"/example/test2/list.py" )
+set( COMMAND_ARG64_RELEASE  ${directory__root}"/example/test2/hello.py" )
 
 
 set( COMMAND_ENVIRONMENT_RELEASE "PATH=%PATH%" )
 set( COMMAND_ENVIRONMENT_DEBUG   "PATH=%PATH%" )
-configure_file( template.vcxproj.user.in ${CMAKE_BINARY_DIR}/cdll/${PROJECT_NAME_BARE}.vcxproj.user @ONLY )
+configure_file( template.vcxproj.user.in ${CMAKE_BINARY_DIR}/cdll/${ICERAY_PROJECT_NAME_FULL}.vcxproj.user @ONLY )
 
 
 add_library( ${ICERAY_PROJECT_NAME_FULL} SHARED ${SOURCE_CPP} ${SOURCE_HPP}  )
+
+#set_target_properties( ${ICERAY_PROJECT_NAME_FULL} PROPERTIES CXX_VISIBILITY_PRESET hidden )
+set_property( TARGET ${ICERAY_PROJECT_NAME_FULL} PROPERTY CXX_VISIBILITY_PRESET hidden )
+set_property( TARGET ${ICERAY_PROJECT_NAME_FULL} PROPERTY POSITION_INDEPENDENT_CODE ON )
+
+if( UNIX )
+    target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -frtti )
+    target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -fexceptions )
+    target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -Wno-unused-local-typedefs )
+    target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -Wno-unused-variable )
+    if( ICERAY_SWITCH_DEBUG )
+        #target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -fsanitize=address )
+        #target_link_options(    ${ICERAY_PROJECT_NAME_FULL} PRIVATE -fsanitize=address )
+        target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -ggdb )
+        target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -g3 )
+        target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -O0 )
+    endif()
+endif()
 
 target_include_directories(  ${ICERAY_PROJECT_NAME_FULL} PRIVATE "${directory_include}")
 

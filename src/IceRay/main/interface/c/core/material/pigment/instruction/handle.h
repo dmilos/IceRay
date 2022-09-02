@@ -6,6 +6,6 @@
 struct IceRayC_Material_Pigment_Surfcace_Instruction_Struct {}; 
 typedef IceRayC_Material_Pigment_Surfcace_Instruction_Struct* IceRayC_Material_Pigment_Surfcace_Instruction_Handle;
 
-IceRayC__EXPORT IceRayC__DECLSPEC         void                                         IceRayC_Material_Pigment_Surface_Instruction_Release( IceRayC_Material_Pigment_Surfcace_Instruction_Handle P_that );
+IceRayC__EXPORT IceRayC__DECLSPEC         int                                         IceRayC_Material_Pigment_Surface_Instruction_Release( IceRayC_Material_Pigment_Surfcace_Instruction_Handle P_that );
 
 #endif

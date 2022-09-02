@@ -17,7 +17,6 @@ Affine3D = IceRayPy.type.math.affine.Scalar3D
 Matrix4D = IceRayPy.type.math.matrix.Scalar4D
 
 
-
 class Identity:
 
     def __init__( self, P_dll, P_child = None ):
@@ -48,7 +47,6 @@ class Translate:
 
         if( None != P_child ):
             self.child( P_child )
-
         if( None != P_move ):
             self.toWorldSet( P_move )
 

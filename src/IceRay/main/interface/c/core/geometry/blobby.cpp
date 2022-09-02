@@ -16,10 +16,11 @@ GS_DDMRM::S_IceRay::S_geometry::S_blobby::GC__element * c2cpp( IceRayC_Geometry_
   return  reinterpret_cast<GS_DDMRM::S_IceRay::S_geometry::S_blobby::GC__element*> ( P_that );
  }
 
-void IceRayC_Geometry_Blobby_Element_Release( IceRayC_Geometry_Blobby_Element_Handle P_that )
+int IceRayC_Geometry_Blobby_Element_Release( IceRayC_Geometry_Blobby_Element_Handle P_that )
  {
   auto I_this = c2cpp( P_that );
   delete I_this;
+  return 1;
  }
 
 IceRayC_Geometry_Handle IceRayC_Geometry_Blobby_System0( )
@@ -45,9 +46,9 @@ IceRayC_Geometry_Blobby_Element_Handle IceRayC_Geometry_Blobby_Sphere0( )
   return cpp2c(  Ir_result );
  }
 
-IceRayC_Geometry_Blobby_Element_Handle IceRayC_Geometry_Blobby_Sphere1( IceRayC_TypeCoordScalar3D P_center, IceRayC_TypeScalar P_core, IceRayC_TypeScalar P_radius )
+IceRayC_Geometry_Blobby_Element_Handle IceRayC_Geometry_Blobby_Sphere1( IceRayC_TypeCoordScalar3D *P_center, IceRayC_TypeScalar P_core, IceRayC_TypeScalar P_radius )
  {
-  auto Ir_result = new GS_DDMRM::S_IceRay::S_geometry::S_blobby::GC_sphere{ c2cpp( P_center ), P_core, P_radius };
+  auto Ir_result = new GS_DDMRM::S_IceRay::S_geometry::S_blobby::GC_sphere{ c2cpp( *P_center ), P_core, P_radius };
   return cpp2c( Ir_result );
  }
 

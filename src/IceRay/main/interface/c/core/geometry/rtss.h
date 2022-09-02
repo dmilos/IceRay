@@ -10,7 +10,7 @@
 struct  IceRayC_Geometry_RTSS_Struct {};
 typedef IceRayC_Geometry_RTSS_Struct* IceRayC_Geometry_RTSS_Handle;
 
-IceRayC__EXPORT IceRayC__DECLSPEC  void IceRayC_Geometry_RTSS_Release( IceRayC_Geometry_RTSS_Handle P_that );
+IceRayC__EXPORT IceRayC__DECLSPEC  int                     IceRayC_Geometry_RTSS_Release( IceRayC_Geometry_RTSS_Handle P_that );
 
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_RTSS_Object0(  );
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_RTSS_Object1( IceRayC_Geometry_RTSS_Handle P_rtss );
