@@ -22,6 +22,8 @@ import composer
 import room
 import decoration
 
+
+
 camera_list = {
         'F-persp'        : core.camera.flat.Perspective,
        #'F-orth'         : core.camera.flat.Orthogonal,
@@ -75,42 +77,42 @@ medium_list = {
 
 geometry_list = {
       'simple-sphere'        : core.geometry.simple.Sphere,
-      #'simple-usphere'       : core.geometry.simple.USphere,
-      #'simple-cylinder'      : core.geometry.simple.Cylinder,
-      #'simple-box'           : core.geometry.simple.Box,
-      #'simple-plane'         : core.geometry.simple.Plane,
-      #'simple-torus'         : core.geometry.simple.Torus,
-      'simple-cone'          : core.geometry.simple.Cone,
-      #'simple-disc'          : core.geometry.simple.Disc,
-      #'simple-udisc'         : core.geometry.simple.UDisc,
-      #'simple-ellipsoid'     : core.geometry.simple.Ellipsoid,
-      #'simple-hyperboloid'   : core.geometry.simple.Hyperboloid,
-      #'simple-paraboloid'    : core.geometry.simple.Paraboloid,
-      #'simple-quadric'       : core.geometry.simple.Quadric,
-      #'simple-triangle'      : core.geometry.simple.Triangle,
-      #'simple-utriangle'     : core.geometry.simple.UTriangle,
-      #'simple-saddle'        : core.geometry.simple.Saddle,
-      #'simple-ucylinder'     : core.geometry.simple.UCylinder,
-      #
-      #'hyper-nuke'           : utility.geometry.simple.hyperboloid.Nuke,
-      #'hyper-sphere'         : utility.geometry.simple.hyperboloid.Sphere,
-      #'hyper-cone'           : utility.geometry.simple.hyperboloid.Cone,
-      #'hyper-cylinder'       : utility.geometry.simple.hyperboloid.Cylinder,
-      #'hyper-negative'       : utility.geometry.simple.hyperboloid.Negative,
-      #
-      #'complex-Intersect'    : core.geometry.complex.Intersect, #NYI
-      #'complex-Enclose'      : core.geometry.complex.Enclose, #NYI
-      #
-      #'transform-identity'   : core.geometry.transform.Identity,
-      #'transform-translate'  : core.geometry.transform.Translate,
-      #'transform-affine'     : core.geometry.transform.Affine,
-      #'transform-hgraphy'    : core.geometry.transform.Homography,
-      #'transform-mblur'      : library.geometry.MotionBlur,
-      #
-      #'volumetric-Vacuum'    : core.geometry.volumetric.Vacuum,
-      #'volumetric-Mist'      : core.geometry.volumetric.Mist,
-      #'volumetric-Smoke'     : core.geometry.volumetric.Smoke,
-      'library-1m'           : library.geometry.OneM
+     #'simple-usphere'       : core.geometry.simple.USphere,
+     #'simple-cylinder'      : core.geometry.simple.Cylinder,
+     #'simple-box'           : core.geometry.simple.Box,
+     #'simple-plane'         : core.geometry.simple.Plane,
+     #'simple-torus'         : core.geometry.simple.Torus,
+     #'simple-cone'          : core.geometry.simple.Cone,
+     #'simple-disc'          : core.geometry.simple.Disc,
+     #'simple-udisc'         : core.geometry.simple.UDisc,
+     #'simple-ellipsoid'     : core.geometry.simple.Ellipsoid,
+     #'simple-hyperboloid'   : core.geometry.simple.Hyperboloid,
+     #'simple-paraboloid'    : core.geometry.simple.Paraboloid,
+     #'simple-quadric'       : core.geometry.simple.Quadric,
+     #'simple-triangle'      : core.geometry.simple.Triangle,
+     #'simple-utriangle'     : core.geometry.simple.UTriangle,
+     #'simple-saddle'        : core.geometry.simple.Saddle,
+     #'simple-ucylinder'     : core.geometry.simple.UCylinder,
+
+     #'hyper-nuke'           : utility.geometry.simple.hyperboloid.Nuke,
+     #'hyper-sphere'         : utility.geometry.simple.hyperboloid.Sphere,
+     #'hyper-cone'           : utility.geometry.simple.hyperboloid.Cone,
+     #'hyper-cylinder'       : utility.geometry.simple.hyperboloid.Cylinder,
+     #'hyper-negative'       : utility.geometry.simple.hyperboloid.Negative,
+
+     #'complex-Intersect'    : core.geometry.complex.Intersect, #NYI
+     #'complex-Enclose'      : core.geometry.complex.Enclose, #NYI
+     #
+     #'transform-identity'   : core.geometry.transform.Identity,
+     #'transform-translate'  : core.geometry.transform.Translate,
+     #'transform-affine'     : core.geometry.transform.Affine,
+     #'transform-hgraphy'    : core.geometry.transform.Homography,
+     #'transform-mblur'      : library.geometry.MotionBlur,
+     #
+     #'volumetric-Vacuum'    : core.geometry.volumetric.Vacuum,
+     #'volumetric-Mist'      : core.geometry.volumetric.Mist,
+     #'volumetric-Smoke'     : core.geometry.volumetric.Smoke,
+     #'library-1m'           : library.geometry.OneM
       ##'library-intersect'     : library.geometry.Intersect NYI
      }
 
@@ -130,58 +132,58 @@ pigment_list = {
      #'pattern-onion'            : utility.material.pattern.Onion, #TODO check
      #'pattern-level'            : utility.material.pattern.Level, #TODO check
 
-     'illum-ALP'           : utility.material.illumination.Alp,       # OK OK
-     'illum-ambient'       : utility.material.illumination.Ambient,   # OK OK TODO align with ALP
-     'illum-AsDiffuse'     : utility.material.illumination.AsDiffuse, # OK OK TODO align with ALP
-     'illum-AsSpecular'    : utility.material.illumination.AsSpecular,# OK OK TODO align with ALP
-     'illum-Beckmann'      : utility.material.illumination.Beckmann,  # OK Check again  TODO problem on terminator
-     'illum-Blinn'         : utility.material.illumination.Blinn,     # OK OK TODO fix color TODO problem on terminator
-     'illum-Gaussian'      : utility.material.illumination.Gaussian,  # OK OK TODO problem on terminator
-     'illum-HsLambert'     : utility.material.illumination.HsLambert, # OK OK TODO align with Alp
-     'illum-HsPhong'       : utility.material.illumination.HsPhong,   # OK OK TODO align with Alp
-     'illum-Lambert'       : utility.material.illumination.Lambert,   #OK OK  TODO align with ALP
-     'illum-ONf29'         : utility.material.illumination.ON_f29,       # TODO in progress
-     'illum-ONf30'         : utility.material.illumination.ON_f30,       # TODO in progress
-     'illum-ONYFP'         : utility.material.illumination.ON_Fujii_Proposed,     # OK OK TODO align with Alp
-     'illum-ONYFQ'         : utility.material.illumination.ON_Fujii_Qualitative,  # OK OK TODO align with ALP
-     'illum-ON-JvO'        : utility.material.illumination.ON_Ouwerkerk,  # OK OK TODO align with ???
-     'illum-Phong'         : utility.material.illumination.Phong,         # OK OK TODO align with ALP
-     'illum-WardApprox'    : utility.material.illumination.WardApprox,    # OK OK TODO align with ALP
-     'illum-WardIsotropic' : utility.material.illumination.WardIsotropic, # OK OK TODO align with ALP
-     'illum-WardReal'      : utility.material.illumination.WardReal,      # OK OK TODO align with ALP
+     #'illum-ALP'           : utility.material.illumination.Alp,       # OK OK
+     #'illum-ambient'       : utility.material.illumination.Ambient,   # OK OK TODO align with ALP
+     #'illum-AsDiffuse'     : utility.material.illumination.AsDiffuse, # OK OK TODO align with ALP
+     #'illum-AsSpecular'    : utility.material.illumination.AsSpecular,# OK OK TODO align with ALP
+     #'illum-Beckmann'      : utility.material.illumination.Beckmann,  # OK Check again  TODO problem on terminator
+     #'illum-Blinn'         : utility.material.illumination.Blinn,     # OK OK TODO fix color TODO problem on terminator
+     #'illum-Gaussian'      : utility.material.illumination.Gaussian,  # OK OK TODO problem on terminator
+     #'illum-HsLambert'     : utility.material.illumination.HsLambert, # OK OK TODO align with Alp
+     #'illum-HsPhong'       : utility.material.illumination.HsPhong,   # OK OK TODO align with Alp
+     #'illum-Lambert'       : utility.material.illumination.Lambert,   #OK OK  TODO align with ALP
+     #'illum-ONf29'         : utility.material.illumination.ON_f29,       # TODO in progress
+     #'illum-ONf30'         : utility.material.illumination.ON_f30,       # TODO in progress
+     #'illum-ONYFP'         : utility.material.illumination.ON_Fujii_Proposed,     # OK OK TODO align with Alp
+     #'illum-ONYFQ'         : utility.material.illumination.ON_Fujii_Qualitative,  # OK OK TODO align with ALP
+     #'illum-ON-JvO'        : utility.material.illumination.ON_Ouwerkerk,  # OK OK TODO align with ???
+     #'illum-Phong'         : utility.material.illumination.Phong,         # OK OK TODO align with ALP
+     #'illum-WardApprox'    : utility.material.illumination.WardApprox,    # OK OK TODO align with ALP
+     #'illum-WardIsotropic' : utility.material.illumination.WardIsotropic, # OK OK TODO align with ALP
+     #'illum-WardReal'      : utility.material.illumination.WardReal,      # OK OK TODO align with ALP
 
      #'mapping-o-ID'                     : utility.material.operation.mapping.Identity3D,
      #'mapping-o-translate'              : utility.material.operation.mapping.Translate3D,
      #'mapping-o-affine'                 : utility.material.operation.mapping.Affine3D,
      #'mapping-o-homography'             : utility.material.operation.mapping.Homography3D,
 
-     #'mapping-o-Cartesian2Cylindric'    : utility.material.operation.mapping.Cartesian2Cylindric,  #TODO check
-     #'mapping-o-Cartesian2Package'      : utility.material.operation.mapping.Cartesian2Package,    #TODO check
-     #'mapping-o-Cartesian2Spherical'    : utility.material.operation.mapping.Cartesian2Spherical,  #TODO check
-     #'mapping-o-Cartesian2Torus'        : utility.material.operation.mapping.Cartesian2Torus,      #TODO check
-     #'mapping-o-Cartesian2Tablecloth'   : utility.material.operation.mapping.Cartesian2Tablecloth, #TODO check
-     #'mapping-o-Cartesian2WoodX'        : utility.material.operation.mapping.Cartesian2WoodX,      #TODO check
-     #'mapping-o-Cartesian2WoodY'        : utility.material.operation.mapping.Cartesian2WoodY,      #TODO check
-     #'mapping-o-Cartesian2WoodZ'        : utility.material.operation.mapping.Cartesian2WoodZ,      #TODO check
-     #'mapping-o-Cylindric2Cartesian'    : utility.material.operation.mapping.Cylindric2Cartesian,  #TODO check
-     #'mapping-o-Cylindric2Spherical'    : utility.material.operation.mapping.Cylindric2Spherical,  #TODO check
-     #'mapping-o-Spherical2Cartesian'    : utility.material.operation.mapping.Spherical2Cartesian,  #TODO check
-     #'mapping-o-Spherical2Cylindric'    : utility.material.operation.mapping.Spherical2Cylindric,  #TODO check
-     #'mapping-o-Euclid2Max'             : utility.material.operation.mapping.Euclid2Max,           #TODO check
-     #'mapping-o-Max2Euclid'             : utility.material.operation.mapping.Max2Euclid,           #TODO check
-     #'mapping-o-Cartesian2Fisheye'      : utility.material.operation.mapping.Cartesian2Fisheye,    #TODO check
+     'mapping-o-Cartesian2Cylindric'    : utility.material.operation.mapping.Cartesian2Cylindric,  #TODO check
+     'mapping-o-Cartesian2Package'      : utility.material.operation.mapping.Cartesian2Package,    #TODO check
+     'mapping-o-Cartesian2Spherical'    : utility.material.operation.mapping.Cartesian2Spherical,  #TODO check
+     'mapping-o-Cartesian2Torus'        : utility.material.operation.mapping.Cartesian2Torus,      #TODO check
+     'mapping-o-Cartesian2Tablecloth'   : utility.material.operation.mapping.Cartesian2Tablecloth, #TODO check
+     'mapping-o-Cartesian2WoodX'        : utility.material.operation.mapping.Cartesian2WoodX,      #TODO check
+     'mapping-o-Cartesian2WoodY'        : utility.material.operation.mapping.Cartesian2WoodY,      #TODO check
+     'mapping-o-Cartesian2WoodZ'        : utility.material.operation.mapping.Cartesian2WoodZ,      #TODO check
+     'mapping-o-Cylindric2Cartesian'    : utility.material.operation.mapping.Cylindric2Cartesian,  #TODO check
+     'mapping-o-Cylindric2Spherical'    : utility.material.operation.mapping.Cylindric2Spherical,  #TODO check
+     'mapping-o-Spherical2Cartesian'    : utility.material.operation.mapping.Spherical2Cartesian,  #TODO check
+     'mapping-o-Spherical2Cylindric'    : utility.material.operation.mapping.Spherical2Cylindric,  #TODO check
+     'mapping-o-Euclid2Max'             : utility.material.operation.mapping.Euclid2Max,           #TODO check
+     'mapping-o-Max2Euclid'             : utility.material.operation.mapping.Max2Euclid,           #TODO check
+     'mapping-o-Cartesian2Fisheye'      : utility.material.operation.mapping.Cartesian2Fisheye,    #TODO check
 
-      #'transmission-reflect-One'              : utility.material.transmission.reflect.One,      #OK
-      #'transmission-reflect-Schlick'          : utility.material.transmission.reflect.Schlick,  #OK
-      #'transmission-reflect-blossom-Grid'      : utility.material.transmission.blossom.Grid,     #TODO
-      #'transmission-reflect-blossom-Hexagon'   : utility.material.transmission.blossom.Hexagon,  #OK
-      #'transmission-reflect-blossom-Pinwheel'   : utility.material.transmission.blossom.Pinwheel,  #TODO
-      #'transmission-reflect-blossom-Rand'      : utility.material.transmission.blossom.Random,   #TODO
-      #'transmission-reflect-blossom-trg'       : utility.material.transmission.blossom.Triangle, #TODO
-      #'transmission-reflect-blossom-VDC'       : utility.material.transmission.blossom.VDC,      #OK
-      #'transmission-refract-Fresnel'          : utility.material.transmission.refract.Fresnel,  #OK
-      #'transmission-refract-Snell'            : utility.material.transmission.refract.Snell,    #OK
-      #'transmission-refract-Schlick'          : utility.material.transmission.refract.Schlick,  #OK
+     #'transmission-reflect-One'               : utility.material.transmission.reflect.One,      #OK
+     #'transmission-reflect-Schlick'           : utility.material.transmission.reflect.Schlick,  #OK
+     #'transmission-reflect-blossom-Grid'      : utility.material.transmission.blossom.Grid,     #TODO
+     #'transmission-reflect-blossom-Hexagon'   : utility.material.transmission.blossom.Hexagon,  #OK
+     #'transmission-reflect-blossom-Pinwheel'  : utility.material.transmission.blossom.Pinwheel, #TODO
+     #'transmission-reflect-blossom-Rand'      : utility.material.transmission.blossom.Random,   #TODO
+     #'transmission-reflect-blossom-trg'       : utility.material.transmission.blossom.Triangle, #TODO
+     #'transmission-reflect-blossom-VDC'       : utility.material.transmission.blossom.VDC,      #OK
+     #'transmission-refract-Fresnel'           : utility.material.transmission.refract.Fresnel,  #OK
+     #'transmission-refract-Snell'             : utility.material.transmission.refract.Snell,    #OK
+     #'transmission-refract-Schlick'           : utility.material.transmission.refract.Schlick,  #OK
 }
 
 room_list = {
@@ -194,10 +196,10 @@ room_list = {
     }
 
 decoration_list = {
-      #'vacuum'    : decoration.vacuum,
-       'ptrs'      : decoration.pointers,
+      'vacuum'    : decoration.vacuum,
+      'ptrs'      : decoration.pointers,
     }
-
+decoration_item = 'ptrs'
 
 def doRendering(P_config):
     folder = P_config['folder']
@@ -235,7 +237,7 @@ def doRendering(P_config):
 
                        room = data_room( P_config['dll'], P_config['room'], light_final, geometry )
 
-                       scene = composer.arange( P_config['dll'], object, room, decoration_list['ptrs'](  P_config['dll'], {   }, light_final, object ) )
+                       scene = composer.arange( P_config['dll'], object, room, decoration_list[ decoration_item ](  P_config['dll'], {   }, light_final, object ) )
 
                        picture = IceRayPy.type.graph.Picture(P_config['dll'])
                        picture.size( P_config['picture']['width'], P_config['picture']['height'] )
@@ -277,8 +279,8 @@ config['folder'] = '_out'
 config['index'] = 0
 
 config['picture'] = {}
-config['picture']['width']  = int( 800 * 0.5 )
-config['picture']['height'] = int( 800 * 0.5 )
+config['picture']['width']  = int( 800 * 2 )
+config['picture']['height'] = int( 800 * 2 )
 #config['pixel']['type'] = 'basic'
 
 config['camera'] = {}
@@ -295,8 +297,8 @@ config['ray-trace']['trash'] = 1.0/10000.0
 config['ray-trace']['next'] = 17000
 
 config['hot'] = {}
-config['hot']['x'] = 512 * 1 #int( (1024/2048) * config['picture']['width'] )
-config['hot']['y'] = 310 * 1 #int( ( 692/2048) * config['picture']['height'] )
+config['hot']['x'] = 400 * 1 #int( (1024/2048) * config['picture']['width'] )
+config['hot']['y'] = 800 * 1 #int( ( 692/2048) * config['picture']['height'] )
 
 config['window'] = {}
 config['window'] = {}
@@ -312,8 +314,13 @@ config['room'] = {}
 print( os.getcwd(), flush = True  )
 print( platform.system(), flush = True  )
 
+dll_path = IceRayPy.system.SearchCDLL()
 
-config['dll'] = IceRayPy.system.LoadCDLL( IceRayPy.system.SearchCDLL() )
+if 0 != len( dll_path ):
+    config['dll'] = IceRayPy.system.LoadCDLL( dll_path )
+else:
+    print("Can not find DLL")
+    time.sleep(200)
 
 dilatation  = 1;
 
@@ -339,7 +346,6 @@ output = os.popen('wmic process get description, processid').read()
 ## print(a)
 ##
 ##exit(0)
-
 
 for index in range( start, 360 * int( dilatation ), step ):
     config['index'] = index
@@ -379,6 +385,7 @@ for index in range( start, 360 * int( dilatation ), step ):
     print( math.degrees(alpha), " _ " ,  x, ",", y, ",", height, "  ", math.sqrt( x*x+ y*y ) )
     print( "Hot: ", config['hot'], flush = True  )
     print( "Index:" + str(index) + "[" + os.getcwd() + "]", flush = True  )
+
     doRendering( config )
     print(str( gc.get_threshold() )  )
     print(str( gc.get_count() )  )
@@ -386,5 +393,5 @@ for index in range( start, 360 * int( dilatation ), step ):
     print(str( gc.get_count() )  )
 
 
-#time.sleep( 20 )
+time.sleep( 20 )
 

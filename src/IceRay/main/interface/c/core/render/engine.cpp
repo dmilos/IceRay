@@ -96,7 +96,7 @@ IceRayC_Type_Bool IceRayC_Render_Engine_Stop(IceRayC_Render_Engine_Handle P_this
   return 0;
 }
 
-IceRayC_Type_Bool IceRayC_Render_Engine_Progress(IceRayC_Render_Engine_Handle P_this)
+IceRayC_Type_Scalar IceRayC_Render_Engine_Progress(IceRayC_Render_Engine_Handle P_this)
  {
   auto I_this    = c2cpp(P_this);
   return I_this->F_progress();

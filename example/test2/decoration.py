@@ -81,10 +81,8 @@ def pointers( P_dll, P_config = { 'shadow': False, 'pigment': None }, P_light = 
     rtss.push( IceRayPy.core.geometry.Pretender( P_dll, yellow.cast2Geometry(),   yellow  ) )
     rtss.push( IceRayPy.core.geometry.Pretender( P_dll, magenta.cast2Geometry(),  magenta ) )
 
-
     wrapper = IceRayPy.core.object.Wrapper( P_dll )
     wrapper.geometrySet( rtss )
 
     return wrapper
-
 

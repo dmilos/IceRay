@@ -25,6 +25,6 @@ IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool            IceRayC_Render_E
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool            IceRayC_Render_Engine_Ray(      IceRayC_Render_Engine_Handle P_this, IceRayC_Render_Ray_Handle     P_ray );
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool            IceRayC_Render_Engine_Start(    IceRayC_Render_Engine_Handle P_this, IceRayC_Type_Picture_Handle   P_picture );
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool            IceRayC_Render_Engine_Stop(     IceRayC_Render_Engine_Handle P_this);
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool            IceRayC_Render_Engine_Progress( IceRayC_Render_Engine_Handle P_this);
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Scalar          IceRayC_Render_Engine_Progress( IceRayC_Render_Engine_Handle P_this);
 
 #endif

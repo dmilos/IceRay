@@ -29,7 +29,7 @@ def Image(
     if( None != P_filename ):
         I_picture.load( P_filename )
     else:
-        I_picture.size( 16, 16 )
+        I_picture.size( 320, 320 )
         IceRayPy.type.graph.Default( I_picture )
 
     I_image = IceRayPy.core.material.pattern.Image( P_dll, I_picture )

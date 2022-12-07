@@ -12,9 +12,9 @@ IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool     IceRayC_Camera_Release(
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Camera_Handle IceRayC_Camera_Flat_Perspective0( );
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Camera_Handle IceRayC_Camera_Flat_Perspective1( IceRayC_TypeScalar P_aspect );
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Camera_Handle IceRayC_Camera_Flat_Perspective2( IceRayC_TypeScalar P_width, IceRayC_TypeScalar P_height );
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool     IceRayC_Camera_Flat_Perspective_Width(  IceRayC_Camera_Handle P_that, IceRayC_TypeScalar P_width );
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool     IceRayC_Camera_Flat_Perspective_Height( IceRayC_Camera_Handle P_that, IceRayC_TypeScalar P_height );
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool     IceRayC_Camera_Flat_Perspective_Aspect( IceRayC_Camera_Handle P_that, IceRayC_TypeScalar P_aspect );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool     IceRayC_Camera_Flat_Perspective_Height( IceRayC_Camera_Handle P_that, IceRayC_TypeScalar P_height );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool     IceRayC_Camera_Flat_Perspective_Width(  IceRayC_Camera_Handle P_that, IceRayC_TypeScalar P_width );
 
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Camera_Handle IceRayC_Camera_Flat_Super0( );
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool     IceRayC_Camera_Flat_Super_Eye(        IceRayC_Camera_Handle P_that, IceRayC_Type_Coord_Scalar2D* P_eye );
@@ -31,36 +31,35 @@ IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool     IceRayC_Camera_Flat_Ort
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Camera_Handle IceRayC_Camera_Cylinder_Horizontal0( );
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Camera_Handle IceRayC_Camera_Cylinder_Horizontal1( IceRayC_TypeScalar P_width, IceRayC_TypeScalar P_theta );
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Camera_Handle IceRayC_Camera_Cylinder_Horizontal2( IceRayC_TypeScalar P_width, IceRayC_TypeScalar P_theta, IceRayC_TypeScalar P_radius );
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool     IceRayC_Camera_Cylinder_Horizontal_Width(  IceRayC_Camera_Handle P_that, IceRayC_TypeScalar P_width );
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool     IceRayC_Camera_Cylinder_Horizontal_Theta(  IceRayC_Camera_Handle P_that,IceRayC_TypeScalar P_theta );
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool     IceRayC_Camera_Cylinder_Horizontal_Radius( IceRayC_Camera_Handle P_that, IceRayC_TypeScalar P_radius );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool     IceRayC_Camera_Cylinder_Horizontal_Theta(  IceRayC_Camera_Handle P_that,IceRayC_TypeScalar P_theta );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool     IceRayC_Camera_Cylinder_Horizontal_Width(  IceRayC_Camera_Handle P_that, IceRayC_TypeScalar P_width );
 
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Camera_Handle IceRayC_Camera_Cylinder_Vertical0( );
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Camera_Handle IceRayC_Camera_Cylinder_Vertical1( IceRayC_TypeScalar P_height, IceRayC_TypeScalar P_theta );
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Camera_Handle IceRayC_Camera_Cylinder_Vertical2( IceRayC_TypeScalar P_height, IceRayC_TypeScalar P_theta, IceRayC_TypeScalar P_radius );
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool     IceRayC_Camera_Cylinder_Vertical_Phi(    IceRayC_Camera_Handle P_that, IceRayC_TypeScalar P_phi );
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool     IceRayC_Camera_Cylinder_Vertical_Height( IceRayC_Camera_Handle P_that, IceRayC_TypeScalar P_height );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool     IceRayC_Camera_Cylinder_Vertical_Phi(    IceRayC_Camera_Handle P_that, IceRayC_TypeScalar P_phi );
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool     IceRayC_Camera_Cylinder_Vertical_Radius( IceRayC_Camera_Handle P_that, IceRayC_TypeScalar P_radius );
 
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Camera_Handle IceRayC_Camera_Sphere_Vertical0( );
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Camera_Handle IceRayC_Camera_Sphere_Vertical1( IceRayC_TypeScalar P_theta, IceRayC_TypeScalar P_phi );
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Camera_Handle IceRayC_Camera_Sphere_Vertical2( IceRayC_TypeScalar P_theta, IceRayC_TypeScalar P_phi, IceRayC_TypeScalar P_radius );
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool     IceRayC_Camera_Sphere_Vertical_Theta(  IceRayC_Camera_Handle P_that, IceRayC_TypeScalar P_theta );
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool     IceRayC_Camera_Sphere_Vertical_Phi(    IceRayC_Camera_Handle P_that, IceRayC_TypeScalar P_phi );
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool     IceRayC_Camera_Sphere_Vertical_Radius( IceRayC_Camera_Handle P_that, IceRayC_TypeScalar P_radius );
-
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Camera_Handle IceRayC_Camera_Sphere_Horizontal0( );
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Camera_Handle IceRayC_Camera_Sphere_Horizontal1( IceRayC_TypeScalar P_theta, IceRayC_TypeScalar P_phi, IceRayC_TypeScalar P_radius );
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool     IceRayC_Camera_Sphere_Horizontal_Phi(    IceRayC_Camera_Handle P_that, IceRayC_TypeScalar P_theta, IceRayC_TypeScalar P_phi );
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool     IceRayC_Camera_Sphere_Horizontal_Theta(  IceRayC_Camera_Handle P_that, IceRayC_TypeScalar P_theta );
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool     IceRayC_Camera_Sphere_Horizontal_Radius( IceRayC_Camera_Handle P_that, IceRayC_TypeScalar P_radius );
 
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Camera_Handle IceRayC_Camera_Sphere_Fisheye0( );
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Camera_Handle IceRayC_Camera_Sphere_Fisheye1( IceRayC_TypeScalar P_phi, IceRayC_TypeScalar P_theta );
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Camera_Handle IceRayC_Camera_Sphere_Fisheye2( IceRayC_TypeScalar P_phi, IceRayC_TypeScalar P_theta, IceRayC_TypeScalar P_radius );
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool     IceRayC_Camera_Sphere_Fisheye_Phi(    IceRayC_Camera_Handle P_that, IceRayC_TypeScalar P_phi );
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool     IceRayC_Camera_Sphere_Fisheye_Theta(  IceRayC_Camera_Handle P_that, IceRayC_TypeScalar P_theta );
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool     IceRayC_Camera_Sphere_Fisheye_Radius( IceRayC_Camera_Handle P_that, IceRayC_TypeScalar P_radius );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Camera_Handle IceRayC_Camera_Sphere_Fisheye1(          IceRayC_TypeScalar P_phi, IceRayC_TypeScalar P_theta );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Camera_Handle IceRayC_Camera_Sphere_Fisheye2(          IceRayC_TypeScalar P_phi, IceRayC_TypeScalar P_theta, IceRayC_TypeScalar P_radius );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool     IceRayC_Camera_Sphere_Fisheye_Phi(       IceRayC_Camera_Handle P_that, IceRayC_TypeScalar P_phi );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool     IceRayC_Camera_Sphere_Fisheye_Radius(    IceRayC_Camera_Handle P_that, IceRayC_TypeScalar P_radius );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool     IceRayC_Camera_Sphere_Fisheye_Theta(     IceRayC_Camera_Handle P_that, IceRayC_TypeScalar P_theta );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Camera_Handle IceRayC_Camera_Sphere_Horizontal0( );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Camera_Handle IceRayC_Camera_Sphere_Horizontal1(       IceRayC_TypeScalar P_theta, IceRayC_TypeScalar P_phi, IceRayC_TypeScalar P_radius );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool     IceRayC_Camera_Sphere_Horizontal_Phi(    IceRayC_Camera_Handle P_that, IceRayC_TypeScalar P_theta, IceRayC_TypeScalar P_phi );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool     IceRayC_Camera_Sphere_Horizontal_Radius( IceRayC_Camera_Handle P_that, IceRayC_TypeScalar P_radius );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool     IceRayC_Camera_Sphere_Horizontal_Theta(  IceRayC_Camera_Handle P_that, IceRayC_TypeScalar P_theta );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Camera_Handle IceRayC_Camera_Sphere_Vertical0( );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Camera_Handle IceRayC_Camera_Sphere_Vertical1(         IceRayC_TypeScalar P_theta, IceRayC_TypeScalar P_phi );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Camera_Handle IceRayC_Camera_Sphere_Vertical2(         IceRayC_TypeScalar P_theta, IceRayC_TypeScalar P_phi, IceRayC_TypeScalar P_radius );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool     IceRayC_Camera_Sphere_Vertical_Theta(    IceRayC_Camera_Handle P_that, IceRayC_TypeScalar P_theta );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool     IceRayC_Camera_Sphere_Vertical_Phi(      IceRayC_Camera_Handle P_that, IceRayC_TypeScalar P_phi );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool     IceRayC_Camera_Sphere_Vertical_Radius(   IceRayC_Camera_Handle P_that, IceRayC_TypeScalar P_radius );
 
 // IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Camera_Handle IceRayC_Camera_Sphere_Package1( IceRayC_TypeScalar P_hfov, IceRayC_TypeScalar P_vfov );
 

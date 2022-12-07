@@ -51,10 +51,16 @@
                void Fv_trace( T_color & P_color, T_ray const& P_incident );
 
              public:
-               T_object const& F_object( )const{ return *M2_object; }
+               T_object const& F_object( )const
+                {
+                 return *M2_object; 
+                }
                bool            F_object( T_object * P_object );
              protected:
-               T_object &      F1_object( ){ return *M2_object; }
+               T_object &      F1_object( )
+                { 
+                 return *M2_object; 
+                }
              private:
                T_object *M2_object;
 

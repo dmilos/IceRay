@@ -1,8 +1,7 @@
 #include "./child.hpp"
 #include "./parent.hpp"
 
-using namespace GS_DDMRM::S_type::S_general;
-
+namespace GS_DDMRM { namespace S_type{ namespace S_general {
 
 GC_child::GC_child(T_parent *P_parent)
 :M2_parent( nullptr )
@@ -33,3 +32,5 @@ void GC_child::Fv_parent( T_parent *P_parent )
     M2_parent->Fv_attach( this );
    }
 }
+
+}}}

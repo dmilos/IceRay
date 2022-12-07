@@ -24,11 +24,11 @@ IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Light_Handle IceRayC_Light_Dark0( );
 
 
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Light_Handle IceRayC_Light_Area0( );
-IceRayC__EXPORT IceRayC__DECLSPEC  int                  IceRayC_Light_Area_Spot(   IceRayC_Light_Handle P_this, IceRayC_TypeSpot*           P_spot );
-IceRayC__EXPORT IceRayC__DECLSPEC  int                  IceRayC_Light_Area_Sample( IceRayC_Light_Handle P_this, IceRayC_TypeSize            P_sample );
 IceRayC__EXPORT IceRayC__DECLSPEC  int                  IceRayC_Light_Area_Origin( IceRayC_Light_Handle P_this, IceRayC_TypeCoordScalar3D * P_origin );
-IceRayC__EXPORT IceRayC__DECLSPEC  int                  IceRayC_Light_Area_X(      IceRayC_Light_Handle P_this, IceRayC_TypeCoordScalar3D*  P_X );
-IceRayC__EXPORT IceRayC__DECLSPEC  int                  IceRayC_Light_Area_Y(      IceRayC_Light_Handle P_this, IceRayC_TypeCoordScalar3D*  P_Y );
+IceRayC__EXPORT IceRayC__DECLSPEC  int                  IceRayC_Light_Area_Sample( IceRayC_Light_Handle P_this, IceRayC_TypeSize            P_sample );
+IceRayC__EXPORT IceRayC__DECLSPEC  int                  IceRayC_Light_Area_Spot(   IceRayC_Light_Handle P_this, IceRayC_TypeSpot*           P_spot   );
+IceRayC__EXPORT IceRayC__DECLSPEC  int                  IceRayC_Light_Area_X(      IceRayC_Light_Handle P_this, IceRayC_TypeCoordScalar3D*  P_X      );
+IceRayC__EXPORT IceRayC__DECLSPEC  int                  IceRayC_Light_Area_Y(      IceRayC_Light_Handle P_this, IceRayC_TypeCoordScalar3D*  P_Y      );
 
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Light_Handle IceRayC_Light_Obstruct0( );
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Light_Handle IceRayC_Light_Obstruct1( IceRayC_Light_Handle P_child );
@@ -53,11 +53,11 @@ IceRayC__EXPORT IceRayC__DECLSPEC  int                  IceRayC_Light_Confine_Sh
 
 
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Light_Handle IceRayC_Light_Disc0( );
-IceRayC__EXPORT IceRayC__DECLSPEC  int                  IceRayC_Light_Disc_Sample( IceRayC_Light_Handle P_this, IceRayC_TypeSize P_sample );
-IceRayC__EXPORT IceRayC__DECLSPEC  int                  IceRayC_Light_Disc_Spot( IceRayC_Light_Handle P_this, IceRayC_TypeSpot* P_spot );
 IceRayC__EXPORT IceRayC__DECLSPEC  int                  IceRayC_Light_Disc_Center( IceRayC_Light_Handle P_this, IceRayC_TypeCoordScalar3D* P_center );
-IceRayC__EXPORT IceRayC__DECLSPEC  int                  IceRayC_Light_Disc_X( IceRayC_Light_Handle P_this, IceRayC_TypeCoordScalar3D* P_X );
-IceRayC__EXPORT IceRayC__DECLSPEC  int                  IceRayC_Light_Disc_Y( IceRayC_Light_Handle P_this, IceRayC_TypeCoordScalar3D* P_Y );
+IceRayC__EXPORT IceRayC__DECLSPEC  int                  IceRayC_Light_Disc_Sample( IceRayC_Light_Handle P_this, IceRayC_TypeSize P_sample           );
+IceRayC__EXPORT IceRayC__DECLSPEC  int                  IceRayC_Light_Disc_Spot(   IceRayC_Light_Handle P_this, IceRayC_TypeSpot* P_spot            );
+IceRayC__EXPORT IceRayC__DECLSPEC  int                  IceRayC_Light_Disc_X(      IceRayC_Light_Handle P_this, IceRayC_TypeCoordScalar3D* P_X      );
+IceRayC__EXPORT IceRayC__DECLSPEC  int                  IceRayC_Light_Disc_Y(      IceRayC_Light_Handle P_this, IceRayC_TypeCoordScalar3D* P_Y      );
 
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Light_Handle IceRayC_Light_Line0( );
 IceRayC__EXPORT IceRayC__DECLSPEC  int                  IceRayC_Light_Line_Sample( IceRayC_Light_Handle P_this, IceRayC_TypeSize P_sample );

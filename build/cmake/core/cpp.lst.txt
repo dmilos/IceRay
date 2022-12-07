@@ -23,5 +23,9 @@ IceRay/render/4ray/classic2/stack/implementation.cpp
 IceRay/render/4ray/distance.cpp
 IceRay/render/4ray/direction.cpp
 IceRay/render/engine.cpp
-IceRay/type/type.cpp
+
+IceRay/type/general/child.cpp
+IceRay/type/picture/default.cpp
+IceRay/type/general/parent.cpp
+
 IceRay/utility/utility.cpp

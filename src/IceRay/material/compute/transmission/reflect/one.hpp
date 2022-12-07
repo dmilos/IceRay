@@ -32,10 +32,10 @@
 
                    enum Ee_input
                     {
-                      En_inCoord_Point = 0
-                      , En_inCoord_Normal = 1
-                      , En_inRay_Incoming = 0
-                      , En_inColor_Albedo=0
+                       En_inCoord_Point = 0
+                      ,En_inCoord_Normal = 1
+                      ,En_inRay_Incoming = 0
+                      ,En_inColor_Albedo=0
                     };
                    enum Ee_output
                     {

@@ -2,6 +2,6 @@
 #include "./refract/refract.hpp"
 #include "./blossom/blossom.hpp"
 
-#include "./corrector.hpp"
+#include "./correct/correct.hpp"
 #include "./jitter/jitter.hpp"
 

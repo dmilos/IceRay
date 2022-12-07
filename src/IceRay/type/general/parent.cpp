@@ -1,8 +1,7 @@
 #include "./parent.hpp"
-#include "./child.hpp"
+//#include "./child.hpp"
 
-using namespace GS_DDMRM::S_type::S_general;
-
+namespace GS_DDMRM { namespace S_type{ namespace S_general {
 
 GC_parent::GC_parent()
  {
@@ -12,3 +11,4 @@ GC_parent::~GC_parent()
  {
  }
 
+}}}

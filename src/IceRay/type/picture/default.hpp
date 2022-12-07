@@ -3,7 +3,7 @@
 
  //GS_DDMRM::S_IceRay::S_type::S_picture::GF_default
 
- #include "./_pure.hpp"
+#include "./_pure.hpp"
 
  namespace GS_DDMRM
   {
@@ -14,10 +14,7 @@
        namespace S_picture
         {
 
-         void GF_default( GS_DDMRM::S_IceRay::S_type::S_picture::GC__pure & image )
-          {
-
-          };
+         extern void GF_default( GS_DDMRM::S_IceRay::S_type::S_picture::GC__pure & P_image );
 
         }
       }

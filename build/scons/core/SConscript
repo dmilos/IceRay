@@ -244,10 +244,11 @@ if( True ):
 
 cc_files += [ os.path.join( 'render', 'engine.cpp' ) ]
 
-cc_files += [ os.path.join( 'type', 'type.cpp'    ) ]
-if( False ):
+#cc_files += [ os.path.join( 'type', 'type.cpp'    ) ]
+if( True ):
     cc_files += [ os.path.join( 'type', 'general', 'child.cpp'   ) ]
     cc_files += [ os.path.join( 'type', 'general', 'parent.cpp'   ) ]
+    cc_files += [ os.path.join( 'type', 'picture', 'default.cpp'  ) ]
 
 cc_files += [ os.path.join( 'utility', 'utility.cpp'    ) ]
 if( False ):

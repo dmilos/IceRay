@@ -54,11 +54,11 @@ IceRayC__EXPORT IceRayC__DECLSPEC int F(Translate3D_Move   )( H P_that, IceRayC_
 
 IceRayC__EXPORT IceRayC__DECLSPEC H   F(Affine3D0            )( S P_result, S P_left );
 IceRayC__EXPORT IceRayC__DECLSPEC H   F(Affine3D1            )(           IceRayC_Type_Math_Affine3D    * P_affine, S P_result, S P_left );
-IceRayC__EXPORT IceRayC__DECLSPEC int F(Affine3D_2World_Set  )( H P_that, IceRayC_Type_Math_Affine3D    * P_affine );
+IceRayC__EXPORT IceRayC__DECLSPEC int F(Affine3D_Structure   )( H P_that, IceRayC_Type_Math_Affine3D    * P_affine );
 
 IceRayC__EXPORT IceRayC__DECLSPEC H   F(Homography3D0             )( S P_result, S P_left );
 IceRayC__EXPORT IceRayC__DECLSPEC H   F(Homography3D1             )(           IceRayC_Type_Math_Homography3D     * P_homography, S P_result, S P_left );
-IceRayC__EXPORT IceRayC__DECLSPEC int F(Homography3D_2World_Set   )( H P_that, IceRayC_Type_Math_Homography3D     * P_homography );
+IceRayC__EXPORT IceRayC__DECLSPEC int F(Homography3D_Structure    )( H P_that, IceRayC_Type_Math_Homography3D     * P_homography );
 
 IceRayC__EXPORT IceRayC__DECLSPEC H F(Cartesian2Cylindric0 )( S P_result, S P_left );
 IceRayC__EXPORT IceRayC__DECLSPEC H F(Cartesian2Package0   )( S P_result, S P_left );
