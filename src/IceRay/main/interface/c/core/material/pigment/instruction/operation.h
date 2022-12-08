@@ -11,11 +11,11 @@
 #define S IceRayC_Type_Size
 #define H IceRayC_Material_Pigment_Surfcace_Instruction_Handle
 
-IceRayC__EXPORT IceRayC__DECLSPEC  H F( Size0    )( S P_result, S P_input, S P_candidate );
-IceRayC__EXPORT IceRayC__DECLSPEC  H F( Scalar0  )( S P_result, S P_input, S P_candidate );
 IceRayC__EXPORT IceRayC__DECLSPEC  H F( Color0   )( S P_result, S P_input, S P_candidate );
 IceRayC__EXPORT IceRayC__DECLSPEC  H F( Coord2D0 )( S P_result, S P_input, S P_candidate );
 IceRayC__EXPORT IceRayC__DECLSPEC  H F( Coord3D0 )( S P_result, S P_input, S P_candidate );
+IceRayC__EXPORT IceRayC__DECLSPEC  H F( Scalar0  )( S P_result, S P_input, S P_candidate );
+IceRayC__EXPORT IceRayC__DECLSPEC  H F( Size0    )( S P_result, S P_input, S P_candidate );
 
 #undef H
 #undef S

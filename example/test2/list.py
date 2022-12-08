@@ -42,28 +42,28 @@ camera_list = {
 
 light_list = {
         #'dark'       : core.light.Dark, # No light at all
-         'point'      : core.light.Point,
+        'point'      : core.light.Point,
         #'reflector'  : core.light.Reflector,
         #'line'       : core.light.Line,
         #'spline'     : core.light.Spline,
         #'circle'     : core.light.Circle,
         #'area'       : core.light.Area,
         #'disc'       : core.light.Disc,
-        #'confine'    : core.light.Confine,
-        ##'t-id'         : core.light.transform.Identity,     # TODO NYI
-        ##'t-translate'  : core.light.transform.Translate,    # TODO NYI
-        ##'t-affine'     : core.light.transform.Affine,       # TODO NYI
-        ##'t-homography' : core.light.transform.Homography,   # TODO NYI
+        #'confine'    : core.light.Confine, # TODO it is dark
+        #'t-id'         : core.light.transform.Identity,     # TODO NYI
+        #'t-translate'  : core.light.transform.Translate,    # TODO NYI
+        #'t-affine'     : core.light.transform.Affine,       # TODO NYI
+        #'t-homography' : core.light.transform.Homography,   # TODO NYI
 
-        #'sun-Point'   : utility.light.sun.Point,
+        #'sun-Point'   : utility.light.sun.Point, # TODO it is dark
         #'sun-Area'    : utility.light.sun.Area,
         #'sun-Line'    : utility.light.sun.Line,
         #'sun-Circle'  : utility.light.sun.Circle,
         #'sun-Disc'    : utility.light.sun.Disc
-        ##'sphere'     : utility.light.sphere.unit.make,    # TODO NYI
-        ##'chandelier-H'  : utility.light.chandelier.Hexa   # TODO NYI
-        ##'chandelier-T'  : utility.light.chandelier.Tetra, # TODO NYI
-        ##'chandelier-O'  : utility.light.chandelier.Octa   # TODO NYI
+        #'sphere'     : utility.light.sphere.unit.make,    # TODO NYI
+        #'chandelier-H'  : utility.light.chandelier.Hexa   # TODO NYI
+        #'chandelier-T'  : utility.light.chandelier.Tetra, # TODO NYI
+        #'chandelier-O'  : utility.light.chandelier.Octa   # TODO NYI
     }
 
 medium_list = {
@@ -77,43 +77,43 @@ medium_list = {
 
 geometry_list = {
       'simple-sphere'        : core.geometry.simple.Sphere,
-     #'simple-usphere'       : core.geometry.simple.USphere,
-     #'simple-cylinder'      : core.geometry.simple.Cylinder,
-     #'simple-box'           : core.geometry.simple.Box,
-     #'simple-plane'         : core.geometry.simple.Plane,
-     #'simple-torus'         : core.geometry.simple.Torus,
-     #'simple-cone'          : core.geometry.simple.Cone,
-     #'simple-disc'          : core.geometry.simple.Disc,
-     #'simple-udisc'         : core.geometry.simple.UDisc,
-     #'simple-ellipsoid'     : core.geometry.simple.Ellipsoid,
-     #'simple-hyperboloid'   : core.geometry.simple.Hyperboloid,
-     #'simple-paraboloid'    : core.geometry.simple.Paraboloid,
-     #'simple-quadric'       : core.geometry.simple.Quadric,
-     #'simple-triangle'      : core.geometry.simple.Triangle,
-     #'simple-utriangle'     : core.geometry.simple.UTriangle,
-     #'simple-saddle'        : core.geometry.simple.Saddle,
-     #'simple-ucylinder'     : core.geometry.simple.UCylinder,
+     'simple-usphere'       : core.geometry.simple.USphere,
+     'simple-cylinder'      : core.geometry.simple.Cylinder,
+     'simple-box'           : core.geometry.simple.Box,
+     'simple-plane'         : core.geometry.simple.Plane,
+     'simple-torus'         : core.geometry.simple.Torus,
+     'simple-cone'          : core.geometry.simple.Cone,
+     'simple-disc'          : core.geometry.simple.Disc,
+     'simple-udisc'         : core.geometry.simple.UDisc,
+     'simple-ellipsoid'     : core.geometry.simple.Ellipsoid,
+     'simple-hyperboloid'   : core.geometry.simple.Hyperboloid,
+     'simple-paraboloid'    : core.geometry.simple.Paraboloid,
+     'simple-quadric'       : core.geometry.simple.Quadric,
+     'simple-triangle'      : core.geometry.simple.Triangle,
+     'simple-utriangle'     : core.geometry.simple.UTriangle,
+     'simple-saddle'        : core.geometry.simple.Saddle,
+     'simple-ucylinder'     : core.geometry.simple.UCylinder,
 
-     #'hyper-nuke'           : utility.geometry.simple.hyperboloid.Nuke,
-     #'hyper-sphere'         : utility.geometry.simple.hyperboloid.Sphere,
-     #'hyper-cone'           : utility.geometry.simple.hyperboloid.Cone,
-     #'hyper-cylinder'       : utility.geometry.simple.hyperboloid.Cylinder,
-     #'hyper-negative'       : utility.geometry.simple.hyperboloid.Negative,
+     'hyper-nuke'           : utility.geometry.simple.hyperboloid.Nuke,
+     'hyper-sphere'         : utility.geometry.simple.hyperboloid.Sphere,
+     'hyper-cone'           : utility.geometry.simple.hyperboloid.Cone,
+     'hyper-cylinder'       : utility.geometry.simple.hyperboloid.Cylinder,
+     'hyper-negative'       : utility.geometry.simple.hyperboloid.Negative,
 
-     #'complex-Intersect'    : core.geometry.complex.Intersect, #NYI
-     #'complex-Enclose'      : core.geometry.complex.Enclose, #NYI
-     #
-     #'transform-identity'   : core.geometry.transform.Identity,
-     #'transform-translate'  : core.geometry.transform.Translate,
-     #'transform-affine'     : core.geometry.transform.Affine,
-     #'transform-hgraphy'    : core.geometry.transform.Homography,
-     #'transform-mblur'      : library.geometry.MotionBlur,
-     #
-     #'volumetric-Vacuum'    : core.geometry.volumetric.Vacuum,
-     #'volumetric-Mist'      : core.geometry.volumetric.Mist,
-     #'volumetric-Smoke'     : core.geometry.volumetric.Smoke,
-     #'library-1m'           : library.geometry.OneM
-      ##'library-intersect'     : library.geometry.Intersect NYI
+     'complex-Intersect'    : core.geometry.complex.Intersect, #NYI
+     'complex-Enclose'      : core.geometry.complex.Enclose, #NYI
+
+     'transform-identity'   : core.geometry.transform.Identity,
+     'transform-translate'  : core.geometry.transform.Translate,
+     'transform-affine'     : core.geometry.transform.Affine,
+     'transform-hgraphy'    : core.geometry.transform.Homography,
+     'transform-mblur'      : library.geometry.MotionBlur,
+
+     'volumetric-Vacuum'    : core.geometry.volumetric.Vacuum,
+     'volumetric-Mist'      : core.geometry.volumetric.Mist,
+     'volumetric-Smoke'     : core.geometry.volumetric.Smoke,
+     'library-1m'           : library.geometry.OneM
+     #'library-intersect'     : library.geometry.Intersect NYI
      }
 
 pigment_list = {
@@ -132,7 +132,7 @@ pigment_list = {
      #'pattern-onion'            : utility.material.pattern.Onion, #TODO check
      #'pattern-level'            : utility.material.pattern.Level, #TODO check
 
-     #'illum-ALP'           : utility.material.illumination.Alp,       # OK OK
+     'illum-ALP'           : utility.material.illumination.Alp,       # OK OK
      #'illum-ambient'       : utility.material.illumination.Ambient,   # OK OK TODO align with ALP
      #'illum-AsDiffuse'     : utility.material.illumination.AsDiffuse, # OK OK TODO align with ALP
      #'illum-AsSpecular'    : utility.material.illumination.AsSpecular,# OK OK TODO align with ALP
@@ -157,21 +157,21 @@ pigment_list = {
      #'mapping-o-affine'                 : utility.material.operation.mapping.Affine3D,
      #'mapping-o-homography'             : utility.material.operation.mapping.Homography3D,
 
-     'mapping-o-Cartesian2Cylindric'    : utility.material.operation.mapping.Cartesian2Cylindric,  #TODO check
-     'mapping-o-Cartesian2Package'      : utility.material.operation.mapping.Cartesian2Package,    #TODO check
-     'mapping-o-Cartesian2Spherical'    : utility.material.operation.mapping.Cartesian2Spherical,  #TODO check
-     'mapping-o-Cartesian2Torus'        : utility.material.operation.mapping.Cartesian2Torus,      #TODO check
-     'mapping-o-Cartesian2Tablecloth'   : utility.material.operation.mapping.Cartesian2Tablecloth, #TODO check
-     'mapping-o-Cartesian2WoodX'        : utility.material.operation.mapping.Cartesian2WoodX,      #TODO check
-     'mapping-o-Cartesian2WoodY'        : utility.material.operation.mapping.Cartesian2WoodY,      #TODO check
-     'mapping-o-Cartesian2WoodZ'        : utility.material.operation.mapping.Cartesian2WoodZ,      #TODO check
-     'mapping-o-Cylindric2Cartesian'    : utility.material.operation.mapping.Cylindric2Cartesian,  #TODO check
-     'mapping-o-Cylindric2Spherical'    : utility.material.operation.mapping.Cylindric2Spherical,  #TODO check
-     'mapping-o-Spherical2Cartesian'    : utility.material.operation.mapping.Spherical2Cartesian,  #TODO check
-     'mapping-o-Spherical2Cylindric'    : utility.material.operation.mapping.Spherical2Cylindric,  #TODO check
-     'mapping-o-Euclid2Max'             : utility.material.operation.mapping.Euclid2Max,           #TODO check
-     'mapping-o-Max2Euclid'             : utility.material.operation.mapping.Max2Euclid,           #TODO check
-     'mapping-o-Cartesian2Fisheye'      : utility.material.operation.mapping.Cartesian2Fisheye,    #TODO check
+     #'mapping-o-Cartesian2Cylindric'    : utility.material.operation.mapping.Cartesian2Cylindric,  #TODO check
+     ##'mapping-o-Cartesian2Package'      : utility.material.operation.mapping.Cartesian2Package,    #TODO check
+     #'mapping-o-Cartesian2Spherical'    : utility.material.operation.mapping.Cartesian2Spherical,  #TODO check
+     #'mapping-o-Cartesian2Torus'        : utility.material.operation.mapping.Cartesian2Torus,      #TODO check
+     #'mapping-o-Cartesian2Tablecloth'   : utility.material.operation.mapping.Cartesian2Tablecloth, #TODO check
+     #'mapping-o-Cartesian2WoodX'        : utility.material.operation.mapping.Cartesian2WoodX,      #TODO check
+     #'mapping-o-Cartesian2WoodY'        : utility.material.operation.mapping.Cartesian2WoodY,      #TODO check
+     #'mapping-o-Cartesian2WoodZ'        : utility.material.operation.mapping.Cartesian2WoodZ,      #TODO check
+     #'mapping-o-Cylindric2Cartesian'    : utility.material.operation.mapping.Cylindric2Cartesian,  #TODO check
+     #'mapping-o-Cylindric2Spherical'    : utility.material.operation.mapping.Cylindric2Spherical,  #TODO check
+     #'mapping-o-Spherical2Cartesian'    : utility.material.operation.mapping.Spherical2Cartesian,  #TODO check
+     #'mapping-o-Spherical2Cylindric'    : utility.material.operation.mapping.Spherical2Cylindric,  #TODO check
+     #'mapping-o-Euclid2Max'             : utility.material.operation.mapping.Euclid2Max,           #TODO check
+     #'mapping-o-Max2Euclid'             : utility.material.operation.mapping.Max2Euclid,           #TODO check
+     #'mapping-o-Cartesian2Fisheye'      : utility.material.operation.mapping.Cartesian2Fisheye,    #TODO check
 
      #'transmission-reflect-One'               : utility.material.transmission.reflect.One,      #OK
      #'transmission-reflect-Schlick'           : utility.material.transmission.reflect.Schlick,  #OK
@@ -191,8 +191,8 @@ room_list = {
       #'plane'     : room.plane,
       #'plate'     : room.plate,
       'CRNL'      : room.cornell,
-     # 'cornel'    : room.cornel_open,
-      #'cornel'    : room.cornel_close
+      #'cornel-0pen'    : room.cornel_open,
+      #'cornel-close'    : room.cornel_close
     }
 
 decoration_list = {
@@ -279,8 +279,8 @@ config['folder'] = '_out'
 config['index'] = 0
 
 config['picture'] = {}
-config['picture']['width']  = int( 800 * 2 )
-config['picture']['height'] = int( 800 * 2 )
+config['picture']['width']  = int( 800 * 1 )
+config['picture']['height'] = int( 800 * 1 )
 #config['pixel']['type'] = 'basic'
 
 config['camera'] = {}
@@ -346,6 +346,12 @@ output = os.popen('wmic process get description, processid').read()
 ## print(a)
 ##
 ##exit(0)
+
+I_picture   = IceRayPy.type.graph.Picture( config['dll'] )
+I_picture.size( 256, 256 )
+IceRayPy.type.graph.Default( I_picture )
+I_picture.storePNM( "default_256.pnm" )
+
 
 for index in range( start, 360 * int( dilatation ), step ):
     config['index'] = index

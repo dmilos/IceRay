@@ -37,10 +37,10 @@ class Picture:
 
 
 def Crop( P_dll, P_target, P_source, P_A, P_B ):
-        P_dll.IceRayC_Type_Picture_Crop( P_target.m_cargo['this'], P_source.m_cargo['this'], AddresOf( P_A ), AddresOf( P_B ) )
+    P_dll.IceRayC_Type_Picture_Crop( P_target.m_cargo['this'], P_source.m_cargo['this'], AddresOf( P_A ), AddresOf( P_B ) )
 
-def Default( P_dll, P_image ):
-        P_dll.IceRayC_Type_Picture_Default( P_image.m_cargo['this'] )
+def Default( P_image ):
+    P_image.m_cargo['dll'].IceRayC_Type_Picture_Default( P_image.m_cargo['this'] )
 
 
 print( '</' + __name__ + ' name=\'' +   __file__ + '\'>' )

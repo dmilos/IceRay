@@ -7,19 +7,22 @@ void GF_default( GS_DDMRM::S_IceRay::S_type::S_picture::GC__pure & P_image )
   GS_DDMRM::S_IceRay::S_type::S_picture::GC__pure::T_coord I_coord;
   double I_width  = P_image.F_size()[0];
   double I_height = P_image.F_size()[1];
+  typedef   color::hsl<double> hsl_t;
+  typedef  GS_DDMRM::S_IceRay::S_type::S_picture::GC__pure::T_color color_t;
 
   for( I_coord[1]=0; I_coord[1] < I_height; ++I_coord[1] )
    for( I_coord[0]=0; I_coord[0] < I_width;  ++I_coord[0] )
     {
-     auto I_r = I_coord[0]/I_width;
-     auto I_g = I_coord[1]/I_height;
-     auto I_b = 0.25;
-     if( I_coord[0]== I_coord[1] )
-      {
-       I_r = I_g = I_b = I_coord[1]/I_height;
-      }
-     auto I_color = GS_DDMRM::S_IceRay::S_type::S_picture::GC__pure::T_color{ (unsigned char)(255*I_r), (unsigned char)(255*I_g), (unsigned char)(255*I_b) };
-     P_image.Fv_pixel( I_coord, I_color );
+     hsl_t c;
+     c[0] = 240* (( I_width-I_coord[0]-1)+I_coord[1])/( I_width+I_height -2 );
+     c[1] = 100;
+     c[2] = 100* (I_coord[0]+I_coord[1])/( I_width+I_height -2 );
+     if( I_coord[0] == I_width/2 ) c = color::constant::lime_t{};
+     if( I_coord[1] == I_width/2 ) c = color::constant::red_t{};
+     if( I_coord[0] == I_coord[1] ) c = color::constant::white_t{};
+     if( (I_width - I_coord[0] - 1) == I_coord[1] ) c = color::constant::black_t{};
+
+     P_image.Fv_pixel( I_coord, color_t{ c } );
     }
  }
 
