@@ -7,12 +7,12 @@ G_albedo = IceRayPy.type.color.RGB( 1, 1, 1 )
 G_angle = math.radians(75)
 G_gauss =  1
 
-G_sizeGrid = 3
-G_countHex = 0
+G_sizeGrid = 2
+G_countHex = 1
 G_countPinwheel = 2
-G_countRandom = 32
-G_countTriangle = 0
-G_countVDC = 32
+G_countRandom = 3
+G_countTriangle = 2 # radius
+G_countVDC = 3
 
 def Grid(
      P_dll

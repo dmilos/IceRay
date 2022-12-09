@@ -65,7 +65,8 @@ GC_cylinder::Fv_beam
     GS_DDMRM::S_IceRay::S_utility::S_random::GF_disc2D( I_disc[0], I_disc[1], M2_randSobol2D );
   //GS_DDMRM::S_IceRay::S_utility::S_random::GF_disc2D( I_disc, M2_randStandard2D );
   //GS_DDMRM::S_IceRay::S_utility::S_random::GF_disc2D( I_disc, M2_randVaLND );
-    I_disc = M2s_hexagon.F_spot()[I_index]; ::math::linear::vector::scale( I_disc, T_scalar(1)/M2s_hexagon.F_radius()[M2_index] );
+    auto I_radius = M2s_hexagon.F_structure().F_radius()[M2_index];
+    I_disc = M2s_hexagon.F_structure().F_spot()[I_index]; ::math::linear::vector::scale( I_disc, T_scalar(1)/I_radius );
 
     T_scalar const& I_x = I_disc[0];
     T_scalar const& I_y = I_disc[1];
@@ -114,11 +115,11 @@ void GC_cylinder::Fv_system( T_affine &P_affine, T_coord2D const& P_uv )
 bool GC_cylinder::Fv_size( T_size const& P_size )
 {
   T_size I_size  = P_size; 
-  if( M2s_hexagon.F_size().size() <= I_size )
+  if( M2s_hexagon.F_structure().F_size().size() <= I_size )
    {
-    I_size = M2s_hexagon.F_size().size() - 1;
+    I_size = M2s_hexagon.F_structure().F_size().size() - 1;
    }
-  F1_size() = M2s_hexagon.F_size()[I_size];
+  F1_size() = M2s_hexagon.F_structure().F_size()[I_size];
   M2_index = I_size;
   return true;
 }

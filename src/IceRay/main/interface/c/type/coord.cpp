@@ -67,7 +67,6 @@ IceRayC_TypeCoordScalar4D                        cpp2c( GS_DDMRM::S_IceRay::S_ty
   return I_that;
  }
 
-
 GS_DDMRM::S_IceRay::S_type::S_coord::GT_size1D c2cpp( IceRayC_TypeCoordSize1D const& P_that )
  {
   GS_DDMRM::S_IceRay::S_type::S_coord::GT_size1D Ir_result;
@@ -99,7 +98,36 @@ GS_DDMRM::S_IceRay::S_type::S_coord::GT_size4D c2cpp( IceRayC_TypeCoordSize4D co
   return Ir_result;
  }
 
-
+IceRayC_TypeCoordSize1D cpp2c( GS_DDMRM::S_IceRay::S_type::S_coord::GT_size1D const& P_this )
+ {
+  IceRayC_TypeCoordSize1D I_that;
+  I_that.value[0] = P_this[0];
+  return I_that;
+ }
+IceRayC_TypeCoordSize2D cpp2c( GS_DDMRM::S_IceRay::S_type::S_coord::GT_size2D const& P_this )
+ {
+  IceRayC_TypeCoordSize2D I_that;
+  I_that.value[0] = P_this[0];
+  I_that.value[1] = P_this[1];
+  return I_that;
+ }
+IceRayC_TypeCoordSize3D cpp2c( GS_DDMRM::S_IceRay::S_type::S_coord::GT_size3D const& P_this )
+ {
+  IceRayC_TypeCoordSize3D I_that;
+  I_that.value[0] = P_this[0];
+  I_that.value[1] = P_this[1];
+  I_that.value[2] = P_this[2];
+  return I_that;
+ }
+IceRayC_TypeCoordSize4D cpp2c( GS_DDMRM::S_IceRay::S_type::S_coord::GT_size4D const& P_this )
+ {
+  IceRayC_TypeCoordSize4D I_that;
+  I_that.value[0] = P_this[0];
+  I_that.value[1] = P_this[1];
+  I_that.value[2] = P_this[2];
+  I_that.value[3] = P_this[3];
+  return I_that;
+ }
 
 int  IceRayC_Type_Math_Coord1D_Fill( IceRayC_TypeCoordScalar1D *P_that, IceRayC_TypeScalar P_x )
  {

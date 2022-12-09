@@ -16,8 +16,8 @@ IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Object_Handle      IceRayC_Object1( I
 
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle    IceRayC_Object_Cast2Geometry( IceRayC_Object_Handle P_this );
 
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool          IceRayC_Object_Geometry_Set(  IceRayC_Object_Handle P_this, IceRayC_Geometry_Handle  P_gemetry );
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle    IceRayC_Object_Geometry_Get(  IceRayC_Object_Handle P_this );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool          IceRayC_Object_Geometry_Set(  IceRayC_Object_Handle P_this, IceRayC_Geometry_Handle  P_gemetry );
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool          IceRayC_Object_Pigment(       IceRayC_Object_Handle P_this, IceRayC_Material_PigmentHandle  P_pigment );
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool          IceRayC_Object_Medium(        IceRayC_Object_Handle P_this, IceRayC_Material_MediumHandle   P_medium  );
 

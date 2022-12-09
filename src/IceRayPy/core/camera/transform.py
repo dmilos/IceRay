@@ -94,27 +94,55 @@ class Affine:
         I_move = IceRayPy.type.math.affine.move3D( self.m_cargo['dll'], P_move )
         I_result = IceRayPy.type.math.affine.compose3D( self.m_cargo['dll'], I_move, I_2world )
         self.toWorldSet( I_result )
+        return
 
-    def scale( self, P_scale ):
-        pass
+    def scaleV(self, P_scaleV : Coord3D ): #TODO check
+        I_2world = self.toWorldGet()
+        I_move = IceRayPy.type.math.affine.scaleV( self.m_cargo['dll'], P_scaleV )
+        I_result = IceRayPy.type.math.affine.compose3D( self.m_cargo['dll'], I_move, I_2world )
+        self.toWorldSet( I_result )
+        return
 
     def rotateX( self, P_angle ):
-        pass
+        I_2world = self.toWorldGet()
+        I_move = IceRayPy.type.math.affine.rotateX( self.m_cargo['dll'], P_angle )
+        I_result = IceRayPy.type.math.affine.compose3D( self.m_cargo['dll'], I_move, I_2world )
+        self.toWorldSet( I_result )
+        return
 
     def rotateY( self, P_angle ):
-        pass
+        I_2world = self.toWorldGet()
+        I_move = IceRayPy.type.math.affine.rotateY( self.m_cargo['dll'], P_angle )
+        I_result = IceRayPy.type.math.affine.compose3D( self.m_cargo['dll'], I_move, I_2world )
+        self.toWorldSet( I_result )
+        return
 
     def rotateZ( self, P_angle ):
+        I_2world = self.toWorldGet()
+        I_move = IceRayPy.type.math.affine.rotateZ( self.m_cargo['dll'], P_angle )
+        I_result = IceRayPy.type.math.affine.compose3D( self.m_cargo['dll'], I_move, I_2world )
+        self.toWorldSet( I_result )
+        return
+
+    def rotateA( self, P_direction : Coord3D, P_angle ):
+        I_2world = self.toWorldGet()
+        I_move = IceRayPy.type.math.affine.rotateA( self.m_cargo['dll'], P_direction, P_angle )
+        I_result = IceRayPy.type.math.affine.compose3D( self.m_cargo['dll'], I_move, I_2world )
+        self.toWorldSet( I_result )
+        return
+
+    def rotateD( self, P_pivot : Coord3D, P_direction : Coord3D, P_angle ):
+        I_2world = self.toWorldGet()
+        I_move = IceRayPy.type.math.affine.rotateD( self.m_cargo['dll'], P_pivot, P_direction, P_angle )
+        I_result = IceRayPy.type.math.affine.compose3D( self.m_cargo['dll'], I_move, I_2world )
+        self.toWorldSet( I_result )
+        return
+
+    def rotatePitch( self, P_angle ): #TODO
         pass
 
-    def rotateA( self, P_direction : Coord3D, P_alpha ):
+    def rotateJaw( self, P_angle ):  #TODO
         pass
 
-    def rotatePitch( self, P_angle ):
-        pass
-
-    def rotateJaw( self, P_angle ):
-        pass
-
-    def rotateRoll( self, P_angle ):
+    def rotateRoll( self, P_angle ):  #TODO
         pass

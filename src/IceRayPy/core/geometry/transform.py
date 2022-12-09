@@ -12,10 +12,11 @@ AddresOf = ctypes.addressof
 #Scalar  = IceRayPy.type.basic.Scalar
 VoidPtr = IceRayPy.type.basic.VoidPtr
 Integer = IceRayPy.type.basic.Integer
+Scalar = IceRayPy.type.basic.Scalar
+
 Coord3D = IceRayPy.type.math.coord.Scalar3D
 Affine3D = IceRayPy.type.math.affine.Scalar3D
 Matrix4D = IceRayPy.type.math.matrix.Scalar4D
-
 
 
 class Identity:
@@ -102,23 +103,54 @@ class Affine:
     def toLocalSet( self, P_2local: Affine3D ):
         return self.m_cargo['dll'].IceRayC_Geometry_Transform_Affine_2Local_Set( self.m_cargo['this'], AddresOf( P_2local ) )
 
+    def move( self, P_move : Coord3D ):
+        I_2world = self.toWorldGet()
+        I_move = IceRayPy.type.math.affine.move( self.m_cargo['dll'], P_move )
+        I_result = IceRayPy.type.math.affine.compose3D( self.m_cargo['dll'], I_move, I_2world )
+        self.toWorldSet( I_result )
+        return
 
-    def move(self, P_move : Coord3D ):
-        pass #TODO;
+    def scaleV(self, P_scaleV : Coord3D ):
+        I_2world = self.toWorldGet()
+        I_move = IceRayPy.type.math.affine.scaleV( self.m_cargo['dll'], P_scaleV )
+        I_result = IceRayPy.type.math.affine.compose3D( self.m_cargo['dll'], I_move, I_2world )
+        self.toWorldSet( I_result )
+        return
 
-    def scaleV(self, P_move : Coord3D ):
-        pass #TODO;
+    def rotateX( self, P_angle ):
+        I_2world = self.toWorldGet()
+        I_move = IceRayPy.type.math.affine.rotateX( self.m_cargo['dll'], P_angle )
+        I_result = IceRayPy.type.math.affine.compose3D( self.m_cargo['dll'], I_move, I_2world )
+        self.toWorldSet( I_result )
+        return
 
-    def rotateX(self, P_alpha ):
-        pass #TODO;
+    def rotateY( self, P_angle ):
+        I_2world = self.toWorldGet()
+        I_move = IceRayPy.type.math.affine.rotateY( self.m_cargo['dll'], P_angle )
+        I_result = IceRayPy.type.math.affine.compose3D( self.m_cargo['dll'], I_move, I_2world )
+        self.toWorldSet( I_result )
+        return
 
-    def rotateY(self, P_alpha ):
-        pass #TODO;
+    def rotateZ( self, P_angle ):
+        I_2world = self.toWorldGet()
+        I_move = IceRayPy.type.math.affine.rotateZ( self.m_cargo['dll'], P_angle )
+        I_result = IceRayPy.type.math.affine.compose3D( self.m_cargo['dll'], I_move, I_2world )
+        self.toWorldSet( I_result )
+        return
 
-    def rotateZ(self, P_alpha ):
-        pass #TODO;
-    def rotateA(self, P_direction : Coord3D, P_alpha ):
-        pass #TODO;
+    def rotateA( self, P_direction : Coord3D, P_angle ):
+        I_2world = self.toWorldGet()
+        I_move = IceRayPy.type.math.affine.rotateA( self.m_cargo['dll'], P_direction, P_angle )
+        I_result = IceRayPy.type.math.affine.compose3D( self.m_cargo['dll'], I_move, I_2world )
+        self.toWorldSet( I_result )
+        return
+
+    def rotateD( self, P_pivot : Coord3D, P_direction : Coord3D, P_angle ):
+        I_2world = self.toWorldGet()
+        I_move = IceRayPy.type.math.affine.rotateD( self.m_cargo['dll'], P_pivot, P_direction, P_angle )
+        I_result = IceRayPy.type.math.affine.compose3D( self.m_cargo['dll'], I_move, I_2world )
+        self.toWorldSet( I_result )
+        return
 
 class Homography:
 

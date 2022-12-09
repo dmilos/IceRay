@@ -77,43 +77,43 @@ medium_list = {
 
 geometry_list = {
       'simple-sphere'        : core.geometry.simple.Sphere,
-     'simple-usphere'       : core.geometry.simple.USphere,
-     'simple-cylinder'      : core.geometry.simple.Cylinder,
-     'simple-box'           : core.geometry.simple.Box,
-     'simple-plane'         : core.geometry.simple.Plane,
-     'simple-torus'         : core.geometry.simple.Torus,
-     'simple-cone'          : core.geometry.simple.Cone,
-     'simple-disc'          : core.geometry.simple.Disc,
-     'simple-udisc'         : core.geometry.simple.UDisc,
-     'simple-ellipsoid'     : core.geometry.simple.Ellipsoid,
-     'simple-hyperboloid'   : core.geometry.simple.Hyperboloid,
-     'simple-paraboloid'    : core.geometry.simple.Paraboloid,
-     'simple-quadric'       : core.geometry.simple.Quadric,
-     'simple-triangle'      : core.geometry.simple.Triangle,
-     'simple-utriangle'     : core.geometry.simple.UTriangle,
-     'simple-saddle'        : core.geometry.simple.Saddle,
-     'simple-ucylinder'     : core.geometry.simple.UCylinder,
-
-     'hyper-nuke'           : utility.geometry.simple.hyperboloid.Nuke,
-     'hyper-sphere'         : utility.geometry.simple.hyperboloid.Sphere,
-     'hyper-cone'           : utility.geometry.simple.hyperboloid.Cone,
-     'hyper-cylinder'       : utility.geometry.simple.hyperboloid.Cylinder,
-     'hyper-negative'       : utility.geometry.simple.hyperboloid.Negative,
-
-     'complex-Intersect'    : core.geometry.complex.Intersect, #NYI
-     'complex-Enclose'      : core.geometry.complex.Enclose, #NYI
-
-     'transform-identity'   : core.geometry.transform.Identity,
-     'transform-translate'  : core.geometry.transform.Translate,
-     'transform-affine'     : core.geometry.transform.Affine,
-     'transform-hgraphy'    : core.geometry.transform.Homography,
-     'transform-mblur'      : library.geometry.MotionBlur,
-
-     'volumetric-Vacuum'    : core.geometry.volumetric.Vacuum,
-     'volumetric-Mist'      : core.geometry.volumetric.Mist,
-     'volumetric-Smoke'     : core.geometry.volumetric.Smoke,
-     'library-1m'           : library.geometry.OneM
-     #'library-intersect'     : library.geometry.Intersect NYI
+     #'simple-usphere'       : core.geometry.simple.USphere,
+     #'simple-cylinder'      : core.geometry.simple.Cylinder,
+     #'simple-box'           : core.geometry.simple.Box,
+     #'simple-plane'         : core.geometry.simple.Plane,
+     #'simple-torus'         : core.geometry.simple.Torus,
+     #'simple-cone'          : core.geometry.simple.Cone,
+     #'simple-disc'          : core.geometry.simple.Disc,
+     #'simple-udisc'         : core.geometry.simple.UDisc,
+     #'simple-ellipsoid'     : core.geometry.simple.Ellipsoid,
+     #'simple-hyperboloid'   : core.geometry.simple.Hyperboloid,
+     #'simple-paraboloid'    : core.geometry.simple.Paraboloid,
+     #'simple-quadric'       : core.geometry.simple.Quadric,
+     #'simple-triangle'      : core.geometry.simple.Triangle,
+     #'simple-utriangle'     : core.geometry.simple.UTriangle,
+     #'simple-saddle'        : core.geometry.simple.Saddle,
+     #'simple-ucylinder'     : core.geometry.simple.UCylinder,
+     #
+     #'hyper-nuke'           : utility.geometry.simple.hyperboloid.Nuke,
+     #'hyper-sphere'         : utility.geometry.simple.hyperboloid.Sphere,
+     #'hyper-cone'           : utility.geometry.simple.hyperboloid.Cone,
+     #'hyper-cylinder'       : utility.geometry.simple.hyperboloid.Cylinder,
+     #'hyper-negative'       : utility.geometry.simple.hyperboloid.Negative,
+     #
+     #'complex-Intersect'    : core.geometry.complex.Intersect, #NYI
+     #'complex-Enclose'      : core.geometry.complex.Enclose, #NYI
+     #
+     #'transform-identity'   : core.geometry.transform.Identity,
+     #'transform-translate'  : core.geometry.transform.Translate,
+     #'transform-affine'     : core.geometry.transform.Affine,
+     #'transform-hgraphy'    : core.geometry.transform.Homography,
+     #'transform-mblur'      : library.geometry.MotionBlur,
+     #
+     #'volumetric-Vacuum'    : core.geometry.volumetric.Vacuum,
+     #'volumetric-Mist'      : core.geometry.volumetric.Mist,
+     #'volumetric-Smoke'     : core.geometry.volumetric.Smoke,
+     #'library-1m'           : library.geometry.OneM
+     ##'library-intersect'     : library.geometry.Intersect NYI
      }
 
 pigment_list = {
@@ -132,7 +132,7 @@ pigment_list = {
      #'pattern-onion'            : utility.material.pattern.Onion, #TODO check
      #'pattern-level'            : utility.material.pattern.Level, #TODO check
 
-     'illum-ALP'           : utility.material.illumination.Alp,       # OK OK
+     #'illum-ALP'           : utility.material.illumination.Alp,       # OK OK
      #'illum-ambient'       : utility.material.illumination.Ambient,   # OK OK TODO align with ALP
      #'illum-AsDiffuse'     : utility.material.illumination.AsDiffuse, # OK OK TODO align with ALP
      #'illum-AsSpecular'    : utility.material.illumination.AsSpecular,# OK OK TODO align with ALP
@@ -173,26 +173,28 @@ pigment_list = {
      #'mapping-o-Max2Euclid'             : utility.material.operation.mapping.Max2Euclid,           #TODO check
      #'mapping-o-Cartesian2Fisheye'      : utility.material.operation.mapping.Cartesian2Fisheye,    #TODO check
 
-     #'transmission-reflect-One'               : utility.material.transmission.reflect.One,      #OK
-     #'transmission-reflect-Schlick'           : utility.material.transmission.reflect.Schlick,  #OK
-     #'transmission-reflect-blossom-Grid'      : utility.material.transmission.blossom.Grid,     #TODO
-     #'transmission-reflect-blossom-Hexagon'   : utility.material.transmission.blossom.Hexagon,  #OK
-     #'transmission-reflect-blossom-Pinwheel'  : utility.material.transmission.blossom.Pinwheel, #TODO
-     #'transmission-reflect-blossom-Rand'      : utility.material.transmission.blossom.Random,   #TODO
-     #'transmission-reflect-blossom-trg'       : utility.material.transmission.blossom.Triangle, #TODO
-     #'transmission-reflect-blossom-VDC'       : utility.material.transmission.blossom.VDC,      #OK
-     #'transmission-refract-Fresnel'           : utility.material.transmission.refract.Fresnel,  #OK
-     #'transmission-refract-Snell'             : utility.material.transmission.refract.Snell,    #OK
-     #'transmission-refract-Schlick'           : utility.material.transmission.refract.Schlick,  #OK
+      #'T-0-reflect-One'               : utility.material.transmission.reflect.One,      #OK
+      #'T-1-reflect-Schlick'           : utility.material.transmission.reflect.Schlick,  #OK
+       'T-2-reflect-blossom-Grid'      : utility.material.transmission.blossom.Grid,     #TODO edge bug
+       'T-3-reflect-blossom-Hexagon'   : utility.material.transmission.blossom.Hexagon,  #CHECK
+      #'T-4-reflect-blossom-Pinwheel'  : utility.material.transmission.blossom.Pinwheel, #TODO
+      #'T-5-reflect-blossom-Rand'      : utility.material.transmission.blossom.Random,   #OK
+       'T-6-reflect-blossom-trg'       : utility.material.transmission.blossom.Triangle, #OK
+      #'T-7-reflect-blossom-VDC'       : utility.material.transmission.blossom.VDC,      #OK
+      #'T-8-refract-Fresnel'           : utility.material.transmission.refract.Fresnel,  #OK
+      #'T-9-refract-Snell'             : utility.material.transmission.refract.Snell,    #OK
+      #'T-A-refract-Schlick'           : utility.material.transmission.refract.Schlick,  #OK
 }
 
 room_list = {
       #'vacuum'    : room.vacuum,
       #'plane'     : room.plane,
       #'plate'     : room.plate,
-      'CRNL'      : room.cornell,
+     #'R-M-box'    : room.mirror_box,
+     # 'R-M-sphere' : room.mirror_sphere,
+      #'CRNL'      : room.cornell,
       #'cornel-0pen'    : room.cornel_open,
-      #'cornel-close'    : room.cornel_close
+      'cornel-close'    : room.cornel_close
     }
 
 decoration_list = {
@@ -279,8 +281,8 @@ config['folder'] = '_out'
 config['index'] = 0
 
 config['picture'] = {}
-config['picture']['width']  = int( 800 * 1 )
-config['picture']['height'] = int( 800 * 1 )
+config['picture']['width']  = int( 800 * 1.2 )
+config['picture']['height'] = int( 800 * 1.2 )
 #config['pixel']['type'] = 'basic'
 
 config['camera'] = {}

@@ -16,6 +16,7 @@
       {
        namespace S_table
         {
+
          template< unsigned N_dimensionTable, unsigned N_dimensionData  >
           class GC_value
            {
@@ -31,9 +32,9 @@
 
             public:
               T_value const& operator[]( T_cell const& P_index )const
-              {
+               {
                 return M2_container[ ::math::algorithm::index( F_size(), P_index ) ];
-              }
+               }
               T_value & operator[]( T_cell const& P_index )
                {
                 return M2_container[ ::math::algorithm::index( F_size(), P_index ) ];
@@ -58,13 +59,13 @@
                 return true;
                }
             private:
-              T_cell    M2_size;
+             T_cell    M2_size;
 
             public:
               T_container const& F_container()const{ return M2_container; }
             private:
               T_container    M2_container;
-          };
+           };
 
         }
       }

@@ -1,6 +1,7 @@
 #include <fstream>
 
 #include "./picture.h"
+#include "./coord.hpp"
 
 #include "IceRay/type/picture/picture.hpp"
 #include "pnm/pnm.hpp"
@@ -50,6 +51,33 @@ IceRayC_Type_Bool IceRayC_Type_Picture_Size(     IceRayC_Type_Picture_Handle P_t
     return 0;
    }
   I_this->Fv_size( Tf_memory::T_coord{ width, height } );
+  return 1;
+ }
+
+IceRayC_Type_Bool IceRayC_Type_Picture_SizeGet( IceRayC_Type_Picture_Handle P_this, IceRayC_TypeCoordSize2D * P_size )
+ {
+  typedef GS_DDMRM::S_IceRay::S_type::S_picture::GC__pure      Tf__pure;
+  typedef GS_DDMRM::S_IceRay::S_type::S_picture::GC_memory    Tf_memory;
+
+  auto I_this = dynamic_cast<Tf_memory*>( c2cpp( P_this ) );
+  if( nullptr == I_this )
+   {
+    return 0;
+   }
+  *P_size = cpp2c( I_this->F_size() );
+  return 1;
+ }
+IceRayC_Type_Bool IceRayC_Type_Picture_SizeSet( IceRayC_Type_Picture_Handle P_this, IceRayC_TypeCoordSize2D const* P_size  )
+ {
+  typedef GS_DDMRM::S_IceRay::S_type::S_picture::GC__pure      Tf__pure;
+  typedef GS_DDMRM::S_IceRay::S_type::S_picture::GC_memory    Tf_memory;
+
+  auto I_this = dynamic_cast<Tf_memory*>( c2cpp( P_this ) );
+  if( nullptr == I_this )
+   {
+    return 0;
+   }
+  I_this->Fv_size( c2cpp( *P_size ) );
   return 1;
  }
 

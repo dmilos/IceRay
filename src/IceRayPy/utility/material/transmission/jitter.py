@@ -37,7 +37,6 @@ def Random(
 
     return I_surface
 
-
 def VDC(
      P_dll
     ,P_config = None

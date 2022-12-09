@@ -20,7 +20,6 @@ IceRayC__EXPORT IceRayC__DECLSPEC int                            IceRayC_Materia
 
 IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_Material_MediumHandle  IceRayC_Material_Medium_Linear0( );
 IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_Material_MediumHandle  IceRayC_Material_Medium_Linear1( IceRayC_TypeColorRGB const* P_value, IceRayC_TypeScalar P_A, IceRayC_TypeScalar  P_B );
-
 IceRayC__EXPORT IceRayC__DECLSPEC int                            IceRayC_Material_Medium_Linear_Value( IceRayC_Material_MediumHandle P_this, IceRayC_TypeColorRGB const* P_value   );
 IceRayC__EXPORT IceRayC__DECLSPEC int                            IceRayC_Material_Medium_Linear_A(     IceRayC_Material_MediumHandle P_this, IceRayC_Type_Scalar P_A );
 IceRayC__EXPORT IceRayC__DECLSPEC int                            IceRayC_Material_Medium_Linear_B(     IceRayC_Material_MediumHandle P_this, IceRayC_Type_Scalar P_B );

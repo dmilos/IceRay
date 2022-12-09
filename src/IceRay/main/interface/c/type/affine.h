@@ -9,7 +9,6 @@ typedef struct IceRayC_Type_Math_Affine2D_Struct{ IceRayC_TypeScalar value[3][2]
 typedef struct IceRayC_Type_Math_Affine3D_Struct{ IceRayC_TypeScalar value[4][3];  } IceRayC_Type_Math_Affine3D;
 typedef struct IceRayC_Type_Math_Affine4D_Struct{ IceRayC_TypeScalar value[5][4];  } IceRayC_Type_Math_Affine4D;
 
-
 IceRayC__EXPORT IceRayC__DECLSPEC  int  IceRayC_Type_Math_Affine1D_ID( IceRayC_Type_Math_Affine1D *P_that );
 IceRayC__EXPORT IceRayC__DECLSPEC  int  IceRayC_Type_Math_Affine2D_ID( IceRayC_Type_Math_Affine2D *P_that );
 IceRayC__EXPORT IceRayC__DECLSPEC  int  IceRayC_Type_Math_Affine3D_ID( IceRayC_Type_Math_Affine3D *P_that );
@@ -33,6 +32,7 @@ IceRayC__EXPORT IceRayC__DECLSPEC  int  IceRayC_Type_Math_Affine3D_RotateY( IceR
 IceRayC__EXPORT IceRayC__DECLSPEC  int  IceRayC_Type_Math_Affine3D_RotateZ( IceRayC_Type_Math_Affine3D *P_that, IceRayC_TypeScalar P_alpha );
 
 IceRayC__EXPORT IceRayC__DECLSPEC  int  IceRayC_Type_Math_Affine3D_RotateA( IceRayC_Type_Math_Affine3D *P_that, IceRayC_TypeCoordScalar3D* P_direction, IceRayC_TypeScalar P_alpha );
+IceRayC__EXPORT IceRayC__DECLSPEC  int  IceRayC_Type_Math_Affine3D_RotateD( IceRayC_Type_Math_Affine3D *P_that, IceRayC_TypeCoordScalar3D* P_pivot, IceRayC_TypeCoordScalar3D* P_direction, IceRayC_TypeScalar P_alpha );
 
 IceRayC__EXPORT IceRayC__DECLSPEC  int  IceRayC_Type_Math_Affine3D_LookAt( IceRayC_Type_Math_Affine3D *P_that, IceRayC_TypeCoordScalar3D* P_eye, IceRayC_TypeCoordScalar3D* P_view, IceRayC_TypeCoordScalar3D* P_up );
 

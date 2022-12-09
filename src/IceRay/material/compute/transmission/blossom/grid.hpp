@@ -131,13 +131,13 @@
                    ::math::linear::vector::length( I_z, I_radius );
                    I_radius *= I_radius;
 
-                   auto I_perimeter = M2s_table.F_radius()[ P_count ];
-                   T_size const I_count = M2s_table.F_size()[ P_count ];
+                   auto I_perimeter = M2s_table.F_structure().F_radius()[ P_count ];
+                   T_size const I_count = M2s_table.F_structure().F_size()[ P_count ];
                    T_coord I_direction;
                    for( T_size I_index=0; I_index < I_count; ++I_index )
                     {
                      T_coord2D I_disc2d;
-                     ::math::linear::vector::scale( I_disc2d, T_scalar(1)/I_perimeter, M2s_table.F_spot()[ I_index ] );
+                     ::math::linear::vector::scale( I_disc2d, T_scalar(1)/I_perimeter, M2s_table.F_structure().F_spot()[ I_index ] );
 
                      T_scalar I_height = sqrt( T_scalar( 1 ) - I_radius * ::math::linear::vector::dot( I_disc2d, I_disc2d ) );
                      ::math::linear::vector::combine( I_direction, I_disc2d[0], I_x, I_height, I_y, I_disc2d[1], I_z );
