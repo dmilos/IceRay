@@ -37,7 +37,7 @@
              enum class Ee_status
               {
                 En_active
-               ,En_abanded
+               ,En_abandoned
               };
 
              enum class Ee_hierarchy

@@ -82,7 +82,7 @@
 
              T_size const& F_input( T_component const& P_component, T_size const& P_position )const
               {
-                return F_input()[P_component][P_position];
+               return F_input()[P_component][P_position];
               }
 
            public:
@@ -95,13 +95,13 @@
 
              void F_input(  T_component const& P_component, T_size const& P_position, T_size const& P_index )
               {
-                M2_input.resize( std::max<T_size>( M2_input.size(), P_component + 1 ) );
-                M2_input[P_component].resize( std::max<T_size>( M2_input[P_component].size(), P_position + 1 ) );
-                M2_input[P_component][P_position] = P_index;
-                if( nullptr != F1_memory() )
-                 {
-                  F1_memory()->F_size( P_component, std::max<T_size>( P_index, F1_memory()->F_size(P_component) ) );
-                 }
+               M2_input.resize( std::max<T_size>( M2_input.size(), P_component + 1 ) );
+               M2_input[P_component].resize( std::max<T_size>( M2_input[P_component].size(), P_position + 1 ) );
+               M2_input[P_component][P_position] = P_index;
+               if( nullptr != F1_memory() )
+                {
+                 F1_memory()->F_size( P_component, std::max<T_size>( P_index, F1_memory()->F_size(P_component) ) );
+                }
               }
 
            public:
@@ -139,13 +139,13 @@
 
              void F_output( T_component const& P_component, T_size const& P_position, T_size const& P_index )
               {
-                M2_output.resize( std::max<T_size>( M2_output.size(), P_component + 1 ) );
-                M2_output[P_component].resize( std::max<T_size>( M2_output[P_component].size(), P_position + 1 ) );
-                M2_output[P_component][P_position] = P_index;
-                if( nullptr != F1_memory() )
-                 {
-                  F1_memory()->F_size( P_component, std::max<T_size>( P_index, F1_memory()->F_size(P_component) ) );
-                 }
+               M2_output.resize( std::max<T_size>( M2_output.size(), P_component + 1 ) );
+               M2_output[P_component].resize( std::max<T_size>( M2_output[P_component].size(), P_position + 1 ) );
+               M2_output[P_component][P_position] = P_index;
+               if( nullptr != F1_memory() )
+                {
+                 F1_memory()->F_size( P_component, std::max<T_size>( P_index, F1_memory()->F_size(P_component) ) );
+                }
               }
 
            public:

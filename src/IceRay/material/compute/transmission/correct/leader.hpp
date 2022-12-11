@@ -1,5 +1,5 @@
-#ifndef Dh_DDMRM_Iceray_material_compute_transmission_correct_normal_HPP_
- #define Dh_DDMRM_Iceray_material_compute_transmission_correct_normal_HPP_
+#ifndef Dh_DDMRM_Iceray_material_compute_transmission_correct_leader_HPP_
+ #define Dh_DDMRM_Iceray_material_compute_transmission_correct_leader_HPP_
 
 // GS_DDMRM::S_IceRay::S_material::S_compute::S_transmission::GC_corrector
 
@@ -18,7 +18,7 @@
            namespace S_correct
             {
 
-             class GC_normal //!< TODO not yet clear
+             class GC_leader  //!< correct leader to match cone angle
               : public GS_DDMRM::S_IceRay::S_material::S_compute::GC_instruction
               {
                public:
@@ -30,61 +30,51 @@
                  enum Ee_input
                   {
                     En_inCoord_Normal = 1
-                   ,En_inSize_Count   = 1
-                   ,En_inSize_Leader  = 0
                    ,En_inScalar_Angle = 0
+                   ,En_inCoord_LeaderS  = 0
                   };
 
                  enum Ee_output
                   {
-                    //En_outCoord_Correct = 2
+                    En_outCoord_LeaderT = 2
                   };
 
                public:
-                 GC_normal
+                 GC_leader
                   (
                     T_size const& P_inCoord_Normal // = 1
-                   ,T_size const& P_inCount        // = 1
-                   ,T_size const& P_inLeader       // = 0
                    ,T_size const& P_inAngle        // = 0
+                   ,T_size const& P_inLeaderS      // = 2
+                   ,T_size const& P_inLeaderT      // = 3
                   )
                   {
                    F_input<T_coord>(   En_inCoord_Normal,  P_inCoord_Normal );
-                   F_input<T_size>(    En_inSize_Count,    P_inCount        );
-                   F_input<T_size>(    En_inSize_Leader,   P_inLeader       );
                    F_input<T_scalar>(  En_inScalar_Angle,  P_inAngle        );
+                   F_input<T_coord>(   En_inCoord_LeaderS,  P_inLeaderS      );
+
+                   F_output<T_coord>(  En_outCoord_LeaderT,  P_inLeaderT      );
                   }
 
                public:
                  bool    Fv_execute( T_beam &P_next, T_pigment::T_intersect const& P_intersect, T_state const& P_state )const
                   {
                    T_coord  const& I_normal   = M2_memoryCoord->Fv_load(  F_input<T_coord >( En_inCoord_Normal ) );
-                   T_size   const& I_leader   = M2_memorySize->Fv_load(   F_input<T_size  >( En_inSize_Leader  ) );
-                   T_size   const& I_count    = M2_memorySize->Fv_load(   F_input<T_size  >( En_inSize_Count   ) );
                    T_scalar const& I_angle    = M2_memoryScalar->Fv_load( F_input<T_scalar>( En_inScalar_Angle ) );
+                   T_coord  const& I_leaderS  = M2_memoryCoord->Fv_load(  F_input<T_coord >( En_inCoord_LeaderS ) );
 
-                   auto      & I_heading = P_next.Fv_expose( I_leader );
-
-                   T_coord I_y = I_heading.M_direction;
-                   T_coord I_x; ::math::linear::vector::cross( I_x, I_y, I_normal ); ::math::linear::vector::length( I_x, T_scalar( 1 ) );
-                   T_coord I_z; ::math::linear::vector::cross( I_z, I_x, I_y );      ::math::linear::vector::length( I_z, T_scalar( 1 ) );
-                   auto I_bounce = ::math::linear::vector::angle( I_heading.M_direction, I_normal );
-                   if( ::math::geometry::deg2rad( 90 ) < I_bounce )
+                   auto I_decline = ::math::linear::vector::angle( I_leaderS, I_normal );
+                   T_coord I_leaderT = I_leaderS;
+                   auto I_delta = I_angle - (::math::geometry::deg2rad( 90 ) - I_decline );
+                   if( I_delta < 0 )
                     {
-                     I_bounce = ::math::geometry::deg2rad( 180 ) - I_bounce;
+                     T_coord I_y = I_leaderS;
+                     T_coord I_x; ::math::linear::vector::cross( I_x, I_y, I_normal ); ::math::linear::vector::length( I_x, T_scalar( 1 ) );
+                     T_coord I_z; ::math::linear::vector::cross( I_z, I_x, I_y );      ::math::linear::vector::length( I_z, T_scalar( 1 ) );
+
+                     ::math::linear::vector::combine( I_leaderT, cos( -I_delta ), I_y, sin( -I_delta ), I_z );
                     }
 
-                   for( T_size I_index=1; I_index < I_count; ++I_index )
-                    {
-                     auto      & I_current = P_next.Fv_expose( I_leader );
-                     auto I_A = ::math::linear::vector::angle( I_y, I_current.M_direction );
-                     if( I_A < I_angle )
-                      {
-                       continue;
-                      }
-                     // TODO
-                    }
-
+                   M2_memoryCoord->Fv_store( F_output<T_coord >( En_outCoord_LeaderT ), I_leaderT );
                    return true;
                   }
 

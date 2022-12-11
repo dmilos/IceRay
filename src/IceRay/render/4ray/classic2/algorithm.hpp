@@ -113,7 +113,7 @@
                     En__begin = 0
                    ,En_traced = En__begin
                    ,En_eye
-                   ,En_abanded
+                   ,En_abandoned
                    ,En_light
                    ,En_reflected
                    ,En_teleported

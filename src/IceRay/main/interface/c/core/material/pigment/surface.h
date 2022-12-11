@@ -16,5 +16,7 @@ IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_Type_Bool                  IceRayC_Mat
 IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_Type_Bool                  IceRayC_Material_Pigment_Surface_Lambda( IceRayC_Material_PigmentHandle P_this, IceRayC_Type_Size P_lambda );
 IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_Type_Bool                  IceRayC_Material_Pigment_Surface_Point(  IceRayC_Material_PigmentHandle P_this, IceRayC_Type_Size P_point  );
 IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_Type_Bool                  IceRayC_Material_Pigment_Surface_Normal( IceRayC_Material_PigmentHandle P_this, IceRayC_Type_Size P_normal );
+IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_Type_Bool                  IceRayC_Material_Pigment_Surface_Incident( IceRayC_Material_PigmentHandle P_this, IceRayC_Type_Size P_incident );
+IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_Type_Bool                  IceRayC_Material_Pigment_Surface_Origin(   IceRayC_Material_PigmentHandle P_this, IceRayC_Type_Size P_origin   );
 
 #endif

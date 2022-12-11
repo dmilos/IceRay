@@ -32,9 +32,10 @@
 
              enum Ee_input
               {
-               En_inCoord_Point=0, En_inCoord_Normal=1,
+               En_inCoord_Point=0, 
+               En_inCoord_Normal=1,
                En_inScalar_Lambda  = 0,
-               En_inRay_Incoming=0
+               En_inRay_Incoming = 0
               };
              enum Ee_output
               {
@@ -48,6 +49,8 @@
                ,T_size const& P_lambda = 0
                ,T_size const& P_inCoord_Point  = 0
                ,T_size const& P_inCoord_Normal = 1
+               ,T_size const& P_inCoord_Origin = 2
+               ,T_size const& P_inCoord_Incident = 3
               );
 
            public:
@@ -123,6 +126,30 @@
              T_size       & F1_normal()    { return M2_normal; }
            private:
              T_size M2_normal;
+
+           public:
+             T_size  const& F_incident()const{ return M2_incident; }
+             bool           F_incident( T_size const& P_incident )
+              {
+               M2_incident = P_incident;
+               return true;
+              }
+           protected:
+             T_size       & F1_incident()    { return M2_incident; }
+           private:
+             T_size M2_incident;
+
+           public:
+             T_size  const& F_origin()const{ return M2_origin; }
+             bool           F_origin( T_size const& P_origin )
+              {
+               M2_origin = P_origin;
+               return true;
+              }
+           protected:
+             T_size       & F1_origin()    { return M2_origin; }
+           private:
+             T_size M2_origin;
 
            public:
              T_processor  const& F_pocessor()const{ return M2_pocessor; }

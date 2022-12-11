@@ -43,17 +43,19 @@
                  enum Ee_output
                   {
                     En_outSize_RayCount=0
-                   ,En_outRay_out=1
+                   ,En_outSize_RayStart=1
                   };
 
                public:
                  GC_grid
                   (
-                    T_size const& P_inCoord_Normal // = 1
-                   ,T_size const& P_inLeader       // = 0
-                   ,T_size const& P_inCount        // = 1
-                   ,T_size const& P_inAngle        // = 0
-                   ,T_size const& P_inGauss        // = 1
+                    T_size const& P_inCoord_Normal    // = 1
+                   ,T_size const& P_inLeader          // = 0
+                   ,T_size const& P_inCount           // = 1
+                   ,T_size const& P_inAngle           // = 0
+                   ,T_size const& P_inGauss           // = 1
+                   ,T_size const& P_outSize_RayCount  // = 1
+                   ,T_size const& P_outSize_RayStart  // = 2
                   )
                   {
                    static auto dummy = F2s_init();
@@ -64,7 +66,8 @@
                    F_input<T_scalar>(  En_inScalar_Angle,  P_inAngle        );
                    F_input<T_scalar>(  En_inScalar_Gauss,  P_inGauss        );
 
-                 //F_output<T_size>( En_outSize_RayCount,     P_outSize_RayCount );
+                   F_output<T_size>( En_outSize_RayCount, P_outSize_RayCount );
+                   F_output<T_size>( En_outSize_RayStart, P_outSize_RayStart );
                   }
 
                public:
@@ -86,7 +89,7 @@
                      ,I_angle
                      ,I_gauss
                     );
-                   I_original.M_status = T_ray::Ee_status::En_abanded;
+                   I_original.M_status = T_ray::Ee_status::En_abandoned;
                    return true;
                   }
 
@@ -96,7 +99,7 @@
                    T_beam        & P_next
                   ,T_coord  const& P_normal
                   ,T_ray    const& P_heading
-                  ,T_size   const& P_count
+                  ,T_size   const& P_radius
                   ,T_scalar const& P_angle
                   ,T_scalar const& P_gauss
                   )const
@@ -105,53 +108,32 @@
                    T_coord I_x; ::math::linear::vector::cross( I_x, I_y, P_normal ); ::math::linear::vector::length( I_x, T_scalar( 1 ) );
                    T_coord I_z; ::math::linear::vector::cross( I_z, I_x, I_y );      ::math::linear::vector::length( I_z, T_scalar( 1 ) );
 
-                   auto I_bounce = ::math::linear::vector::angle( P_heading.M_direction, P_normal );
+                   T_scalar I_radius = sin( P_angle );
+                   ::math::linear::vector::length<T_scalar>( I_x, 1 );
+                   ::math::linear::vector::length<T_scalar>( I_z, 1 );
 
-                   if( ::math::geometry::deg2rad( 90 ) < I_bounce )
-                    {
-                     I_bounce = ::math::geometry::deg2rad( 180 ) - I_bounce;
-                    }
+                   auto   const& I_perimeter = M2s_table.F_structure().F_radius()[ P_radius ];
+                   T_size const& I_count     = M2s_table.F_structure().F_size()[ P_radius ];
+                   auto   const& I_table     = M2s_table.F_structure().F_spot();
+                   T_size I_total=0;
+                   T_size I_beginA = P_next.Fv_size();
 
-                   T_scalar I_fix = P_angle/T_scalar(2) + I_bounce - ::math::geometry::deg2rad( 90 );
-
-                   if( T_scalar(0) < I_fix )
-                    { // Need correction
-                     T_scalar a = cos( I_fix ), b = sin( I_fix );
-                     T_coord I_newY;
-
-                     ::math::linear::vector::combine( I_newY, a, I_y, b, I_z  );
-                     ::math::linear::vector::length( I_y, I_newY, T_scalar( 1 ) );
-
-                     ::math::linear::vector::cross( I_z, I_x, I_y );
-                     ::math::linear::vector::length( I_z, T_scalar( 1 ) );
-                    }
-
-                   T_scalar I_radius = sin( P_angle/T_scalar( 2 ) );
-                   ::math::linear::vector::length( I_x, I_radius );
-                   ::math::linear::vector::length( I_z, I_radius );
-                   I_radius *= I_radius;
-
-                   auto I_perimeter = M2s_table.F_structure().F_radius()[ P_count ];
-                   T_size const I_count = M2s_table.F_structure().F_size()[ P_count ];
-                   T_coord I_direction;
                    for( T_size I_index=0; I_index < I_count; ++I_index )
                     {
-                     T_coord2D I_disc2d;
-                     ::math::linear::vector::scale( I_disc2d, T_scalar(1)/I_perimeter, M2s_table.F_structure().F_spot()[ I_index ] );
+                     T_coord2D I_disc2d; ::math::linear::vector::scale( I_disc2d, I_radius/I_perimeter, I_table[ I_index ] );
+                     T_scalar I_height = sqrt( T_scalar( 1 ) - ::math::linear::vector::dot( I_disc2d, I_disc2d ) );
 
-                     T_scalar I_height = sqrt( T_scalar( 1 ) - I_radius * ::math::linear::vector::dot( I_disc2d, I_disc2d ) );
+                     T_coord I_direction;
                      ::math::linear::vector::combine( I_direction, I_disc2d[0], I_x, I_height, I_y, I_disc2d[1], I_z );
                      ::math::linear::vector::length( I_direction, T_scalar( 1 ) );
 
-                     T_scalar I_check = ::math::linear::vector::dot( I_direction, P_normal );
-                     if( I_check < T_scalar(0) )
-                      {
-                       I_check = I_check;
-                       continue;
-                      }
+                     // debug if( math::geometry::deg2rad( 90 )  < ::math::linear::vector::angle( P_normal, I_direction ) )
+                     // debug  {
+                     // debug   continue;
+                     // debug  }
 
                      {
-                      P_next.Fv_push();
+                      P_next.Fv_push();  ++I_total;
                       auto & I_ray = P_next.Fv_top();
 
                       I_ray.M_geometryID  = P_heading.M_geometryID;
@@ -162,15 +144,22 @@
                       I_ray.M_derivation  = P_heading.M_derivation;
                       I_ray.M_ior         = P_heading.M_ior;
                       I_ray.M_intesity    = P_heading.M_intesity / I_count;  //!< todo Not optimized;  P_gauss?
-                      I_ray.M_coefficient = T_scalar(1)/ I_count;     //!< todo Not optimized; P_gauss?
+                      I_ray.M_coefficient = T_scalar(1) / I_count;     //!< todo Not optimized; P_gauss?
                       I_ray.M_hierarchy   = T_ray::Ee_hierarchy::En_solo;
                       //if( 0 == I_index ) I_ray.M_hierarchy = T_ray::Ee_hierarchy::En_back;
                       //if( (P_count-1) == I_index ) I_ray.M_hierarchy = T_ray::Ee_hierarchy::En_lead;
                      }
                     }
 
-                  //M2_memoryRay->Fv_store(  F_output<T_size>(En_outRay_Reflected), I_rectified );
-                  //M2_memorySize->Fv_store( F_output<T_size>(En_outSize_RayCount), 1 );
+                  // debug for( T_size I_index=0; I_index < I_total; ++I_index )
+                  // debug  {
+                  // debug   auto      & I_ray = P_next.Fv_expose( I_beginA + I_index );
+                  // debug   I_ray.M_intesity    = P_heading.M_intesity / I_total;  //!< todo Not optimized;  P_gauss?
+                  // debug   I_ray.M_coefficient = T_scalar(1) / I_total;     //!< todo Not optimized; P_gauss?
+                  // debug  }
+
+                  M2_memorySize->Fv_store( F_output<T_size>(En_outSize_RayCount), I_total );
+                  M2_memorySize->Fv_store( F_output<T_size>(En_outSize_RayStart), I_beginA );
                   return I_count;
                  }
 

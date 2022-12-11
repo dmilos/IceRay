@@ -836,22 +836,32 @@ def _MapFunction_Material_Pigment_Surface_Instruction_Spot(P_dll): #done
     _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Spot_Obstruct0                             , ctypes.c_void_p , [ctypes.c_void_p, ctypes.c_size_t, ctypes.c_size_t, ctypes.c_size_t ] )
     _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Spot_UWV0                                  , ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t, ctypes.c_size_t, ctypes.c_size_t] )
 
-def _MapFunction_Material_Pigment_Surface_Instruction_Transmission(P_dll): #!< check
-    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Transmission_Blossom_Grid0     , ctypes.c_void_p , [ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t] )
-    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Transmission_Blossom_Hexagon0  , ctypes.c_void_p , [ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t] )
-    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Transmission_Blossom_Pinwheel0 , ctypes.c_void_p , [ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t] )
-    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Transmission_Blossom_Random0   , ctypes.c_void_p , [ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t] )
-    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Transmission_Blossom_Triangle0 , ctypes.c_void_p , [ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t] )
-    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Transmission_Blossom_VDC0      , ctypes.c_void_p , [ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t] )
-    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Transmission_Correct_Cone0     , ctypes.c_void_p , [ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t] )
-    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Transmission_Correct_Direction0, ctypes.c_void_p , [ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t] )
-    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Transmission_Jitter_Random0    , ctypes.c_void_p , [ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t] )
-    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Transmission_Jitter_VDC0       , ctypes.c_void_p , [ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t] )
-    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Transmission_Reflect_One0      , ctypes.c_void_p , [ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t] )
+def _MapFunction_Material_Pigment_Surface_Instruction_Transmission_Correct(P_dll):
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Transmission_Correct_Cone0     , ctypes.c_void_p , [ ctypes.c_size_t, ctypes.c_size_t, ctypes.c_size_t, ctypes.c_size_t ] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Transmission_Correct_Trim0     , ctypes.c_void_p , [ ctypes.c_size_t, ctypes.c_size_t, ctypes.c_size_t ] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Transmission_Correct_Claim0    , ctypes.c_void_p , [ ctypes.c_size_t, ctypes.c_size_t, ctypes.c_size_t ] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Transmission_Correct_Leader0   , ctypes.c_void_p , [ ctypes.c_size_t, ctypes.c_size_t, ctypes.c_size_t, ctypes.c_size_t ] )
+
+def _MapFunction_Material_Pigment_Surface_Instruction_Transmission_Blossom(P_dll):
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Transmission_Blossom_Grid0     , ctypes.c_void_p , [ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Transmission_Blossom_Hexagon0  , ctypes.c_void_p , [ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Transmission_Blossom_Pinwheel0 , ctypes.c_void_p , [ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Transmission_Blossom_Random0   , ctypes.c_void_p , [ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Transmission_Blossom_Triangle0 , ctypes.c_void_p , [ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Transmission_Blossom_VDC0      , ctypes.c_void_p , [ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t] )
+
+def _MapFunction_Material_Pigment_Surface_Instruction_Transmission_Reflect(P_dll): #!< check
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Transmission_Reflect_One0      , ctypes.c_void_p , [ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t] )
     _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Transmission_Reflect_Schlick0  , ctypes.c_void_p , [ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t] )
+
+def _MapFunction_Material_Pigment_Surface_Instruction_Transmission_Refract(P_dll): #!< check
     _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Transmission_Refract_Fresnel0  , ctypes.c_void_p , [ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t] )
     _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Transmission_Refract_Schlick0  , ctypes.c_void_p , [ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t] )
     _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Transmission_Refract_Snell0    , ctypes.c_void_p , [ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t] )
+
+def _MapFunction_Material_Pigment_Surface_Instruction_Transmission_Jitter(P_dll): #!< check
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Transmission_Jitter_Random0    , ctypes.c_void_p , [ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Transmission_Jitter_VDC0       , ctypes.c_void_p , [ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t] )
 
 def _MapFunction_Material_Pigment_Surface_Instruction(P_dll): #!< DONE
     _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Release , ctypes.c_int   , [ctypes.c_void_p] )
@@ -865,7 +875,12 @@ def _MapFunction_Material_Pigment_Surface_Instruction(P_dll): #!< DONE
     _MapFunction_Material_Pigment_Surface_Instruction_Operation(P_dll)
     _MapFunction_Material_Pigment_Surface_Instruction_Pattern(P_dll)
     _MapFunction_Material_Pigment_Surface_Instruction_Spot(P_dll)
-    _MapFunction_Material_Pigment_Surface_Instruction_Transmission(P_dll)
+    _MapFunction_Material_Pigment_Surface_Instruction_Transmission_Correct(P_dll)
+    _MapFunction_Material_Pigment_Surface_Instruction_Transmission_Blossom(P_dll)
+    _MapFunction_Material_Pigment_Surface_Instruction_Transmission_Jitter(P_dll)
+    _MapFunction_Material_Pigment_Surface_Instruction_Transmission_Reflect(P_dll)
+    _MapFunction_Material_Pigment_Surface_Instruction_Transmission_Refract(P_dll)
+
     return
 
 def _MapFunction_Material_Pigment(P_dll): #!< DONE

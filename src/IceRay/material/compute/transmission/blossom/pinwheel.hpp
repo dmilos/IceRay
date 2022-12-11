@@ -48,11 +48,12 @@
                public:
                  GC_pinwheel
                   (
-                    T_size const& P_inCoord_Normal  //= 1
-                   ,T_size const& P_inLeader        //= 0
-                   ,T_size const& P_inCount         //= 1
-                   ,T_size const& P_inAngle         //= 0
-                   ,T_size const& P_inGauss         //= 1
+                    T_size const& P_inCoord_Normal     //= 1
+                   ,T_size const& P_inLeader           //= 0
+                   ,T_size const& P_inCount            //= 1
+                   ,T_size const& P_inAngle            //= 0
+                   ,T_size const& P_inGauss            //= 1
+                   ,T_size   const& P_outSize_RayCount // = 2
                   )
                   {
                    static auto dummy = F2s_init();
@@ -63,7 +64,7 @@
                    F_input<T_scalar>(  En_inScalar_Angle,  P_inAngle        );
                    F_input<T_scalar>(  En_inScalar_Gauss,  P_inGauss        );
 
-                 //F_output<T_size>( En_outSize_RayCount,     P_outSize_RayCount );
+                   F_output<T_size>( En_outSize_RayCount,     P_outSize_RayCount );
                   }
 
                public:
@@ -85,7 +86,7 @@
                      ,I_angle
                      ,I_gauss
                     );
-                   I_original.M_status = T_ray::Ee_status::En_abanded;
+                   I_original.M_status = T_ray::Ee_status::En_abandoned;
                    return true;
                   }
 
@@ -133,6 +134,7 @@
                    auto I_perimeter = M2s_table.F_structure().F_radius()[ P_count ];
                    T_size const I_count = M2s_table.F_structure().F_size()[ P_count ];
                    T_coord I_direction;
+                   T_size I_total=0;
                    for( T_size I_index=0; I_index < I_count; ++I_index )
                     {
                      T_coord2D I_disc2d;
@@ -150,7 +152,7 @@
                       }
 
                      {
-                      P_next.Fv_push();
+                      P_next.Fv_push();  ++I_total;
                       auto & I_ray = P_next.Fv_top();
 
                       I_ray.M_geometryID  = P_heading.M_geometryID;
@@ -169,7 +171,7 @@
                    }
 
                   //M2_memoryRay->Fv_store(  F_output<T_size>(En_outRay_Reflected), I_rectified );
-                  //M2_memorySize->Fv_store( F_output<T_size>(En_outSize_RayCount), 1 );
+                  M2_memorySize->Fv_store( F_output<T_size>(En_outSize_RayCount), I_total );
                   return I_count;
                  }
 

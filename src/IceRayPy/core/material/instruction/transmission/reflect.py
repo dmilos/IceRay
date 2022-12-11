@@ -10,13 +10,14 @@ SizeType = IceRayPy.type.basic.Size
 ScalarType   = IceRayPy.type.basic.Scalar
 
 class One:
-    def __init__(self, P_dll, P_point, P_normal, P_albedo ):
+    def __init__(self, P_dll, P_point, P_normal, P_albedo, P_index ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Material_Pigment_Surface_Instruction_Transmission_Reflect_One0(
-           SizeType( P_point )
+           SizeType( P_point  )
           ,SizeType( P_normal )
           ,SizeType( P_albedo )
+          ,SizeType( P_index  )
         )
 
     def __del__(self):

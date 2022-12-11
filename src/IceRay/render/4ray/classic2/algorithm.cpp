@@ -35,14 +35,14 @@ GC_algorithm::~GC_algorithm( )
   if( false ) return;
 
   T_size I_summae = M2_stack.F_total();
-  std::cout << "Total:      " << PRINT(M2_stack.F_total() )       << std::endl;
+  std::cout << "Summary:      " << PRINT(M2_stack.F_total() )       << std::endl;
 
   for( auto const& I_info : M2_statistic.M_depth )
    {
     I_summae = std::accumulate( I_info.begin(), I_info.end(), 0 );
 
     std::cout << "Traced:     " << PRINT( I_info[ (int)C_statistic::Ee_type::En_traced ]       );
-    std::cout << "Abanded:    " << PRINT( I_info[ (int)C_statistic::Ee_type::En_abanded ]      );
+    std::cout << "Abandoned:  " << PRINT( I_info[ (int)C_statistic::Ee_type::En_abandoned ]      );
     std::cout << "Eye:        " << PRINT( I_info[ (int)C_statistic::Ee_type::En_eye ]          );
     std::cout << "Reflected:  " << PRINT( I_info[ (int)C_statistic::Ee_type::En_reflected ]    );
     std::cout << "Refracted:  " << PRINT( I_info[ (int)C_statistic::Ee_type::En_refracted ]    );
@@ -207,9 +207,9 @@ void GC_algorithm::F2_trace( T_color &P_color )
        } break;
      }
 
-    if( T2_ray::Ee_status::En_abanded == I_incoming.M_status )
+    if( T2_ray::Ee_status::En_abandoned == I_incoming.M_status )
      {
-      ++M2_statistic.M_depth[ I_incoming.M_depth ][ (int)C_statistic::Ee_type::En_abanded];
+      ++M2_statistic.M_depth[ I_incoming.M_depth ][ (int)C_statistic::Ee_type::En_abandoned];
       I_accident.M_consume = T_stack::T_accident::Ee_consume::En_discard;
       continue;
      }

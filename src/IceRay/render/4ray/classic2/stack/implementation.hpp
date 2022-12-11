@@ -79,18 +79,15 @@
                  void F_clear();
 
                public:
-                  T_size   const&  F_index()const{ return M2_index; }
-                  void             Fv_mark()
-                   {
-                    M2_index = 0; 
-                   }
+                  T_size   const&  F_index()const;
+                  void             Fv_mark();
                private:
-                 T_size M2_index=0;
+                 T_size M2_index; //!< No need for stack of this. Ony need to make fake beam
 
                public:
                  T_size F_total()const{ return M2_total; }
                private:
-                 T_size M2_total=0;
+                 T_size M2_total;
               };
             }
           }

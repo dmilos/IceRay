@@ -8,10 +8,18 @@ Scalar = IceRayPy.type.basic.Scalar
 AddresOf = ctypes.addressof
 
 class Perspective:
-    def __init__( self, P_dll ):
+    def __init__( self, P_dll, P_config = None ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Camera_Flat_Perspective0()
+
+        if( None != P_config ):
+            if( 'width' in P_config ):
+                self.width( P_config['width'] )
+
+        if( None != P_config ):
+            if( 'height' in P_config ):
+                self.height( P_config['height'] )
 
     #def __init__(self, P_dll, P_aspect ):
     #    self.m_cargo = {}
@@ -35,8 +43,9 @@ class Perspective:
     def aspect(self, P_aspect):
         return self.m_cargo['dll'].IceRayC_Camera_Flat_Perspective_Height(self.m_cargo['this'], Scalar( P_aspect ) )
 
+
 class Orthogonal:
-    def __init__( self, P_dll ):
+    def __init__( self, P_dll, P_config = None ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Camera_Flat_Orthogonal0()
@@ -66,9 +75,8 @@ class Orthogonal:
         return self.m_cargo['dll'].IceRayC_Camera_Flat_Orthogonal_Height(self.m_cargo['this'], Scalar( P_aspect ) )
 
 
-
 class Super:
-    def __init__( self, P_dll ):
+    def __init__( self, P_dll, P_config = None ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Camera_Flat_Super0()

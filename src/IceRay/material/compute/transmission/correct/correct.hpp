@@ -1,3 +1,5 @@
 #include "./cone.hpp"
-#include "./direction.hpp"
 #include "./normal.hpp"
+#include "./leader.hpp"
+#include "./trim.hpp"
+#include "./claim.hpp"

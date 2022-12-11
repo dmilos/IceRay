@@ -39,26 +39,24 @@
                     };
                    enum Ee_output
                     {
-                     // En_outSize_RayCount=0
-                     //,En_outRay_Reflected=1
-                   };
+                      En_outSize_RayIndex=1
+                    };
 
                  public:
                    GC_one
                     (
-                      T_size const& P_inCoord_Point     = 0
-                     ,T_size const& P_inCoord_Normal    = 1
-                     ,T_size const& P_albedo    = 0
-                   //,T_size const& P_outSize_rayCount = 0,
-                   //,T_size const& P_outRay_reflected = 1
+                      T_size const& P_inCoord_Point     // = 0
+                     ,T_size const& P_inCoord_Normal    // = 1
+                     ,T_size const& P_albedo            // = 0
+                   //,T_size const& P_outSize_RayCount  // = 1
+                     ,T_size const& P_outSize_RayIndex  // = 0,
                     )
                     {
                      F_input<T_coord>( En_inCoord_Point,  P_inCoord_Point  );
                      F_input<T_coord>( En_inCoord_Normal, P_inCoord_Normal );
                      F_input<T_color>( En_inColor_Albedo, P_albedo );
 
-                   //F_output<T_size>( En_outSize_RayCount,     P_outSize_RayCount );
-                   //F_output<T_ray>(  En_outRay_Reflected,     P_outRay_Reflected );
+                     F_output<T_size>(  En_outSize_RayIndex,     P_outSize_RayIndex );
                     }
 
                  public:
@@ -88,9 +86,8 @@
                      I_reflected.M_geometryID  = I_intersect.M_geometryID;
                      I_reflected.M_state       = I_intersect.M_state;
 
-                   //M2_memoryRay->Fv_store( F_output()[ T_memory::En_size][ En_outRay_RayReflected ], I_reflected );
-                   //M2_memorySize->Fv_store( F_output()[ T_memory::En_size][ En_outSize_RayCount ], 1 );
-
+                   //M2_memoryRay->Fv_store(F_output<T_size>(P_outSize_RayCount),  1 );
+                     M2_memorySize->Fv_store( F_output<T_size>(En_outSize_RayIndex), P_next.Fv_size() - 1 );
                      return true;
                     }
 

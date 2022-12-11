@@ -8,6 +8,7 @@ using namespace GS_DDMRM::S_IceRay::S_render::S_ray::S_classic2::S_stack;
 GC_implementation::GC_implementation()
  {
   M2_total = 0;
+  M2_index =0;
  }
  
 GC_implementation::~GC_implementation()
@@ -99,7 +100,7 @@ void GC_implementation::Fv_push()
   ++M2_index;
 
   auto & I_accident = T_data::F_push();
-  //I_ray.M_intersection.M_lambda  = Is_infinity;
+//I_ray.M_intersection.M_lambda  = Is_infinity;
   I_accident.M_incoming.M_UID    = M2_total;
   I_accident.M_incoming.M_status = T__input::T_ray::Ee_status::En_active;
   I_accident.M_consume           = T__stack::T_accident::Ee_consume::En_fresh;
@@ -110,3 +111,13 @@ void GC_implementation::F_clear()
   M2_index = 0;
   T_data::F_clear();
  }
+
+GC_implementation::T_size   const&  GC_implementation::F_index()const
+ { 
+  return M2_index; 
+ }
+void             GC_implementation::Fv_mark()
+ {
+  M2_index = 0; 
+ }
+

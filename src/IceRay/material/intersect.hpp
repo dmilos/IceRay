@@ -38,7 +38,6 @@
             }
 
          public:
-
            enum class Ee_consume
             {
               En__unknown //!<< not traced

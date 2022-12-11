@@ -3,7 +3,6 @@
 
  #include "./input.hpp"
  #include "./output.hpp"
- #include "./output.hpp"
 
  #include "IceRay/material/medium/jurisdiction.hpp"
 

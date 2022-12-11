@@ -8,7 +8,7 @@ UnsignedType = IceRayPy.type.basic.Unsigned
 SizeType = IceRayPy.type.basic.Size
 
 class Focus:
-    def __init__( self, P_dll, P_child = None ):
+    def __init__( self, P_dll, P_config = None ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Camera_DOF_Focus0()
@@ -37,7 +37,7 @@ class Focus:
 
 
 class Cone:
-    def __init__( self, P_dll, P_child = None ):
+    def __init__( self, P_dll, P_config = None ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Camera_DOF_Cone0()
@@ -62,7 +62,7 @@ class Cone:
 
 
 class Cylinder:
-    def __init__( self, P_dll, P_child = None ):
+    def __init__( self, P_dll, P_config = None ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Camera_DOF_Cylinder0()

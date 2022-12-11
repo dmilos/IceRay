@@ -5,7 +5,7 @@ import IceRayPy
 Scalar = IceRayPy.type.basic.Scalar
 
 class Fisheye:
-    def __init__(self, P_dll ):
+    def __init__(self, P_dll, P_config = None ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Camera_Sphere_Fisheye0()
@@ -21,8 +21,9 @@ class Fisheye:
     def theta(self, P_theta ):
         return self.m_cargo['dll'].IceRayC_Camera_Sphere_Fisheye_Theta(self.m_cargo['this'], Scalar( P_theta ) )
 
+
 class Horizontal:
-    def __init__(self, P_dll ):
+    def __init__(self, P_dll, P_config = None ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Camera_Sphere_Horizontal0()
@@ -40,7 +41,7 @@ class Horizontal:
 
 
 class Vertical:
-    def __init__(self, P_dll ):
+    def __init__( self, P_dll, P_config = None ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Camera_Sphere_Vertical0()

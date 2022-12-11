@@ -5,6 +5,8 @@
 
 #include "IceRay/type/basic/size.hpp"
 #include "IceRay/type/math/coord.hpp"
+#include <fstream>
+#include <string>
 
  namespace GS_DDMRM
   {
@@ -45,8 +47,16 @@
 
              M2_radius.push_back( 0 );
              M2_size.push_back( 0 );
+             T_size I_size  = M2_point.size();
+             T_size I_rsize = M2_radius.size();
+
+             //auto & output = std::ofstream( "table_" + std::to_string( I_size )+ "-"+ std::to_string(I_rsize) +".svg" );
+
+             //output << "<svg height=\"100\" width=\"100\">" << std::endl;
              for( auto const& I_spot: M2_point )
               {
+               //output<< "<circle cx=\"" << I_spot[0] << "\" cy=\"" << I_spot[1] << "\" r=\"0.1\" fill=\"red\" /> " << std::endl;
+
                auto I_radius = ::math::linear::vector::length( I_spot );
                if( I_radius < M2_radius.back() + I_epsilon )
                 {
@@ -57,6 +67,7 @@
                M2_radius.push_back( I_radius );
                //std::cout<< M2_size[ M2_size.size() -2 ] << ", ";
               }
+             //output << "</svg>" << std::endl;
              //std::cout<< std::endl << "Max grid size: " << M2_size.size() << std::endl;
             }
 

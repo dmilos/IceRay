@@ -364,8 +364,8 @@
          IceRay_material_compute_memory_type2component( S_affine::GT_scalar4D , En_affine4D );
 
          IceRay_material_compute_memory_type2component( S_ray::GC_line,         En_ray      );
-         IceRay_material_compute_memory_type2componentEx( T_spot ,              En_spot  );
-         IceRay_material_compute_memory_type2componentEx( T_light,              En_light );
+         IceRay_material_compute_memory_type2componentEx( T_spot ,              En_spot     );
+         IceRay_material_compute_memory_type2componentEx( T_light,              En_light    );
 
         }
       }

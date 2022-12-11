@@ -25,7 +25,7 @@ import decoration
 
 
 camera_list = {
-        'F-persp'        : core.camera.flat.Perspective,
+       'F-persp'        : core.camera.flat.Perspective,
        #'F-orth'         : core.camera.flat.Orthogonal,
        #'F-super'        : core.camera.flat.Super,
        #'S-horizontal'   : core.camera.sphere.Horizontal,
@@ -76,7 +76,7 @@ medium_list = {
     }
 
 geometry_list = {
-      'simple-sphere'        : core.geometry.simple.Sphere,
+     'simple-sphere'        : core.geometry.simple.Sphere,
      #'simple-usphere'       : core.geometry.simple.USphere,
      #'simple-cylinder'      : core.geometry.simple.Cylinder,
      #'simple-box'           : core.geometry.simple.Box,
@@ -175,11 +175,11 @@ pigment_list = {
 
       #'T-0-reflect-One'               : utility.material.transmission.reflect.One,      #OK
       #'T-1-reflect-Schlick'           : utility.material.transmission.reflect.Schlick,  #OK
-       'T-2-reflect-blossom-Grid'      : utility.material.transmission.blossom.Grid,     #TODO edge bug
-       'T-3-reflect-blossom-Hexagon'   : utility.material.transmission.blossom.Hexagon,  #CHECK
-      #'T-4-reflect-blossom-Pinwheel'  : utility.material.transmission.blossom.Pinwheel, #TODO
-      #'T-5-reflect-blossom-Rand'      : utility.material.transmission.blossom.Random,   #OK
-       'T-6-reflect-blossom-trg'       : utility.material.transmission.blossom.Triangle, #OK
+      #'T-2-reflect-blossom-Grid'      : utility.material.transmission.blossom.Grid,     #TODO edge bug
+      'T-3-reflect-blossom-Hexagon'   : utility.material.transmission.blossom.Hexagon,  #CHECK
+      #'T-4-reflect-blossom-trg'       : utility.material.transmission.blossom.Triangle, #OK
+      ##'T-5-reflect-blossom-Pinwheel'  : utility.material.transmission.blossom.Pinwheel, #TODO
+      #'T-6-reflect-blossom-Rand'      : utility.material.transmission.blossom.Random,   #OK
       #'T-7-reflect-blossom-VDC'       : utility.material.transmission.blossom.VDC,      #OK
       #'T-8-refract-Fresnel'           : utility.material.transmission.refract.Fresnel,  #OK
       #'T-9-refract-Snell'             : utility.material.transmission.refract.Snell,    #OK
@@ -235,7 +235,7 @@ def doRendering(P_config):
                        medium = data_medium( P_config['dll'] )
                        object = composer.object( P_config['dll'], geometry, pigment, medium )
 
-                       camera = composer.camera( P_config['dll'], data_camera( P_config['dll'] ), P_config['camera'] )
+                       camera = composer.camera( P_config['dll'], data_camera( P_config['dll'], P_config['camera'] ), P_config['camera'] )
 
                        room = data_room( P_config['dll'], P_config['room'], light_final, geometry )
 
@@ -281,13 +281,15 @@ config['folder'] = '_out'
 config['index'] = 0
 
 config['picture'] = {}
-config['picture']['width']  = int( 800 * 1.2 )
-config['picture']['height'] = int( 800 * 1.2 )
+config['picture']['width']  = int( 800 * 1 )
+config['picture']['height'] = int( 800 * 1 )
 #config['pixel']['type'] = 'basic'
 
 config['camera'] = {}
 config['camera']['angle-horizontal']  = 1
 config['camera']['angle-vertical']    = 1 # 0.66666666666666666666666666666667 #config['picture']['height'] / config['picture']['width']
+config['camera']['height']  = 1 * 0.8
+config['camera']['width']   = 1 * 0.8 # 0.66666666666666666666666666666667 #config['picture']['height'] / config['picture']['width']
 config['camera']['aspect']    = 1 # config['picture']['width'] / config['picture']['height']
 
 config['camera']['eye']  = IceRayPy. type.math.coord.Scalar3D( 0, -3, 0 )
@@ -299,8 +301,8 @@ config['ray-trace']['trash'] = 1.0/10000.0
 config['ray-trace']['next'] = 17000
 
 config['hot'] = {}
-config['hot']['x'] = 400 * 1 #int( (1024/2048) * config['picture']['width'] )
-config['hot']['y'] = 800 * 1 #int( ( 692/2048) * config['picture']['height'] )
+config['hot']['x'] = 75 #int( (1024/2048) * config['picture']['width'] )
+config['hot']['y'] = 200 * 1 #int( ( 692/2048) * config['picture']['height'] )
 
 config['window'] = {}
 config['window'] = {}
@@ -356,8 +358,10 @@ I_picture.storePNM( "default_256.pnm" )
 
 
 for index in range( start, 360 * int( dilatation ), step ):
+
     config['index'] = index
     t = index / 360.0 / dilatation
+    #t = 0
     alpha = t * ( 2 * 3.1415926 )
     #alpha = math.radians( 57 )
     height = heightLo #+ ( math.sin( alpha - math.pi/2 )*0.5 + 0.5 )*( heightHi - heightLo );
@@ -401,5 +405,5 @@ for index in range( start, 360 * int( dilatation ), step ):
     print(str( gc.get_count() )  )
 
 
-time.sleep( 20 )
+#time.sleep( 20 )
 

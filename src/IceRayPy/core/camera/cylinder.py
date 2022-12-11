@@ -7,7 +7,7 @@ import IceRayPy.type.basic
 Scalar = IceRayPy.type.basic.Scalar
 
 class Horizontal:
-    def __init__(self, P_dll ):
+    def __init__(self, P_dll, P_config = None ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Camera_Cylinder_Horizontal0()
@@ -26,7 +26,7 @@ class Horizontal:
 
 
 class Vertical:
-    def __init__(self, P_dll):
+    def __init__(self, P_dll, P_config = None):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Camera_Cylinder_Vertical0()
