@@ -72,7 +72,6 @@
                {
                 return rand()/(T_scalar)(RAND_MAX);
                }
-
            };
 
           class GC_standard2D
@@ -117,7 +116,7 @@
                }
 
             private:
-               T_size M2_position;
+              T_size M2_position;
            };
 
           class GC_table1D
@@ -128,7 +127,7 @@
               typedef std::array<T_scalar,32> T_table;
 
             public:
-              GC_table1D(){  M2_counter = 0; }
+              GC_table1D(){ M2_counter = 0; }
               T_scalar operator()()
                {
                 return this->next();
@@ -139,12 +138,54 @@
                {
                 return M2_table[ ++M2_counter % M2_table.size() ] / T_scalar(M2_table.size() -1 );
                }
-          
+
             public:
               void static Fs_next();
             private:
               T_size M2_counter;
               static T_table M2_table;
+           };
+
+          class GC_table2D
+           {
+            public:
+              typedef GS_DDMRM::S_IceRay::S_type::GT_size   T_size;
+              typedef GS_DDMRM::S_IceRay::S_type::GT_scalar T_scalar;
+              typedef GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar2D T_coord2D;
+              typedef std::vector<T_coord2D> T_table;
+
+            public:
+              GC_table2D(){  M2_counter = 0; }
+              T_coord2D const& operator()()
+               {
+                return this->next();
+               }
+
+            public:
+              void operator()( T_coord2D & P_coord )
+               {
+                P_coord =  next();
+               }
+
+            public:
+              T_coord2D const& next()
+               {
+                return M2_table[ ++M2_counter % M2_table.size() ];
+               }
+
+              T_table const& F_table()const
+               {
+                return M2_table;
+               }
+
+              T_table & F_table()
+               {
+                return M2_table;
+               }
+
+            private:
+              T_size  M2_counter;
+              T_table M2_table;
            };
 
 

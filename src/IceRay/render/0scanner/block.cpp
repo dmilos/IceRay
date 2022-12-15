@@ -1,5 +1,6 @@
 #include <iostream>
 #include <iomanip>
+#include <chrono>
 #include "block.hpp"
 
 using namespace GS_DDMRM::S_IceRay::S_render::S_scanner;
@@ -69,29 +70,56 @@ GC_block::F1v_render( T_picture & P_picture )
   T2_size I_up    = std::min<T2_size>( P_picture.F_size()[1]-1, M2_window.hi()[1] );
 
   T2_color I_color;
-
-  for( I_cell[1] = I_down; I_cell[1] <= I_up;    ++I_cell[1]  )
+  auto image_start = std::chrono::steady_clock::now();
+  auto block_start = std::chrono::steady_clock::now();
+  std::cout << std::endl;
+ 
+  T_scalar I_step = 10;
+  for( I_cell[1] = I_down; I_cell[1] <= I_up;  )
    {
-    if( 0 == ( I_cell[1] % 10 ) ) 
-     {
-      std::cout << std::endl; std::cout << I_cell[1] <<" / " << I_up ; 
-     }
-    for( I_cell[0] = I_left; I_cell[0] <= I_right; ++I_cell[0] )
-     {
-      if( ( M2_hot[0] == I_cell[0] ) && ( M2_hot[1] == I_cell[1] ) )
-       {
-        I_cell = I_cell;
-       }
 
-      F1_pixel()->Fv_render( I_color, I_cell );
-      P_picture.Fv_pixel(   I_cell, I_color );
-      if( false == F_work() ) break;
-      if( 0 == ( I_cell[1] % 10 ) )
+    {
+     block_start = std::chrono::steady_clock::now();
+     std::cout << I_cell[1] << " / " << I_up ;
+    }
+
+    T_size I_end = std::min<T_size>( I_cell[1] + I_step, I_up+1 );
+
+    for( I_cell[1] ; I_cell[1] < I_end;  ++I_cell[1]  )
+     {
+      for( I_cell[0] = I_left; I_cell[0] <= I_right; ++I_cell[0] )
        {
-        if( 0 == ( I_cell[0] %  10 ) ) { std::cout << "."; }
-        if( 0 == ( I_cell[0] % 100 ) ) { std::cout << "*"; }
+        if( ( M2_hot[0] == I_cell[0] ) && ( M2_hot[1] == I_cell[1] ) )
+         {
+          I_cell = I_cell;
+         }
+      
+        F1_pixel()->Fv_render( I_color, I_cell );
+        P_picture.Fv_pixel(   I_cell, I_color );
+        if( false == F_work() ) break;
+        if( 0 == ( I_cell[1] % 10 ) )
+         {
+          if( 0 == ( I_cell[0] %  10 ) ) { std::cout << "."; }
+          if( 0 == ( I_cell[0] % 100 ) ) { std::cout << "*"; }
+         }
        }
      }
+
+     {
+      auto image_current = std::chrono::steady_clock::now();
+      auto block_end     = std::chrono::steady_clock::now();
+
+      auto image_delta = image_current - image_start;
+      auto block_delta = block_end - block_start;
+
+      std::cout << "[" << std::setw(8) << std::chrono::duration_cast< std::chrono::duration<double> >(block_delta).count() << " ]"; 
+      std::cout << "[" << std::setw(8) << std::chrono::duration_cast< std::chrono::duration<double> >(image_delta).count() << " / "; 
+      std::cout << std::setw(8) << std::chrono::duration_cast<std::chrono::duration<double> >(image_delta).count() * T_scalar( I_up - I_down)/T_scalar( I_cell[1] - I_down ) << " ]"; 
+
+      block_start = std::chrono::steady_clock::now();
+      std::cout << std::endl; 
+     }
+
    }
 
   std::cout << std::endl;

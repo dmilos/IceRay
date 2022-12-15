@@ -11,7 +11,7 @@ ScalarType   = IceRayPy.type.basic.Scalar
 
 
 class Fresnel:
-    def __init__(self, P_dll, P_point, P_normal, P_ior, P_albedo ):
+    def __init__(self, P_dll, P_point, P_normal, P_ior, P_albedo, P_total, P_leader ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Material_Pigment_Surface_Instruction_Transmission_Refract_Fresnel0(
@@ -19,6 +19,8 @@ class Fresnel:
           ,SizeType( P_normal )
           ,SizeType( P_ior )
           ,SizeType( P_albedo )
+          ,SizeType( P_total )
+          ,SizeType( P_leader )
         )
 
     def __del__(self):
@@ -38,8 +40,24 @@ class Multi:
     def __del__(self):
         self.m_cargo['dll'].IceRayC_Material_Pigment_Surface_Instruction_Release( self.m_cargo['this'] )
 
+class Schlick:
+    def __init__(self, P_dll, P_point, P_normal, P_ior, P_albedo, P_total, P_leader ):
+        self.m_cargo = {}
+        self.m_cargo['dll'] = P_dll
+        self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Material_Pigment_Surface_Instruction_Transmission_Refract_Schlick0(
+           SizeType( P_point )
+          ,SizeType( P_normal )
+          ,SizeType( P_ior )
+          ,SizeType( P_albedo )
+          ,SizeType( P_total )
+          ,SizeType( P_leader )
+        )
+
+    def __del__(self):
+        self.m_cargo['dll'].IceRayC_Material_Pigment_Surface_Instruction_Release( self.m_cargo['this'] )
+
 class Snell:
-    def __init__(self, P_dll, P_point, P_normal, P_ior, P_albedo, P_transparency ):
+    def __init__(self, P_dll, P_point, P_normal, P_ior, P_albedo, P_transparency, P_leader ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Material_Pigment_Surface_Instruction_Transmission_Refract_Snell0(
@@ -48,20 +66,7 @@ class Snell:
           ,SizeType( P_ior )
           ,SizeType( P_albedo )
           ,SizeType( P_transparency )
-        )
-
-    def __del__(self):
-        self.m_cargo['dll'].IceRayC_Material_Pigment_Surface_Instruction_Release( self.m_cargo['this'] )
-
-class Schlick:
-    def __init__(self, P_dll, P_point, P_normal, P_ior, P_albedo ):
-        self.m_cargo = {}
-        self.m_cargo['dll'] = P_dll
-        self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Material_Pigment_Surface_Instruction_Transmission_Refract_Schlick0(
-           SizeType( P_point )
-          ,SizeType( P_normal )
-          ,SizeType( P_ior )
-          ,SizeType( P_albedo )
+          ,SizeType( P_leader )
         )
 
     def __del__(self):

@@ -37,7 +37,6 @@ def One(
 
     I_albedo = tempColor + 0
     I_leader = tempSize + 0
-    I_leader = tempSize + 0
 
     I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
 
@@ -56,14 +55,17 @@ def Schlick(
     result     = IceRayPy.core.material.instruction.label.color.dynamic.RESULT
     point      = IceRayPy.core.material.instruction.label.coord3d.dynamic.POINT
     normal     = IceRayPy.core.material.instruction.label.coord3d.dynamic.NORMAL
+    tempSize   = IceRayPy.core.material.instruction.label.size.temp._BEGIN
     tempScalar = IceRayPy.core.material.instruction.label.scalar.temp._BEGIN
     tempColor  = IceRayPy.core.material.instruction.label.color.temp._BEGIN
+
+    I_leader = tempSize + 0
 
     I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
 
     I_surface.append( IceRayPy.core.material.instruction.constant.Color(               P_dll, IceRayPy.type.color.RGB( 0, 0, 0 ), result ) )
     I_surface.append( IceRayPy.core.material.instruction.constant.Scalar(              P_dll, P_ior, tempScalar + 0 ) )
-    I_surface.append( IceRayPy.core.material.instruction.transmission.reflect.Schlick( P_dll, point, normal, tempScalar + 0 ) )
+    I_surface.append( IceRayPy.core.material.instruction.transmission.reflect.Schlick( P_dll, point, normal, tempScalar + 0, I_leader ) )
 
     return I_surface
 

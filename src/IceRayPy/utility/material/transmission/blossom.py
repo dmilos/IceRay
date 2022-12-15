@@ -54,6 +54,7 @@ def Grid(
     I_gauss   = tempScalar + 1
 
     I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Color(  P_dll, IceRayPy.type.color.RGB( 0, 0, 0 ), result ) )
 
     I_surface.append( IceRayPy.core.material.instruction.constant.Color(  P_dll, P_albedo, tempColor + 0 ) )
     I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, P_leader, I_leader ) )
@@ -74,7 +75,6 @@ def Grid(
         I_surface.append( IceRayPy.core.material.instruction.transmission.correct.Trim(  P_dll, normal, I_total, I_start ) )
 
 
-    I_surface.append( IceRayPy.core.material.instruction.constant.Color(  P_dll, IceRayPy.type.color.RGB( 0, 0, 0 ), result ) )
 
     return I_surface
 
@@ -85,6 +85,7 @@ def Hexagon(
     ,P_leader = 0
     ,P_count = G_countHex
     ,P_angle = G_angle
+    ,P_jitter = math.radians( 15 )
     ,P_gauss = G_gauss
     ):
     #global G_angle
@@ -104,19 +105,22 @@ def Hexagon(
     spotEnd    = IceRayPy.core.material.instruction.label.size.dynamic.SpotEnd
 
     I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Color(  P_dll, IceRayPy.type.color.RGB( 0, 0, 0 ), result ) )
 
     I_leader = tempSize + 0
     I_count  = tempSize + 1
     I_total  = tempSize + 2
     I_start  = tempSize + 3
-    I_angle = tempScalar + 0
-    I_gauss = tempScalar + 1
+    I_angle  = tempScalar + 0
+    I_gauss  = tempScalar + 1
+    I_jitter = tempScalar + 2
 
     I_surface.append( IceRayPy.core.material.instruction.constant.Color(  P_dll, P_albedo, tempColor + 0 ) )
     I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, P_leader, I_leader ) )
     I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, P_count,  I_count  ) )
     I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_angle,  I_angle  ) )
     I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_gauss,  I_gauss  ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_jitter, I_jitter  ) )
 
     I_surface.append( IceRayPy.core.material.instruction.transmission.reflect.One( P_dll, point, normal, tempColor + 0, I_leader ) )
 
@@ -125,13 +129,15 @@ def Hexagon(
 
     I_surface.append( IceRayPy.core.material.instruction.transmission.blossom.Hexagon( P_dll, normal, I_leader, I_count, I_angle, I_gauss, I_total, I_start ) )
 
+    I_surface.append( IceRayPy.core.material.instruction.transmission.jitter.Sobol(  P_dll, normal, I_start, I_total, I_jitter ) )
+    #I_surface.append( IceRayPy.core.material.instruction.transmission.jitter.Random( P_dll, normal, I_start, I_total, I_jitter ) )
+    #I_surface.append( IceRayPy.core.material.instruction.transmission.jitter.VDC(    P_dll, normal, I_start, I_total, I_jitter ) )
+
     if( True == G_correctClaim ):
         I_surface.append( IceRayPy.core.material.instruction.transmission.correct.Claim( P_dll, normal, I_total, I_start ) )
     if( True == G_correctTrim  ):
         I_surface.append( IceRayPy.core.material.instruction.transmission.correct.Trim(  P_dll, normal, I_total, I_start ) )
 
-
-    I_surface.append( IceRayPy.core.material.instruction.constant.Color(  P_dll, IceRayPy.type.color.RGB( 0, 0, 0 ), result ) )
 
     return I_surface
 
@@ -162,6 +168,7 @@ def Pinwheel(
     I_gauss = tempScalar + 1
 
     I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Color(  P_dll, IceRayPy.type.color.RGB( 0, 0, 0 ), result ) )
 
     I_surface.append( IceRayPy.core.material.instruction.constant.Color(  P_dll, P_albedo, tempColor + 0 ) )
     I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, P_leader, I_leader ) )
@@ -182,9 +189,59 @@ def Pinwheel(
         I_surface.append( IceRayPy.core.material.instruction.transmission.correct.Trim(  P_dll, normal, I_total, I_start ) )
 
 
-    I_surface.append( IceRayPy.core.material.instruction.constant.Color(  P_dll, IceRayPy.type.color.RGB( 0, 0, 0 ), result ) )
 
     return I_surface
+
+def Sobol(
+     P_dll
+    ,P_config = None
+    ,P_albedo : IceRayPy.type.color.RGB = G_albedo
+    ,P_leader = 0
+    ,P_count = G_countRandom
+    ,P_angle = G_angle
+    ,P_gauss = G_gauss
+    ):
+    result     = IceRayPy.core.material.instruction.label.color.dynamic.RESULT
+    point      = IceRayPy.core.material.instruction.label.coord3d.dynamic.POINT
+    normal     = IceRayPy.core.material.instruction.label.coord3d.dynamic.NORMAL
+    incident   = IceRayPy.core.material.instruction.label.coord3d.dynamic.INCIDENT
+    tempSize   = IceRayPy.core.material.instruction.label.size.temp._BEGIN
+    tempScalar = IceRayPy.core.material.instruction.label.scalar.temp._BEGIN
+    tempColor  = IceRayPy.core.material.instruction.label.color.temp._BEGIN
+    lightThe   = IceRayPy.core.material.instruction.label.light.temp._BEGIN
+    spotBegin  = IceRayPy.core.material.instruction.label.size.dynamic.SpotBegin
+    spotEnd    = IceRayPy.core.material.instruction.label.size.dynamic.SpotEnd
+
+    I_leader = tempSize + 0
+    I_count  = tempSize + 1 # total and count are the same for random
+    I_total  = tempSize + 1 # total and count are the same for random
+    I_start  = tempSize + 2
+    I_angle = tempScalar + 0
+    I_gauss = tempScalar + 1
+
+    I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Color(  P_dll, IceRayPy.type.color.RGB( 0, 0, 0 ), result ) )
+
+    I_surface.append( IceRayPy.core.material.instruction.constant.Color(  P_dll, P_albedo, tempColor + 0 ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, P_leader, I_leader ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, P_count,  I_count  ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_angle,  I_angle  ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_gauss,  I_gauss  ) )
+
+    I_surface.append( IceRayPy.core.material.instruction.transmission.reflect.One( P_dll, point, normal, tempColor + 0, I_leader ) )
+
+    if( True == G_correctCone ):
+        I_surface.append( IceRayPy.core.material.instruction.transmission.correct.Cone( P_dll, normal, incident, I_angle, I_angle ) )
+
+    I_surface.append( IceRayPy.core.material.instruction.transmission.blossom.Sobol( P_dll, normal, I_leader, I_count, I_angle, I_gauss, I_start ) )
+
+    if( True == G_correctClaim ):
+        I_surface.append( IceRayPy.core.material.instruction.transmission.correct.Claim( P_dll, normal, I_total, I_start ) )
+    if( True == G_correctTrim  ):
+        I_surface.append( IceRayPy.core.material.instruction.transmission.correct.Trim(  P_dll, normal, I_total, I_start ) )
+
+    return I_surface
+
 
 def Random(
      P_dll
@@ -214,6 +271,7 @@ def Random(
     I_gauss = tempScalar + 1
 
     I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Color(  P_dll, IceRayPy.type.color.RGB( 0, 0, 0 ), result ) )
 
     I_surface.append( IceRayPy.core.material.instruction.constant.Color(  P_dll, P_albedo, tempColor + 0 ) )
     I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, P_leader, I_leader ) )
@@ -234,7 +292,6 @@ def Random(
         I_surface.append( IceRayPy.core.material.instruction.transmission.correct.Trim(  P_dll, normal, I_total, I_start ) )
 
 
-    I_surface.append( IceRayPy.core.material.instruction.constant.Color(  P_dll, IceRayPy.type.color.RGB( 0, 0, 0 ), result ) )
 
     return I_surface
 
@@ -270,7 +327,9 @@ def Triangle(
     I_start  = tempSize + 3
     I_angle  = tempScalar + 0
     I_gauss  = tempScalar + 1
+    
     I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Color(  P_dll, IceRayPy.type.color.RGB( 0, 0, 0 ), result ) )
 
     I_surface.append( IceRayPy.core.material.instruction.constant.Color(  P_dll, P_albedo, tempColor + 0 ) )
     I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, P_leader, I_leader ) )
@@ -289,9 +348,6 @@ def Triangle(
         I_surface.append( IceRayPy.core.material.instruction.transmission.correct.Claim( P_dll, normal, I_total, I_start ) )
     if( True == G_correctTrim  ):
         I_surface.append( IceRayPy.core.material.instruction.transmission.correct.Trim(  P_dll, normal, I_total, I_start ) )
-
-
-    I_surface.append( IceRayPy.core.material.instruction.constant.Color(  P_dll, IceRayPy.type.color.RGB( 0, 0, 0 ), result ) )
 
     return I_surface
 
@@ -326,6 +382,7 @@ def VDC(
     I_albedo = tempColor + 0
 
     I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Color(  P_dll, IceRayPy.type.color.RGB( 0, 0, 0 ), result ) )
 
     I_surface.append( IceRayPy.core.material.instruction.constant.Color(  P_dll, P_albedo, I_albedo ) )
     I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, P_leader, I_leader ) )
@@ -344,9 +401,6 @@ def VDC(
         I_surface.append( IceRayPy.core.material.instruction.transmission.correct.Claim( P_dll, normal, I_total, I_start ) )
     if( True == G_correctTrim  ):
         I_surface.append( IceRayPy.core.material.instruction.transmission.correct.Trim(  P_dll, normal, I_total, I_start ) )
-
-
-    I_surface.append( IceRayPy.core.material.instruction.constant.Color(  P_dll, IceRayPy.type.color.RGB( 0, 0, 0 ), result ) )
 
     return I_surface
 

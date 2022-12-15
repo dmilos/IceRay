@@ -5,7 +5,7 @@ void InitSystem( void )
  {
   extern void InitSystemWindows( void );
   InitSystemWindows();
-  std::cout << __DATE__ << " - " << __TIME__ << std::endl;
+  std::cout << __FILE__ << "-" << __FUNCTION__ << __DATE__ << " - " << __TIME__ << std::endl;
  }
 
 

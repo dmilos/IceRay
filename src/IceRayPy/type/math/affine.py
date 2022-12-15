@@ -52,9 +52,9 @@ def move3D( P_dll, P_move : Coord3D ):
     P_dll.IceRayC_Type_Math_Affine3D_Move( AddresOf( result ), AddresOf( P_move ) )
     return result
 
-def scaleS( P_dll, P_scale ):
+def scaleS( P_dll, P_scale : ScalarType ):
     result = Scalar3D()
-    P_dll.IceRayC_Type_Math_Affine3D_ScaleV( AddresOf( result ), ScalarType( P_scale ) )
+    P_dll.IceRayC_Type_Math_Affine3D_ScaleS( AddresOf( result ), ScalarType( P_scale ) )
     return result
 
 def scaleV( P_dll, P_scale : Coord3D ):

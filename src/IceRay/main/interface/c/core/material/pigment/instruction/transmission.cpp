@@ -8,45 +8,52 @@
 #define H IceRayC_Material_Pigment_Surfcace_Instruction_Handle
 
 
-IceRayC__EXPORT IceRayC__DECLSPEC  H F(Blossom_Grid0)(      S P_normal, S P_leader, S P_side, S P_angle, S P_gauss, S P_total, S P_start )
+IceRayC__EXPORT IceRayC__DECLSPEC  H F(Blossom_Grid0)(      S P_normal, S P_leader, S P_side, S P_angle, S P_gauss, S P_total, S P_beam )
  {
   typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_transmission::S_blossom::GC_grid    Tf_this;
-  auto Ir_result = new Tf_this{ P_normal, P_leader, P_side, P_angle, P_gauss, P_total, P_start };
+  auto Ir_result = new Tf_this{ P_normal, P_leader, P_side, P_angle, P_gauss, P_total, P_beam };
   return cpp2c( Ir_result );
  }
 
-IceRayC__EXPORT IceRayC__DECLSPEC  H F(Blossom_Hexagon0)(   S P_normal, S P_leader, S P_radius, S P_angle, S P_gauss, S P_total, S P_start )
+IceRayC__EXPORT IceRayC__DECLSPEC  H F(Blossom_Hexagon0)(   S P_normal, S P_leader, S P_radius, S P_angle, S P_gauss, S P_total, S P_beam )
  {
   typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_transmission::S_blossom::GC_hexagon    Tf_this;
-  auto Ir_result = new Tf_this{ P_normal, P_leader, P_radius, P_angle, P_gauss, P_total, P_start };
+  auto Ir_result = new Tf_this{ P_normal, P_leader, P_radius, P_angle, P_gauss, P_total, P_beam };
   return cpp2c( Ir_result );
  }
 
-IceRayC__EXPORT IceRayC__DECLSPEC  H F(Blossom_Pinwheel0)(  S P_normal, S P_leader, S P_radius, S P_angle, S P_gauss, S P_start )
+IceRayC__EXPORT IceRayC__DECLSPEC  H F(Blossom_Pinwheel0)(  S P_normal, S P_leader, S P_radius, S P_angle, S P_gauss, S P_beam )
  {
   typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_transmission::S_blossom::GC_pinwheel    Tf_this;
-  auto Ir_result = new Tf_this{ P_normal, P_leader, P_radius, P_angle, P_gauss, P_start };
+  auto Ir_result = new Tf_this{ P_normal, P_leader, P_radius, P_angle, P_gauss, P_beam };
   return cpp2c( Ir_result );
  }
 
-IceRayC__EXPORT IceRayC__DECLSPEC  H F(Blossom_Random0)(    S P_normal, S P_leader, S P_count, S P_angle, S P_gauss, S P_start )
+IceRayC__EXPORT IceRayC__DECLSPEC  H F(Blossom_Random0)(    S P_normal, S P_leader, S P_count, S P_angle, S P_gauss, S P_beam )
  {
   typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_transmission::S_blossom::GC_random    Tf_this;
-  auto Ir_result = new Tf_this{ P_normal, P_leader, P_count, P_angle, P_gauss, P_start };
+  auto Ir_result = new Tf_this{ P_normal, P_leader, P_count, P_angle, P_gauss, P_beam };
   return cpp2c( Ir_result );
  }
 
-IceRayC__EXPORT IceRayC__DECLSPEC  H F(Blossom_Triangle0)(  S P_normal, S P_leader, S P_radius, S P_angle, S P_gauss, S P_total, S P_start )
+IceRayC__EXPORT IceRayC__DECLSPEC  H F(Blossom_Sobol0)(    S P_normal, S P_leader, S P_count, S P_angle, S P_gauss, S P_beam )
+ {
+  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_transmission::S_blossom::GC_sobol    Tf_this;
+  auto Ir_result = new Tf_this{ P_normal, P_leader, P_count, P_angle, P_gauss, P_beam };
+  return cpp2c( Ir_result );
+ }
+
+IceRayC__EXPORT IceRayC__DECLSPEC  H F(Blossom_Triangle0)(  S P_normal, S P_leader, S P_radius, S P_angle, S P_gauss, S P_total, S P_beam )
  {
   typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_transmission::S_blossom::GC_triangle    Tf_this;
-  auto Ir_result = new Tf_this{ P_normal, P_leader, P_radius, P_angle, P_gauss, P_total, P_start };
+  auto Ir_result = new Tf_this{ P_normal, P_leader, P_radius, P_angle, P_gauss, P_total, P_beam };
   return cpp2c( Ir_result );
  }
 
-IceRayC__EXPORT IceRayC__DECLSPEC  H F(Blossom_VDC0)(       S P_normal, S P_leader, S P_count, S P_angle, S P_gauss, S P_start )
+IceRayC__EXPORT IceRayC__DECLSPEC  H F(Blossom_VDC0)(       S P_normal, S P_leader, S P_count, S P_angle, S P_gauss, S P_beam )
  {
   typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_transmission::S_blossom::GC_vdc    Tf_this;
-  auto Ir_result = new Tf_this{ P_normal, P_leader, P_count, P_angle, P_gauss, P_start };
+  auto Ir_result = new Tf_this{ P_normal, P_leader, P_count, P_angle, P_gauss, P_beam };
   return cpp2c( Ir_result );
  }
 
@@ -81,6 +88,12 @@ IceRayC__EXPORT IceRayC__DECLSPEC  H F(Jitter_Random0)(  S P_normal, S P_leader,
   auto Ir_result = new Tf_this{ P_normal, P_leader, P_count, P_angle };
   return cpp2c( Ir_result );
  }
+IceRayC__EXPORT IceRayC__DECLSPEC  H F(Jitter_Sobol0)(     S P_normal, S P_leader, S P_count, S P_angle )
+ {
+  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_transmission::S_jitter::GC_sobol    Tf_this;
+  auto Ir_result = new Tf_this{ P_normal, P_leader, P_count, P_angle };
+  return cpp2c( Ir_result );
+ }
 IceRayC__EXPORT IceRayC__DECLSPEC  H F(Jitter_VDC0)(     S P_normal, S P_leader, S P_count, S P_angle )
  {
   typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_transmission::S_jitter::GC_vdc    Tf_this;
@@ -88,38 +101,38 @@ IceRayC__EXPORT IceRayC__DECLSPEC  H F(Jitter_VDC0)(     S P_normal, S P_leader,
   return cpp2c( Ir_result );
  }
 
-IceRayC__EXPORT IceRayC__DECLSPEC  H F( Reflect_One0)( S P_point, S P_normal, S P_albedo, S P_index )
+IceRayC__EXPORT IceRayC__DECLSPEC  H F( Reflect_One0)( S P_point, S P_normal, S P_albedo, S P_leader  )
  {
   typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_transmission::S_reflect::GC_one    Tf_this;
-  auto Ir_result = new Tf_this{ P_point, P_normal, P_albedo, P_index };
+  auto Ir_result = new Tf_this{ P_point, P_normal, P_albedo, P_leader };
   return cpp2c( Ir_result );
  }
 
-IceRayC__EXPORT IceRayC__DECLSPEC  H F( Reflect_Schlick0)( S P_point, S P_normal, S P_ior )
+IceRayC__EXPORT IceRayC__DECLSPEC  H F( Reflect_Schlick0)( S P_point, S P_normal, S P_ior, S P_leader )
  {
   typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_transmission::S_reflect::GC_schlick    Tf_this;
-  auto Ir_result = new Tf_this{ P_point, P_normal, P_ior };
+  auto Ir_result = new Tf_this{ P_point, P_normal, P_ior, P_leader };
   return cpp2c( Ir_result );
  }
 
-IceRayC__EXPORT IceRayC__DECLSPEC  H F( Refract_Fresnel0)( S P_point, S P_normal, S P_ior, S P_albedo )
+IceRayC__EXPORT IceRayC__DECLSPEC  H F( Refract_Fresnel0)( S P_point, S P_normal, S P_ior, S P_albedo, S P_total, S P_leader )
  {
   typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_transmission::S_refract::GC_fresnel    Tf_this;
-  auto Ir_result = new Tf_this{ P_point, P_normal, P_ior, P_albedo };
+  auto Ir_result = new Tf_this{ P_point, P_normal, P_ior, P_albedo, P_total, P_leader  };
   return cpp2c( Ir_result );
  }
 
-IceRayC__EXPORT IceRayC__DECLSPEC  H F( Refract_Schlick0)( S P_point, S P_normal, S P_ior, S P_albedo )
+IceRayC__EXPORT IceRayC__DECLSPEC  H F( Refract_Schlick0)( S P_point, S P_normal, S P_ior, S P_albedo, S P_total, S P_leader )
  {
   typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_transmission::S_refract::GC_schlick   Tf_this;
-  auto Ir_result = new Tf_this{ P_point, P_normal, P_ior, P_albedo };
+  auto Ir_result = new Tf_this{ P_point, P_normal, P_ior, P_albedo, P_total, P_leader };
   return cpp2c( Ir_result );
  }
 
-IceRayC__EXPORT IceRayC__DECLSPEC  H F( Refract_Snell0)(     S P_point, S P_normal, S P_ior, S P_albedo, S P_transparency  )
+IceRayC__EXPORT IceRayC__DECLSPEC  H F( Refract_Snell0)(     S P_point, S P_normal, S P_ior, S P_albedo, S P_transparency, S P_leader  )
  {
   typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_transmission::S_refract::GC_snell    Tf_this;
-  auto Ir_result = new Tf_this{ P_point, P_normal, P_ior, P_albedo, P_transparency };
+  auto Ir_result = new Tf_this{ P_point, P_normal, P_ior, P_albedo, P_transparency, P_leader };
   return cpp2c( Ir_result );
  }
 

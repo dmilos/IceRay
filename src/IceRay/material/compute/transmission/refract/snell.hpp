@@ -44,7 +44,7 @@
                    enum Ee_output
                     {
                       En_outSize_RayCount=0
-                     ,En_outRay_refracted=1
+                     ,En_outSize_RayStart=1
                     };
 
                  public:
@@ -55,9 +55,9 @@
                      ,T_size const& P_ior                     //= 0
                      ,T_size const& P_albedo                  //= 1
                      ,T_size const& P_transparency            //= 0
-                  //,T_size const& P_outSize_rayCount = 0,
-                   //,T_size const& P_outRay_refracted = 1
-                    )
+                   //,T_size const& P_outSize_RayCount  // = 1
+                     ,T_size const& P_outSize_RayStart  // = 0,
+                     )
                     {
                      F_input<T_coord>(  En_inCoord_Point,        P_inCoord_Point     );
                      F_input<T_coord>(  En_inCoord_Normal,       P_inCoord_Normal    );
@@ -65,8 +65,8 @@
                      F_input<T_color>(  En_inColor_Albedo,       P_albedo   );
                      F_input<T_color>(  En_inColor_Transparency, P_transparency   );
 
-                   //F_output<T_size>( En_outSize_RayCount,     P_outSize_RayCount );
-                   //F_output<T_ray>(  En_outRay_refracted,     P_outRay_refracted );
+                   //F_output<T_size>( En_outSize_RayCount, P_outSize_RayCount );
+                     F_output<T_size>( En_outSize_RayStart, P_outSize_RayStart );
                     }
 
                  public:
@@ -131,12 +131,8 @@
                         }break;
                       }
 
-
-
-
-                     //M2_memoryRay->Fv_store( F_output()[ T_memory::En_size][ En_outRay_Rayrefracted ], I_refracted );
-                     //M2_memorySize->Fv_store( F_output()[ T_memory::En_size][ En_outSize_RayCount ], 1 );
-
+                   //M2_memorySize->Fv_store( F_output<T_size>(En_outSize_RayCount), 1 );
+                     M2_memorySize->Fv_store( F_output<T_size>(En_outSize_RayStart), P_next.Fv_size() - 1 );
                      return true;
                     }
 

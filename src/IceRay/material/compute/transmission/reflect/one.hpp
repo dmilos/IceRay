@@ -39,7 +39,8 @@
                     };
                    enum Ee_output
                     {
-                      En_outSize_RayIndex=1
+                     En_outSize_RayCount=0
+                    ,En_outSize_RayStart=1
                     };
 
                  public:
@@ -49,14 +50,15 @@
                      ,T_size const& P_inCoord_Normal    // = 1
                      ,T_size const& P_albedo            // = 0
                    //,T_size const& P_outSize_RayCount  // = 1
-                     ,T_size const& P_outSize_RayIndex  // = 0,
+                     ,T_size const& P_outSize_RayStart  // = 2
                     )
                     {
                      F_input<T_coord>( En_inCoord_Point,  P_inCoord_Point  );
                      F_input<T_coord>( En_inCoord_Normal, P_inCoord_Normal );
                      F_input<T_color>( En_inColor_Albedo, P_albedo );
 
-                     F_output<T_size>(  En_outSize_RayIndex,     P_outSize_RayIndex );
+                   //F_output<T_size>( En_outSize_RayCount, P_outSize_RayCount );
+                     F_output<T_size>( En_outSize_RayStart, P_outSize_RayStart );
                     }
 
                  public:
@@ -87,7 +89,7 @@
                      I_reflected.M_state       = I_intersect.M_state;
 
                    //M2_memoryRay->Fv_store(F_output<T_size>(P_outSize_RayCount),  1 );
-                     M2_memorySize->Fv_store( F_output<T_size>(En_outSize_RayIndex), P_next.Fv_size() - 1 );
+                     M2_memorySize->Fv_store( F_output<T_size>(En_outSize_RayStart), P_next.Fv_size() - 1 );
                      return true;
                     }
 

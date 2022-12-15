@@ -42,7 +42,6 @@ def plate( P_dll, P_config = { 'level':  - 1.01, 'size' : 3, 'shadow': False, 'p
 
     return wrapper
 
-
 def plane( P_dll, P_config = { 'level':  - 1.001, 'shadow': False, 'pigment': None }, P_light = None, P_exponat = None ):
 
     level = -1.0001;
@@ -69,6 +68,33 @@ def plane( P_dll, P_config = { 'level':  - 1.001, 'shadow': False, 'pigment': No
 
     return wrapper
 
+def disc( P_dll, P_config = { 'level':  - 1.001, 'shadow': False, 'pigment': None }, P_light = None, P_exponat = None ):
+    level = -1.0001;
+    if( 'level' in P_config ):
+        level = P_config['level']
+    geometry = IceRayPy.core.geometry.simple.Disc( P_dll )
+    geometry.radius( 3 )
+    geometry.center( Coord3D( 0, 0, level ) )
+    geometry.normal( Coord3D( 0, 0, 1 ) )
+
+    I_scene = { 'light': P_light, 'barrier' : P_exponat }
+    if( 'shadow' in P_config ):
+        if( False == P_config['shadow'] ):
+            I_scene['barrier'] = IceRayPy.core.geometry.volumetric.Vacuum( P_dll )
+
+    pigment = IceRayPy.utility.material.illumination.Lambert( P_dll, I_scene, IceRayPy.type.color.RGB( 0.5, 0.5, 0.5 ) )
+    if( 'pigment' in P_config ):
+        pigment = P_config['pigment'] #utility.material.pattern.Checker( P_dll, I_scene )
+
+    pigment = IceRayPy.utility.material.pattern.Checker( P_dll, I_scene )
+
+    wrapper = IceRayPy.core.object.Wrapper( P_dll )
+    wrapper.pigment( pigment )
+    wrapper.geometrySet( geometry )
+
+    return wrapper
+
+
 def cornel_close(
      P_dll
     ,P_config = None
@@ -77,19 +103,19 @@ def cornel_close(
     ): # non-classic
 
     global G_dimesion
-    I_dimension = [ 8, 8, 4 ] # [ 6, 6, 3.5 ]
-    I_move = [ 0, 0, I_dimension[2]/2-1 ]
+    I_room = [ 8, 8, 4 ] # [ 6, 6, 3.5 ]
+    I_move = [ 0, 0, I_room[2]/2-1 ]
     wall = 0.1
 
     lo = Coord3D()
-    lo[0] = -I_dimension[0]/2 + I_move[0]
-    lo[1] = -I_dimension[1]/2 + I_move[1]
-    lo[2] = -I_dimension[2]/2 + I_move[2]
+    lo[0] = -I_room[0]/2 + I_move[0]
+    lo[1] = -I_room[1]/2 + I_move[1]
+    lo[2] = -I_room[2]/2 + I_move[2]
 
     hi = Coord3D()
-    hi[0] = +I_dimension[0]/2 + I_move[0]
-    hi[1] = +I_dimension[1]/2 + I_move[1]
-    hi[2] = +I_dimension[2]/2 + I_move[2]
+    hi[0] = +I_room[0]/2 + I_move[0]
+    hi[1] = +I_room[1]/2 + I_move[1]
+    hi[2] = +I_room[2]/2 + I_move[2]
 
     I_scene = { 'light': P_light, 'barrier' : P_exponat }
     if( 'shadow' in P_config ):
@@ -143,21 +169,18 @@ def cornel_close(
     list = IceRayPy.core.geometry.rtss.List( P_dll )
     rtss.rtss( list )
 
-    rtss.push( IceRayPy.core.geometry.Pretender( P_dll, leftW.cast2Geometry(),       leftW ) )
-    rtss.push( IceRayPy.core.geometry.Pretender( P_dll, rightW.cast2Geometry(),      rightW ) )
+    rtss.push( IceRayPy.core.geometry.Pretender( P_dll, leftW.cast2Geometry(),       leftW       ) )
+    rtss.push( IceRayPy.core.geometry.Pretender( P_dll, rightW.cast2Geometry(),      rightW      ) )
     rtss.push( IceRayPy.core.geometry.Pretender( P_dll, backgroundW.cast2Geometry(), backgroundW ) )
     rtss.push( IceRayPy.core.geometry.Pretender( P_dll, foregroundW.cast2Geometry(), foregroundW ) )
-    rtss.push( IceRayPy.core.geometry.Pretender( P_dll, floorW.cast2Geometry(),      floorW ) )
-    rtss.push( IceRayPy.core.geometry.Pretender( P_dll, ceilW.cast2Geometry(),       ceilW ) )
+    rtss.push( IceRayPy.core.geometry.Pretender( P_dll, floorW.cast2Geometry(),      floorW      ) )
+    rtss.push( IceRayPy.core.geometry.Pretender( P_dll, ceilW.cast2Geometry(),       ceilW       ) )
 
     wrapper = IceRayPy.core.object.Wrapper( P_dll )
     wrapper.geometrySet( rtss )
 
     return wrapper
 
-G_option =3
-G_angle = 2
-G_size = 4
 
 def cornell_radiosity(
      P_dll
@@ -166,20 +189,36 @@ def cornell_radiosity(
     ,P_exponat = None
     ): # non-classic
 
-    global G_dimesion
-    I_dimension = [ 10, 10, 5 ]
-    I_move = [ 0, 0, I_dimension[2]/2-1 ]
+    I_blossom = 'triangle'
+    I_sample = 25
+    I_angle = math.radians( 75 )
+    I_jitter = math.radians( 15 )
+    I_floor = IceRayPy.type.color.RGB( 0.75, 0.75, 0.75 )
+
+    if( None != P_config ):
+        if( 'radiosity' in P_config ):
+            if( 'blossom' in P_config['radiosity'] ):
+                I_blossom = P_config['radiosity']['blossom']
+            if( 'sample' in P_config['radiosity'] ):
+                I_sample = P_config['radiosity']['sample']
+            if( 'angle' in P_config['radiosity'] ):
+                I_angle = P_config['radiosity']['angle']
+            if( 'jitter' in P_config['radiosity'] ):
+                I_jitter = P_config['radiosity']['jitter']
+
+    I_room = [ 8, 8, 4 ] # [ 6, 6, 3.5 ]
+    I_move = [ 0, 0, I_room[2]/2-1 ]
     wall = 0.1
 
     lo = Coord3D()
-    lo[0] = -I_dimension[0]/2 + I_move[0]
-    lo[1] = -I_dimension[1]/2 + I_move[1]
-    lo[2] = -I_dimension[2]/2 + I_move[2]
+    lo[0] = -I_room[0]/2 + I_move[0]
+    lo[1] = -I_room[1]/2 + I_move[1]
+    lo[2] = -I_room[2]/2 + I_move[2]
 
     hi = Coord3D()
-    hi[0] = +I_dimension[0]/2 + I_move[0]
-    hi[1] = +I_dimension[1]/2 + I_move[1]
-    hi[2] = +I_dimension[2]/2 + I_move[2]
+    hi[0] = +I_room[0]/2 + I_move[0]
+    hi[1] = +I_room[1]/2 + I_move[1]
+    hi[2] = +I_room[2]/2 + I_move[2]
 
     I_scene = { 'light': P_light, 'barrier' : P_exponat }
     if( 'shadow' in P_config ):
@@ -189,7 +228,7 @@ def cornell_radiosity(
     leftG = IceRayPy.core.geometry.simple.Box( P_dll )
     leftG.box(        Coord3D(  lo[0]-wall, lo[1], lo[2]) , Coord3D(lo[0],      hi[1], hi[2]) )
     leftW = IceRayPy.core.object.Wrapper( P_dll )
-    pigment = IceRayPy.utility.material.transmission.reflect.One( P_dll, I_scene )
+    pigment = IceRayPy.utility.material.illumination.Lambert( P_dll, I_scene, IceRayPy.type.color.RGB( 0.33, 0.33, 0.33 ) )
     leftW.pigment( pigment )
     leftW.geometrySet( leftG )
 
@@ -200,45 +239,45 @@ def cornell_radiosity(
     rightW.pigment( pigment )
     rightW.geometrySet( rightG )
 
-    pigment = IceRayPy.utility.material.illumination.Lambert( P_dll, I_scene, IceRayPy.type.color.RGB( 1, 0.33, 0.33 ) )
     backgroundG = IceRayPy.core.geometry.simple.Box( P_dll )
     backgroundG.box(  Coord3D( lo[0], lo[1]-wall, lo[2] ) , Coord3D( hi[0], lo[1], hi[2] ) )
     backgroundW = IceRayPy.core.object.Wrapper( P_dll )
+    pigment = IceRayPy.utility.material.illumination.Lambert( P_dll, I_scene, IceRayPy.type.color.RGB( 1, 0.33, 0.33 ) )
     backgroundW.pigment( pigment )
     backgroundW.geometrySet( backgroundG )
 
-    pigment = IceRayPy.utility.material.illumination.Lambert( P_dll, I_scene, IceRayPy.type.color.RGB( 0.33, 1, 0.33 ) )
     foregroundG = IceRayPy.core.geometry.simple.Box( P_dll )
     foregroundG.box(  Coord3D( lo[0], hi[1],  lo[2] ),      Coord3D( hi[0], hi[1] + wall, hi[2] ) )
     foregroundW = IceRayPy.core.object.Wrapper( P_dll )
+    pigment = IceRayPy.utility.material.illumination.Lambert( P_dll, I_scene, IceRayPy.type.color.RGB( 0.33, 1, 0.33 ) )
     foregroundW.pigment( pigment )
     foregroundW.geometrySet( foregroundG )
 
-    global G_option
-    global G_angle
-    global G_size
-    if 1 == G_option :
-        pigment = IceRayPy.utility.material.transmission.blossom.VDC(     P_dll, I_scene, IceRayPy.type.color.RGB( 0.5, 0.5, 0.5 ), 0, 16, math.radians(G_angle) )
-    if 2 == G_option :
-        pigment = IceRayPy.utility.material.transmission.blossom.Random(  P_dll, I_scene, IceRayPy.type.color.RGB( 0.5, 0.5, 0.5 ), 0, 3, math.radians(G_angle) )
-    if 3 == G_option :
-        pigment = IceRayPy.utility.material.transmission.blossom.Hexagon( P_dll, I_scene, IceRayPy.type.color.RGB( 0.5, 0.5, 0.5 ), 0, G_size, math.radians(G_angle) )
-    if 4 == G_option :
-        pigment = IceRayPy.utility.material.transmission.blossom.Grid(    P_dll, I_scene, IceRayPy.type.color.RGB( 0.5, 0.5, 0.5 ), 0, 4,  math.radians(G_angle) )
+    if 'one' == I_blossom :
+        pigment = IceRayPy.utility.material.transmission.reflect.One(      P_dll, {}, I_floor )
+    if 'vdc' == I_blossom :
+        pigment = IceRayPy.utility.material.transmission.blossom.VDC(      P_dll, I_scene, I_floor, 0, I_sample, I_angle )
+    if 'random' == I_blossom :
+        pigment = IceRayPy.utility.material.transmission.blossom.Random(   P_dll, I_scene, I_floor, 0, I_sample, I_angle )
+    if 'sobol' == I_blossom :
+        pigment = IceRayPy.utility.material.transmission.blossom.Sobol(    P_dll, I_scene, I_floor, 0, I_sample, I_angle )
+    if 'hexagon' == I_blossom :
+        pigment = IceRayPy.utility.material.transmission.blossom.Hexagon(  P_dll, I_scene, I_floor, 0, I_sample, I_angle, I_jitter )
+    if 'grid' == I_blossom :
+        pigment = IceRayPy.utility.material.transmission.blossom.Grid(     P_dll, I_scene, I_floor, 0, I_sample, I_angle )
+    if 'triangle' == I_blossom :
+        pigment = IceRayPy.utility.material.transmission.blossom.Triangle( P_dll, I_scene, I_floor, 0, I_sample, I_angle )
 
-    G_option = 3
-    G_angle = G_angle + 2
-    G_size = G_size + 1
     floorG = IceRayPy.core.geometry.simple.Box( P_dll )
     floorG.box(       Coord3D( lo[0], lo[1], lo[2]-wall ) , Coord3D( hi[0], hi[0], lo[2] ) )
     floorW = IceRayPy.core.object.Wrapper( P_dll )
     floorW.pigment( pigment )
     floorW.geometrySet( floorG )
 
-    pigment = IceRayPy.utility.material.illumination.Lambert( P_dll, I_scene, IceRayPy.type.color.RGB( 0.5, 0.5, 0.5 ) )
     ceilG = IceRayPy.core.geometry.simple.Box( P_dll )
     ceilG.box(        Coord3D( lo[0], lo[1], hi[2] ),       Coord3D( hi[0], hi[1], hi[2] + wall ) )
     ceilW = IceRayPy.core.object.Wrapper( P_dll )
+    pigment = IceRayPy.utility.material.illumination.Lambert( P_dll, I_scene, IceRayPy.type.color.RGB( 0.5, 0.5, 0.5 ) )
     ceilW.pigment( pigment )
     ceilW.geometrySet( ceilG )
 
@@ -267,20 +306,19 @@ def mirror_box(
     ,P_exponat = None
     ): # non-classic
 
-    global G_dimesion
-    I_dimension = [ 8, 8, 4 ] # [ 6, 6, 3.5 ]
-    I_move = [ 0, 0, I_dimension[2]/2-1 ]
+    I_room = [ 8, 8, 4 ] # [ 6, 6, 3.5 ]
+    I_move = [ 0, 0, I_room[2]/2-1 ]
     wall = 0.1
 
     lo = Coord3D()
-    lo[0] = -I_dimension[0]/2 + I_move[0]
-    lo[1] = -I_dimension[1]/2 + I_move[1]
-    lo[2] = -I_dimension[2]/2 + I_move[2]
+    lo[0] = -I_room[0]/2 + I_move[0]
+    lo[1] = -I_room[1]/2 + I_move[1]
+    lo[2] = -I_room[2]/2 + I_move[2]
 
     hi = Coord3D()
-    hi[0] = +I_dimension[0]/2 + I_move[0]
-    hi[1] = +I_dimension[1]/2 + I_move[1]
-    hi[2] = +I_dimension[2]/2 + I_move[2]
+    hi[0] = +I_room[0]/2 + I_move[0]
+    hi[1] = +I_room[1]/2 + I_move[1]
+    hi[2] = +I_room[2]/2 + I_move[2]
 
     I_scene = { 'light': P_light, 'barrier' : P_exponat }
     if( 'shadow' in P_config ):
@@ -348,7 +386,6 @@ def mirror_box(
     return wrapper
 
 
-
 def mirror_sphere(
      P_dll
     ,P_config = None
@@ -357,8 +394,8 @@ def mirror_sphere(
     ): # non-classic
 
     global G_dimesion
-    I_dimension = [ 8, 8, 4 ] # [ 6, 6, 3.5 ]
-    I_move = [ 0, 0, I_dimension[2]/2-1 ]
+    I_room = [ 8, 8, 4 ] # [ 6, 6, 3.5 ]
+    I_move = [ 0, 0, I_room[2]/2-1 ]
     wall = 0.1
 
     center = Coord3D()
@@ -390,4 +427,3 @@ def mirror_sphere(
     wrapper.geometrySet( rtss )
 
     return wrapper
-

@@ -176,32 +176,48 @@ pigment_list = {
       #'T-0-reflect-One'               : utility.material.transmission.reflect.One,      #OK
       #'T-1-reflect-Schlick'           : utility.material.transmission.reflect.Schlick,  #OK
       #'T-2-reflect-blossom-Grid'      : utility.material.transmission.blossom.Grid,     #TODO edge bug
-      'T-3-reflect-blossom-Hexagon'   : utility.material.transmission.blossom.Hexagon,  #CHECK
+      #'T-3-reflect-blossom-Hexagon'   : utility.material.transmission.blossom.Hexagon,  #CHECK
       #'T-4-reflect-blossom-trg'       : utility.material.transmission.blossom.Triangle, #OK
       ##'T-5-reflect-blossom-Pinwheel'  : utility.material.transmission.blossom.Pinwheel, #TODO
       #'T-6-reflect-blossom-Rand'      : utility.material.transmission.blossom.Random,   #OK
       #'T-7-reflect-blossom-VDC'       : utility.material.transmission.blossom.VDC,      #OK
-      #'T-8-refract-Fresnel'           : utility.material.transmission.refract.Fresnel,  #OK
-      #'T-9-refract-Snell'             : utility.material.transmission.refract.Snell,    #OK
-      #'T-A-refract-Schlick'           : utility.material.transmission.refract.Schlick,  #OK
+      'T-8-refract-Fresnel'           : utility.material.transmission.refract.Fresnel,  #OK
+      'T-9-refract-Snell'             : utility.material.transmission.refract.Snell,    #OK
+      'T-A-refract-Schlick'           : utility.material.transmission.refract.Schlick,  #OK
 }
 
 room_list = {
       #'vacuum'    : room.vacuum,
       #'plane'     : room.plane,
       #'plate'     : room.plate,
-     #'R-M-box'    : room.mirror_box,
-     # 'R-M-sphere' : room.mirror_sphere,
-      #'CRNL'      : room.cornell,
-      #'cornel-0pen'    : room.cornel_open,
-      'cornel-close'    : room.cornel_close
+      #'disc'     : room.disc
+      #'R-M-box'    : room.mirror_box,
+      # 'R-M-sphere' : room.mirror_sphere,
+      #'C-radiosity' : room.cornell_radiosity,
+      #'C-0pen'      : room.cornel_open,
+       'C-close'     : room.cornel_close
     }
 
 decoration_list = {
-      'vacuum'    : decoration.vacuum,
-      'ptrs'      : decoration.pointers,
+      'vacuum'      : decoration.vacuum,
+      'ptrs'        : decoration.pointers,
+      'radiosity'   : decoration.radiosity,
     }
 decoration_item = 'ptrs'
+
+## radiosity {{{ 
+camera_list     = { 'F-persp'                     : core.camera.flat.Perspective }
+#light_list      = { 'dark'                        : core.light.Dark }
+medium_list     = { 'trans'                       : core.material.medium.Transparent }
+#geometry_list   = { 'simple-sphere'               : core.geometry.simple.Sphere }
+geometry_list   = { 'simple-torus'               : utility.geometry.simple.Torus }
+#geometry_list   = { 'volumetric-vacuum'               : core.geometry.volumetric.Vacuum }
+pigment_list    = { 'transmission-refract-Schlick'  : utility.material.transmission.refract.Schlick }
+room_list       = { 'C-radiosity'                 : room.cornell_radiosity }
+decoration_item = 'radiosity'
+## }}} 
+
+
 
 def doRendering(P_config):
     folder = P_config['folder']
@@ -248,9 +264,9 @@ def doRendering(P_config):
                        start = time.time()
                        manager.start( picture )
                        delta = time.time() - start
-                       print( "Time:" + str( delta ) )
+                       print( "Time:" + str( delta ), flush = True )
 
-                       crop  = IceRayPy.type.graph.Picture( P_config['dll'])
+                       crop  = IceRayPy.type.graph.Picture( P_config['dll'] )
 
                        A = IceRayPy.type.math.coord.Size2D( P_config['window']['A']['x'], P_config['window']['A']['y'] )
                        B = IceRayPy.type.math.coord.Size2D( P_config['window']['B']['x'], P_config['window']['B']['y'] )
@@ -281,9 +297,21 @@ config['folder'] = '_out'
 config['index'] = 0
 
 config['picture'] = {}
-config['picture']['width']  = int( 800 * 1 )
-config['picture']['height'] = int( 800 * 1 )
+config['picture']['width']  = int( 800 )
+config['picture']['height'] = int( 800 )
 #config['pixel']['type'] = 'basic'
+config['window'] = {}
+config['window'] = {}
+config['window']['A'] = {}
+config['window']['B'] = {}
+config['window']['A']['x'] =  int( config['picture']['width']  * 0.2 )
+config['window']['A']['y'] =  int( config['picture']['height'] * 0.675 )
+config['window']['B']['x'] =  int( config['picture']['width']  * 0.2   )  + int( config['picture']['width'] * 0.1 )
+config['window']['B']['y'] =  int( config['picture']['height'] * 0.675 )  + int( config['picture']['height'] * 0.1 )
+config['window']['A']['x'] =  0
+config['window']['A']['y'] =  0
+config['window']['B']['x'] =  config['picture']['width']
+config['window']['B']['y'] =  config['picture']['height']
 
 config['camera'] = {}
 config['camera']['angle-horizontal']  = 1
@@ -296,7 +324,7 @@ config['camera']['eye']  = IceRayPy. type.math.coord.Scalar3D( 0, -3, 0 )
 config['camera']['view'] = IceRayPy.type.math.coord.Scalar3D( 0, 0, 0 )
 
 config['ray-trace']={}
-config['ray-trace']['depth'] = 16
+config['ray-trace']['depth'] = 8
 config['ray-trace']['trash'] = 1.0/10000.0
 config['ray-trace']['next'] = 17000
 
@@ -304,19 +332,22 @@ config['hot'] = {}
 config['hot']['x'] = 75 #int( (1024/2048) * config['picture']['width'] )
 config['hot']['y'] = 200 * 1 #int( ( 692/2048) * config['picture']['height'] )
 
-config['window'] = {}
-config['window'] = {}
-config['window']['A'] = {}
-config['window']['B'] = {}
-config['window']['A']['x'] = 0 * int( config['picture']['width']  * 0.333 )
-config['window']['A']['y'] = 0 * int( config['picture']['height'] * 0.333 )
-config['window']['B']['x'] =     int( config['picture']['width']  * 1 )
-config['window']['B']['y'] =     int( config['picture']['height'] * 1 )
 
 config['room'] = {}
+config['room']['radiosity'] = {}
+config['room']['radiosity']['blossom'] = 'hexagon'
+config['room']['radiosity']['patch'] = math.radians( 60 )
+config['room']['radiosity']['angle'] = math.radians( 90 )
+config['room']['radiosity']['jitter'] = math.radians( 60 )
+config['room']['radiosity']['sample'] = int( (1 - math.cos(config['room']['radiosity']['angle']) ) / ( 1 - math.cos( config['room']['radiosity']['patch'] ) ) + 1 )
 
-print( os.getcwd(), flush = True  )
-print( platform.system(), flush = True  )
+config['observer'] = {}
+config['observer']['radius'] = 4
+config['observer']['dilatation'] = 1
+
+print( "config:" + str( config ), flush = True  )
+print( "OS:" + os.getcwd(), flush = True  )
+print( "Platform:" + platform.system(), flush = True  )
 
 dll_path = IceRayPy.system.SearchCDLL()
 
@@ -356,12 +387,11 @@ I_picture.size( 256, 256 )
 IceRayPy.type.graph.Default( I_picture )
 I_picture.storePNM( "default_256.pnm" )
 
-
 for index in range( start, 360 * int( dilatation ), step ):
 
     config['index'] = index
     t = index / 360.0 / dilatation
-    #t = 0
+    #t = 0 / 360.0 / dilatation
     alpha = t * ( 2 * 3.1415926 )
     #alpha = math.radians( 57 )
     height = heightLo #+ ( math.sin( alpha - math.pi/2 )*0.5 + 0.5 )*( heightHi - heightLo );
@@ -394,15 +424,18 @@ for index in range( start, 360 * int( dilatation ), step ):
 
     config['camera']['eye']  = IceRayPy.type.math.coord.Scalar3D( x, y, height );
     config['camera']['view'] = IceRayPy.type.math.coord.Scalar3D( 0, 0, 0 )
-    print( math.degrees(alpha), " _ " ,  x, ",", y, ",", height, "  ", math.sqrt( x*x+ y*y ) )
+    print( "Camera: ", math.degrees(alpha), " _ " ,  x, ",", y, ",", height, "  ", math.sqrt( x*x+ y*y ) )
     print( "Hot: ", config['hot'], flush = True  )
     print( "Index:" + str(index) + "[" + os.getcwd() + "]", flush = True  )
 
     doRendering( config )
-    print(str( gc.get_threshold() )  )
-    print(str( gc.get_count() )  )
-    print(str( gc.collect() )  )
-    print(str( gc.get_count() )  )
+    #config['room']['radiosity']['angle'] = config['room']['radiosity']['angle'] + math.radians( 4 )
+    #config['room']['radiosity']['jitter'] = config['room']['radiosity']['jitter'] +  math.radians( 0.1 )
+
+    print( 'garbage collector: get_threshold() ' + str( gc.get_threshold() )  )
+    print( 'garbage collector: get_count()     ' + str( gc.get_count()     )  )
+    print( 'garbage collector: collect()       ' + str( gc.collect()       )  )
+    print( 'garbage collector: get_count()    )' + str( gc.get_count()    )  )
 
 
 #time.sleep( 20 )

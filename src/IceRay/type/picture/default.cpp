@@ -8,7 +8,7 @@ void GF_default( GS_DDMRM::S_IceRay::S_type::S_picture::GC__pure & P_image )
   double I_width  = P_image.F_size()[0];
   double I_height = P_image.F_size()[1];
   typedef   color::hsl<double> hsl_t;
-  typedef  GS_DDMRM::S_IceRay::S_type::S_picture::GC__pure::T_color color_t;
+  typedef  GS_DDMRM::S_IceRay::S_type::S_picture::GC__pure::T_color Tf_color;
 
   for( I_coord[1]=0; I_coord[1] < I_height; ++I_coord[1] )
    for( I_coord[0]=0; I_coord[0] < I_width;  ++I_coord[0] )
@@ -22,7 +22,13 @@ void GF_default( GS_DDMRM::S_IceRay::S_type::S_picture::GC__pure & P_image )
      if( I_coord[0] == I_coord[1] ) c = color::constant::white_t{};
      if( (I_width - I_coord[0] - 1) == I_coord[1] ) c = color::constant::black_t{};
 
-     P_image.Fv_pixel( I_coord, color_t{ c } );
+     bool invert = bool( ( I_coord[0]/17)%2 ) ^ bool( ( I_coord[1]/17)%2 );
+     Tf_color pixel { c };
+     if( invert )
+      {
+       ::color::operation::invert( pixel, Tf_color{ c } );
+      }
+     P_image.Fv_pixel( I_coord, pixel );
     }
  }
 

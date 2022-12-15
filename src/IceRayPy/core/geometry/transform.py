@@ -40,6 +40,7 @@ class Identity:
         self.m_cargo['child'] = P_child
         self.m_cargo['dll'].IceRayC_Geometry_Transform_Identity_Child( self.m_cargo['this'], P_child.m_cargo['this'] )
 
+
 class Translate:
     def __init__( self, P_dll,  P_child = None , P_move = None ):
         self.m_cargo = {}

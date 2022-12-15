@@ -88,6 +88,22 @@ def Value(
 
     return I_surface
 
+def Sobol(
+      P_dll
+     ,P_config
+    ):
+    I_pattern = IceRayPy.core.material.pattern.noise.Sobol( P_dll ) #!< Not yet implemented
+
+    result = IceRayPy.core.material.instruction.label.color.dynamic.RESULT
+    point = IceRayPy.core.material.instruction.label.coord3d.dynamic.POINT
+    value = IceRayPy.core.material.instruction.label.scalar.temp._BEGIN
+
+    I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
+    I_surface.append( IceRayPy.core.material.instruction.pattern.Scalar( P_dll, I_pattern, value, point ) )
+    I_surface.append( IceRayPy.core.material.instruction.convert.Scalar2Color( P_dll, result, value ) )
+
+    return I_surface
+
 
 def VDC(
       P_dll

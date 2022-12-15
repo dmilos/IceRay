@@ -43,19 +43,19 @@
                     };
                    enum Ee_output
                     {
-                      En_outSize_RayCount=0
-                     ,En_outRay_refracted=1
+                    En_outSize_RayCount=0
+                   ,En_outSize_RayStart=1
                     };
 
                  public:
                    GC_schlick
                     (
-                      T_size const& P_inCoord_Point     = 0
-                     ,T_size const& P_inCoord_Normal    = 1
-                     ,T_size const& P_ior               = 0
-                     ,T_size const& P_albedo            = 0
-                   //,T_size const& P_outSize_rayCount = 0,
-                   //,T_size const& P_outRay_refracted = 1
+                      T_size const& P_inCoord_Point     // = 0
+                     ,T_size const& P_inCoord_Normal    // = 1
+                     ,T_size const& P_ior               // = 0
+                     ,T_size const& P_albedo            // = 0
+                     ,T_size const& P_outSize_RayCount  // = 1
+                     ,T_size const& P_outSize_RayStart  // = 2
                     )
                     {
                      F_input<T_coord>(  En_inCoord_Point,       P_inCoord_Point     );
@@ -63,8 +63,8 @@
                      F_input<T_scalar>( En_inScalar_IOR,        P_ior       );
                      F_input<T_color>(  En_inColor_Albedo,      P_albedo );
 
-                   //F_output<T_size>( En_outSize_RayCount,     P_outSize_RayCount );
-                   //F_output( T_memory::En_ray,   En_outRay_refracted,     P_outRay_refracted );
+                     F_output<T_size>( En_outSize_RayCount, P_outSize_RayCount );
+                     F_output<T_size>( En_outSize_RayStart, P_outSize_RayStart );
                     }
 
                  public:
@@ -104,11 +104,12 @@
 
                      GS_DDMRM::S_IceRay::S_material::S_transmission::GC_schlick I_schlick( I_air, I_watter );
 
-                     T_scalar  I_reflectance    ;
+                     T_scalar  I_reflectance;
                      I_schlick.F_process( I_reflectance, I_incoming.M_direction, I_normal );
                      T_scalar  I_transparency = T_scalar(1) - I_reflectance;
 
 
+                     T_size I_begin = P_next.Fv_size();
                      T_coord I_reflected; ::math::linear::vector::reflect( I_reflected, I_incoming.M_direction, I_normal );
                      T_coord I_refracted;
                      switch( ::math::linear::vector::refract( I_refracted, I_incoming.M_direction, I_normal, I_air, I_watter ) )
@@ -128,7 +129,7 @@
                           I_ray.M_derivation = T_ray::Ee_derivation::En_Refracted;
                           I_ray.M_hierarchy = T_ray::Ee_hierarchy::En_solo;
                           I_ray.M_ior  = I_watter;
-                          I_ray.M_intesity = I_transparency * I_incoming.M_intesity;
+                          I_ray.M_intesity = I_transparency * I_intensity;
                           I_ray.M_coefficient = I_transparency;
                          }
                          {
@@ -143,7 +144,7 @@
                           I_ray.M_derivation = T_ray::Ee_derivation::En_Reflected;
                           I_ray.M_hierarchy = T_ray::Ee_hierarchy::En_solo;
                           I_ray.M_ior  = I_air;
-                          I_ray.M_intesity = I_reflectance * I_incoming.M_intesity;
+                          I_ray.M_intesity = I_reflectance * I_intensity;
                           I_ray.M_coefficient = I_reflectance;
                          }
                         } break;
@@ -166,9 +167,9 @@
                          I_ray.M_coefficient = I_reflectance;
                         }break;
                       }
-                     //M2_memoryRay->Fv_store( F_output()[ T_memory::En_size][ En_outRay_Rayrefracted ], I_refracted );
-                     //M2_memorySize->Fv_store( F_output()[ T_memory::En_size][ En_outSize_RayCount ], 1 );
 
+                     M2_memorySize->Fv_store( F_output<T_size>(En_outSize_RayCount), P_next.Fv_size() - I_begin );
+                     M2_memorySize->Fv_store( F_output<T_size>(En_outSize_RayStart), I_begin );
                      return true;
                     }
 

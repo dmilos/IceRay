@@ -222,10 +222,12 @@ class Saddle:  #( IceRayPy.core.geometry.Generic ):
 
 
 class Torus:  #( IceRayPy.core.geometry.Generic ):
-    def __init__( self, P_dll ):
+    def __init__( self, P_dll, P_minor = None ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Geometry_Torus0()
+        if( None != P_minor ):
+            self.minor( P_minor )
 
     def __del__( self ):
         self.m_cargo['dll'].IceRayC_Geometry_Release( self.m_cargo['this'] )

@@ -42,7 +42,7 @@ GC_algorithm::~GC_algorithm( )
     I_summae = std::accumulate( I_info.begin(), I_info.end(), 0 );
 
     std::cout << "Traced:     " << PRINT( I_info[ (int)C_statistic::Ee_type::En_traced ]       );
-    std::cout << "Abandoned:  " << PRINT( I_info[ (int)C_statistic::Ee_type::En_abandoned ]      );
+    std::cout << "Abandoned:  " << PRINT( I_info[ (int)C_statistic::Ee_type::En_abandoned ]    );
     std::cout << "Eye:        " << PRINT( I_info[ (int)C_statistic::Ee_type::En_eye ]          );
     std::cout << "Reflected:  " << PRINT( I_info[ (int)C_statistic::Ee_type::En_reflected ]    );
     std::cout << "Refracted:  " << PRINT( I_info[ (int)C_statistic::Ee_type::En_refracted ]    );

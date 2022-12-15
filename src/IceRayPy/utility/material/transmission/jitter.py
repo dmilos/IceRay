@@ -71,5 +71,13 @@ def VDC(
 
     return I_surface
 
+def Sobol(
+     P_dll
+    ,P_config = None
+    ,P_start 
+    ,P_end 
+    ,P_angle
+    ):
+    pass
 
 print( '</' + __name__ + ' name=\'' +   __file__ + '>' )

@@ -1,7 +1,7 @@
-#ifndef Dh_DDMRM_Iceray_material_compute_transmission_jitter_vdc_HPP_
- #define Dh_DDMRM_Iceray_material_compute_transmission_jitter_vdc_HPP_
+#ifndef Dh_DDMRM_Iceray_material_compute_transmission_jitter_sobol_HPP_
+ #define Dh_DDMRM_Iceray_material_compute_transmission_jitter_sobol_HPP_
 
-// GS_DDMRM::S_IceRay::S_material::S_compute::S_transmission::S_jitter::GC_vdc
+// GS_DDMRM::S_IceRay::S_material::S_compute::S_transmission::S_jitter::GC_rand
 
 #include "../../instruction.hpp"
 #include "IceRay/utility/random.hpp"
@@ -20,7 +20,7 @@
            namespace S_jitter
             {
 
-             class GC_vdc //! TODO everything. Use rays and randomly move them inside their cone.
+             class GC_sobol
               : public GS_DDMRM::S_IceRay::S_material::S_compute::GC_instruction
               {
                public:
@@ -44,7 +44,7 @@
                   };
 
                public:
-                 GC_vdc
+                 GC_sobol
                   (
                     T_size const& P_inCoord_Normal //= 1
                    ,T_size const& P_inLeader       //= 0
@@ -56,8 +56,8 @@
                    F_input<T_coord>(   En_inCoord_Normal,  P_inCoord_Normal );
                    F_input<T_size>(    En_inSize_Leader,   P_inLeader       );
                    F_input<T_size>(    En_inSize_Count,    P_inCount        );
-                   F_input<T_scalar>(  En_inScalar_Angle,  P_inAngle  );
-                //F_input<T_scalar>(  En_inScalar_Gauss,  P_inGauss        );
+                   F_input<T_scalar>(  En_inScalar_Angle,  P_inAngle        );
+                 //F_input<T_scalar>(  En_inScalar_Gauss,  P_inGauss        );
                   }
 
                public:
@@ -80,7 +80,7 @@
                      T_coord I_x; ::math::linear::vector::cross( I_x, I_y, I_normal ); ::math::linear::vector::length<T_scalar>( I_x, 1 );
                      T_coord I_z; ::math::linear::vector::cross( I_z, I_x, I_y );      ::math::linear::vector::length<T_scalar>( I_z, 1 );
 
-                     GS_DDMRM::S_IceRay::S_utility::S_random::GF_disc2D( I_disc2d, M2_VaLND );
+                     GS_DDMRM::S_IceRay::S_utility::S_random::GF_disc2D( I_disc2d[0], I_disc2d[1], M2_randSobol2D );
                      ::math::linear::vector::scale( I_disc2d, I_radius );
                      T_scalar I_height = sqrt( T_scalar( 1 ) - ::math::linear::vector::dot( I_disc2d, I_disc2d ) );
                      ::math::linear::vector::combine( I_original.M_direction, I_disc2d[0], I_x, I_height, I_y, I_disc2d[1], I_z );
@@ -91,7 +91,7 @@
                   }
 
                private:
-                 mutable GS_DDMRM::S_IceRay::S_utility::S_random::GT_VaLND         M2_VaLND;
+                 mutable GS_DDMRM::S_IceRay::S_utility::S_random::GT_sobol2D       M2_randSobol2D;
                private:
                  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC__base<T_size>    T2_memorySize;
                  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC__base<T_scalar>  T2_memoryScalar;

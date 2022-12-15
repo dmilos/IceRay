@@ -43,25 +43,25 @@
                    enum Ee_output
                     {
                       En_outSize_RayCount=0
-                     ,En_outRay_reflected=1
+                     ,En_outSize_RayStart=1
                     };
 
                  public:
                    GC_schlick
                     (
-                      T_size const& P_inCoord_Point     = 0
-                     ,T_size const& P_inCoord_Normal    = 1
-                     ,T_size const& P_ior       = 0
-                   //,T_size const& P_outSize_rayCount = 0,
-                   //,T_size const& P_outRay_reflected = 1
+                      T_size const& P_inCoord_Point     // = 0
+                     ,T_size const& P_inCoord_Normal    // = 1
+                     ,T_size const& P_ior               // = 0
+                   //,T_size const& P_outSize_RayCount  // = 1
+                     ,T_size const& P_outSize_RayStart  // = 2
                     )
                     {
                      F_input<T_coord>(  En_inCoord_Point,   P_inCoord_Point     );
                      F_input<T_coord>(  En_inCoord_Normal,  P_inCoord_Normal    );
                      F_input<T_scalar>( En_inScalar_IOR,    P_ior               );
 
-                   //F_output<T_size>( En_outSize_RayCount,     P_outSize_RayCount );
-                   //F_output( T_memory::En_ray,   En_outRay_reflected,     P_outRay_reflected );
+                   //F_output<T_size>( En_outSize_RayCount, P_outSize_RayCount );
+                     F_output<T_size>( En_outSize_RayStart, P_outSize_RayStart );
                     }
 
                  public:
@@ -96,6 +96,7 @@
                        }
                      }
 
+                     T_size I_begin = P_next.Fv_size();
                      P_next.Fv_push();
                      T_ray & I_reflected = P_next.Fv_top();
 
@@ -118,9 +119,8 @@
                      I_reflected.M_state = I_intersect.M_state;
                      I_reflected.M_hierarchy = T_ray::Ee_hierarchy::En_solo;
 
-                     //M2_memoryRay->Fv_store( F_output()[ T_memory::En_size][ En_outRay_RayReflected ], I_reflected );
-                     //M2_memorySize->Fv_store( F_output()[ T_memory::En_size][ En_outSize_RayCount ], 1 );
-
+                   //M2_memoryRay->Fv_store(F_output<T_size>(P_outSize_RayCount),  1 );
+                     M2_memorySize->Fv_store( F_output<T_size>(En_outSize_RayStart), P_next.Fv_size() - 1 );
                      return true;
                     }
 

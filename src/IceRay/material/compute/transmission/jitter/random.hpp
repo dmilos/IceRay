@@ -1,5 +1,5 @@
-#ifndef Dh_DDMRM_Iceray_material_compute_transmission_jitter_rand_HPP_
- #define Dh_DDMRM_Iceray_material_compute_transmission_jitter_rand_HPP_
+#ifndef Dh_DDMRM_Iceray_material_compute_transmission_jitter_random_HPP_
+ #define Dh_DDMRM_Iceray_material_compute_transmission_jitter_random_HPP_
 
 // GS_DDMRM::S_IceRay::S_material::S_compute::S_transmission::S_jitter::GC_rand
 
@@ -20,7 +20,7 @@
            namespace S_jitter
             {
 
-             class GC_random //! TODO everything. Use rays and randomly move them inside their cone.
+             class GC_random //! Use rays and randomly move them inside their cone. Do not fix!
               : public GS_DDMRM::S_IceRay::S_material::S_compute::GC_instruction
               {
                public:
@@ -41,8 +41,6 @@
                   };
                  enum Ee_output
                   {
-                    En_outSize_RayCount=0
-                   ,En_outRay_out=1
                   };
 
                public:
@@ -52,16 +50,14 @@
                    ,T_size const& P_inLeader       //= 0
                    ,T_size const& P_inCount        //= 1
                    ,T_size const& P_inAngle        //= 0
-                //,T_size const& P_inGauss        //= 1
+                 //,T_size const& P_inGauss        //= 1
                   )
                   {
                    F_input<T_coord>(   En_inCoord_Normal,  P_inCoord_Normal );
                    F_input<T_size>(    En_inSize_Leader,   P_inLeader       );
                    F_input<T_size>(    En_inSize_Count,    P_inCount        );
-                   F_input<T_scalar>(  En_inScalar_Angle,  P_inAngle  );
+                   F_input<T_scalar>(  En_inScalar_Angle,  P_inAngle        );
                  //F_input<T_scalar>(  En_inScalar_Gauss,  P_inGauss        );
-
-                 //F_output<T_size>( En_outSize_RayCount,     P_outSize_RayCount );
                   }
 
                public:
@@ -70,20 +66,25 @@
                    T_coord  const& I_normal = M2_memoryCoord->Fv_load(   F_input<T_coord> ( En_inCoord_Normal ) );
                    T_size   const& I_leader = M2_memorySize->Fv_load(    F_input<T_size  >( En_inSize_Leader  ) );
                    T_size   const& I_count  = M2_memorySize->Fv_load(    F_input<T_size  >( En_inSize_Count   ) );
-                   T_scalar const& I_angle  =  M2_memoryScalar->Fv_load( F_input<T_scalar>( En_inScalar_Angle ) );
+                   T_scalar const& I_jitter = M2_memoryScalar->Fv_load( F_input<T_scalar>(  En_inScalar_Angle ) );
                  //T_scalar const& I_gauss  = M2_memoryScalar->Fv_load(  F_input<T_scalar>( En_inScalar_Gauss ) );
 
                    T_coord2D I_disc2d;
+                   T_scalar I_radius = sin( I_jitter );
+
                    for( T_size I_index= 0; I_index < I_count; ++I_index )
                     {
-                     auto      & I_original = P_next.Fv_expose( I_index );
+                     auto      & I_original = P_next.Fv_expose( I_index + I_leader );
+
                      T_coord I_y = I_original.M_direction;
-                     T_coord I_x; ::math::linear::vector::cross( I_x, I_y, I_normal ); ::math::linear::vector::length( I_x, T_scalar( 1 ) );
-                     T_coord I_z; ::math::linear::vector::cross( I_z, I_x, I_y );      ::math::linear::vector::length( I_z, T_scalar( 1 ) );
+                     T_coord I_x; ::math::linear::vector::cross( I_x, I_y, I_normal ); ::math::linear::vector::length<T_scalar>( I_x, 1 );
+                     T_coord I_z; ::math::linear::vector::cross( I_z, I_x, I_y );      ::math::linear::vector::length<T_scalar>( I_z, 1 );
 
                      GS_DDMRM::S_IceRay::S_utility::S_random::GF_disc2D( I_disc2d, M2_randStandard2D );
-                     // 2. TODO calc new direction
-                     // 3. do not correct
+                     ::math::linear::vector::scale( I_disc2d, I_radius );
+                     T_scalar I_height = sqrt( T_scalar( 1 ) - ::math::linear::vector::dot( I_disc2d, I_disc2d ) );
+                     ::math::linear::vector::combine( I_original.M_direction, I_disc2d[0], I_x, I_height, I_y, I_disc2d[1], I_z );
+                     ::math::linear::vector::length<T_scalar>( I_original.M_direction, 1 );
                     }
 
                    return true;
