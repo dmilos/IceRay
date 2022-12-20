@@ -16,7 +16,7 @@ def alpha( P_time ):
 def circle( P_alpha, P_config = None ):
     I_radius = 3
 
-    if( 'radius' in P_config )
+    if( 'radius' in P_config ):
         I_radius = P_config['radius']
 
     x = I_radius * math.cos( P_parameter - math.pi/2 )

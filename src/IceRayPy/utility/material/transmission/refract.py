@@ -59,7 +59,7 @@ def Snell(
 
     return I_surface
 
-G_ior = 2.51
+G_ior = 2.41
 def Schlick(
      P_dll
     ,P_config

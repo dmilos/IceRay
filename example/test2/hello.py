@@ -14,11 +14,10 @@ import IceRayPy
 from IceRayPy import core
 from IceRayPy import utility
 
-import composer
 import room
 
 
-def doRendering(P_config):
+def doRendering(P_config): # P_folder, P_dll, P_eye, P_view
     print( __name__ +"::"+sys._getframe().f_code.co_name + "(" + str( sys._getframe().f_lineno ) + "): "  )
     folder = P_config['folder']
 
@@ -31,11 +30,11 @@ def doRendering(P_config):
     if my_file.is_file():
         return
 
-    P_config['geometry'] = core.geometry.simple.Sphere( P_config['dll'] )
+    geometry = core.geometry.simple.Sphere( P_config['dll'] )
     light_the = core.light.Point( P_config['dll'] )
 
     light_enclose = core.light.transform.Translate( P_config['dll'], light_the, IceRayPy.type.math.coord.Scalar3D( 0, 0, 2 ) )
-    light_blocked = core.light.Obstruct( P_config['dll'], light_enclose, P_config['geometry'] );
+    light_blocked = core.light.Obstruct( P_config['dll'], light_enclose, geometry );
     light_final = light_blocked
 
     P_config['light'] = light_enclose
@@ -44,7 +43,7 @@ def doRendering(P_config):
     medium = core.material.medium.Transparent( P_config['dll'] )
 
     object = IceRayPy.core.object.Wrapper( P_config['dll'] )
-    object.geometrySet( P_config['geometry'] )
+    object.geometrySet( geometry )
     object.pigment( pigment )
     object.medium( medium )
 
@@ -52,7 +51,8 @@ def doRendering(P_config):
     camera.child( core.camera.flat.Perspective( P_config['dll'] ) )
     camera_up   = IceRayPy.type.math.coord.load3D( P_config['dll'], 0, 0, 1 )
     camera.toWorldSet( IceRayPy.type.math.affine.lookAt( P_config['dll'], P_config['camera']['eye'], P_config['camera']['view'], camera_up ) )
-    room_object = room.cornell( P_config['dll'], P_config['room'], light_final, P_config['geometry'] )
+
+    room_object = room.cornel_close( P_config['dll'], P_config['room'], light_final, geometry )
 
     rtss = IceRayPy.core.geometry.rtss.Object( P_config['dll'] )
 
@@ -68,7 +68,10 @@ def doRendering(P_config):
     picture = IceRayPy.type.graph.Picture(P_config['dll'])
     picture.size( P_config['picture']['width'], P_config['picture']['height'] )
 
-    manager = composer.manager( P_config, camera, scene )
+    manager = IceRayPy.utility.render.Manager( P_config['dll'] )
+    manager.camera(camera )
+    manager.object( scene )
+
     start = time.time()
     print( __name__ +"::"+sys._getframe().f_code.co_name + "(" + str( sys._getframe().f_lineno ) + "): " )
     manager.start( picture )
@@ -106,21 +109,9 @@ config['picture']['width']  = int( 256 * 1 )
 config['picture']['height'] = int( 256 * 1 )
 
 config['camera'] = {}
-config['camera']['width']  = 1
-config['camera']['height'] = config['picture']['height'] / config['picture']['width']
-
 config['camera']['eye'] = IceRayPy. type.math.coord.Scalar3D(  0, 4, 0.5 )
 config['camera']['view'] = IceRayPy.type.math.coord.Scalar3D( 0, 0, 0 )
 
-config['ray-trace']={}
-config['ray-trace']['depth'] = 4
-config['ray-trace']['trash'] = 1.0/10000.0
-config['ray-trace']['next'] = 17000
-config['hot'] = {}
-config['hot']['x'] = 256
-config['hot']['y'] = 256
-
-config['window'] = {}
 config['window'] = {}
 config['window']['A'] = {}
 config['window']['B'] = {}

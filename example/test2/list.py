@@ -5,6 +5,7 @@ import time
 import math
 import os
 import platform
+import threading
 import pathlib
 import inspect
 import types
@@ -21,6 +22,7 @@ from IceRayPy import library
 import composer
 import room
 import decoration
+import obseravtion
 
 
 
@@ -35,7 +37,7 @@ camera_list = {
        #'C-horizontal'   : core.camera.cylinder.Horizontal,
        #'I-C-vertical'   : utility.camera.invert.CylinderVertical,
        #'P-C-vertical'   : utility.camera.pin.PinCylinderVertical,
-       #'DOF-persp'      : core.camera.dof.Focus,
+       #'DOF-persp'       : core.camera.dof.Focus,
        #'DOF-cone'        : core.camera.dof.Cone,
        #'DOF-cylinder'    : core.camera.dof.Cylinder,
      }
@@ -79,15 +81,20 @@ geometry_list = {
      'simple-sphere'        : core.geometry.simple.Sphere,
      #'simple-usphere'       : core.geometry.simple.USphere,
      #'simple-cylinder'      : core.geometry.simple.Cylinder,
+     #'simple-util-cylinder'  : utility.geometry.simple.Cylinder,
      #'simple-box'           : core.geometry.simple.Box,
      #'simple-plane'         : core.geometry.simple.Plane,
      #'simple-torus'         : core.geometry.simple.Torus,
+     #'simple-util-torus'     : utility.geometry.simple.Torus,
      #'simple-cone'          : core.geometry.simple.Cone,
+     #'simple-util-cone'      : utility.geometry.simple.Cone,
      #'simple-disc'          : core.geometry.simple.Disc,
      #'simple-udisc'         : core.geometry.simple.UDisc,
      #'simple-ellipsoid'     : core.geometry.simple.Ellipsoid,
      #'simple-hyperboloid'   : core.geometry.simple.Hyperboloid,
+     #'simple-util-hyperboloid'   : utility.geometry.simple.Hyperboloid,
      #'simple-paraboloid'    : core.geometry.simple.Paraboloid,
+     #'simple-util-paraboloid'    : utility.geometry.simple.Paraboloid,
      #'simple-quadric'       : core.geometry.simple.Quadric,
      #'simple-triangle'      : core.geometry.simple.Triangle,
      #'simple-utriangle'     : core.geometry.simple.UTriangle,
@@ -158,7 +165,7 @@ pigment_list = {
      #'mapping-o-homography'             : utility.material.operation.mapping.Homography3D,
 
      #'mapping-o-Cartesian2Cylindric'    : utility.material.operation.mapping.Cartesian2Cylindric,  #TODO check
-     ##'mapping-o-Cartesian2Package'      : utility.material.operation.mapping.Cartesian2Package,    #TODO check
+     #'mapping-o-Cartesian2Package'      : utility.material.operation.mapping.Cartesian2Package,    #TODO check
      #'mapping-o-Cartesian2Spherical'    : utility.material.operation.mapping.Cartesian2Spherical,  #TODO check
      #'mapping-o-Cartesian2Torus'        : utility.material.operation.mapping.Cartesian2Torus,      #TODO check
      #'mapping-o-Cartesian2Tablecloth'   : utility.material.operation.mapping.Cartesian2Tablecloth, #TODO check
@@ -181,8 +188,8 @@ pigment_list = {
       ##'T-5-reflect-blossom-Pinwheel'  : utility.material.transmission.blossom.Pinwheel, #TODO
       #'T-6-reflect-blossom-Rand'      : utility.material.transmission.blossom.Random,   #OK
       #'T-7-reflect-blossom-VDC'       : utility.material.transmission.blossom.VDC,      #OK
-      'T-8-refract-Fresnel'           : utility.material.transmission.refract.Fresnel,  #OK
-      'T-9-refract-Snell'             : utility.material.transmission.refract.Snell,    #OK
+      #'T-8-refract-Fresnel'           : utility.material.transmission.refract.Fresnel,  #OK
+      #'T-9-refract-Snell'             : utility.material.transmission.refract.Snell,    #OK
       'T-A-refract-Schlick'           : utility.material.transmission.refract.Schlick,  #OK
 }
 
@@ -197,6 +204,12 @@ room_list = {
       #'C-0pen'      : room.cornel_open,
        'C-close'     : room.cornel_close
     }
+    
+path_list= {
+        'circle'   : obseravtion.circle,
+        'lookeer'  : obseravtion.lookeer
+    }
+path_item = 'circle'
 
 decoration_list = {
       'vacuum'      : decoration.vacuum,
@@ -205,22 +218,41 @@ decoration_list = {
     }
 decoration_item = 'ptrs'
 
-## radiosity {{{ 
-camera_list     = { 'F-persp'                     : core.camera.flat.Perspective }
+### radiosity {{{
+#camera_list     = { 'F-persp'                     : core.camera.flat.Perspective }
 #light_list      = { 'dark'                        : core.light.Dark }
-medium_list     = { 'trans'                       : core.material.medium.Transparent }
-#geometry_list   = { 'simple-sphere'               : core.geometry.simple.Sphere }
-geometry_list   = { 'simple-torus'               : utility.geometry.simple.Torus }
-#geometry_list   = { 'volumetric-vacuum'               : core.geometry.volumetric.Vacuum }
-pigment_list    = { 'transmission-refract-Schlick'  : utility.material.transmission.refract.Schlick }
-room_list       = { 'C-radiosity'                 : room.cornell_radiosity }
-decoration_item = 'radiosity'
-## }}} 
+#medium_list     = { 'trans'                       : core.material.medium.Transparent }
+##geometry_list   = { 'simple-sphere'               : core.geometry.simple.Sphere }
+#geometry_list   = { 'simple-torus'               : utility.geometry.simple.Torus }
+#geometry_list   = { 'utility-cylinder'               : utility.geometry.simple.Cylinder }
+##geometry_list   = { 'volumetric-vacuum'               : core.geometry.volumetric.Vacuum }
+##pigment_list    = { 'transmission-refract-Schlick'  : utility.material.transmission.refract.Schlick }
+#pigment_list    = { 'transmission-reflect-one'  : utility.material.transmission.reflect.One }
+#room_list       = { 'C-radiosity'                 : room.cornell_radiosity }
+#decoration_item = 'radiosity'
+### }}}
 
+GI_save_image_run = True
+GI_save_image_image = True
+
+def save_image( P_folder, P_name ):
+    global GI_save_image_image
+    print( "start:" + P_folder + "/"  + P_name + '.ppm'  )
+    while( GI_save_image_run ):
+        GI_save_image_image.storePNM( P_folder + "/"  + P_name + '.ppm' )
+        time.sleep( 1 )
+        print( P_folder + "/"  + P_name + '.ppm'  )
+    print( "stop:" + P_folder + "/"  + P_name + '.ppm'  )
+    print( P_folder + "/"  + P_name + '.ppm'  )
 
 
 def doRendering(P_config):
     folder = P_config['folder']
+
+    global GI_save_image_run
+
+    GI_save_image_run = False;
+    global GI_save_image_image
 
     for key_room, data_room in room_list.items():
        for key_camera, data_camera in camera_list.items():
@@ -229,7 +261,7 @@ def doRendering(P_config):
                 for key_pigment, data_pigment in pigment_list.items():
                    for key_light, data_light in light_list.items():
                        name = key_room +"-"+ key_camera +'-'+ key_geometry +"-"+ key_medium +"-"+ key_pigment+"-" + key_light
-                       filen_name = folder + "/" + name + '_'+ "{:04d}".format(P_config['index']) + '.ppm'
+                       filen_name = folder + "/" + name + '_'+ "{:04d}".format( P_config['index'] ) + '.ppm'
                        print( filen_name, flush = True  )
 
                        my_file = pathlib.Path(filen_name)
@@ -257,21 +289,28 @@ def doRendering(P_config):
 
                        scene = composer.arange( P_config['dll'], object, room, decoration_list[ decoration_item ](  P_config['dll'], {   }, light_final, object ) )
 
-                       picture = IceRayPy.type.graph.Picture(P_config['dll'])
-                       picture.size( P_config['picture']['width'], P_config['picture']['height'] )
+                       GI_save_image_image = IceRayPy.type.graph.Picture( P_config['dll'] )
+                       GI_save_image_image.size( P_config['picture']['width'], P_config['picture']['height'] )
 
                        manager = composer.manager( P_config, camera, scene )
+                       #print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", flush = True)
+                       #thread = threading.Thread( target= save_image, args=(folder, "temporal-image" ) )
+                       GI_save_image_run = True
+                       #thread.start()
+                       #print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", flush = True)
                        start = time.time()
-                       manager.start( picture )
+                       manager.start( GI_save_image_image )
                        delta = time.time() - start
                        print( "Time:" + str( delta ), flush = True )
+                       GI_save_image_run = False
+                       #thread.join()
 
                        crop  = IceRayPy.type.graph.Picture( P_config['dll'] )
 
                        A = IceRayPy.type.math.coord.Size2D( P_config['window']['A']['x'], P_config['window']['A']['y'] )
                        B = IceRayPy.type.math.coord.Size2D( P_config['window']['B']['x'], P_config['window']['B']['y'] )
 
-                       IceRayPy.type.graph.Crop( P_config['dll'], crop, picture, A, B )
+                       IceRayPy.type.graph.Crop( P_config['dll'], crop, GI_save_image_image, A, B )
 
                        crop.storePNM( filen_name )
 
@@ -297,17 +336,17 @@ config['folder'] = '_out'
 config['index'] = 0
 
 config['picture'] = {}
-config['picture']['width']  = int( 800 )
-config['picture']['height'] = int( 800 )
+config['picture']['width']  = int( 1200 )
+config['picture']['height'] = int( 1200 )
 #config['pixel']['type'] = 'basic'
 config['window'] = {}
 config['window'] = {}
 config['window']['A'] = {}
 config['window']['B'] = {}
-config['window']['A']['x'] =  int( config['picture']['width']  * 0.2 )
-config['window']['A']['y'] =  int( config['picture']['height'] * 0.675 )
-config['window']['B']['x'] =  int( config['picture']['width']  * 0.2   )  + int( config['picture']['width'] * 0.1 )
-config['window']['B']['y'] =  int( config['picture']['height'] * 0.675 )  + int( config['picture']['height'] * 0.1 )
+config['window']['A']['x'] =  int( config['picture']['width']  * 0.0 )
+config['window']['A']['y'] =  int( config['picture']['height'] * 0.666 )
+config['window']['B']['x'] =  config['window']['A']['x']  + int( config['picture']['width']  * 0.333 )
+config['window']['B']['y'] =  config['window']['A']['y']  + int( config['picture']['height'] * 0.333 )
 config['window']['A']['x'] =  0
 config['window']['A']['y'] =  0
 config['window']['B']['x'] =  config['picture']['width']
@@ -322,9 +361,10 @@ config['camera']['aspect']    = 1 # config['picture']['width'] / config['picture
 
 config['camera']['eye']  = IceRayPy. type.math.coord.Scalar3D( 0, -3, 0 )
 config['camera']['view'] = IceRayPy.type.math.coord.Scalar3D( 0, 0, 0 )
+config['camera']['sample'] = 32
 
 config['ray-trace']={}
-config['ray-trace']['depth'] = 8
+config['ray-trace']['depth'] = 7
 config['ray-trace']['trash'] = 1.0/10000.0
 config['ray-trace']['next'] = 17000
 
@@ -336,9 +376,9 @@ config['hot']['y'] = 200 * 1 #int( ( 692/2048) * config['picture']['height'] )
 config['room'] = {}
 config['room']['radiosity'] = {}
 config['room']['radiosity']['blossom'] = 'hexagon'
-config['room']['radiosity']['patch'] = math.radians( 60 )
-config['room']['radiosity']['angle'] = math.radians( 90 )
-config['room']['radiosity']['jitter'] = math.radians( 60 )
+config['room']['radiosity']['patch']  = math.radians( 4 )
+config['room']['radiosity']['angle']  = math.radians( 85 )
+config['room']['radiosity']['jitter'] = math.radians( 0 )
 config['room']['radiosity']['sample'] = int( (1 - math.cos(config['room']['radiosity']['angle']) ) / ( 1 - math.cos( config['room']['radiosity']['patch'] ) ) + 1 )
 
 config['observer'] = {}
@@ -391,7 +431,7 @@ for index in range( start, 360 * int( dilatation ), step ):
 
     config['index'] = index
     t = index / 360.0 / dilatation
-    #t = 0 / 360.0 / dilatation
+    #t = 0* 150 / 360.0 / dilatation
     alpha = t * ( 2 * 3.1415926 )
     #alpha = math.radians( 57 )
     height = heightLo #+ ( math.sin( alpha - math.pi/2 )*0.5 + 0.5 )*( heightHi - heightLo );

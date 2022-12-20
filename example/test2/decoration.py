@@ -90,14 +90,14 @@ def pointers( P_dll, P_config = { 'shadow': False, 'pigment': None }, P_light = 
 
 def radiosity( P_dll, P_config = { 'shadow': False, 'pigment': None }, P_light = None, P_exponat = None ):
 
-    I_room = [ 8, 8, 4 ] # [ 6, 6, 3.5 ]
+    I_room = [ 8, 8, 2.5 ] # [ 6, 6, 3.5 ]
     I_move = [ 1, 1, I_room[2]/2-1 ]
     wall = 0.1
 
-    I_size  = [ 1.5, 1.5, 0.1 ]
+    I_size  = [ 0.25, 0.25, 0.1 ]
     I_center = [ I_room[0]/4, I_room[1]/4, I_room[2]/2 + I_move[2] ]
     I_color = IceRayPy.type.color.RGB( 16.6, 16.6, 16.6 )
-    I_color = IceRayPy.type.color.RGB( 10, 10, 10 )
+    I_color = IceRayPy.type.color.RGB( 22.6, 22.6,  22.6 )
 
     lo = Coord3D()
     lo[0] = -I_size[0]/2 + I_center[0]

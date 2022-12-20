@@ -139,17 +139,25 @@ def distance3D( P_dll, P_left: Scalar3D, P_right: Scalar3D  ):
 
 def cross3D( P_dll, P_left: Scalar3D, P_right: Scalar3D  ):
     result = Scalar3D()
-    P_dll.IceRayC_Type_Math_Coord3D_Cross( result, AddresOf( P_left ), AddresOf( P_right ) )
+    P_dll.IceRayC_Type_Math_Coord3D_Cross( AddresOf( result ), AddresOf( P_left ), AddresOf( P_right ) )
     return result
+
+def dominant3DIndex( P_dll, P_coord: Scalar3D ):
+    return P_dll.IceRayC_Type_Math_Coord3D_DominantIndex( result, AddresOf( P_coord ) )
 
 def subtraction3D( P_dll, P_left: Scalar3D, P_right: Scalar3D ):
     result = Scalar3D()
-    P_dll.IceRayC_Type_Math_Coord3D_Subtraction( result, AddresOf( P_left ), AddresOf( P_right ) )
+    P_dll.IceRayC_Type_Math_Coord3D_Subtraction(  AddresOf( result ), AddresOf( P_left ), AddresOf( P_right ) )
+    return result
+    
+def addition3D( P_dll, P_left: Scalar3D, P_right: Scalar3D ):
+    result = Scalar3D()
+    P_dll.IceRayC_Type_Math_Coord3D_Addition(  AddresOf( result ), AddresOf( P_left ), AddresOf( P_right ) )
     return result
 
 def scale3D( P_dll, P_scalar, P_coord: Scalar3D ):
     result = Scalar3D()
-    P_dll.IceRayC_Type_Math_Coord3D_Scale( result, Scalar( P_scalar ), AddresOf( P_coord )  )
+    P_dll.IceRayC_Type_Math_Coord3D_Scale( AddresOf( result ), Scalar( P_scalar ), AddresOf( P_coord )  )
     return result
     
 print( '<' + __name__ + ' file=\'' +   __file__ + '\'/>' )

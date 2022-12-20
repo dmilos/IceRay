@@ -130,6 +130,8 @@
 
                  std::vector<T_info> M_depth;
                 }M2_statistic;
+             public:
+               C_statistic const& F_statistic()const{ return M2_statistic; }
             };
          }
        }

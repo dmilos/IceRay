@@ -10,8 +10,11 @@ struct GC_affine::C_intersect
 
 GC_affine::GC_affine()
  {
+  ::math::linear::affine::id( M2_2world    );
+  ::math::linear::affine::id( M2_2local    );
+  ::math::linear::matrix::id( M2_transpose );
+
   F_child( nullptr );
-  F_2world( ::math::linear::affine::id( T_affine{} ) );
  }
 
 GC_affine::GC_affine

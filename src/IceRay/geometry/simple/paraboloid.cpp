@@ -79,7 +79,7 @@ bool GC_paraboloid::Fv_intersect( T_scalar     & P_lambda ,T_state      & P_stat
   if( ( Is_epsilon < I_lambda ) && ( I_lambda < P_lambda ) )
    {
     T_scalar I_height = I_lambda * P_ray.M_direction[2] + P_ray.M_origin[2];
-    if(  ( I_height < T_scalar( 1 ) ) )
+    if( ( I_height < T_scalar( 1 ) ) )
      {
       P_lambda = I_lambda;
       return true;

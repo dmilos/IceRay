@@ -16,6 +16,9 @@ class TheOne:
         self.m_cargo['dll'].IceRayC_Render_Engine_Scanner( self.m_cargo['this'], P_scanner.m_cargo['this']  )
         self.m_cargo['scanner'] = P_scanner
 
+    def scannerGet( self ):
+        return self.m_cargo['scanner']
+
     def pixel( self, P_pixel ):
         self.m_cargo['dll'].IceRayC_Render_Engine_Pixel( self.m_cargo['this'], P_pixel.m_cargo['this']  )
         self.m_cargo['pixel'] = P_pixel

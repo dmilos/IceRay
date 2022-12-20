@@ -25,9 +25,9 @@ class Projector:
 
     def camera( self, P_camera ):
         self.m_cargo['dll'].IceRayC_Render_Pierce_Projector_Camera( self.m_cargo['this'], P_camera.m_cargo['this'] )
-        self.m_cargo['object'] = P_camera
+        self.m_cargo['camera'] = P_camera
 
     def sheaf( self, P_sheaf ):
         self.m_cargo['dll'].IceRayC_Render_Pierce_Projector_Sheaf( self.m_cargo['this'], P_sheaf.m_cargo['this'] )
-        self.m_cargo['object'] = P_sheaf
+        self.m_cargo['sheaf'] = P_sheaf
 

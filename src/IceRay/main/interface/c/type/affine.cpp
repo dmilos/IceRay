@@ -94,6 +94,37 @@ int   IceRayC_Type_Math_Affine3D_Zero( IceRayC_Type_Math_Affine3D *P_that )
   return 1;
  }
 
+
+int  IceRayC_Type_Math_Affine3D_System( IceRayC_Type_Math_Affine3D *P_this, IceRayC_TypeCoordScalar3D* P_origin, IceRayC_TypeCoordScalar3D* P_X, IceRayC_TypeCoordScalar3D* P_Y, IceRayC_TypeCoordScalar3D* P_Z )
+ {
+  GS_DDMRM::S_IceRay::S_type::S_affine::GT_scalar3D I_this;
+  ::math::linear::affine::system( I_this, c2cpp( *P_origin ), c2cpp( *P_X ), c2cpp( *P_Y ), c2cpp( *P_Z ) );
+
+  *P_this = cpp2c( I_this );
+  return 1;
+ }
+
+int  IceRayC_Type_Math_Affine3D_SystemZ( IceRayC_Type_Math_Affine3D *P_this, IceRayC_TypeCoordScalar3D* P_origin, IceRayC_TypeCoordScalar3D* P_Z )
+ {
+  GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar3D I_x, I_y,I_z{ c2cpp( *P_Z )};
+
+  switch( ::math::linear::vector::dominant( c2cpp( *P_Z ) ).first )
+   {
+    case( 0 ): I_y[0] = 0; I_y[1] = 0; I_y[2] = 1; break;
+    case( 1 ): I_y[0] = 1; I_y[1] = 0; I_y[2] = 0; break;
+    case( 2 ): I_y[0] = 0; I_y[1] = 1; I_y[2] = 0; break;
+   }
+
+  ::math::linear::vector::cross( I_x, I_y, I_z ); ::math::linear::vector::length<IceRayC_TypeScalar>( I_x, 1 );
+  ::math::linear::vector::cross( I_y, I_z, I_x ); ::math::linear::vector::length<IceRayC_TypeScalar>( I_y, 1 );
+
+  GS_DDMRM::S_IceRay::S_type::S_affine::GT_scalar3D I_this;
+  ::math::linear::affine::system( I_this, c2cpp( *P_origin ), I_x, I_y, I_z );
+
+  *P_this = cpp2c( I_this );
+  return 1;
+ }
+
 int    IceRayC_Type_Math_Affine3D_Move( IceRayC_Type_Math_Affine3D *P_that, IceRayC_TypeCoordScalar3D* P_move )
  {
   IceRayC_Type_Math_Affine3D_ID( P_that );
@@ -167,7 +198,7 @@ int    IceRayC_Type_Math_Affine3D_RotateD( IceRayC_Type_Math_Affine3D *P_that, I
   I_2back.vector() = c2cpp( * P_pivot );
 
   ::math::linear::matrix::rotate( I_rotate.matrix(), c2cpp(*P_direction), P_alpha );
-  GS_DDMRM::S_IceRay::S_type::S_affine::GT_scalar3D I_tmp; 
+  GS_DDMRM::S_IceRay::S_type::S_affine::GT_scalar3D I_tmp;
   ::math::linear::affine::compose( I_tmp, I_rotate, I_2center );
 
   GS_DDMRM::S_IceRay::S_type::S_affine::GT_scalar3D I_result;

@@ -140,4 +140,5 @@
   - Build using CMake 
     - cd ./IceRay/work/build/cmake
     - run make.bat on Windows or make.sh on Unix
+  - put $\src and $\example in to path
   - run some examples in $\example\test2

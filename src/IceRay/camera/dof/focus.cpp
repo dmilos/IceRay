@@ -38,7 +38,6 @@ GC_focus::GC_focus( T__pure *P_camera, T_size const& P_sample, T_interval1D cons
   F_focus( P_focus );
  }
 
-
 bool
 GC_focus ::F_aperture
  (
@@ -50,9 +49,7 @@ GC_focus ::F_aperture
   return true;
  }
 
-
 bool
-
 GC_focus::F_focus
  (
    T_interval1D const&  P_focus
@@ -60,7 +57,7 @@ GC_focus::F_focus
  {
   //! @todo Ceheck/fix
   /*
-  T_scalar I_near(P_near), I_far(P_far);
+  T_scalar I_near(P_focus[0]), I_far(P_focus[1]);
 
   if( I_near < VECTOR1<T_scalar>::Fs_epsilon() ) I_near = T_scalar( 1 );
   if( I_far  < VECTOR1<T_scalar>::Fs_epsilon() ) I_far  = T_scalar( 1 );
@@ -99,8 +96,8 @@ GC_focus::Fv_beam
   for( T_size I_index =0; I_index < F_size(); I_index++ )
    {
     T_scalar I_x0, I_y0;
-    GS_DDMRM::S_IceRay::S_utility::S_random::GF_disc2D( I_x0, I_y0, M2_randStandard2D );
-  //GS_DDMRM::S_IceRay::S_utility::S_random::GF_disc2D( I_x0, I_y0, M2_randSobol2D  );
+    //GS_DDMRM::S_IceRay::S_utility::S_random::GF_disc2D( I_x0, I_y0, M2_randStandard2D );
+    GS_DDMRM::S_IceRay::S_utility::S_random::GF_disc2D( I_x0, I_y0, M2_randSobol2D  );
 
     T_scalar I_x1, I_y1;
     GS_DDMRM::S_IceRay::S_utility::S_random::GF_disc2D( I_x1, I_y1, M2_randStandard2D );

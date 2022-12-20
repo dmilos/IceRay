@@ -129,75 +129,75 @@ IceRayC_TypeCoordSize4D cpp2c( GS_DDMRM::S_IceRay::S_type::S_coord::GT_size4D co
   return I_that;
  }
 
-int  IceRayC_Type_Math_Coord1D_Fill( IceRayC_TypeCoordScalar1D *P_that, IceRayC_TypeScalar P_x )
+int  IceRayC_Type_Math_Coord1D_Fill( IceRayC_TypeCoordScalar1D *P_this, IceRayC_TypeScalar P_x )
  {
-  P_that->value[0] = P_x;
+  P_this->value[0] = P_x;
   return 0;
  }
-int  IceRayC_Type_Math_Coord2D_Fill( IceRayC_TypeCoordScalar2D *P_that, IceRayC_TypeScalar P_scalar)
+int  IceRayC_Type_Math_Coord2D_Fill( IceRayC_TypeCoordScalar2D *P_this, IceRayC_TypeScalar P_scalar)
  {
   GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar2D I_this;
   ::math::linear::vector::fill( I_this, P_scalar );
-  *P_that = cpp2c( I_this );
+  *P_this = cpp2c( I_this );
   return 0;
  }
-int  IceRayC_Type_Math_Coord3D_Fill( IceRayC_TypeCoordScalar3D *P_that, IceRayC_TypeScalar P_scalar)
+int  IceRayC_Type_Math_Coord3D_Fill( IceRayC_TypeCoordScalar3D *P_this, IceRayC_TypeScalar P_scalar)
  {
   GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar3D I_this;
   ::math::linear::vector::fill( I_this, P_scalar );
-  *P_that = cpp2c( I_this );
+  *P_this = cpp2c( I_this );
   return 1;
  }
-int  IceRayC_Type_Math_Coord4D_Fill( IceRayC_TypeCoordScalar4D *P_that, IceRayC_TypeScalar P_scalar)
+int  IceRayC_Type_Math_Coord4D_Fill( IceRayC_TypeCoordScalar4D *P_this, IceRayC_TypeScalar P_scalar)
  {
   GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar4D I_this;
   ::math::linear::vector::fill( I_this, P_scalar );
-  *P_that = cpp2c( I_this );
+  *P_this = cpp2c( I_this );
   return 1;
  }
 
-int  IceRayC_Type_Math_Coord1D_Load( IceRayC_TypeCoordScalar1D *P_that, IceRayC_TypeScalar P_x)
+int  IceRayC_Type_Math_Coord1D_Load( IceRayC_TypeCoordScalar1D *P_this, IceRayC_TypeScalar P_x )
  {
-  P_that->value[0] = P_x;
+  P_this->value[0] = P_x;
   return 0;
  }
-int  IceRayC_Type_Math_Coord2D_Load( IceRayC_TypeCoordScalar2D *P_that, IceRayC_TypeScalar P_x, IceRayC_TypeScalar P_y )
+int  IceRayC_Type_Math_Coord2D_Load( IceRayC_TypeCoordScalar2D *P_this, IceRayC_TypeScalar P_x, IceRayC_TypeScalar P_y )
  {
   GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar2D I_this;
   ::math::linear::vector::load( I_this, P_x, P_y );
-  *P_that = cpp2c( I_this );
+  *P_this = cpp2c( I_this );
   return 1;
  }
-int  IceRayC_Type_Math_Coord3D_Load( IceRayC_TypeCoordScalar3D *P_that, IceRayC_TypeScalar P_x, IceRayC_TypeScalar P_y,  IceRayC_TypeScalar P_z )
+int  IceRayC_Type_Math_Coord3D_Load( IceRayC_TypeCoordScalar3D *P_this, IceRayC_TypeScalar P_x, IceRayC_TypeScalar P_y,  IceRayC_TypeScalar P_z )
  {
   GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar3D I_this;
   ::math::linear::vector::load( I_this, P_x, P_y, P_z );
-  *P_that = cpp2c( I_this );
+  *P_this = cpp2c( I_this );
   return 1;
  }
-int  IceRayC_Type_Math_Coord4D_Load( IceRayC_TypeCoordScalar4D *P_that, IceRayC_TypeScalar P_x, IceRayC_TypeScalar P_y,  IceRayC_TypeScalar P_z, IceRayC_TypeScalar P_t )
+int  IceRayC_Type_Math_Coord4D_Load( IceRayC_TypeCoordScalar4D *P_this, IceRayC_TypeScalar P_x, IceRayC_TypeScalar P_y,  IceRayC_TypeScalar P_z, IceRayC_TypeScalar P_t )
  {
   GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar4D I_this;
   ::math::linear::vector::load( I_this, P_x, P_y, P_z, P_t );
-  *P_that = cpp2c( I_this );
+  *P_this = cpp2c( I_this );
   return 1;
  }
 
-IceRayC_TypeScalar  IceRayC_Type_Math_Coord1D_Length( IceRayC_TypeCoordScalar1D *P_that )
+IceRayC_TypeScalar  IceRayC_Type_Math_Coord1D_Length( IceRayC_TypeCoordScalar1D *P_this )
  {
-  return ::math::linear::vector::length( c2cpp( *P_that ) );
+  return ::math::linear::vector::length( c2cpp( *P_this ) );
  }
-IceRayC_TypeScalar  IceRayC_Type_Math_Coord2D_Length( IceRayC_TypeCoordScalar2D *P_that )
+IceRayC_TypeScalar  IceRayC_Type_Math_Coord2D_Length( IceRayC_TypeCoordScalar2D *P_this )
  {
-  return ::math::linear::vector::length( c2cpp( *P_that ) );
+  return ::math::linear::vector::length( c2cpp( *P_this ) );
  }
-IceRayC_TypeScalar  IceRayC_Type_Math_Coord3D_Length( IceRayC_TypeCoordScalar3D *P_that )
+IceRayC_TypeScalar  IceRayC_Type_Math_Coord3D_Length( IceRayC_TypeCoordScalar3D *P_this )
  {
-  return ::math::linear::vector::length( c2cpp( *P_that ) );
+  return ::math::linear::vector::length( c2cpp( *P_this ) );
  }
-IceRayC_TypeScalar  IceRayC_Type_Math_Coord4D_Length( IceRayC_TypeCoordScalar4D *P_that )
+IceRayC_TypeScalar  IceRayC_Type_Math_Coord4D_Length( IceRayC_TypeCoordScalar4D *P_this )
  {
-  return ::math::linear::vector::length( c2cpp( *P_that ) );
+  return ::math::linear::vector::length( c2cpp( *P_this ) );
  }
 
 IceRayC_TypeScalar  IceRayC_Type_Math_Coord1D_Distance( IceRayC_TypeCoordScalar1D* P_left, IceRayC_TypeCoordScalar1D* P_right )
@@ -217,101 +217,104 @@ IceRayC_TypeScalar  IceRayC_Type_Math_Coord4D_Distance( IceRayC_TypeCoordScalar4
   return ::math::linear::vector::distance( c2cpp( *P_left ), c2cpp( *P_right ) );
  }
 
-
-int  IceRayC_Type_Math_Coord3D_Cross(    IceRayC_TypeCoordScalar3D *P_that, IceRayC_TypeCoordScalar3D* P_left, IceRayC_TypeCoordScalar3D* P_right )
+int  IceRayC_Type_Math_Coord3D_Cross(    IceRayC_TypeCoordScalar3D *P_this, IceRayC_TypeCoordScalar3D* P_left, IceRayC_TypeCoordScalar3D* P_right )
  {
   GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar3D I_this;
   ::math::linear::vector::cross( I_this, c2cpp( *P_left ), c2cpp( *P_right ) );
-  *P_that = cpp2c( I_this );
+  *P_this = cpp2c( I_this );
   return 1;
  }
 
-int  IceRayC_Type_Math_Coord1D_Addition(    IceRayC_TypeCoordScalar1D *P_that, IceRayC_TypeCoordScalar1D* P_left, IceRayC_TypeCoordScalar1D* P_right )
+IceRayC__EXPORT IceRayC__DECLSPEC  int  IceRayC_Type_Math_Coord3D_DominantIndex( IceRayC_TypeCoordScalar3D *P_this )
  {
-  P_that->value[0] = P_left->value[0] + P_right->value[0];
+  auto result = ::math::linear::vector::dominant( c2cpp( *P_this ) );
+  return result.first;
+ }
+
+int  IceRayC_Type_Math_Coord1D_Addition(    IceRayC_TypeCoordScalar1D *P_this, IceRayC_TypeCoordScalar1D* P_left, IceRayC_TypeCoordScalar1D* P_right )
+ {
+  P_this->value[0] = P_left->value[0] + P_right->value[0];
   return 1;
  }
-int  IceRayC_Type_Math_Coord2D_Addition(    IceRayC_TypeCoordScalar2D *P_that, IceRayC_TypeCoordScalar2D* P_left, IceRayC_TypeCoordScalar2D* P_right )
+int  IceRayC_Type_Math_Coord2D_Addition(    IceRayC_TypeCoordScalar2D *P_this, IceRayC_TypeCoordScalar2D* P_left, IceRayC_TypeCoordScalar2D* P_right )
  {
   GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar2D I_this;
   ::math::linear::vector::addition( I_this, c2cpp( *P_left ), c2cpp( *P_right ) );
-  *P_that = cpp2c( I_this );
+  *P_this = cpp2c( I_this );
   return 1;
  }
-int  IceRayC_Type_Math_Coord3D_Addition(    IceRayC_TypeCoordScalar3D *P_that, IceRayC_TypeCoordScalar3D* P_left, IceRayC_TypeCoordScalar3D* P_right )
+int  IceRayC_Type_Math_Coord3D_Addition(    IceRayC_TypeCoordScalar3D *P_this, IceRayC_TypeCoordScalar3D* P_left, IceRayC_TypeCoordScalar3D* P_right )
  {
   GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar3D I_this;
   ::math::linear::vector::addition( I_this, c2cpp( *P_left ), c2cpp( *P_right ) );
-  *P_that = cpp2c( I_this );
+  *P_this = cpp2c( I_this );
   return 1;
  }
-int  IceRayC_Type_Math_Coord4D_Addition(    IceRayC_TypeCoordScalar4D *P_that, IceRayC_TypeCoordScalar4D* P_left, IceRayC_TypeCoordScalar4D* P_right )
+int  IceRayC_Type_Math_Coord4D_Addition(    IceRayC_TypeCoordScalar4D *P_this, IceRayC_TypeCoordScalar4D* P_left, IceRayC_TypeCoordScalar4D* P_right )
  {
   GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar4D I_this;
   ::math::linear::vector::addition( I_this, c2cpp( *P_left ), c2cpp( *P_right ) );
-  *P_that = cpp2c( I_this );
+  *P_this = cpp2c( I_this );
   return 1;
  }
 
-int  IceRayC_Type_Math_Coord1D_Subtraction( IceRayC_TypeCoordScalar1D *P_that, IceRayC_TypeCoordScalar1D* P_left, IceRayC_TypeCoordScalar1D* P_right )
+int  IceRayC_Type_Math_Coord1D_Subtraction( IceRayC_TypeCoordScalar1D *P_this, IceRayC_TypeCoordScalar1D* P_left, IceRayC_TypeCoordScalar1D* P_right )
  {
   GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar1D I_this;
   ::math::linear::vector::subtraction( I_this, c2cpp( *P_left ), c2cpp( *P_right ) );
-  *P_that = cpp2c( I_this );
+  *P_this = cpp2c( I_this );
   return 1;
  }
-int  IceRayC_Type_Math_Coord2D_Subtraction( IceRayC_TypeCoordScalar2D *P_that, IceRayC_TypeCoordScalar2D* P_left, IceRayC_TypeCoordScalar2D* P_right )
+int  IceRayC_Type_Math_Coord2D_Subtraction( IceRayC_TypeCoordScalar2D *P_this, IceRayC_TypeCoordScalar2D* P_left, IceRayC_TypeCoordScalar2D* P_right )
  {
   GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar2D I_this;
-  ::math::linear::vector::addition( I_this, c2cpp( *P_left ), c2cpp( *P_right ) );
-  *P_that = cpp2c( I_this );
+  ::math::linear::vector::subtraction( I_this, c2cpp( *P_left ), c2cpp( *P_right ) );
+  *P_this = cpp2c( I_this );
   return 1;
  }
-int  IceRayC_Type_Math_Coord3D_Subtraction( IceRayC_TypeCoordScalar3D *P_that, IceRayC_TypeCoordScalar3D* P_left, IceRayC_TypeCoordScalar3D* P_right )
+int  IceRayC_Type_Math_Coord3D_Subtraction( IceRayC_TypeCoordScalar3D *P_this, IceRayC_TypeCoordScalar3D* P_left, IceRayC_TypeCoordScalar3D* P_right )
  {
   GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar3D I_this;
-  ::math::linear::vector::addition( I_this, c2cpp( *P_left ), c2cpp( *P_right ) );
-  *P_that = cpp2c( I_this );
+  ::math::linear::vector::subtraction( I_this, c2cpp( *P_left ), c2cpp( *P_right ) );
+  *P_this = cpp2c( I_this );
   return 1;
  }
-int  IceRayC_Type_Math_Coord4D_Subtraction( IceRayC_TypeCoordScalar4D *P_that, IceRayC_TypeCoordScalar4D* P_left, IceRayC_TypeCoordScalar4D* P_right )
+int  IceRayC_Type_Math_Coord4D_Subtraction( IceRayC_TypeCoordScalar4D *P_this, IceRayC_TypeCoordScalar4D* P_left, IceRayC_TypeCoordScalar4D* P_right )
  {
   GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar4D I_this;
-  ::math::linear::vector::addition( I_this, c2cpp( *P_left ), c2cpp( *P_right ) );
-  *P_that = cpp2c( I_this );
+  ::math::linear::vector::subtraction( I_this, c2cpp( *P_left ), c2cpp( *P_right ) );
+  *P_this = cpp2c( I_this );
   return 1;
  }
 
-int  IceRayC_Type_Math_Coord1D_Scale(    IceRayC_TypeCoordScalar1D *P_that, IceRayC_TypeScalar P_left, IceRayC_TypeCoordScalar1D* P_right )
+int  IceRayC_Type_Math_Coord1D_Scale(    IceRayC_TypeCoordScalar1D *P_this, IceRayC_TypeScalar P_left, IceRayC_TypeCoordScalar1D* P_right )
  {
   GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar1D I_this;
   ::math::linear::vector::scale( I_this, P_left, c2cpp( *P_right ) );
-  *P_that = cpp2c( I_this );
+  *P_this = cpp2c( I_this );
   return 1;
  }
 
-int  IceRayC_Type_Math_Coord2D_Scale(    IceRayC_TypeCoordScalar2D *P_that, IceRayC_TypeScalar P_left, IceRayC_TypeCoordScalar2D* P_right )
+int  IceRayC_Type_Math_Coord2D_Scale(    IceRayC_TypeCoordScalar2D *P_this, IceRayC_TypeScalar P_left, IceRayC_TypeCoordScalar2D* P_right )
  {
   GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar2D I_this;
   ::math::linear::vector::scale( I_this, P_left, c2cpp( *P_right ) );
-  *P_that = cpp2c( I_this );
+  *P_this = cpp2c( I_this );
   return 1;
  }
 
-int  IceRayC_Type_Math_Coord3D_Scale(    IceRayC_TypeCoordScalar3D *P_that, IceRayC_TypeScalar P_left, IceRayC_TypeCoordScalar3D* P_right )
+int  IceRayC_Type_Math_Coord3D_Scale(    IceRayC_TypeCoordScalar3D *P_this, IceRayC_TypeScalar P_left, IceRayC_TypeCoordScalar3D* P_right )
  {
   GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar3D I_this;
   ::math::linear::vector::scale( I_this, P_left, c2cpp( *P_right ) );
-  *P_that = cpp2c( I_this );
+  *P_this = cpp2c( I_this );
   return 1;
  }
 
-int  IceRayC_Type_Math_Coord4D_Scale(    IceRayC_TypeCoordScalar4D *P_that, IceRayC_TypeScalar P_left, IceRayC_TypeCoordScalar4D* P_right )
+int  IceRayC_Type_Math_Coord4D_Scale(    IceRayC_TypeCoordScalar4D *P_this, IceRayC_TypeScalar P_left, IceRayC_TypeCoordScalar4D* P_right )
  {
   GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar4D I_this;
   ::math::linear::vector::scale( I_this, P_left, c2cpp( *P_right ) );
-  *P_that = cpp2c( I_this );
+  *P_this = cpp2c( I_this );
   return 1;
  }
-
-

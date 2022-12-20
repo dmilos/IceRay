@@ -53,6 +53,14 @@ IceRayC_Geometry_Handle IceRayC_Geometry_Transform_Affine1( IceRayC_Geometry_Han
   return cpp2c( Ir_result );
  }
 
+IceRayC_Geometry_Handle IceRayC_Geometry_Transform_Affine2( IceRayC_Geometry_Handle P_child, IceRayC_Type_Math_Matrix3D *P_matrix, IceRayC_TypeCoordScalar3D* P_move )
+ {
+  typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;
+  typedef GS_DDMRM::S_IceRay::S_geometry::S_transform::GC_affine Tf_this;
+  auto Ir_result = new Tf_this{ c2cpp( P_child ), c2cpp( *P_matrix ), c2cpp( *P_move ) };
+  return cpp2c( Ir_result );
+ }
+
 int IceRayC_Geometry_Transform_Affine_Child( IceRayC_Geometry_Handle P_that, IceRayC_Geometry_Handle P_child )
  {
   typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;

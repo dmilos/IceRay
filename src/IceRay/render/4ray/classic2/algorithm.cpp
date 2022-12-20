@@ -35,7 +35,7 @@ GC_algorithm::~GC_algorithm( )
   if( false ) return;
 
   T_size I_summae = M2_stack.F_total();
-  std::cout << "Summary:      " << PRINT(M2_stack.F_total() )       << std::endl;
+  std::cout << "Summary:      " << PRINT( M2_stack.F_total() )       << std::endl;
 
   for( auto const& I_info : M2_statistic.M_depth )
    {
@@ -55,7 +55,7 @@ GC_algorithm::~GC_algorithm( )
     std::cout << "Total:      " << PRINT( I_summae ) ;
     std::cout << std::endl;
    }
-
+  std::setfill(' ');
   std::cout << std::endl;
  }
 

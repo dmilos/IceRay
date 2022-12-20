@@ -91,6 +91,14 @@ def compose3D( P_dll, P_left : Scalar3D, P_right : Scalar3D ):
     result = Scalar3D()
 
     P_dll.IceRayC_Type_Math_Affine3D_Compose( AddresOf( result ), AddresOf( P_left ), AddresOf( P_right ) )
-
     return result
 
+def system3D( P_dll, P_pivot : Coord3D, P_X : Coord3D, P_Y : Coord3D, P_Z : Coord3D ):
+    result = Scalar3D()
+    f = P_dll.IceRayC_Type_Math_Affine3D_System( AddresOf( result ), AddresOf( P_pivot ), AddresOf( P_X ), AddresOf( P_Y ), AddresOf( P_Z ) )
+    return result
+
+def system3D_Z( P_dll, P_pivot : Coord3D, P_Z : Coord3D ):
+    result = Scalar3D()
+    f = P_dll.IceRayC_Type_Math_Affine3D_SystemZ( AddresOf( result ), AddresOf( P_pivot ), AddresOf( P_Z ) )
+    return result

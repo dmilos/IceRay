@@ -2,3 +2,4 @@
 #include "./program.cpp"
 #include "./transmission/transmission.cpp"
 #include "./surface.cpp"
+#include "./memory.cpp"

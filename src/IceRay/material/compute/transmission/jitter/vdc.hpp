@@ -20,7 +20,7 @@
            namespace S_jitter
             {
 
-             class GC_vdc //! TODO everything. Use rays and randomly move them inside their cone.
+             class GC_vdc
               : public GS_DDMRM::S_IceRay::S_material::S_compute::GC_instruction
               {
                public:

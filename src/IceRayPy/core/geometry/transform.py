@@ -20,7 +20,6 @@ Matrix4D = IceRayPy.type.math.matrix.Scalar4D
 
 
 class Identity:
-
     def __init__( self, P_dll,  P_child = None ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
@@ -67,7 +66,6 @@ class Translate:
 
 
 class Affine:
-
     def __init__( self, P_dll,  P_child = None , P_affine = None ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
@@ -154,8 +152,7 @@ class Affine:
         return
 
 class Homography:
-
-    def __init__( self, P_dll,  P_child = None , P_affine = None ):
+    def __init__( self, P_dll, P_child = None , P_affine = None ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Geometry_Transform_Homography0()

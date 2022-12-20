@@ -108,6 +108,7 @@ void GC_implementation::Fv_push()
 
 void GC_implementation::F_clear()
  { // DONE
+  M2_total = 0;
   M2_index = 0;
   T_data::F_clear();
  }

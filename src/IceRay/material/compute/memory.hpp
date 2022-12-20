@@ -63,19 +63,20 @@
 
              enum Ee_constantBool
               {
-               En_Bool__Begin = 0,
+               En_Bool__Begin         = 0,
                En_inBool_ConstFALSE   = 0,
                En_inBool_ConstTRUE    = 1,
-               En_inBool_DynamicValid = 2,
-               En_Bool__End = 100
+               En_inBool_DynamicValid = 3,
+               En_Bool__End           = 100
               };
 
              enum Ee_constantSize
               {
-               En_Size__Begin = 0,
+               En_Size__Begin      = 0,
                En_Size_ConstantBegin,
-               En_Size_ConstZero=0,
-               En_Size_ConstOne=1,
+               En_Size_ConstZero  =0,
+               En_Size_ConstOne   =1,
+               En_Size_ConstRand  =1,
                En_Size_ConstantEnd = 10,
 
                En_Size_DynamicBegin = En_Size_ConstantEnd +1,
@@ -103,10 +104,13 @@
                En_Scalar_Const__Begin,
                En_Scalar_ConstZero    = En_Scalar_Const__Begin,
                En_Scalar_ConstOne     = 1,
-               En_Scalar_ConstPi      = 2,
-               En_Scalar_ConstGold    = 3,
+               En_Scalar_ConstRand    = 2,
+               En_Scalar_ConstPi      = 3,
                En_Scalar_ConstE       = 4,
-               En_Scalar_Const__End,
+               En_Scalar_ConstGold    = 5,
+               En_Scalar_ConstSQRT2   = 6,
+               En_Scalar_ConstSQRT3   = 7,
+               En_Scalar_Const__End   =10,
                En_Scalar_Dynamic__Begin = En_Scalar_Const__End + 10,
                En_Scalar_DynamicLambda = En_Scalar_Dynamic__Begin,
                En_Scalar_Dynamic__End,
@@ -123,6 +127,12 @@
                En_Color_ConstBlack = En_Color_Const__Begin,
                En_Color_ConstWhite,
                En_Color_ConstGray,
+               En_Color_ConstRed,
+               En_Color_ConstGreen,
+               En_Color_ConstBlue,
+               En_Color_ConstCyan,
+               En_Color_ConstMagenta,
+               En_Color_ConstYellow,
                En_Color_Const__End = En_Color_ConstGray + 1,
                En_Color_Dynamic__Begin = En_Color_Const__End,
                En_Color_DynamicResult,
@@ -246,45 +256,9 @@
               typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base   T_geometryDistance ;
 
             public:
-              GC_memory()
-               {
-                M2_memory.resize( En__size, nullptr );
-                M2_memory[ En__begin     ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fake;
+              GC_memory();
 
-                M2_memory[ En_bool     ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_bool   , En_Bool__End >();
-
-                M2_memory[ En_int8     ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_int8   , 10 >();
-                M2_memory[ En_uint8    ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_uint8  , 10 >();
-                M2_memory[ En_integer  ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_integer, 10 >();
-                M2_memory[ En_size     ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_size   , En_Size__End >();
-                M2_memory[ En_scalar   ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_scalar , En_Scalar__End >();
-
-                M2_memory[ En_color    ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_color  , En_Color__End >();
-
-                M2_memory[ En_coord2D  ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_coord2D, En_Coord2D__End >();
-                M2_memory[ En_coord3D  ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_coord3D, En_Coord3D__End >();
-                M2_memory[ En_coord4D  ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_coord4D, En_Coord4D__End >();
-
-                M2_memory[ En_cell2D  ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_cell2D, 10 >();
-                M2_memory[ En_cell3D  ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_cell3D, 10 >();
-                M2_memory[ En_cell4D  ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_cell4D, 10 >();
-
-                M2_memory[ En_affine2D ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_affine2D, 10 >();
-                M2_memory[ En_affine3D ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_affine3D, 10 >();
-                M2_memory[ En_affine4D ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_affine4D, 10 >();
-
-                M2_memory[ En_ray      ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_dynamic< T_ray >();
-                M2_memory[ En_spot     ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_dynamic< T_spot >( En_Spot__End );
-                M2_memory[ En_light    ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_light*,   En_Light__End >();
-
-                M2_memory[ En_chunk             ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_geometry_Base::T_state, 10 >();
-                M2_memory[ En_geometry_Base     ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_geometry_Base    *, 10 >();
-                M2_memory[ En_geometryNormal    ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_geometryNormal   *, 10 >();
-                M2_memory[ En_geometryIntersect ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_geometryIntersect*, 10 >();
-                M2_memory[ En_geometryUVW       ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_geometryUVW      *, 10 >();
-                M2_memory[ En_geometryDistance  ] = new GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC_fixed< T_geometryDistance *, 10 >();
-               }
-
+            public:
               T_size const&  F_size( T_component const& P_component )const
                {
                 return M2_memory[ P_component ]->Fv_size();
@@ -333,7 +307,7 @@
                }
 
             private:
-              std::vector< T_raw * > M2_memory;
+              std::vector< T_raw * > M2_memory; //!< unique_ptr<T_raw>
            };
 
 #define IceRay_material_compute_memory_type2component(DP_type, DP_enum) \

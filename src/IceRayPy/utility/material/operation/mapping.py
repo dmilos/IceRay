@@ -16,6 +16,7 @@ def _Generic(
         I_picture.size( 256, 256 )
         IceRayPy.type.graph.Default( I_picture )
     I_image = IceRayPy.core.material.pattern.Image( P_dll, I_picture )
+
     result = IceRayPy.core.material.instruction.label.color.dynamic.RESULT
     point = IceRayPy.core.material.instruction.label.coord3d.dynamic.POINT
     tmpCoord = IceRayPy.core.material.instruction.label.coord3d.temp._BEGIN

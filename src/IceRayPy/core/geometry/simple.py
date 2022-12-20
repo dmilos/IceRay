@@ -73,8 +73,6 @@ class Cone: #( IceRayPy.core.geometry.Generic ):
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Geometry_Cone0()
 
-        # TODO lo hi
-
     def __del__( self ):
         self.m_cargo['dll'].IceRayC_Geometry_Release( self.m_cargo['this'] )
 
@@ -177,9 +175,6 @@ class Paraboloid:  #( IceRayPy.core.geometry.Generic ):
     def __del__( self ):
         self.m_cargo['dll'].IceRayC_Geometry_Release( self.m_cargo['this'] )
 
-    # def radius( self, P_radius  ):
-    #     self.m_cargo['dll'].IceRayC_Geometry_Paraoloid_Radius( self.m_cargo['this'], Scalar( P_radius ) )
-
 
 class Plane:  #( IceRayPy.core.geometry.Generic ):
     def __init__( self, P_dll ):
@@ -214,8 +209,6 @@ class Saddle:  #( IceRayPy.core.geometry.Generic ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Geometry_Saddle0()
-
-        # TODO lo hi
 
     def __del__( self ):
         self.m_cargo['dll'].IceRayC_Geometry_Release( self.m_cargo['this'] )

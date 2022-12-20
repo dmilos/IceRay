@@ -1,7 +1,10 @@
 _BEGIN = 0
 ZERO   = 0
 ONE    = 1
-PI     = 2
-GOLD   = 3
+RAND   = 2
+PI     = 3
 E      = 4
+GOLD   = 5
+SQRT2  = 6
+SQRT3  = 7
 _END = 10
