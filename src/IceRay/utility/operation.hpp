@@ -4,7 +4,7 @@
 //  GS_DDMRM::S_IceRay::S_utility::S_operation::GC_plus
 //  GS_DDMRM::S_IceRay::S_utility::S_operation::GC_minus
 //  GS_DDMRM::S_IceRay::S_utility::S_operation::GC_product
-//  GS_DDMRM::S_IceRay::S_utility::S_operation::GC_division
+//  GS_DDMRM::S_IceRay::S_utility::S_operation::GC_divide
 
  #include "IceRay/type/basic/basic.hpp"
  #include "IceRay/type/color.hpp"
@@ -59,7 +59,7 @@
            };
 
          template < typename N_result, typename N_left, typename N_right >
-          struct GC_division
+          struct GC_divide
            {
             typedef N_result  T_result;
             typedef N_left    T_left;

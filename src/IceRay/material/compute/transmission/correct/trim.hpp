@@ -3,7 +3,7 @@
 
 // GS_DDMRM::S_IceRay::S_material::S_compute::S_transmission::S_correct::GC_trim
 
-#include "../instruction.hpp"
+#include "../../instruction.hpp"
 
  namespace GS_DDMRM
   {

@@ -32,23 +32,24 @@
                  typedef result_name       T_result;
                  typedef input_name        T_input;
 
-                 typedef GS_DDMRM::S_IceRay::S_type::GT_bool T_bool;
+                 //typedef GS_DDMRM::S_IceRay::S_type::GT_bool T_bool;
 
                  typedef GS_DDMRM::S_IceRay::S_material::S_compute::GC_memory   T_memory;
 
-                 typedef GS_DDMRM::S_IceRay::S_material::S_compute::GC_instruction   T_instruction;
+                 //typedef GS_DDMRM::S_IceRay::S_material::S_compute::GC_instruction   T_instruction;
 
-                 enum Ee_output{ En_outTYPE_ResultValue = 1 };
-                 enum Ee_input{  En_inTYPE_LeftValue    = 0 };
+                 enum Ee_output{ En_outTYPE_ResultValue = 0 };
+                 enum Ee_input{  En_inTYPE_LeftValue    = 01 };
 
                public:
                  GC_unary
                   (
                     T_size const& P_outType_result = 0
-                   ,T_size const& P_inType_left    = 0
+                   ,T_size const& P_inType_left    = 1
                   )
                   {
                    this-> template F_output<T_result>(  En_outTYPE_ResultValue,  P_outType_result );
+
                    this-> template F_input<T_input>(    En_inTYPE_LeftValue,     P_inType_left    );
                   }
 

@@ -36,10 +36,10 @@ class Cylinder:
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Geometry_Blobby_Element_Cylinder0()
 
         # TODOif None != P_center:
-        # TODO    self.m_cargo['dll'].IceRayC_Geometry_Cylinder_Center()
+        # TODO    self.m_cargo['dll'].IceRayC_Geometry_Blobby_Element_Cylinder_Center()
         # TODO
         # TODOif None != P_radius:
-        # TODO    slef.m_cargo['this'] = IceRayC_Geometry_Cylinder_Radius( P_radius )
+        # TODO    slef.m_cargo['this'] = IceRayC_Geometry_Blobby_Element_Cylinder_Radius( P_radius )
         # TODO    return
 
     def __del__( self ):

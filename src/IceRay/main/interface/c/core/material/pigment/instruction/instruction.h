@@ -6,3 +6,10 @@
 #include "./illumination.h"
 #include "./transmission.h"
 #include "./convert.h"
+#include "./coord2d.h"
+#include "./coord3d.h"
+#include "./integer.h"
+#include "./scalar.h"
+#include "./size.h"
+#include "./color.h"
+

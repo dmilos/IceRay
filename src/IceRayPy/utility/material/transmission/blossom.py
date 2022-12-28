@@ -31,7 +31,7 @@ def Grid(
     ):
 
     #global G_sizeGrid
-    #P_side = G_sizeGrid # TODO test only
+    #P_side = G_sizeGrid # TEST only
     ##print( "******************* G: " + str( math.degrees(G_sizeGrid)  ) )
     #G_sizeGrid = G_sizeGrid + 1
 

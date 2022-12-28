@@ -69,7 +69,6 @@ set( COMMAND_ENVIRONMENT_RELEASE "PATH=%PATH%" )
 set( COMMAND_ENVIRONMENT_DEBUG   "PATH=%PATH%" )
 configure_file( template.vcxproj.user.in ${CMAKE_BINARY_DIR}/cdll/${ICERAY_PROJECT_NAME_FULL}.vcxproj.user @ONLY )
 
-
 add_library( ${ICERAY_PROJECT_NAME_FULL} SHARED ${SOURCE_CPP} ${SOURCE_HPP}  )
 
 #set_target_properties( ${ICERAY_PROJECT_NAME_FULL} PROPERTIES CXX_VISIBILITY_PRESET hidden )
@@ -84,11 +83,18 @@ if( UNIX )
     if( ICERAY_SWITCH_DEBUG )
         #target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -fsanitize=address )
         #target_link_options(    ${ICERAY_PROJECT_NAME_FULL} PRIVATE -fsanitize=address )
+        target_compile_definitions( ${ICERAY_PROJECT_NAME_FULL} PRIVATE DEBUG )
+        target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -g )
+        target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -rdynamic )
         target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -ggdb )
         target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -g3 )
         target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -O0 )
+        set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -DDEBUG -g -rdynamic -ggdb -g3 -O0")
     endif()
 endif()
+
+message(STATUS "CMAKE_CXX_FLAGS: ${CMAKE_CXX_FLAGS}")
+message(STATUS "CMAKE_CXX_FLAGS: ${CMAKE_C_FLAGS}")
 
 target_include_directories(  ${ICERAY_PROJECT_NAME_FULL} PRIVATE "${directory_include}")
 

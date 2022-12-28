@@ -32,11 +32,21 @@ def Image(
         I_picture.size( 256, 256 )
         IceRayPy.type.graph.Default( I_picture )
 
+    result = IceRayPy.core.material.instruction.label.color.dynamic.RESULT
+    scale = IceRayPy.core.material.instruction.label.scalar.dynamic._BEGIN
+    point  = IceRayPy.core.material.instruction.label.coord3d.dynamic.POINT
+    pointB = IceRayPy.core.material.instruction.label.coord3d.temp._BEGIN
+
     I_image = IceRayPy.core.material.pattern.Image( P_dll, I_picture )
     I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
-    result = IceRayPy.core.material.instruction.label.color.dynamic.RESULT
-    point = IceRayPy.core.material.instruction.label.coord3d.dynamic.POINT
-    I_surface.append( IceRayPy.core.material.instruction.pattern.Color( P_dll, I_image, result, point ) )
+
+    if( 'scale' in P_config ):
+        I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_config['scale'], scale ) )
+        I_surface.append( IceRayPy.core.material.instruction.operation.coord3d.Scale( P_dll, pointB, scale, point ) )
+        I_surface.append( IceRayPy.core.material.instruction.pattern.Color( P_dll, I_image, result, pointB ) )
+    else:
+        I_surface.append( IceRayPy.core.material.instruction.pattern.Color( P_dll, I_image, result, point ) )
+
     return I_surface
 
 def Checker(
@@ -48,13 +58,18 @@ def Checker(
 
     I_pattern = IceRayPy.core.material.pattern.Checker( P_dll )
 
-    result = IceRayPy.core.material.instruction.label.color.dynamic.RESULT
-    point = IceRayPy.core.material.instruction.label.coord3d.dynamic.POINT
-    switch = IceRayPy.core.material.instruction.label.size.temp._BEGIN
+    result     = IceRayPy.core.material.instruction.label.color.dynamic.RESULT
+    point      = IceRayPy.core.material.instruction.label.coord3d.dynamic.POINT
+    normal     = IceRayPy.core.material.instruction.label.coord3d.dynamic.NORMAL
+    tempColor  = IceRayPy.core.material.instruction.label.color.temp._BEGIN
+    tempSize   = IceRayPy.core.material.instruction.label.size.temp._BEGIN
+
+    switch = tempSize
 
     temp = IceRayPy.core.material.instruction.label.color.temp._BEGIN
 
     I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
+
     I_surface.append( IceRayPy.core.material.instruction.pattern.Size( P_dll, I_pattern, switch, point ) )
     I_surface.append( IceRayPy.core.material.instruction.constant.Color( P_dll, P_black, temp + 0 ) )
     I_surface.append( IceRayPy.core.material.instruction.constant.Color( P_dll, P_white, temp + 1 ) )

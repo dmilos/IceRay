@@ -4,7 +4,6 @@ import IceRayPy
 Coord3D = IceRayPy.type.math.coord.Scalar3D
 
 
-
 def time( P_index, P_dilatation ):
     return P_index / P_dilatation
 
@@ -13,25 +12,28 @@ def alpha( P_time ):
     return math.radians( P_time )
 
 
-def circle( P_alpha, P_config = None ):
+def circle( P_time, P_config = None ):
     I_radius = 3
 
     if( 'radius' in P_config ):
         I_radius = P_config['radius']
 
-    x = I_radius * math.cos( P_parameter - math.pi/2 )
-    y = I_radius * math.sin( P_parameter - math.pi/2 )
+    x = I_radius * math.cos( ( 2 * 3.1415926 ) * P_time - math.pi/2 )
+    y = I_radius * math.sin( ( 2 * 3.1415926 ) * P_time - math.pi/2 )
     z = 0
 
     return [x,y,z]
 
-def lookeer( P_parameter, P_config = None ):
-    heightLo
-    radiusX_lo
-    heightHi
-    radiusX_hi
+def looker( P_time, P_config = None ):
 
-    alpha = P_parameter * ( 2 * 3.1415926 )
+    radiusX_lo = 1.2
+    radiusX_hi = 3 
+
+    heightHi = 2 
+    heightLo = 0 
+
+
+    alpha = P_time * ( 2 * 3.1415926 )
     height = heightLo
     x =  math.cos( alpha - math.pi/2 )
     y =  math.sin( alpha - math.pi/2 )

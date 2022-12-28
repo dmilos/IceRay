@@ -48,6 +48,7 @@ include_directories( "${directory_submodule__root}/TopLog/src")
 
 add_library( ${ICERAY_PROJECT_NAME_FULL} STATIC ${SOURCE_CPP} ${SOURCE_HPP}  )
 
+
 set_property( TARGET ${ICERAY_PROJECT_NAME_FULL} PROPERTY POSITION_INDEPENDENT_CODE ON )
 set_property( TARGET ${ICERAY_PROJECT_NAME_FULL} PROPERTY CXX_VISIBILITY_PRESET hidden )
 
@@ -61,9 +62,14 @@ if( UNIX )
     if( ICERAY_SWITCH_DEBUG )
         #target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -fsanitize=address )
         #target_link_options(    ${ICERAY_PROJECT_NAME_FULL} PRIVATE -fsanitize=address )
+        set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -Wall")
+        target_compile_definitions( ${ICERAY_PROJECT_NAME_FULL} PRIVATE DEBUG )
+        target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -g )
+        target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -rdynamic )
         target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -ggdb )
         target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -g3 )
         target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -O0 )
+        set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -DDEBUG -g -rdynamic -ggdb -g3 -O0")
     endif()
 endif()
 
@@ -71,6 +77,9 @@ target_include_directories(  ${ICERAY_PROJECT_NAME_FULL} PRIVATE "${directory_in
 
 target_link_libraries(  ${ICERAY_PROJECT_NAME_FULL} PRIVATE ${ICERAY_CORE_CORE_PROJECT_NAME_FULL} )
 add_dependencies(       ${ICERAY_PROJECT_NAME_FULL}         ${ICERAY_CORE_CORE_PROJECT_NAME_FULL} )
+
+message(STATUS "CMAKE_CXX_FLAGS: ${CMAKE_CXX_FLAGS}")
+message(STATUS "CMAKE_C_FLAGS: ${CMAKE_CXX_FLAGS}")
 
 if(MSVC)
     target_compile_options( ${ICERAY_PROJECT_NAME_FULL}

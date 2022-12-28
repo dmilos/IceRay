@@ -84,10 +84,14 @@ class Cylinder: #( IceRayPy.core.geometry.Generic ):
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Geometry_Cylinder0()
 
-        # TODO lo hi, radius
-
     def __del__( self ):
         self.m_cargo['dll'].IceRayC_Geometry_Release( self.m_cargo['this'] )
+
+    def radius( self, P_radius ):
+        self.m_cargo['dll'].IceRayC_Geometry_Cylinder_Radius( self.m_cargo['this'], Scalar( P_radius ) )
+
+    def height( self, height ):
+        self.m_cargo['dll'].IceRayC_Geometry_Cylinder_Height( self.m_cargo['this'], Scalar( height ) )
 
 
 class Disc: #( IceRayPy.core.geometry.Generic ):

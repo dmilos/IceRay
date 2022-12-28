@@ -1,7 +1,7 @@
 print( '<' + __name__ + ' file=\'' +   __file__ + '\'>' )
 import ctypes
 
-import IceRayPy 
+import IceRayPy
 
 Scalar = IceRayPy.type.basic.Scalar
 Size_T = IceRayPy.type.basic.Size
@@ -149,7 +149,7 @@ def subtraction3D( P_dll, P_left: Scalar3D, P_right: Scalar3D ):
     result = Scalar3D()
     P_dll.IceRayC_Type_Math_Coord3D_Subtraction(  AddresOf( result ), AddresOf( P_left ), AddresOf( P_right ) )
     return result
-    
+
 def addition3D( P_dll, P_left: Scalar3D, P_right: Scalar3D ):
     result = Scalar3D()
     P_dll.IceRayC_Type_Math_Coord3D_Addition(  AddresOf( result ), AddresOf( P_left ), AddresOf( P_right ) )
@@ -159,5 +159,5 @@ def scale3D( P_dll, P_scalar, P_coord: Scalar3D ):
     result = Scalar3D()
     P_dll.IceRayC_Type_Math_Coord3D_Scale( AddresOf( result ), Scalar( P_scalar ), AddresOf( P_coord )  )
     return result
-    
+
 print( '<' + __name__ + ' file=\'' +   __file__ + '\'/>' )

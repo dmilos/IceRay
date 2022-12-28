@@ -59,11 +59,15 @@ if ( MSVC )
     set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} /wd4624")
 endif()
 
+
+
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${directory_obj}/arc)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${directory_lib}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${directory_dll}/bin)
 
 add_library(${ICERAY_PROJECT_NAME_FULL} STATIC ${SOURCE_CPP} ${SOURCE_HPP})
+
+
 set_property( TARGET ${ICERAY_PROJECT_NAME_FULL} PROPERTY POSITION_INDEPENDENT_CODE ON )
 set_property( TARGET ${ICERAY_PROJECT_NAME_FULL} PROPERTY CXX_VISIBILITY_PRESET hidden )
 
@@ -77,11 +81,19 @@ if( UNIX )
     if( ICERAY_SWITCH_DEBUG )
         #target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -fsanitize=address )
         #target_link_options(    ${ICERAY_PROJECT_NAME_FULL} PRIVATE -fsanitize=address )
+        target_compile_definitions( ${ICERAY_PROJECT_NAME_FULL} PRIVATE DEBUG )
+        target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -g )
+        target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -rdynamic )
         target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -ggdb )
         target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -g3 )
         target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -O0 )
+        set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -DDEBUG -g -rdynamic -ggdb -g3 -O0")
     endif()
 endif()
+
+message(STATUS "CMAKE_CXX_FLAGS: ${CMAKE_CXX_FLAGS}")
+message(STATUS "CMAKE_CXX_FLAGS: ${CMAKE_C_FLAGS}")
+
 
 target_link_libraries(${ICERAY_PROJECT_NAME_FULL} PRIVATE   ${ICERAY_SUBMODULE_MEMORY_PROJECT_NAME_FULL} )
 add_dependencies(     ${ICERAY_PROJECT_NAME_FULL}           ${ICERAY_SUBMODULE_MEMORY_PROJECT_NAME_FULL} )

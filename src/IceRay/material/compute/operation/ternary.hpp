@@ -39,11 +39,11 @@
 
                  typedef GS_DDMRM::S_IceRay::S_material::S_compute::GC_memory   T_memory;
 
-                 enum Ee_output{ En_outTYPE_ResultValue= 3 };
+                 enum Ee_output{ En_outTYPE_ResultValue= 0 };
 
-                 enum Ee_input{  En_inTYPE_LeftValue   = 0
-                                ,En_inTYPE_MiddleValue = 1
-                                ,En_inTYPE_RightValue  = 2 };
+                 enum Ee_input{  En_inTYPE_LeftValue   = 1
+                                ,En_inTYPE_MiddleValue = 2
+                                ,En_inTYPE_RightValue  = 3 };
 
                public:
                  GC_ternary
@@ -54,12 +54,28 @@
                   ,T_size const& P_inType_middle  = 3
                  )
                  {
-                  F_output<T_typeRight>( En_outTYPE_ResultValue,  P_outType_result );
+                  this->template F_output<T_result>( En_outTYPE_ResultValue,  P_outType_result );
 
-                  F_input<T_typeLeft>(   En_inTYPE_LeftValue,   P_inType_left   );
-                  F_input<T_typeMiddle>( En_inTYPE_MiddleValue, P_inType_middle );
-                  F_input<T_typeRight>(  En_inTYPE_RightValue,  P_inType_right  );
+                  this->template F_input<T_typeLeft>(   En_inTYPE_LeftValue,   P_inType_left   );
+                  this->template F_input<T_typeMiddle>( En_inTYPE_MiddleValue, P_inType_middle );
+                  this->template F_input<T_typeRight>(  En_inTYPE_RightValue,  P_inType_right  );
                  }
+
+                 GC_ternary
+                  (
+                    T_operation const& P_operation
+                   ,T_size      const& P_outType_result = 0
+                   ,T_size      const& P_inType_left    = 1
+                   ,T_size      const& P_inType_middle  = 2
+                   ,T_size      const& P_inType_right   = 3
+                  ): M2_operation( P_operation )
+                  {
+                   this->template F_output<T_result>( En_outTYPE_ResultValue,  P_outType_result );
+
+                   this->template F_input<T_typeLeft>(   En_inTYPE_LeftValue,   P_inType_left   );
+                   this->template F_input<T_typeMiddle>( En_inTYPE_MiddleValue, P_inType_middle );
+                   this->template F_input<T_typeRight>(  En_inTYPE_RightValue,  P_inType_right  );
+                  }
 
                public:
                  bool    Fv_execute( T_beam &P_next, T_pigment::T_intersect const& P_intersect, T_state const& P_state )const
@@ -70,7 +86,7 @@
 
                    T_result I_result = M2_operation( I_left, I_middle, I_right );
 
-                   M2_memoryResult->Fv_store( this->template F_output<T_result>()[ En_outTYPE_ResultValue ], I_result );
+                   M2_memoryResult->Fv_store( this->template F_output<T_result>( En_outTYPE_ResultValue ), I_result );
 
                    return true;
                   }

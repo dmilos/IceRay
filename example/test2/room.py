@@ -34,8 +34,6 @@ def plate( P_dll, P_config = { 'level':  - 1.01, 'size' : 3, 'shadow': False, 'p
     if( 'pigment' in P_config ):
         pigment = P_config['pigment'] #utility.material.pattern.Checker( P_dll, I_scene )
 
-    #pigment = IceRayPy.utility.material.pattern.Checker( P_dll, I_scene )
-
     wrapper.pigment( pigment )
 
     wrapper.geometrySet( geometry )
@@ -50,7 +48,6 @@ def plane( P_dll, P_config = { 'level':  - 1.001, 'shadow': False, 'pigment': No
     geometry = IceRayPy.core.geometry.simple.Plane( P_dll )
     geometry.origin( Coord3D(0,   0, level ) )
 
-
     I_scene = { 'light': P_light, 'barrier' : P_exponat }
     if( 'shadow' in P_config ):
         if( False == P_config['shadow'] ):
@@ -59,8 +56,6 @@ def plane( P_dll, P_config = { 'level':  - 1.001, 'shadow': False, 'pigment': No
     pigment = IceRayPy.utility.material.illumination.Lambert( P_dll, I_scene, IceRayPy.type.color.RGB( 0.5, 0.5, 0.5 ) )
     if( 'pigment' in P_config ):
         pigment = P_config['pigment'] #utility.material.pattern.Checker( P_dll, I_scene )
-
-    pigment = IceRayPy.utility.material.pattern.Checker( P_dll, I_scene )
 
     wrapper = IceRayPy.core.object.Wrapper( P_dll )
     wrapper.pigment( pigment )
@@ -86,8 +81,6 @@ def disc( P_dll, P_config = { 'level':  - 1.001, 'shadow': False, 'pigment': Non
     if( 'pigment' in P_config ):
         pigment = P_config['pigment'] #utility.material.pattern.Checker( P_dll, I_scene )
 
-    pigment = IceRayPy.utility.material.pattern.Checker( P_dll, I_scene )
-
     wrapper = IceRayPy.core.object.Wrapper( P_dll )
     wrapper.pigment( pigment )
     wrapper.geometrySet( geometry )
@@ -95,12 +88,7 @@ def disc( P_dll, P_config = { 'level':  - 1.001, 'shadow': False, 'pigment': Non
     return wrapper
 
 
-def cornel_close(
-     P_dll
-    ,P_config = None
-    ,P_light = None
-    ,P_exponat = None
-    ): # non-classic
+def cornel_close( P_dll, P_config = {}, P_light = None, P_exponat = None ): # non-classic
 
     global G_dimesion
     I_room = [ 8, 8, 4 ] # [ 6, 6, 3.5 ]

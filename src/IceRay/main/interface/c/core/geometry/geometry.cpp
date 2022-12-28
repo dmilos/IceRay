@@ -168,6 +168,21 @@ IceRayC_Geometry_Handle IceRayC_Geometry_Cylinder0()
   return cpp2c( Ir_result );
  }
 
+IceRayC_Geometry_Handle IceRayC_Geometry_Cylinder1( IceRayC_TypeScalar P_radius )
+ {
+  typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;
+  typedef GS_DDMRM::S_IceRay::S_geometry::GC_cylinder Tf_cylinder;
+  auto Ir_result = new Tf_cylinder{ P_radius };
+  return cpp2c( Ir_result );
+ }
+IceRayC_Geometry_Handle IceRayC_Geometry_Cylinder2( IceRayC_TypeScalar P_radius, IceRayC_TypeScalar P_height )
+ {
+  typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;
+  typedef GS_DDMRM::S_IceRay::S_geometry::GC_cylinder Tf_cylinder;
+  auto Ir_result = new Tf_cylinder{ P_radius, P_height };
+  return cpp2c( Ir_result );
+ }
+
 IceRayC_Type_Bool IceRayC_Geometry_Cylinder_Radius( IceRayC_Geometry_Handle P_this, IceRayC_TypeScalar P_radius )
  {
   typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;
@@ -182,6 +197,19 @@ IceRayC_Type_Bool IceRayC_Geometry_Cylinder_Radius( IceRayC_Geometry_Handle P_th
   return 1;
  }
 
+IceRayC_Type_Bool IceRayC_Geometry_Cylinder_Height( IceRayC_Geometry_Handle P_this, IceRayC_TypeScalar P_height )
+ {
+  typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;
+  typedef GS_DDMRM::S_IceRay::S_geometry::GC_cylinder Tf_cylinder;
+
+  auto I_this = dynamic_cast< Tf_cylinder *>( c2cpp( P_this ) );
+  if( nullptr == I_this )
+   {
+    return 0;
+   }
+  I_this->F_length( P_height );
+  return 1;
+ }
 
 IceRayC_Geometry_Handle IceRayC_Geometry_Cone0()
  {

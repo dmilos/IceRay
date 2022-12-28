@@ -59,7 +59,7 @@ def Snell(
 
     return I_surface
 
-G_ior = 2.41
+G_ior = 1
 def Schlick(
      P_dll
     ,P_config
@@ -76,9 +76,9 @@ def Schlick(
     I_leader = tempSize + 0
     I_count = tempSize + 1
 
-    #global G_ior
-    #P_ior = G_ior
-    #G_ior = G_ior + 0.01
+    global G_ior
+    P_ior = G_ior
+    G_ior = G_ior + 0.01
 
     I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
 

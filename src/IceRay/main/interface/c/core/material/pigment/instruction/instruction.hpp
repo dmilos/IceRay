@@ -5,3 +5,8 @@
 #include "./illumination.hpp"
 #include "./transmission.hpp"
 #include "./convert.hpp"
+#include "./coord2d.hpp"
+#include "./coord3d.hpp"
+//#include "./integer.hpp"
+//#include "./scalar.hpp"
+//#include "./size.hpp"

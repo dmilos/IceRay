@@ -37,9 +37,9 @@
 
                  typedef GS_DDMRM::S_IceRay::S_material::S_compute::GC_memory   T_memory;
 
-                 enum Ee_output{ En_outTYPE_ResultValue = 2 };
-                 enum Ee_input{  En_inTYPE_LeftValue    = 0
-                                ,En_inTYPE_RightValue   = 1  };
+                 enum Ee_output{ En_outTYPE_ResultValue = 0 };
+                 enum Ee_input{  En_inTYPE_LeftValue    = 1
+                                ,En_inTYPE_RightValue   = 2  };
 
                public:
                  GC_binary
@@ -49,10 +49,10 @@
                    ,T_size const& P_inType_right   = 2
                   )
                   {
+                   this->template F_output<T_result>( En_outTYPE_ResultValue,  P_outType_result );
+
                    this->template F_input<T_typeLeft>(    En_inTYPE_LeftValue,     P_inType_left  );
                    this->template F_input<T_typeRight>(   En_inTYPE_RightValue,    P_inType_right );
-
-                   this->template F_output<T_result>( En_outTYPE_ResultValue,  P_outType_result );
                   }
 
                  GC_binary

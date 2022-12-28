@@ -58,7 +58,7 @@ class Torus:  #( IceRayPy.core.geometry.Generic ):
         return True
 
 class Cylinder:  #( IceRayPy.core.geometry.Generic ):
-    def __init__( self, P_dll ): #!< TODO
+    def __init__( self, P_dll ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
 
@@ -82,7 +82,6 @@ class Cylinder:  #( IceRayPy.core.geometry.Generic ):
         self.radius( 0.33 )#!< debug
 
         return
-
 
     def top( self, P_top ):
         self.m_cargo['top'] = P_top
@@ -109,7 +108,7 @@ class Cylinder:  #( IceRayPy.core.geometry.Generic ):
         return True
 
 class Cone:  #( IceRayPy.core.geometry.Generic ):
-    def __init__( self, P_dll ): #!< TODO
+    def __init__( self, P_dll ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
 
@@ -160,7 +159,7 @@ class Cone:  #( IceRayPy.core.geometry.Generic ):
 
 
 class Paraboloid:  #( IceRayPy.core.geometry.Generic ):
-    def __init__( self, P_dll ): #!< TODO
+    def __init__( self, P_dll ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
 
@@ -212,7 +211,7 @@ class Paraboloid:  #( IceRayPy.core.geometry.Generic ):
 
 
 class Hyperboloid:  #( IceRayPy.core.geometry.Generic ): # TODO have bug !!!
-    def __init__( self, P_dll ): #!< TODO
+    def __init__( self, P_dll ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
 

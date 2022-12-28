@@ -1,9 +1,9 @@
-#ifndef Dh_DDMRM_Iceray_material_compute_transmission_corrector_HPP_
+    #ifndef Dh_DDMRM_Iceray_material_compute_transmission_corrector_HPP_
  #define Dh_DDMRM_Iceray_material_compute_transmission_corrector_HPP_
 
 // GS_DDMRM::S_IceRay::S_material::S_compute::S_transmission::GC_corrector
 
-#include "../instruction.hpp"
+#include "../../instruction.hpp"
 
  namespace GS_DDMRM
   {

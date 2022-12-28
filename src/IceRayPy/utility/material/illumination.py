@@ -9,12 +9,11 @@ def Alp(
       P_dll
      ,P_config
      ,P_albedo    = IceRayPy.type.color.RGB( 0.5, 0.5, 0.5 )
-     ,P_emission  = IceRayPy.type.color.RGB(1/32,1/32,1/32)
-     ,P_diffuse   = IceRayPy.type.color.RGB(0.39/4,0.39/4,0.39/4)
+     ,P_emission  = IceRayPy.type.color.RGB(1/32,1/32,8/32)
+     ,P_diffuse   = IceRayPy.type.color.RGB(0.39/4,0.39/4,0.39/0.5)
      ,P_specular  = IceRayPy.type.color.RGB(1*2,2*2,3*2)
      ,P_shininess = IceRayPy.type.color.RGB(10,100,1000)
     ):
-
     result     = IceRayPy.core.material.instruction.label.color.dynamic.RESULT
     point      = IceRayPy.core.material.instruction.label.coord3d.dynamic.POINT
     normal     = IceRayPy.core.material.instruction.label.coord3d.dynamic.NORMAL
@@ -590,7 +589,7 @@ def Phong(
     #,P_specular  = IceRayPy.type.color.RGB( 1, 2, 1 )
     #,P_shininess = IceRayPy.type.color.RGB( 20, 200, 1 )
 
-     ,P_albedo    = IceRayPy.type.color.RGB( 0.5, 0.5, 0.5 )
+     ,P_albedo    = IceRayPy.type.color.RGB( 1, 1, 1 )
      ,P_specular  = IceRayPy.type.color.RGB(1*2,2*2,3*2)
      ,P_shininess = IceRayPy.type.color.RGB(5,50,500)
     ):

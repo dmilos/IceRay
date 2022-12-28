@@ -115,8 +115,8 @@ def _MapFunction_Camera_DOF( P_dll ): #TODO
     _MakeFunction( P_dll.IceRayC_Camera_DOF_Cylinder_Gauss               , ctypes.c_int       , [ctypes.c_void_p, ctypes.c_double] )
     _MakeFunction( P_dll.IceRayC_Camera_DOF_Cylinder_Sample              , ctypes.c_int       , [ctypes.c_void_p, ctypes.c_size_t] )
     _MakeFunction( P_dll.IceRayC_Camera_DOF_Focus0                       , ctypes.c_void_p    , [] )
-    _MakeFunction( P_dll.IceRayC_Camera_DOF_Focus1                       , ctypes.c_void_p    , [ ctypes.c_size_t, ctypes.c_void_p, ctypes.c_void_p, ctypes.c_double] ) 
-    _MakeFunction( P_dll.IceRayC_Camera_DOF_Focus2                       , ctypes.c_void_p    , [ctypes.c_void_p,  ctypes.c_size_t, ctypes.c_void_p, ctypes.c_void_p, ctypes.c_double] ) 
+    _MakeFunction( P_dll.IceRayC_Camera_DOF_Focus1                       , ctypes.c_void_p    , [ ctypes.c_size_t, ctypes.c_void_p, ctypes.c_void_p, ctypes.c_double] )
+    _MakeFunction( P_dll.IceRayC_Camera_DOF_Focus2                       , ctypes.c_void_p    , [ctypes.c_void_p,  ctypes.c_size_t, ctypes.c_void_p, ctypes.c_void_p, ctypes.c_double] )
     _MakeFunction( P_dll.IceRayC_Camera_DOF_Focus_Aperture               , ctypes.c_int       , [ctypes.c_void_p, ctypes.c_void_p ] )
     _MakeFunction( P_dll.IceRayC_Camera_DOF_Focus_Child                  , ctypes.c_int       , [ctypes.c_void_p, ctypes.c_void_p ] )
     _MakeFunction( P_dll.IceRayC_Camera_DOF_Focus_Focus                  , ctypes.c_int       , [ctypes.c_void_p, ctypes.c_void_p ] )
@@ -400,7 +400,7 @@ def _MapFunction_Geometry_Transform( P_dll ): #DONE
     _MakeFunction( P_dll.IceRayC_Geometry_Transform_Homography_2Local_Set     , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_void_p] )
     _MakeFunction( P_dll.IceRayC_Geometry_Transform_Homography_2World_Get     , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_void_p] )
     _MakeFunction( P_dll.IceRayC_Geometry_Transform_Homography_2World_Set     , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_void_p] )
-    _MakeFunction( P_dll.IceRayC_Geometry_Transform_Homography_Child          , ctypes.c_int     , [] )
+    _MakeFunction( P_dll.IceRayC_Geometry_Transform_Homography_Child          , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_void_p] )
     _MakeFunction( P_dll.IceRayC_Geometry_Transform_Identity0                 , ctypes.c_void_p  , [] )
     _MakeFunction( P_dll.IceRayC_Geometry_Transform_Identity1                 , ctypes.c_void_p  , [ctypes.c_void_p] )
     _MakeFunction( P_dll.IceRayC_Geometry_Transform_Identity_Child            , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_void_p] )
@@ -453,7 +453,13 @@ def _MapFunction_Geometry( P_dll ): #TODO
     _MakeFunction( P_dll.IceRayC_Geometry_Box_Hi                              , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_void_p] )
     _MakeFunction( P_dll.IceRayC_Geometry_Box_Lo                              , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_void_p] )
     _MakeFunction( P_dll.IceRayC_Geometry_Cone0                               , ctypes.c_void_p  , [] )
-    _MakeFunction( P_dll.IceRayC_Geometry_Cylinder0                           , ctypes.c_void_p  , [] )
+
+    _MakeFunction( P_dll.IceRayC_Geometry_Cylinder0                   , ctypes.c_void_p  , [] )
+    #_MakeFunction( P_dll.IceRayC_Geometry_Cylinder1                   , ctypes.c_void_p  , [ ctypes.c_double ] )
+    #_MakeFunction( P_dll.IceRayC_Geometry_Cylinder2                   , ctypes.c_void_p  , [ ctypes.c_double, ctypes.c_double ] )
+    _MakeFunction( P_dll.IceRayC_Geometry_Cylinder_Radius             , ctypes.c_int     , [ ctypes.c_void_p, ctypes.c_double ] )
+    _MakeFunction( P_dll.IceRayC_Geometry_Cylinder_Height             , ctypes.c_int     , [ ctypes.c_void_p, ctypes.c_double ] )
+
     _MakeFunction( P_dll.IceRayC_Geometry_Disc0                               , ctypes.c_void_p  , [] )
     _MakeFunction( P_dll.IceRayC_Geometry_Disc1                               , ctypes.c_void_p  , [] )#!<mTODO
     _MakeFunction( P_dll.IceRayC_Geometry_Disc_Center                         , ctypes.c_int     , [] )
@@ -469,12 +475,12 @@ def _MapFunction_Geometry( P_dll ): #TODO
     _MakeFunction( P_dll.IceRayC_Geometry_HField                              , ctypes.c_int     , [] )
     _MakeFunction( P_dll.IceRayC_Geometry_Hyperboloid0                        , ctypes.c_void_p  , [] )
     _MakeFunction( P_dll.IceRayC_Geometry_Hyperboloid1                        , ctypes.c_void_p  , [] )#!<mTODO
-    _MakeFunction( P_dll.IceRayC_Geometry_Hyperboloid_Core                    , ctypes.c_int     , [] )
+    _MakeFunction( P_dll.IceRayC_Geometry_Hyperboloid_Core                    , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_double] )
     _MakeFunction( P_dll.IceRayC_Geometry_Paraboloid0                         , ctypes.c_void_p  , [] )
     _MakeFunction( P_dll.IceRayC_Geometry_Plane0                              , ctypes.c_void_p  , [] )
     _MakeFunction( P_dll.IceRayC_Geometry_Plane1                              , ctypes.c_void_p  , [] )
-    _MakeFunction( P_dll.IceRayC_Geometry_Plane_Normal                        , ctypes.c_int     , [] )
-    _MakeFunction( P_dll.IceRayC_Geometry_Plane_Origin                        , ctypes.c_int     , [] )
+    _MakeFunction( P_dll.IceRayC_Geometry_Plane_Normal                        , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_void_p] )
+    _MakeFunction( P_dll.IceRayC_Geometry_Plane_Origin                        , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_void_p] )
     _MakeFunction( P_dll.IceRayC_Geometry_Quadric0                            , ctypes.c_void_p  , [] )
     _MakeFunction( P_dll.IceRayC_Geometry_Saddle0                             , ctypes.c_void_p  , [] )
     _MakeFunction( P_dll.IceRayC_Geometry_Sphere0                             , ctypes.c_void_p  , [] )
@@ -483,7 +489,7 @@ def _MapFunction_Geometry( P_dll ): #TODO
     _MakeFunction( P_dll.IceRayC_Geometry_Sphere_Radius                       , ctypes.c_int     , [ ctypes.c_void_p,ctypes.c_double] )
     _MakeFunction( P_dll.IceRayC_Geometry_Torus0                              , ctypes.c_void_p  , [] )
     _MakeFunction( P_dll.IceRayC_Geometry_Torus1                              , ctypes.c_void_p  , [] )#!<mTODO
-    _MakeFunction( P_dll.IceRayC_Geometry_Torus_Minor                         , ctypes.c_int     , [] )
+    _MakeFunction( P_dll.IceRayC_Geometry_Torus_Minor                         , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_double] )
     _MakeFunction( P_dll.IceRayC_Geometry_Triangle0                           , ctypes.c_void_p  , [] )
     _MakeFunction( P_dll.IceRayC_Geometry_Triangle1                           , ctypes.c_void_p  , [] ) #!<mTODO
     _MakeFunction( P_dll.IceRayC_Geometry_Triangle_Origin                     , ctypes.c_int     , [] )
@@ -707,12 +713,14 @@ def _MapFunction_Material_Pattern(P_dll): #!< DONE
     return
 
 def _MapFunction_Material_Pigment_Surface(P_dll): #!< DONE
-    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface0       , ctypes.c_void_p , [] )
-    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Append , ctypes.c_int    , [ ctypes.c_void_p, ctypes.c_void_p ] )
-    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Lambda , ctypes.c_int    , [ ctypes.c_void_p, ctypes.c_size_t ] )
-    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Normal , ctypes.c_int    , [ ctypes.c_void_p, ctypes.c_size_t ] )
-    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Point  , ctypes.c_int    , [ ctypes.c_void_p, ctypes.c_size_t ] )
-    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Result , ctypes.c_int    , [ ctypes.c_void_p, ctypes.c_size_t ] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface0         , ctypes.c_void_p , [] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Append   , ctypes.c_int    , [ ctypes.c_void_p, ctypes.c_void_p ] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Lambda   , ctypes.c_int    , [ ctypes.c_void_p, ctypes.c_size_t ] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Normal   , ctypes.c_int    , [ ctypes.c_void_p, ctypes.c_size_t ] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Point    , ctypes.c_int    , [ ctypes.c_void_p, ctypes.c_size_t ] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Result   , ctypes.c_int    , [ ctypes.c_void_p, ctypes.c_size_t ] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Incident , ctypes.c_int    , [ ctypes.c_void_p, ctypes.c_size_t ] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Origin   , ctypes.c_int    , [ ctypes.c_void_p, ctypes.c_size_t ] ) 
     return
 
 def _MapFunction_Material_Pigment_Surface_Instruction_Constant(P_dll): #!< DONE
@@ -726,6 +734,38 @@ def _MapFunction_Material_Pigment_Surface_Instruction_Constant(P_dll): #!< DONE
     _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Constant_Scalar0         , ctypes.c_void_p , [ ctypes.c_double, ctypes.c_size_t ] )
     _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Constant_Size0           , ctypes.c_void_p , [ ctypes.c_size_t, ctypes.c_size_t ] )
     return
+
+def _MapFunction_Material_Pigment_Surface_Instruction_Type(P_dll):
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Integer_Addition0,    ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t, ctypes.c_size_t] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Integer_Divide0,      ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t, ctypes.c_size_t] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Integer_Multiply0,    ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t, ctypes.c_size_t] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Integer_Subtraction0, ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t, ctypes.c_size_t] )
+
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Size_Addition0,       ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t, ctypes.c_size_t] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Size_Divide0,         ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t, ctypes.c_size_t] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Size_Multiply0,       ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t, ctypes.c_size_t] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Size_Subtraction0,    ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t, ctypes.c_size_t] )
+
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Scalar_Addition0,     ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t, ctypes.c_size_t] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Scalar_Divide0,       ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t, ctypes.c_size_t] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Scalar_Multiply0,     ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t, ctypes.c_size_t] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Scalar_Subtraction0,  ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t, ctypes.c_size_t] )
+
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Coord2D_Addition0   , ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t, ctypes.c_size_t] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Coord2D_Load0       , ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t, ctypes.c_size_t] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Coord2D_Multiply0   , ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t, ctypes.c_size_t] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Coord2D_Scale0      , ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t, ctypes.c_size_t] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Coord2D_Subtraction0, ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t, ctypes.c_size_t] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Coord2D_Unit0       , ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t] )
+
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Coord3D_Addition0   , ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t, ctypes.c_size_t] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Coord3D_Cross0      , ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t, ctypes.c_size_t] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Coord3D_Load0       , ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t, ctypes.c_size_t, ctypes.c_size_t] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Coord3D_Multiply0   , ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t, ctypes.c_size_t] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Coord3D_Scale0      , ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t, ctypes.c_size_t] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Coord3D_Subtraction0, ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t, ctypes.c_size_t] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Coord3D_Unit0       , ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t] )
+
 
 def _MapFunction_Material_Pigment_Surface_Instruction_Convert(P_dll): #!< DONE
     _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Convert_Bool2Bool0                         , ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t] )
@@ -912,6 +952,7 @@ def _MapFunction_Material_Pigment_Surface_Instruction(P_dll): #!< DONE
     _MapFunction_Material_Pigment_Surface_Instruction_Transmission_Jitter(P_dll)
     _MapFunction_Material_Pigment_Surface_Instruction_Transmission_Reflect(P_dll)
     _MapFunction_Material_Pigment_Surface_Instruction_Transmission_Refract(P_dll)
+    _MapFunction_Material_Pigment_Surface_Instruction_Type(P_dll)
 
     return
 

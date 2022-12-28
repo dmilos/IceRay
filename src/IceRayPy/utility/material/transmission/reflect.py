@@ -13,13 +13,14 @@ def Mirror(
     tempSize   = IceRayPy.core.material.instruction.label.size.temp._BEGIN
     tempColor  = IceRayPy.core.material.instruction.label.color.temp._BEGIN
 
+    I_albedo = tempColor + 0
     I_leader = tempSize + 0
 
     I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
 
     I_surface.append( IceRayPy.core.material.instruction.constant.Color(           P_dll, IceRayPy.type.color.RGB( 0, 0, 0 ), result ) )
-    I_surface.append( IceRayPy.core.material.instruction.constant.Color(           P_dll, IceRayPy.type.color.RGB( 1, 1, 1 ),  tempColor + 0 ) )
-    I_surface.append( IceRayPy.core.material.instruction.transmission.reflect.One( P_dll, point, normal, tempColor + 0, I_leader ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Color(           P_dll, IceRayPy.type.color.RGB( 1, 1, 1 ), I_albedo ) )
+    I_surface.append( IceRayPy.core.material.instruction.transmission.reflect.One( P_dll, point, normal, I_albedo, I_leader ) )
 
     return I_surface
 

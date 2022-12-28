@@ -61,6 +61,7 @@ def doRendering(P_config): # P_folder, P_dll, P_eye, P_view
     rtss.rtss( list )
     rtss.push( IceRayPy.core.geometry.Pretender( P_config['dll'], room_object.cast2Geometry(),    room_object ) )
     rtss.push( IceRayPy.core.geometry.Pretender( P_config['dll'], object.cast2Geometry(), object ) )
+    print( __name__ +"::"+sys._getframe().f_code.co_name + "(" + str( sys._getframe().f_lineno ) + "): "  )
 
     scene = IceRayPy.core.object.Wrapper( P_config['dll'] )
     scene.geometrySet( rtss )
@@ -73,9 +74,7 @@ def doRendering(P_config): # P_folder, P_dll, P_eye, P_view
     manager.object( scene )
 
     start = time.time()
-    print( __name__ +"::"+sys._getframe().f_code.co_name + "(" + str( sys._getframe().f_lineno ) + "): " )
     manager.start( picture )
-    print( __name__ +"::"+sys._getframe().f_code.co_name + "(" + str( sys._getframe().f_lineno ) + "): " )
     delta = time.time() - start
 
     print( "Time:" + str( delta ) )
