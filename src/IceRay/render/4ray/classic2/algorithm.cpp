@@ -14,10 +14,14 @@ using namespace GS_DDMRM::S_IceRay::S_render::S_ray::S_classic2;
 GC_algorithm::GC_algorithm( )
  {
   M2_object = &GC_algorithm::Fs_vacuum();
+  M2_depth = 8;
+  M2_trash = T_scalar( 0.5 );
+  M2_next = 16;
+  M2_ior = 1;
+
   F_trash( T_scalar( 0.5 ) );
   F_next( 16 );
   F_depth( 4 );
-  M2_ior = 1;
  }
 
 #define PRINT(DP_number)                                                            \
@@ -41,18 +45,19 @@ GC_algorithm::~GC_algorithm( )
    {
     I_summae = std::accumulate( I_info.begin(), I_info.end(), 0 );
 
-    std::cout << "Traced:     " << PRINT( I_info[ (int)C_statistic::Ee_type::En_traced ]       );
-    std::cout << "Abandoned:  " << PRINT( I_info[ (int)C_statistic::Ee_type::En_abandoned ]    );
-    std::cout << "Eye:        " << PRINT( I_info[ (int)C_statistic::Ee_type::En_eye ]          );
-    std::cout << "Reflected:  " << PRINT( I_info[ (int)C_statistic::Ee_type::En_reflected ]    );
-    std::cout << "Refracted:  " << PRINT( I_info[ (int)C_statistic::Ee_type::En_refracted ]    );
-    std::cout << "Too far:    " << PRINT( I_info[ (int)C_statistic::Ee_type::En_2far ]         );
-    std::cout << "Too deep:   " << PRINT( I_info[ (int)C_statistic::Ee_type::En_2deep ]        );
-    std::cout << "Under:      " << PRINT( I_info[ (int)C_statistic::Ee_type::En_under ]        );
-    std::cout << "Miss:       " << PRINT( I_info[ (int)C_statistic::Ee_type::En_miss ]         );
-    std::cout << "Teleported: " << PRINT( I_info[ (int)C_statistic::Ee_type::En_teleported ]   );
-    std::cout << "Broken:     " << PRINT( I_info[ (int)C_statistic::Ee_type::En_broken ]       );
     std::cout << "Total:      " << PRINT( I_summae ) ;
+    std::cout << "Eye:        " << PRINT( I_info[ (int)C_statistic::Ee_type::En_eye        ] );
+    std::cout << "Traced:     " << PRINT( I_info[ (int)C_statistic::Ee_type::En_traced     ] );
+    std::cout << "Abandoned:  " << PRINT( I_info[ (int)C_statistic::Ee_type::En_abandoned  ] );
+    std::cout << "Reflected:  " << PRINT( I_info[ (int)C_statistic::Ee_type::En_reflected  ] );
+    std::cout << "Refracted:  " << PRINT( I_info[ (int)C_statistic::Ee_type::En_refracted  ] );
+    std::cout << "Too far:    " << PRINT( I_info[ (int)C_statistic::Ee_type::En_2far       ] );
+    std::cout << "Too deep:   " << PRINT( I_info[ (int)C_statistic::Ee_type::En_2deep      ] );
+    std::cout << "Under:      " << PRINT( I_info[ (int)C_statistic::Ee_type::En_under      ] );
+    std::cout << "Miss:       " << PRINT( I_info[ (int)C_statistic::Ee_type::En_miss       ] );
+    std::cout << "Teleported: " << PRINT( I_info[ (int)C_statistic::Ee_type::En_teleported ] );
+    std::cout << "Broken:     " << PRINT( I_info[ (int)C_statistic::Ee_type::En_broken     ] );
+    //std::cout << "Unknown:    " << PRINT( I_info[ (int)C_statistic::Ee_type::En__Unknown   ] );
     std::cout << std::endl;
    }
   std::setfill(' ');
@@ -105,7 +110,7 @@ bool GC_algorithm::F_trash( T_scalar const& P_trash )
 bool GC_algorithm::F_next( T_size const& P_next )
  {
   M2_next = P_next;
-  return true;
+  return F_depth( F_depth() );
  }
 
 bool GC_algorithm::F_ior( T_scalar const& P_ior )
@@ -195,21 +200,20 @@ void GC_algorithm::F2_trace( T_color &P_color )
         //++M2_statistic.M_depth[ I_incoming.M_depth ];
         switch( I_incoming.M_derivation )
          {
-          case( T2_ray::Ee_derivation::En_Eye        ) : ++M2_statistic.M_depth[ I_incoming.M_depth ][ (T_size)C_statistic::Ee_type::En_eye];        break;
-          case( T2_ray::Ee_derivation::En_Light      ) : ++M2_statistic.M_depth[ I_incoming.M_depth ][ (T_size)C_statistic::Ee_type::En_light];      break;
-          case( T2_ray::Ee_derivation::En_Reflected  ) : ++M2_statistic.M_depth[ I_incoming.M_depth ][ (T_size)C_statistic::Ee_type::En_reflected];  break;
-          case( T2_ray::Ee_derivation::En_Refracted  ) : ++M2_statistic.M_depth[ I_incoming.M_depth ][ (T_size)C_statistic::Ee_type::En_refracted];  break;
-          case( T2_ray::Ee_derivation::En_Teleported ) : ++M2_statistic.M_depth[ I_incoming.M_depth ][ (T_size)C_statistic::Ee_type::En_teleported]; break;
-          case( T2_ray::Ee_derivation::En_Broken     ) : ++M2_statistic.M_depth[ I_incoming.M_depth ][ (T_size)C_statistic::Ee_type::En_broken];     break;
-
-          case( T2_ray::Ee_derivation::En__Unknown   ) : /*TODO some comment or action */break;
+          case( T2_ray::Ee_derivation::En_Eye        ) : ++M2_statistic.M_depth[ I_incoming.M_depth ][ (T_size)C_statistic::Ee_type::En_eye        ]; break;
+          case( T2_ray::Ee_derivation::En_Light      ) : ++M2_statistic.M_depth[ I_incoming.M_depth ][ (T_size)C_statistic::Ee_type::En_light      ]; break;
+          case( T2_ray::Ee_derivation::En_Reflected  ) : ++M2_statistic.M_depth[ I_incoming.M_depth ][ (T_size)C_statistic::Ee_type::En_reflected  ]; break;
+          case( T2_ray::Ee_derivation::En_Refracted  ) : ++M2_statistic.M_depth[ I_incoming.M_depth ][ (T_size)C_statistic::Ee_type::En_refracted  ]; break;
+          case( T2_ray::Ee_derivation::En_Teleported ) : ++M2_statistic.M_depth[ I_incoming.M_depth ][ (T_size)C_statistic::Ee_type::En_teleported ]; break;
+          case( T2_ray::Ee_derivation::En_Broken     ) : ++M2_statistic.M_depth[ I_incoming.M_depth ][ (T_size)C_statistic::Ee_type::En_broken     ]; break;
+          case( T2_ray::Ee_derivation::En__Unknown   ) : ++M2_statistic.M_depth[ I_incoming.M_depth ][ (T_size)C_statistic::Ee_type::En__Unknown   ];break;
          }
        } break;
      }
 
     if( T2_ray::Ee_status::En_abandoned == I_incoming.M_status )
      {
-      ++M2_statistic.M_depth[ I_incoming.M_depth ][ (int)C_statistic::Ee_type::En_abandoned];
+      ++M2_statistic.M_depth[ I_incoming.M_depth ][ (int)C_statistic::Ee_type::En_abandoned ];
       I_accident.M_consume = T_stack::T_accident::Ee_consume::En_discard;
       continue;
      }

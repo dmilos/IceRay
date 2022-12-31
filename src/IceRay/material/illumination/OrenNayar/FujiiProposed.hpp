@@ -40,35 +40,35 @@
                public:
                  bool F_process
                   (
-                   T_color      &  P_result,
-                   T_color const&  P_energy,
-                   T_coord const&  P_2light,
-                   T_coord const&  P_normal,
-                   T_coord const&  P_2viewer
-                   )
-                   {
-                    T_scalar I_dotLV = ::math::linear::vector::dot( P_2viewer, P_2light );
-                    T_scalar I_dotNL = ::math::linear::vector::dot( P_normal, P_2light );
-                    T_scalar I_dotNV = ::math::linear::vector::dot( P_normal, P_2viewer );
+                    T_color      &  P_result
+                   ,T_color const&  P_energy
+                   ,T_coord const&  P_normal
+                   ,T_coord const&  P_2light
+                   ,T_coord const&  P_2viewer
+                  )
+                  {
+                   T_scalar I_dotLV = ::math::linear::vector::dot( P_2viewer, P_2light );
+                   T_scalar I_dotNL = ::math::linear::vector::dot( P_normal, P_2light );
+                   T_scalar I_dotNV = ::math::linear::vector::dot( P_normal, P_2viewer );
 
-                    T_scalar I_s = I_dotLV - I_dotNL * I_dotNV;
+                   T_scalar I_s = I_dotLV - I_dotNL * I_dotNV;
 
-                    T_scalar I_t;
-                    if( I_s < T_scalar(0) )
-                     {
-                      I_t = T_scalar(1);
-                     }
-                    else
-                     {
-                      I_t = std::max( I_dotNL, I_dotNV );
-                     }
+                   T_scalar I_t;
+                   if( I_s < T_scalar(0) )
+                    {
+                     I_t = T_scalar(1);
+                    }
+                   else
+                    {
+                     I_t = std::max( I_dotNL, I_dotNV );
+                    }
 
-                    P_result.set( 0, P_energy[0] * I_dotNL * ( M2_a[0] + M2_b[0] * I_s/I_t ) );
-                    P_result.set( 1, P_energy[1] * I_dotNL * ( M2_a[1] + M2_b[1] * I_s/I_t ) );
-                    P_result.set( 2, P_energy[2] * I_dotNL * ( M2_a[2] + M2_b[2] * I_s/I_t ) );
+                   P_result.set( 0, P_energy[0] * I_dotNL * ( M2_a[0] + M2_b[0] * I_s/I_t ) );
+                   P_result.set( 1, P_energy[1] * I_dotNL * ( M2_a[1] + M2_b[1] * I_s/I_t ) );
+                   P_result.set( 2, P_energy[2] * I_dotNL * ( M2_a[2] + M2_b[2] * I_s/I_t ) );
 
-                    return true;
-                   }
+                   return true;
+                  }
 
                private:
                  T_color M2_a;

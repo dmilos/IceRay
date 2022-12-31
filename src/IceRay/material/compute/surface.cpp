@@ -12,10 +12,10 @@ GC_surface::GC_surface
   ,T_size const& P_inCoord_Origin
  )
  {
-  M2_scalar = dynamic_cast< T2_scalar*> (  M2_pocessor.F_memory().F_get( T_memory::En_scalar  ) );
-  M2_color  = dynamic_cast< T2_color *> (  M2_pocessor.F_memory().F_get( T_memory::En_color   ) );
-  M2_coord  = dynamic_cast< T2_coord *> (  M2_pocessor.F_memory().F_get( T_memory::En_coord   ) );
-//M2_ray    = dynamic_cast< T2_ray   *> (  M2_pocessor.F_memory().F_get( T_memory::En_ray     ) );
+  M2_scalar = M2_pocessor.F_memory().F_get<T_scalar>( );
+  M2_color  = M2_pocessor.F_memory().F_get<T_color>( );
+  M2_coord  = M2_pocessor.F_memory().F_get<T_coord>( );
+//M2_ray    = dynamic_cast< T2_ray   *> (  M2_pocessor.F_memory().F_get<>( T_memory::T_component::En_ray     ) );
 
   M2_result   = P_result;
   M2_lambda   = P_inScalar_Lambda;

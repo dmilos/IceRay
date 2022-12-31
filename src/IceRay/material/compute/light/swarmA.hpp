@@ -111,7 +111,7 @@
                  M2_memorySize  = P_memory->F_get<T_size>();
                  M2_memoryCoord = P_memory->F_get<T_coord>();
                  M2_memorySpot  = P_memory->F_get<T_spot>( );
-                 M2_memoryLight = dynamic_cast<T2_memoryLight* >( P_memory->F_get( T_memory::En_light ) );
+                 M2_memoryLight = dynamic_cast<T2_memoryLight* >( P_memory->F_get( T_memory::T_component::En_light ) );
                 }
 
              private:

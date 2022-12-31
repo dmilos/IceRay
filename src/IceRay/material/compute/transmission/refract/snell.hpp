@@ -39,7 +39,7 @@
                      ,En_inScalar_IOR   = 0
                      ,En_inColor_Albedo = 0
                      ,En_inColor_Transparency = 1
-                     ,En_inGeometryBase   = 0
+                   //,En_inRay_Incoming = 0
                     };
                    enum Ee_output
                     {
@@ -102,32 +102,44 @@
                        }
                      }
 
-                     P_next.Fv_push();
-                     T_ray &I_refracted = P_next.Fv_top();
-                     I_refracted.M_depth = I_incoming.M_depth + 1;
-                     I_refracted.M_origin = I_point;
-                     I_refracted.M_state = I_intersection.M_state;
-                     I_refracted.M_geometryID = I_intersection.M_geometryID;
-                     I_refracted.M_hierarchy = T_ray::Ee_hierarchy::En_solo;
-                     I_refracted.M_coefficient = T_scalar(1);
-
-                     switch( ::math::linear::vector::refract( I_refracted.M_direction, I_incoming.M_direction, I_normal, I_air, I_watter ) )
+                     T_coord I_refracted;
+                     switch( ::math::linear::vector::refract( I_refracted, I_incoming.M_direction, I_normal, I_air, I_watter ) )
                       {
-                       case( 0 ):
+                       case( 0 ): 
+                       {
+                       }
+                       break;
                        case( -1 ):
                         {
-                         ::math::linear::vector::reflect( I_refracted.M_direction, I_incoming.M_direction, I_normal );
-                         ::math::linear::vector::length( I_refracted.M_direction, T_scalar(1) );
-                         ::color::operation::multiply( I_refracted.M_intesity, I_albedo, I_incoming.M_intesity );
-                         I_refracted.M_derivation = T_ray::Ee_derivation::En_Reflected;
-                         I_refracted.M_ior  = I_air;
+                         P_next.Fv_push();
+                         T_ray &I_ray = P_next.Fv_top();
+                         T_coord & I_reflected = I_ray.M_direction;
+                         I_ray.M_geometryID = I_intersection.M_geometryID;
+                         I_ray.M_depth = I_incoming.M_depth + 1;
+                         I_ray.M_origin = I_point;
+                         I_ray.M_state = I_intersection.M_state;
+                         ::math::linear::vector::reflect( I_reflected, I_incoming.M_direction, I_normal );
+                         ::math::linear::vector::length( I_reflected, T_scalar(1) );
+                         I_ray.M_derivation = T_ray::Ee_derivation::En_Reflected;
+                         I_ray.M_hierarchy = T_ray::Ee_hierarchy::En_solo;
+                         I_ray.M_ior  = I_air;
+                         ::color::operation::multiply( I_ray.M_intesity, I_albedo, I_incoming.M_intesity );
+                         I_ray.M_coefficient = T_scalar(1);
                         }break;
                        case( +1 ):
                         {
-                         I_refracted.M_derivation = T_ray::Ee_derivation::En_Refracted;
-                         I_refracted.M_ior  = I_watter;
-                         ::color::operation::multiply( I_refracted.M_intesity, I_transparency, I_incoming.M_intesity );
-                         ::math::linear::vector::length( I_refracted.M_direction, T_scalar(1) );
+                         P_next.Fv_push();
+                         T_ray &I_ray = P_next.Fv_top();
+                         I_ray.M_geometryID = I_intersection.M_geometryID;
+                         I_ray.M_depth = I_incoming.M_depth + 1;
+                         I_ray.M_origin = I_point;
+                         I_ray.M_state = I_intersection.M_state;
+                         ::math::linear::vector::length( I_ray.M_direction, I_refracted, T_scalar(1) );
+                         I_ray.M_derivation = T_ray::Ee_derivation::En_Refracted;
+                         I_ray.M_hierarchy = T_ray::Ee_hierarchy::En_solo;
+                         I_ray.M_ior  = I_watter;
+                         ::color::operation::multiply( I_ray.M_intesity, I_transparency, I_incoming.M_intesity );
+                         I_ray.M_coefficient = T_scalar(1);
                         }break;
                       }
 

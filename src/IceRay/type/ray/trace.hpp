@@ -31,13 +31,14 @@
                ,En_Reflected
                ,En_Refracted
                ,En_Teleported
+               ,En_Blossom
                ,En_Broken      //! Pass to thin object like plane. Same medium but different direction.
               };
 
              enum class Ee_status
               {
                 En_active
-               ,En_abandoned 
+               ,En_abandoned
               };
 
              enum class Ee_hierarchy
@@ -60,7 +61,7 @@
 
            public:
              GC_trace()
-              :GC_trace( T_simple( T_line{} ), Ee_derivation::En__Unknown)
+              :GC_trace( T_simple( T_line{} ), Ee_derivation::En__Unknown )
               {
               }
 
@@ -98,6 +99,7 @@
              Ee_status      M_status;
              Ee_hierarchy   M_hierarchy;
 
+           public:
              T_scalar  M_ior;
              T_scalar  M_coefficient;
              T_state   M_state;

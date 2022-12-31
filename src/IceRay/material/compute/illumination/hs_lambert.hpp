@@ -68,12 +68,12 @@
                   {
                    auto const&  I_incoming = P_intersect.M_incoming;
 
-                   T_color const& I_diffuse   = M2_memoryColor->Fv_load( F_input()[ T_memory::En_color ][ En_inColor_Diffuse  ] );
-                   T_coord const& I_groove    = M2_memoryCoord->Fv_load( F_input()[ T_memory::En_coord ][ En_inCoord_Groove    ] );
-                   T_coord const& I_point     = M2_memoryCoord->Fv_load( F_input()[ T_memory::En_coord ][ En_inCoord_Point     ] );
-                   T_coord const& I_normal    = M2_memoryCoord->Fv_load( F_input()[ T_memory::En_coord ][ En_inCoord_Normal    ] );
-                   T_size         I_spotBegin  = M2_memorySize->Fv_load(  F_input<T_size>( En_inSize_SpotBegin ) );
-                   T_size         I_spotEnd    = M2_memorySize->Fv_load(  F_input<T_size>( En_inSize_SpotEnd ) );
+                   T_color const& I_diffuse   = M2_memoryColor->Fv_load( F_input<T_color>( En_inColor_Diffuse   ) );
+                   T_coord const& I_groove    = M2_memoryCoord->Fv_load( F_input<T_coord>( En_inCoord_Groove    ) );
+                   T_coord const& I_point     = M2_memoryCoord->Fv_load( F_input<T_coord>( En_inCoord_Point     ) );
+                   T_coord const& I_normal    = M2_memoryCoord->Fv_load( F_input<T_coord>( En_inCoord_Normal    ) );
+                   T_size         I_spotBegin  = M2_memorySize->Fv_load( F_input<T_size>(  En_inSize_SpotBegin  ) );
+                   T_size         I_spotEnd    = M2_memorySize->Fv_load( F_input<T_size>(  En_inSize_SpotEnd    ) );
 
                    GS_DDMRM::S_IceRay::S_material::S_illumination::S_HeidrichSeidel::GC_lambert I_HeidrichSeidel( I_diffuse, I_groove );
 

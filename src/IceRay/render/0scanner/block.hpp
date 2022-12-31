@@ -29,8 +29,7 @@
              GC_block();
              GC_block( T_size const&,T_size const&,T_size const&,T_size const& );
              GC_block( T_cell2D const&, T_cell2D const&  );
-             GC_block( T_range const&  );
-             GC_block( T_pixel * P_pixel );
+             GC_block( T_range const& P_window, T_pixel * P_pixel = nullptr );
 
             ~GC_block();
 
@@ -52,8 +51,10 @@
             T_report       F_hot( T_cell2D const& P_hot );
           private:
             T_cell2D M2_hot;
-          //T_cell2D M2_steper;
-
+          private:
+            T_size M2_dot;
+            T_size M2_asterisk;
+            T_size M2_step;
           };
 
        }

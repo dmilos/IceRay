@@ -50,14 +50,13 @@ class Claim:
         self.m_cargo['dll'].IceRayC_Material_Pigment_Surface_Instruction_Release( self.m_cargo['this'] )
 
 class Leader:
-    def __init__(self, P_dll, P_normal, P_angle, P_leaderS, P_leaderT ):
+    def __init__(self, P_dll, P_normal, P_angle, P_leader ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Material_Pigment_Surface_Instruction_Transmission_Correct_Leader0(
             SizeType( P_normal  )
            ,SizeType( P_angle )
-           ,SizeType( P_leaderS )
-           ,SizeType( P_leaderT )
+           ,SizeType( P_leader )
         )
 
     def __del__(self):

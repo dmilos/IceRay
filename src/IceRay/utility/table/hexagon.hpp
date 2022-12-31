@@ -28,7 +28,7 @@
 
              typedef GS_DDMRM::S_IceRay::S_utility::S_table::GC_structure  T_structure;
            public:
-             explicit GC_hexagon( T_size const& P_size = 10 )
+             explicit GC_hexagon( T_size const& P_size = 15 )
               {
                F_init( P_size );
               }

@@ -34,8 +34,8 @@
                  enum Ee_input
                   {
                     En_inCoord_Normal = 1
-                   ,En_inSize_Leader  = 0
                    ,En_inSize_Count   = 1
+                   ,En_inSize_Leader  = 0
                    ,En_inScalar_Angle = 0
                    ,En_inScalar_Gauss = 1
                   };
@@ -49,8 +49,8 @@
                  GC_pinwheel
                   (
                     T_size const& P_inCoord_Normal     //= 1
-                   ,T_size const& P_inLeader           //= 0
                    ,T_size const& P_inCount            //= 1
+                   ,T_size const& P_inLeader           //= 0
                    ,T_size const& P_inAngle            //= 0
                    ,T_size const& P_inGauss            //= 1
                    ,T_size   const& P_outSize_RayCount // = 2

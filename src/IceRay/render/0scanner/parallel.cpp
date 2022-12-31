@@ -73,6 +73,7 @@ GC_parallel::F_range( T_range const& P_range )
     I_range.hi() =  I_coord;
 
     I_job.M_scanner.F_window( I_range );
+    I_job.M_scanner.Fv_pixel( &GC_parallel::F2s_pixel() ); 
    }
 
   return T_report( true );
@@ -102,7 +103,7 @@ void GC_parallel::Fv_stop()
 GC_parallel::T_report
 GC_parallel::F_threads( T_size const& P_count )
  {
-  M2_render.resize( P_count, C_job{ T_scanner( &GC_parallel::F2s_pixel() ), nullptr } );
+  M2_render.resize( P_count, C_job{ T_scanner(), nullptr } );
 
   F_range( M2_range );
   return true;

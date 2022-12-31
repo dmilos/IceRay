@@ -20,8 +20,10 @@ def pointers( P_dll, P_config = { 'shadow': False, 'pigment': None }, P_light = 
     radius = 0.05
 
     colorX={
+        'black'  : IceRayPy.type.color.RGB( 0.0, 0.0, 0.0 ),
         'dark'   : IceRayPy.type.color.RGB( 0.1, 0.1, 0.1 ),
         'gray'   : IceRayPy.type.color.RGB( 0.5, 0.5, 0.5 ),
+
         'white'  : IceRayPy.type.color.RGB( 1.0, 1.0, 1.0 ),
         'red'    : IceRayPy.type.color.RGB( 1.0, 0.0, 0.0 ),
         'green'  : IceRayPy.type.color.RGB( 0.0, 1.0, 0.0 ),
@@ -29,6 +31,7 @@ def pointers( P_dll, P_config = { 'shadow': False, 'pigment': None }, P_light = 
         'cyan'   : IceRayPy.type.color.RGB( 0.0, 1.0, 1.0 ),
         'magenta': IceRayPy.type.color.RGB( 1.0, 0.0, 1.0 ),
         'yellow' : IceRayPy.type.color.RGB( 1.0, 1.0, 0.0 ),
+
      }
 
     white = IceRayPy.core.object.Wrapper( P_dll )
@@ -89,15 +92,13 @@ def pointers( P_dll, P_config = { 'shadow': False, 'pigment': None }, P_light = 
 
 
 def radiosity( P_dll, P_config = { 'shadow': False, 'pigment': None }, P_light = None, P_exponat = None ):
-
     I_room = [ 8, 8, 2.5 ] # [ 6, 6, 3.5 ]
     I_move = [ 1, 1, I_room[2]/2-1 ]
-    wall = 0.1
 
-    I_size  = [ 0.25, 0.25, 0.1 ]
+    I_size  = [ 1.25, 1.25, 0.01 ]
     I_center = [ I_room[0]/4, I_room[1]/4, I_room[2]/2 + I_move[2] ]
-    I_color = IceRayPy.type.color.RGB( 16.6, 16.6, 16.6 )
     I_color = IceRayPy.type.color.RGB( 22.6, 22.6,  22.6 )
+    I_color = IceRayPy.type.color.RGB( 4.6, 4.6, 4.6 )
 
     lo = Coord3D()
     lo[0] = -I_size[0]/2 + I_center[0]
@@ -109,7 +110,7 @@ def radiosity( P_dll, P_config = { 'shadow': False, 'pigment': None }, P_light =
     hi[2] = +I_size[2]/2 + I_center[2]
 
     geometry = IceRayPy.core.geometry.simple.Box( P_dll )
-    geometry.box(        Coord3D( lo[0], lo[1], lo[2] ),       Coord3D( hi[0], hi[1], hi[2] ) )
+    geometry.box( Coord3D( lo[0], lo[1], lo[2] ), Coord3D( hi[0], hi[1], hi[2] ) )
     pigment = IceRayPy.utility.material.pattern.Constant( P_dll, {}, I_color )
     wrapper = IceRayPy.core.object.Wrapper( P_dll )
     wrapper.pigment( pigment )

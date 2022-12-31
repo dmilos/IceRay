@@ -63,10 +63,10 @@
                   {
                    auto const&  I_incoming = P_intersect.M_incoming;
 
-                   T_coord const& I_point     = M2_memoryCoord->Fv_load( F_input()[ T_memory::En_coord ][ En_inCoord_Point     ] );
-                   T_coord const& I_normal    = M2_memoryCoord->Fv_load( F_input()[ T_memory::En_coord ][ En_inCoord_Normal    ] );
-                   T_size         I_spotBegin  = M2_memorySize->Fv_load(  F_input<T_size>( En_inSize_SpotBegin ) );
-                   T_size         I_spotEnd    = M2_memorySize->Fv_load(  F_input<T_size>( En_inSize_SpotEnd ) );
+                   T_coord const& I_point     = M2_memoryCoord->Fv_load( F_input<T_coord>( En_inCoord_Point   ) );
+                   T_coord const& I_normal    = M2_memoryCoord->Fv_load( F_input<T_coord>( En_inCoord_Normal  ) );
+                   T_size         I_spotBegin  = M2_memorySize->Fv_load( F_input<T_size>( En_inSize_SpotBegin ) );
+                   T_size         I_spotEnd    = M2_memorySize->Fv_load( F_input<T_size>( En_inSize_SpotEnd   ) );
 
                    T_color I_summae(::color::constant::black_t{} );
                    // TODO

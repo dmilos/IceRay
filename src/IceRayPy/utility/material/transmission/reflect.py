@@ -61,15 +61,15 @@ def Schlick(
     tempColor  = IceRayPy.core.material.instruction.label.color.temp._BEGIN
 
     I_leader = tempSize + 0
+    I_ior = tempScalar + 0
 
     I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
 
     I_surface.append( IceRayPy.core.material.instruction.constant.Color(               P_dll, IceRayPy.type.color.RGB( 0, 0, 0 ), result ) )
-    I_surface.append( IceRayPy.core.material.instruction.constant.Scalar(              P_dll, P_ior, tempScalar + 0 ) )
-    I_surface.append( IceRayPy.core.material.instruction.transmission.reflect.Schlick( P_dll, point, normal, tempScalar + 0, I_leader ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Scalar(              P_dll, P_ior, I_ior ) )
+    I_surface.append( IceRayPy.core.material.instruction.transmission.reflect.Schlick( P_dll, point, normal, I_ior, I_leader ) )
 
     return I_surface
-
 
 
 print( '</' + __name__ + ' name=\'' +   __file__ + '>' )

@@ -87,7 +87,7 @@
                void    Fv_memory( T_memory * P_memory  )
                 {
                  T_instruction::Fv_memory( P_memory );
-                 M2_memoryLight  = dynamic_cast<T2_memoryLight * >( P_memory->F_get( T_memory::En_light ) );
+                 M2_memoryLight = dynamic_cast<T2_memoryLight * >( P_memory->F_get( T_memory::T_component::En_light ) );
                 }
              private:
                T2_memoryLight    *M2_memoryLight;

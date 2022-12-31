@@ -58,7 +58,7 @@
 
             T_size const& Fv_maxNextRays()const
              {
-              return M2_pocessor.F_memory().F_get( T_memory::En_ray )->Fv_size();
+              return M2_pocessor.F_memory().F_get( T_memory::T_component::En_ray )->Fv_size();
              }
 
            public:

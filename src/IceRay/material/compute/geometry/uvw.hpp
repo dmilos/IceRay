@@ -24,8 +24,9 @@
             : public GS_DDMRM::S_IceRay::S_material::S_compute::GC_instruction
             {
              public:
-               typedef GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar3D       T_coord;
+               typedef GS_DDMRM::S_IceRay::S_type::GT_bool                    T_bool;
                typedef GS_DDMRM::S_IceRay::S_type::GT_scalar                  T_scalar;
+               typedef GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar3D       T_coord;
 
                typedef GS_DDMRM::S_IceRay::S_material::S_compute::GC_memory   T_memory;
 
@@ -41,30 +42,30 @@
                  ,T_size const& P_outCoord_UVW = 2
                 )
                 {
-                 F_input( T_memory::En_geometryUVW, En_inGeometryUVW_This,  0 );
-                 F_input( T_memory::En_coord3D,     En_inCoord_Point,  P_inCoord_Point );
+                 F_input( T_memory::T_component::En_geometryUVW, En_inGeometryUVW_This,  0 );
+                 F_input<T_coord>( En_inCoord_Point,  P_inCoord_Point );
                // TODO F_input( T_memory::En_memory,      En_inState_State,  0 );
 
-                 F_output( T_memory::En_coord3D, En_outCoord_UVW, P_outCoord_UVW );
-                 F_output( T_memory::En_bool,    En_outBool_Valid, 0 );
+                 F_output<T_coord>( En_outCoord_UVW, P_outCoord_UVW );
+                 F_output<T_bool>(  En_outBool_Valid, 0 );
                 }
 
              public:
                bool    Fv_execute( T_beam &P_next, T_pigment::T_intersect const& P_intersect, T_state const& P_state )const
                 {
-                 T_coord    const& I_point    = M2_memoryCoord->Fv_load( F_input()[ T_memory::En_coord3D ][ En_inCoord_Point ] );
-                 T_geometry const* I_geometry = M2_memoryGeometry->Fv_load( F_input()[ T_memory::En_geometryUVW ][ En_inGeometryUVW_This ] );
+                 T_coord    const& I_point    = M2_memoryCoord->Fv_load( F_input<T_coord>( En_inCoord_Point ) );
+                 T_geometry const* I_geometry = M2_memoryGeometry->Fv_load( F_input()[ T_memory::T_component::En_geometryUVW ][ En_inGeometryUVW_This ] );
 
                  T_coord  I_UVW; //!< TODO default value is box coordinate
 
                  if( false == I_geometry->Fv_uvw( I_UVW, I_point, P_state ) )
                   {
-                   M2_memoryBool->Fv_store( F_output()[ T_memory::En_bool][ En_outBool_Valid], false );
+                   M2_memoryBool->Fv_store( F_output<T_bool>( En_outBool_Valid ), false );
                    return true;
                   }
 
-                 M2_memoryCoord->Fv_store(  F_output()[ T_memory::En_coord3D ][ En_outCoord_UVW ], I_UVW  );
-                 M2_memoryBool->Fv_store(   F_output()[ T_memory::En_bool    ][ En_outBool_Valid], true   );
+                 M2_memoryCoord->Fv_store( F_output<T_coord>(En_outCoord_UVW), I_UVW  );
+                 M2_memoryBool->Fv_store(  F_output<T_bool>( En_outBool_Valid ), true   );
 
                  return true;
                 }
@@ -82,7 +83,7 @@
                  M2_memoryBool     = P_memory->F_get<bool>();
                  M2_memoryScalar   = P_memory->F_get<T_scalar>();
                  M2_memoryCoord    = P_memory->F_get<T_coord>();
-                 M2_memoryGeometry = dynamic_cast<T2_memoryGeometryUVW * >( P_memory->F_get( T_memory::En_geometryUVW ) );
+                 M2_memoryGeometry = dynamic_cast<T2_memoryGeometryUVW * >( P_memory->F_get( T_memory::T_component::En_geometryUVW ) );
                 }
 
              private:

@@ -41,10 +41,11 @@
            enum class Ee_consume
             {
               En__unknown //!<< not traced
-             ,En_discard  //!<< not traced     ->()
+             ,En_discard  //!<< not traced     ->(end)
            //,En_skip     //!<< processed but not traced
-             ,En_spent    //!<< traced             ->( discard )
-             ,En_fresh    //!<< Wait to be processed  ->( discard, spent )
+             ,En_spent    //!<< traced             ->( end )
+             ,En_fresh    //!<< Wait to be processed  ->( end, spent )
+           //,En_end      //!<< end is end
             };
 
            struct C_intersection

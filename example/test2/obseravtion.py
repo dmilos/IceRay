@@ -12,6 +12,30 @@ def alpha( P_time ):
     return math.radians( P_time )
 
 
+def default( P_time, P_config = None ):
+    I_radius = 3
+
+    if( 'radius' in P_config ):
+        I_radius = P_config['radius']
+
+    x = 0
+    y = I_radius
+    z = 0
+
+    return [x,y,z]
+
+def default( P_time, P_config = None ):
+    I_radius = 3
+
+    if( 'radius' in P_config ):
+        I_radius = P_config['radius']
+
+    x = 0
+    y = I_radius
+    z = 0
+
+    return [x,y,z]
+
 def circle( P_time, P_config = None ):
     I_radius = 3
 
@@ -27,10 +51,10 @@ def circle( P_time, P_config = None ):
 def looker( P_time, P_config = None ):
 
     radiusX_lo = 1.2
-    radiusX_hi = 3 
+    radiusX_hi = 3
 
-    heightHi = 2 
-    heightLo = 0 
+    heightHi = 2
+    heightLo = 0
 
 
     alpha = P_time * ( 2 * 3.1415926 )
@@ -56,5 +80,7 @@ def looker( P_time, P_config = None ):
 
     x =  x * radiusS
     y =  y * radiusS
+
+    print( "Camera: ", math.degrees(alpha), " _ [" ,  x, ",", y, ",", height, "]  ||", math.sqrt( x*x+ y*y ), "||" )
 
     return [x,y,height]

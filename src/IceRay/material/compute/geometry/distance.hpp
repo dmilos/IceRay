@@ -40,21 +40,21 @@
                  T_size const& P_inCoord_Point = 0
                 )
                 {
-                 F_input( T_memory::En_geometryDistance, En_inGeometryDistance_This,  0 );
-                 F_input( T_memory::En_coord3D,          En_inCoord_Point,  P_inCoord_Point );
+                 F_input( T_memory::T_component::En_geometryDistance, En_inGeometryDistance_This,  0 );
+                 F_input<T_coord>( En_inCoord_Point,  P_inCoord_Point );
 
-                 F_output( T_memory::En_scalar, En_outScalar_Distance, 1 );
+                 F_output( T_memory::T_component::En_scalar, En_outScalar_Distance, 1 );
                 }
 
              public:
                bool    Fv_execute( T_beam &P_next, T_pigment::T_intersect const& P_intersect, T_state const& P_state )const
                 {
-                 T_coord    const& I_point    = M2_memoryCoord->Fv_load( F_input()[ T_memory::En_coord3D ][ En_inCoord_Point ] );
-                 T_geometry const* I_geometry = M2_memoryGeometry->Fv_load( F_input()[ T_memory::En_geometryDistance ][ En_inGeometryDistance_This ] );
+                 T_coord    const& I_point    = M2_memoryCoord->Fv_load( F_input<T_coord>( En_inCoord_Point ) );
+                 T_geometry const* I_geometry = M2_memoryGeometry->Fv_load( F_input()[ T_memory::T_component::En_geometryDistance ][ En_inGeometryDistance_This ] );
 
                  T_scalar I_distance = I_geometry->Fv_distance( I_point );
 
-                 M2_memoryScalar->Fv_store(  F_output()[ T_memory::En_scalar   ][ En_outScalar_Distance ], I_distance    );
+                 M2_memoryScalar->Fv_store(  F_output<T_scalar>( En_outScalar_Distance ), I_distance    );
 
                  return true;
                 }
@@ -70,7 +70,7 @@
                   F1_memory() = P_memory;
                   M2_memoryScalar   = P_memory->F_get<T_scalar>();
                   M2_memoryCoord    = P_memory->F_get<T_coord>();
-                  M2_memoryGeometry = dynamic_cast<T2_memoryGeometryDistance * >( P_memory->F_get( T_memory::En_geometryDistance ) );
+                  M2_memoryGeometry = dynamic_cast<T2_memoryGeometryDistance * >( P_memory->F_get( T_memory::T_component::En_geometryDistance ) );
                 }
 
              private:

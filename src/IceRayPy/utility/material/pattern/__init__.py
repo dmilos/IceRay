@@ -24,13 +24,16 @@ def Image(
      ,P_config
      ,P_filename = None
     ):
-    I_picture   = IceRayPy.type.graph.Picture( P_dll )
 
+    I_picture = IceRayPy.type.graph.Picture( P_dll )
     if( None != P_filename ):
         I_picture.load( P_filename )
     else:
-        I_picture.size( 256, 256 )
-        IceRayPy.type.graph.Default( I_picture )
+        if( 'filename' in P_config ):
+            I_picture.load( P_config['filename'] )
+        else:
+            I_picture.size( 256, 256 )
+            IceRayPy.type.graph.Default( I_picture )
 
     result = IceRayPy.core.material.instruction.label.color.dynamic.RESULT
     scale = IceRayPy.core.material.instruction.label.scalar.dynamic._BEGIN

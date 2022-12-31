@@ -7,8 +7,8 @@ import IceRayPy
 def Random(
      P_dll
     ,P_config = None
+    ,P_total 
     ,P_start 
-    ,P_end 
     ,P_angle
     ):
 
@@ -40,8 +40,8 @@ def Random(
 def VDC(
      P_dll
     ,P_config = None
+    ,P_total 
     ,P_start 
-    ,P_end 
     ,P_angle
     ):
 
@@ -74,8 +74,8 @@ def VDC(
 def Sobol(
      P_dll
     ,P_config = None
+    ,P_total 
     ,P_start 
-    ,P_end 
     ,P_angle
     ):
     pass

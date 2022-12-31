@@ -34,8 +34,8 @@
                  enum Ee_input
                   {
                     En_inCoord_Normal = 1
-                   ,En_inSize_Leader  = 0
                    ,En_inSize_Count   = 1
+                   ,En_inSize_Leader  = 0
                    ,En_inScalar_Angle = 0
                  //,En_inScalar_Gauss = 1
                   };
@@ -47,15 +47,15 @@
                  GC_vdc
                   (
                     T_size const& P_inCoord_Normal //= 1
-                   ,T_size const& P_inLeader       //= 0
                    ,T_size const& P_inCount        //= 1
+                   ,T_size const& P_inLeader       //= 0
                    ,T_size const& P_inAngle        //= 0
                  //,T_size const& P_inGauss        //= 1
                   )
                   {
                    F_input<T_coord>(   En_inCoord_Normal,  P_inCoord_Normal );
-                   F_input<T_size>(    En_inSize_Leader,   P_inLeader       );
                    F_input<T_size>(    En_inSize_Count,    P_inCount        );
+                   F_input<T_size>(    En_inSize_Leader,   P_inLeader       );
                    F_input<T_scalar>(  En_inScalar_Angle,  P_inAngle  );
                 //F_input<T_scalar>(  En_inScalar_Gauss,  P_inGauss        );
                   }
@@ -64,8 +64,8 @@
                  bool    Fv_execute( T_beam &P_next, T_pigment::T_intersect const& P_intersect, T_state const& P_state )const
                   {
                    T_coord  const& I_normal = M2_memoryCoord->Fv_load(   F_input<T_coord> ( En_inCoord_Normal ) );
-                   T_size   const& I_leader = M2_memorySize->Fv_load(    F_input<T_size  >( En_inSize_Leader  ) );
                    T_size   const& I_count  = M2_memorySize->Fv_load(    F_input<T_size  >( En_inSize_Count   ) );
+                   T_size   const& I_leader = M2_memorySize->Fv_load(    F_input<T_size  >( En_inSize_Leader  ) );
                    T_scalar const& I_jitter = M2_memoryScalar->Fv_load( F_input<T_scalar>(  En_inScalar_Angle ) );
                  //T_scalar const& I_gauss  = M2_memoryScalar->Fv_load(  F_input<T_scalar>( En_inScalar_Gauss ) );
 

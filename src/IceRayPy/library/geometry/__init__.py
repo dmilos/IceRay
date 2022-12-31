@@ -43,5 +43,26 @@ def MotionBlur( P_dll ):
 
     return result
 
+def Lens( P_dll,
+        P_center = Coord3D( 0, 0,0 ),
+        P_normal = Coord3D( 0, 1,0 ),
+        P_radius = 2,
+        P_thick = 0.3
+        ):
+
+    radius = ( (P_radius/2)*(P_radius/2) + (P_thick/2)*(P_thick/2) ) / P_thick 
+    center = radius - P_thick / 2
+    #print(__file__ + " center: " + str(center), flush = True );
+    #print(__file__ + " radius: " + str(radius), flush = True );
+
+    left  = IceRayPy.core.geometry.simple.Sphere( P_dll, IceRayPy.type.math.coord.Scalar3D( -center , 0, 0 ), radius )
+    right = IceRayPy.core.geometry.simple.Sphere( P_dll, IceRayPy.type.math.coord.Scalar3D( +center , 0, 0 ), radius )
+    result = IceRayPy.core.geometry.complex.Intersect( P_dll )
+
+    result.left( left )
+    result.right( right )
+
+    return result
+
 
 print( '</' + __name__ + ' name=\'' +   __file__ + '>' )

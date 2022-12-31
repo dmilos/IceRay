@@ -77,7 +77,7 @@
                   M2_memoryBool     = P_memory->F_get<bool>();
                   M2_memoryScalar   = P_memory->F_get<T_scalar>();
                   M2_memoryCoord    = P_memory->F_get<T_coord>();
-                  M2_memoryGeometry = dynamic_cast<T2_memoryGeometryNormal * >( P_memory->F_get( T_memory::En_geometryNormal ) );
+                  M2_memoryGeometry = dynamic_cast<T2_memoryGeometryNormal * >( P_memory->F_get( T_memory::T_component::En_geometryNormal ) );
                 }
 
              private:

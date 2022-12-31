@@ -79,11 +79,11 @@
                  auto const&  I_incoming = P_intersect.M_incoming;
                //T_ray     const&   I_ray      = M2_memoryRay->Fv_load( F_input()[ T_memory::En_ray ][ En_inRay_incoming] );
 
-                 T_light const* I_light  = M2_memoryLight->Fv_load( F_input()[ T_memory::En_light ][ En_inLight_Light ] );
+                 T_light const* I_light  = M2_memoryLight->Fv_load( F_input()[ T_memory::T_component::En_light ][ En_inLight_Light ] );
                  T_coord const& I_point  = M2_memoryCoord->Fv_load( F_input<T_coord>( En_inCoord_Point ) );
                  T_coord const& I_normal = M2_memoryCoord->Fv_load( F_input<T_coord>( En_inCoord_Normal ) );
-                 T_size  const& I_begin  = M2_memorySize->Fv_load(  F_input<T_size>( En_inSize_SpotBegin ) );
-                 T_bool  const& I_cull   = M2_memoryBool->Fv_load( F_input()[ T_memory::En_bool][ En_inBool_Cull ] );
+                 T_size  const& I_begin  = M2_memorySize->Fv_load(  F_input<T_size>(  En_inSize_SpotBegin ) );
+                 T_bool  const& I_cull   = M2_memoryBool->Fv_load(  F_input<T_bool>(  En_inBool_Cull ) );
 
                  M2_swarm.F_clear();
                  I_light->Fv_swarm( M2_swarm, I_point /*,P_state*/ );
@@ -129,7 +129,7 @@
                  M2_memorySize  = P_memory->F_get<T_size>();
                  M2_memoryCoord = P_memory->F_get<T_coord>();
                  M2_memorySpot  = P_memory->F_get<T_spot>();
-                 M2_memoryLight = dynamic_cast<T2_memoryLight* >( P_memory->F_get( T_memory::En_light ) );
+                 M2_memoryLight = dynamic_cast<T2_memoryLight* >( P_memory->F_get( T_memory::T_component::En_light ) );
                 }
 
              private:

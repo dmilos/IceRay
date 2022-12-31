@@ -272,7 +272,7 @@ class WardIsotropic: # S( result ), S( point     ), S( normal    ), S( spotBegin
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Material_Pigment_Surface_Instruction_Illumination_WardIsotropic0(
              SizeType( P_result )
-            ,SizeType( P_point ) , SizeType( P_normal )
+            ,SizeType( P_point ), SizeType( P_normal )
             ,SizeType( P_spotBegin ), SizeType( P_spotEnd )
             ,SizeType( P_specular ), SizeType( P_alpha )
             )

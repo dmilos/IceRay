@@ -28,13 +28,13 @@
 
              typedef GS_DDMRM::S_IceRay::S_utility::S_table::GC_structure  T_structure;
            public:
-             explicit GC_triangle( T_size const& P_size = 10 )
+             explicit GC_triangle( T_size const& P_size = 15 )
               {
                F_init( P_size );
               }
            public:
              bool F_init( T_size const& P_size )
-              {
+              { 
                M2_structure.F_clear();
                M2_structure.F_spot().reserve( P_size * P_size );
 
@@ -47,8 +47,8 @@
 
                T_scalar I_offset = T_scalar(1)/T_scalar(2);
 
+               for( T_integer I_u =-2*I_gridX; I_u < 2*I_gridX; ++ I_u )
                for( T_integer I_v =-I_gridY; I_v < I_gridY; ++ I_v )
-               for( T_integer I_u =-I_gridX; I_u < I_gridX; ++ I_u )
                 {
                  T_coord2D I_spot;
                  I_spot[0] = I_u + I_v * T_scalar( 0.5 ) ;

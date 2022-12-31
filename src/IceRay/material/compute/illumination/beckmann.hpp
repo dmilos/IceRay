@@ -66,12 +66,12 @@
                   {
                    auto const&  I_incoming = P_intersect.M_incoming;
 
-                   T_color const& I_specular   = M2_memoryColor->Fv_load( F_input()[ T_memory::En_color ][ En_inColor_Specular  ] );
-                   T_color const& I_roughness  = M2_memoryColor->Fv_load( F_input()[ T_memory::En_color ][ En_inColor_Roughness  ] );
-                   T_coord const& I_normal     = M2_memoryCoord->Fv_load( F_input()[ T_memory::En_coord ][ En_inCoord_Normal ] );
-                   T_coord const& I_point      = M2_memoryCoord->Fv_load( F_input()[ T_memory::En_coord ][ En_inCoord_Point ] );
-                   T_size         I_spotBegin  = M2_memorySize->Fv_load(  F_input<T_size>( En_inSize_SpotBegin ) );
-                   T_size         I_spotEnd    = M2_memorySize->Fv_load(  F_input<T_size>( En_inSize_SpotEnd ) );
+                   T_color const& I_specular   = M2_memoryColor->Fv_load( F_input<T_color>( En_inColor_Specular   ) );
+                   T_color const& I_roughness  = M2_memoryColor->Fv_load( F_input<T_color>( En_inColor_Roughness  ) );
+                   T_coord const& I_normal     = M2_memoryCoord->Fv_load( F_input<T_coord>( En_inCoord_Normal     ) );
+                   T_coord const& I_point      = M2_memoryCoord->Fv_load( F_input<T_coord>( En_inCoord_Point      ) );
+                   T_size         I_spotBegin  =  M2_memorySize->Fv_load( F_input<T_size>(  En_inSize_SpotBegin   ) );
+                   T_size         I_spotEnd    =  M2_memorySize->Fv_load( F_input<T_size>(  En_inSize_SpotEnd     ) );
 
                    GS_DDMRM::S_IceRay::S_material::S_illumination::GC_beckmann I_beckmann( I_specular, I_roughness );
 

@@ -1,3 +1,5 @@
+#include <iostream>
+#include <iomanip>
 
 #include "./geometry.h"
 #include "../../type/coord.hpp"
@@ -23,7 +25,6 @@ IceRayC_Geometry_Handle IceRayC_Geometry_Complex_Intersect1( IceRayC_Geometry_Ha
   auto Ir_result = new Tf_intersect{};
   return cpp2c( Ir_result );
  }
-
 
 int IceRayC_Geometry_Complex_Intersect_Left0( IceRayC_Geometry_Handle P_this, IceRayC_Geometry_Handle P_left )
  {

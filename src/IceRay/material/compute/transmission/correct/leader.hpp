@@ -31,12 +31,11 @@
                   {
                     En_inCoord_Normal = 1
                    ,En_inScalar_Angle = 0
-                   ,En_inCoord_LeaderS  = 0
+                   ,En_inSize_Leader = 0
                   };
 
                  enum Ee_output
                   {
-                    En_outCoord_LeaderT = 2
                   };
 
                public:
@@ -44,15 +43,12 @@
                   (
                     T_size const& P_inCoord_Normal // = 1
                    ,T_size const& P_inAngle        // = 0
-                   ,T_size const& P_inLeaderS      // = 2
-                   ,T_size const& P_inLeaderT      // = 3
+                   ,T_size const& P_inLeader       // = 2
                   )
                   {
-                   F_input<T_coord>(   En_inCoord_Normal,  P_inCoord_Normal );
-                   F_input<T_scalar>(  En_inScalar_Angle,  P_inAngle        );
-                   F_input<T_coord>(   En_inCoord_LeaderS,  P_inLeaderS      );
-
-                   F_output<T_coord>(  En_outCoord_LeaderT,  P_inLeaderT      );
+                   F_input<T_coord>(   En_inCoord_Normal, P_inCoord_Normal );
+                   F_input<T_scalar>(  En_inScalar_Angle, P_inAngle        );
+                   F_input<T_size>(    En_inSize_Leader,  P_inLeader       );
                   }
 
                public:
@@ -60,27 +56,29 @@
                   {
                    T_coord  const& I_normal   = M2_memoryCoord->Fv_load(  F_input<T_coord >( En_inCoord_Normal ) );
                    T_scalar const& I_angle    = M2_memoryScalar->Fv_load( F_input<T_scalar>( En_inScalar_Angle ) );
-                   T_coord  const& I_leaderS  = M2_memoryCoord->Fv_load(  F_input<T_coord >( En_inCoord_LeaderS ) );
+                   T_size   const& I_leader   = M2_memorySize->Fv_load(   F_input<T_size >( En_inSize_Leader ) );
 
-                   auto I_decline = ::math::linear::vector::angle( I_leaderS, I_normal );
-                   T_coord I_leaderT = I_leaderS;
+                   auto      & I_original = P_next.Fv_expose( I_leader );
+                   auto      & I_direction = I_original.M_direction;
+
+                   auto I_decline = ::math::linear::vector::angle( I_direction, I_normal );
+
                    auto I_delta = I_angle - (::math::geometry::deg2rad( 90 ) - I_decline );
-                   if( I_delta < 0 )
+                   if( 0 < I_delta )
                     {
-                     T_coord I_y = I_leaderS;
+                     T_coord I_y = I_direction;
                      T_coord I_x; ::math::linear::vector::cross( I_x, I_y, I_normal ); ::math::linear::vector::length( I_x, T_scalar( 1 ) );
                      T_coord I_z; ::math::linear::vector::cross( I_z, I_x, I_y );      ::math::linear::vector::length( I_z, T_scalar( 1 ) );
 
-                     ::math::linear::vector::combine( I_leaderT, cos( -I_delta ), I_y, sin( -I_delta ), I_z );
+                     ::math::linear::vector::combine( I_direction, cos( I_delta ), I_y, sin( I_delta ), I_z );
                     }
 
-                   M2_memoryCoord->Fv_store( F_output<T_coord >( En_outCoord_LeaderT ), I_leaderT );
                    return true;
                   }
 
                private:
                  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC__base<T_size>     T2_memorySize;
-                 typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC__base<T_scalar>  T2_memoryScalar;
+                 typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC__base<T_scalar>   T2_memoryScalar;
                  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC__base<T_coord>    T2_memoryCoord;
 
                public:
@@ -88,12 +86,12 @@
                   {
                    F1_memory() = P_memory;
                    M2_memorySize    = P_memory->F_get<T_size>();
-                   M2_memoryScalar = P_memory->F_get<T_scalar>();
+                   M2_memoryScalar  = P_memory->F_get<T_scalar>();
                    M2_memoryCoord   = P_memory->F_get<T_coord>();
                   }
                private:
                  T2_memorySize      *M2_memorySize;
-                 T2_memoryScalar   *M2_memoryScalar;
+                 T2_memoryScalar    *M2_memoryScalar;
                  T2_memoryCoord     *M2_memoryCoord;
               };
 

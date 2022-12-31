@@ -93,7 +93,7 @@
                        ::math::linear::vector::subtraction( I_2light, I_spot.F_center(), I_point );
                        ::math::linear::vector::length( I_2light, T_scalar(1) );
                
-                       if( true == I_yfp.F_process( I_color, I_energy, I_2light, I_normal, I_2viewer ) )
+                       if( true == I_yfp.F_process( I_color, I_energy, I_normal, I_2light, I_2viewer ) )
                         {
                          I_summae += I_color;
                         }

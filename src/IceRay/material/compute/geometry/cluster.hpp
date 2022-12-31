@@ -63,7 +63,7 @@
                       }
                     }
 
-                   M2_memoryColor->Fv_store(  F_output()[ T_memory::En_color    ][ En_outColor_Result ], I_result );
+                   M2_memoryColor->Fv_store( F_output<T_color>( En_outColor_Result ), I_result );
                   }
 
                  return true;

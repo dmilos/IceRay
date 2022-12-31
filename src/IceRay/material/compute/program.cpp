@@ -20,8 +20,8 @@ void GC_program::F_instruction( T_size const& P_index, T_instruction * P_instruc
   M2_papllet[P_index] = P_instruction;
   M2_papllet[P_index]->Fv_memory( this->F_memory() );
 
-  for( T_size I_component = T_memory::En__begin;
-              I_component < T_memory::En__end;
+  for( T_size I_component = static_cast<T_size>( T_memory::T_component::En__begin );
+              I_component < static_cast<T_size>( T_memory::T_component::En__end );
             ++I_component
    )
    {

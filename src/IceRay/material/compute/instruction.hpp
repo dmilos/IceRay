@@ -39,7 +39,7 @@
              typedef GS_DDMRM::S_IceRay::S_material::S_compute::GC_memory               T_memory;
 
 
-             typedef GS_DDMRM::S_IceRay::S_material::S_compute::GC_memory::Ee_component T_component;
+             typedef GS_DDMRM::S_IceRay::S_material::S_compute::GC_memory::T_component T_component;
 
              typedef std::vector<T_size>      T_operand;
              typedef std::vector<T_operand>   T_signature;
@@ -57,14 +57,14 @@
                T_size Ir_max = 0;
                if( P_component < (T_component)M2_input.size()  )
                 {
-                 for( T_size I_index : M2_input[P_component] )
+                 for( auto const& I_index : M2_input[ static_cast<T_size>(P_component) ] )
                   {
                    Ir_max = std::max<T_size>( Ir_max, I_index );
                   }
                 }
                if( P_component < (T_component)M2_output.size() )
                 {
-                 for( T_size I_index : M2_output[P_component] )
+                 for( auto const& I_index : M2_output[ static_cast<T_size>(P_component) ] )
                   {
                    Ir_max = std::max<T_size>( Ir_max, I_index );
                   }
@@ -82,7 +82,7 @@
 
              T_size const& F_input( T_component const& P_component, T_size const& P_position )const
               {
-               return F_input()[P_component][P_position];
+               return F_input()[static_cast<T_size>(P_component)][P_position];
               }
 
            public:
@@ -95,9 +95,9 @@
 
              void F_input(  T_component const& P_component, T_size const& P_position, T_size const& P_index )
               {
-               M2_input.resize( std::max<T_size>( M2_input.size(), P_component + 1 ) );
-               M2_input[P_component].resize( std::max<T_size>( M2_input[P_component].size(), P_position + 1 ) );
-               M2_input[P_component][P_position] = P_index;
+               M2_input.resize( std::max<T_size>( M2_input.size(), static_cast<T_size>(P_component) + 1 ) );
+               M2_input[static_cast<T_size>(P_component)].resize( std::max<T_size>( M2_input[static_cast<T_size>(P_component)].size(), P_position + 1 ) );
+               M2_input[static_cast<T_size>(P_component)][P_position] = P_index;
                if( nullptr != F1_memory() )
                 {
                  F1_memory()->F_size( P_component, std::max<T_size>( P_index, F1_memory()->F_size(P_component) ) );
@@ -127,7 +127,7 @@
 
              T_size const& F_output(  T_component const& P_component, T_size const& P_position )const
               {
-               return M2_output[P_component][P_position];
+               return M2_output[static_cast<T_size>(P_component)][P_position];
               }
 
              template< typename N_type>
@@ -139,9 +139,9 @@
 
              void F_output( T_component const& P_component, T_size const& P_position, T_size const& P_index )
               {
-               M2_output.resize( std::max<T_size>( M2_output.size(), P_component + 1 ) );
-               M2_output[P_component].resize( std::max<T_size>( M2_output[P_component].size(), P_position + 1 ) );
-               M2_output[P_component][P_position] = P_index;
+               M2_output.resize( std::max<T_size>( M2_output.size(), static_cast<T_size>(P_component) + 1 ) );
+               M2_output[static_cast<T_size>(P_component)].resize( std::max<T_size>( M2_output[static_cast<T_size>(P_component)].size(), P_position + 1 ) );
+               M2_output[static_cast<T_size>(P_component)][P_position] = P_index;
                if( nullptr != F1_memory() )
                 {
                  F1_memory()->F_size( P_component, std::max<T_size>( P_index, F1_memory()->F_size(P_component) ) );

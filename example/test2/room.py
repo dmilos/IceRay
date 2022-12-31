@@ -41,7 +41,6 @@ def plate( P_dll, P_config = { 'level':  - 1.01, 'size' : 3, 'shadow': False, 'p
     return wrapper
 
 def plane( P_dll, P_config = { 'level':  - 1.001, 'shadow': False, 'pigment': None }, P_light = None, P_exponat = None ):
-
     level = -1.0001;
     if( 'level' in P_config ):
         level = P_config['level']
@@ -62,6 +61,68 @@ def plane( P_dll, P_config = { 'level':  - 1.001, 'shadow': False, 'pigment': No
     wrapper.geometrySet( geometry )
 
     return wrapper
+
+
+def pigment_radiosity( P_dll, P_scene, P_config ):
+    I_blossom = 'triangle'
+    I_sample = 25
+    I_angle = math.radians( 75 )
+    I_jitter = math.radians( 15 )
+    I_albedo = IceRayPy.type.color.RGB( 0.85, 0.85, 0.85 )
+
+    if( None != P_config ):
+        if( 'blossom' in P_config ):
+            I_blossom = P_config['blossom']
+        if( 'sample' in P_config ):
+            I_sample = P_config['sample']
+        if( 'angle' in P_config ):
+            I_angle = P_config['angle']
+        if( 'jitter' in P_config ):
+            I_jitter = P_config['jitter']
+        if( 'albedo' in P_config ):
+            I_albedo = P_config['albedo']
+
+    if 'one' == I_blossom :
+        pigment = IceRayPy.utility.material.transmission.reflect.One(      P_dll, {}, I_albedo ) #OK
+    if 'vdc' == I_blossom :
+        pigment = IceRayPy.utility.material.transmission.blossom.VDC(      P_dll, P_config, I_albedo, I_sample, 0, I_angle )#OK
+    if 'random' == I_blossom :
+        pigment = IceRayPy.utility.material.transmission.blossom.Random(   P_dll, P_config, I_albedo, I_sample, 0, I_angle )#OK
+    if 'sobol' == I_blossom :
+        pigment = IceRayPy.utility.material.transmission.blossom.Sobol(    P_dll, P_config, I_albedo, I_sample, 0, I_angle )#OK
+    if 'hexagon' == I_blossom :
+        pigment = IceRayPy.utility.material.transmission.blossom.Hexagon(  P_dll, P_config, I_albedo, I_sample, 0, I_angle )#OK
+    if 'grid' == I_blossom :
+        pigment = IceRayPy.utility.material.transmission.blossom.Grid(     P_dll, P_config, I_albedo, I_sample, 0, I_angle )#OK
+    if 'triangle' == I_blossom :
+        pigment = IceRayPy.utility.material.transmission.blossom.Triangle( P_dll, P_config, I_albedo, I_sample, 0, I_angle )#OK
+
+    return pigment
+
+def radiosity_plane( P_dll, P_config = { 'level':  - 1.001, 'shadow': False, 'pigment': None }, P_light = None, P_exponat = None ):
+    level = -1.0001;
+    if( 'level' in P_config ):
+        level = P_config['level']
+    geometry = IceRayPy.core.geometry.simple.Plane( P_dll )
+    geometry.origin( Coord3D(0,   0, level ) )
+
+    I_scene = { 'light': P_light, 'barrier' : P_exponat }
+    if( 'shadow' in P_config ):
+        if( False == P_config['shadow'] ):
+            I_scene['barrier'] = IceRayPy.core.geometry.volumetric.Vacuum( P_dll )
+
+    wrapper = IceRayPy.core.object.Wrapper( P_dll )
+
+    if( 'radiosity' in P_config ):
+        pigment = pigment_radiosity( P_dll, I_scene, P_config['radiosity'] )
+    else:
+        pigment = pigment_radiosity( P_dll, I_scene, {} )
+
+    wrapper.pigment( pigment )
+    wrapper.geometrySet( geometry )
+
+    return wrapper
+
 
 def disc( P_dll, P_config = { 'level':  - 1.001, 'shadow': False, 'pigment': None }, P_light = None, P_exponat = None ):
     level = -1.0001;
@@ -172,27 +233,10 @@ def cornel_close( P_dll, P_config = {}, P_light = None, P_exponat = None ): # no
 
 def cornell_radiosity(
      P_dll
-    ,P_config = None
-    ,P_light = None
+    ,P_config  = None
+    ,P_light   = None
     ,P_exponat = None
     ): # non-classic
-
-    I_blossom = 'triangle'
-    I_sample = 25
-    I_angle = math.radians( 75 )
-    I_jitter = math.radians( 15 )
-    I_floor = IceRayPy.type.color.RGB( 0.75, 0.75, 0.75 )
-
-    if( None != P_config ):
-        if( 'radiosity' in P_config ):
-            if( 'blossom' in P_config['radiosity'] ):
-                I_blossom = P_config['radiosity']['blossom']
-            if( 'sample' in P_config['radiosity'] ):
-                I_sample = P_config['radiosity']['sample']
-            if( 'angle' in P_config['radiosity'] ):
-                I_angle = P_config['radiosity']['angle']
-            if( 'jitter' in P_config['radiosity'] ):
-                I_jitter = P_config['radiosity']['jitter']
 
     I_room = [ 8, 8, 4 ] # [ 6, 6, 3.5 ]
     I_move = [ 0, 0, I_room[2]/2-1 ]
@@ -216,56 +260,47 @@ def cornell_radiosity(
     leftG = IceRayPy.core.geometry.simple.Box( P_dll )
     leftG.box(        Coord3D(  lo[0]-wall, lo[1], lo[2]) , Coord3D(lo[0],      hi[1], hi[2]) )
     leftW = IceRayPy.core.object.Wrapper( P_dll )
-    pigment = IceRayPy.utility.material.illumination.Lambert( P_dll, I_scene, IceRayPy.type.color.RGB( 0.33, 0.33, 0.33 ) )
+    P_config['albedo'] = IceRayPy.type.color.RGB( 1, 0.33, 0.33 )
+    pigment = pigment_radiosity( P_dll, I_scene, P_config['radiosity'] )
     leftW.pigment( pigment )
     leftW.geometrySet( leftG )
 
     rightG = IceRayPy.core.geometry.simple.Box( P_dll )
     rightG.box(       Coord3D( hi[0],      lo[1], lo[2]) ,  Coord3D(hi[0]+ wall,hi[1], hi[2]) )
     rightW = IceRayPy.core.object.Wrapper( P_dll )
-    pigment = IceRayPy.utility.material.illumination.Lambert( P_dll, I_scene, IceRayPy.type.color.RGB( 0.33, 0.33, 1 ) )
+    P_config['albedo'] = IceRayPy.type.color.RGB( 0.33, 1, 0.33 )
+    pigment = pigment_radiosity( P_dll, I_scene, P_config['radiosity'] )
     rightW.pigment( pigment )
     rightW.geometrySet( rightG )
 
     backgroundG = IceRayPy.core.geometry.simple.Box( P_dll )
     backgroundG.box(  Coord3D( lo[0], lo[1]-wall, lo[2] ) , Coord3D( hi[0], lo[1], hi[2] ) )
     backgroundW = IceRayPy.core.object.Wrapper( P_dll )
-    pigment = IceRayPy.utility.material.illumination.Lambert( P_dll, I_scene, IceRayPy.type.color.RGB( 1, 0.33, 0.33 ) )
+    P_config['albedo'] = IceRayPy.type.color.RGB( 0.33, 0.33, 1 )
+    pigment = pigment_radiosity( P_dll, I_scene, P_config['radiosity'] )
     backgroundW.pigment( pigment )
     backgroundW.geometrySet( backgroundG )
 
     foregroundG = IceRayPy.core.geometry.simple.Box( P_dll )
     foregroundG.box(  Coord3D( lo[0], hi[1],  lo[2] ),      Coord3D( hi[0], hi[1] + wall, hi[2] ) )
     foregroundW = IceRayPy.core.object.Wrapper( P_dll )
-    pigment = IceRayPy.utility.material.illumination.Lambert( P_dll, I_scene, IceRayPy.type.color.RGB( 0.33, 1, 0.33 ) )
+    pigment = IceRayPy.utility.material.transmission.reflect.Mirror( P_dll, I_scene )
     foregroundW.pigment( pigment )
     foregroundW.geometrySet( foregroundG )
-
-    if 'one' == I_blossom :
-        pigment = IceRayPy.utility.material.transmission.reflect.One(      P_dll, {}, I_floor )
-    if 'vdc' == I_blossom :
-        pigment = IceRayPy.utility.material.transmission.blossom.VDC(      P_dll, I_scene, I_floor, 0, I_sample, I_angle )
-    if 'random' == I_blossom :
-        pigment = IceRayPy.utility.material.transmission.blossom.Random(   P_dll, I_scene, I_floor, 0, I_sample, I_angle )
-    if 'sobol' == I_blossom :
-        pigment = IceRayPy.utility.material.transmission.blossom.Sobol(    P_dll, I_scene, I_floor, 0, I_sample, I_angle )
-    if 'hexagon' == I_blossom :
-        pigment = IceRayPy.utility.material.transmission.blossom.Hexagon(  P_dll, I_scene, I_floor, 0, I_sample, I_angle, I_jitter )
-    if 'grid' == I_blossom :
-        pigment = IceRayPy.utility.material.transmission.blossom.Grid(     P_dll, I_scene, I_floor, 0, I_sample, I_angle )
-    if 'triangle' == I_blossom :
-        pigment = IceRayPy.utility.material.transmission.blossom.Triangle( P_dll, I_scene, I_floor, 0, I_sample, I_angle )
 
     floorG = IceRayPy.core.geometry.simple.Box( P_dll )
     floorG.box(       Coord3D( lo[0], lo[1], lo[2]-wall ) , Coord3D( hi[0], hi[0], lo[2] ) )
     floorW = IceRayPy.core.object.Wrapper( P_dll )
+    P_config['albedo'] = IceRayPy.type.color.RGB( 0.5, 0.5, 0.5 )
+    pigment = pigment_radiosity( P_dll, I_scene, P_config['radiosity'] )
     floorW.pigment( pigment )
     floorW.geometrySet( floorG )
 
     ceilG = IceRayPy.core.geometry.simple.Box( P_dll )
     ceilG.box(        Coord3D( lo[0], lo[1], hi[2] ),       Coord3D( hi[0], hi[1], hi[2] + wall ) )
     ceilW = IceRayPy.core.object.Wrapper( P_dll )
-    pigment = IceRayPy.utility.material.illumination.Lambert( P_dll, I_scene, IceRayPy.type.color.RGB( 0.5, 0.5, 0.5 ) )
+    P_config['albedo'] = IceRayPy.type.color.RGB( 0.5, 0.5, 0.5 )
+    pigment = IceRayPy.utility.material.transmission.reflect.One( P_dll, I_scene )
     ceilW.pigment( pigment )
     ceilW.geometrySet( ceilG )
 
@@ -316,35 +351,35 @@ def mirror_box(
     leftG = IceRayPy.core.geometry.simple.Box( P_dll )
     leftG.box(        Coord3D(  lo[0]-wall, lo[1], lo[2]) , Coord3D(lo[0],      hi[1], hi[2]) )
     leftW = IceRayPy.core.object.Wrapper( P_dll )
-    pigment = IceRayPy.utility.material.transmission.reflect.One( P_dll, I_scene )
+    pigment = IceRayPy.utility.material.transmission.reflect.Mirror( P_dll, I_scene )
     leftW.pigment( pigment )
     leftW.geometrySet( leftG )
 
     rightG = IceRayPy.core.geometry.simple.Box( P_dll )
     rightG.box(       Coord3D( hi[0],      lo[1], lo[2]) ,  Coord3D(hi[0]+ wall,hi[1], hi[2]) )
     rightW = IceRayPy.core.object.Wrapper( P_dll )
-    pigment = IceRayPy.utility.material.transmission.reflect.One( P_dll, I_scene )
+    pigment = IceRayPy.utility.material.transmission.reflect.Mirror( P_dll, I_scene )
     rightW.pigment( pigment )
     rightW.geometrySet( rightG )
 
     backgroundG = IceRayPy.core.geometry.simple.Box( P_dll )
     backgroundG.box(  Coord3D( lo[0], lo[1]-wall, lo[2] ) , Coord3D( hi[0], lo[1], hi[2] ) )
     backgroundW = IceRayPy.core.object.Wrapper( P_dll )
-    pigment = IceRayPy.utility.material.transmission.reflect.One( P_dll, I_scene )
+    pigment = IceRayPy.utility.material.transmission.reflect.Mirror( P_dll, I_scene )
     backgroundW.pigment( pigment )
     backgroundW.geometrySet( backgroundG )
 
     foregroundG = IceRayPy.core.geometry.simple.Box( P_dll )
     foregroundG.box(  Coord3D( lo[0], hi[1],  lo[2] ),      Coord3D( hi[0], hi[1] + wall, hi[2] ) )
     foregroundW = IceRayPy.core.object.Wrapper( P_dll )
-    pigment = IceRayPy.utility.material.transmission.reflect.One( P_dll, I_scene )
+    pigment = IceRayPy.utility.material.transmission.reflect.Mirror( P_dll, I_scene )
     foregroundW.pigment( pigment )
     foregroundW.geometrySet( foregroundG )
 
     floorG = IceRayPy.core.geometry.simple.Box( P_dll )
     floorG.box(       Coord3D( lo[0], lo[1], lo[2]-wall ) , Coord3D( hi[0], hi[0], lo[2] ) )
     floorW = IceRayPy.core.object.Wrapper( P_dll )
-    pigment = IceRayPy.utility.material.transmission.reflect.One( P_dll, I_scene )
+    pigment = IceRayPy.utility.material.transmission.reflect.Mirror( P_dll, I_scene )
     #pigment = IceRayPy.utility.material.illumination.Lambert( P_dll, I_scene, IceRayPy.type.color.RGB( 1, 1, 1 ) )
     floorW.pigment( pigment )
     floorW.geometrySet( floorG )
@@ -352,7 +387,7 @@ def mirror_box(
     ceilG = IceRayPy.core.geometry.simple.Box( P_dll )
     ceilG.box(        Coord3D( lo[0], lo[1], hi[2] ),       Coord3D( hi[0], hi[1], hi[2] + wall ) )
     ceilW = IceRayPy.core.object.Wrapper( P_dll )
-    pigment = IceRayPy.utility.material.transmission.reflect.One( P_dll, I_scene )
+    pigment = IceRayPy.utility.material.transmission.reflect.Mirror( P_dll, I_scene )
     ceilW.pigment( pigment )
     ceilW.geometrySet( ceilG )
 
