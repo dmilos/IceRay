@@ -107,21 +107,21 @@ def _MapFunction_Camera_DOF( P_dll ): #TODO
     _MakeFunction( P_dll.IceRayC_Camera_DOF_Cone_Gauss                   , ctypes.c_int       , [ctypes.c_void_p, ctypes.c_double] )
     _MakeFunction( P_dll.IceRayC_Camera_DOF_Cone_Sample                  , ctypes.c_int       , [ctypes.c_void_p, ctypes.c_size_t] )
     _MakeFunction( P_dll.IceRayC_Camera_DOF_Cylinder0                    , ctypes.c_void_p    , [] )
-    _MakeFunction( P_dll.IceRayC_Camera_DOF_Cylinder1                    , ctypes.c_void_p    , [ctypes.c_size_t,ctypes.c_double] )
+    _MakeFunction( P_dll.IceRayC_Camera_DOF_Cylinder1                    , ctypes.c_void_p    , [ctypes.c_size_t, ctypes.c_double] )
     _MakeFunction( P_dll.IceRayC_Camera_DOF_Cylinder2                    , ctypes.c_void_p    , [ctypes.c_void_p, ctypes.c_size_t, ctypes.c_double] )
     _MakeFunction( P_dll.IceRayC_Camera_DOF_Cylinder3                    , ctypes.c_void_p    , [ctypes.c_void_p, ctypes.c_size_t, ctypes.c_double, ctypes.c_double] )
-    _MakeFunction( P_dll.IceRayC_Camera_DOF_Cylinder_Aperture            , ctypes.c_int       , [ctypes.c_void_p,ctypes.c_double] )
+    _MakeFunction( P_dll.IceRayC_Camera_DOF_Cylinder_Aperture            , ctypes.c_int       , [ctypes.c_void_p, ctypes.c_double] )
     _MakeFunction( P_dll.IceRayC_Camera_DOF_Cylinder_Child               , ctypes.c_int       , [ctypes.c_void_p, ctypes.c_void_p] )
     _MakeFunction( P_dll.IceRayC_Camera_DOF_Cylinder_Gauss               , ctypes.c_int       , [ctypes.c_void_p, ctypes.c_double] )
     _MakeFunction( P_dll.IceRayC_Camera_DOF_Cylinder_Sample              , ctypes.c_int       , [ctypes.c_void_p, ctypes.c_size_t] )
     _MakeFunction( P_dll.IceRayC_Camera_DOF_Focus0                       , ctypes.c_void_p    , [] )
     _MakeFunction( P_dll.IceRayC_Camera_DOF_Focus1                       , ctypes.c_void_p    , [ ctypes.c_size_t, ctypes.c_void_p, ctypes.c_void_p, ctypes.c_double] )
-    _MakeFunction( P_dll.IceRayC_Camera_DOF_Focus2                       , ctypes.c_void_p    , [ctypes.c_void_p,  ctypes.c_size_t, ctypes.c_void_p, ctypes.c_void_p, ctypes.c_double] )
-    _MakeFunction( P_dll.IceRayC_Camera_DOF_Focus_Aperture               , ctypes.c_int       , [ctypes.c_void_p, ctypes.c_void_p ] )
-    _MakeFunction( P_dll.IceRayC_Camera_DOF_Focus_Child                  , ctypes.c_int       , [ctypes.c_void_p, ctypes.c_void_p ] )
-    _MakeFunction( P_dll.IceRayC_Camera_DOF_Focus_Focus                  , ctypes.c_int       , [ctypes.c_void_p, ctypes.c_void_p ] )
-    _MakeFunction( P_dll.IceRayC_Camera_DOF_Focus_Gauss                  , ctypes.c_int       , [ctypes.c_void_p, ctypes.c_double ] )
-    _MakeFunction( P_dll.IceRayC_Camera_DOF_Focus_Sample                 , ctypes.c_int       , [ctypes.c_void_p, ctypes.c_size_t ] )
+    _MakeFunction( P_dll.IceRayC_Camera_DOF_Focus2                       , ctypes.c_void_p    , [ ctypes.c_void_p,  ctypes.c_size_t, ctypes.c_void_p, ctypes.c_void_p, ctypes.c_double] )
+    _MakeFunction( P_dll.IceRayC_Camera_DOF_Focus_Aperture               , ctypes.c_int       , [ ctypes.c_void_p, ctypes.c_void_p ] )
+    _MakeFunction( P_dll.IceRayC_Camera_DOF_Focus_Child                  , ctypes.c_int       , [ ctypes.c_void_p, ctypes.c_void_p ] )
+    _MakeFunction( P_dll.IceRayC_Camera_DOF_Focus_Focus                  , ctypes.c_int       , [ ctypes.c_void_p, ctypes.c_void_p ] )
+    _MakeFunction( P_dll.IceRayC_Camera_DOF_Focus_Gauss                  , ctypes.c_int       , [ ctypes.c_void_p, ctypes.c_double ] )
+    _MakeFunction( P_dll.IceRayC_Camera_DOF_Focus_Sample                 , ctypes.c_int       , [ ctypes.c_void_p, ctypes.c_size_t ] )
     return
 
 def _MapFunction_Camera_Flat( P_dll ): #DONE
@@ -441,6 +441,7 @@ def _MapFunction_Geometry_Volumetric( P_dll ): #DONE
 def _MapFunction_Geometry( P_dll ): #TODO
 
     _MakeFunction( P_dll.IceRayC_Geometry_Release                             , ctypes.c_int     , [ctypes.c_void_p] )
+    _MakeFunction( P_dll.IceRayC_Geometry__Base_GetBox                        , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_void_p] )
 
     _MapFunction_Geometry_Blobby( P_dll )
     _MapFunction_Geometry_Complex( P_dll )

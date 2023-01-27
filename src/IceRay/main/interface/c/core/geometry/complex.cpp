@@ -8,6 +8,7 @@
 
 #include "IceRay/geometry/complex/complex.hpp"
 #include "./geometry.hpp"
+#include "./handle.hpp"
 
 
 IceRayC_Geometry_Handle IceRayC_Geometry_Complex_Intersect0()
@@ -15,6 +16,7 @@ IceRayC_Geometry_Handle IceRayC_Geometry_Complex_Intersect0()
   typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;
   typedef GS_DDMRM::S_IceRay::S_geometry::S_complex::S_CSG::GC_intersect Tf_intersect;
   auto Ir_result = new Tf_intersect{};
+  Tf__base * I_base = Ir_result;
   return cpp2c( Ir_result );
  }
 

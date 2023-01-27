@@ -110,8 +110,17 @@ geometry_list = {
      #'hyper-cone'           : utility.geometry.simple.hyperboloid.Cone,
      #'hyper-cylinder'       : utility.geometry.simple.hyperboloid.Cylinder,
      #'hyper-negative'       : utility.geometry.simple.hyperboloid.Negative,
-     #
-     #'C-Intersect'    : core.geometry.complex.Intersect, #NYI
+
+     #'C-I-i-i'    : library.geometry.example.Intersect_IN_IN,
+     #'C-I-i-o'    : library.geometry.example.Intersect_IN_OUT,
+     #'C-I-i-s'    : library.geometry.example.Intersect_IN_SURFACE,
+     #'C-I-o-i'    : library.geometry.example.Intersect_OUT_IN,
+     #'C-I-o-o'    : library.geometry.example.Intersect_OUT_OUT,
+     #'C-I-o-s'    : library.geometry.example.Intersect_OUT_SURFACE,
+     #'C-I-s-i'    : library.geometry.example.Intersect_SURFACE_IN,
+     #'C-I-s-o'    : library.geometry.example.Intersect_SURFACE_OUT,
+     #'C-I-s-s'    : library.geometry.example.Intersect_SURFACE_SURFACE,
+
      #'C-Enclose'      : core.geometry.complex.Enclose, #NYI
      #
      #'T-identity'   : core.geometry.transform.Identity,
@@ -119,7 +128,18 @@ geometry_list = {
      #'T-affine'     : core.geometry.transform.Affine,
      #'T-hgraphy'    : core.geometry.transform.Homography,
      #'T-mblur'      : library.geometry.MotionBlur,
-     'T-lens'      : library.geometry.Lens,
+     #'T-lensBC'      : library.geometry.LensBiconvex,
+     #'T-lensPC'      : library.geometry.LensPlanoConvex,
+
+     'T-lensCS'      : library.geometry.lens.concave.Symetric,
+     #'T-lensCP'      : library.geometry.lens.concave.Plano,
+     #'T-lensVS'      : library.geometry.lens.convex.Symetric,
+     #'T-lensVP'      : library.geometry.lens.convex.Plano,
+
+     #'T-lensPCvA'      : library.geometry.example.IntersectGeneral,
+     #'T-lensPCvB'      : library.geometry.LensBiconcaveB,
+     #'T-lensPCvC'      : library.geometry.LensBiconcaveC,
+     #'T-lensPCvD'      : library.geometry.LensBiconcaveD,
 
      #'V-Vacuum'    : core.geometry.volumetric.Vacuum,
      #'V-Mist'      : core.geometry.volumetric.Mist,
@@ -180,7 +200,7 @@ pigment_list = {
      #'M-o-Cylindric2Spherical'    : utility.material.operation.mapping.Cylindric2Spherical,  #TODO check
      #'M-o-Spherical2Cartesian'    : utility.material.operation.mapping.Spherical2Cartesian,  #TODO check
      #'M-o-Spherical2Cylindric'    : utility.material.operation.mapping.Spherical2Cylindric,  #TODO check
-     #'M-o-Euclid2Max'             : utility.material.operation.mapping.Euclid2Max,           #TODO check
+     'M-o-Euclid2Max'             : utility.material.operation.mapping.Euclid2Max,           #TODO check
      #'M-o-Max2Euclid'             : utility.material.operation.mapping.Max2Euclid,           #TODO check
      #'M-o-Cartesian2Fisheye'      : utility.material.operation.mapping.Cartesian2Fisheye,    #TODO check
 
@@ -196,7 +216,7 @@ pigment_list = {
      #'T-7-reflect-blossom-VDC'       : utility.material.transmission.blossom.VDC,      #OK
      #'T-8-refract-fresnel'           : utility.material.transmission.refract.Fresnel,  #OK
      #'T-9-refract-Snell'             : utility.material.transmission.refract.Snell,    #OK
-     'T-A-refract-schlick'           : utility.material.transmission.refract.Schlick,  #OK
+     #'T-A-refract-schlick'           : utility.material.transmission.refract.Schlick,  #OK
 }
 
 room_list = {
@@ -237,14 +257,15 @@ path_item = 'looker'
 ##geometry_list   = { 'S-torus'          : utility.geometry.simple.Torus }
 ##geometry_list   = { 'U-cylinder'      : utility.geometry.simple.Cylinder }
 ##geometry_list   = { 'V-vacuum'              : core.geometry.volumetric.Vacuum }
+#geometry_list   = { 'T-lens'      : library.geometry.LensPlanoConvex }
 #pigment_list    = { 'M-o-Cartesian2Fisheye' : utility.material.operation.mapping.Cartesian2Fisheye }
 #pigment_list    = { 'T-reflect-one'         : utility.material.transmission.reflect.One }
 #pigment_list    = { 'P-hexagon'             : utility.material.pattern.Hexagon }
 #pigment_list    = { 'P-hexagon'          : utility.material.pattern.Hexagon }
 #pigment_list    = {
-#                   'T-8-refract-snell'       : utility.material.transmission.refract.Snell,
-#                   'T-9-refract-schlick'     : utility.material.transmission.refract.Schlick,
-#                   'T-A-refract-fresnel'     : utility.material.transmission.refract.Fresnel
+#                   #'T-8-refract-snell'       : utility.material.transmission.refract.Snell,
+#                   #'T-A-refract-fresnel'     : utility.material.transmission.refract.Fresnel,
+#                   'T-9-refract-schlick'     : utility.material.transmission.refract.Schlick
 #                  }
 ##room_list       = { 'C-close'               : room.cornel_close }
 ##room_list       = { 'C-radiosity'           : room.cornell_radiosity }
@@ -393,7 +414,7 @@ config['camera']['sample'] = 32
 config['camera']['path'] = {}
 
 config['pigment'] = {}
-config['pigment']['ior'] = 1.75
+config['pigment']['ior'] = 1.695
 config['pigment']['albedo'] = IceRayPy.type.color.RGB( 1, 1, 1 )
 
 config['ray-trace']={}
@@ -409,8 +430,8 @@ config['room'] = {}
 config['room']['radiosity'] = {}
 config['room']['radiosity']['blossom'] = 'sobol'
 config['room']['radiosity']['patch']  = math.radians( 4 )
-config['room']['radiosity']['angle']  = math.radians( 0 )
-config['room']['radiosity']['sample'] = 0 #int( (1 - math.cos(config['room']['radiosity']['angle']) ) / ( 1 - math.cos( config['room']['radiosity']['patch'] ) ) + 1 )
+config['room']['radiosity']['angle']  = math.radians( 89 )
+config['room']['radiosity']['sample'] = 5 #int( (1 - math.cos(config['room']['radiosity']['angle']) ) / ( 1 - math.cos( config['room']['radiosity']['patch'] ) ) + 1 )
 config['room']['radiosity']['jitter-angle'] = math.radians( 4 )
 config['room']['radiosity']['jitter-type'] = 'none' #'random''sobol''vdc''none'
 
@@ -472,8 +493,8 @@ for index in range( start, 360 * int( dilatation ), step ):
     t = index / 360.0 / dilatation
 
     #[x,y,height] = obseravtion.circle( 0 / 360.0 / dilatation, config['camera']['path'] )
-    [x,y,height] = path_list[path_item]( t, config['camera']['path'] )
-    #[x,y,height] = path_list[path_item]( 180 / 360.0 / dilatation, config['camera']['path'] )#!< debug
+    [x,y,height] = path_list[path_item]( t, config['camera']['path'] ) #!< ORIGINAL
+    #[x,y,height] = path_list[path_item]( 150 / 360.0 / dilatation, config['camera']['path'] )#!< debug
 
     config['camera']['eye']  = IceRayPy.type.math.coord.Scalar3D( x, y, height ) #!< MAIN
     config['camera']['view'] = IceRayPy.type.math.coord.Scalar3D( 0, 0, 0 ) #!< MAIN

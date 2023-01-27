@@ -7,7 +7,7 @@
 #include "IceRay/geometry/transform/transform.hpp"
 
 #include "./geometry.hpp"
-
+#include "./handle.hpp"
 
 
 IceRayC_Geometry_Handle IceRayC_Geometry_Transform_Identity0()

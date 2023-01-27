@@ -1,3 +1,4 @@
+#include "./handle.h"
 #include "./blobby.h"
 #include "./complex.h"
 #include "./rtss.h"
@@ -5,3 +6,4 @@
 #include "./volumetric.h"
 #include "./simple.h"
 #include "./flat.h"
+#include "./base.h"

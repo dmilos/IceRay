@@ -7,6 +7,13 @@
 
 #include "./handle.h"
 
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_HField();
+
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Torus0();
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Torus1( IceRayC_TypeScalar P_minor );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool       IceRayC_Geometry_Torus_Minor( IceRayC_Geometry_Handle P_that, IceRayC_TypeScalar P_minor );
+
+
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Sphere0( );
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Sphere1( IceRayC_TypeCoordScalar3D* center, IceRayC_TypeScalar radius );
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool       IceRayC_Geometry_Sphere_Center( IceRayC_Geometry_Handle P_that, IceRayC_TypeCoordScalar3D* center );
@@ -23,15 +30,8 @@ IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool       IceRayC_Geometry_Elli
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool       IceRayC_Geometry_Ellipsoid_System(  IceRayC_Geometry_Handle P_that, IceRayC_TypeCoordScalar3D* P_eX, IceRayC_TypeCoordScalar3D* P_eY, IceRayC_TypeCoordScalar3D * P_eZ );
 
 
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Torus0();
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Torus1( IceRayC_TypeScalar P_minor );
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool       IceRayC_Geometry_Torus_Minor( IceRayC_Geometry_Handle P_that, IceRayC_TypeScalar P_minor );
-
-
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Quadric0();
 
-
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_HField();
 
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Cylinder0();
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Cylinder1( IceRayC_TypeScalar P_radius );

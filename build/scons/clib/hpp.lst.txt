@@ -7,7 +7,9 @@ IceRay/main/interface/c/core/geometry/blobby.hpp
 IceRay/main/interface/c/core/geometry/complex.h
 IceRay/main/interface/c/core/geometry/complex.hpp
 IceRay/main/interface/c/core/geometry/flat.h
+IceRay/main/interface/c/core/geometry/base.h
 IceRay/main/interface/c/core/geometry/flat.hpp
+IceRay/main/interface/c/core/geometry/base.hpp
 IceRay/main/interface/c/core/geometry/geometry.h
 IceRay/main/interface/c/core/geometry/geometry.hpp
 IceRay/main/interface/c/core/geometry/handle.h

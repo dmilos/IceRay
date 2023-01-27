@@ -231,17 +231,20 @@ void GC_intersect::Fv_normal( T_coord &P_normal, T_coord const& P_point, T_state
 
 GC_intersect::T_location GC_intersect::Fv_inside( T_coord const& P_point )const
  {
-  return     Fs_intersect( M2_left.M_inside->Fv_inside( P_point )
-                          ,M2_left.M_inside->Fv_inside( P_point ) );
+  auto I_left  = M2_left.M_inside->Fv_inside( P_point );
+  auto I_right = M2_right.M_inside->Fv_inside( P_point );
+
+  return Fs_intersect( I_left, I_right );
  }
 
 GC_intersect::T_scalar  GC_intersect::Fv_distance( T_coord const& P_point )const
 {
   // C_intersect const &I_intersect = P_state.F_content<C_intersect>();
-  // T_state I_state = P_state.F_tail<C_intersect>();
+  // T_state I_stateL = P_state.F_tail<C_intersect>();
+  // T_state I_stateR = P_state.F_tail<C_intersect>();
 
-  T_scalar I_left = M2_left.M_distance->Fv_distance(    P_point/*, I_state*/ );
-  T_scalar I_right =  M2_right.M_distance->Fv_distance( P_point/*, I_state*/ );
+  T_scalar I_left  = M2_left.M_distance->Fv_distance(  P_point/*, I_stateL*/ );
+  T_scalar I_right = M2_right.M_distance->Fv_distance( P_point/*, I_stateR*/ );
 
   return std::min<T_scalar>( I_left, I_right );
 }

@@ -8,6 +8,8 @@
 #include "../../core/geometry/geometry.hpp"
 #include "../../core/object/object.hpp"
 
+#include "../geometry/handle.hpp"
+
 
 IceRayC_Render_Ray_Handle cpp2c( GS_DDMRM::S_IceRay::S_render::S_ray::GC__pure* P_this )
  {

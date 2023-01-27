@@ -2,8 +2,8 @@
 
 #include "../material/pigment/pigment.hpp"
 #include "../material/medium/medium.hpp"
+#include "../geometry/handle.hpp"
 
-#include "../geometry/geometry.hpp"
 
 #include "IceRay/object/object.hpp"
 

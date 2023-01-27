@@ -5,6 +5,7 @@
 
 #include "./geometry.hpp"
 #include "IceRay/geometry/blobby/blobby.hpp"
+#include "./handle.hpp"
 
 
 IceRayC_Geometry_Blobby_Element_Handle cpp2c( GS_DDMRM::S_IceRay::S_geometry::S_blobby::GC__element* P_this )

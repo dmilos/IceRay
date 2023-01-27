@@ -79,10 +79,14 @@ class Cone: #( IceRayPy.core.geometry.Generic ):
 
 class Cylinder: #( IceRayPy.core.geometry.Generic ):
 
-    def __init__( self, P_dll ):
+    def __init__( self, P_dll, P_radius = None, P_height = None ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Geometry_Cylinder0()
+        if None != P_radius:
+            self.radius( P_radius )
+        if None != P_height:
+            self.height( P_height )
 
     def __del__( self ):
         self.m_cargo['dll'].IceRayC_Geometry_Release( self.m_cargo['this'] )
@@ -181,10 +185,17 @@ class Paraboloid:  #( IceRayPy.core.geometry.Generic ):
 
 
 class Plane:  #( IceRayPy.core.geometry.Generic ):
-    def __init__( self, P_dll ):
+    def __init__( self, P_dll, P_origin = None, P_normal = None ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Geometry_Plane0()
+
+        if( None != P_origin ):
+            self.origin( P_origin )
+
+        if( None != P_normal ):
+            self.normal( P_normal )
+
 
     def __del__( self ):
         self.m_cargo['dll'].IceRayC_Geometry_Release( self.m_cargo['this'] )

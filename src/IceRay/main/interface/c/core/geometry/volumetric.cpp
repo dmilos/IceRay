@@ -3,6 +3,7 @@
 #include "../../type/coord.hpp"
 #include "../../type/interval.hpp"
 #include "./geometry.hpp"
+#include "./handle.hpp"
 
 #include "IceRay/geometry/volumetric/volumetric.hpp"
 

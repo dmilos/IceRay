@@ -114,6 +114,7 @@ print( cc_files )
 #    cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'complex.cpp'   ) ]
 #    cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'simple.cpp'   ) ]
 #    cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'flat.cpp'   ) ]
+#    cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'base.cpp'   ) ]
 #    cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'handle.cpp'   ) ]
 #
 #cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'object', 'object.cpp' ) ]

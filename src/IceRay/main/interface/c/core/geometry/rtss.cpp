@@ -4,6 +4,8 @@
 
 #include "IceRay/geometry/rtss/rtss.hpp"
 
+#include "./handle.hpp"
+
 
 IceRayC_Geometry_RTSS_Handle cpp2c( GS_DDMRM::S_IceRay::S_geometry::S_RTSS::GC__pure* P_this )
  {

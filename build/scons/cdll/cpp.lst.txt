@@ -7,6 +7,7 @@ main/interface/c/core/geometry/transform.cpp
 main/interface/c/core/geometry/complex.cpp 
 main/interface/c/core/geometry/simple.cpp 
 main/interface/c/core/geometry/flat.cpp 
+main/interface/c/core/geometry/base.cpp 
 main/interface/c/core/geometry/handle.cpp 
 main/interface/c/core/object/object.cpp 
 main/interface/c/core/light/light.cpp 
