@@ -1,4 +1,4 @@
-print( '<' + __name__ + ' name=\'' +   __file__ + '\'>' )
+#print( '<' + __name__ + ' name=\'' +   __file__ + '\'>' )
 
 
 import IceRayPy.utility.material.pattern.noise
@@ -30,24 +30,42 @@ def Image(
         I_picture.load( P_filename )
     else:
         if( 'filename' in P_config ):
-            I_picture.load( P_config['filename'] )
+            I_picture.load( P_config[ 'filename' ] )
         else:
-            I_picture.size( 256, 256 )
+            I_picture.size( 512, 512 )
             IceRayPy.type.graph.Default( I_picture )
 
     result = IceRayPy.core.material.instruction.label.color.dynamic.RESULT
     scale = IceRayPy.core.material.instruction.label.scalar.dynamic._BEGIN
     point  = IceRayPy.core.material.instruction.label.coord3d.dynamic.POINT
-    pointB = IceRayPy.core.material.instruction.label.coord3d.temp._BEGIN
+    pointT = IceRayPy.core.material.instruction.label.coord3d.temp._BEGIN
+
+    pointShift = pointT + 0
+    pointScale = pointT + 1
+    pointA     = pointT + 2
+    pointB     = pointT + 3
 
     I_image = IceRayPy.core.material.pattern.Image( P_dll, I_picture )
     I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
 
     if( 'scale' in P_config ):
         I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_config['scale'], scale ) )
-        I_surface.append( IceRayPy.core.material.instruction.operation.coord3d.Scale( P_dll, pointB, scale, point ) )
+        I_surface.append( IceRayPy.core.material.instruction.operation.coord3d.Scale( P_dll, pointA, scale, point ) )
+
+    if( 'shift' in P_config ):
+        I_surface.append( IceRayPy.core.material.instruction.constant.Coord3D( P_dll, P_config['shift'], pointShift ) )
+        if( 'scale' in P_config ):
+            I_surface.append( IceRayPy.core.material.instruction.operation.coord3d.Addition( P_dll, pointB, pointShift, pointA ) )
+        else:
+            I_surface.append( IceRayPy.core.material.instruction.operation.coord3d.Addition( P_dll, pointA, pointShift, point ) )
+
+    if( ( 'scale'     in P_config ) and ( 'shift'     in P_config ) ):
         I_surface.append( IceRayPy.core.material.instruction.pattern.Color( P_dll, I_image, result, pointB ) )
-    else:
+    if( ( 'scale'     in P_config ) and ( 'shift' not in P_config ) ):
+        I_surface.append( IceRayPy.core.material.instruction.pattern.Color( P_dll, I_image, result, pointA ) )
+    if( ( 'scale' not in P_config ) and ( 'shift'     in P_config ) ):
+        I_surface.append( IceRayPy.core.material.instruction.pattern.Color( P_dll, I_image, result, pointA ) )
+    if( ( 'scale' not in P_config ) and ( 'shift' not in P_config ) ):
         I_surface.append( IceRayPy.core.material.instruction.pattern.Color( P_dll, I_image, result, point ) )
 
     return I_surface
@@ -144,5 +162,4 @@ def Level(
 
     return I_surface
 
-print( '</' + __name__ + ' name=\'' +   __file__ + '>' )
-print( '</' + __name__ + ' name=\'' +   __file__ + '>' )
+#print( '</' + __name__ + ' name=\'' +   __file__ + '>' )

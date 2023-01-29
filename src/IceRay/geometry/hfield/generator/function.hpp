@@ -33,8 +33,8 @@
                GC_function( T_function const& P_function, T_size const& P_x, T_size const& P_y );
 
              public:
-               T_scalar Fv_value( T_size const& P_y, T_size const& P_x )const;
-               T_scalar Fv_value( T_coord const& P_position )const;
+               T_scalar Fv_value( T_size const& P_x, T_size const& P_y )const;
+               T_scalar Fv_value( T_size2D const& P_position )const;
 
              public:  // property function  function
                        T_function    const& F_function()const{ return M2_function; }

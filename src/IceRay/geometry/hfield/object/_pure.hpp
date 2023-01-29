@@ -17,7 +17,9 @@
         {
          namespace S_object
           {
-
+            /*!
+             It is expected that object is allays situate in box [0,0,0]x[1,1,1]
+            */
            class GC__pure
             {
              public:
@@ -33,12 +35,12 @@
                /*
                 at corners [0,0], [0,1], [1,0] ,[1,1]
                */
-               virtual bool Fv_intersect( T_scalar &lambda, T_scalar const& P_00, T_scalar const& P_01, T_scalar const& P_10, T_scalar const& P_11, T_ray const& P_ray )const=0;
+               virtual bool Fv_intersect( T_scalar &P_lambda, T_scalar const& P_00, T_scalar const& P_10, T_scalar const& P_01, T_scalar const& P_11, T_ray const& P_ray )const=0;
                /*
                  0 < P_x, P_y < 1
                */
-               virtual void Fv_height( T_scalar &P_height, T_scalar const& P_00, T_scalar const& P_01, T_scalar const& P_10, T_scalar const& P_11, T_scalar const& P_x, T_scalar const& P_y )const=0;
-               virtual void Fv_normal( T_coord  &P_normal, T_scalar const& P_00, T_scalar const& P_01, T_scalar const& P_10, T_scalar const& P_11, T_scalar const& P_x, T_scalar const& P_y )const=0;
+               virtual void Fv_height( T_scalar &P_height, T_scalar const& P_00, T_scalar const& P_10, T_scalar const& P_01, T_scalar const& P_11, T_scalar const& P_x, T_scalar const& P_y )const=0;
+               virtual void Fv_normal( T_coord  &P_normal, T_scalar const& P_00, T_scalar const& P_10, T_scalar const& P_01, T_scalar const& P_11, T_scalar const& P_x, T_scalar const& P_y )const=0;
             };
 
 

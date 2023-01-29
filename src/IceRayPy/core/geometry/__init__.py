@@ -24,6 +24,12 @@ class Generic:
     def __del__( self ):
         pass
 
+    def boxGet( self ): #!< TODO
+        pass
+
+    def boxSet( self ): #!< TODO
+        pass
+
 
 class Pretender:
     def __init__( self, P_dll, P_this, P_that ):
@@ -44,5 +50,6 @@ import IceRayPy.core.geometry.rtss
 import IceRayPy.core.geometry.simple
 import IceRayPy.core.geometry.transform
 import IceRayPy.core.geometry.volumetric
+import IceRayPy.core.geometry.hfield
 
 print( '</' + __name__ + ' name=\'' +   __file__ + '\'>' )

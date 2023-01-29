@@ -1,3 +1,6 @@
+#print( '<' + __name__ + ' name=\'' +   __file__ + '\'>' )
+
+
 import IceRayPy
 
 def Translate(
@@ -15,3 +18,4 @@ def Translate(
 
     return result
 
+#print( '</' + __name__ + ' name=\'' +   __file__ + '>' )

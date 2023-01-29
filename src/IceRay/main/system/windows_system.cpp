@@ -38,3 +38,22 @@ void ShutDownSystemWindows( void )
  {
   GdiplusShutdown( GIs_GdiplusToken );
  }
+
+BOOL APIENTRY DllMain(HMODULE module_handle, DWORD ul_reason_for_call, LPVOID /*lp_reserved*/)
+ {
+  switch (ul_reason_for_call)
+   {
+    case DLL_PROCESS_ATTACH:
+     {
+      extern void InitSystem( void );
+      InitSystem();
+     }break;
+
+    case DLL_PROCESS_DETACH:
+     {
+      extern void ShutDownSystem( void );
+      ShutDownSystem();
+     }break;
+   }
+  return TRUE;
+ }

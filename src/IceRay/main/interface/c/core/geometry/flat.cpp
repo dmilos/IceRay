@@ -50,11 +50,11 @@ int IceRayC_Geometry_Box_Hi( IceRayC_Geometry_Handle P_this, IceRayC_TypeCoordSc
   return 1;
  }
 
-IceRayC_Geometry_Handle IceRayC_Geometry_UTriangle0()
+IceRayC_Geometry_Handle IceRayC_Geometry_TriangleU0()
  {
   typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;
-  typedef GS_DDMRM::S_IceRay::S_geometry::GC_utriangle Tf_utriangle;
-  auto Ir_result = new Tf_utriangle{};
+  typedef GS_DDMRM::S_IceRay::S_geometry::GC_triangleU Tf_triangleU;
+  auto Ir_result = new Tf_triangleU{};
   return cpp2c( Ir_result );
 }
 

@@ -26,7 +26,6 @@
 
          public:
            explicit GC_cylinder( T_scalar const& P_radius = T_scalar( 1 ), T_scalar const& P_length = T_scalar( 2 ) );
-         //GC_cylinder( T_coord const& P_bottom,  T_coord const& P_top, T_scalar const& P_radius = T_scalar( 2 ) );
           ~GC_cylinder( );
 
          public:

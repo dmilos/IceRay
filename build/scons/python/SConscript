@@ -147,9 +147,10 @@ cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'geometry', '
 if( False ):
     cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'geometry', 'simple', 'cone.cpp' ) ]
     cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'geometry', 'simple', 'cylinder.cpp' ) ]
+    cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'geometry', 'simple', 'cylinderu.cpp' ) ]
     cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'geometry', 'simple', 'sphere.cpp' ) ]
-    cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'geometry', 'simple', 'torus.cpp' ) ]
     cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'geometry', 'simple', 'usphere.cpp' ) ]
+    cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'geometry', 'simple', 'torus.cpp' ) ]
     cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'geometry', 'simple', 'quadric.cpp' ) ]
     cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'geometry', 'simple', 'paraboloid.cpp' ) ]
     cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'geometry', 'simple', 'box.cpp' ) ]

@@ -28,6 +28,7 @@ import signal
 import faulthandler
 
 
+gc.enable()
 faulthandler.enable()
 
 camera_list = {
@@ -48,7 +49,7 @@ camera_list = {
 
 light_list = {
         #'dark'       : core.light.Dark, # No light at all
-         'point'      : core.light.Point,
+        'point'      : core.light.Point,
         #'reflector'  : core.light.Reflector,
         #'line'       : core.light.Line,
         ##'spline'     : core.light.Spline, # TODO crash on Ubuntu
@@ -87,7 +88,6 @@ geometry_list = {
      #'S-cylinder'      : core.geometry.simple.Cylinder,
      #'S-util-cylinder' : utility.geometry.simple.Cylinder,
      #'S-box'           : core.geometry.simple.Box,
-     #'S-plane'         : core.geometry.simple.Plane,
      #'S-torus'         : core.geometry.simple.Torus,
      #'S-util-torus'    : utility.geometry.simple.Torus,
      #'S-cone'          : core.geometry.simple.Cone,
@@ -101,10 +101,12 @@ geometry_list = {
      #'S-util-paraboloid'    : utility.geometry.simple.Paraboloid,
      #'S-quadric'       : core.geometry.simple.Quadric,
      #'S-triangle'      : core.geometry.simple.Triangle,
-     #'S-utriangle'     : core.geometry.simple.UTriangle,
+     #'S-triangleU'      : core.geometry.simple.TriangleU, #!< TODO
+     #'S-plane'         : core.geometry.simple.Plane,
+     #'S-triangleU'     : core.geometry.simple.triangleU,
      #'S-saddle'        : core.geometry.simple.Saddle,
-     #'S-ucylinder'     : core.geometry.simple.UCylinder,
-     #
+     #'S-cylinderu'     : core.geometry.simple.CylinderU,
+
      #'hyper-nuke'           : utility.geometry.simple.hyperboloid.Nuke,
      #'hyper-sphere'         : utility.geometry.simple.hyperboloid.Sphere,
      #'hyper-cone'           : utility.geometry.simple.hyperboloid.Cone,
@@ -122,16 +124,21 @@ geometry_list = {
      #'C-I-s-s'    : library.geometry.example.Intersect_SURFACE_SURFACE,
 
      #'C-Enclose'      : core.geometry.complex.Enclose, #NYI
-     #
+
+     'C-hfieldI'      : library.geometry.hfield.Image,
+     #'C-hfieldLE'      : library.geometry.hfield.Expression, #NYI
+     #'C-hfieldT2x2'    : library.geometry.hfield.Table2x2,
+     #'C-hfieldT3x3'    : library.geometry.hfield.Table3x3,
+     #'C-hfieldT4x4'    : library.geometry.hfield.Table4x4,
+     #'C-hfieldT30x30'   : library.geometry.hfield.Table5x5,
+
      #'T-identity'   : core.geometry.transform.Identity,
      #'T-translate'  : core.geometry.transform.Translate,
      #'T-affine'     : core.geometry.transform.Affine,
      #'T-hgraphy'    : core.geometry.transform.Homography,
      #'T-mblur'      : library.geometry.MotionBlur,
-     #'T-lensBC'      : library.geometry.LensBiconvex,
-     #'T-lensPC'      : library.geometry.LensPlanoConvex,
 
-     'T-lensCS'      : library.geometry.lens.concave.Symetric,
+     #'T-lensCS'      : library.geometry.lens.concave.Symetric,
      #'T-lensCP'      : library.geometry.lens.concave.Plano,
      #'T-lensVS'      : library.geometry.lens.convex.Symetric,
      #'T-lensVP'      : library.geometry.lens.convex.Plano,
@@ -164,7 +171,7 @@ pigment_list = {
       #'P-onion'            : utility.material.pattern.Onion, #TODO check
       #'P-level'            : utility.material.pattern.Level, #TODO check
 
-      #'I-ALP'           : utility.material.illumination.Alp,       # OK OK
+      'I-ALP'           : utility.material.illumination.Alp,       # OK OK
       #'I-ambient'       : utility.material.illumination.Ambient,   # OK OK TODO align with ALP
       #'I-AsDiffuse'     : utility.material.illumination.AsDiffuse, # OK OK TODO align with ALP
       #'I-AsSpecular'    : utility.material.illumination.AsSpecular,# OK OK TODO align with ALP
@@ -200,7 +207,7 @@ pigment_list = {
      #'M-o-Cylindric2Spherical'    : utility.material.operation.mapping.Cylindric2Spherical,  #TODO check
      #'M-o-Spherical2Cartesian'    : utility.material.operation.mapping.Spherical2Cartesian,  #TODO check
      #'M-o-Spherical2Cylindric'    : utility.material.operation.mapping.Spherical2Cylindric,  #TODO check
-     'M-o-Euclid2Max'             : utility.material.operation.mapping.Euclid2Max,           #TODO check
+     #'M-o-Euclid2Max'             : utility.material.operation.mapping.Euclid2Max,           #TODO check
      #'M-o-Max2Euclid'             : utility.material.operation.mapping.Max2Euclid,           #TODO check
      #'M-o-Cartesian2Fisheye'      : utility.material.operation.mapping.Cartesian2Fisheye,    #TODO check
 
@@ -221,14 +228,14 @@ pigment_list = {
 
 room_list = {
       #'vacuum'      : room.vacuum,
-      #'plane'       : room.plane,
+      'plane'       : room.plane,
       #'plate'        : room.plate,
       #'disc'        : room.disc
       #'R-M-box'     : room.mirror_box,
       # 'R-M-sphere' : room.mirror_sphere,
       #'C-radiosity' : room.cornell_radiosity,
       #'C-0pen'      : room.cornel_open,
-      'C-close'     : room.cornel_close
+      #'C-close'     : room.cornel_close
       #'R-plane'     : room.radiosity_plane
     }
 room_item = 'C-radiosity'
@@ -236,20 +243,22 @@ room_item = 'C-radiosity'
 decoration_list = {
       'vacuum'      : decoration.vacuum,
       'ptrs'        : decoration.pointers,
-      #'ptrs-A'      : decoration.pointers,
-      'radiosity'   : decoration.radiosity
+      #'ptrs-A'     : decoration.pointers,
+      'radiosity'   : decoration.radiosity,
+      'plate'       : decoration.plate
     }
 decoration_item = 'ptrs'
 
 path_list= {
-         'fixed' : obseravtion.default,
+        'default' : obseravtion.default,
+        'debug' : obseravtion.debug,
         'circle'  : obseravtion.circle,
         'looker'  : obseravtion.looker
     }
 path_item = 'looker'
 
 
-### radiosity {{{
+#### radiosity {{{
 #camera_list     = { 'F-persp'               : core.camera.flat.Perspective }
 #light_list      = { 'dark'                  : core.light.Dark }
 #medium_list     = { 'trans'                 : core.material.medium.Transparent }
@@ -257,7 +266,12 @@ path_item = 'looker'
 ##geometry_list   = { 'S-torus'          : utility.geometry.simple.Torus }
 ##geometry_list   = { 'U-cylinder'      : utility.geometry.simple.Cylinder }
 ##geometry_list   = { 'V-vacuum'              : core.geometry.volumetric.Vacuum }
-#geometry_list   = { 'T-lens'      : library.geometry.LensPlanoConvex }
+#geometry_list   = {
+#     'T-lensCS'      : library.geometry.lens.concave.Symetric,
+#     'T-lensCP'      : library.geometry.lens.concave.Plano,
+#     'T-lensVS'      : library.geometry.lens.convex.Symetric,
+#     'T-lensVP'      : library.geometry.lens.convex.Plano
+#  }
 #pigment_list    = { 'M-o-Cartesian2Fisheye' : utility.material.operation.mapping.Cartesian2Fisheye }
 #pigment_list    = { 'T-reflect-one'         : utility.material.transmission.reflect.One }
 #pigment_list    = { 'P-hexagon'             : utility.material.pattern.Hexagon }
@@ -268,11 +282,11 @@ path_item = 'looker'
 #                   'T-9-refract-schlick'     : utility.material.transmission.refract.Schlick
 #                  }
 ##room_list       = { 'C-close'               : room.cornel_close }
-##room_list       = { 'C-radiosity'           : room.cornell_radiosity }
 ##room_list       = { 'plane'                 : room.plane }
 #room_list       = { 'R-plane'               : room.radiosity_plane }
+##room_list       = { 'C-radiosity'           : room.cornell_radiosity }
 #decoration_item = 'radiosity'
-### }}}
+#### }}}
 
 GI_save_image_run = True
 GI_save_image_image = True
@@ -303,10 +317,10 @@ def doRendering(P_config):
                 for key_pigment, data_pigment in pigment_list.items():
                    for key_light, data_light in light_list.items():
                        name = key_room +"_"+ key_camera +'_'+ key_geometry +"_"+ key_medium +"_"+ key_pigment+"_" + key_light
-                       filen_name = folder + "/" + name + '_'+ "{:04d}".format( P_config['index'] ) + '.ppm'
+                       filen_name = folder + "/" + name + '_'+ "{:04d}".format( P_config['index'] ) + '.png'
                        print( filen_name, flush = True  )
 
-                       my_file = pathlib.Path(filen_name)
+                       my_file = pathlib.Path( filen_name )
                        if my_file.is_file():
                            continue
 
@@ -355,7 +369,7 @@ def doRendering(P_config):
 
                        IceRayPy.type.graph.Crop( P_config['dll'], crop, GI_save_image_image, A, B )
 
-                       crop.storePNM( filen_name )
+                       crop.storePNG( filen_name )
 
                        P_config['dll'].IceRayC_Utility_Random_Table_Next()
 
@@ -383,7 +397,7 @@ if( 3 < len( sys.argv ) ):
     config['picture'][ 'width'] = int( sys.argv[3] )
     config['picture']['height'] = int( sys.argv[3] )
 
-config['folder'] = '_out'
+config['folder'] = '.'
 
 config['index'] = 0
 
@@ -412,9 +426,11 @@ config['camera']['eye']  = IceRayPy.type.math.coord.Scalar3D( 0, -3, 0 )
 config['camera']['view'] = IceRayPy.type.math.coord.Scalar3D( 0,  0, 0 )
 config['camera']['sample'] = 32
 config['camera']['path'] = {}
+config['camera']['path']['radius'] = 1.75
+config['camera']['path']['height'] = 0.9
 
 config['pigment'] = {}
-config['pigment']['ior'] = 1.695
+config['pigment']['ior'] = 1.0
 config['pigment']['albedo'] = IceRayPy.type.color.RGB( 1, 1, 1 )
 
 config['ray-trace']={}
@@ -423,15 +439,15 @@ config['ray-trace']['trash'] = 1.0/10000.0
 config['ray-trace']['next'] = 17000
 
 config['hot'] = {}
-config['hot']['x'] = 400 #int( (1024/2048) * config['picture']['width'] )
-config['hot']['y'] = 225 * 1 #int( ( 692/2048) * config['picture']['height'] )
+config['hot']['x'] = 300 #int( (0.5) * config['picture']['width']  )
+config['hot']['y'] = 500 #int( (0.5) * config['picture']['height'] )
 
 config['room'] = {}
 config['room']['radiosity'] = {}
 config['room']['radiosity']['blossom'] = 'sobol'
 config['room']['radiosity']['patch']  = math.radians( 4 )
 config['room']['radiosity']['angle']  = math.radians( 89 )
-config['room']['radiosity']['sample'] = 5 #int( (1 - math.cos(config['room']['radiosity']['angle']) ) / ( 1 - math.cos( config['room']['radiosity']['patch'] ) ) + 1 )
+config['room']['radiosity']['sample'] = int( (1 - math.cos(config['room']['radiosity']['angle']) ) / ( 1 - math.cos( config['room']['radiosity']['patch'] ) ) + 1 )
 config['room']['radiosity']['jitter-angle'] = math.radians( 4 )
 config['room']['radiosity']['jitter-type'] = 'none' #'random''sobol''vdc''none'
 
@@ -477,27 +493,35 @@ dilatation  = 1;
 ##
 ##exit(0)
 
-I_picture   = IceRayPy.type.graph.Picture( config['dll'] )
-I_picture.size( 256, 256 )
-IceRayPy.type.graph.Default( I_picture )
-I_picture.storePNM( "default_256.pnm" )
+#I_picture   = IceRayPy.type.graph.Picture( config['dll'] )
+#I_picture.size( 1024, 1024 )
+#IceRayPy.type.graph.Default( I_picture )
+#I_picture.storePNG( "default_1024.png" )
 
-path_item = 'looker' # 'looker', 'fixed', 'circle'
+path_item = 'circle' # 'looker', 'fixed', 'circle'
 
 config['pigment']['sigma'] = IceRayPy.type.color.RGB( 1, 1, 1 )
 config['pigment']['rho']   = IceRayPy.type.color.RGB( 3.1415926, 3.1415926, 3.1415926 )
 
-for index in range( start, 360 * int( dilatation ), step ):
+gold = (math.sqrt(5)-1)/2
+
+for counter in range( 0, 500 ):
+    index = int( 360 * ( gold * counter ) ) % 360
+
+#for step in [ int(360/3), int(360/4), int(360/5), int(360/6), int(360/24), int(360/8), int(360/9), int(360/10), int(360/12), int(360/15), int(360/18), 1 ] :
+#for index in range( start, 360 * int( dilatation ), step ):
 
     config['index'] = index
     t = index / 360.0 / dilatation
 
-    #[x,y,height] = obseravtion.circle( 0 / 360.0 / dilatation, config['camera']['path'] )
-    [x,y,height] = path_list[path_item]( t, config['camera']['path'] ) #!< ORIGINAL
-    #[x,y,height] = path_list[path_item]( 150 / 360.0 / dilatation, config['camera']['path'] )#!< debug
+    [x,y,height] = path_list[path_item]( t, config['camera']['path'] ) #!< MAIN
+    #[x,y,height] = path_list[path_item]( 135 / 360.0 / dilatation, config['camera']['path'] )#!< debug
 
-    config['camera']['eye']  = IceRayPy.type.math.coord.Scalar3D( x, y, height ) #!< MAIN
-    config['camera']['view'] = IceRayPy.type.math.coord.Scalar3D( 0, 0, 0 ) #!< MAIN
+    config['camera'][ 'eye'] = IceRayPy.type.math.coord.Scalar3D( x, y, height ) #!< MAIN
+    config['camera']['view'] = IceRayPy.type.math.coord.Scalar3D( 0, 0,-0.15 - 0.7 ) #!< MAIN
+
+    #config['camera']['eye']  = IceRayPy.type.math.coord.Scalar3D(  0, -3, 3 ) #!< debug
+    #config['camera']['view'] = IceRayPy.type.math.coord.Scalar3D(  0,  0, 0 ) #!< debug
 
     print( "Hot: ", config['hot'], flush = True  )
     print( "Index:" + str(index) + "[" + os.getcwd() + "]", flush = True  )
@@ -509,7 +533,7 @@ for index in range( start, 360 * int( dilatation ), step ):
     #config['pigment']['ior'] = config['pigment']['ior'] + index*0.01;
     #config['room']['radiosity']['sample'] = config['room']['radiosity']['sample'] + index
     #config['pigment']['ior'] = 1.0 + 0.01*index;
-    #config['pigment']['ior'] = 1.7;
+    config['pigment']['ior'] = config['pigment']['ior'] + 0.01;
     #config['room']['radiosity']['angle'] = math.radians( index )
     #config['room']['radiosity']['sample'] = 3 #int( (1 - math.cos(config['room']['radiosity']['angle']) ) / ( 1 - math.cos( config['room']['radiosity']['patch'] ) ) + 1 )
     #config['pigment']['rho'] = IceRayPy.type.color.RGB( 3.1415926, 3.1415926, 3.1415926 )

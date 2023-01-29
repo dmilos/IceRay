@@ -90,12 +90,21 @@ def pointers( P_dll, P_config = { 'shadow': False, 'pigment': None }, P_light = 
     return wrapper
 
 
+def plate( P_dll, P_config = { 'shadow': False, 'pigment': None }, P_light = None, P_exponat = None ):
+
+    geometry = IceRayPy.core.geometry.simple.Box( P_dll, Coord3D( -1, -1, -1.1 ), Coord3D( +1, +1, -0.99 ) )
+
+    wrapper = IceRayPy.core.object.Wrapper( P_dll )
+    wrapper.pigment( IceRayPy.utility.material.pattern.Image( P_dll,{ 'scale': 0.5, 'shift': Coord3D( -0.5, -0.5, 0 ) } ) )
+
+    wrapper.geometrySet( geometry )
+    return wrapper
 
 def radiosity( P_dll, P_config = { 'shadow': False, 'pigment': None }, P_light = None, P_exponat = None ):
     I_room = [ 8, 8, 2.5 ] # [ 6, 6, 3.5 ]
     I_move = [ 1, 1, I_room[2]/2-1 ]
 
-    I_size  = [ 1.25, 1.25, 0.01 ]
+    I_size  = [ 2.25, 2.25, 0.01 ]
     I_center = [ I_room[0]/4, I_room[1]/4, I_room[2]/2 + I_move[2] ]
     I_color = IceRayPy.type.color.RGB( 22.6, 22.6,  22.6 )
     I_color = IceRayPy.type.color.RGB( 4.6, 4.6, 4.6 )

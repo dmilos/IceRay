@@ -1,4 +1,4 @@
-print( '<' + __name__ + ' name=\'' +   __file__ + '\'>' )
+#print( '<' + __name__ + ' name=\'' +   __file__ + '\'>' )
 
 import IceRayPy
 
@@ -123,4 +123,4 @@ def VDC(
 
 
 
-print( '</' + __name__ + ' name=\'' +   __file__ + '>' )
+#print( '</' + __name__ + ' name=\'' +   __file__ + '>' )

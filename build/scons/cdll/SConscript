@@ -109,6 +109,7 @@ if( True ):
     cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'rtss.cpp'       ) ]
     cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'blobby.cpp'     ) ]
     cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'volumetric.cpp' ) ]
+    cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'hfield.cpp'     ) ]
     cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'transform.cpp'  ) ]
     cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'complex.cpp'    ) ]
     cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'geometry', 'simple.cpp'     ) ]

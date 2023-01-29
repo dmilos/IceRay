@@ -15,7 +15,7 @@ GC_sphere::GC_sphere()
   M1_r2  = 1;
   M1_o_r = 1;
 
-  F1_box( T_box{ 
+  F1_box( T_box{
      ::math::linear::vector::fill( T_coord{}, -1 )
     ,::math::linear::vector::fill( T_coord{},  1 )
    } );
@@ -46,7 +46,7 @@ GC_sphere::GC_sphere
 
   using namespace ::math::linear::vector;
 
-  F1_box( T_box{ 
+  F1_box( T_box{
      P_center -  ::math::linear::vector::fill( T_coord{}, M2_radius )
     ,P_center +  ::math::linear::vector::fill( T_coord{}, M2_radius )
    } );
@@ -186,7 +186,20 @@ GC_sphere::Fv_weight( )const
 
 bool    GC_sphere::Fv_box( T_box const& P_box )
  {
-  // TODO
+  static T_scalar Is_epsilon = 1e-6;
+  T_coord I_center; ::math::geometry::interval::center( I_center, P_box );
+
+  T_coord I_size;   ::math::geometry::interval::size( I_size, P_box );
+  T_scalar I_radius = std::min<T_scalar>( { I_size[0], I_size[1], I_size[2] } );
+
+  if( fabs( I_radius ) < Is_epsilon )
+   {
+    return false;
+   }
+
+  F_center( I_center );
+  F_radius( I_radius );
+
   return true;
  }
 

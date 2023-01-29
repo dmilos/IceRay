@@ -30,21 +30,24 @@
                typedef GS_DDMRM::S_IceRay::S_type::GT_size   T_size;
 
              public:
-               typedef std::vector< T_scalar> T_raw;
-               typedef std::vector< T_raw> T_field;
+               typedef std::vector< T_scalar> T_row;
+               typedef std::vector< T_row>    T_field;
 
              public:
                         GC_table( );
+               explicit GC_table( T_size2D const& P_size );
                explicit GC_table( T_field const& P_field );
              public:
-               T_scalar Fv_value( T_size const& P_y, T_size const& P_x )const;
-               T_scalar Fv_value( T_coord const& P_position )const;
+               bool Fv_size( T_size2D    const& P_size );
+             public:
+               T_scalar Fv_value( T_size const& P_x, T_size const& P_y )const;
+               T_scalar Fv_value( T_size2D const& P_position )const;
+               bool     F_set( T_size const& P_yx, T_size const& P_y, T_scalar const& T_value ); // !< virtual
+               bool     F_set( T_size2D const& P_coord,              T_scalar const& T_value ); // !< virtual
 
              public:  // property field  field
                        T_field    const& F_field()const{ return M2_field; }
                        bool              F_field( T_field const& P_field ){ M2_field = P_field; return bool( true ); }
-             protected:
-               T_field        & F1_field(){ return M2_field; }
              private:
                T_field M2_field;
             };

@@ -20,6 +20,7 @@
           {
            public:
              typedef GS_DDMRM::S_IceRay::S_type::GT_report          T_report;
+             typedef GS_DDMRM::S_IceRay::S_type::GT_size            T_size;
              typedef GS_DDMRM::S_IceRay::S_type::S_color::GT_char   T_color;
              typedef GS_DDMRM::S_IceRay::S_type::S_coord::GT_size2D T_coord;
 

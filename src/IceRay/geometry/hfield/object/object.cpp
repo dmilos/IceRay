@@ -1,4 +1,6 @@
 #include "./b3.cpp"
 #include "./flat.cpp"
-#include "./trg.cpp"
+#include "./triangle.cpp"
 #include "./vacuum.cpp"
+#include "./geometry.cpp"
+#include "./quad.cpp"

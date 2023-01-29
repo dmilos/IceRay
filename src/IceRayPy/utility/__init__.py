@@ -1,4 +1,4 @@
-print( '<' + __name__ + ' name=\'' +   __file__ + '\'>' )
+#print( '<' + __name__ + ' name=\'' +   __file__ + '\'>' )
 
 import IceRayPy.utility.camera
 import IceRayPy.utility.geometry
@@ -7,4 +7,4 @@ import IceRayPy.utility.material
 import IceRayPy.utility.render
 
 
-print( '</' + __name__ + ' name=\'' +   __file__ + '>' )
+#print( '</' + __name__ + ' name=\'' +   __file__ + '>' )

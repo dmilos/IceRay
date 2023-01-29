@@ -5,7 +5,6 @@
 #include "../../type/affine.hpp"
 
 #include "IceRay/geometry/simple/simple.hpp"
-#include "IceRay/geometry/hfield/hfield.hpp"
 
 #include "./handle.hpp"
 
@@ -40,12 +39,16 @@ IceRayC_Type_Bool IceRayC_Geometry_Torus_Minor( IceRayC_Geometry_Handle P_this, 
   return 1;
  }
 
-IceRayC_Geometry_Handle IceRayC_Geometry_HField()
- {
-  typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;
-  typedef GS_DDMRM::S_IceRay::S_geometry::S_hfield::GC_system Tf_hfield;
-  auto Ir_result = new Tf_hfield{};
-  return cpp2c( Ir_result );
- }
 
+// TODO #include "./base.cpp"
+// TODO #include "./blobby.cpp"
+// TODO #include "./complex.cpp"
+// TODO #include "./flat.cpp"
+// TODO #include "./geometry.cpp"
+// TODO #include "./handle.cpp"
+// TODO #include "./hfield.cpp"
+// TODO #include "./rtss.cpp"
+// TODO #include "./simple.cpp"
+// TODO #include "./transform.cpp"
+// TODO #include "./volumetric.cpp"
 

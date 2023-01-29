@@ -49,7 +49,7 @@ if ( CMAKE_COMPILER_IS_GNUCC )
     set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -Wall")
 endif()
 if ( MSVC )
-    set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} /wd4624")
+    set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} /wd4624 /DICERAY_WINDOWS_USE_GDI")
 endif()
 
 

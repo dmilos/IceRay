@@ -1,5 +1,5 @@
-#ifndef _DDMM_IceRAY_geometry_utriangle_H_
- #define _DDMM_IceRAY_geometry_utriangle_H_
+#ifndef _DDMM_IceRAY_geometry_triangleU_H_
+ #define _DDMM_IceRAY_geometry_triangleU_H_
 
 #include "IceRay/type/math/matrix.hpp"
 
@@ -17,7 +17,7 @@
      namespace S_geometry
       {
 
-       class GC_utriangle
+       class GC_triangleU
         : public GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_intersect
         , public GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_normal
         , public GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_inside
@@ -29,8 +29,8 @@
            typedef GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar3D            T_coord;
            typedef GS_DDMRM::S_IceRay::S_type::S_matrix::GT_matrix             T_matrix;
          public:
-           GC_utriangle();
-          ~GC_utriangle();
+           GC_triangleU();
+          ~GC_triangleU();
 
          public:
            void    Fv_reset( T_state &P_intersect )const;

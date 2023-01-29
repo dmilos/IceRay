@@ -1,4 +1,4 @@
-print( '<' + __name__ + ' name=\'' +   __file__ + '\'>' )
+#print( '<' + __name__ + ' name=\'' +   __file__ + '\'>' )
 
 
 import IceRayPy
@@ -137,4 +137,4 @@ def Schlick(
     return I_surface
 
 
-print( '</' + __name__ + ' name=\'' +   __file__ + '>' )
+#print( '</' + __name__ + ' name=\'' +   __file__ + '>' )

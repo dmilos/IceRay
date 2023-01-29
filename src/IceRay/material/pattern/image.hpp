@@ -5,11 +5,11 @@
 
 #include "./_pure.hpp"
 
-#include "../../type/basic/scalar.hpp"
-#include "../../type/color.hpp"
-#include "../../type/math/coord.hpp"
-#include "../../type/picture/_pure.hpp"
-#include "../../type/picture/memory.hpp"
+#include "IceRay/type/basic/scalar.hpp"
+#include "IceRay/type/color.hpp"
+#include "IceRay/type/math/coord.hpp"
+#include "IceRay/type/picture/_pure.hpp"
+#include "IceRay/type/picture/memory.hpp"
 
 
  namespace GS_DDMRM
@@ -42,10 +42,13 @@
                auto yF = ::math::function::saw( P_coord[1] );
                auto const& I_size = M2_picture->F_size();
 
-               auto x = T_size( xF * I_size[0] );
-               auto y = T_size( yF * I_size[1] );
+               auto x = T_size( xF * I_size[0] ) %  M2_picture->F_size()[0] ;
+               auto y = T_size( yF * I_size[1] ) %  M2_picture->F_size()[1];
 
-               P_result = M2_picture->Fv_data()[ y* I_size[0] + x ];
+               T_picture::T_color I_pixel;
+               M2_picture->Fv_pixel( I_pixel, {x,y} );
+
+               P_result = I_pixel;
               }
 
            public:

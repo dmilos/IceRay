@@ -1,10 +1,11 @@
+#print( '<' + __name__ + ' name=\'' +   __file__ + '>' )
 
 import ctypes
 
 import IceRayPy
 
 Pointer  = ctypes.POINTER
-AddresOf = ctypes.addressof
+AddressOf = ctypes.addressof
 
 Coord3D  = IceRayPy.type.math.coord.Scalar3D
 Color  = IceRayPy.type.color.RGB
@@ -62,3 +63,4 @@ class Tetra:
     def __del__( self ):
         pass # Do nothing
 
+#print( '</' + __name__ + ' name=\'' +   __file__ + '>' )

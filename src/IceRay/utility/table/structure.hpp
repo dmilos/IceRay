@@ -6,7 +6,6 @@
 #include "IceRay/type/basic/size.hpp"
 #include "IceRay/type/math/coord.hpp"
 #include <fstream>
-#include <string>
 #include <algorithm>
 
  namespace GS_DDMRM

@@ -1,52 +1,57 @@
-print( '<' + __name__ + ' name=\'' +   __file__ + '\'>' )
+#print( '<' + __name__ + ' name=\'' +   __file__ + '\'>' )
 
 import IceRayPy
 import math
 
 Coord3D = IceRayPy.type.math.coord.Scalar3D
 
-G_inner = 0;
+G_innerA = 0;
 
 def Symetric( P_dll,
-        P_center = Coord3D( 0, 0,0 ),
-        P_normal = Coord3D( 0, 1,0 ),
-        P_inner = 0.0,
-        P_out = 1,
+        P_center = Coord3D( 0, 0, 0 ),
+        P_normal = Coord3D( 1, 1, 1 ),
+        P_inner = 0.1,
+        P_out = 0.5,
         ):
-    #global G_inner
-    #G_inner = G_inner + 0.01
-    #P_out = G_inner
-    delta = P_out/2 - P_inner/2
-    radius = (delta*delta+1)/(2*delta)
-    center = radius + P_inner/2
-    print(__file__ + " inner: "  + str(P_inner), flush = True );
-    print(__file__ + " out: "    + str(P_out),   flush = True );
-    print(__file__ + " center: " + str(center), flush = True );
-    print(__file__ + " radius: " + str(radius), flush = True );
-    print(__file__ + " delta: " + str( radius - math.sqrt( radius*radius - 1 )), flush = True );
-    print(__file__ + " distance(in): " + str( center - radius  ), flush = True );
 
-    left  = IceRayPy.core.geometry.simple.Sphere( P_dll, IceRayPy.type.math.coord.Scalar3D( 0,0, -center ), radius )
-    right = IceRayPy.core.geometry.simple.Sphere( P_dll, IceRayPy.type.math.coord.Scalar3D( 0,0, +center ), radius )
+    center = ( P_out/2+P_inner/2 + 1/( P_out/2-P_inner/2 ) ) /2
+    radius = math.fabs( center - P_inner/2 )
+
+    #print(__file__ + " inner: "  + str(P_inner), flush = True );
+    #print(__file__ + " out: "    + str(P_out),   flush = True );
+    #print(__file__ + " center: " + str(center), flush = True );
+    #print(__file__ + " radius: " + str(radius), flush = True );
+    #print(__file__ + " distance(in): " + str( center - radius  ), flush = True );
+    #print(__file__ + " ZERO(test): " + str( (P_out/2-center)*(P_out/2-center) + 1 - radius*radius ), flush = True );
+
+    I_normal = IceRayPy.type.math.coord.scale3D( P_dll, 1.0 / IceRayPy.type.math.coord.length3D( P_dll, P_normal ), P_normal )
+    cL = IceRayPy.type.math.coord.addition3D( P_dll, IceRayPy.type.math.coord.scale3D( P_dll, +center, I_normal ), P_center )
+    cR = IceRayPy.type.math.coord.addition3D( P_dll, IceRayPy.type.math.coord.scale3D( P_dll, -center, I_normal ), P_center )
+
+    left  = IceRayPy.core.geometry.simple.Sphere( P_dll, cL, radius )
+    right = IceRayPy.core.geometry.simple.Sphere( P_dll, cR, radius )
 
     union = IceRayPy.core.geometry.complex.Intersect( P_dll )
     union.left(   left, IceRayPy.core.geometry.complex.Intersect.OUT )
     union.right( right, IceRayPy.core.geometry.complex.Intersect.OUT )
 
-    cylinder = IceRayPy.core.geometry.simple.Cylinder( P_dll )
-    cylinder = IceRayPy.core.geometry.simple.Box( P_dll, Coord3D(-1,-1,-1), Coord3D(+1,+1,+1) )
-    
+    cylinder = IceRayPy.utility.geometry.simple.CylinderG( P_dll )
+    cylinder.top( cL )
+    cylinder.bottom( cR )
+    cylinder.radius( 1 )
+
     intersect = IceRayPy.core.geometry.complex.Intersect( P_dll )
-    intersect.left( union, IceRayPy.core.geometry.complex.Intersect.OUT )
+    intersect.left(     union, IceRayPy.core.geometry.complex.Intersect.IN )
     intersect.right( cylinder, IceRayPy.core.geometry.complex.Intersect.IN ) #!< force IN
 
     return intersect
 
 def Asymetric( P_dll,
-        P_center = Coord3D( 0, 0,0 ),
-        P_normal = Coord3D( 0, 1,0 ),
+        P_center = Coord3D( 0, 0,0 ), #!< TODO
+        P_normal = Coord3D( 0, 1,0 ), #!< TODO
         P_inner = 0.1,
         P_out = 0.3,
+        P_shift = 0.3,
         ): #<! TODO
 
     radius = 0.75
@@ -68,36 +73,48 @@ def Asymetric( P_dll,
 
     return union
 
+G_innerB = 0;
 def Plano( P_dll,
-        P_center = Coord3D( 0, 0,0 ),
-        P_normal = Coord3D( 0, 1,0 ),
+        P_center = Coord3D( 0, 0, 0 ),
+        P_normal = Coord3D( 1, 1, 1 ),
         P_inner = 0.1,
-        P_out = 0.3,
-        ): #<! TODO
+        P_out = 0.25,
+        ):
 
-    radius = 2
-    center = 0.1 + radius
-    width = 0.6
-    height = 0.5
-    #print(__file__ + " center: " + str(center), flush = True );
-    #print(__file__ + " radius: " + str(radius), flush = True );
+    #global  G_innerB
+    #G_innerB = G_innerB + 0.01
+    #P_out = G_innerB
+    center = ( P_out+P_inner + 1/( P_out-P_inner ) ) /2
+    radius = math.fabs( center - P_inner )
 
-    left  = IceRayPy.core.geometry.simple.Sphere( P_dll, IceRayPy.type.math.coord.Scalar3D( 0,0, -center ), radius )
-    right = IceRayPy.core.geometry.simple.Plane( P_dll, IceRayPy.type.math.coord.Scalar3D( 0 , 0, 0 ), IceRayPy.type.math.coord.Scalar3D( -1, 0, 0 ) )
+    print(__file__ + " inner: "  + str(P_inner), flush = True );
+    print(__file__ + " out: "    + str(P_out),   flush = True );
+    print(__file__ + " center: " + str(center), flush = True );
+    print(__file__ + " radius: " + str(radius), flush = True );
+    print(__file__ + " distance(in): " + str( center - radius  ), flush = True );
+    print(__file__ + " ZERO(test): " + str( (P_out-center)*(P_out-center) + 1 - radius*radius ), flush = True );
+
+    I_normal = IceRayPy.type.math.coord.scale3D( P_dll, -1.0 / IceRayPy.type.math.coord.length3D( P_dll, P_normal ), P_normal )
+    cL = IceRayPy.type.math.coord.addition3D( P_dll, IceRayPy.type.math.coord.scale3D( P_dll, -center, I_normal ), P_center )
+    cR = IceRayPy.type.math.coord.addition3D( P_dll, IceRayPy.type.math.coord.scale3D( P_dll, +center, I_normal ), P_center )
+
+    sphere  = IceRayPy.core.geometry.simple.Sphere( P_dll, cL, radius )
+    plane  = IceRayPy.core.geometry.simple.Plane( P_dll, P_center, I_normal )
+    cylinder = IceRayPy.core.geometry.simple.Cylinder( P_dll )
+    cylinder = IceRayPy.utility.geometry.simple.CylinderG( P_dll )
+    cylinder.top( cL )
+    cylinder.bottom( cR )
+    cylinder.radius( 1 )
 
     union = IceRayPy.core.geometry.complex.Intersect( P_dll )
-    union.left(   left, IceRayPy.core.geometry.complex.Intersect.OUT )
-    union.right( right, IceRayPy.core.geometry.complex.Intersect.OUT )
+    union.left(    sphere, IceRayPy.core.geometry.complex.Intersect.OUT )
+    union.right( cylinder, IceRayPy.core.geometry.complex.Intersect.IN  )
 
-    cylinder = IceRayPy.core.geometry.simple.Cylinder( P_dll )
-    intersect = IceRayPy.core.geometry.complex.Intersect( P_dll )
-    intersect.left( union, IceRayPy.core.geometry.complex.Intersect.OUT )
-    intersect.right( cylinder, IceRayPy.core.geometry.complex.Intersect.IN ) #!< force IN
+    result = IceRayPy.core.geometry.complex.Intersect( P_dll )
+    result.left(  union, IceRayPy.core.geometry.complex.Intersect.IN )
+    result.right( plane, IceRayPy.core.geometry.complex.Intersect.IN ) #!< force IN
 
-    return intersect
-
+    return result
 
 
-
-
-print( '</' + __name__ + ' name=\'' +   __file__ + '>' )
+#print( '</' + __name__ + ' name=\'' +   __file__ + '>' )

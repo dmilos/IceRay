@@ -3,7 +3,7 @@ print( '<' + __name__ + ' name=\'' +   __file__ + '\'>' )
 import ctypes
 import IceRayPy
 
-AddresOf = ctypes.addressof
+AddressOf = ctypes.addressof
 
 SizeType = IceRayPy.type.basic.Size
 ScalarType   = IceRayPy.type.basic.Scalar

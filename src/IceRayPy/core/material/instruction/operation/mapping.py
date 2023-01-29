@@ -4,7 +4,7 @@ import IceRayPy
 
 import IceRayPy
 
-AddresOf = ctypes.addressof
+AddressOf = ctypes.addressof
 
 SizeType = IceRayPy.type.basic.Size
 ScalarType   = IceRayPy.type.basic.Scalar
@@ -34,7 +34,7 @@ class Translate3D:
         self.m_cargo['dll'].IceRayC_Material_Pigment_Surface_Instruction_Release( self.m_cargo['this'] )
 
     def move(self, P_move : Coord3DType ):
-        self.m_cargo['dll'].IceRayC_Material_Pigment_Surface_Instruction_Operation_Mapping_Translate3D_Move( self.m_cargo['this'], AddresOf( P_move ) )
+        self.m_cargo['dll'].IceRayC_Material_Pigment_Surface_Instruction_Operation_Mapping_Translate3D_Move( self.m_cargo['this'], AddressOf( P_move ) )
 
 
 class Affine3D:
@@ -47,7 +47,7 @@ class Affine3D:
         self.m_cargo['dll'].IceRayC_Material_Pigment_Surface_Instruction_Release( self.m_cargo['this'] )
 
     def structure(self, P_structure : Affine3DType ):
-        self.m_cargo['dll'].IceRayC_Material_Pigment_Surface_Instruction_Operation_Mapping_Translate3D_Structure( self.m_cargo['this'], AddresOf( P_structure ) )
+        self.m_cargo['dll'].IceRayC_Material_Pigment_Surface_Instruction_Operation_Mapping_Translate3D_Structure( self.m_cargo['this'], AddressOf( P_structure ) )
 
 
 class Homography3D:
@@ -60,7 +60,7 @@ class Homography3D:
         self.m_cargo['dll'].IceRayC_Material_Pigment_Surface_Instruction_Release( self.m_cargo['this'] )
 
     def structure(self, P_structure : Homography3DType ):
-        self.m_cargo['dll'].IceRayC_Material_Pigment_Surface_Instruction_Operation_Mapping_Homography3D_Structure( self.m_cargo['this'], AddresOf( P_structure ) )
+        self.m_cargo['dll'].IceRayC_Material_Pigment_Surface_Instruction_Operation_Mapping_Homography3D_Structure( self.m_cargo['this'], AddressOf( P_structure ) )
 
 
 class Cartesian2Cylindric:

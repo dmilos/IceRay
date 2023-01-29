@@ -13,12 +13,12 @@ S_hfield::S_generator::GC_function::GC_function( T_function const& P_function, T
  {
  }
 
-S_hfield::S_generator::GC_function::T_scalar S_hfield::S_generator::GC_function::Fv_value( T_size const& P_y, T_size const& P_x )const
+S_hfield::S_generator::GC_function::T_scalar S_hfield::S_generator::GC_function::Fv_value( T_size const& P_x, T_size const& P_y )const
  {
   return M2_function( P_y/(T_scalar)(F_size()[0]-1), P_x/(T_scalar)(F_size()[1]-1) );
  }
 
-S_hfield::S_generator::GC_function::T_scalar S_hfield::S_generator::GC_function::Fv_value( T_coord const& P_position )const
+S_hfield::S_generator::GC_function::T_scalar S_hfield::S_generator::GC_function::Fv_value( T_size2D const& P_position )const
  {
   return M2_function( P_position[0]/(F_size()[0]-1), P_position[0]/(T_scalar)(F_size()[1]-1) ) ;
  }

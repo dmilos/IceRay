@@ -18,7 +18,7 @@ IceRayC__EXPORT IceRayC__DECLSPEC  int                     IceRayC_Geometry_Tria
 IceRayC__EXPORT IceRayC__DECLSPEC  int                     IceRayC_Geometry_Triangle_eX( IceRayC_Geometry_Handle P_that, IceRayC_TypeCoordScalar3D* P_eX );
 IceRayC__EXPORT IceRayC__DECLSPEC  int                     IceRayC_Geometry_Triangle_eY( IceRayC_Geometry_Handle P_that, IceRayC_TypeCoordScalar3D* P_eY );
 
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_UTriangle0();
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_TriangleU0();
 
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_UDisc0();
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_UDisc1( IceRayC_TypeScalar P_radius );

@@ -3,3 +3,5 @@
 #include "./ptr.hpp"
 #include "./theone.hpp"
 #include "./table.hpp"
+#include "./picture.hpp"
+#include "./expression.hpp"

@@ -14,9 +14,9 @@ typedef IceRayC_Geometry_Blobby_Element_Struct* IceRayC_Geometry_Blobby_Element_
 
 IceRayC__EXPORT IceRayC__DECLSPEC  int IceRayC_Geometry_Blobby_Element_Release( IceRayC_Geometry_Blobby_Element_Handle P_that );
 
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Blobby_System0( );
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool       IceRayC_Geometry_Blobby_System_RTSS( IceRayC_Geometry_Handle  P_system, IceRayC_Geometry_RTSS_Handle* P_rtss );
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool       IceRayC_Geometry_Blobby_System_Push( IceRayC_Geometry_Blobby_Element_Handle  P_system, IceRayC_Geometry_Blobby_Element_Handle* P_element );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle                IceRayC_Geometry_Blobby_System0( );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool                      IceRayC_Geometry_Blobby_System_RTSS( IceRayC_Geometry_Handle  P_system, IceRayC_Geometry_RTSS_Handle* P_rtss );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool                      IceRayC_Geometry_Blobby_System_Push( IceRayC_Geometry_Blobby_Element_Handle  P_system, IceRayC_Geometry_Blobby_Element_Handle* P_element );
 
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Blobby_Element_Handle IceRayC_Geometry_Blobby_Sphere0( );
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Blobby_Element_Handle IceRayC_Geometry_Blobby_Sphere1( IceRayC_TypeCoordScalar3D* P_center, IceRayC_TypeScalar P_influence, IceRayC_TypeScalar P_radius );

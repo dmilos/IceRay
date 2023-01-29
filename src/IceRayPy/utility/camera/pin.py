@@ -1,3 +1,5 @@
+#print( '<' + __name__ + ' name=\'' +   __file__ + '>' )
+
 import ctypes
 import inspect
 
@@ -20,3 +22,5 @@ class PinCylinderVertical:
         self.m_cargo['child'] = P_child
         self.m_cargo['dll'].IceRayC_Camera_Transform_Pin_Child( self.m_cargo['this'], P_child.m_cargo['this'] )
         P_child.height( 4 ) #<! TODO delete me 
+
+#print( '</' + __name__ + ' name=\'' +   __file__ + '>' )

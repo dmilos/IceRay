@@ -1,3 +1,4 @@
+#print( '<' + __name__ + ' name=\'' +   __file__ + '>' )
 
 import IceRayPy
 
@@ -19,3 +20,5 @@ def Box(
     wrapper.geometrySet( geometry )
 
     return wrapper
+
+#print( '</' + __name__ + ' name=\'' +   __file__ + '>' )

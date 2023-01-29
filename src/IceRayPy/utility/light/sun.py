@@ -59,3 +59,4 @@ class Disc:
     def __del__( self ):
          pass # Do nothing
 
+#print( '</' + __name__ + ' name=\'' +   __file__ + '>' )

@@ -24,27 +24,27 @@ def default( P_time, P_config = None ):
 
     return [x,y,z]
 
-def default( P_time, P_config = None ):
+def debug( P_time, P_config = None ):
     I_radius = 3
 
-    if( 'radius' in P_config ):
-        I_radius = P_config['radius']
-
-    x = 0
-    y = I_radius
-    z = 0
+    x = +0.25
+    y = -0.25
+    z = +0.25
 
     return [x,y,z]
 
 def circle( P_time, P_config = None ):
     I_radius = 3
+    I_height = 0
 
     if( 'radius' in P_config ):
         I_radius = P_config['radius']
+    if( 'height' in P_config ):
+        I_height = P_config['height']
 
     x = I_radius * math.cos( ( 2 * 3.1415926 ) * P_time - math.pi/2 )
     y = I_radius * math.sin( ( 2 * 3.1415926 ) * P_time - math.pi/2 )
-    z = 0
+    z = I_height
 
     return [x,y,z]
 

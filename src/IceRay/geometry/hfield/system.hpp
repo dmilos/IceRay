@@ -32,7 +32,9 @@
         //, public GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_distance
           {
            public:
+             typedef GS_DDMRM::S_IceRay::S_type::GT_size                              T_size;
              typedef GS_DDMRM::S_IceRay::S_type::GT_scalar                            T_scalar;
+             typedef GS_DDMRM::S_IceRay::S_type::GT_int                               T_integer;
              typedef GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar3D                 T_coord;
              typedef GS_DDMRM::S_IceRay::S_type::S_coord::GT_size2D                   T_size2D;
              typedef GS_DDMRM::S_IceRay::S_type::S_coord::GT_cell2D                   T_cell2D;
@@ -54,17 +56,32 @@
 
              void    Fv_reset( T_state &P_intersect )const;
              T_size  Fv_weight( )const;
+             bool Fv_box( T_box const& P_box );
 
            public:
+             T_generator const& F_generator(  )const;
              bool F_generator( T_generator* P_generator );
            private:
              T_generator* M2_generator;
-              T_box M2_area;
+             T_box M2_area;
+             T_coord M2_step;
 
            public:
              bool F_object( T_object* P_object );
            private:
              T_object*    M2_object;
+           private:
+            T_scalar F2_world2local( T_scalar const& P_value, T_size const& P_projection )const;
+            T_coord  F2_world2local( T_coord const& P_value )const;
+            T_coord  F2_local2world( T_coord const& P_value )const;
+
+           public:
+             typedef GS_DDMRM::S_IceRay::S_geometry::S_hfield::S_object::GC_flat T_flat;
+             static T_flat & Fs_flat();
+
+           public:
+             typedef GS_DDMRM::S_IceRay::S_geometry::S_hfield::S_object::GC_quad T_quad;
+             static T_quad & Fs_quad();
 
            public:
              typedef GS_DDMRM::S_IceRay::S_geometry::S_hfield::S_object::GC_vacuum T_vacuum;
@@ -74,6 +91,9 @@
              typedef GS_DDMRM::S_IceRay::S_geometry::S_hfield::S_generator::GC_theone T_theone;
              static T_theone & Fs_theone();
 
+           public:
+             typedef GS_DDMRM::S_IceRay::S_geometry::S_hfield::S_generator::GC_table T_table;
+             static T_table & Fs_table();
            private:
              struct C_intersect;
           };

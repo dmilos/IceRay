@@ -1,4 +1,3 @@
-#include <cstring>
 #include "./intersect.hpp"
 
 using namespace GS_DDMRM::S_IceRay::S_geometry::S_complex::S_CSG;
@@ -9,10 +8,10 @@ struct GC_intersect::C_intersect
  {
   C_intersect()
   {
-   M_hitHit= -1;
+   M_hitHit = GC_intersect::En_none;
   }
 
-  int M_hitHit;
+  GC_intersect::Ee_side M_hitHit;
  };
 
 
@@ -109,13 +108,13 @@ bool GC_intersect::Fv_intersect( T_scalar &P_lambda, T_state &P_state, T_ray con
    }
 
   T_scalar I_lambda = 0;
-  T_scalar llam = P_lambda;
-  T_scalar rlam = P_lambda;
+  T_scalar left_lambda = P_lambda;
+  T_scalar right_lambda = P_lambda;
 
   T_ray I_ray( P_ray );
 
-  bool lf = M2_left.M_intersect->Fv_intersect(  llam, I_leftTemp , I_ray );
-  bool rf = M2_right.M_intersect->Fv_intersect( rlam, I_rightTemp, I_ray );
+  bool lf = M2_left.M_intersect->Fv_intersect(  left_lambda,  I_leftTemp,  I_ray );
+  bool rf = M2_right.M_intersect->Fv_intersect( right_lambda, I_rightTemp, I_ray );
 
   // ******** "Zajednicki" deo *********
   if( ( false == lf  ) && ( false == rf ) )
@@ -126,7 +125,7 @@ bool GC_intersect::Fv_intersect( T_scalar &P_lambda, T_state &P_state, T_ray con
   if( ( true == lf ) && ( false == rf ) )
    {                // nedovrseno ( solid objekat sa rupom )
     last_left_test:
-     I_lambda += llam;
+     I_lambda += left_lambda;
      using namespace ::math::linear::vector;
      I_ray.M_origin = I_lambda * P_ray.M_direction + P_ray.M_origin;
 
@@ -140,7 +139,7 @@ bool GC_intersect::Fv_intersect( T_scalar &P_lambda, T_state &P_state, T_ray con
   if( ( false == lf ) && ( true == rf ) )
    {
     last_right_test: // nedovrseno ( solid objekat sa rupom )
-     I_lambda += rlam ;
+     I_lambda += right_lambda ;
      using namespace ::math::linear::vector;
 
      I_ray.M_origin = I_lambda * P_ray.M_direction + P_ray.M_origin;
@@ -154,10 +153,10 @@ bool GC_intersect::Fv_intersect( T_scalar &P_lambda, T_state &P_state, T_ray con
    }
 
   while( true )
-   if( llam < rlam )
+   if( left_lambda < right_lambda )
     {
-     I_lambda += llam;
-     rlam -= llam;
+     I_lambda += left_lambda;
+     right_lambda -= left_lambda;
 
      using namespace ::math::linear::vector;
 
@@ -167,16 +166,16 @@ bool GC_intersect::Fv_intersect( T_scalar &P_lambda, T_state &P_state, T_ray con
        goto  left_hit;
       }
 
-     llam  = P_lambda - I_lambda;
-     if( false == M2_left.M_intersect->Fv_intersect( llam, I_leftTemp, I_ray ) )
+     left_lambda  = P_lambda - I_lambda;
+     if( false == M2_left.M_intersect->Fv_intersect( left_lambda, I_leftTemp, I_ray ) )
       {
        goto last_right_test;
       }
     }
    else
     {
-     I_lambda += rlam;
-     llam -= rlam;
+     I_lambda += right_lambda;
+     left_lambda -= right_lambda;
 
      using namespace ::math::linear::vector;
 
@@ -185,13 +184,14 @@ bool GC_intersect::Fv_intersect( T_scalar &P_lambda, T_state &P_state, T_ray con
       {
        goto right_hit;
       }
-     rlam  = P_lambda - I_lambda;
-     if( false == M2_right.M_intersect->Fv_intersect( rlam, I_rightTemp, I_ray ) )
+     right_lambda  = P_lambda - I_lambda;
+     if( false == M2_right.M_intersect->Fv_intersect( right_lambda, I_rightTemp, I_ray ) )
       {
        goto last_left_test;
       }
     }
 
+  //I_intersect.M_hitHit = En_none;
   return false;
 
   left_hit:
@@ -205,7 +205,6 @@ bool GC_intersect::Fv_intersect( T_scalar &P_lambda, T_state &P_state, T_ray con
     I_intersect.M_hitHit = En_right;
     std::memcpy( I_mainHit.F_ptr(),  I_rightTemp.F_ptr() , M2_right.M_tempSize  );
     return true;
-
  }
 
 void GC_intersect::Fv_normal( T_coord &P_normal, T_coord const& P_point, T_state const& P_state ) const
@@ -221,24 +220,30 @@ void GC_intersect::Fv_normal( T_coord &P_normal, T_coord const& P_point, T_state
       M2_left.M_normal->Fv_normal( P_normal, P_point, I_state );
      }break;
 
-   case( En_right ):
-    {
-     M2_right.M_normal->Fv_normal( P_normal, P_point, I_state );
-    }break;
+    case( En_right ):
+     {
+      M2_right.M_normal->Fv_normal( P_normal, P_point, I_state );
+     }break;
    }
-
  }
 
 GC_intersect::T_location GC_intersect::Fv_inside( T_coord const& P_point )const
  {
-  auto I_left  = M2_left.M_inside->Fv_inside( P_point );
-  auto I_right = M2_right.M_inside->Fv_inside( P_point );
+  auto I_left  = ( M2_left.M_orientation  ==  M2_left.M_inside->Fv_inside( P_point ) ); 
+  auto I_right = ( M2_right.M_orientation == M2_right.M_inside->Fv_inside( P_point ) ); 
 
-  return Fs_intersect( I_left, I_right );
+  switch( (I_left?1:0) + (I_right?2:0) )
+   {
+    case( 0 + 0 ): return En_out;
+    case( 1 + 0 ): return En_out;
+    case( 0 + 2 ): return En_out;
+    case( 1 + 2 ): return En_in;
+   }
+  return En_nowhere;
  }
 
 GC_intersect::T_scalar  GC_intersect::Fv_distance( T_coord const& P_point )const
-{
+ {
   // C_intersect const &I_intersect = P_state.F_content<C_intersect>();
   // T_state I_stateL = P_state.F_tail<C_intersect>();
   // T_state I_stateR = P_state.F_tail<C_intersect>();
@@ -247,7 +252,7 @@ GC_intersect::T_scalar  GC_intersect::Fv_distance( T_coord const& P_point )const
   T_scalar I_right = M2_right.M_distance->Fv_distance( P_point/*, I_stateR*/ );
 
   return std::min<T_scalar>( I_left, I_right );
-}
+ }
 
 bool      GC_intersect::Fv_uvw( T_coord & P_uvw, T_coord const& P_point, T_state const& P_state )const
  {
@@ -331,7 +336,7 @@ GC_intersect::T_bool GC_intersect::Fv_solid( T_state const& P_state )const
   switch( I_intersect.M_hitHit )
    {
     case( En_left ):
- {
+     {
       return M2_left.M_solid->Fv_solid( I_state );
      }break;
 

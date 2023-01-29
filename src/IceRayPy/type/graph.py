@@ -6,7 +6,7 @@ import IceRayPy
 
 SizeType = IceRayPy.type.basic.Size
 
-AddresOf = ctypes.addressof
+AddressOf = ctypes.addressof
 
 
 
@@ -25,9 +25,13 @@ class Picture:
         self.m_cargo['dll'].IceRayC_Type_Picture_Release( self.m_cargo['this'] )
 
 
-    def size( self, P_width, P_height ):
-        self.m_cargo['dll'].IceRayC_Type_Picture_Size( self.m_cargo['this'], SizeType( P_width ), SizeType( P_height ) )
+    def size( self, P_width=None, P_height=None ):
+        if( ( None != P_width ) and ( None != P_height ) ):
+            self.m_cargo['dll'].IceRayC_Type_Picture_Size( self.m_cargo['this'], SizeType( P_width ), SizeType( P_height ) );
 
+        result = IceRayPy.type.math.coord.Size2D()
+        self.m_cargo['dll'].IceRayC_Type_Picture_SizeGet( self.m_cargo['this'], AddressOf( result ) );
+        return  result
 
     def load( self, P_filename ):
         self.m_cargo['dll'].IceRayC_Type_Picture_Load( self.m_cargo['this'], P_filename.encode('utf-8') )
@@ -35,9 +39,15 @@ class Picture:
     def storePNM( self, P_filename ):
         self.m_cargo['dll'].IceRayC_Type_Picture_StorePNM( self.m_cargo['this'], P_filename.encode('utf-8') )
 
+    def storePNG( self, P_filename ):
+        self.m_cargo['dll'].IceRayC_Type_Picture_StorePNG( self.m_cargo['this'], P_filename.encode('utf-8') )
+
+    def storeJPEG( self, P_filename ):
+        self.m_cargo['dll'].IceRayC_Type_Picture_StoreJPEG( self.m_cargo['this'], P_filename.encode('utf-8') )
+
 
 def Crop( P_dll, P_target, P_source, P_A, P_B ):
-    P_dll.IceRayC_Type_Picture_Crop( P_target.m_cargo['this'], P_source.m_cargo['this'], AddresOf( P_A ), AddresOf( P_B ) )
+    P_dll.IceRayC_Type_Picture_Crop( P_target.m_cargo['this'], P_source.m_cargo['this'], AddressOf( P_A ), AddressOf( P_B ) )
 
 def Default( P_image ):
     P_image.m_cargo['dll'].IceRayC_Type_Picture_Default( P_image.m_cargo['this'] )

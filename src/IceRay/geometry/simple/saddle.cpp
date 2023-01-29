@@ -27,7 +27,7 @@ bool GC_saddle::Fv_intersect
   ,T_state      & P_state
   ,T_ray   const& P_ray
  )const
- { // z - x*y = 0;
+ { //! z - x*y = 0;
   static T_scalar Is_epsilon = 1e-10;// T_scalar( std::numeric_limits<T_scalar>::epsilon() );
   C_intersect &I_intersect = P_state.F_content<C_intersect>();
 

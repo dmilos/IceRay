@@ -7,3 +7,4 @@
 #include "./simple.h"
 #include "./flat.h"
 #include "./base.h"
+#include "./hfield.h"

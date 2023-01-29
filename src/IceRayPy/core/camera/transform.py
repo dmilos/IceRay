@@ -8,7 +8,7 @@ import IceRayPy.type.math.coord
 import IceRayPy.type.math.affine
 
 Pointer = ctypes.POINTER
-AddresOf = ctypes.addressof
+AddressOf = ctypes.addressof
 
 Integer  = IceRayPy.type.basic.Integer
 Coord3D  = IceRayPy.type.math.coord.Scalar3D
@@ -31,7 +31,7 @@ class Pin:
         self.m_cargo['dll'].IceRayC_Camera_Transform_Pin_Child(self.m_cargo['this'], P_child.m_cargo['this'] )
 
     def origin( self, P_origin : Coord3D ):
-        self.m_cargo['dll'].IceRayC_Camera_Transform_Pin_Origin( self.m_cargo['this'], AddresOf( P_origin ) )
+        self.m_cargo['dll'].IceRayC_Camera_Transform_Pin_Origin( self.m_cargo['this'], AddressOf( P_origin ) )
 
 
 class Invert:
@@ -68,19 +68,19 @@ class Affine:
 
     def toWorldGet( self ):
         I_2world = Affine3D()
-        self.m_cargo['dll'].IceRayC_Camera_Transform_Affine_2World_Get( self.m_cargo['this'], AddresOf( I_2world ) )
+        self.m_cargo['dll'].IceRayC_Camera_Transform_Affine_2World_Get( self.m_cargo['this'], AddressOf( I_2world ) )
         return I_2world
 
     def toWorldSet( self, P_2world : Affine3D ):
-        return self.m_cargo['dll'].IceRayC_Camera_Transform_Affine_2World_Set( self.m_cargo['this'], AddresOf( P_2world ) )
+        return self.m_cargo['dll'].IceRayC_Camera_Transform_Affine_2World_Set( self.m_cargo['this'], AddressOf( P_2world ) )
 
     def toLocalGet( self ):
         I_2local = Affine3D()
-        self.m_cargo['dll'].IceRayC_Camera_Transform_Affine_2Local_Get( self.m_cargo['this'], AddresOf( I_2local ) )
+        self.m_cargo['dll'].IceRayC_Camera_Transform_Affine_2Local_Get( self.m_cargo['this'], AddressOf( I_2local ) )
         return I_2local
 
     def toLocalSet( self, P_2local : Affine3D ):
-        return self.m_cargo['dll'].IceRayC_Camera_Transform_Affine_2Local_Set( self.m_cargo['this'], AddresOf( P_2local ) )
+        return self.m_cargo['dll'].IceRayC_Camera_Transform_Affine_2Local_Set( self.m_cargo['this'], AddressOf( P_2local ) )
 
 
     def lookAt( self, P_eye : Coord3D, P_view: Coord3D, P_up: Coord3D ):

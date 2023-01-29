@@ -3,6 +3,7 @@ IceRay/main/interface/c/core/geometry/geometry.cpp
 IceRay/main/interface/c/core/geometry/rtss.cpp
 IceRay/main/interface/c/core/geometry/blobby.cpp
 IceRay/main/interface/c/core/geometry/volumetric.cpp
+IceRay/main/interface/c/core/geometry/hfield.cpp
 IceRay/main/interface/c/core/geometry/transform.cpp
 IceRay/main/interface/c/core/geometry/complex.cpp
 IceRay/main/interface/c/core/geometry/simple.cpp
@@ -16,3 +17,4 @@ IceRay/main/interface/c/core/render/render.cpp
 IceRay/main/interface/c/core/utility/utility.cpp
 IceRay/main/interface/c/type/type.cpp
 IceRay/main/interface/c/utility/utility.cpp
+IceRay/main/system/init_system.cpp

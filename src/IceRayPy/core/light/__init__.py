@@ -5,7 +5,7 @@ import ctypes
 import IceRayPy
 
 Pointer  = ctypes.POINTER
-AddresOf = ctypes.addressof
+AddressOf = ctypes.addressof
 
 Coord3D  = IceRayPy.type.math.coord.Scalar3D
 Color    = IceRayPy.type.color.RGB
@@ -66,19 +66,19 @@ class Area:
         self.m_cargo['dll'].IceRayC_Light_Release( self.m_cargo['this'] )
 
     def origin( self, P_origin ):
-        self.m_cargo['dll'].IceRayC_Light_Area_Origin( self.m_cargo['this'], AddresOf( P_origin ) )
+        self.m_cargo['dll'].IceRayC_Light_Area_Origin( self.m_cargo['this'], AddressOf( P_origin ) )
 
     def sample( self, P_sample ):
         self.m_cargo['dll'].IceRayC_Light_Area_Sample( self.m_cargo['this'], SizeType( P_sample ) )
 
     def spot( self, P_spot: Spot ):
-        self.m_cargo['dll'].IceRayC_Light_Area_Spot( self.m_cargo['this'], AddresOf( P_spot ) )
+        self.m_cargo['dll'].IceRayC_Light_Area_Spot( self.m_cargo['this'], AddressOf( P_spot ) )
 
     def X( self, P_X: Coord3D ):
-        self.m_cargo['dll'].IceRayC_Light_Area_X( self.m_cargo['this'], AddresOf( P_X ) )
+        self.m_cargo['dll'].IceRayC_Light_Area_X( self.m_cargo['this'], AddressOf( P_X ) )
 
     def Y( self, P_Y: Coord3D ):
-        self.m_cargo['dll'].IceRayC_Light_Area_Y( self.m_cargo['this'], AddresOf(P_Y) )
+        self.m_cargo['dll'].IceRayC_Light_Area_Y( self.m_cargo['this'], AddressOf(P_Y) )
 
 
 class Chandelier:
@@ -107,19 +107,19 @@ class Circle:
         self.m_cargo['dll'].IceRayC_Light_Release( self.m_cargo['this'] )
 
     def spot( self, P_spot : Spot ):
-        self.m_cargo['dll'].IceRayC_Light_Circle_Spot( self.m_cargo['this'], AddresOf( P_spot ) )
+        self.m_cargo['dll'].IceRayC_Light_Circle_Spot( self.m_cargo['this'], AddressOf( P_spot ) )
 
     def center( self, P_center):
-        self.m_cargo['dll'].IceRayC_Light_Circle_Center( self.m_cargo['this'], AddresOf( P_center ) )
+        self.m_cargo['dll'].IceRayC_Light_Circle_Center( self.m_cargo['this'], AddressOf( P_center ) )
 
     def sample( self, P_sample ):
         self.m_cargo['dll'].IceRayC_Light_Circle_Sample( self.m_cargo['this'], SizeType( P_sample ) )
 
     def X( self, P_X: Coord3D ):
-        self.m_cargo['dll'].IceRayC_Light_Circle_X( self.m_cargo['this'], AddresOf( P_X ) )
+        self.m_cargo['dll'].IceRayC_Light_Circle_X( self.m_cargo['this'], AddressOf( P_X ) )
 
     def Y( self, P_Y: Coord3D ):
-        self.m_cargo['dll'].IceRayC_Light_Circle_Y( self.m_cargo['this'], AddresOf(P_Y) )
+        self.m_cargo['dll'].IceRayC_Light_Circle_Y( self.m_cargo['this'], AddressOf(P_Y) )
 
 
 class Confine:
@@ -171,19 +171,19 @@ class Disc:
         self.m_cargo['dll'].IceRayC_Light_Release( self.m_cargo['this'] )
 
     def spot( self, P_spot : Spot ):
-        self.m_cargo['dll'].IceRayC_Light_Circle_Spot( self.m_cargo['this'], AddresOf( P_spot ) )
+        self.m_cargo['dll'].IceRayC_Light_Circle_Spot( self.m_cargo['this'], AddressOf( P_spot ) )
 
     def center( self, P_center):
-        self.m_cargo['dll'].IceRayC_Light_Circle_Center( self.m_cargo['this'],AddresOf( P_center ) )
+        self.m_cargo['dll'].IceRayC_Light_Circle_Center( self.m_cargo['this'],AddressOf( P_center ) )
 
     def sample( self, P_sample ):
         self.m_cargo['dll'].IceRayC_Light_Disc_Sample( self.m_cargo['this'], SizeType( P_sample ) )
 
     def X( self, P_X: Coord3D ):
-        self.m_cargo['dll'].IceRayC_Light_Disc_X( self.m_cargo['this'], AddresOf( P_X ) )
+        self.m_cargo['dll'].IceRayC_Light_Disc_X( self.m_cargo['this'], AddressOf( P_X ) )
 
     def Y( self, P_Y: Coord3D ):
-        self.m_cargo['dll'].IceRayC_Light_Disc_Y( self.m_cargo['this'], AddresOf(P_Y) )
+        self.m_cargo['dll'].IceRayC_Light_Disc_Y( self.m_cargo['this'], AddressOf(P_Y) )
 
 
 class Line:
@@ -200,13 +200,13 @@ class Line:
         self.m_cargo['dll'].IceRayC_Light_Line_Sample( self.m_cargo['this'], SizeType ( P_sample ) )
 
     def spot( self, P_spot: Spot ):
-        self.m_cargo['dll'].IceRayC_Light_Line_Spot( self.m_cargo['this'], AddresOf( P_spot ) )
+        self.m_cargo['dll'].IceRayC_Light_Line_Spot( self.m_cargo['this'], AddressOf( P_spot ) )
 
     def start( self, P_start ):
-        self.m_cargo['dll'].IceRayC_Light_Line_Start( self.m_cargo['this'], AddresOf( P_start ) )
+        self.m_cargo['dll'].IceRayC_Light_Line_Start( self.m_cargo['this'], AddressOf( P_start ) )
 
     def end( self, P_end ):
-        self.m_cargo['dll'].IceRayC_Light_Line_End( self.m_cargo['this'], AddresOf( P_end ) )
+        self.m_cargo['dll'].IceRayC_Light_Line_End( self.m_cargo['this'], AddressOf( P_end ) )
 
 
 class Point:
@@ -221,10 +221,10 @@ class Point:
         self.m_cargo['dll'].IceRayC_Light_Release( self.m_cargo['this'] )
 
     def spot( self, P_spot: Spot ):
-        self.m_cargo['dll'].IceRayC_Light_Point_Spot( self.m_cargo['this'], AddresOf( P_spot ) )
+        self.m_cargo['dll'].IceRayC_Light_Point_Spot( self.m_cargo['this'], AddressOf( P_spot ) )
 
     def center( self, P_center: Coord3D ):
-        self.m_cargo['dll'].IceRayC_Light_Point_Center( self.m_cargo['this'], AddresOf( P_center ) )
+        self.m_cargo['dll'].IceRayC_Light_Point_Center( self.m_cargo['this'], AddressOf( P_center ) )
 
 
 class Obstruct:
@@ -261,10 +261,10 @@ class Reflector:
         self.m_cargo['dll'].IceRayC_Light_Release( self.m_cargo['this'] )
 
     def spot( self, P_spot: Spot ):
-        self.m_cargo['dll'].IceRayC_Light_Reflector_Spot( self.m_cargo['this'], AddresOf( P_spot ) )
+        self.m_cargo['dll'].IceRayC_Light_Reflector_Spot( self.m_cargo['this'], AddressOf( P_spot ) )
 
     def center( self, P_spot: Spot ):
-        self.m_cargo['dll'].IceRayC_Light_Reflector_Center( self.m_cargo['this'], AddresOf( P_spot ) )
+        self.m_cargo['dll'].IceRayC_Light_Reflector_Center( self.m_cargo['this'], AddressOf( P_spot ) )
 
     def inner( self, P_inner ):
         self.m_cargo['dll'].IceRayC_Light_Reflector_Inner( self.m_cargo['this'], ScalarType( P_inner ) )
@@ -287,7 +287,7 @@ class Sphere:
         self.m_cargo['dll'].IceRayC_Light_Sphere_Sample( self.m_cargo['this'], SizeType( P_sample ) )
 
     def spot( self, P_spot: Spot ):
-        self.m_cargo['dll'].IceRayC_Light_Sphere_Spot( self.m_cargo['this'], AddresOf( P_spot ) )
+        self.m_cargo['dll'].IceRayC_Light_Sphere_Spot( self.m_cargo['this'], AddressOf( P_spot ) )
 
     def radius( self, P_radius ):
         self.m_cargo['dll'].IceRayC_Light_Sphere_Radius( self.m_cargo['this'], P_radius )
@@ -304,13 +304,13 @@ class Spline:
         self.m_cargo['dll'].IceRayC_Light_Release( self.m_cargo['this'] )
 
     def spot( self, P_spot: Spot ):
-        self.m_cargo['dll'].IceRayC_Light_Spline_Spot( self.m_cargo['this'], AddresOf( P_spot ) )
+        self.m_cargo['dll'].IceRayC_Light_Spline_Spot( self.m_cargo['this'], AddressOf( P_spot ) )
 
     def sample( self, P_sample ):
         self.m_cargo['dll'].IceRayC_Light_Spline_Sample( self.m_cargo['this'], SizeType( P_sample ) )
 
     def cp( self, P_index, P_p0 : Coord3D ):
-        self.m_cargo['dll'].IceRayC_Light_Spline_CP( self.m_cargo['this'], SizeType( P_index ), AddresOf( P_p0 ) )
+        self.m_cargo['dll'].IceRayC_Light_Spline_CP( self.m_cargo['this'], SizeType( P_index ), AddressOf( P_p0 ) )
 
 
 class SunS:
@@ -323,9 +323,9 @@ class SunS:
         self.m_cargo['dll'].IceRayC_Light_Release( self.m_cargo['this'] )
 
     def spot( self, P_spot: Spot ):
-        self.m_cargo['dll'].IceRayC_Light_SunS_Spot( self.m_cargo['this'], AddresOf( P_spot ) )
+        self.m_cargo['dll'].IceRayC_Light_SunS_Spot( self.m_cargo['this'], AddressOf( P_spot ) )
     def center( self, P_spot: Spot ):
-        self.m_cargo['dll'].IceRayC_Light_SunS_Center( self.m_cargo['this'], AddresOf( P_spot ) )
+        self.m_cargo['dll'].IceRayC_Light_SunS_Center( self.m_cargo['this'], AddressOf( P_spot ) )
 
 
 class SunG:

@@ -6,7 +6,7 @@ import IceRayPy.type.math
 ScalarType = IceRayPy.type.basic.Scalar
 UnsignedType = IceRayPy.type.basic.Unsigned
 SizeType = IceRayPy.type.basic.Size
-AddresOf = ctypes.addressof
+AddressOf = ctypes.addressof
 
 G_sample =1
 class Focus:
@@ -31,10 +31,10 @@ class Focus:
         self.m_cargo['dll'].IceRayC_Camera_DOF_Focus_Sample( self.m_cargo['this'], SizeType( P_sample ) )
 
     def aperture( self, P_aperture : IceRayPy.type.math.interval.Scalar1D ):
-        self.m_cargo['dll'].IceRayC_Camera_DOF_Focus_Aperture( self.m_cargo['this'], AddresOf( P_aperture ) )
+        self.m_cargo['dll'].IceRayC_Camera_DOF_Focus_Aperture( self.m_cargo['this'], AddressOf( P_aperture ) )
 
     def focus( self, P_focus       : IceRayPy.type.math.interval.Scalar1D ):
-        self.m_cargo['dll'].IceRayC_Camera_DOF_Focus_Focus( self.m_cargo['this'], AddresOf( P_focus ) )
+        self.m_cargo['dll'].IceRayC_Camera_DOF_Focus_Focus( self.m_cargo['this'], AddressOf( P_focus ) )
 
     def gauss( self, P_gauss ):
         self.m_cargo['dll'].IceRayC_Camera_DOF_Focus_Gauss( self.m_cargo['this'], ScalarType( P_gauss ) )

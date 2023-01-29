@@ -7,3 +7,4 @@
 #include "./simple.hpp"
 #include "./flat.hpp"
 #include "./base.hpp"
+#include "./hfield.hpp"

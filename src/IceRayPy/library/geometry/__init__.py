@@ -2,6 +2,7 @@ print( '<' + __name__ + ' name=\'' +   __file__ + '\'>' )
 
 import IceRayPy.library.geometry.lens
 import IceRayPy.library.geometry.example
+import IceRayPy.library.geometry.hfield
 
 import IceRayPy
 import math

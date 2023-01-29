@@ -73,7 +73,7 @@
                bool                 F_right( T_geometry * P_right, T_location const& P_orientation );
 
              private:
-               enum Ee_side{ En_left, En_right, En_none };
+               enum Ee_side{ En_none, En_left, En_right };
 
                typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_cluster         T2_cluster;
                typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_intersect       T2_intersect;

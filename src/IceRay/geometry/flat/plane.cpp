@@ -17,7 +17,7 @@ GC_plane::GC_plane( )
 
   M2_normal[ T_coord().size() - 1 ] =1;
 
-  F1_box( T_box{ 
+  F1_box( T_box{
      ::math::linear::vector::fill( T_coord{}, -Is_infinity )
     ,::math::linear::vector::fill( T_coord{}, +Is_infinity )
    } );
@@ -86,23 +86,22 @@ void GC_plane::Fv_normal   ( T_coord &P_normal, T_coord const& P_point, T_state 
 
 GC_plane::T_location  GC_plane::Fv_inside( T_coord const& P_point/*, T_state &P_intersect*/ )const
  {
-  using namespace ::math::linear::vector;
   static T_scalar Is_epsilon = 1e-12;// T_scalar( std::numeric_limits<T_scalar>::epsilon() );
 
-  T_scalar I_distance = ::math::linear::vector::dot( P_point - M2_pivot, M2_normal );
-
-  if( I_distance  < -Is_epsilon )
-   {
-    return En_in;
-   }
+  T_coord I_point; ::math::linear::vector::subtraction( I_point, P_point, M2_pivot );
+  T_scalar I_distance = ::math::linear::vector::dot( I_point, M2_normal );
 
   if( +Is_epsilon < I_distance )
    {
     return En_out;
    }
 
-  return En_surface;
+  if( I_distance  < -Is_epsilon )
+   {
+    return En_in;
+   }
 
+  return En_surface;
  }
 
 GC_plane::T_scalar

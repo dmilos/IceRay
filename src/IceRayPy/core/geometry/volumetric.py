@@ -4,7 +4,7 @@ import IceRayPy
 import IceRayPy.type.math.interval
 
 Pointer  = ctypes.POINTER
-AddresOf = ctypes.addressof
+AddressOf = ctypes.addressof
 
 Scalar      = IceRayPy.type.basic.Scalar
 Coord3D     = IceRayPy.type.math.coord.Scalar3D
@@ -20,13 +20,13 @@ class Vacuum:
         self.m_cargo['dll'].IceRayC_Light_Release( self.m_cargo['this'] )
 
     def lo( self, P_lo : Coord3D):
-        self.m_cargo['dll'].IceRayC_Geometry_Volumetric_Vacuum_Lo( self.m_cargo['this'], AddresOf(P_lo) )
+        self.m_cargo['dll'].IceRayC_Geometry_Volumetric_Vacuum_Lo( self.m_cargo['this'], AddressOf(P_lo) )
 
     def hi( self, P_hi : Coord3D ):
-        self.m_cargo['dll'].IceRayC_Geometry_Volumetric_Vacuum_Hi( self.m_cargo['this'], AddresOf(P_hi) )
+        self.m_cargo['dll'].IceRayC_Geometry_Volumetric_Vacuum_Hi( self.m_cargo['this'], AddressOf(P_hi) )
 
     def box( self, P_box :Interval3D ):
-        self.m_cargo['dll'].IceRayC_Geometry_Volumetric_Vacuum_Box( self.m_cargo['this'], AddresOf( P_box ) )
+        self.m_cargo['dll'].IceRayC_Geometry_Volumetric_Vacuum_Box( self.m_cargo['this'], AddressOf( P_box ) )
 
 
 class Mist:

@@ -1,5 +1,8 @@
 #include "./structure.hpp"
 
+// /*debug*/ #include <string>
+// /*debug*/ #include <fstream>
+
 namespace GS_DDMRM
  {
   namespace S_IceRay
@@ -44,27 +47,27 @@ namespace GS_DDMRM
 
           //std::cout<< std::endl << "Max grid size: " << M2_size.size() << std::endl;
  
-          auto & outputSvg = std::ofstream( "table_" + std::to_string( I_size )+ "-"+ std::to_string(I_rsize) +".svg" );
-          outputSvg << "<svg height=\"100\" width=\"100\">" << std::endl;
+          // /*debug*/ auto & outputSvg = std::ofstream( "table_" + std::to_string( I_size )+ "-"+ std::to_string(I_rsize) +".svg" );
+          // /*debug*/ outputSvg << "<svg height=\"100\" width=\"100\">" << std::endl;
           for( auto const& I_spot: M2_point )
            {
-            outputSvg<< "<circle cx=\"" << I_spot[0] << "\" cy=\"" << I_spot[1] << "\" r=\"0.1\" fill=\"red\" /> " << std::endl;
+            // /*debug*/ outputSvg<< "<circle cx=\"" << I_spot[0] << "\" cy=\"" << I_spot[1] << "\" r=\"0.1\" fill=\"red\" /> " << std::endl;
            }
-          outputSvg << "</svg>" << std::endl;
+          // /*debug*/ outputSvg << "</svg>" << std::endl;
           //std::cout<< std::endl << "Max grid size: " << M2_size.size() << std::endl;
 
           ::math::geometry::direction::fit2D<double>::sample_type sample;
           ::math::statistic::average<double,1>     average;
 
           double index=0;
-          auto & outputTxt = std::ofstream( "table_" + std::to_string( I_size )+ "-"+ std::to_string(I_rsize) +".txt" );
+          // /*debug*/ auto & outputTxt = std::ofstream( "table_" + std::to_string( I_size )+ "-"+ std::to_string(I_rsize) +".txt" );
           ::math::geometry::direction::fit2D<double>::scalar_type   a,  b ;
           for( std::size_t index=1; index < M2_size.size(); ++index )
            {
             sample.push_back( (double) M2_size[index] );
             average.push( M2_size[index] - M2_size[index-1] );
             ::math::geometry::direction::fit2D<double>::process( a,b, sample );
-            outputTxt << M2_size[index]<< ", "<< average.value() << "," << "[" << a << ", "<< b <<"] " << std::endl ;
+            // /*debug*/ outputTxt << M2_size[index]<< ", "<< average.value() << "," << "[" << a << ", "<< b <<"] " << std::endl ;
            }
          }
 

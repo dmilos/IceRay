@@ -69,7 +69,7 @@ BOOST_PYTHON_MODULE(IceRayCpp)
   EXTERN_AND_CALL( expose_IceRay_geometry_box        );
   EXTERN_AND_CALL( expose_IceRay_geometry_cone       );
   EXTERN_AND_CALL( expose_IceRay_geometry_cylinder   );
-  EXTERN_AND_CALL( expose_IceRay_geometry_simple_ucylinder   );
+  EXTERN_AND_CALL( expose_IceRay_geometry_simple_cylinderu   );
   EXTERN_AND_CALL( expose_IceRay_geometry_disc       );
   EXTERN_AND_CALL( expose_IceRay_geometry_plane      );
   EXTERN_AND_CALL( expose_IceRay_geometry_sphere     );

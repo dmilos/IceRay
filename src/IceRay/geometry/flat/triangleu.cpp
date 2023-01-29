@@ -1,24 +1,24 @@
-#include "./utriangle.hpp"
+#include "./triangleU.hpp"
 
 using namespace GS_DDMRM::S_IceRay::S_geometry;
 
 
 
-struct GC_utriangle::C_intersect
+struct GC_triangleU::C_intersect
  {
   bool M_hit;
  };
 
 
-GC_utriangle::GC_utriangle()
+GC_triangleU::GC_triangleU()
  {
  }
 
-GC_utriangle::~GC_utriangle( )
+GC_triangleU::~GC_triangleU( )
  {
  }
 
-bool GC_utriangle::Fv_intersect( T_scalar &P_lambda, T_state &P_intersect, T_ray const& P_ray  )const
+bool GC_triangleU::Fv_intersect( T_scalar &P_lambda, T_state &P_intersect, T_ray const& P_ray  )const
  {
   static T_scalar Is_epsilon = 1e-12;// T_scalar( std::numeric_limits<T_scalar>::epsilon() );
 
@@ -57,23 +57,23 @@ bool GC_utriangle::Fv_intersect( T_scalar &P_lambda, T_state &P_intersect, T_ray
   return true;  //!< YES
  }
 
-void GC_utriangle::Fv_normal( T_coord &P_normal, T_coord const& P_point,  T_state const& P_intersect )const
+void GC_triangleU::Fv_normal( T_coord &P_normal, T_coord const& P_point,  T_state const& P_intersect )const
  {
   ::math::linear::vector::load( P_normal, 0,0, 1 );
  }
 
-GC_utriangle::T_location GC_utriangle::Fv_inside(T_coord const& P_point/*, T_state &P_intersect*/ )const
+GC_triangleU::T_location GC_triangleU::Fv_inside(T_coord const& P_point/*, T_state &P_intersect*/ )const
  {
   return En_out;
  }
 
-GC_utriangle::T_scalar GC_utriangle::Fv_distance( T_coord const& P_point )const
+GC_triangleU::T_scalar GC_triangleU::Fv_distance( T_coord const& P_point )const
  {
   // TODO
   return 1;
  }
 
-bool   GC_utriangle::Fv_uvw( T_coord & P_uvw, T_coord const& P_point, T_state const&P_intersect )const
+bool   GC_triangleU::Fv_uvw( T_coord & P_uvw, T_coord const& P_point, T_state const&P_intersect )const
  {
   P_uvw[0] = P_point[0];
   P_uvw[1] = P_point[1];
@@ -81,14 +81,14 @@ bool   GC_utriangle::Fv_uvw( T_coord & P_uvw, T_coord const& P_point, T_state co
   return true;
  }
 
-void  GC_utriangle::Fv_reset( T_state &P_intersect )const
+void  GC_triangleU::Fv_reset( T_state &P_intersect )const
  {
   C_intersect &I_intersect = P_intersect.F_content<C_intersect>();
   I_intersect.M_hit = false;
   return;
  }
 
-GC_utriangle::T_size GC_utriangle::Fv_weight( )const
+GC_triangleU::T_size GC_triangleU::Fv_weight( )const
  {
   return sizeof( C_intersect );
  }

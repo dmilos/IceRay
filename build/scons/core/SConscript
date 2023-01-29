@@ -138,6 +138,22 @@ if( False ):
     cc_files += [ os.path.join( 'geometry', 'transform', 'identical.cpp' ) ]
 
 cc_files += [ os.path.join( 'geometry', 'hfield', 'hfield.cpp' ) ]
+if( False ):
+    cc_files += [ os.path.join( 'geometry', 'hfield', 'generator', 'generator.cpp' ) ]
+    if( False ):
+        cc_files += [ os.path.join( 'geometry', 'hfield', 'generator', 'function.cpp' ) ]
+        cc_files += [ os.path.join( 'geometry', 'hfield', 'generator', 'picture.cpp' ) ]
+        cc_files += [ os.path.join( 'geometry', 'hfield', 'generator', 'table.cpp' ) ]
+        cc_files += [ os.path.join( 'geometry', 'hfield', 'generator', 'expression.cpp' ) ]
+
+    cc_files += [ os.path.join( 'geometry', 'hfield', 'object', 'object.cpp' ) ]
+    if( False ):
+        cc_files += [ os.path.join( 'geometry', 'hfield', 'object', 'b3.cpp' ) ]
+        cc_files += [ os.path.join( 'geometry', 'hfield', 'object', 'flat.cpp' ) ]
+        cc_files += [ os.path.join( 'geometry', 'hfield', 'object', 'triangle.cpp' ) ]
+        cc_files += [ os.path.join( 'geometry', 'hfield', 'object', 'vacuum.cpp' ) ]
+        cc_files += [ os.path.join( 'geometry', 'hfield', 'object', 'quad.cpp' ) ]
+        cc_files += [ os.path.join( 'geometry', 'hfield', 'object', 'geometry.cpp' ) ]
 
 cc_files += [ os.path.join( 'geometry', 'rtss', 'rtss.cpp' ) ]
 if( False ):
@@ -150,10 +166,11 @@ cc_files += [ os.path.join( 'geometry', 'simple', 'simple.cpp' ) ]
 if( False ):
     cc_files += [ os.path.join( 'geometry', 'simple', 'cone.cpp'       ) ]
     cc_files += [ os.path.join( 'geometry', 'simple', 'cylinder.cpp'   ) ]
+    cc_files += [ os.path.join( 'geometry', 'simple', 'cylinderu.cpp'   ) ]
     cc_files += [ os.path.join( 'geometry', 'simple', 'paraboloid.cpp' ) ]
     cc_files += [ os.path.join( 'geometry', 'simple', 'sphere.cpp'     ) ]
-    cc_files += [ os.path.join( 'geometry', 'simple', 'torus.cpp'      ) ]
     cc_files += [ os.path.join( 'geometry', 'simple', 'usphere.cpp'    ) ]
+    cc_files += [ os.path.join( 'geometry', 'simple', 'torus.cpp'      ) ]
     cc_files += [ os.path.join( 'geometry', 'simple', 'quadric.cpp'    ) ]
 
 cc_files += [ os.path.join( 'geometry', 'flat', 'flat.cpp' ) ]
@@ -163,7 +180,7 @@ if( False ):
     cc_files += [ os.path.join( 'geometry', 'flat', 'udisc.cpp'     ) ]
     cc_files += [ os.path.join( 'geometry', 'flat', 'plane.cpp'     ) ]
     cc_files += [ os.path.join( 'geometry', 'flat', 'triangle.cpp'  ) ]
-    cc_files += [ os.path.join( 'geometry', 'flat', 'utriangle.cpp' ) ]
+    cc_files += [ os.path.join( 'geometry', 'flat', 'triangleu.cpp' ) ]
 
 
 #TODO cc_files += [ os.path.join( 'geometry', 'spline', 'spline.cpp' ) ]

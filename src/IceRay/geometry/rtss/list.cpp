@@ -1,4 +1,3 @@
-#include <cstring>
 #include "./list.hpp"
 
 using namespace GS_DDMRM::S_IceRay::S_geometry::S_RTSS;

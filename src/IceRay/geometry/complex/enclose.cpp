@@ -184,8 +184,8 @@ GC_enclose::T_location GC_enclose::Fv_inside
 GC_enclose::T_scalar
 GC_enclose::Fv_distance( T_coord const& P_point )const
  {
-  // TODO
-  return 0;
+  T_scalar I_distance = M2_child.M_distance->Fv_distance( P_point );
+  return I_distance;
  }
 
 bool  GC_enclose::Fv_uvw( T_coord & P_uvw, T_coord const& P_point, T_state const& P_state)const

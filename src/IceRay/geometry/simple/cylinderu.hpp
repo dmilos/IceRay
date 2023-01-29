@@ -1,5 +1,5 @@
-#ifndef _DDMM_IceRAY_geometry_ucylinder_H_
- #define _DDMM_IceRAY_geometry_ucylinder_H_
+#ifndef _DDMM_IceRAY_geometry_cylinderu_H_
+ #define _DDMM_IceRAY_geometry_cylinderu_H_
 
 #include "../_pure/_base.hpp"
 #include "../_pure/intersect.hpp"
@@ -14,7 +14,7 @@
      namespace S_geometry
       {
 
-       class GC_ucylinder
+       class GC_cylinderU
         : public GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_intersect
         , public GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_normal
         , public GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_inside
@@ -25,8 +25,8 @@
            typedef GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar3D            T_coord;
 
          public:
-           explicit GC_ucylinder();
-          ~GC_ucylinder( );
+           explicit GC_cylinderU();
+          ~GC_cylinderU( );
 
          public:
            void    Fv_reset( T_state &P_state )const;

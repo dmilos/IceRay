@@ -2,6 +2,8 @@
  #define Dh_DDMM_IceRay_type_picture_memory_HPP_
 
  //GS_DDMRM::S_IceRay::S_type::S_picture::GC_memory
+ #include <iostream>
+ #include <iomanip>
 
  #include "./_pure.hpp"
 
@@ -24,19 +26,43 @@
 
              typedef GS_DDMRM::S_IceRay::S_type::S_coord::GT_size2D T_coord;
 
-             GC_memory(){ this-> Fv_size({1,1}); }
+             GC_memory(){ this-> Fv_size( { 1, 1 } ); }
              GC_memory( T_size const& P_width, T_size const& P_height ){ this-> Fv_size( T_coord{ P_width, P_height } ); }
              GC_memory( T_coord const& P_size ){ this-> Fv_size(P_size); }
+             ~GC_memory()
+               {
+                //std::fill(M2_data.begin(),M2_data.end(), T_color( color::constant::gold_t{} ) );
+               }
 
              virtual T_report Fv_pixel( T_color & P_color, T_coord const& P_coord )const
               {
-               P_color = M2_data[ P_coord[1] * F_size()[0] + P_coord[0] ];
+               auto index = P_coord[1] * F_size()[0] + P_coord[0];
+               if( M2_data.size() <= index )
+                {
+                 std::cout << std::endl << __FUNCTION__<< "Error: Index out of range." 
+                  << "index:" << index << "; "
+                  << "x: " << P_coord[0] << "; " << "y: " << P_coord[1] << "; "
+                  << "W: " << this->F_size()[0] << "; " << "H: " << this->F_size()[1] << "; "
+                  << "s: " << M2_data.size() << "; "
+                  << std::endl;
+                }
+               P_color = M2_data[ index ];
                return true;
               }
 
              virtual T_report Fv_pixel( T_coord const& P_coord, T_color const& P_color )
               {
-               M2_data[ P_coord[1] * F_size()[0] + P_coord[0] ] = P_color;
+               auto index = P_coord[1] * F_size()[0] + P_coord[0];
+               if( M2_data.size() <= index )
+                {
+                 std::cout<< __FUNCTION__<< "Error: Index out of range." 
+                  << "index:" << index << "; "
+                  << "x:" << P_coord[0] << "; " << "y:" << P_coord[1] << "; "
+                  << "W: " << this->F_size()[0] << "; " << "H: " << this->F_size()[1] << "; "
+                  << "s:" << M2_data.size() << "; "
+                  << std::endl;
+                }
+               M2_data[ index ] = P_color;
                return true;
               }
 

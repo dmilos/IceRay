@@ -3,7 +3,7 @@ import ctypes
 import IceRayPy
 
 Pointer = ctypes.POINTER
-AddresOf = ctypes.addressof
+AddressOf = ctypes.addressof
 
 SizeType = IceRayPy.type.basic.Size
 

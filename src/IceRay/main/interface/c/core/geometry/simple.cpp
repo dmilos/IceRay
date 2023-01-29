@@ -182,6 +182,7 @@ IceRayC_Geometry_Handle IceRayC_Geometry_Cone0()
   return cpp2c( Ir_result );
  }
 
+
 IceRayC_Geometry_Handle IceRayC_Geometry_Paraboloid0()
  {
   typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;
@@ -189,6 +190,8 @@ IceRayC_Geometry_Handle IceRayC_Geometry_Paraboloid0()
   auto Ir_result = new Tf_paraboloid{};
   return cpp2c( Ir_result );
  }
+
+
 
 IceRayC_Geometry_Handle IceRayC_Geometry_Hyperboloid0()
  {
@@ -232,10 +235,10 @@ IceRayC_Geometry_Handle IceRayC_Geometry_USphere0()
   auto Ir_result = new Tf_usphere{};
   return cpp2c( Ir_result );
  }
-IceRayC_Geometry_Handle IceRayC_Geometry_UCylinder0()
+IceRayC_Geometry_Handle IceRayC_Geometry_CylinderU0()
  {
   typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;
-  typedef GS_DDMRM::S_IceRay::S_geometry::GC_ucylinder Tf_cylinder;
+  typedef GS_DDMRM::S_IceRay::S_geometry::GC_cylinderU Tf_cylinder;
   auto Ir_result = new Tf_cylinder{};
   return cpp2c( Ir_result );
  }

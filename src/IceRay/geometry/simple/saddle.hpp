@@ -17,7 +17,7 @@
      namespace S_geometry
       {
 
-       class GC_saddle
+       class GC_saddle //!< z- x*y = 0
         : public GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_intersect
         , public GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_normal
         , public GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_inside

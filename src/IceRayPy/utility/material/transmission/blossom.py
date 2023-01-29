@@ -1,5 +1,4 @@
-print( '<' + __name__ + ' name=\'' +   __file__ + '\''+ '>' )
-
+#print( '<' + __name__ + ' name=\'' +   __file__ + '\''+ '>' )
 import math
 import IceRayPy
 
@@ -520,4 +519,4 @@ def VDC(
     return I_surface
 
 
-print( '</' + __name__ + ' name=\'' +   __file__ + '>' )
+#print( '</' + __name__ + ' name=\'' +   __file__ + '>' )

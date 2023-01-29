@@ -1,6 +1,6 @@
 import ctypes
 
-AddresOf = ctypes.addressof
+AddressOf = ctypes.addressof
 
 
 import IceRayPy
@@ -45,10 +45,10 @@ class Constant:
         self.m_cargo['dll'].IceRayC_Material_Medium_Release( self.m_cargo['this'] )
 
     def value( self, P_value : Color ):
-        self.m_cargo['dll'].IceRayC_Material_Medium_Constant_Value( self.m_cargo['this'], AddresOf( P_value ) )
+        self.m_cargo['dll'].IceRayC_Material_Medium_Constant_Value( self.m_cargo['this'], AddressOf( P_value ) )
 
     def deplete( self, P_deplete : Color ):
-        self.m_cargo['dll'].IceRayC_Material_Medium_Constant_Deplete( self.m_cargo['this'], AddresOf( P_deplete ) )
+        self.m_cargo['dll'].IceRayC_Material_Medium_Constant_Deplete( self.m_cargo['this'], AddressOf( P_deplete ) )
 
 import colorsys
 g_hue = 0;
@@ -69,7 +69,7 @@ class Linear:
         self.m_cargo['dll'].IceRayC_Material_Medium_Release( self.m_cargo['this'] )
 
     def value( self, P_value : Color ):
-        self.m_cargo['dll'].IceRayC_Material_Medium_Linear_Value( self.m_cargo['this'], AddresOf( P_value ) )
+        self.m_cargo['dll'].IceRayC_Material_Medium_Linear_Value( self.m_cargo['this'], AddressOf( P_value ) )
 
     def A(self, P_A  ):
         self.m_cargo['dll'].IceRayC_Material_Medium_Linear_A( self.m_cargo['this'], ScalarType( P_A ) )
@@ -92,7 +92,7 @@ class Quadratic:
         self.m_cargo['dll'].IceRayC_Material_Medium_Release( self.m_cargo['this'] )
 
     def value( self, P_value : Color ):
-        self.m_cargo['dll'].IceRayC_Material_Medium_Quadratic_Value( self.m_cargo['this'], AddresOf( P_value ) )
+        self.m_cargo['dll'].IceRayC_Material_Medium_Quadratic_Value( self.m_cargo['this'], AddressOf( P_value ) )
 
     def A(self, P_A ):
         self.m_cargo['dll'].IceRayC_Material_Medium_Quadratic_A( self.m_cargo['this'], ScalarType( P_A ) )
@@ -113,7 +113,7 @@ class Exponential:
         self.m_cargo['dll'].IceRayC_Material_Medium_Release( self.m_cargo['this'] )
 
     def value( self, P_value : Color ):
-        self.m_cargo['dll'].IceRayC_Material_Medium_Exponential_Value( self.m_cargo['this'], AddresOf( P_value ) )
+        self.m_cargo['dll'].IceRayC_Material_Medium_Exponential_Value( self.m_cargo['this'], AddressOf( P_value ) )
 
     def half(self, P_half ):
         self.m_cargo['dll'].IceRayC_Material_Medium_Exponential_Half( self.m_cargo['this'], ScalarType( P_half ) )

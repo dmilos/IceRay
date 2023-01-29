@@ -1,3 +1,5 @@
+#print( '<' + __name__ + ' name=\'' +   __file__ + '>' )
+
 import ctypes
 import IceRayPy
 
@@ -87,3 +89,5 @@ def Spherical2Cylindric( P_dll, P_config, P_filename = None ):
 
 def Cartesian2Fisheye( P_dll, P_config, P_filename = None ):
     return _Generic( P_dll, IceRayPy.core.material.instruction.operation.mapping.Cartesian2Fisheye, P_filename )
+
+#print( '</' + __name__ + ' name=\'' +   __file__ + '>' )

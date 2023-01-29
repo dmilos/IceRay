@@ -6,7 +6,7 @@ import IceRayPy.type.math.affine
 import IceRayPy.type.math.coord
 
 Pointer = ctypes.POINTER
-AddresOf = ctypes.addressof
+AddressOf = ctypes.addressof
 
 
 #Scalar  = IceRayPy.type.basic.Scalar
@@ -63,19 +63,19 @@ class Translate:
 
     def toWorldGet( self ):
         result = Coord3D()
-        self.m_cargo['dll'].IceRayC_Light_Transform_Translate_2World_Get( self.m_cargo['this'], AddresOf( result ) )
+        self.m_cargo['dll'].IceRayC_Light_Transform_Translate_2World_Get( self.m_cargo['this'], AddressOf( result ) )
         return result
 
     def toWorldSet( self, P_2world: Coord3D ):
-        return self.m_cargo['dll'].IceRayC_Light_Transform_Translate_2World_Set( self.m_cargo['this'], AddresOf( P_2world ) )
+        return self.m_cargo['dll'].IceRayC_Light_Transform_Translate_2World_Set( self.m_cargo['this'], AddressOf( P_2world ) )
 
     def toLocalGet( self ):
         result = Coord3D()
-        self.m_cargo['dll'].IceRayC_Light_Transform_Translate_2Local_Get( self.m_cargo['this'], AddresOf( result ) )
+        self.m_cargo['dll'].IceRayC_Light_Transform_Translate_2Local_Get( self.m_cargo['this'], AddressOf( result ) )
         return result
 
     def toLocalSet( self, P_2local: Coord3D ):
-        return self.m_cargo['dll'].IceRayC_Light_Transform_Translate_2Local_Set( self.m_cargo['this'], AddresOf( P_2local ) )
+        return self.m_cargo['dll'].IceRayC_Light_Transform_Translate_2Local_Set( self.m_cargo['this'], AddressOf( P_2local ) )
 
 
 class Affine:
@@ -104,19 +104,19 @@ class Affine:
 
     def toWorldGet( self ):
         result = Affine3D()
-        self.m_cargo['dll'].IceRayC_Light_Transform_Affine_2World_Get( self.m_cargo['this'], AddresOf( result ) )
+        self.m_cargo['dll'].IceRayC_Light_Transform_Affine_2World_Get( self.m_cargo['this'], AddressOf( result ) )
         return result
 
     def toWorldSet( self, P_2world: Affine3D ):
-        return self.m_cargo['dll'].IceRayC_Light_Transform_Affine_2World_Set( self.m_cargo['this'], AddresOf( P_2world ) )
+        return self.m_cargo['dll'].IceRayC_Light_Transform_Affine_2World_Set( self.m_cargo['this'], AddressOf( P_2world ) )
 
     def toLocalGet( self ):
         result = Affine3D()
-        self.m_cargo['dll'].IceRayC_Light_Transform_Affine_2Local_Get( self.m_cargo['this'], AddresOf( result ) )
+        self.m_cargo['dll'].IceRayC_Light_Transform_Affine_2Local_Get( self.m_cargo['this'], AddressOf( result ) )
         return result
 
     def toLocalSet( self, P_2local: Affine3D ):
-        return self.m_cargo['dll'].IceRayC_Light_Transform_Affine_2Local_Set( self.m_cargo['this'], AddresOf( P_2local ) )
+        return self.m_cargo['dll'].IceRayC_Light_Transform_Affine_2Local_Set( self.m_cargo['this'], AddressOf( P_2local ) )
 
 
 class Homography:
@@ -133,17 +133,17 @@ class Homography:
 
     def toWorldGet( self ):
         result = Matrix4D()
-        self.m_cargo['dll'].IceRayC_Light_Transform_Homography_2World_Get( self.m_cargo['this'], AddresOf( result ) )
+        self.m_cargo['dll'].IceRayC_Light_Transform_Homography_2World_Get( self.m_cargo['this'], AddressOf( result ) )
         return result
 
     def toWorldSet( self, P_2world: Matrix4D ):
-        return self.m_cargo['dll'].IceRayC_Light_Transform_Homography_2World_Set( self.m_cargo['this'], AddresOf( P_2world ) )
+        return self.m_cargo['dll'].IceRayC_Light_Transform_Homography_2World_Set( self.m_cargo['this'], AddressOf( P_2world ) )
 
     def toLocalGet( self ):
         result = Matrix4D()
-        self.m_cargo['dll'].IceRayC_Light_Transform_Homography_2Local_Get( self.m_cargo['this'], AddresOf( result ) )
+        self.m_cargo['dll'].IceRayC_Light_Transform_Homography_2Local_Get( self.m_cargo['this'], AddressOf( result ) )
         return result
 
     def toLocalSet( self, P_2local: Matrix4D ):
-        return self.m_cargo['dll'].IceRayC_Light_Transform_Homography_2Local_Set( self.m_cargo['this'], AddresOf( P_2local ) )
+        return self.m_cargo['dll'].IceRayC_Light_Transform_Homography_2Local_Set( self.m_cargo['this'], AddressOf( P_2local ) )
 

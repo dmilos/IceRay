@@ -110,14 +110,24 @@ GC_cylinder::T_location GC_cylinder::Fv_inside
   T_coord const& P_point
  )const
  {
-  T_scalar I_distance = ( P_point[0] * P_point[0]  +  P_point[1] * P_point[1] ) - M2_r2;
 
-  if( I_distance  < 0 )
+  if( P_point[2] < M2_ml2 )
+   {
+    return En_out;
+   }
+  if( M2_pl2 < P_point[2] )
+   {
+    return En_out;
+   }
+
+  static T_scalar Is_epsilon = 0;
+  T_scalar I_distance = ( P_point[0] * P_point[0]  +  P_point[1] * P_point[1] ) - M2_r2;
+  if( I_distance  < Is_epsilon )
    {
     return En_in;
    }
 
-  if( 0 < I_distance )
+  if( Is_epsilon < I_distance )
    {
     return En_out;
    }

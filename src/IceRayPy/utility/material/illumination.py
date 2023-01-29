@@ -1,3 +1,5 @@
+#print( '<' + __name__ + ' name=\'' +   __file__ + '>' )
+
 import ctypes
 import sys
 
@@ -769,3 +771,5 @@ def WardReal(
     I_surface.append( IceRayPy.core.material.instruction.illumination.WardReal( P_dll, result, point, normal, spotBegin, spotEnd, tempColor + 0, tempScalar + 0, tempScalar + 1, tempCoord3D + 0 ) )
 
     return I_surface
+
+#print( '</' + __name__ + ' name=\'' +   __file__ + '>' )

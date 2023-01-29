@@ -6,7 +6,7 @@ import IceRayPy
 Scalar = IceRayPy.type.basic.Scalar
 Size_T = IceRayPy.type.basic.Size
 
-AddresOf = ctypes.addressof
+AddressOf = ctypes.addressof
 
 class Scalar1D(ctypes.Structure):
     _fields_ = [("x", Scalar)
@@ -123,41 +123,41 @@ class Size4D(ctypes.Structure):
 
 def fill3D( P_dll, P_scalar ):
     result = Scalar3D()
-    P_dll.IceRayC_Type_Math_Coord3D_Fill( AddresOf( result ), Scalar( P_scalar ) )
+    P_dll.IceRayC_Type_Math_Coord3D_Fill( AddressOf( result ), Scalar( P_scalar ) )
     return result
 
 def load3D( P_dll, P_x, P_y, P_z ):
     result = Scalar3D()
-    P_dll.IceRayC_Type_Math_Coord3D_Load( AddresOf( result ), Scalar( P_x ), Scalar( P_y ), Scalar( P_z ) )
+    P_dll.IceRayC_Type_Math_Coord3D_Load( AddressOf( result ), Scalar( P_x ), Scalar( P_y ), Scalar( P_z ) )
     return result
 
 def length3D( P_dll, P_coord: Scalar3D ):
-    return P_dll.IceRayC_Type_Math_Coord3D_Length( AddresOf( P_coord ) )
+    return P_dll.IceRayC_Type_Math_Coord3D_Length( AddressOf( P_coord ) )
 
 def distance3D( P_dll, P_left: Scalar3D, P_right: Scalar3D  ):
-    return P_dll.IceRayC_Type_Math_Coord3D_Distance( AddresOf( P_left ), AddresOf( P_right ) )
+    return P_dll.IceRayC_Type_Math_Coord3D_Distance( AddressOf( P_left ), AddressOf( P_right ) )
 
 def cross3D( P_dll, P_left: Scalar3D, P_right: Scalar3D  ):
     result = Scalar3D()
-    P_dll.IceRayC_Type_Math_Coord3D_Cross( AddresOf( result ), AddresOf( P_left ), AddresOf( P_right ) )
+    P_dll.IceRayC_Type_Math_Coord3D_Cross( AddressOf( result ), AddressOf( P_left ), AddressOf( P_right ) )
     return result
 
 def dominant3DIndex( P_dll, P_coord: Scalar3D ):
-    return P_dll.IceRayC_Type_Math_Coord3D_DominantIndex( result, AddresOf( P_coord ) )
+    return P_dll.IceRayC_Type_Math_Coord3D_DominantIndex( result, AddressOf( P_coord ) )
 
 def subtraction3D( P_dll, P_left: Scalar3D, P_right: Scalar3D ):
     result = Scalar3D()
-    P_dll.IceRayC_Type_Math_Coord3D_Subtraction(  AddresOf( result ), AddresOf( P_left ), AddresOf( P_right ) )
+    P_dll.IceRayC_Type_Math_Coord3D_Subtraction(  AddressOf( result ), AddressOf( P_left ), AddressOf( P_right ) )
     return result
 
 def addition3D( P_dll, P_left: Scalar3D, P_right: Scalar3D ):
     result = Scalar3D()
-    P_dll.IceRayC_Type_Math_Coord3D_Addition(  AddresOf( result ), AddresOf( P_left ), AddresOf( P_right ) )
+    P_dll.IceRayC_Type_Math_Coord3D_Addition(  AddressOf( result ), AddressOf( P_left ), AddressOf( P_right ) )
     return result
 
 def scale3D( P_dll, P_scalar, P_coord: Scalar3D ):
     result = Scalar3D()
-    P_dll.IceRayC_Type_Math_Coord3D_Scale( AddresOf( result ), Scalar( P_scalar ), AddresOf( P_coord )  )
+    P_dll.IceRayC_Type_Math_Coord3D_Scale( AddressOf( result ), Scalar( P_scalar ), AddressOf( P_coord )  )
     return result
 
 print( '<' + __name__ + ' file=\'' +   __file__ + '\'/>' )

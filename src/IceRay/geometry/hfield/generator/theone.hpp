@@ -25,8 +25,6 @@
                typedef GS_DDMRM::S_IceRay::S_type::GT_scalar T_scalar;
                typedef GS_DDMRM::S_IceRay::S_type::GT_size   T_size;
 
-               typedef std::function< T_scalar( T_scalar const&, T_scalar const& )  > T_function;
-
                GC_theone( )
                 :GC_theone( 0.5 )
                 {
@@ -39,19 +37,19 @@
                 }
 
              public:
-               T_scalar Fv_value( T_size const& P_y, T_size const& P_x )const
+               T_scalar Fv_value( T_size const& P_x, T_size const& P_y )const
                 {
                  return M2_level;
                 }
 
-               T_scalar Fv_value( T_coord const& P_position )const
+               T_scalar Fv_value( T_size2D const& P_position )const
                 {
                  return M2_level;
                 }
 
              public:  // property scalar  level
-                       T_scalar    const& F_level()const{ return M2_level; }
-               virtual bool                 F_level( T_scalar const& P_level ){ M2_level = P_level; return bool( true ); }
+              T_scalar    const& F_level()const{ return M2_level; }
+               bool              F_level( T_scalar const& P_level ){ M2_level = P_level; return bool( true ); }
              protected:
                T_scalar        & F1_level(){ return M2_level; }
              private:

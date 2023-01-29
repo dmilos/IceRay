@@ -3,7 +3,7 @@ import IceRayPy
 import IceRayPy.core
 
 Pointer  = ctypes.POINTER
-AddresOf = ctypes.addressof
+AddressOf = ctypes.addressof
 
 VoidPtr = IceRayPy.type.basic.VoidPtr
 Integer = IceRayPy.type.basic.Integer
@@ -60,4 +60,4 @@ class Uniform:
         self.m_cargo['dll'].IceRayC_Geometry_RTSS_Release( self.m_cargo['this'] )
 
     def dimension( self, P_size : Size3D ):
-        return self.m_cargo['dll'].IceRayC_Geometry_RTSS_Uniform_Dimension( self.m_cargo['this'], AddresOf( P_size ) )
+        return self.m_cargo['dll'].IceRayC_Geometry_RTSS_Uniform_Dimension( self.m_cargo['this'], AddressOf( P_size ) )

@@ -1,3 +1,5 @@
+#print( '<' + __name__ + ' name=\'' +   __file__ + '>' )
+
 import ctypes
 import inspect
 
@@ -19,3 +21,5 @@ class CylinderVertical:
     def child( self, P_child ):
         self.m_cargo['child'] = P_child
         self.m_cargo['dll'].IceRayC_Camera_Transform_Invert_Child( self.m_cargo['this'], P_child.m_cargo['this'] )
+
+#print( '</' + __name__ + ' name=\'' +   __file__ + '>' )

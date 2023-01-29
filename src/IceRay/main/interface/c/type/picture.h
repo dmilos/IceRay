@@ -21,8 +21,10 @@ IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_Type_Bool IceRayC_Type_Picture_SizeSet
 IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_Type_Bool IceRayC_Type_Picture_Crop0( IceRayC_Type_Picture_Handle P_this,                                         IceRayC_TypeCoordSize2D const* P_lo, IceRayC_TypeCoordSize2D const* P_hi );
 IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_Type_Bool IceRayC_Type_Picture_Crop(  IceRayC_Type_Picture_Handle P_target, IceRayC_Type_Picture_Handle P_source, IceRayC_TypeCoordSize2D const* P_lo, IceRayC_TypeCoordSize2D const* P_hi );
 
-IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_Type_Bool IceRayC_Type_Picture_Load(     IceRayC_Type_Picture_Handle P_this, char const* P_filename );
-IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_Type_Bool IceRayC_Type_Picture_StorePNM( IceRayC_Type_Picture_Handle P_this, char const* P_filename );
+IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_Type_Bool IceRayC_Type_Picture_Load(      IceRayC_Type_Picture_Handle P_this, char const* P_filename );
+IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_Type_Bool IceRayC_Type_Picture_StorePNM(  IceRayC_Type_Picture_Handle P_this, char const* P_filename );
+IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_Type_Bool IceRayC_Type_Picture_StorePNG(  IceRayC_Type_Picture_Handle P_this, char const* P_filename );
+IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_Type_Bool IceRayC_Type_Picture_StoreJPEG( IceRayC_Type_Picture_Handle P_this, char const* P_filename );
 
 IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_Type_Bool IceRayC_Type_Picture_Bits( IceRayC_Type_Picture_Handle P_this, unsigned char const** P_bits );
 

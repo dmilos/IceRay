@@ -6,7 +6,7 @@ import IceRayPy.type.math.affine
 import IceRayPy.type.math.coord
 
 Pointer = ctypes.POINTER
-AddresOf = ctypes.addressof
+AddressOf = ctypes.addressof
 
 
 #Scalar  = IceRayPy.type.basic.Scalar
@@ -62,7 +62,7 @@ class Translate:
         self.m_cargo['dll'].IceRayC_Geometry_Transform_Translate_Child( self.m_cargo['this'], P_child.m_cargo['this'] )
 
     def move(self, P_move : Coord3D ):
-        return self.m_cargo['dll'].IceRayC_Geometry_Transform_Translate_Move( self.m_cargo['this'], AddresOf( P_move ) )
+        return self.m_cargo['dll'].IceRayC_Geometry_Transform_Translate_Move( self.m_cargo['this'], AddressOf( P_move ) )
 
 
 class Affine:
@@ -88,19 +88,19 @@ class Affine:
 
     def toWorldGet( self ):
         result = Affine3D()
-        self.m_cargo['dll'].IceRayC_Geometry_Transform_Affine_2World_Get( self.m_cargo['this'], AddresOf( result ) )
+        self.m_cargo['dll'].IceRayC_Geometry_Transform_Affine_2World_Get( self.m_cargo['this'], AddressOf( result ) )
         return result
 
     def toWorldSet( self, P_2world: Affine3D ):
-        return self.m_cargo['dll'].IceRayC_Geometry_Transform_Affine_2World_Set( self.m_cargo['this'], AddresOf( P_2world ) )
+        return self.m_cargo['dll'].IceRayC_Geometry_Transform_Affine_2World_Set( self.m_cargo['this'], AddressOf( P_2world ) )
 
     def toLocalGet( self ):
         result = Affine3D()
-        self.m_cargo['dll'].IceRayC_Geometry_Transform_Affine_2Local_Get( self.m_cargo['this'], AddresOf( result ) )
+        self.m_cargo['dll'].IceRayC_Geometry_Transform_Affine_2Local_Get( self.m_cargo['this'], AddressOf( result ) )
         return result
 
     def toLocalSet( self, P_2local: Affine3D ):
-        return self.m_cargo['dll'].IceRayC_Geometry_Transform_Affine_2Local_Set( self.m_cargo['this'], AddresOf( P_2local ) )
+        return self.m_cargo['dll'].IceRayC_Geometry_Transform_Affine_2Local_Set( self.m_cargo['this'], AddressOf( P_2local ) )
 
     def move( self, P_move : Coord3D ):
         I_2world = self.toWorldGet()
@@ -174,19 +174,19 @@ class Homography:
 
     def toWorldGet( self ):
         result = Matrix4D()
-        self.m_cargo['dll'].IceRayC_Geometry_Transform_Homography_2World_Get( self.m_cargo['this'], AddresOf( result ) )
+        self.m_cargo['dll'].IceRayC_Geometry_Transform_Homography_2World_Get( self.m_cargo['this'], AddressOf( result ) )
         return result
 
     def toWorldSet( self, P_2world: Matrix4D ):
-        return self.m_cargo['dll'].IceRayC_Geometry_Transform_Homography_2World_Set( self.m_cargo['this'], AddresOf( P_2world ) )
+        return self.m_cargo['dll'].IceRayC_Geometry_Transform_Homography_2World_Set( self.m_cargo['this'], AddressOf( P_2world ) )
 
     def toLocalGet( self ):
         result = Matrix4D()
-        self.m_cargo['dll'].IceRayC_Geometry_Transform_Homography_2Local_Get( self.m_cargo['this'], AddresOf( result ) )
+        self.m_cargo['dll'].IceRayC_Geometry_Transform_Homography_2Local_Get( self.m_cargo['this'], AddressOf( result ) )
         return result
 
     def toLocalSet( self, P_2local: Matrix4D ):
-        return self.m_cargo['dll'].IceRayC_Geometry_Transform_Homography_2Local_Set( self.m_cargo['this'], AddresOf( P_2local ) )
+        return self.m_cargo['dll'].IceRayC_Geometry_Transform_Homography_2Local_Set( self.m_cargo['this'], AddressOf( P_2local ) )
 
 
 class MotionBlur:
@@ -214,6 +214,6 @@ class MotionBlur:
         self.m_cargo['dll'].IceRayC_Geometry_Transform_MotionBlur_Child( self.m_cargo['this'], P_child.m_cargo['this'] )
 
     def direction(self, P_move : Coord3D ):
-        return self.m_cargo['dll'].IceRayC_Geometry_Transform_MotionBlur_Direction( self.m_cargo['this'], AddresOf( P_move ) )
+        return self.m_cargo['dll'].IceRayC_Geometry_Transform_MotionBlur_Direction( self.m_cargo['this'], AddressOf( P_move ) )
 
 
