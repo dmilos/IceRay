@@ -1,4 +1,4 @@
-print( '<' + __name__ + ' name=\'' +   __file__ + '\'/>' )
+#print( '<' + __name__ + ' name=\'' +   __file__ + '\'/>' )
 import ctypes
 import IceRayPy
 
@@ -76,3 +76,4 @@ def compose( P_left : Scalar3D,  P_right : Scalar3D ):
     P_dll.IceRayC_Type_Math_Matrix3D_Compose( AddressOf( result ), AddressOf( P_left ), AddressOf( P_right ) )
     return result
 
+#print( '</' + __name__ + ' name=\'' +   __file__ + '\'>' )

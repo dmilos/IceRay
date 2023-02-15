@@ -145,6 +145,9 @@ print( cc_files )
 #cc_files += [ os.path.join( 'main', 'interface', 'c', 'utility', 'utility.cpp' ) ]
 #if( False ):
 #    pass
+#cc_files += [ os.path.join( 'main', 'interface', 'c', 'system', 'system.cpp' ) ]
+#if( False ):
+#    pass
 
 ### Deal with Scons ###
 

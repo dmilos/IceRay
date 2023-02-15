@@ -325,4 +325,36 @@ class Parallelepiped:      #!< TODO
         return True
 
 
+
+class Cube:  #( IceRayPy.core.geometry.Generic ): # TODO have bug !!!
+    def __init__( self, P_dll ):
+        self.m_cargo = {}
+        self.m_cargo['dll'] = P_dll
+
+        self.m_cargo['box']  =  IceRayPy.core.geometry.simple.Box( self.m_cargo['dll'] )
+
+        self.center( IceRayPy.type.math.coord.Scalar3D( 0, 0, 0 ) )
+        self.size(   IceRayPy.type.math.coord.Scalar3D( 1, 1, 1 ) )
+
+        return
+
+    def center( self, P_center ):
+        I_size = self.m_cargo['size']
+
+        self.m_cargo['box'].lo( IceRayPy.type.math.coord.Scalar3D( P_center[0] - I_size[0], P_center[1] - I_size[1], P_center[2] - I_size[2] ) )
+        self.m_cargo['box'].hi( IceRayPy.type.math.coord.Scalar3D( P_center[0] + I_size[0], P_center[1] + I_size[1], P_center[2] + I_size[2] ) )
+
+        self.m_cargo['center'] = P_center
+        return
+
+    def size( self, P_size ):
+        I_center = self.m_cargo['center']
+
+        self.m_cargo['box'].lo( IceRayPy.type.math.coord.Scalar3D( I_center[0] - P_size[0], I_center[1] - P_size[1], I_center[2] - P_size[2] ) )
+        self.m_cargo['box'].hi( IceRayPy.type.math.coord.Scalar3D( I_center[0] + P_size[0], I_center[1] + P_size[1], I_center[2] + P_size[2] ) )
+
+        self.m_cargo['size'] = P_size
+        return self._recalc()
+
+
 #print( '</' + __name__ + ' name=\'' +   __file__ + '>' )

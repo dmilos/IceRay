@@ -1,4 +1,4 @@
-print( '<' + __name__ + ' name=\'' +   __file__ + '\'>' )
+#print( '<' + __name__ + ' name=\'' +   __file__ + '\'>' )
 
 #__all__ =[
 #'complex',
@@ -51,5 +51,6 @@ import IceRayPy.core.geometry.simple
 import IceRayPy.core.geometry.transform
 import IceRayPy.core.geometry.volumetric
 import IceRayPy.core.geometry.hfield
+import IceRayPy.core.geometry.blobby
 
-print( '</' + __name__ + ' name=\'' +   __file__ + '\'>' )
+#print( '</' + __name__ + ' name=\'' +   __file__ + '\'>' )

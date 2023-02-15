@@ -41,7 +41,7 @@
 
            public:
              T_homography   const& F_2local()const{ return M2_2local; }
-             bool              F_2local( T_homography const& P_2local );
+             bool                  F_2local( T_homography const& P_2local );
            protected:
              T_homography        & F1_2local(){ return M2_2local; }
            private:

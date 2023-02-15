@@ -12,6 +12,7 @@
 
 // color
 #include "./image.hpp"
+#include "./gradient.hpp"
 
 // ALL
 #include "./constant.hpp"

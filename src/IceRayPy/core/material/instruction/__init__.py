@@ -1,4 +1,4 @@
-print( '<' + __name__ + ' name=\'' +   __file__ + '\'>' )
+#print( '<' + __name__ + ' name=\'' +   __file__ + '\'>' )
 
 import IceRayPy.core.material.instruction.illumination
 import IceRayPy.core.material.instruction.pattern
@@ -19,4 +19,4 @@ class NOP:
         self.m_cargo['dll'].IceRayC_Material_Pigment_Surface_Instruction_Release( self.m_cargo['this'] )
 
 
-print( '</' + __name__ + ' name=\'' +   __file__ + '\'>' )
+#print( '</' + __name__ + ' name=\'' +   __file__ + '\'>' )

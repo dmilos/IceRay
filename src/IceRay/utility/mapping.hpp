@@ -331,11 +331,13 @@
           };
 
          /*
-           6|5|6
-          --+-+-
-           2|1|3
-          --+-+-
-           6|4|6
+          ^
+          |   6|5|6
+          |  --+-+-
+          Y   2|1|3
+          |  --+-+-
+          |   6|4|6
+          +-----X----->
          */
          class GC_cartesian2package //!< Box package //TODO
           {
@@ -348,12 +350,27 @@
               static T_scalar Is_side = sqrt( T_scalar( 1 ) / T_scalar( 24 ) );
               T_coord Ir_result{1,2,3};
 
-              //int x_side=0;
-              //int y_side=0;
-              //switch( y_side*2 + x_side )
-              // {
-              //  case( 0 ): break;
-              // }
+              T_scalar I_radius = std::max( { fabs(P_point[0]), fabs(P_point[1]), fabs(P_point[2]) } );
+               int x_side=1;
+               int y_side=1;
+
+              if( P_point[0] / I_radius < -Is_side  ) x_side = 0;
+              else { if( P_point[0]/ I_radius < Is_side  ) x_side = 1; else x_side = 2; }
+              if( P_point[1]/ I_radius < -Is_side  ) y_side = 0;
+              else { if( P_point[1]/ I_radius < Is_side  ) y_side = 1; else y_side = 2; }
+
+              switch( y_side*2 + x_side )
+               {
+                case( 0 ): Ir_result[0] =  P_point[0]; Ir_result[1] =   P_point[0]; Ir_result[2] =  -P_point[2]; break; //!< TODO
+                case( 1 ): Ir_result[0] =  P_point[0]; Ir_result[1] = - P_point[2]; Ir_result[2] =   P_point[1]; break;
+                case( 2 ): Ir_result[0] =  P_point[0]; Ir_result[1] =   P_point[0]; Ir_result[2] =  -P_point[2]; break; //!< TODO
+                case( 3 ): Ir_result[0] =  P_point[2]; Ir_result[1] =   P_point[1]; Ir_result[2] = - P_point[0]; break;
+                case( 4 ): Ir_result = P_point; break;
+                case( 5 ): Ir_result[0] = -P_point[2]; Ir_result[1] =   P_point[1]; Ir_result[2] = + P_point[0]; break;
+                case( 6 ): Ir_result[0] =  P_point[0]; Ir_result[1] =   P_point[0]; Ir_result[2] =  -P_point[2]; break; //!< TODO
+                case( 7 ): Ir_result[0] =  P_point[0]; Ir_result[2] = + P_point[0]; Ir_result[2] = - P_point[1]; break;
+                case( 8 ): Ir_result[0] =  P_point[0]; Ir_result[1] =   P_point[0]; Ir_result[2] =  -P_point[2]; break; //!< TODO
+               }
 
               return Ir_result;
              }

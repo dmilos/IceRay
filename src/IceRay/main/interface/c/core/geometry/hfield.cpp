@@ -38,7 +38,7 @@ IceRayC_Geometry_Handle IceRayC_Geometry_HField_System0()
   return cpp2c( Ir_result );
  }
 
-IceRayC_Type_Bool       IceRayC_Geometry_HField_System_Lo( IceRayC_Geometry_Handle P_this, IceRayC_TypeCoordScalar3D* P_lo )
+IceRayC_Type_Bool       IceRayC_Geometry_HField_System_Lo( IceRayC_Geometry_Handle P_this, IceRayC_Type_Math_Coord_Scalar3D* P_lo )
  {
   typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;
   typedef GS_DDMRM::S_IceRay::S_geometry::S_hfield::GC_system Tf_hfield;
@@ -52,7 +52,7 @@ IceRayC_Type_Bool       IceRayC_Geometry_HField_System_Lo( IceRayC_Geometry_Hand
   return 1;
  }
 
-IceRayC_Type_Bool       IceRayC_Geometry_HField_System_Hi( IceRayC_Geometry_Handle P_this, IceRayC_TypeCoordScalar3D* P_hi )
+IceRayC_Type_Bool       IceRayC_Geometry_HField_System_Hi( IceRayC_Geometry_Handle P_this, IceRayC_Type_Math_Coord_Scalar3D* P_hi )
  {
   typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;
   typedef GS_DDMRM::S_IceRay::S_geometry::S_hfield::GC_system Tf_hfield;

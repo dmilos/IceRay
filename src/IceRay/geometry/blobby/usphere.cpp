@@ -19,18 +19,18 @@ GC_usphere::GC_usphere(  )
  }
 
 /* (x^2 - inf^2)^2 / ( rad^2 - inf^2 )^2 = c1 * ( x^2 - c0 )^2  == 1 */
-GC_usphere::GC_usphere( T_scalar const& P_radius )
- :M2_radius( P_radius )
+GC_usphere::GC_usphere( T_scalar const& P_core )
+ :M2_core( P_core )
  {
   static T_scalar Is_epsilon = 1e-10;// T_scalar( std::numeric_limits<T_scalar>::epsilon() );
 
-  T_scalar I_f = M2_radius * M2_radius - 1;
+  T_scalar I_f = M2_core * M2_core - 1;
   I_f *= I_f;
 
   if( ( -Is_epsilon < I_f ) && ( I_f < Is_epsilon ) )
    {
-    M2_radius = 1 * 0.999;
-    I_f = M2_radius * M2_radius - 1 ;
+    M2_core = 1 * 0.999;
+    I_f = M2_core * M2_core - 1 ;
     I_f *= I_f;
    }
 

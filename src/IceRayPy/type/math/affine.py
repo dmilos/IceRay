@@ -1,4 +1,4 @@
-print( '<' + __name__ + ' name=\'' +   __file__ + '\'/>' )
+#print( '<' + __name__ + ' name=\'' +   __file__ + '\'/>' )
 import ctypes
 import inspect
 
@@ -102,3 +102,5 @@ def system3D_Z( P_dll, P_pivot : Coord3D, P_Z : Coord3D ):
     result = Scalar3D()
     f = P_dll.IceRayC_Type_Math_Affine3D_SystemZ( AddressOf( result ), AddressOf( P_pivot ), AddressOf( P_Z ) )
     return result
+
+#print( '</' + __name__ + ' name=\'' +   __file__ + '\'>' )

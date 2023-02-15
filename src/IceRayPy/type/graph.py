@@ -1,6 +1,6 @@
 import ctypes
 
-print( '<' + __name__ + ' name=\'' +   __file__ + '\'>' )
+#print( '<' + __name__ + ' name=\'' +   __file__ + '\'>' )
 
 import IceRayPy
 
@@ -31,10 +31,10 @@ class Picture:
 
         result = IceRayPy.type.math.coord.Size2D()
         self.m_cargo['dll'].IceRayC_Type_Picture_SizeGet( self.m_cargo['this'], AddressOf( result ) );
-        return  result
+        return result
 
     def load( self, P_filename ):
-        self.m_cargo['dll'].IceRayC_Type_Picture_Load( self.m_cargo['this'], P_filename.encode('utf-8') )
+        return self.m_cargo['dll'].IceRayC_Type_Picture_Load( self.m_cargo['this'], P_filename.encode('utf-8') )
 
     def storePNM( self, P_filename ):
         self.m_cargo['dll'].IceRayC_Type_Picture_StorePNM( self.m_cargo['this'], P_filename.encode('utf-8') )
@@ -53,4 +53,4 @@ def Default( P_image ):
     P_image.m_cargo['dll'].IceRayC_Type_Picture_Default( P_image.m_cargo['this'] )
 
 
-print( '</' + __name__ + ' name=\'' +   __file__ + '\'>' )
+#print( '</' + __name__ + ' name=\'' +   __file__ + '\'>' )

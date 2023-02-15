@@ -6,6 +6,9 @@ from IceRayPy import utility
 
 Coord3D = IceRayPy.type.math.coord.Scalar3D
 
+
+
+
 def vacuum( P_dll, P_config = None, P_light = None, P_exponat = None ):
     geometry = IceRayPy.core.geometry.volumetric.Vacuum( P_dll )
 
@@ -125,3 +128,12 @@ def radiosity( P_dll, P_config = { 'shadow': False, 'pigment': None }, P_light =
     wrapper.pigment( pigment )
     wrapper.geometrySet( geometry )
     return wrapper
+
+
+list = {
+      'vacuum'      : vacuum,
+      'ptrs'        : pointers,
+      #'ptrs-A'     : pointers,
+      'radiosity'   : radiosity,
+      'plate'       : plate
+    }

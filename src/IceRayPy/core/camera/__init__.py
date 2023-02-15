@@ -1,4 +1,4 @@
-print( '<' + __name__ + ' name=\'' +   __file__ + '\'>' )
+#print( '<' + __name__ + ' name=\'' +   __file__ + '\'>' )
 
 #__all__= [
 # 'cylinder',
@@ -14,4 +14,4 @@ import IceRayPy.core.camera.flat
 #import IceRayPy.core.camera.dof
 import IceRayPy.core.camera.sphere
 
-print( '</' + __name__ + ' name=\'' +   __file__ + '\'>' )
+#print( '</' + __name__ + ' name=\'' +   __file__ + '\'>' )

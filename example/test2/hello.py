@@ -14,7 +14,7 @@ import IceRayPy
 from IceRayPy import core
 from IceRayPy import utility
 
-import room
+import library_room
 
 
 def doRendering(P_config): # P_folder, P_dll, P_eye, P_view
@@ -52,7 +52,7 @@ def doRendering(P_config): # P_folder, P_dll, P_eye, P_view
     camera_up   = IceRayPy.type.math.coord.load3D( P_config['dll'], 0, 0, 1 )
     camera.toWorldSet( IceRayPy.type.math.affine.lookAt( P_config['dll'], P_config['camera']['eye'], P_config['camera']['view'], camera_up ) )
 
-    room_object = room.cornel_close( P_config['dll'], P_config['room'], light_final, geometry )
+    room_object = library_room.cornel_close( P_config['dll'], P_config['room'], light_final, geometry )
 
     rtss = IceRayPy.core.geometry.rtss.Object( P_config['dll'] )
 

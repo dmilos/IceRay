@@ -42,10 +42,10 @@
              T_scalar Fv_intensity( T_coord const& P_poin )const;
 
            public:
-             T_scalar    const& F_radius()const{ return M2_radius; }
-             bool               F_radius( T_scalar const& P_radius ){ M2_radius = P_radius; return bool( true ); }
+             T_scalar    const& F_core()const{ return M2_core; }
+             bool               F_core( T_scalar const& P_core ){ M2_core = P_core; return bool( true ); }
            private:
-             T_scalar M2_radius;
+             T_scalar M2_core;
 
            private:
              T_scalar M2_c1;

@@ -82,12 +82,19 @@ bool GC_triangle::Fv_intersect( T_scalar &P_lambda, T_scalar const& P_00, T_scal
 void GC_triangle::Fv_height( T_scalar &P_height, T_scalar const& P_00, T_scalar const& P_10, T_scalar const& P_01, T_scalar const& P_11, T_scalar const& P_x, T_scalar const& P_y )const
  {
   if( P_x + P_y < T_scalar(1) )
-   {
-    // TODO
+   { // TODO check
+    T_scalar I_y0 = ::math::function::to_any<T_scalar>( P_x, P_00, P_10 );
+    T_scalar I_y1 = ::math::function::to_any<T_scalar>( P_x, P_01, P_01 + (P_10 - P_00 ) );
+
+    P_height = ::math::function::to_any( P_y, I_y0, I_y1 );
+    return;
    }
   if( T_scalar(1) < P_x + P_y )
-   {
-    // TODO
+   { // TODO check
+    T_scalar a = ::math::function::to_any( T_scalar(1)-P_x, P_11, P_01 );
+    T_scalar b = ::math::function::to_any( T_scalar(1)-P_x, P_10, P_10 + (P_01 - P_11 ) );
+
+    P_height = ::math::function::to_any( T_scalar(1)-P_y, a, b );
    }
 
  }

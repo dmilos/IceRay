@@ -17,3 +17,4 @@ main/interface/c/core/render/render.cpp
 main/interface/c/core/utility/utility.cpp
 main/interface/c/type/type.cpp
 main/interface/c/utility/utility.cpp
+main/interface/c/system/system.cpp

@@ -65,7 +65,7 @@ def plane( P_dll, P_config = { 'level':  - 1.001, 'shadow': False, 'pigment': No
 
 def pigment_radiosity( P_dll, P_scene, P_config ):
     I_blossom = 'triangle'
-    I_sample = 25
+    I_sample = 1
     I_angle = math.radians( 75 )
     I_jitter = math.radians( 15 )
     I_albedo = IceRayPy.type.color.RGB( 0.85, 0.85, 0.85 )
@@ -450,3 +450,16 @@ def mirror_sphere(
     wrapper.geometrySet( rtss )
 
     return wrapper
+
+list = {
+      'vacuum'      : vacuum,
+      'plane'       : plane,
+      'plate'       : plate,
+      'disc'        : disc,
+      'R-M-box'     : mirror_box,
+       'R-M-sphere' : mirror_sphere,
+      'C-radiosity' : cornell_radiosity,
+      #'C-0pen'      : cornel_open, TODO
+      'C-close'     : cornel_close,
+      'R-plane'     : radiosity_plane
+    }

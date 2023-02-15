@@ -1,4 +1,4 @@
-print( '<' + __name__ + ' file=\'' +   __file__ + '\'>' )
+#print( '<' + __name__ + ' file=\'' +   __file__ + '\'>' )
 import ctypes
 
 import IceRayPy
@@ -160,4 +160,4 @@ def scale3D( P_dll, P_scalar, P_coord: Scalar3D ):
     P_dll.IceRayC_Type_Math_Coord3D_Scale( AddressOf( result ), Scalar( P_scalar ), AddressOf( P_coord )  )
     return result
 
-print( '<' + __name__ + ' file=\'' +   __file__ + '\'/>' )
+#print( '<' + __name__ + ' file=\'' +   __file__ + '\'/>' )

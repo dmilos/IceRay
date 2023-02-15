@@ -55,7 +55,7 @@
              T_coord  M2_2local, M2_2world;
 
            public:
-             void F_child( T__element *P_child );
+             bool F_child( T__element *P_child );
            private:
              T__element   *M2_child;
 

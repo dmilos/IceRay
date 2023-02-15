@@ -162,4 +162,31 @@ def Level(
 
     return I_surface
 
+def Gradient(
+      P_dll
+     ,P_config
+     ,P_bottom = None
+     ,P_top = None
+    ):
+
+    I_gradient = IceRayPy.library.material.pattern.gradient.Topography( P_dll )
+
+    I_gradient.bottom( IceRayPy.type.math.coord.Scalar3D( -1, -1, -1 ) )
+    I_gradient.top(    IceRayPy.type.math.coord.Scalar3D( +1, +1, +1 ) )
+    if( None != P_bottom ):
+        I_gradient.bottom( P_bottom )
+    if( None != P_top ):
+        I_gradient.top( P_top )
+
+    result = IceRayPy.core.material.instruction.label.color.dynamic.RESULT
+    point = IceRayPy.core.material.instruction.label.coord3d.dynamic.POINT
+    value = IceRayPy.core.material.instruction.label.scalar.temp._BEGIN
+
+    temp = IceRayPy.core.material.instruction.label.color.temp._BEGIN
+
+    I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
+    I_surface.append( IceRayPy.core.material.instruction.pattern.Color( P_dll, I_gradient, result, point ) )
+
+    return I_surface
+
 #print( '</' + __name__ + ' name=\'' +   __file__ + '>' )

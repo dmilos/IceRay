@@ -18,7 +18,6 @@ class Addition:
     def __del__(self):
         self.m_cargo['dll'].IceRayC_Material_Pigment_Surface_Instruction_Release( self.m_cargo['this'] )
 
-
 class Divide:
     def __init__(self, P_dll, P_result, P_left, P_right ):
         self.m_cargo = {}

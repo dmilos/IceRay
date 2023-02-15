@@ -189,3 +189,49 @@ IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Side_Tetrahedron0( )
   auto Ir_result = new GS_DDMRM::S_IceRay::S_material::S_pattern::S_side::GC_tetrahedron{};
   return cpp2c( Ir_result );
  }
+
+IceRayC_Material_Pattern_Handle  IceRayC_Material_Pattern_Gradient0( )
+ {
+  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GC_gradient    Tf_this;
+  auto Ir_result = new Tf_this{  };
+  return cpp2c( Ir_result );
+ }
+
+int IceRayC_Material_Pattern_Gradient_Set( IceRayC_Material_Pattern_Handle P_this, IceRayC_Type_Scalar P_point,   IceRayC_Type_Color_RGB* P_color )
+ {
+  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GC_gradient        Tf_surface;
+
+  auto I_this = dynamic_cast< Tf_surface *>( c2cpp( P_this ) );
+  if( nullptr == I_this )
+   {
+    return 0;
+   }
+  I_this->F_set( P_point, c2cpp( *P_color ) );
+  return 1;
+ }
+ 
+int                             IceRayC_Material_Pattern_Gradient_Bottom( IceRayC_Material_Pattern_Handle P_this, IceRayC_Type_Math_Coord_Scalar3D* P_bottom )
+ {
+  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GC_gradient        Tf_surface;
+
+  auto I_this = dynamic_cast< Tf_surface *>( c2cpp( P_this ) );
+  if( nullptr == I_this )
+   {
+    return 0;
+   }
+  I_this->F_bottom( c2cpp( *P_bottom ) );
+  return 1;
+ }
+int                             IceRayC_Material_Pattern_Gradient_Top(    IceRayC_Material_Pattern_Handle P_this, IceRayC_Type_Math_Coord_Scalar3D* P_top    )
+ {
+  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GC_gradient        Tf_surface;
+
+  auto I_this = dynamic_cast< Tf_surface *>( c2cpp( P_this ) );
+  if( nullptr == I_this )
+   {
+    return 0;
+   }
+  I_this->F_top( c2cpp( *P_top ) );
+  return 1;
+ }
+

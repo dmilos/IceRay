@@ -91,5 +91,6 @@ main/make/material.cpp
 
 main/make/texture.cpp
 
+main/system/info.cpp
 main/system/init_system.cpp
 main/system/windows_system.cpp

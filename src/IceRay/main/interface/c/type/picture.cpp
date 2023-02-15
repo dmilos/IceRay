@@ -138,6 +138,8 @@ IceRayC_Type_Bool IceRayC_Type_Picture_Load( IceRayC_Type_Picture_Handle P_this,
     auto I_image = Gdiplus::Bitmap::FromFile( std::wstring( P_fileName, P_fileName + strlen(P_fileName) ).c_str() );
     if( nullptr != I_image )
      {
+      if( 0 == I_image->GetWidth() ) return 0;
+      if( 0 == I_image->GetHeight() ) return 0;
       I_this->Fv_size( { I_image->GetWidth(), I_image->GetHeight() } );
       Gdiplus::Color I_color;
 
@@ -152,7 +154,6 @@ IceRayC_Type_Bool IceRayC_Type_Picture_Load( IceRayC_Type_Picture_Handle P_this,
       return 1;
      }
 #endif
-
 
   return 0;
  }

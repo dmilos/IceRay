@@ -1,4 +1,4 @@
-print( '<' + __name__ + ' file=\'' +   __file__ + '>' )
+#print( '<' + __name__ + ' file=\'' +   __file__ + '>' )
 
 AIR            = 1.000293
 HELIUM         = 1.000036
@@ -20,4 +20,4 @@ CUBIC_ZIRCONIA = 2.15
 DIAMOND        = 2.42
 MOISSANITE     = 2.65
 
-print( '</' + __name__ + ' file=\'' +   __file__ + '>' )
+#print( '</' + __name__ + ' file=\'' +   __file__ + '>' )

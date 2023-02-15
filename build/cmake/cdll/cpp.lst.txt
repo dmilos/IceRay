@@ -17,4 +17,6 @@ IceRay/main/interface/c/core/render/render.cpp
 IceRay/main/interface/c/core/utility/utility.cpp
 IceRay/main/interface/c/type/type.cpp
 IceRay/main/interface/c/utility/utility.cpp
+IceRay/main/interface/c/system/system.cpp
 IceRay/main/system/init_system.cpp
+IceRay/main/system/info.cpp

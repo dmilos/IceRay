@@ -1,4 +1,4 @@
-print( '<' + __name__ + ' name=\'' +   __file__ + '\'>' )
+#print( '<' + __name__ + ' name=\'' +   __file__ + '\'>' )
 
 import ctypes
 
@@ -167,4 +167,4 @@ def Coord2D2Coord3D( P_dll, P_result, P_input ):
     return _General( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Convert_Coord2D2Coord3D0 , P_dll, P_result, P_input )
 
 
-print( '</' + __name__ + ' name=\'' +   __file__ + '\'>' )
+#print( '</' + __name__ + ' name=\'' +   __file__ + '\'>' )

@@ -1,4 +1,4 @@
-print( '<' + __name__ + ' name=\'' +   __file__ + '\'>' )
+#print( '<' + __name__ + ' name=\'' +   __file__ + '\'>' )
 
 import ctypes
 
@@ -89,4 +89,4 @@ class Size4D:
     def __del__(self):
         self.m_cargo['dll'].IceRayC_Material_Pattern_Release( self.m_cargo['this'] )
 
-print( '</' + __name__ + ' name=\'' +   __file__ + '\'>' )
+#print( '</' + __name__ + ' name=\'' +   __file__ + '\'>' )

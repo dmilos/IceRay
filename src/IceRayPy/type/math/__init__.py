@@ -1,4 +1,4 @@
-print( '<' + __name__ + ' name=\'' +   __file__ + '\'>' )
+#print( '<' + __name__ + ' name=\'' +   __file__ + '\'>' )
 __all__       = [ "affine", "coord", "interval", "matrix" ]
 
 #import IceRayPy.type.math.coord
@@ -7,4 +7,4 @@ __all__       = [ "affine", "coord", "interval", "matrix" ]
 #import IceRayPy.type.math.affine
 #import IceRayPy.type.math.homography
 
-print( '</' + __name__ + ' name=\'' +   __file__ + '\'>' )
+#print( '</' + __name__ + ' name=\'' +   __file__ + '\'>' )

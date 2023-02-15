@@ -123,8 +123,8 @@ int F(Translate3D_Move            )( H P_that, IceRayC_Type_Coord_Scalar3D   * P
   typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_mapping::GT_translate3D    Tf_this;
   auto I_this= dynamic_cast<Tf_this* >( c2cpp( P_that ) );
   if( nullptr == I_this ) return 0;
-  // TODO I_this->F_structure( c2cpp( * P_translate ) )
-  return 0; // TODO
+  I_this->F_operation().M_move = c2cpp( *P_translate );
+  return 1;
  }
 
 H F(Affine3D0            )( S P_result, S P_left )
@@ -139,13 +139,13 @@ H F(Affine3D1            )(IceRayC_Type_Math_Affine3D    * P_affine, S P_result,
   auto Ir_result = new Tf_this{ Tf_this::T_operation( c2cpp(*P_affine) ), P_result, P_left };
   return cpp2c( Ir_result );
  }
-int F(Affine3D_Structure            )( H P_that, IceRayC_Type_Math_Affine3D   * P_translate )
+int F(Affine3D_Structure            )( H P_that, IceRayC_Type_Math_Affine3D   * P_affine )
  {
   typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_mapping::GT_affine3D    Tf_this;
   auto I_this= dynamic_cast<Tf_this* >( c2cpp( P_that ) );
   if( nullptr == I_this ) return 0;
-  // TODO I_this->F_structure( c2cpp( * P_translate ) )
-  return 0; // TODO
+  I_this->F_operation().M_affine = c2cpp( * P_affine );
+  return 1;
  }
 
 H F(Homography3D0        )( S P_result, S P_left )
@@ -160,13 +160,13 @@ H F(Homography3D1        )(IceRayC_Type_Math_Homography3D     * P_homography, S 
   auto Ir_result = new Tf_this{  Tf_this::T_operation( c2cpp(*P_homography) ),  P_result, P_left };
   return cpp2c( Ir_result );
  }
-int F(Homography3D_Structure            )( H P_that, IceRayC_Type_Math_Homography3D  * P_structure )
+int F(Homography3D_Structure            )( H P_that, IceRayC_Type_Math_Homography3D  * P_homography )
  {
   typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_mapping::GT_homography3D    Tf_this;
   auto I_this= dynamic_cast<Tf_this* >( c2cpp( P_that ) );
   if( nullptr == I_this ) return 0;
-  // TODO I_this->F_structure( c2cpp( * P_translate ) )
-  return 0; // TODO
+  I_this->F_operation().M_homography = c2cpp( *P_homography );
+  return 1;
  }
 
 H F(Cartesian2Cylindric0 )( S P_result, S P_left )

@@ -129,12 +129,13 @@ GC_translate::T_scalar GC_translate::Fv_intensity( T_coord const& P_point )const
   return M2_child->Fv_intensity( I_point );
  }
 
-void GC_translate::F_child( T__element *P_child )
+bool GC_translate::F_child( T__element *P_child )
  {
   M2_child = P_child;
   T_box I_box = M2_child->F_box();
   ::math::geometry::interval::translate( I_box, M2_2world );
   F1_box( I_box );
+  return true;
  }
 
 bool GC_translate::F_move( T_coord const& P_move )

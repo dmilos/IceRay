@@ -1,4 +1,4 @@
-print( '<' + __name__ + ' name=\'' +   __file__ + '\'>' )
+#print( '<' + __name__ + ' name=\'' +   __file__ + '\'>' )
 
 import IceRayPy
 import math
@@ -49,4 +49,4 @@ def Intersect_SURFACE_SURFACE( P_dll ):
     return IntersectGeneral( P_dll, IceRayPy.core.geometry.complex.Intersect.SURFACE, IceRayPy.core.geometry.complex.Intersect.SURFACE  )
 
 
-print( '</' + __name__ + ' name=\'' +   __file__ + '>' )
+#print( '</' + __name__ + ' name=\'' +   __file__ + '>' )

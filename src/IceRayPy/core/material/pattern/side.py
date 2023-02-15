@@ -1,4 +1,4 @@
-print( '<' + __name__ + ' name=\'' +   __file__ + '\'>' )
+#print( '<' + __name__ + ' name=\'' +   __file__ + '\'>' )
 
 class Cube:
     def __init__(self, P_dll, P_value = None, P_deplete = None ):
@@ -50,4 +50,4 @@ class Tetrahedron:
         self.m_cargo['dll'].IceRayC_Material_Pattern_Release( self.m_cargo['this'] )
 
 
-print( '</' + __name__ + ' name=\'' +   __file__ + '\'>' )
+#print( '</' + __name__ + ' name=\'' +   __file__ + '\'>' )

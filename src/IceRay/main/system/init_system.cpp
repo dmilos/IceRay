@@ -1,12 +1,17 @@
 #include <iostream>
 #include <iomanip>
 
+
+
 void InitSystem( void )
  {
+  extern int InitInfo( void );
+  InitInfo();
+
 #if defined( _MSC_VER  )
   extern void InitSystemWindows( void );
   InitSystemWindows();
-#endif 
+#endif
 
 #if defined( __GNUC__  )
 

@@ -11,6 +11,18 @@ def time( P_index, P_dilatation ):
 def alpha( P_time ):
     return math.radians( P_time )
 
+def presentation( P_time, P_config = None ):
+    I_radius = 3
+
+    if( 'radius' in P_config ):
+        I_radius = P_config['radius']
+
+    x = 0
+    y = I_radius
+    z = 0
+
+    return [x,y,z]
+
 
 def default( P_time, P_config = None ):
     I_radius = 3
@@ -50,37 +62,45 @@ def circle( P_time, P_config = None ):
 
 def looker( P_time, P_config = None ):
 
-    radiusX_lo = 1.2
-    radiusX_hi = 3
+    radiusX_lo = 2.2
+    radiusX_hi = 3.2
 
     heightHi = 2
-    heightLo = 0
-
+    heightLo = 0.66
 
     alpha = P_time * ( 2 * 3.1415926 )
     height = heightLo
     x =  math.cos( alpha - math.pi/2 )
     y =  math.sin( alpha - math.pi/2 )
 
-    if( math.degrees(alpha) < 360 ):
-        radiusS = radiusX_lo + ( ( math.degrees(alpha) - 270.0)/90.0)*( radiusX_hi - radiusX_lo )
-        height = heightHi + ( ( math.degrees(alpha) -270.0)/90.0)*( heightLo - heightHi );
+    degree = math.fmod( math.degrees(alpha), 360 )
+    if( degree < 360 ):
+        radiusS = radiusX_lo + ( ( degree - 270.0)/90.0)*( radiusX_hi - radiusX_lo )
+        height = heightHi + ( ( degree -270.0)/90.0)*( heightLo - heightHi );
 
-    if( math.degrees(alpha) < 270 ):
+    if( degree < 270 ):
         radiusS = radiusX_lo
         height = heightHi ;
 
-    if( math.degrees(alpha) < 180 ):
-        radiusS = radiusX_hi + ( ( math.degrees(alpha) -90.0)/90.0)*( radiusX_lo - radiusX_hi )
-        height = heightLo + ( ( math.degrees(alpha) -90.0)/90.0)*( heightHi - heightLo );
+    if( degree < 180 ):
+        radiusS = radiusX_hi + ( ( degree -90.0)/90.0)*( radiusX_lo - radiusX_hi )
+        height = heightLo + ( ( degree -90.0)/90.0)*( heightHi - heightLo );
 
-    if( math.degrees(alpha) < 90 ):
+    if( degree < 90 ):
         radiusS = radiusX_hi
         height = heightLo
 
     x =  x * radiusS
     y =  y * radiusS
 
-    print( "Camera: ", math.degrees(alpha), " _ [" ,  x, ",", y, ",", height, "]  ||", math.sqrt( x*x+ y*y ), "||" )
+    print( "Camera: ", degree, " _ [" ,  x, ",", y, ",", height, "]  ||", math.sqrt( x*x+ y*y ), "||" )
 
     return [x,y,height]
+
+list= {
+        'default' : default,
+        'debug'   : debug,
+        'circle'  : circle,
+        'looker'  : looker,
+        'presentation'  : presentation
+    }

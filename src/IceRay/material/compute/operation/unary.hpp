@@ -58,7 +58,7 @@
                     T_operation const& P_operation
                    ,T_size      const& P_outType_result = 0
                    ,T_size      const& P_inType_left    = 1
-                  ) : M2_operation( P_operation )
+                  ): M2_operation( P_operation )
                   {
                    this->template F_output<T_result>( En_outTYPE_ResultValue,  P_outType_result );
 

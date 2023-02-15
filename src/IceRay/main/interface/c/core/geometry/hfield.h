@@ -15,8 +15,8 @@ typedef IceRayC_Geometry_HField_Object_Struct* IceRayC_Geometry_HField_Object_Ha
 
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_HField_System0();
 
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool       IceRayC_Geometry_HField_System_Lo( IceRayC_Geometry_Handle P_this, IceRayC_TypeCoordScalar3D* P_lo );
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool       IceRayC_Geometry_HField_System_Hi( IceRayC_Geometry_Handle P_this, IceRayC_TypeCoordScalar3D* P_hi );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool       IceRayC_Geometry_HField_System_Lo( IceRayC_Geometry_Handle P_this, IceRayC_Type_Math_Coord_Scalar3D* P_lo );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool       IceRayC_Geometry_HField_System_Hi( IceRayC_Geometry_Handle P_this, IceRayC_Type_Math_Coord_Scalar3D* P_hi );
 
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool       IceRayC_Geometry_HField_System_Generator( IceRayC_Geometry_Handle P_this, IceRayC_Geometry_HField_Generator_Handle P_function );
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool       IceRayC_Geometry_HField_System_Object(   IceRayC_Geometry_Handle P_this, IceRayC_Geometry_HField_Object_Handle   P_function );

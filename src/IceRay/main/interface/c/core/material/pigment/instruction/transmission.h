@@ -25,10 +25,9 @@ IceRayC__EXPORT IceRayC__DECLSPEC  H F( Jitter_VDC0)(     S P_normal, S P_count,
 IceRayC__EXPORT IceRayC__DECLSPEC  H F( Correct_Cone0 )( S P_normal, S P_bump, S P_angleIn, S P_angleOut );
 IceRayC__EXPORT IceRayC__DECLSPEC  H F( Correct_Trim0 )( S P_normal, S P_count, S P_leader );
 IceRayC__EXPORT IceRayC__DECLSPEC  H F( Correct_Claim0)( S P_normal, S P_count, S P_leader );
-// IceRayC__EXPORT IceRayC__DECLSPEC  H F(Correct_Normal0)( TODO );
 
-IceRayC__EXPORT IceRayC__DECLSPEC  H F( Reflect_One0)(     S P_point, S P_normal, S P_albedo, S P_leader );
-IceRayC__EXPORT IceRayC__DECLSPEC  H F( Reflect_Schlick0)( S P_point, S P_normal, S P_ior,    S P_leader );
+IceRayC__EXPORT IceRayC__DECLSPEC  H F( Reflect_One0     )( S P_point, S P_normal, S P_albedo, S P_leader );
+IceRayC__EXPORT IceRayC__DECLSPEC  H F( Reflect_Schlick0 )( S P_point, S P_normal, S P_ior,    S P_leader );
 
 IceRayC__EXPORT IceRayC__DECLSPEC  H F( Refract_Fresnel0 )( S P_point, S P_normal, S P_ior, S P_albedo, S P_total,        S P_leader );
 IceRayC__EXPORT IceRayC__DECLSPEC  H F( Refract_Schlick0 )( S P_point, S P_normal, S P_ior, S P_albedo, S P_total,        S P_leader );

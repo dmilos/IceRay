@@ -90,7 +90,7 @@ int IceRayC_Light_Area_Sample( IceRayC_Light_Handle P_this, IceRayC_TypeSize P_s
   I_this->F_sample( P_sample );
   return 1;
  }
-int IceRayC_Light_Area_Origin( IceRayC_Light_Handle P_this, IceRayC_TypeCoordScalar3D *P_origin )
+int IceRayC_Light_Area_Origin( IceRayC_Light_Handle P_this, IceRayC_Type_Math_Coord_Scalar3D *P_origin )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_area Tf_this;
@@ -103,7 +103,7 @@ int IceRayC_Light_Area_Origin( IceRayC_Light_Handle P_this, IceRayC_TypeCoordSca
   I_this->F_origin( c2cpp( *P_origin ) );
   return 1;
  }
-int IceRayC_Light_Area_X( IceRayC_Light_Handle P_this, IceRayC_TypeCoordScalar3D* P_X )
+int IceRayC_Light_Area_X( IceRayC_Light_Handle P_this, IceRayC_Type_Math_Coord_Scalar3D* P_X )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_area Tf_this;
@@ -116,7 +116,7 @@ int IceRayC_Light_Area_X( IceRayC_Light_Handle P_this, IceRayC_TypeCoordScalar3D
   I_this->F_x( c2cpp( *P_X ) );
   return 1;
  }
-int IceRayC_Light_Area_Y( IceRayC_Light_Handle P_this, IceRayC_TypeCoordScalar3D *P_Y )
+int IceRayC_Light_Area_Y( IceRayC_Light_Handle P_this, IceRayC_Type_Math_Coord_Scalar3D *P_Y )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_area Tf_area;
@@ -238,7 +238,7 @@ int IceRayC_Light_Circle_Spot( IceRayC_Light_Handle P_this, IceRayC_TypeSpot* P_
   I_this->F_spot( c2cpp( *P_spot ) );
   return 1;
  }
-int IceRayC_Light_Circle_Center( IceRayC_Light_Handle P_this, IceRayC_TypeCoordScalar3D* P_center )
+int IceRayC_Light_Circle_Center( IceRayC_Light_Handle P_this, IceRayC_Type_Math_Coord_Scalar3D* P_center )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_circle Tf_circle;
@@ -251,7 +251,7 @@ int IceRayC_Light_Circle_Center( IceRayC_Light_Handle P_this, IceRayC_TypeCoordS
   I_this->F_center( c2cpp( *P_center) ) ;
   return 1;
  }
-int IceRayC_Light_Circle_X( IceRayC_Light_Handle P_this, IceRayC_TypeCoordScalar3D* P_X )
+int IceRayC_Light_Circle_X( IceRayC_Light_Handle P_this, IceRayC_Type_Math_Coord_Scalar3D* P_X )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_circle Tf_circle;
@@ -264,7 +264,7 @@ int IceRayC_Light_Circle_X( IceRayC_Light_Handle P_this, IceRayC_TypeCoordScalar
   I_this->F_x( c2cpp( *P_X ) ) ;
   return 1;
  }
-int IceRayC_Light_Circle_Y( IceRayC_Light_Handle P_this, IceRayC_TypeCoordScalar3D* P_Y )
+int IceRayC_Light_Circle_Y( IceRayC_Light_Handle P_this, IceRayC_Type_Math_Coord_Scalar3D* P_Y )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_circle Tf_circle;
@@ -347,7 +347,7 @@ int IceRayC_Light_Disc_Spot( IceRayC_Light_Handle P_this, IceRayC_TypeSpot* P_sp
   I_this->F_spot( c2cpp( *P_spot ) );
   return 1;
  }
-int IceRayC_Light_Disc_Center( IceRayC_Light_Handle P_this, IceRayC_TypeCoordScalar3D* P_center )
+int IceRayC_Light_Disc_Center( IceRayC_Light_Handle P_this, IceRayC_Type_Math_Coord_Scalar3D* P_center )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_disc Tf_disc;
@@ -360,7 +360,7 @@ int IceRayC_Light_Disc_Center( IceRayC_Light_Handle P_this, IceRayC_TypeCoordSca
   I_this->F_center( c2cpp( *P_center ) );
   return 1;
  }
-int IceRayC_Light_Disc_X( IceRayC_Light_Handle P_this, IceRayC_TypeCoordScalar3D* P_X )
+int IceRayC_Light_Disc_X( IceRayC_Light_Handle P_this, IceRayC_Type_Math_Coord_Scalar3D* P_X )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_disc Tf_disc;
@@ -373,7 +373,7 @@ int IceRayC_Light_Disc_X( IceRayC_Light_Handle P_this, IceRayC_TypeCoordScalar3D
   I_this->F_x( c2cpp( *P_X ) );
   return 1;
  }
-int IceRayC_Light_Disc_Y( IceRayC_Light_Handle P_this, IceRayC_TypeCoordScalar3D* P_Y )
+int IceRayC_Light_Disc_Y( IceRayC_Light_Handle P_this, IceRayC_Type_Math_Coord_Scalar3D* P_Y )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_disc Tf_disc;
@@ -420,7 +420,7 @@ int IceRayC_Light_Line_Spot( IceRayC_Light_Handle P_this,  IceRayC_TypeSpot* P_s
   I_this->F_spot( c2cpp( *P_spot ) );
   return 1;
  }
-int IceRayC_Light_Line_Start( IceRayC_Light_Handle P_this, IceRayC_TypeCoordScalar3D* P_start )
+int IceRayC_Light_Line_Start( IceRayC_Light_Handle P_this, IceRayC_Type_Math_Coord_Scalar3D* P_start )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_line Tf_line;
@@ -433,7 +433,7 @@ int IceRayC_Light_Line_Start( IceRayC_Light_Handle P_this, IceRayC_TypeCoordScal
   I_this->F_start( c2cpp( *P_start ) );
   return 1;
  }
-int IceRayC_Light_Line_End( IceRayC_Light_Handle P_this, IceRayC_TypeCoordScalar3D* P_end )
+int IceRayC_Light_Line_End( IceRayC_Light_Handle P_this, IceRayC_Type_Math_Coord_Scalar3D* P_end )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_line Tf_line;
@@ -454,7 +454,7 @@ IceRayC_Light_Handle IceRayC_Light_Point0()
   auto Ir_result = new Tf_point{};
   return cpp2c( Ir_result );
  }
-IceRayC_Light_Handle IceRayC_Light_Point1( IceRayC_TypeCoordScalar3D* center, IceRayC_TypeColorRGB* c0, IceRayC_TypeColorRGB* c1, IceRayC_TypeColorRGB* c2 )
+IceRayC_Light_Handle IceRayC_Light_Point1( IceRayC_Type_Math_Coord_Scalar3D* center, IceRayC_TypeColorRGB* c0, IceRayC_TypeColorRGB* c1, IceRayC_TypeColorRGB* c2 )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_point Tf_point;
@@ -475,7 +475,7 @@ int IceRayC_Light_Point_Spot( IceRayC_Light_Handle P_this, IceRayC_TypeSpot* P_s
   return 1;
  }
 
-int IceRayC_Light_Point_Center( IceRayC_Light_Handle P_this, IceRayC_TypeCoordScalar3D* P_center )
+int IceRayC_Light_Point_Center( IceRayC_Light_Handle P_this, IceRayC_Type_Math_Coord_Scalar3D* P_center )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_point Tf_point;
@@ -496,7 +496,7 @@ IceRayC_Light_Handle IceRayC_Light_Reflector0( )
   auto Ir_result = new Tf_reflector{};
   return cpp2c( Ir_result );
  }
-int IceRayC_Light_Reflector_Center( IceRayC_Light_Handle P_this, IceRayC_TypeCoordScalar3D* P_center )
+int IceRayC_Light_Reflector_Center( IceRayC_Light_Handle P_this, IceRayC_Type_Math_Coord_Scalar3D* P_center )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_reflector Tf_reflector;
@@ -522,7 +522,7 @@ int IceRayC_Light_Reflector_Spot( IceRayC_Light_Handle P_this, IceRayC_TypeSpot*
   I_this->F_spot( c2cpp( *P_spot ) );
   return 1;
  }
-int IceRayC_Light_Reflector_Direction( IceRayC_Light_Handle P_this, IceRayC_TypeCoordScalar3D* P_direction )
+int IceRayC_Light_Reflector_Direction( IceRayC_Light_Handle P_this, IceRayC_Type_Math_Coord_Scalar3D* P_direction )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_reflector Tf_reflector;
@@ -664,7 +664,7 @@ int IceRayC_Light_Spline_Sample( IceRayC_Light_Handle P_this, IceRayC_TypeSize P
   I_this->F_sample( P_sample );
   return 1;
  }
-int IceRayC_Light_Spline_CP( IceRayC_Light_Handle P_this, IceRayC_TypeSize P_sample, IceRayC_TypeCoordScalar3D* P_0 )
+int IceRayC_Light_Spline_CP( IceRayC_Light_Handle P_this, IceRayC_TypeSize P_sample, IceRayC_Type_Math_Coord_Scalar3D* P_0 )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_spline Tf_spline;
@@ -706,7 +706,7 @@ int IceRayC_Light_SunS_Spot ( IceRayC_Light_Handle P_this, IceRayC_TypeSpot* P_s
   return 1;
  }
 
-int IceRayC_Light_SunS_Center( IceRayC_Light_Handle P_this, IceRayC_TypeCoordScalar3D* P_center )
+int IceRayC_Light_SunS_Center( IceRayC_Light_Handle P_this, IceRayC_Type_Math_Coord_Scalar3D* P_center )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_suns Tf_suns;

@@ -209,21 +209,23 @@ GC_system::Fv_weight( )const
   return Ir_weigh;
  }
 
-void GC_system::F_add( T_element * P_element )
+bool GC_system::F_push( T_element * P_element )
  {
   M2_compartment = std::max( M2_compartment, P_element->Fv_weight() );
   M2_element.push_back( P_element );
 
   M2_rtss->Fv_push( P_element );
   T_geometry::F1_box( M2_rtss->F_box() );
+  return true;
  }
 
-void GC_system::F_rtss( T_rtss * P_rtss )
+bool GC_system::F_rtss( T_rtss * P_rtss )
  {
-  M2_rtss = std::shared_ptr<T_rtss>( P_rtss, [](auto p) { } );
+  M2_rtss = P_rtss;
   for( auto & I_element: M2_element )
    {
     M2_rtss->Fv_push( I_element );
    }
+  return true;
  }
 

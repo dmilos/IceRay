@@ -3,6 +3,7 @@ import ctypes
 import IceRayPy
 
 Scalar = IceRayPy.type.basic.Scalar
+AddressOf = ctypes.addressof
 
 class Sphere:
     def __init__( self, P_dll, P_center = None , P_radius = None ):
@@ -10,18 +11,18 @@ class Sphere:
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Geometry_Blobby_Element_Sphere0()
 
-        # TODOif None != P_center:
-        # TODO    self.m_cargo['dll'].IceRayC_Geometry_Sphere_Center()
-        # TODO
-        # TODOif None != P_radius:
-        # TODO    slef.m_cargo['this'] = IceRayC_Geometry_Sphere_Radius( P_radius )
-        # TODO    return
+        #if None != P_center:
+        #    self.center( P_center )
+        #
+        #if None != P_radius:
+        #    self.radius( P_radius )
+        #    return
 
     def __del__( self ):
         self.m_cargo['dll'].IceRayC_Geometry_Blobby_Element_Release( self.m_cargo['this'] )
 
     def center( self, P_center ):
-        self.m_cargo['dll'].IceRayC_Geometry_Blobby_Element_Sphere_Center( self.m_cargo['this'], P_center )
+        self.m_cargo['dll'].IceRayC_Geometry_Blobby_Element_Sphere_Center( self.m_cargo['this'], AddressOf( P_center ) )
 
     def core( self, P_radius ):
         self.m_cargo['dll'].IceRayC_Geometry_Blobby_Element_Sphere_Core( self.m_cargo['this'], Scalar( P_radius) )
@@ -39,17 +40,17 @@ class Cylinder:
         # TODO    self.m_cargo['dll'].IceRayC_Geometry_Blobby_Element_Cylinder_Center()
         # TODO
         # TODOif None != P_radius:
-        # TODO    slef.m_cargo['this'] = IceRayC_Geometry_Blobby_Element_Cylinder_Radius( P_radius )
+        # TODO    self.m_cargo['this'] = IceRayC_Geometry_Blobby_Element_Cylinder_Radius( P_radius )
         # TODO    return
 
     def __del__( self ):
         self.m_cargo['dll'].IceRayC_Geometry_Blobby_Element_Release( self.m_cargo['this'] )
 
     def bottom( self, P_bottom ):
-        self.m_cargo['dll'].IceRayC_Geometry_Blobby_Element_Cylinder_Bottom( self.m_cargo['this'], P_bottom )
+        self.m_cargo['dll'].IceRayC_Geometry_Blobby_Element_Cylinder_Bottom( self.m_cargo['this'], AddressOf( P_bottom ) )
 
     def top( self, P_top ):
-        self.m_cargo['dll'].IceRayC_Geometry_Blobby_Element_Cylinder_Top( self.m_cargo['this'], P_top )
+        self.m_cargo['dll'].IceRayC_Geometry_Blobby_Element_Cylinder_Top( self.m_cargo['this'], AddressOf( P_top ) )
 
     def core( self, P_core ):
         self.m_cargo['dll'].IceRayC_Geometry_Blobby_Element_Cylinder_Core( self.m_cargo['this'], Scalar( P_core ) )
@@ -67,7 +68,7 @@ class WatterZ:
         # TODO    self.m_cargo['dll'].IceRayC_Geometry_Cylinder_Center()
         # TODO
         # TODOif None != P_radius:
-        # TODO    slef.m_cargo['this'] = IceRayC_Geometry_Cylinder_Radius( P_radius )
+        # TODO    self.m_cargo['this'] = IceRayC_Geometry_Cylinder_Radius( P_radius )
         # TODO    return
 
     def __del__( self ):
@@ -89,7 +90,7 @@ class Vacuum:
         # TODO    self.m_cargo['dll'].IceRayC_Geometry_Vacuum_Center()
         # TODO
         # TODOif None != P_radius:
-        # TODO    slef.m_cargo['this'] = IceRayC_Geometry_Vacuum_Radius( P_radius )
+        # TODO    self.m_cargo['this'] = IceRayC_Geometry_Vacuum_Radius( P_radius )
         # TODO    return
 
     def __del__( self ):
@@ -111,7 +112,7 @@ class Affine:
         # TODO    self.m_cargo['dll'].IceRayC_Geometry_Affine_Center()
         # TODO
         # TODOif None != P_radius:
-        # TODO    slef.m_cargo['this'] = IceRayC_Geometry_Affine_Radius( P_radius )
+        # TODO    self.m_cargo['this'] = IceRayC_Geometry_Affine_Radius( P_radius )
         # TODO    return
 
     def __del__( self ):
@@ -127,7 +128,7 @@ class Translate:
         # TODO    self.m_cargo['dll'].IceRayC_Geometry_Affine_Center()
         # TODO
         # TODOif None == P_radius:
-        # TODO    slef.m_cargo['this'] = IceRayC_Geometry_Affine_Radius( P_radius )
+        # TODO    self.m_cargo['this'] = IceRayC_Geometry_Affine_Radius( P_radius )
         # TODO    return
 
     def __del__( self ):

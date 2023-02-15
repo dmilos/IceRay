@@ -9,12 +9,12 @@ IceRayC__EXPORT IceRayC__DECLSPEC  int                  IceRayC_Light_Transform_
 
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Light_Handle IceRayC_Light_Transform_Translate0();
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Light_Handle IceRayC_Light_Transform_Translate1(      IceRayC_Light_Handle P_child );
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Light_Handle IceRayC_Light_Transform_Translate2(      IceRayC_Light_Handle P_child, IceRayC_TypeCoordScalar3D* translation );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Light_Handle IceRayC_Light_Transform_Translate2(      IceRayC_Light_Handle P_child, IceRayC_Type_Math_Coord_Scalar3D* translation );
 IceRayC__EXPORT IceRayC__DECLSPEC  int                  IceRayC_Light_Transform_Translate_Child( IceRayC_Light_Handle P_this, IceRayC_Light_Handle child );
-IceRayC__EXPORT IceRayC__DECLSPEC  int                  IceRayC_Light_Transform_Translate_2Local_Get(  IceRayC_Light_Handle P_this, IceRayC_TypeCoordScalar3D* translation );
-IceRayC__EXPORT IceRayC__DECLSPEC  int                  IceRayC_Light_Transform_Translate_2Local_Set(  IceRayC_Light_Handle P_this, IceRayC_TypeCoordScalar3D* translation );
-IceRayC__EXPORT IceRayC__DECLSPEC  int                  IceRayC_Light_Transform_Translate_2World_Get(  IceRayC_Light_Handle P_this, IceRayC_TypeCoordScalar3D* translation );
-IceRayC__EXPORT IceRayC__DECLSPEC  int                  IceRayC_Light_Transform_Translate_2World_Set(  IceRayC_Light_Handle P_this, IceRayC_TypeCoordScalar3D* translation );
+IceRayC__EXPORT IceRayC__DECLSPEC  int                  IceRayC_Light_Transform_Translate_2Local_Get(  IceRayC_Light_Handle P_this, IceRayC_Type_Math_Coord_Scalar3D* translation );
+IceRayC__EXPORT IceRayC__DECLSPEC  int                  IceRayC_Light_Transform_Translate_2Local_Set(  IceRayC_Light_Handle P_this, IceRayC_Type_Math_Coord_Scalar3D* translation );
+IceRayC__EXPORT IceRayC__DECLSPEC  int                  IceRayC_Light_Transform_Translate_2World_Get(  IceRayC_Light_Handle P_this, IceRayC_Type_Math_Coord_Scalar3D* translation );
+IceRayC__EXPORT IceRayC__DECLSPEC  int                  IceRayC_Light_Transform_Translate_2World_Set(  IceRayC_Light_Handle P_this, IceRayC_Type_Math_Coord_Scalar3D* translation );
 
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Light_Handle IceRayC_Light_Transform_Affine0();
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Light_Handle IceRayC_Light_Transform_Affine1( IceRayC_Light_Handle P_child );

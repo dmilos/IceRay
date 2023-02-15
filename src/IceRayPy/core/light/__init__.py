@@ -1,4 +1,4 @@
-print( '<' + __name__ + ' file=\'' +   __file__ + ' >' )
+#print( '<' + __name__ + ' file=\'' +   __file__ + ' >' )
 
 import ctypes
 
@@ -347,4 +347,4 @@ class SunG:
 import IceRayPy.core.light.transform
 
 
-print( '</' + __name__ + ' file=\'' +   __file__ + '\' >' )
+#print( '</' + __name__ + ' file=\'' +   __file__ + '\' >' )

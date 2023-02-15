@@ -1,3 +1,4 @@
+#print( '<' + __name__ + ' name=\'' +   __file__ + '>' )
 
 import IceRayPy
 

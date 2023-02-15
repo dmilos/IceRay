@@ -1,4 +1,4 @@
-print( '<' + __name__ + ' file=\'' +   __file__ + '\'>' )
+#print( '<' + __name__ + ' file=\'' +   __file__ + '\'>' )
 import ctypes
 
 import IceRayPy
@@ -65,4 +65,4 @@ class Size4D(ctypes.Structure):
     _fields_ = [
                 ("lo", CoordSize4D), ("hi", CoordSize4D )
                ]
-print( '<' + __name__ + ' file=\'' +   __file__ + '\'/>' )
+#print( '<' + __name__ + ' file=\'' +   __file__ + '\'/>' )

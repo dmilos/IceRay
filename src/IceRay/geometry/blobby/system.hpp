@@ -53,11 +53,11 @@
              T_scalar    Fv_distance( T_coord const& P_point )const;
 
            public:
-             void F_add( T_element * P_element );
+             bool F_push( T_element * P_element );
            public:
-             void F_rtss( T_rtss * P_rtss );
+             bool F_rtss( T_rtss * P_rtss );
            private:
-             std::shared_ptr<T_rtss> M2_rtss;
+             T_rtss* M2_rtss;
 
            private:
              typedef std::vector<T_element*> T2_container;
