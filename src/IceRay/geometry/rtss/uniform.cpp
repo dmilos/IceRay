@@ -1,3 +1,4 @@
+#include <cstring>
 #include "./uniform.hpp"
 
 using namespace GS_DDMRM::S_IceRay::S_geometry::S_RTSS;

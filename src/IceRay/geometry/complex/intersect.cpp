@@ -1,3 +1,4 @@
+#include <cstring>
 #include "./intersect.hpp"
 
 using namespace GS_DDMRM::S_IceRay::S_geometry::S_complex::S_CSG;

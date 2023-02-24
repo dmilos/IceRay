@@ -4,7 +4,7 @@ import IceRayPy
 import math
 Coord3D = IceRayPy.type.math.coord.Scalar3D
 
-G_distance = 0.01
+G_distance = 0
 
 def Pair( P_dll, P_config = None ):
 
@@ -17,7 +17,7 @@ def Pair( P_dll, P_config = None ):
     s.center( Coord3D(+G_distance,0,0))
     reuslt.push( s )
 
-    G_distance = G_distance + 0.01
+    G_distance = G_distance + 0.001
     return reuslt
 
 

@@ -190,7 +190,7 @@ bool    GC_sphere::Fv_box( T_box const& P_box )
   T_coord I_center; ::math::geometry::interval::center( I_center, P_box );
 
   T_coord I_size;   ::math::geometry::interval::size( I_size, P_box );
-  T_scalar I_radius = std::min<T_scalar>( { I_size[0], I_size[1], I_size[2] } );
+  T_scalar I_radius = std::min<T_scalar>( std::min<T_scalar>( I_size[0], I_size[1] ), I_size[2] );
 
   if( fabs( I_radius ) < Is_epsilon )
    {

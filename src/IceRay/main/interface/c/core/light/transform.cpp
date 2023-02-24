@@ -257,7 +257,7 @@ int IceRayC_Light_Transform_Homography_2World_Get( IceRayC_Light_Handle P_this, 
    {
     return 0;
    }
-  // TODO I_this->F_2world( c2cpp( *P_2world ) );
+  *P_2world = cpp2c( I_this->F_2world() );
   return 1;
  }
 int IceRayC_Light_Transform_Homography_2World_Set( IceRayC_Light_Handle P_this, IceRayC_Type_Math_Homography3D* P_2world )

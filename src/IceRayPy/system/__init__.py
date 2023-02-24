@@ -715,7 +715,7 @@ def _MapFunction_Type_Picture(P_dll): #!< DONE
     _MakeFunction( P_dll.IceRayC_Type_Picture_Default    , ctypes.c_int    , [ctypes.c_void_p] )
     _MakeFunction( P_dll.IceRayC_Type_Picture_Load       , ctypes.c_int    , [ctypes.c_void_p, ctypes.c_char_p] )
     _MakeFunction( P_dll.IceRayC_Type_Picture_Size       , ctypes.c_int    , [ctypes.c_void_p, ctypes.c_size_t, ctypes.c_size_t] )
-    _MakeFunction( P_dll.IceRayC_Type_Picture_SizeSet    , ctypes.c_int    , [ctypes.c_void_p, ctypes.c_void_p] )
+    _MakeFunction( P_dll.IceRayC_Type_Picture_SizeGet    , ctypes.c_int    , [ctypes.c_void_p, ctypes.c_void_p] )
     _MakeFunction( P_dll.IceRayC_Type_Picture_SizeSet    , ctypes.c_int    , [ctypes.c_void_p, ctypes.c_void_p] )
     _MakeFunction( P_dll.IceRayC_Type_Picture_StorePNM   , ctypes.c_int    , [ctypes.c_void_p, ctypes.c_char_p] )
     _MakeFunction( P_dll.IceRayC_Type_Picture_StorePNG   , ctypes.c_int    , [ctypes.c_void_p, ctypes.c_char_p] )

@@ -32,7 +32,7 @@ GS_DDMRM::S_IceRay::S_type::S_picture::GC__pure * c2cpp( IceRayC_Type_Picture_Ha
 IceRayC_Type_Bool           IceRayC_Type_Picture_Release( IceRayC_Type_Picture_Handle P_this )
  {
   typedef GS_DDMRM::S_IceRay::S_type::S_picture::GC__pure      Tf__pure;
-  auto I_this = reinterpret_cast<Tf__pure*> ( P_this );
+  auto I_this = c2cpp( P_this );
   delete I_this;
   return 1;
  }
@@ -43,7 +43,7 @@ IceRayC_Type_Picture_Handle IceRayC_Type_Picture0(  )
   typedef GS_DDMRM::S_IceRay::S_type::S_picture::GC_memory    Tf_memory;
 
   auto Ir_result = new Tf_memory{  };
-  return reinterpret_cast<IceRayC_Type_Picture_Handle>( dynamic_cast< Tf__pure *> ( Ir_result ) );
+  return cpp2c( Ir_result );
 }
 
 IceRayC_Type_Picture_Handle IceRayC_Type_Picture1( char * P_fileName )
@@ -112,7 +112,7 @@ IceRayC_Type_Bool IceRayC_Type_Picture_Load( IceRayC_Type_Picture_Handle P_this,
   typedef GS_DDMRM::S_IceRay::S_type::S_picture::GC__pure      Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_type::S_picture::GC_memory    Tf_memory;
 
-  auto I_this = dynamic_cast<Tf_memory*>( reinterpret_cast<Tf__pure*> ( P_this ) );
+  auto I_this = dynamic_cast<Tf_memory*>( c2cpp( P_this ) );
   if( nullptr == I_this )
    {
     return 0;
@@ -170,7 +170,7 @@ IceRayC_Type_Bool IceRayC_Type_Picture_StorePNG( IceRayC_Type_Picture_Handle P_t
   typedef GS_DDMRM::S_IceRay::S_type::S_picture::GC__pure      Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_type::S_picture::GC_memory    Tf_memory;
 
-  auto I_this = dynamic_cast<Tf_memory*>( reinterpret_cast<Tf__pure*> ( P_this ) );
+  auto I_this = dynamic_cast<Tf_memory*>( c2cpp( P_this ) );
   if( nullptr == I_this )
    {
     return 0;
@@ -184,7 +184,7 @@ IceRayC_Type_Bool IceRayC_Type_Picture_StorePNG( IceRayC_Type_Picture_Handle P_t
     {
      Tf__pure::T_coord  I_coord;
      Tf__pure::T_color  I_color;
-     for( I_coord[1]=0; I_coord[1] < I_size[1]; ++I_coord[1] ) 
+     for( I_coord[1]=0; I_coord[1] < I_size[1]; ++I_coord[1] )
       for( I_coord[0]=0; I_coord[0] < I_size[0]; ++I_coord[0] )
        {
         auto I_pixel = I_this->Fv_pixel( I_color, I_coord );
@@ -198,7 +198,7 @@ IceRayC_Type_Bool IceRayC_Type_Picture_StorePNG( IceRayC_Type_Picture_Handle P_t
      //CLSID I_bmpClsid={ 0xb96b3cabL, 0x0728L, 0x11d3L, { 0x9a, 0x73, 0x00, 0x00, 0xf8, 0x1e, 0xf3, 0x2e } };
      //CLSID I_tifClsid={ 0x557cf405L, 0x1a04L, 0x11d3L, { 0x9a, 0x73, 0x00, 0x00, 0xf8, 0x1e, 0xf3, 0x2e } };
 
-     I_bmp.Save( std::wstring( P_filename, P_filename + strlen(P_filename) ).c_str(), &I_pngClsid, NULL ); 
+     I_bmp.Save( std::wstring( P_filename, P_filename + strlen(P_filename) ).c_str(), &I_pngClsid, NULL );
 
      return 1;
     }
@@ -212,7 +212,7 @@ IceRayC_Type_Bool IceRayC_Type_Picture_StorePNM( IceRayC_Type_Picture_Handle P_t
   typedef GS_DDMRM::S_IceRay::S_type::S_picture::GC__pure      Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_type::S_picture::GC_memory    Tf_memory;
 
-  auto I_this = dynamic_cast<Tf_memory*>( reinterpret_cast<Tf__pure*> ( P_this ) );
+  auto I_this = dynamic_cast<Tf_memory*>( c2cpp ( P_this ) );
   if( nullptr == I_this )
    {
     return 0;
@@ -228,7 +228,7 @@ IceRayC_Type_Bool IceRayC_Type_Picture_Bits( IceRayC_Type_Picture_Handle P_this,
   typedef GS_DDMRM::S_IceRay::S_type::S_picture::GC__pure      Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_type::S_picture::GC_memory    Tf_memory;
 
-  auto I_this = dynamic_cast<Tf_memory*>( reinterpret_cast<Tf__pure*> ( P_this ) );
+  auto I_this = dynamic_cast<Tf_memory*>( c2cpp ( P_this ) );
   if( nullptr == I_this )
    {
     return 0;
@@ -243,7 +243,7 @@ IceRayC_Type_Bool IceRayC_Type_Picture_Default( IceRayC_Type_Picture_Handle P_th
   typedef GS_DDMRM::S_IceRay::S_type::S_picture::GC__pure      Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_type::S_picture::GC_memory    Tf_memory;
 
-  auto I_this = dynamic_cast<Tf_memory*>( reinterpret_cast<Tf__pure*> ( P_this ) );
+  auto I_this = dynamic_cast<Tf_memory*>( c2cpp( P_this ) );
   if( nullptr == I_this )
    {
     return 0;
