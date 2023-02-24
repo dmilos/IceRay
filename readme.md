@@ -50,8 +50,8 @@
 ![Unit Sphere](data/sample/geometry/quadric/usphere.png)
 
 #### Transformation
-![affine](data/sample/geometry/transform/affine.png)
 ![translate](data/sample/geometry/transform/translate.png)
+![affine](data/sample/geometry/transform/affine.png)
 ![mblur](data/sample/geometry/transform/mblur.png)
 
 #### Misc

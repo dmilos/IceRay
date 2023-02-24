@@ -14,12 +14,10 @@ void InitSystem( void )
 #endif
 
 #if defined( __GNUC__  )
-
+  extern void InitSystemUnix( void );
+  InitSystemUnix();
 #endif
-
-  std::cout << __FILE__ << "-" << __FUNCTION__ << __DATE__ << " - " << __TIME__ << std::endl;
  }
-
 
 void ShutDownSystem( void )
  {
@@ -27,8 +25,18 @@ void ShutDownSystem( void )
   extern void ShutDownSystemWindows( void );
   ShutDownSystemWindows();
 #endif
+
+#if defined( __GNUC__  )
+  extern void ShutDownSystemUnix( void );
+  ShutDownSystemUnix();
+#endif
+
  }
 
 #if defined( _MSC_VER  )
 #include "./windows_system.cpp"
+#endif
+
+#if defined( __GNUC__  )
+#include "./unix_system.cpp"
 #endif

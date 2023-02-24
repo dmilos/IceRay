@@ -32,6 +32,18 @@
              }
            };
 
+         template < typename N_input >
+          struct GC_direct< bool, N_input >
+           {
+            typedef bool  T_result;
+            typedef N_input T_input, T_first;
+
+            T_result operator()(  T_input const& P_input )const
+             {
+              return ( T_input(0) != P_input ) ? true : false;
+             }
+           };
+
          struct GC_color2bool
           {
            typedef GS_DDMRM::S_IceRay::S_type::GT_bool  T_result;

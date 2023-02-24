@@ -87,6 +87,13 @@ def rotateD( P_dll, P_pivot : Coord3D, P_direction : Coord3D, P_alpha : ScalarTy
     f = P_dll.IceRayC_Type_Math_Affine3D_RotateA( AddressOf( result ), AddressOf( P_pivot ), AddressOf( P_direction ), ScalarType( P_alpha ) )
     return result
 
+def invert3D( P_dll, P_right : Scalar3D ):
+    result = Scalar3D()
+
+    P_dll.IceRayC_Type_Math_Affine3D_Invert( AddressOf( result ), AddressOf( P_right ) )
+    return result
+
+
 def compose3D( P_dll, P_left : Scalar3D, P_right : Scalar3D ):
     result = Scalar3D()
 

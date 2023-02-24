@@ -9,7 +9,7 @@ list = {
         'point'           : IceRayPy.core.light.Point,
         'reflector'       : IceRayPy.core.light.Reflector,
         'line'            : IceRayPy.core.light.Line,
-        #'spline'         : IceRayPy.core.light.Spline, # TODO crash on Ubuntu
+        'spline'         : IceRayPy.core.light.Spline, # TODO crash on Ubuntu
         'circle'          : IceRayPy.core.light.Circle,
         'area'            : IceRayPy.core.light.Area,
         'disc'            : IceRayPy.core.light.Disc,

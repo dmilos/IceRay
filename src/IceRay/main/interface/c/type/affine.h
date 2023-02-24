@@ -38,6 +38,9 @@ IceRayC__EXPORT IceRayC__DECLSPEC  int  IceRayC_Type_Math_Affine3D_RotateZ( IceR
 IceRayC__EXPORT IceRayC__DECLSPEC  int  IceRayC_Type_Math_Affine3D_RotateA( IceRayC_Type_Math_Affine3D *P_that, IceRayC_TypeCoordScalar3D* P_direction, IceRayC_TypeScalar P_alpha );
 IceRayC__EXPORT IceRayC__DECLSPEC  int  IceRayC_Type_Math_Affine3D_RotateD( IceRayC_Type_Math_Affine3D *P_that, IceRayC_TypeCoordScalar3D* P_pivot, IceRayC_TypeCoordScalar3D* P_direction, IceRayC_TypeScalar P_alpha );
 
+IceRayC__EXPORT IceRayC__DECLSPEC  int  IceRayC_Type_Math_Affine3D_Invert( IceRayC_Type_Math_Affine3D *P_result, IceRayC_Type_Math_Affine3D* P_right );
+
+
 IceRayC__EXPORT IceRayC__DECLSPEC  int  IceRayC_Type_Math_Affine3D_LookAt( IceRayC_Type_Math_Affine3D *P_that, IceRayC_TypeCoordScalar3D* P_eye, IceRayC_TypeCoordScalar3D* P_view, IceRayC_TypeCoordScalar3D* P_up );
 
 IceRayC__EXPORT IceRayC__DECLSPEC  int  IceRayC_Type_Math_Affine3D_Compose( IceRayC_Type_Math_Affine3D *P_that, IceRayC_Type_Math_Affine3D* P_left, IceRayC_Type_Math_Affine3D* P_right );

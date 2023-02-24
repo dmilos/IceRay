@@ -17,9 +17,9 @@ def presentation( P_time, P_config = None ):
     if( 'radius' in P_config ):
         I_radius = P_config['radius']
 
-    x = 0
-    y = I_radius
-    z = 0
+    x = -1
+    y = -3
+    z = 2
 
     return [x,y,z]
 

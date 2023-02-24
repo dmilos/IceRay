@@ -35,80 +35,44 @@ faulthandler.enable()
 
 camera_inventory = library_camera.list
 
-camera_list = [ 'F-persp' ]
+camera_list = [
+    'F-persp'
+]
 
 light_inventory = library_light.list
-light_list = [ 'point' ]
+light_list = [
+        'dark'        ,
+        'point'       ,
+        'reflector'   ,
+        'line'        ,
+        'spline'      ,
+        'circle'      ,
+        'area'        ,
+        'disc'        ,
+ ]
 
 medium_inventory = library_medium.list
 medium_list = ['trans']
 
 geometry_inventory =  library_geometry.list
 geometry_list = [
- #'C-hfieldT30x30',
-  #'C-hfieldI'
-  #'S-sphere'
-  'F-piped'
+  'Q-sphere'
  ]
 
 pigment_inventory =  library_pigment.list
 pigment_list =[
         'I-gaussian',
-        'P-gradientBW'
-       #,'P-gradientTop'
-       #,'P-gradientRnb'
 ]
 
 room_inventory = library_room.list
 room_list = [
-   #'C-radiosity',
-   'C-close',
-   #'R-M-box',
-   #'R-M-sphere',
-   #'R-plane',
-   #'disc',
-   #'plane',
-   #'plate',
-   #'vacuum',
+   'C-close'
  ]
 
 decoration_inventory = decoration.list
 decoration_item = 'vacuum'
 
-path_inventory= obseravtion.list
-
-path_item = 'looker'
-
-
-#### radiosity {{{
-#camera_list     = { 'F-persp'  }
-#light_list      = { 'dark'  }
-#medium_list     = { 'trans'      }
-#geometry_list   = { 'S-sphere'  }
-##geometry_list   = { 'S-torus'          : utility.geometry.simple.Torus }
-##geometry_list   = { 'U-cylinder'      : utility.geometry.simple.Cylinder }
-##geometry_list   = { 'V-vacuum'              : core.geometry.volumetric.Vacuum }
-#geometry_list   = {
-#     'T-lensCS'      : library.geometry.lens.concave.Symetric,
-#     'T-lensCP'      : library.geometry.lens.concave.Plano,
-#     'T-lensVS'      : library.geometry.lens.convex.Symetric,
-#     'T-lensVP'      : library.geometry.lens.convex.Plano
-#  }
-#pigment_list    = { 'M-o-Cartesian2Fisheye' : utility.material.operation.mapping.Cartesian2Fisheye }
-#pigment_list    = { 'T-reflect-one'         : utility.material.transmission.reflect.One }
-#pigment_list    = { 'P-hexagon'             : utility.material.pattern.Hexagon }
-#pigment_list    = { 'P-hexagon'          : utility.material.pattern.Hexagon }
-#pigment_list    = {
-#                   #'T-8-refract-snell'       : utility.material.transmission.refract.Snell,
-#                   #'T-A-refract-fresnel'     : utility.material.transmission.refract.Fresnel,
-#                   'T-9-refract-schlick'     : utility.material.transmission.refract.Schlick
-#                  }
-##room_list       = { 'C-close'               : room.cornel_close }
-##room_list       = { 'plane'                 : room.plane }
-#room_list       = { 'R-plane'               : room.radiosity_plane }
-##room_list       = { 'C-radiosity'           : room.cornell_radiosity }
-#decoration_item = 'radiosity'
-#### }}}
+path_inventory = obseravtion.list
 
 def doRendering(P_config):
     folder = P_config['folder']
@@ -119,9 +83,8 @@ def doRendering(P_config):
             for key_medium in medium_list:
                 for key_pigment in pigment_list:
                    for key_light in light_list:
-                       extension =  'pnm'
                        name = key_room +"_"+ key_camera +'_'+ key_geometry +"_"+ key_medium +"_"+ key_pigment+"_" + key_light
-                       filen_name = folder + "/" + name + '_'+ "{:04d}".format( P_config['frame']['index'] ) + '.' + extension
+                       filen_name = folder + "/" + name + '_'+ "{:04d}".format( P_config['frame']['index'] ) + '.png'
                        print( filen_name, flush = True  )
 
                        my_file = pathlib.Path( filen_name )
@@ -135,9 +98,8 @@ def doRendering(P_config):
                        light_enclose = IceRayPy.core.light.transform.Translate( P_config['dll'], light_the, IceRayPy.type.math.coord.Scalar3D( 0, 0, 2 ) )
                        light_blocked = IceRayPy.core.light.Obstruct( P_config['dll'], light_enclose, geometry );
                        light_final = light_blocked
-
-                       P_config['light'] = light_enclose
-                       P_config['geometry'] = geometry
+                       P_config['light']            = light_enclose
+                       P_config['geometry']         = geometry
                        P_config['pigment']['light'] = light_enclose
 
                        pigment = pigment_inventory[key_pigment]( P_config['dll'], P_config['pigment'] )
@@ -170,11 +132,11 @@ def doRendering(P_config):
 
                        P_config['dll'].IceRayC_Utility_Random_Table_Next()
 
-                       #break
-                   #break
-               #break
-           #break
-       #break
+                       #end
+                   #end
+               #end
+           #end
+       #end
 
 
 config={}
@@ -275,84 +237,33 @@ else:
     print("Can not find DLL")
     time.sleep(200)
 
-#config['room']['pigment'] = utility.material.pattern.Checker( config['dll'], {} )
-#config['room']['pigment'] = utility.material.pattern.Image( config['dll'], { 'scale': 0.3 }, os.getcwd()+"/default_256.pnm" )
-#config['room']['pigment'] = utility.material.pattern.Image( config['dll'], { 'scale': 0.3 }, os.getcwd()+"/../../datag4738.pnm" )
 
-dilatation  = config['observer']['dilatation'];
-
-#output = os.popen('wmic process get description, processid').read()
-# Displaying the output
-## import subprocess
-##
-## print(subprocess)
-##
-## # traverse the software list
-## Data = subprocess.check_output(['wmic', 'process', 'list', 'brief'])
-## a = str(Data)
-## print(a)
-##
-##exit(0)
-
-#I_picture   = IceRayPy.type.graph.Picture( config['dll'] )
-#I_picture.size( 1024, 1024 )
-#IceRayPy.type.graph.Default( I_picture )
-#I_picture.storePNG( "default_1024.png" )
-
-path_item = 'looker' # 'looker', 'fixed', 'circle'
+path_item = 'presentation' # 'looker', 'fixed', 'circle'
 
 config['pigment']['sigma'] = IceRayPy.type.color.RGB( 1, 1, 1 )
 config['pigment']['rho']   = IceRayPy.type.color.RGB( 3.1415926, 3.1415926, 3.1415926 )
 
-gold = (math.sqrt(5)-1)/2
+index = 0;
+config['frame']['index'] = index
+dilatation  = config['observer']['dilatation'];
+t = index / 360.0 / dilatation
+config['frame']['time'] = t
 
-#for counter in range( 0, 500 ):
-#    index = int( 360 * ( gold * counter ) ) % 360
+[x,y,height] = path_inventory[path_item]( t, config['camera']['path'] ) #!< MAIN
 
-#for step in [ int(360/3), int(360/4), int(360/5), int(360/6), int(360/24), int(360/8), int(360/9), int(360/10), int(360/12), int(360/15), int(360/18), 1 ] :
-for index in range( start, 360 * int( dilatation ), step ):
+config['camera'][ 'eye'] = IceRayPy.type.math.coord.Scalar3D( x, y, height ) #!< MAIN
+config['camera']['view'] = IceRayPy.type.math.coord.Scalar3D( 0, 0, 0 ) #!< MAIN
 
-    config['frame']['index'] = index
-    t = index / 360.0 / dilatation
-    config['frame']['time'] = t
+print( "Hot: ", config['hot'], flush = True  )
+print( "Index:" + str(index) + "[" + os.getcwd() + "]", flush = True  )
 
-    [x,y,height] = path_inventory[path_item]( t, config['camera']['path'] ) #!< MAIN
-    #[x,y,height] = path_inventory[path_item]( 135 / 360.0 / dilatation, config['camera']['path'] )#!< debug
+doRendering( config )
 
-    config['camera'][ 'eye'] = IceRayPy.type.math.coord.Scalar3D( x, y, height ) #!< MAIN
-    config['camera']['view'] = IceRayPy.type.math.coord.Scalar3D( 0, 0, 0 ) #!< MAIN
-
-    config['camera']['view'] = IceRayPy.type.math.coord.Scalar3D( 0, 0,-0.15 - 0.7 ) #!< debug
-    #config['camera']['eye']  = IceRayPy.type.math.coord.Scalar3D(  0, -3, 3 ) #!< debug
-    #config['camera']['view'] = IceRayPy.type.math.coord.Scalar3D(  0,  0, 0 ) #!< debug
-
-    print( "Hot: ", config['hot'], flush = True  )
-    print( "Index:" + str(index) + "[" + os.getcwd() + "]", flush = True  )
-
-    #config['camera']['eye']  = IceRayPy.type.math.coord.Scalar3D( 0, -3,   2 );
-
-    #config['room']['radiosity']['angle'] = math.radians( 85 )
-    #config['room']['radiosity']['jitter-angle'] = math.fmod( config['room']['radiosity']['jitter-angle'] + math.radians( index*0.1 ), 5 )
-    #config['pigment']['ior'] = config['pigment']['ior'] + index*0.01;
-    #config['room']['radiosity']['sample'] = config['room']['radiosity']['sample'] + index
-    #config['pigment']['ior'] = 1.0 + 0.01*index;
-    config['pigment']['ior'] = config['pigment']['ior'] + 0.01;
-    #config['room']['radiosity']['angle'] = math.radians( index )
-    #config['room']['radiosity']['sample'] = 3 #int( (1 - math.cos(config['room']['radiosity']['angle']) ) / ( 1 - math.cos( config['room']['radiosity']['patch'] ) ) + 1 )
-    #config['pigment']['rho'] = IceRayPy.type.color.RGB( 3.1415926, 3.1415926, 3.1415926 )
-    #config['pigment']['sigma'] = IceRayPy.type.color.RGB( 10*t, 10*t, 10*t )
-    #try:
-    doRendering( config )
-    #except:
-    #    print("aaaaaaa", flush = True )
-
-
-    print( 'garbage collector: get_threshold() ' + str( gc.get_threshold() ), flush = True  )
-    print( 'garbage collector: get_count()     ' + str( gc.get_count()     ), flush = True  )
-    print( 'garbage collector: collect()       ' + str( gc.collect()       ), flush = True  )
-    print( 'garbage collector: get_count()    )' + str( gc.get_count()     ), flush = True  )
-    print( 'garbage collector: get_threshold() ' + str( gc.get_threshold() ), flush = True  )
+print( 'garbage collector: get_threshold() ' + str( gc.get_threshold() ), flush = True  )
+print( 'garbage collector: get_count()     ' + str( gc.get_count()     ), flush = True  )
+print( 'garbage collector: collect()       ' + str( gc.collect()       ), flush = True  )
+print( 'garbage collector: get_count()    )' + str( gc.get_count()     ), flush = True  )
+print( 'garbage collector: get_threshold() ' + str( gc.get_threshold() ), flush = True  )
 
 
 #time.sleep( 20 )
-

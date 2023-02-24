@@ -43,7 +43,7 @@
                  M2_size[2] = 2;
                  Fv_size( P_size );
                 }
-              ~GC__pure(){ }
+               virtual ~GC__pure(){ }
 
              public:
                virtual T_scalar Fv_value( T_size const& P_x, T_size const& P_y )const=0;

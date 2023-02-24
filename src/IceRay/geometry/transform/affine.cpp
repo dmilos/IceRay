@@ -81,7 +81,10 @@ GC_affine::T_size  GC_affine::Fv_weight()const
 
 GC_affine::T_size const& GC_affine::Fv_id( T_state const& P_intersect )const
  {
-  return M2_geometry.M2__base->Fv_id( P_intersect );
+  C_intersect  const &I_head = P_intersect.F_content<C_intersect>();
+  T_state             I_tail ; P_intersect.F_tail<C_intersect>(I_tail);
+
+  return M2_geometry.M2__base->Fv_id( I_tail );
  }
 
 GC_affine::T_size const&    GC_affine::Fv_quantity()const
@@ -113,6 +116,7 @@ bool             GC_affine::Fv_fragment( T_fragment & P_fragment, T_state const&
 
   return true;
  }
+
 bool GC_affine::Fv_intersect( T_scalar &P_lambda, T_state &P_state, T_ray const& P_ray )const
  {
   C_intersect &I_head = P_state.F_content<C_intersect>();
@@ -143,11 +147,14 @@ bool GC_affine::Fv_intersect( T_scalar &P_lambda, T_state &P_state, T_ray const&
 
 void GC_affine::Fv_normal( T_coord &P_normal, T_coord const& P_point, T_state const& P_intersect )const
  {
+  C_intersect const&I_head = P_intersect.F_content<C_intersect>();
+  T_state           I_tail;  P_intersect.F_tail<C_intersect>(I_tail);
+
   T_coord I_point;
   ::math::linear::affine::transform( I_point, F_2local(), P_point );
 
   T_coord I_normal;
-  M2_geometry.M2_normal->Fv_normal( I_normal, I_point, P_intersect );
+  M2_geometry.M2_normal->Fv_normal( I_normal, I_point, I_tail );
 
   ::math::linear::matrix::transform( P_normal, M2_transpose, I_normal );
 
@@ -156,6 +163,9 @@ void GC_affine::Fv_normal( T_coord &P_normal, T_coord const& P_point, T_state co
 
 GC_affine::T_location GC_affine::Fv_inside( T_coord const& P_point/*, T_state const&P_intersect*/ )const
  {
+  //C_intersect const& I_head = P_state.F_content<C_intersect>();
+  //T_state            I_tail;  P_state.F_tail<C_intersect>(I_tail);
+
   T_coord I_point;
   ::math::linear::affine::transform( I_point, F_2local(), P_point );
 
@@ -171,11 +181,14 @@ GC_affine::T_scalar GC_affine::Fv_distance( T_coord const& P_point )const
   return    I_distance * I_scale;
  }
 
-bool GC_affine::Fv_uvw( T_coord & P_uvw, T_coord const& P_point, T_state const & P_intersect )const
+bool GC_affine::Fv_uvw( T_coord & P_uvw, T_coord const& P_point, T_state const & P_state )const
  {
+  C_intersect const& I_head = P_state.F_content<C_intersect>();
+  T_state            I_tail;  P_state.F_tail<C_intersect>(I_tail);
+
   T_coord I_point;
   ::math::linear::affine::transform( I_point, F_2local(), P_point );
-  return M2_geometry.M2_uvw->Fv_uvw( P_uvw, I_point, P_intersect );
+  return M2_geometry.M2_uvw->Fv_uvw( P_uvw, I_point, I_tail );
  }
 
 GC_affine::T_affine const&  GC_affine::Fv_2world( T_state const&P_state )const

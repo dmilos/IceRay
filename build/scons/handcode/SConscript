@@ -131,7 +131,6 @@ cc_files += [ os.path.join( 'main', 'make', 'material.cpp' ) ]
 
 cc_files += [ os.path.join( 'main', 'system', 'info.cpp' ) ]
 cc_files += [ os.path.join( 'main', 'system', 'init_system.cpp' ) ]
-cc_files += [ os.path.join( 'main', 'system', 'windows_system.cpp' ) ]
 
 
 #cc_files += [ os.path.join( 'main', 'interface', 'handcode', 'scene', '1M.cpp' ) ]

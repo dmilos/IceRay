@@ -3,12 +3,13 @@
 #include <map>
 #include "./system.h"
 
-extern std::map<std::string,std::string> GI_info;
+typedef std::map<std::string,std::string> InfoContainer;
 
+extern InfoContainer & GetInfoContaier();
 
 int  IceRayC_System_First( std::size_t P_capacity, char*P_key )
  {
-  auto const & I_key = GI_info.begin()->first;
+  auto const & I_key = GetInfoContaier().begin()->first;
 
   if( P_capacity < I_key.size() + 1 )
    {
@@ -23,8 +24,8 @@ int  IceRayC_System_First( std::size_t P_capacity, char*P_key )
 
 int  IceRayC_System_Value( std::size_t P_length, char*P_key, std::size_t P_capacity, char* P_value )
  {
-  auto iterator = GI_info.find( P_key );
-  if( GI_info.end() == iterator )
+  auto iterator = GetInfoContaier().find( P_key );
+  if( GetInfoContaier().end() == iterator )
    {
     return 0;
    }
@@ -42,13 +43,13 @@ int  IceRayC_System_Value( std::size_t P_length, char*P_key, std::size_t P_capac
 
 int  IceRayC_System_Next( std::size_t P_length, char*P_current, std::size_t P_capacity, char* P_next )
  {
-  auto iterator = GI_info.find( P_current );
-  if( GI_info.end() == iterator )
+  auto iterator = GetInfoContaier().find( P_current );
+  if( GetInfoContaier().end() == iterator )
    {
     return 0;
    }
   ++iterator;
-  if( GI_info.end() == iterator )
+  if( GetInfoContaier().end() == iterator )
    {
     return 0;
    }

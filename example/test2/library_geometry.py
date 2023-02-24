@@ -4,32 +4,36 @@ import IceRayPy
 
 
 list = {
-     'S-sphere'           : IceRayPy.core.geometry.simple.Sphere,
-     'S-usphere'          : IceRayPy.core.geometry.simple.SphereU,
-     'S-cylinder'         : IceRayPy.core.geometry.simple.Cylinder,
-     'S-util-cylinder'    : IceRayPy.utility.geometry.simple.CylinderG,
-     'S-box'              : IceRayPy.core.geometry.simple.Box,
+
+     'F-box'              : IceRayPy.core.geometry.simple.Box,
+     'F-disc'             : IceRayPy.core.geometry.simple.Disc,
+     'F-udisc'            : IceRayPy.core.geometry.simple.UDisc,
+     'F-triangle'         : IceRayPy.core.geometry.simple.Triangle,
+     'F-triangleU'        : IceRayPy.core.geometry.simple.TriangleU, #!< TODO
+     'F-plane'            : IceRayPy.core.geometry.simple.Plane,
+     'F-piped'            : IceRayPy.utility.geometry.simple.Parallelepiped,
+
+     'Q-sphere'           : IceRayPy.core.geometry.simple.Sphere,
+     'Q-sphereu'          : IceRayPy.core.geometry.simple.SphereU,
+     'Q-cylinder'         : IceRayPy.core.geometry.simple.Cylinder,
+     'Q-cylinderu'        : IceRayPy.core.geometry.simple.CylinderU,
+     'Q-util-cylinder'    : IceRayPy.utility.geometry.simple.CylinderG,
+     'Q-cone'             : IceRayPy.core.geometry.simple.Cone,
+     'Q-util-cone'        : IceRayPy.utility.geometry.simple.ConeG,
+     'Q-ellipsoid'        : IceRayPy.core.geometry.simple.Ellipsoid,
+     'Q-paraboloid'       : IceRayPy.core.geometry.simple.Paraboloid,
+     'Q-util-paraboloid'  : IceRayPy.utility.geometry.simple.ParaboloidG,
+     'Q-quadric'          : IceRayPy.core.geometry.simple.Quadric,
+     'Q-saddle'           : IceRayPy.core.geometry.simple.Saddle,
+     'Q-hyper-nuke'       : IceRayPy.utility.geometry.simple.hyperboloid.Nuke,
+     'Q-hyper-sphere'     : IceRayPy.utility.geometry.simple.hyperboloid.Sphere,
+     'Q-hyper-cone'       : IceRayPy.utility.geometry.simple.hyperboloid.Cone,
+     'Q-hyper-cylinder'   : IceRayPy.utility.geometry.simple.hyperboloid.Cylinder,
+     'Q-hyper-negative'   : IceRayPy.utility.geometry.simple.hyperboloid.Negative,
+
      'S-torus'            : IceRayPy.core.geometry.simple.Torus,
      'S-util-torus'       : IceRayPy.utility.geometry.simple.Torus,
-     'S-cone'             : IceRayPy.core.geometry.simple.Cone,
-     'S-util-cone'        : IceRayPy.utility.geometry.simple.ConeG,
-     'S-disc'             : IceRayPy.core.geometry.simple.Disc,
-     'S-udisc'            : IceRayPy.core.geometry.simple.UDisc,
-     'S-ellipsoid'        : IceRayPy.core.geometry.simple.Ellipsoid,
-     'S-paraboloid'       : IceRayPy.core.geometry.simple.Paraboloid,
-     'S-util-paraboloid'  : IceRayPy.utility.geometry.simple.ParaboloidG,
-     'S-quadric'          : IceRayPy.core.geometry.simple.Quadric,
-     'S-triangle'         : IceRayPy.core.geometry.simple.Triangle,
-     'S-triangleU'        : IceRayPy.core.geometry.simple.TriangleU, #!< TODO
-     'S-plane'            : IceRayPy.core.geometry.simple.Plane,
-     'S-saddle'           : IceRayPy.core.geometry.simple.Saddle,
-     'S-cylinderu'        : IceRayPy.core.geometry.simple.CylinderU,
 
-     'hyper-nuke'           : IceRayPy.utility.geometry.simple.hyperboloid.Nuke,
-     'hyper-sphere'         : IceRayPy.utility.geometry.simple.hyperboloid.Sphere,
-     'hyper-cone'           : IceRayPy.utility.geometry.simple.hyperboloid.Cone,
-     'hyper-cylinder'       : IceRayPy.utility.geometry.simple.hyperboloid.Cylinder,
-     'hyper-negative'       : IceRayPy.utility.geometry.simple.hyperboloid.Negative,
 
      'C-I-i-i'    : IceRayPy.library.geometry.example.Intersect_IN_IN,
      'C-I-i-o'    : IceRayPy.library.geometry.example.Intersect_IN_OUT,
@@ -40,6 +44,7 @@ list = {
      'C-I-s-i'    : IceRayPy.library.geometry.example.Intersect_SURFACE_IN,
      'C-I-s-o'    : IceRayPy.library.geometry.example.Intersect_SURFACE_OUT,
      'C-I-s-s'    : IceRayPy.library.geometry.example.Intersect_SURFACE_SURFACE,
+     'C-cookie'   : IceRayPy.library.geometry.example.Cookie,
 
     #'C-Enclose'      : IceRayPy.core.geometry.complex.Enclose, #NYI
 

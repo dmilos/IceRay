@@ -10,7 +10,7 @@ struct GC_homography::C_intersect
   T_size M_index;
   T_affine M_2world;
   T_affine M_2local;
-};
+ };
 
 GC_homography::GC_homography()
  {
@@ -59,6 +59,7 @@ void GC_homography::Fv_reset( T_state &P_intersect )const
 GC_homography::T_size  GC_homography::Fv_weight()const
  {
   T_size Ir_weigh = 0;
+
   Ir_weigh += sizeof( C_intersect );
   Ir_weigh += M2_geometry.M2__base->Fv_weight();
 
@@ -67,7 +68,10 @@ GC_homography::T_size  GC_homography::Fv_weight()const
 
 GC_homography::T_size const& GC_homography::Fv_id( T_state const& P_intersect )const
  {
-  return  M2_geometry.M2__base->Fv_id( P_intersect );
+  C_intersect  const &I_head = P_intersect.F_content<C_intersect>();
+  T_state             I_tail ; P_intersect.F_tail<C_intersect>(I_tail);
+
+  return  M2_geometry.M2__base->Fv_id( I_tail );
  }
 
 GC_homography::T_size const&    GC_homography::Fv_quantity()const
@@ -100,10 +104,10 @@ bool             GC_homography::Fv_fragment( T_fragment & P_fragment, T_state co
   return true;
  }
 
-bool GC_homography::Fv_intersect( T_scalar &P_lambda, T_state &P_intersect, T_ray const& P_ray )const
+bool GC_homography::Fv_intersect( T_scalar &P_lambda, T_state &P_state, T_ray const& P_ray )const
  {
-  C_intersect &I_head = P_intersect.F_content<C_intersect>();
-  T_state      I_tail;  P_intersect.F_tail<C_intersect>(I_tail);
+  C_intersect &I_head = P_state.F_content<C_intersect>();
+  T_state      I_tail;  P_state.F_tail<C_intersect>(I_tail);
 
   T_ray I_ray;
 
@@ -128,7 +132,7 @@ bool GC_homography::Fv_intersect( T_scalar &P_lambda, T_state &P_intersect, T_ra
 
   I_lambda = ::math::linear::vector::dot( P_ray.M_direction, I_ray.M_origin );
 
-  if(  P_lambda < I_lambda )
+  if( P_lambda < I_lambda )
    {
     return I_head.M_hit = false;
    }
@@ -202,7 +206,7 @@ GC_homography::T_location GC_homography::Fv_inside( T_coord const& P_point/*, T_
  }
 
 GC_homography::T_scalar GC_homography::Fv_distance( T_coord const& P_point )const
- {
+ { // TODO
   T_coord I_point;
   ::math::linear::homography::transform( I_point, M2_2local, P_point );
   auto d = M2_geometry.M2_distance->Fv_distance( I_point );
@@ -211,7 +215,7 @@ GC_homography::T_scalar GC_homography::Fv_distance( T_coord const& P_point )cons
 
 bool GC_homography::Fv_uvw( T_coord & P_uvw, T_coord const& P_point, T_state const & P_state )const
  {
-  C_intersect const &I_head = P_state.F_content<C_intersect>();
+  C_intersect const& I_head = P_state.F_content<C_intersect>();
   T_state            I_tail;  P_state.F_tail<C_intersect>(I_tail);
 
   T_coord I_point;

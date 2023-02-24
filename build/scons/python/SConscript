@@ -260,8 +260,6 @@ cc_files += [ os.path.join( 'main', 'interface', 'python', 'index.cpp' ) ]
 
 cc_files += [ os.path.join( 'main', 'system', 'info.cpp' ) ]
 cc_files += [ os.path.join( 'main', 'system', 'init_system.cpp' ) ]
-cc_files += [ os.path.join( 'main', 'system', 'windows_system.cpp' ) ]
-
 
 
 ### Deal with Scons ###

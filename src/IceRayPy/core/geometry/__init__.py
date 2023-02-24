@@ -8,6 +8,17 @@
 #'volumetric'
 #]
 
+import IceRayPy.core.geometry.complex
+import IceRayPy.core.geometry.rtss
+import IceRayPy.core.geometry.simple
+import IceRayPy.core.geometry.transform
+import IceRayPy.core.geometry.volumetric
+import IceRayPy.core.geometry.hfield
+import IceRayPy.core.geometry.blobby
+import IceRayPy.core.geometry.flat
+
+
+
 class Generic:
     def __init__( self, P_dll, P_this = None ):
         self.m_cargo = {}
@@ -44,13 +55,5 @@ class Pretender:
         return self.m_cargo['this']
 
 
-
-import IceRayPy.core.geometry.complex
-import IceRayPy.core.geometry.rtss
-import IceRayPy.core.geometry.simple
-import IceRayPy.core.geometry.transform
-import IceRayPy.core.geometry.volumetric
-import IceRayPy.core.geometry.hfield
-import IceRayPy.core.geometry.blobby
 
 #print( '</' + __name__ + ' name=\'' +   __file__ + '\'>' )

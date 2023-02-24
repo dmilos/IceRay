@@ -634,6 +634,7 @@ def _MapFunction_Type_Math_Affine3D(P_dll): #!< done
     _MakeFunction( P_dll.IceRayC_Type_Math_Affine3D_ScaleS               , ctypes.c_int, [ctypes.c_void_p,ctypes.c_double] )
     _MakeFunction( P_dll.IceRayC_Type_Math_Affine3D_ScaleV               , ctypes.c_int, [ctypes.c_void_p,ctypes.c_void_p] )
     _MakeFunction( P_dll.IceRayC_Type_Math_Affine3D_Zero                 , ctypes.c_int, [ctypes.c_void_p] )
+    _MakeFunction( P_dll.IceRayC_Type_Math_Affine3D_Invert               , ctypes.c_int, [ctypes.c_void_p,ctypes.c_void_p] )
 
     _MakeFunction( P_dll.IceRayC_Type_Math_Affine3D_System               , ctypes.c_int, [ ctypes.c_void_p, ctypes.c_void_p, ctypes.c_void_p, ctypes.c_void_p, ctypes.c_void_p ] )
     _MakeFunction( P_dll.IceRayC_Type_Math_Affine3D_SystemZ              , ctypes.c_int, [ ctypes.c_void_p, ctypes.c_void_p, ctypes.c_void_p ] )

@@ -1,5 +1,6 @@
 #print( '<' + __name__ + ' name=\'' +   __file__ + '\'>' )
 
+import math
 import IceRayPy
 import IceRayPy.utility.geometry.simple.hyperboloid
 
@@ -38,7 +39,7 @@ class Torus:  #( IceRayPy.core.geometry.Generic ):
 
     def mayor( self, P_mayor ):
         self.m_cargo['mayor'] = P_mayor
-        return this.minor( self.m_cargo['minor-original'] );
+        return self.minor( self.m_cargo['minor-original'] );
 
     def center( self, P_center ):
         self.m_cargo['center'] = P_center
@@ -272,21 +273,24 @@ class HyperboloidG:  #( IceRayPy.core.geometry.Generic ): # TODO have bug !!!
         return True
 
 
-class Parallelepiped:      #!< TODO
+class Parallelepiped:
     def __init__( self, P_dll ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
 
         self.m_cargo['box']  =  IceRayPy.core.geometry.simple.Box( self.m_cargo['dll'] )
+        self.m_cargo['box'].lo(  IceRayPy.type.math.coord.Scalar3D( 0, 0, 0 ) )
+        self.m_cargo['box'].hi(  IceRayPy.type.math.coord.Scalar3D( 1, 1, 1 ) )
         self.m_cargo['affine'] = IceRayPy.core.geometry.transform.Affine( self.m_cargo['dll'] )
         self.m_cargo['this'] = self.m_cargo['affine'].m_cargo['this']
 
         self.m_cargo['affine'].child( self.m_cargo['box'] )
 
-        self.m_cargo['origin'] = IceRayPy.type.math.coord.Scalar3D( 0, 0, 0 )
-        self.m_cargo['X'] = IceRayPy.type.math.coord.Scalar3D( 1, 0, 0 )
-        self.m_cargo['Y'] = IceRayPy.type.math.coord.Scalar3D( 0, 1, 0 )
-        self.m_cargo['Z'] = IceRayPy.type.math.coord.Scalar3D( 0, 0, 1 )
+        self.m_cargo['origin'] = IceRayPy.type.math.coord.Scalar3D( 0, 0, -1 )
+        
+        self.m_cargo['X'] = IceRayPy.type.math.coord.Scalar3D(   1.0,  0.0,   math.sqrt( 0.5 ) )
+        self.m_cargo['Y'] = IceRayPy.type.math.coord.Scalar3D(  -0.5, +0.866, math.sqrt( 0.5 ) )
+        self.m_cargo['Z'] = IceRayPy.type.math.coord.Scalar3D(  -0.5, -0.866, math.sqrt( 0.5 ) )
 
         self._recalc()
 
@@ -308,22 +312,16 @@ class Parallelepiped:      #!< TODO
         self.m_cargo['Z'] = P_Z
         return self._recalc()
 
-    def _recalc( self ):  # TODO
-        self.m_cargo['center'] = IceRayPy.type.math.coord.subtraction3D( self.m_cargo['dll'], self.m_cargo['top'], self.m_cargo['bottom'] )
-        self.m_cargo['center'] =  IceRayPy.type.math.coord.scale3D( self.m_cargo['dll'], 0.5, self.m_cargo['center'] )
-        self.m_cargo['center'] =  IceRayPy.type.math.coord.addition3D( self.m_cargo['dll'], self.m_cargo['bottom'], self.m_cargo['center'] )
+    def _recalc( self ):
+        O = self.m_cargo['origin']
+        X = self.m_cargo['X']
+        Y = self.m_cargo['Y']
+        Z = self.m_cargo['Z']
 
-        self.m_cargo['direction'] = IceRayPy.type.math.coord.subtraction3D( self.m_cargo['dll'], self.m_cargo['top'], self.m_cargo['center'] )
-        I_height = IceRayPy.type.math.coord.distance3D(   self.m_cargo['dll'], self.m_cargo['bottom'], self.m_cargo['center'] )
-        self.m_cargo['direction'] = IceRayPy.type.math.coord.scale3D( self.m_cargo['dll'], 1.0/I_height, self.m_cargo['direction'] )
+        I_affine = IceRayPy.type.math.affine.system3D( self.m_cargo['dll'], O, X, Y, Z )
 
-        I_decline = IceRayPy.type.math.affine.system3D_Z( self.m_cargo['dll'], self.m_cargo['center'], self.m_cargo['direction'] )
-        I_scale   = IceRayPy.type.math.affine.scaleV(     self.m_cargo['dll'], IceRayPy.type.math.coord.Scalar3D( self.m_cargo['radius'], self.m_cargo['radius'], I_height ) )
-
-        I_result = IceRayPy.type.math.affine.compose3D( self.m_cargo['dll'], I_decline, I_scale )
-        self.m_cargo['affine'].toWorldSet( I_result )
+        self.m_cargo['affine'].toWorldSet( I_affine )
         return True
-
 
 
 class Cube:  #( IceRayPy.core.geometry.Generic ): # TODO have bug !!!
