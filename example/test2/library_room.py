@@ -96,6 +96,8 @@ def pigment_radiosity( P_dll, P_scene, P_config ):
         pigment = IceRayPy.utility.material.transmission.blossom.Grid(     P_dll, P_config, I_albedo, I_sample, 0, I_angle )#OK
     if 'triangle' == I_blossom :
         pigment = IceRayPy.utility.material.transmission.blossom.Triangle( P_dll, P_config, I_albedo, I_sample, 0, I_angle )#OK
+    if 'congruent' == I_blossom :
+        pigment = IceRayPy.utility.material.transmission.blossom.Congruent( P_dll, P_config, I_albedo, I_sample, 0, I_angle )#OK
 
     return pigment
 
@@ -147,6 +149,81 @@ def disc( P_dll, P_config = { 'level':  - 1.001, 'shadow': False, 'pigment': Non
     wrapper.geometrySet( geometry )
 
     return wrapper
+
+def cornel_open( P_dll, P_config = {}, P_light = None, P_exponat = None ): # non-classic
+
+    global G_dimesion
+    I_room = [ 8, 8, 4 ] # [ 6, 6, 3.5 ]
+    I_move = [ 0, 0, I_room[2]/2-1 ]
+    wall = 0.1
+
+    lo = Coord3D()
+    lo[0] = -I_room[0]/2 + I_move[0]
+    lo[1] = -I_room[1]/2 + I_move[1]
+    lo[2] = -I_room[2]/2 + I_move[2]
+
+    hi = Coord3D()
+    hi[0] = +I_room[0]/2 + I_move[0]
+    hi[1] = +I_room[1]/2 + I_move[1]
+    hi[2] = +I_room[2]/2 + I_move[2]
+
+    I_scene = { 'light': P_light, 'barrier' : P_exponat }
+    if( 'shadow' in P_config ):
+        if( False == P_config['shadow'] ):
+            I_scene['barrier'] = IceRayPy.core.geometry.volumetric.Vacuum( P_dll )
+
+    leftG = IceRayPy.core.geometry.simple.Box( P_dll )
+    leftG.box(        Coord3D(  lo[0]-wall, lo[1], lo[2]) , Coord3D(lo[0],      hi[1], hi[2]) )
+    leftW = IceRayPy.core.object.Wrapper( P_dll )
+    pigment = IceRayPy.utility.material.illumination.Lambert( P_dll, I_scene, IceRayPy.type.color.RGB( 1, 0.33, 0.33 ) )
+    leftW.pigment( pigment )
+    leftW.geometrySet( leftG )
+
+    rightG = IceRayPy.core.geometry.simple.Box( P_dll )
+    rightG.box(       Coord3D( hi[0],      lo[1], lo[2]) ,  Coord3D(hi[0]+ wall,hi[1], hi[2]) )
+    rightW = IceRayPy.core.object.Wrapper( P_dll )
+    pigment = IceRayPy.utility.material.illumination.Lambert( P_dll, I_scene, IceRayPy.type.color.RGB( 0.33, 1, 0.33 ) )
+    rightW.pigment( pigment )
+    rightW.geometrySet( rightG )
+
+    backgroundG = IceRayPy.core.geometry.simple.Box( P_dll )
+    backgroundG.box(  Coord3D( lo[0], lo[1]-wall, lo[2] ) , Coord3D( hi[0], lo[1], hi[2] ) )
+    backgroundW = IceRayPy.core.object.Wrapper( P_dll )
+    pigment = IceRayPy.utility.material.illumination.Lambert( P_dll, I_scene, IceRayPy.type.color.RGB( 0.33, 0.33, 1 ) )
+    backgroundW.pigment( pigment )
+    backgroundW.geometrySet( backgroundG )
+
+    floorG = IceRayPy.core.geometry.simple.Box( P_dll )
+    floorG.box(       Coord3D( lo[0], lo[1], lo[2]-wall ) , Coord3D( hi[0], hi[0], lo[2] ) )
+    floorW = IceRayPy.core.object.Wrapper( P_dll )
+    pigment = IceRayPy.utility.material.illumination.Lambert( P_dll, I_scene, IceRayPy.type.color.RGB( 0.5, 0.5, 0.5 ) )
+    floorW.pigment( pigment )
+    floorW.geometrySet( floorG )
+
+    ceilG = IceRayPy.core.geometry.simple.Box( P_dll )
+    ceilG.box(        Coord3D( lo[0], lo[1], hi[2] ),       Coord3D( hi[0], hi[1], hi[2] + wall ) )
+    ceilW = IceRayPy.core.object.Wrapper( P_dll )
+    pigment = IceRayPy.utility.material.illumination.Lambert( P_dll, I_scene, IceRayPy.type.color.RGB( 0.5, 0.5, 0.5 ) )
+    ceilW.pigment( pigment )
+    ceilW.geometrySet( ceilG )
+
+    rtss = IceRayPy.core.geometry.rtss.Object( P_dll )
+
+    list = IceRayPy.core.geometry.rtss.List( P_dll )
+    rtss.rtss( list )
+
+    rtss.push( IceRayPy.core.geometry.Pretender( P_dll, leftW.cast2Geometry(),       leftW       ) )
+    rtss.push( IceRayPy.core.geometry.Pretender( P_dll, rightW.cast2Geometry(),      rightW      ) )
+    rtss.push( IceRayPy.core.geometry.Pretender( P_dll, backgroundW.cast2Geometry(), backgroundW ) )
+    rtss.push( IceRayPy.core.geometry.Pretender( P_dll, floorW.cast2Geometry(),      floorW      ) )
+    rtss.push( IceRayPy.core.geometry.Pretender( P_dll, ceilW.cast2Geometry(),       ceilW       ) )
+
+    wrapper = IceRayPy.core.object.Wrapper( P_dll )
+    wrapper.geometrySet( rtss )
+
+    return wrapper
+
+
 
 
 def cornel_close( P_dll, P_config = {}, P_light = None, P_exponat = None ): # non-classic
@@ -459,7 +536,7 @@ list = {
       'R-M-box'     : mirror_box,
        'R-M-sphere' : mirror_sphere,
       'C-radiosity' : cornell_radiosity,
-      #'C-0pen'      : cornel_open, TODO
+      'C-open'      : cornel_open,
       'C-close'     : cornel_close,
       'R-plane'     : radiosity_plane
     }

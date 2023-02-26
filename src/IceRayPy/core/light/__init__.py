@@ -56,11 +56,13 @@ class Spot(ctypes.Structure):
 
 
 class Area:
-    def __init__( self, P_dll ):
+    def __init__( self, P_dll, P_config = None ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Light_Area0()
-        self.sample( 32 )
+        self.sample( 16 )
+        if( None != P_config ) and ( 'sample' in P_config ) :
+            self.sample( P_config['sample'] )
 
     def __del__( self ):
         self.m_cargo['dll'].IceRayC_Light_Release( self.m_cargo['this'] )
@@ -82,7 +84,7 @@ class Area:
 
 
 class Chandelier:
-    def __init__( self, P_dll ):
+    def __init__( self, P_dll, P_config = None ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Light_Chandelier0()
@@ -97,11 +99,14 @@ class Chandelier:
 
 
 class Circle:
-    def __init__( self, P_dll ):
+    def __init__( self, P_dll, P_config = None ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Light_Circle0()
-        self.sample( 32 )
+        self.sample( 16 )
+        if( None != P_config ) and ( 'sample' in P_config ) :
+            self.sample( P_config['sample'] )
+
 
     def __del__( self ):
         self.m_cargo['dll'].IceRayC_Light_Release( self.m_cargo['this'] )
@@ -151,7 +156,7 @@ class Confine:
 
 
 class Dark:
-    def __init__( self, P_dll ):
+    def __init__( self, P_dll, P_config = None ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Light_Dark0()
@@ -161,11 +166,14 @@ class Dark:
 
 
 class Disc:
-    def __init__( self, P_dll ):
+    def __init__( self, P_dll, P_config = None ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Light_Disc0()
-        self.sample( 32 )
+        self.sample( 16 )
+        if( None != P_config ) and ( 'sample' in P_config ) :
+            self.sample( P_config['sample'] )
+
 
     def __del__( self ):
         self.m_cargo['dll'].IceRayC_Light_Release( self.m_cargo['this'] )
@@ -187,11 +195,14 @@ class Disc:
 
 
 class Line:
-    def __init__( self, P_dll ):
+    def __init__( self, P_dll, P_config = None ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Light_Line0()
-        self.sample( 32 )
+        self.sample( 16 )
+        if( None != P_config ) and ( 'sample' in P_config ) :
+            self.sample( P_config['sample'] )
+
 
     def __del__( self ):
         self.m_cargo['dll'].IceRayC_Light_Release( self.m_cargo['this'] )
@@ -210,7 +221,7 @@ class Line:
 
 
 class Point:
-    def __init__( self, P_dll, P_spot: Spot = None ):
+    def __init__( self, P_dll, P_config = None, P_spot : Spot = None ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Light_Point0()
@@ -252,7 +263,7 @@ class Obstruct:
 
 
 class Reflector:
-    def __init__( self, P_dll ):
+    def __init__( self, P_dll, P_config = None ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Light_Reflector0()
@@ -274,11 +285,13 @@ class Reflector:
 
 
 class Sphere:
-    def __init__( self, P_dll ):
+    def __init__( self, P_dll, P_config = None ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Light_Sphere0()
-        self.sample( 100 )
+        self.sample( 16 )
+        if( None != P_config ) and ( 'sample' in P_config ) :
+            self.sample( P_config['sample'] )
 
     def __del__( self ):
         self.m_cargo['dll'].IceRayC_Light_Release( self.m_cargo['this'] )
@@ -294,11 +307,13 @@ class Sphere:
 
 
 class Spline:
-    def __init__( self, P_dll ):
+    def __init__( self, P_dll, P_config = None ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Light_Spline0()
-        self.sample( 100 )
+        self.sample( 16 )
+        if( None != P_config ) and ( 'sample' in P_config ) :
+            self.sample( P_config['sample'] )
 
     def __del__( self ):
         self.m_cargo['dll'].IceRayC_Light_Release( self.m_cargo['this'] )
@@ -314,7 +329,7 @@ class Spline:
 
 
 class SunS:
-    def __init__( self, P_dll ):
+    def __init__( self, P_dll, P_config = None ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Light_SunS0()
@@ -329,7 +344,7 @@ class SunS:
 
 
 class SunG:
-    def __init__( self, P_dll, P_child = None ):
+    def __init__( self, P_dll, P_config = None, P_child = None ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Light_SunG0()

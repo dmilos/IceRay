@@ -100,7 +100,7 @@ int  IceRayC_Type_Math_Affine3D_System( IceRayC_Type_Math_Affine3D *P_this, IceR
   GS_DDMRM::S_IceRay::S_type::S_affine::GT_scalar3D I_this;
   ::math::linear::affine::system( I_this, c2cpp( *P_origin ), c2cpp( *P_X ), c2cpp( *P_Y ), c2cpp( *P_Z ) );
 
-  *P_this = cpp2c( I_this );
+  *P_this = cpp2c(  I_this );
   return 1;
  }
 

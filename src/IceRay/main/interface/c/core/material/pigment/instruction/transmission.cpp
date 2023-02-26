@@ -29,6 +29,13 @@ IceRayC__EXPORT IceRayC__DECLSPEC  H F(Blossom_Pinwheel0)(  S P_normal, S P_coun
   return cpp2c( Ir_result );
  }
 
+IceRayC__EXPORT IceRayC__DECLSPEC  H F(Blossom_LD0)(  S P_normal, S P_count, S P_leader, S P_angle, S P_gauss, S P_beam )
+ {
+  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_transmission::S_blossom::GC_LD    Tf_this;
+  auto Ir_result = new Tf_this{ P_normal, P_count, P_leader, P_angle, P_gauss, P_beam };
+  return cpp2c( Ir_result );
+ }
+
 IceRayC__EXPORT IceRayC__DECLSPEC  H F(Blossom_Random0)(    S P_normal, S P_count, S P_leader, S P_angle, S P_gauss, S P_beam )
  {
   typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_transmission::S_blossom::GC_random    Tf_this;
@@ -39,6 +46,13 @@ IceRayC__EXPORT IceRayC__DECLSPEC  H F(Blossom_Random0)(    S P_normal, S P_coun
 IceRayC__EXPORT IceRayC__DECLSPEC  H F(Blossom_Sobol0)(    S P_normal, S P_count, S P_leader, S P_angle, S P_gauss, S P_beam )
  {
   typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_transmission::S_blossom::GC_sobol    Tf_this;
+  auto Ir_result = new Tf_this{ P_normal, P_count, P_leader, P_angle, P_gauss, P_beam };
+  return cpp2c( Ir_result );
+ }
+
+IceRayC__EXPORT IceRayC__DECLSPEC  H F(Blossom_Congruent0)(    S P_normal, S P_count, S P_leader, S P_angle, S P_gauss, S P_beam )
+ {
+  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_transmission::S_blossom::GC_congruent    Tf_this;
   auto Ir_result = new Tf_this{ P_normal, P_count, P_leader, P_angle, P_gauss, P_beam };
   return cpp2c( Ir_result );
  }
@@ -82,6 +96,13 @@ IceRayC__EXPORT IceRayC__DECLSPEC  H F(Correct_Trim0)( S P_normal, S P_count, S 
   return cpp2c( Ir_result );
  }
 
+IceRayC__EXPORT IceRayC__DECLSPEC  H F(Jitter_General0)(  S P_normal, S P_count, S P_leaderR, S P_leaderD, S P_angle )
+ {
+  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_transmission::S_jitter::GC_general    Tf_this;
+  auto Ir_result = new Tf_this{ P_normal, P_count, P_leaderR, P_leaderD, P_angle };
+  return cpp2c( Ir_result );
+ }
+
 IceRayC__EXPORT IceRayC__DECLSPEC  H F(Jitter_Random0)(  S P_normal, S P_count, S P_leader, S P_angle )
  {
   typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_transmission::S_jitter::GC_random    Tf_this;
@@ -94,6 +115,13 @@ IceRayC__EXPORT IceRayC__DECLSPEC  H F(Jitter_Sobol0)(     S P_normal, S P_count
   auto Ir_result = new Tf_this{ P_normal, P_count, P_leader, P_angle };
   return cpp2c( Ir_result );
  }
+IceRayC__EXPORT IceRayC__DECLSPEC  H F(Jitter_Congruent0)(     S P_normal, S P_count, S P_leader, S P_angle )
+ {
+  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_transmission::S_jitter::GC_congruent    Tf_this;
+  auto Ir_result = new Tf_this{ P_normal, P_count, P_leader, P_angle };
+  return cpp2c( Ir_result );
+ }
+
 IceRayC__EXPORT IceRayC__DECLSPEC  H F(Jitter_VDC0)(     S P_normal, S P_count, S P_leader, S P_angle )
  {
   typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_transmission::S_jitter::GC_vdc    Tf_this;

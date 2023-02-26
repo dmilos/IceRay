@@ -34,3 +34,4 @@ IceRay/type/general/parent.cpp
 IceRay/type/picture/default.cpp
 
 IceRay/utility/utility.cpp
+IceRay/main/system/info.cpp

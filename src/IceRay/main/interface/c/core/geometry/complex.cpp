@@ -82,6 +82,20 @@ int IceRayC_Geometry_Complex_Intersect_Right1( IceRayC_Geometry_Handle P_this, I
   return I_this->F_right( c2cpp( P_right ), Tf_location( location ) );
  }
 
+int                     IceRayC_Geometry_Complex_Intersect_Invert( IceRayC_Geometry_Handle P_this, int P_invert )
+ {
+  typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;
+  typedef GS_DDMRM::S_IceRay::S_geometry::S_complex::S_CSG::GC_intersect Tf_intersect;
+
+  auto I_this = dynamic_cast< Tf_intersect *>( c2cpp( P_this ) );
+  if( nullptr == I_this )
+   {
+    return 0;
+   }
+  typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_inside::T_location    Tf_location;
+  return I_this->F_invert( P_invert ? true : false );
+ }
+
 IceRayC_Geometry_Handle IceRayC_Geometry_Complex_Enclose0()
  {
   typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;

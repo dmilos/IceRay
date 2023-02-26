@@ -52,11 +52,12 @@ GC_area::Fv_swarm
   for( I_index = 0; I_index < M2_sample; I_index++ )
    {
     //T_scalar I_x, I_y; M2_randStandard2D( I_x, I_y );
-     T_scalar I_x, I_y; M2_randSobol2D.next( I_x, I_y );
-    //T_coord2D I_c2D; M2_randVaLND.next( I_c2D );
+    //T_scalar I_x, I_y; M2_randSobol2D.next( I_x, I_y );
+    // T_coord2D I_c2D; M2_randVaLND.next( I_c2D );
+    T_coord2D I_c2D; M2_randCongruent2D.next( I_c2D  );
 
-    ::math::linear::vector::combine( I_spot.F_center(), T_scalar(1), M2_spot.F_center(), I_x, M2_x, I_y, M2_y );
-  //::math::linear::vector::combine( I_spot.F_center(), T_scalar(1), M2_spot.F_center(), I_c2D[0], M2_x, I_c2D[1], M2_y );
+    //::math::linear::vector::combine( I_spot.F_center(), T_scalar(1), M2_spot.F_center(), I_x, M2_x, I_y, M2_y );
+    ::math::linear::vector::combine( I_spot.F_center(), T_scalar(1), M2_spot.F_center(), I_c2D[0], M2_x, I_c2D[1], M2_y );
     P_swarm.F_push( I_spot );
    }
   return M2_sample;

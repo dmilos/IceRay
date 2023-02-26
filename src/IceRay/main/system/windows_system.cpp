@@ -33,7 +33,6 @@ void InitSystemWindows( void )
 //SetCurrentDirectory( GI_system.F_root().c_str() );
  }
 
-
 void ShutDownSystemWindows( void )
  {
   GdiplusShutdown( GIs_GdiplusToken );

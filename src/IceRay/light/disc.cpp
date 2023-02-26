@@ -49,17 +49,16 @@ GC_disc::Fv_swarm
 
   for( I_index = 0; I_index < M2_sample; I_index++ )
    {
-    //T_coord2D I_point;
-     T_scalar I_x, I_y;
+    T_coord2D I_point;
+    T_scalar & I_x = I_point[0]; 
+    T_scalar & I_y = I_point[1];
 
-    GS_DDMRM::S_IceRay::S_utility::S_random::GF_disc2D( I_x, I_y, M2_randSobol2D  );
-   // GS_DDMRM::S_IceRay::S_utility::S_random::GF_disc2D( I_point, M2_VaLND );
+   GS_DDMRM::S_IceRay::S_utility::S_random::GF_disc2D( I_point, M2_randCongurent2D  );
+   //  GS_DDMRM::S_IceRay::S_utility::S_random::GF_disc2D( I_point, M2_VaLND );
    // GS_DDMRM::S_IceRay::S_utility::S_random::GF_disc2D( I_point[0], I_point[1], M2_randSobol2D  );
    // GS_DDMRM::S_IceRay::S_utility::S_random::GF_disc2D( I_point, M2_randStandard2D );
 
-    // Position is not optimal;
-    using namespace ::math::linear::vector;
-    I_spot.F_center( M2_spot.F_center() + I_x * M2_x  +  I_y * M2_y );
+    ::math::linear::vector::combine( I_spot.F_center(), M2_spot.F_center(), I_x, M2_x, I_y, M2_y );
     P_swarm.F_push( I_spot );
    }
 

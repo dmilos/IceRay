@@ -5,3 +5,4 @@
 #include "./crackle.hpp"
 #include "./gold.hpp"
 #include "./vdc.hpp"
+#include "./congruent3d.hpp"

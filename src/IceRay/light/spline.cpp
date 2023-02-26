@@ -45,7 +45,6 @@ GC_spline::Fv_swarm
  )const
  {
   T_size I_index;
-  T_scalar I_t;
   T_spot I_spot( M2_spot );
 
   for( I_index = 0; I_index < M2_sample; I_index++ )
@@ -54,15 +53,22 @@ GC_spline::Fv_swarm
   //T_scalar I_parm = M2_randStandard1D.next();
   //T_scalar I_parm = M2_randGold.next();
   //T_scalar I_parm = M2_randSobol1D.next();
-    T_scalar I_parm = M2_randGold1D.next();
+  //T_scalar I_parm = M2_randGold1D.next();
+    T_scalar I_parm = M2_randCongruent1D.next();
 
     I_spot.F_center( M2_spot.F_center() );
     using namespace ::math::linear::vector;
 
-    I_t = ( T_scalar(1) - I_parm ) ; I_t =     I_t    *    I_t * I_t;     I_spot.F_center(                      I_t * M2_cp[0] );
-    I_t = ( T_scalar(1) - I_parm ) ; I_t = 3 * I_t    *    I_t * I_parm;  I_spot.F_center(  I_spot.F_center() + I_t * M2_cp[1] );
-    I_t = ( T_scalar(1) - I_parm ) ; I_t = 3 * I_t    * I_parm * I_parm;  I_spot.F_center(  I_spot.F_center() + I_t * M2_cp[2] );
-                                     I_t =     I_parm * I_parm * I_parm;  I_spot.F_center(  I_spot.F_center() + I_t * M2_cp[3] );
+    T_scalar I_t = ( T_scalar(1) - I_parm ) ;
+
+    T_scalar I_t0 =     I_t    *    I_t * I_t;   
+    T_scalar I_t1 = 3 * I_t    *    I_t * I_parm; 
+    T_scalar I_t2 = 3 * I_t    * I_parm * I_parm; 
+    T_scalar I_t3 =     I_parm * I_parm * I_parm;   
+
+    I_spot.F_center()[0] = I_t0 * M2_cp[0][0] + I_t1 * M2_cp[0][0] + I_t2 * M2_cp[2][0] + I_t3 * M2_cp[3][0];
+    I_spot.F_center()[1] = I_t0 * M2_cp[0][1] + I_t1 * M2_cp[0][1] + I_t2 * M2_cp[2][1] + I_t3 * M2_cp[3][1];
+    I_spot.F_center()[2] = I_t0 * M2_cp[0][2] + I_t1 * M2_cp[0][2] + I_t2 * M2_cp[2][2] + I_t3 * M2_cp[3][2];
 
     P_swarm.F_push( I_spot );
    }
@@ -73,9 +79,9 @@ GC_spline::Fv_swarm
 bool
 GC_spline::F_sample( T_size const& P_sample )
  {
-  M2_spot.F_0() /= M2_sample;
-  M2_spot.F_1() /= M2_sample;
-  M2_spot.F_2() /= M2_sample;
+  M2_spot.F_0() *= M2_sample;
+  M2_spot.F_1() *= M2_sample;
+  M2_spot.F_2() *= M2_sample;
 
   M2_sample = P_sample;
 

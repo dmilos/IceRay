@@ -43,9 +43,9 @@
 
              ~GC_perlin()
               {
-               std::cout << std::endl;
-               std::cout << "Perlin: " << Ms_min<< ", ";
-               std::cout << Ms_max<< std::endl;
+               //std::cout << std::endl;
+               //std::cout << "Perlin: " << Ms_min<< ", ";
+               //std::cout << Ms_max<< std::endl;
               }
 
            public:

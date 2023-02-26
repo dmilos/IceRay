@@ -22,18 +22,20 @@ class Info:
 
     def to_string(self):
         result ={}
+        key_len = 32
+        value_len = 64
 
-        key   = ctypes.create_string_buffer( 32 )
-        next  = ctypes.create_string_buffer( 32 )
-        value = ctypes.create_string_buffer( 32 )
-        tmp  = ctypes.create_string_buffer( 32 )
-        r = self.m_cargo['dll'].IceRayC_System_First( ctypes.c_size_t(32), key )
+        key   = ctypes.create_string_buffer( key_len )
+        next  = ctypes.create_string_buffer( key_len )
+        tmp   = ctypes.create_string_buffer( key_len )
+        value = ctypes.create_string_buffer( value_len )
+        r = self.m_cargo['dll'].IceRayC_System_First( ctypes.c_size_t(key_len), key )
         print( "--------------", flush = True )
         while( 0 != r ):
-            self.m_cargo['dll'].IceRayC_System_Value( ctypes.c_size_t(32), key, ctypes.c_size_t(32), value )
+            self.m_cargo['dll'].IceRayC_System_Value( ctypes.c_size_t(key_len), key, ctypes.c_size_t(value_len), value )
             print( repr(key.value.decode()) +":"+ repr(value.value.decode()) )
             result[ repr(key.value.decode()) ] = repr(value.value.decode())
-            r = self.m_cargo['dll'].IceRayC_System_Next( ctypes.c_size_t(32), key, ctypes.c_size_t(32), next )
+            r = self.m_cargo['dll'].IceRayC_System_Next( ctypes.c_size_t(key_len), key, ctypes.c_size_t(key_len), next )
             tmp = key
             key = next
             next = tmp
@@ -54,14 +56,22 @@ def SearchCDLL( P_path = None, P_preferDebug = False ):
         path_retreat = "../../.."
         path_root  = path_current + "/" + path_retreat
 
+        arch = platform.architecture();
+        print( "Architecture" + str( arch ) )
+
+        #if( 32 == platform.architecture() ) :
         list_all={
-              "build/cmake/_makeVS/cdll/Debug/IceRayDLL-1.0.0.0.dll"          : { 'exists': False, 'config': 'debug',  'arch' : '32' }
-            , "build/cmake/_makeVS/cdll/Release/IceRayDLL-1.0.0.0.dll"        : { 'exists': False, 'config': 'release','arch' : '32' }
-            , "bin\IceRayCDLL-x86-Release/IceRayCDLL-1.0.0.0-dynamic.dll"     : { 'exists': False, 'config': 'release','arch' : '32' }
-            , "bin\IceRayCDLL-x86-Debug/IceRayCDLL-1.0.0.0-dynamic.dll"       : { 'exists': False, 'config': 'debug',  'arch' : '32' }
-            #, "bin\IceRayCDLL-x86_64-Release/IceRayCDLL-1.0.0.0-dynamic.dll"  : { 'exists': False, 'config': 'release','arch' : '64' }
-            #, "bin\IceRayCDLL-x86_64-Debug/IceRayCDLL-1.0.0.0-dynamic.dll"    : { 'exists': False, 'config': 'debug',  'arch' : '64' }
+              "build/cmake/_makeVS/cdll/Debug/IceRayDLL-1.0.0.0.dll"       : { 'exists': False, 'config': 'debug',  'arch' : '32' }
+            , "build/cmake/_makeVS/cdll/Release/IceRayDLL-1.0.0.0.dll"     : { 'exists': False, 'config': 'release','arch' : '32' }
+            , "bin/IceRayCDLL-x86-Release/IceRayCDLL-1.0.0.0-dynamic.dll"  : { 'exists': False, 'config': 'release','arch' : '32' }
+            , "bin/IceRayCDLL-x86-Debug/IceRayCDLL-1.0.0.0-dynamic.dll"    : { 'exists': False, 'config': 'debug',  'arch' : '32' }
         }
+        
+        # if( 32 == platform.architecture() ) :
+        # list_all={
+        #       "bin/IceRayCDLL-x86_64-Release/IceRayCDLL-1.0.0.0-dynamic.dll"  : { 'exists': False, 'config': 'release','arch' : '64' }
+        #     , "bin/IceRayCDLL-x86_64-Debug/IceRayCDLL-1.0.0.0-dynamic.dll"    : { 'exists': False, 'config': 'debug',  'arch' : '64' }
+        # }
 
         for item in list_all:
             list_all[item]['absolute'] = path_root + '/' + item
@@ -366,16 +376,16 @@ def _MapFunction_Geometry_Blobby( P_dll ): #TODO
     _MakeFunction( P_dll.IceRayC_Geometry_Blobby_Element_Affine_Child                 , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_void_p] )
     _MakeFunction( P_dll.IceRayC_Geometry_Blobby_Element_Release              , ctypes.c_int     , [ctypes.c_void_p] )
     _MakeFunction( P_dll.IceRayC_Geometry_Blobby_Element_Sphere0                      , ctypes.c_void_p  , [] )
-    _MakeFunction( P_dll.IceRayC_Geometry_Blobby_Element_Sphere1                      , ctypes.c_void_p  , [ctypes.c_void_p,ctypes.c_double,ctypes.c_double] ) 
+    _MakeFunction( P_dll.IceRayC_Geometry_Blobby_Element_Sphere1                      , ctypes.c_void_p  , [ctypes.c_void_p,ctypes.c_double,ctypes.c_double] )
     _MakeFunction( P_dll.IceRayC_Geometry_Blobby_Element_Sphere_Center                , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_void_p] )
     _MakeFunction( P_dll.IceRayC_Geometry_Blobby_Element_Sphere_Influence             , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_double] )
     _MakeFunction( P_dll.IceRayC_Geometry_Blobby_Element_Sphere_Radius                , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_double] )
     _MakeFunction( P_dll.IceRayC_Geometry_Blobby_Element_Translate0                   , ctypes.c_void_p  , [] )
-    _MakeFunction( P_dll.IceRayC_Geometry_Blobby_Element_Translate1                   , ctypes.c_void_p  , [ctypes.c_void_p,ctypes.c_void_p] ) 
+    _MakeFunction( P_dll.IceRayC_Geometry_Blobby_Element_Translate1                   , ctypes.c_void_p  , [ctypes.c_void_p,ctypes.c_void_p] )
     _MakeFunction( P_dll.IceRayC_Geometry_Blobby_Element_Translate_Child              , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_void_p] )
     _MakeFunction( P_dll.IceRayC_Geometry_Blobby_Element_Translate_Move               , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_void_p] )
     _MakeFunction( P_dll.IceRayC_Geometry_Blobby_Element_UCylinderZ0                  , ctypes.c_void_p  , [] )
-    _MakeFunction( P_dll.IceRayC_Geometry_Blobby_Element_UCylinderZ1                  , ctypes.c_void_p  , [ctypes.c_double] ) 
+    _MakeFunction( P_dll.IceRayC_Geometry_Blobby_Element_UCylinderZ1                  , ctypes.c_void_p  , [ctypes.c_double] )
     _MakeFunction( P_dll.IceRayC_Geometry_Blobby_Element_UCylinderZ_Core              , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_double] )
     _MakeFunction( P_dll.IceRayC_Geometry_Blobby_Element_USphere0                     , ctypes.c_void_p  , [] )
     _MakeFunction( P_dll.IceRayC_Geometry_Blobby_Element_USphere1                     , ctypes.c_void_p  , [ctypes.c_double] )
@@ -424,10 +434,11 @@ def _MapFunction_Geometry_Complex( P_dll ): #done
     _MakeFunction( P_dll.IceRayC_Geometry_Complex_Enclose_Hull      , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_void_p] )
     _MakeFunction( P_dll.IceRayC_Geometry_Complex_Intersect0        , ctypes.c_void_p  , [] )
     _MakeFunction( P_dll.IceRayC_Geometry_Complex_Intersect1        , ctypes.c_void_p  , [ctypes.c_void_p,ctypes.c_void_p] )
-    _MakeFunction( P_dll.IceRayC_Geometry_Complex_Intersect_Left0   , ctypes.c_void_p  , [ctypes.c_void_p,ctypes.c_void_p] )
-    _MakeFunction( P_dll.IceRayC_Geometry_Complex_Intersect_Left1   , ctypes.c_void_p  , [ctypes.c_void_p,ctypes.c_void_p,ctypes.c_int] )
-    _MakeFunction( P_dll.IceRayC_Geometry_Complex_Intersect_Right0  , ctypes.c_void_p  , [ctypes.c_void_p,ctypes.c_void_p] )
-    _MakeFunction( P_dll.IceRayC_Geometry_Complex_Intersect_Right1  , ctypes.c_void_p  , [ctypes.c_void_p,ctypes.c_void_p,ctypes.c_int] )
+    _MakeFunction( P_dll.IceRayC_Geometry_Complex_Intersect_Left0   , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_void_p] )
+    _MakeFunction( P_dll.IceRayC_Geometry_Complex_Intersect_Left1   , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_void_p,ctypes.c_int] )
+    _MakeFunction( P_dll.IceRayC_Geometry_Complex_Intersect_Right0  , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_void_p] )
+    _MakeFunction( P_dll.IceRayC_Geometry_Complex_Intersect_Right1  , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_void_p,ctypes.c_int] )
+    _MakeFunction( P_dll.IceRayC_Geometry_Complex_Intersect_Invert  , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_int] )
 
 
 
@@ -710,7 +721,7 @@ def _MapFunction_Type_Picture(P_dll): #!< DONE
 
     _MakeFunction( P_dll.IceRayC_Type_Picture0           , ctypes.c_void_p , [] )
     _MakeFunction( P_dll.IceRayC_Type_Picture1           , ctypes.c_void_p , [ctypes.c_char_p] )
-    _MakeFunction( P_dll.IceRayC_Type_Picture_Bits       , ctypes.c_int    , [ctypes.c_void_p,ctypes.c_void_p] )
+    _MakeFunction( P_dll.IceRayC_Type_Picture_Buffer     , ctypes.c_void_p , [ctypes.c_void_p] )
     _MakeFunction( P_dll.IceRayC_Type_Picture_Crop       , ctypes.c_int    , [ctypes.c_void_p, ctypes.c_void_p, ctypes.c_void_p, ctypes.c_void_p] )
     _MakeFunction( P_dll.IceRayC_Type_Picture_Crop0      , ctypes.c_int    , [ctypes.c_void_p, ctypes.c_void_p, ctypes.c_void_p ] )
     _MakeFunction( P_dll.IceRayC_Type_Picture_Default    , ctypes.c_int    , [ctypes.c_void_p] )
@@ -771,6 +782,7 @@ def _MapFunction_Material_Pattern(P_dll): #!< DONE
     _MakeFunction( P_dll.IceRayC_Material_Pattern_Noise_Random0                   , ctypes.c_void_p , [] )
     _MakeFunction( P_dll.IceRayC_Material_Pattern_Noise_Value0                    , ctypes.c_void_p , [] )
     _MakeFunction( P_dll.IceRayC_Material_Pattern_Noise_Vdc0                      , ctypes.c_void_p , [] )
+    _MakeFunction( P_dll.IceRayC_Material_Pattern_Noise_Congruent3D0               , ctypes.c_void_p , [] )
     _MakeFunction( P_dll.IceRayC_Material_Pattern_Onion0                          , ctypes.c_void_p , [] )
     _MakeFunction( P_dll.IceRayC_Material_Pattern_Release                         , ctypes.c_int    , [ctypes.c_void_p] )
     _MakeFunction( P_dll.IceRayC_Material_Pattern_Side_Cube0                      , ctypes.c_void_p , [] )
@@ -839,6 +851,16 @@ def _MapFunction_Material_Pigment_Surface_Instruction_Type(P_dll):
     _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Coord3D_Scale0      , ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t, ctypes.c_size_t] )
     _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Coord3D_Subtraction0, ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t, ctypes.c_size_t] )
     _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Coord3D_Unit0       , ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t] )
+
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Random_Congruent1D0   , ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Random_Congruent2D0   , ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Random_Sobol1D0       , ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Random_Sobol2D0       , ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Random_Standard1D0    , ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Random_Table1D0       , ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Random_Table2D0       , ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Random_VDC1D0         , ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t] )
+
 
 
 def _MapFunction_Material_Pigment_Surface_Instruction_Convert(P_dll): #!< DONE
@@ -987,11 +1009,14 @@ def _MapFunction_Material_Pigment_Surface_Instruction_Transmission_Correct(P_dll
     _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Transmission_Correct_Leader0   , ctypes.c_void_p , [ ctypes.c_size_t, ctypes.c_size_t, ctypes.c_size_t ] )
 
 def _MapFunction_Material_Pigment_Surface_Instruction_Transmission_Blossom(P_dll):
+#   _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Transmission_Blossom_General0  , ctypes.c_void_p , [ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t] )
     _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Transmission_Blossom_Grid0     , ctypes.c_void_p , [ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t] )
     _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Transmission_Blossom_Hexagon0  , ctypes.c_void_p , [ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t] )
     _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Transmission_Blossom_Pinwheel0 , ctypes.c_void_p , [ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Transmission_Blossom_LD0       , ctypes.c_void_p , [ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t] )
     _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Transmission_Blossom_Random0   , ctypes.c_void_p , [ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t] )
     _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Transmission_Blossom_Sobol0    , ctypes.c_void_p , [ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Transmission_Blossom_Congruent0, ctypes.c_void_p , [ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t] )
     _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Transmission_Blossom_Triangle0 , ctypes.c_void_p , [ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t] )
     _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Transmission_Blossom_VDC0      , ctypes.c_void_p , [ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t] )
 
@@ -1008,6 +1033,8 @@ def _MapFunction_Material_Pigment_Surface_Instruction_Transmission_Jitter(P_dll)
     _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Transmission_Jitter_Sobol0     , ctypes.c_void_p , [ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t] )
     _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Transmission_Jitter_Random0    , ctypes.c_void_p , [ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t] )
     _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Transmission_Jitter_VDC0       , ctypes.c_void_p , [ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Transmission_Jitter_Congruent0 , ctypes.c_void_p , [ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Transmission_Jitter_General0   , ctypes.c_void_p , [ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t] )
 
 def _MapFunction_Material_Pigment_Surface_Instruction(P_dll): #!< DONE
     _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Release , ctypes.c_int   , [ctypes.c_void_p] )

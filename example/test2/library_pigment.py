@@ -11,6 +11,7 @@ list = {
       'P-noise-cells'      : IceRayPy.utility.material.pattern.noise.Cells,
       'P-noise-crackle'    : IceRayPy.utility.material.pattern.noise.Crackle,
       'P-noise-perlin'     : IceRayPy.utility.material.pattern.noise.Perlin,
+      'P-noise-congruent'  : IceRayPy.utility.material.pattern.noise.Congruent3D,
       'P-noise-random'     : IceRayPy.utility.material.pattern.noise.Random,
       'P-noise-value'      : IceRayPy.utility.material.pattern.noise.Value,
       'P-noise-vdc'        : IceRayPy.utility.material.pattern.noise.VDC,
@@ -67,13 +68,16 @@ list = {
      'T-2-reflect-blossom-Grid'      : IceRayPy.utility.material.transmission.blossom.Grid,     #TODO edge bug
      'T-3-reflect-blossom-Hexagon'   : IceRayPy.utility.material.transmission.blossom.Hexagon,  #CHECK
      'T-4-reflect-blossom-trg'       : IceRayPy.utility.material.transmission.blossom.Triangle, #OK
-     #'T-5-reflect-blossom-Pinwheel' : IceRayPy.utility.material.transmission.blossom.Pinwheel, #TODO
-     #'T-5-reflect-blossom-penrose'  : IceRayPy.utility.material.transmission.blossom.Penrose, #TODO
+    #'T-5-reflect-blossom-LD'        : IceRayPy.utility.material.transmission.blossom.LD,       #Experimental
+    #'T-5-reflect-blossom-Pinwheel' : IceRayPy.utility.material.transmission.blossom.Pinwheel, #TODO
+    #'T-5-reflect-blossom-penrose'  : IceRayPy.utility.material.transmission.blossom.Penrose, #TODO
      'T-6-reflect-blossom-Rand'      : IceRayPy.utility.material.transmission.blossom.Random,   #OK
-     'T-7-reflect-blossom-VDC'       : IceRayPy.utility.material.transmission.blossom.VDC,      #OK
-     'T-8-refract-fresnel'           : IceRayPy.utility.material.transmission.refract.Fresnel,  #OK
-     'T-9-refract-Snell'             : IceRayPy.utility.material.transmission.refract.Snell,    #OK
-     'T-A-refract-schlick'           : IceRayPy.utility.material.transmission.refract.Schlick,  #OK
+     'T-7-reflect-blossom-sobol'     : IceRayPy.utility.material.transmission.blossom.Sobol, #OK
+     'T-8-reflect-blossom-VDC'       : IceRayPy.utility.material.transmission.blossom.VDC,      #OK
+     'T-8-reflect-blossom-congruent' : IceRayPy.utility.material.transmission.blossom.Congruent,      #OK
+     'T-9-refract-fresnel'           : IceRayPy.utility.material.transmission.refract.Fresnel,  #OK
+     'T-A-refract-Snell'             : IceRayPy.utility.material.transmission.refract.Snell,    #OK
+     'T-B-refract-schlick'           : IceRayPy.utility.material.transmission.refract.Schlick,  #OK
 }
 
 print( '</' + __name__ + ' file=\'' +   __file__ + '\'>' )

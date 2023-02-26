@@ -25,7 +25,7 @@ GC_intersect::GC_intersect( T_geometry * P_left, T_location const& P_lo,  T_geom
 {
   M2_left.F_set( P_left,  P_lo );
   M2_right.F_set( P_right, P_ro );
-
+  M2_invert = false;
   F2_recalc();
  }
 
@@ -230,17 +230,18 @@ void GC_intersect::Fv_normal( T_coord &P_normal, T_coord const& P_point, T_state
 
 GC_intersect::T_location GC_intersect::Fv_inside( T_coord const& P_point )const
  {
-  auto I_left  = ( M2_left.M_orientation  ==  M2_left.M_inside->Fv_inside( P_point ) ); 
-  auto I_right = ( M2_right.M_orientation == M2_right.M_inside->Fv_inside( P_point ) ); 
+  auto I_left  = ( M2_left.M_orientation  ==  M2_left.M_inside->Fv_inside( P_point ) );
+  auto I_right = ( M2_right.M_orientation == M2_right.M_inside->Fv_inside( P_point ) );
 
+  auto I_where = En_nowhere;
   switch( (I_left?1:0) + (I_right?2:0) )
    {
-    case( 0 + 0 ): return En_out;
-    case( 1 + 0 ): return En_out;
-    case( 0 + 2 ): return En_out;
-    case( 1 + 2 ): return En_in;
+    case( 0 + 0 ): I_where = En_out; break;
+    case( 1 + 0 ): I_where = En_out; break;
+    case( 0 + 2 ): I_where = En_out; break;
+    case( 1 + 2 ): I_where = En_in ; break;
    }
-  return En_nowhere;
+  return M2_invert ? GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_inside::Fs_invert( I_where ) : I_where;
  }
 
 GC_intersect::T_scalar  GC_intersect::Fv_distance( T_coord const& P_point )const
@@ -373,6 +374,16 @@ bool  GC_intersect::F_right( T_geometry * P_right, T_location const& P_orientati
   return bool( true );
  }
 
+bool    GC_intersect::F_invert()const
+ { 
+  return M2_invert; 
+ }
+bool    GC_intersect::F_invert( bool const& P_invert )
+ {
+  M2_invert = P_invert;
+  return true;
+ }
+
 
 void GC_intersect::F2_recalc()
  {
@@ -384,18 +395,18 @@ void GC_intersect::F2_recalc()
 
   switch( ( ( M2_right.M_orientation == T_location::En_in ) ? 0 : 2) +  ( ( M2_left.M_orientation == T_location::En_in ) ? 0 : 1 ) )
    {
-    case( 0 + 0 ):   // clasic intersection
+    case( 0 + 0 ):   // classic intersection
      {
       T_box I_box = F_box();
       ::math::geometry::interval::intersect( I_box, M2_left.M_base->F_box(), M2_right.M_base->F_box() );
       F1_box( I_box );
      }break;
 
-    case( 1 + 0 ): // reverse diference
+    case( 1 + 0 ): // reverse difference
       F1_box( M2_right.M_base->F_box() );
      break;
 
-    case( 0 + 2 ): // clasic diference
+    case( 0 + 2 ): // classic difference
       F1_box( M2_left.M_base->F_box() );
      break;
 

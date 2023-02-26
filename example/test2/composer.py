@@ -8,10 +8,7 @@ def arange(  P_dll
             ):
 
     rtss = IceRayPy.core.geometry.rtss.Object( P_dll )
-
-    list = IceRayPy.core.geometry.rtss.List( P_dll )
-
-    rtss.rtss( list )
+    rtss.rtss( IceRayPy.core.geometry.rtss.List( P_dll ) )
 
     rtss.push( IceRayPy.core.geometry.Pretender( P_dll, P_room.cast2Geometry(),    P_room ) )
     rtss.push( IceRayPy.core.geometry.Pretender( P_dll, P_exponat.cast2Geometry(), P_exponat ) )
@@ -32,8 +29,17 @@ def camera( P_dll,
           P_config,
           ):
     transform = IceRayPy.core.camera.transform.Affine( P_dll )
-    #P_camera.height( 6 ) # TODO this is hack. remove or comment
-    #if( 'sample' in P_config ):
+
+    if( 'sample' in P_config ):
+        if( hasattr( P_camera, 'sample' ) ):
+            P_camera.sample( P_config['sample'] )
+    if( 'aspect' in P_config ):
+        if( hasattr( P_camera, 'aspect' ) ):
+            P_camera.aspect( P_config['aspect'] )
+
+    #if( 'hfov' in P_config ):
+    #    P_camera.sample( P_config['sample'] )
+    #if( 'vfov' in P_config ):
     #    P_camera.sample( P_config['sample'] )
 
     transform.child( P_camera )
@@ -53,8 +59,8 @@ def object( P_dll, P_geometry, P_pigment, P_medium ):
 
     return wrapper
 
-def manager( P_config, P_camera, P_object ):
-    manager = IceRayPy.utility.render.Manager( P_config['dll'] )
+def manager( P_dll, P_config, P_camera, P_object ):
+    manager = IceRayPy.utility.render.Manager( P_dll )
     manager.camera( P_camera )
     manager.object( P_object )
 

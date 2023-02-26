@@ -39,6 +39,25 @@ IceRayC__EXPORT IceRayC__DECLSPEC  H F( Relu0     )( S P_result, S P_input );
 #undef F
 #undef P
 
+#define P(D_P) IceRayC_##D_P
+#define F(D_P) IceRayC_Material_Pigment_Surface_Instruction_Operation_Random_##D_P
+#define S IceRayC_Type_Size
+#define H IceRayC_Material_Pigment_Surfcace_Instruction_Handle
+
+IceRayC__EXPORT IceRayC__DECLSPEC  H F( Congruent1D0 )( S P_count, S P_leader );
+IceRayC__EXPORT IceRayC__DECLSPEC  H F( Congruent2D0 )( S P_count, S P_leader );
+IceRayC__EXPORT IceRayC__DECLSPEC  H F( Sobol1D0     )( S P_count, S P_leader );
+IceRayC__EXPORT IceRayC__DECLSPEC  H F( Sobol2D0     )( S P_count, S P_leader );
+IceRayC__EXPORT IceRayC__DECLSPEC  H F( Standard1D0  )( S P_count, S P_leader );
+IceRayC__EXPORT IceRayC__DECLSPEC  H F( Table1D0     )( S P_count, S P_leader );
+IceRayC__EXPORT IceRayC__DECLSPEC  H F( Table2D0     )( S P_count, S P_leader );
+IceRayC__EXPORT IceRayC__DECLSPEC  H F( VDC1D0       )( S P_count, S P_leader );
+
+#undef H
+#undef S
+#undef F
+#undef P
+ 
 
 #define P(D_P) IceRayC_##D_P
 #define F(D_P) IceRayC_Material_Pigment_Surface_Instruction_Operation_Mapping_##D_P

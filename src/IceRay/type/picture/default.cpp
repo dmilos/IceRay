@@ -52,7 +52,7 @@ void GF_default( GS_DDMRM::S_IceRay::S_type::S_picture::GC__pure & P_image )
      c[1] = 100;
      c[2] = 100* (I_coord[0]+I_coord[1])/( I_width+I_height -2 );
      pixel = c;
-     bool invert = bool( int(8*(I_u+1)) %2 ) ^ bool( int(8* (I_v+1) ) %2 );
+     bool invert = bool( int(8*(I_u+1)) %2?true:false ) ^ bool( int(8* (I_v+1) ) %2?true:false );
      if( invert )
       {
        ::color::operation::invert( pixel, Tf_color{ c } );

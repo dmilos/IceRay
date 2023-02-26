@@ -7,6 +7,9 @@
  // GS_DDMRM::S_IceRay::S_utility::S_random::GT_vdc2
  // GS_DDMRM::S_IceRay::S_utility::S_random::GT_sobol1D
  // GS_DDMRM::S_IceRay::S_utility::S_random::GT_sobol2D
+ // GS_DDMRM::S_IceRay::S_utility::S_random::GT_congurent1D
+ // GS_DDMRM::S_IceRay::S_utility::S_random::GT_congurent2D
+ // GS_DDMRM::S_IceRay::S_utility::S_random::GT_congurent3D
 
 
 #include "math/math.hpp"
@@ -124,10 +127,10 @@
             public:
               typedef GS_DDMRM::S_IceRay::S_type::GT_size   T_size;
               typedef GS_DDMRM::S_IceRay::S_type::GT_scalar T_scalar;
-              typedef std::array<T_scalar,32> T_table;
+              typedef std::vector<T_scalar> T_table;
 
             public:
-              GC_table1D(){ M2_counter = 0; }
+              GC_table1D();
               T_scalar operator()()
                {
                 return this->next();
@@ -142,7 +145,12 @@
             public:
               void static Fs_next();
             private:
+              static bool F2s_fill( );
+              static bool F2s_init(   T_scalar *P_begin, T_size const& P_size );
+              static void Fs_reverse( T_scalar *P_begin, T_size const& P_size );
+              static void Fs_riffle(  T_scalar *P_begin, T_size const& P_size );
               T_size M2_counter;
+              static T_size  M2_size;
               static T_table M2_table;
            };
 
@@ -190,12 +198,18 @@
 
 
           typedef ::math::random::vdc< GS_DDMRM::S_IceRay::S_type::GT_scalar, GS_DDMRM::S_IceRay::S_type::GT_size, 2 > GT_vdc2;
+          typedef ::math::random::vdc< GS_DDMRM::S_IceRay::S_type::GT_scalar, GS_DDMRM::S_IceRay::S_type::GT_size, 3 >  GT_vdc3;
+          typedef ::math::random::vdc< GS_DDMRM::S_IceRay::S_type::GT_scalar, GS_DDMRM::S_IceRay::S_type::GT_size, 10 > GT_vdc10;
 
         //typedef ::math::random::VaPND<GS_DDMRM::S_IceRay::S_type::GT_scalar,  GS_DDMRM::S_IceRay::S_type::GT_size, 2> GT_VaPND;
           typedef ::math::random::VaLND<GS_DDMRM::S_IceRay::S_type::GT_scalar,  GS_DDMRM::S_IceRay::S_type::GT_size, 2> GT_VaLND;
 
           typedef ::math::random::sobol1D< GS_DDMRM::S_IceRay::S_type::GT_scalar > GT_sobol1D;
           typedef ::math::random::sobol2D< GS_DDMRM::S_IceRay::S_type::GT_scalar > GT_sobol2D;
+
+          typedef ::math::random::congruent< GS_DDMRM::S_IceRay::S_type::GT_scalar, 1 > GT_congruent1D;
+          typedef ::math::random::congruent< GS_DDMRM::S_IceRay::S_type::GT_scalar, 2 > GT_congruent2D;
+          typedef ::math::random::congruent< GS_DDMRM::S_IceRay::S_type::GT_scalar, 3 > GT_congruent3D;
 
         }
       }

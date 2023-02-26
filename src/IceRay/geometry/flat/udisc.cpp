@@ -21,7 +21,6 @@ GC_udisc::GC_udisc
  )
  {
   M2_radius = P_radius;
-  using namespace ::math::linear::vector;
   F1_box
    ( T_box{ 
      ::math::linear::vector::fill( T_coord{}, -M2_radius )

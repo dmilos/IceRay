@@ -43,10 +43,12 @@ GC_circle::Fv_swarm( T_swarm &P_swarm,  T_coord const& P_point )const
 
   for( I_i = 0; I_i < M2_sample; I_i++ )
    {
-    T_scalar I_theta = ::math::constants::PHI_two * M2_randGold1D.next(); //!< win
-    //T_scalar I_theta = ::math::constants::PHI_two * M2_randSobol1D.next();
-    //T_scalar I_theta = ::math::constants::PHI_two * M2_randVDC.next();
-    //T_scalar I_theta = ::math::constants::PHI_two * M2_randStandard1D.next();
+    //T_scalar I_theta = ::math::constants::PHI_two * M2_randGold1D.next(); //!< win
+    T_scalar I_theta = ::math::constants::PHI_two * M2_randCongruent1D.next(); //!< win
+    //T_scalar I_theta  = ::math::constants::PHI_two * M2_randSobol1D.next();
+    //T_scalar I_theta  = ::math::constants::PHI_two * M2_randVDC.next();
+    //T_scalar I_theta  = ::math::constants::PHI_two * M2_randStandard1D.next();
+    //T_scalar I_thetaT = ::math::constants::PHI_two * M2_randTable1D.next();
 
     I_y = cos( I_theta );
     I_x = sin( I_theta );
@@ -61,9 +63,9 @@ GC_circle::Fv_swarm( T_swarm &P_swarm,  T_coord const& P_point )const
 bool
 GC_circle::F_sample( T_size const& P_sample )
  {
-  M2_spot.F_0() /= M2_sample;
-  M2_spot.F_1() /= M2_sample;
-  M2_spot.F_2() /= M2_sample;
+  M2_spot.F_0() *= M2_sample;
+  M2_spot.F_1() *= M2_sample;
+  M2_spot.F_2() *= M2_sample;
 
   M2_sample = P_sample;
 

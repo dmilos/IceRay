@@ -223,7 +223,7 @@ IceRayC_Type_Bool IceRayC_Type_Picture_StorePNM( IceRayC_Type_Picture_Handle P_t
   return 1;
  }
 
-IceRayC_Type_Bool IceRayC_Type_Picture_Bits( IceRayC_Type_Picture_Handle P_this, unsigned char const** P_bits )
+unsigned char const* IceRayC_Type_Picture_Buffer( IceRayC_Type_Picture_Handle P_this )
  {
   typedef GS_DDMRM::S_IceRay::S_type::S_picture::GC__pure      Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_type::S_picture::GC_memory    Tf_memory;
@@ -231,11 +231,10 @@ IceRayC_Type_Bool IceRayC_Type_Picture_Bits( IceRayC_Type_Picture_Handle P_this,
   auto I_this = dynamic_cast<Tf_memory*>( c2cpp ( P_this ) );
   if( nullptr == I_this )
    {
-    return 0;
+    return nullptr;
    }
 
-  *P_bits = reinterpret_cast< unsigned char const *> ( I_this->Fv_data() );
-  return true;
+  return reinterpret_cast< unsigned char const *> ( I_this->Fv_data() );
  }
 
 IceRayC_Type_Bool IceRayC_Type_Picture_Default( IceRayC_Type_Picture_Handle P_this )

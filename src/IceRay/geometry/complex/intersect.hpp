@@ -62,18 +62,24 @@
              public:
                T_bool           Fv_solid( T_state const& P_state )const;
 
-             public:  // property geometry  left
+             public:
                T_geometry const*    F_left()const{ return M2_left.M_base; }
                bool                 F_left( T_geometry * P_left );
                bool                 F_left( T_geometry * P_left, T_location const& P_orientation );
 
-             public:  // property geometry  left
+             public:
                T_geometry const*    F_right()const{ return M2_right.M_base; }
                bool                 F_right( T_geometry * P_right );
                bool                 F_right( T_geometry * P_right, T_location const& P_orientation );
 
+             public:
+               bool    F_invert()const;
+               bool    F_invert( bool const& P_right );
              private:
-               enum Ee_side{ En_none, En_left, En_right };
+               bool M2_invert;
+
+             private:
+               enum Ee_side{ En_none, En_left, En_right };//!< What ray hit
 
                typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_cluster         T2_cluster;
                typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_intersect       T2_intersect;

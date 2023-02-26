@@ -3,6 +3,9 @@
 #include "./vdc.hpp"
 #include "./random.hpp"
 #include "./sobol.hpp"
+#include "./congruent.hpp"
 
 #include "./pinwheel.hpp"
+#include "./ld.hpp"
 #include "./triangle.hpp"
+//#include "./general.hpp"

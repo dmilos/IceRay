@@ -53,7 +53,12 @@
          private:
            struct C_intersect;
            static T_scalar M2s_worst;
-
+           static T_scalar M2s_worstShmakov;
+           static T_scalar M2s_worstDescartes;
+           static T_scalar M2s_worstFerrari;
+           static T_size   M2s_shmakov;
+           static T_size   M2s_descartes;
+           static T_size   M2s_ferrari;
         };
 
       }

@@ -164,6 +164,12 @@ IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Noise_Vdc0( )
   return cpp2c( Ir_result );
  }
 
+IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Noise_Congruent3D0( )
+ {
+  auto Ir_result = new GS_DDMRM::S_IceRay::S_material::S_pattern::S_noise::GC_congruent3d{};
+  return cpp2c( Ir_result );
+ }
+
 IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Side_Cube0( )
  {
   auto Ir_result = new GS_DDMRM::S_IceRay::S_material::S_pattern::S_side::GC_cube{};

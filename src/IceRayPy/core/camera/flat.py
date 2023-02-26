@@ -21,16 +21,6 @@ class Perspective:
             if( 'height' in P_config ):
                 self.height( P_config['height'] )
 
-    #def __init__(self, P_dll, P_aspect ):
-    #    self.m_cargo = {}
-    #    self.m_cargo['dll'] = P_dll
-    #    self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_CameraFlat_Perspective1(P_aspect)
-    #
-    #def __init__(self, P_dll, P_width, P_height ):
-    #    self.m_cargo = {}
-    #    self.m_cargo['dll'] = P_dll
-    #    self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_CameraFlat_Perspective2(P_width, P_height)
-
     def __del__(self):
         self.m_cargo['dll'].IceRayC_Camera_Release( self.m_cargo['this'] )
 
@@ -41,7 +31,7 @@ class Perspective:
         return self.m_cargo['dll'].IceRayC_Camera_Flat_Perspective_Height(self.m_cargo['this'], Scalar( P_height ) )
 
     def aspect(self, P_aspect):
-        return self.m_cargo['dll'].IceRayC_Camera_Flat_Perspective_Height(self.m_cargo['this'], Scalar( P_aspect ) )
+        return self.m_cargo['dll'].IceRayC_Camera_Flat_Perspective_Aspect(self.m_cargo['this'], Scalar( P_aspect ) )
 
 
 class Orthogonal:

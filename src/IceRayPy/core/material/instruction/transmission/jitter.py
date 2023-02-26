@@ -9,6 +9,19 @@ AddressOf = ctypes.addressof
 SizeType = IceRayPy.type.basic.Size
 ScalarType   = IceRayPy.type.basic.Scalar
 
+class General:
+    def __init__(self, P_dll, P_normal, P_count, P_leaderR, P_leaderD, P_angle ):
+        self.m_cargo = {}
+        self.m_cargo['dll'] = P_dll
+        self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Material_Pigment_Surface_Instruction_Transmission_Jitter_General0(
+           SizeType( P_normal )
+          ,SizeType( P_count )
+          ,SizeType( P_leaderR )
+          ,SizeType( P_leaderD )
+          ,SizeType( P_angle )
+        )
+
+
 class Sobol:
     def __init__(self, P_dll, P_normal, P_count, P_leader, P_angle ):
         self.m_cargo = {}
@@ -50,5 +63,21 @@ class VDC:
 
     def __del__(self):
         self.m_cargo['dll'].IceRayC_Material_Pigment_Surface_Instruction_Release( self.m_cargo['this'] )
+
+class Congruent:
+    def __init__(self, P_dll, P_normal, P_count, P_leaderR, P_leaderD, P_angle ):
+        self.m_cargo = {}
+        self.m_cargo['dll'] = P_dll
+        self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Material_Pigment_Surface_Instruction_Transmission_Jitter_Congruentl0(
+           SizeType( P_normal )
+          ,SizeType( P_count )
+          ,SizeType( P_leaderR )
+          ,SizeType( P_leaderD )
+          ,SizeType( P_angle )
+        )
+
+    def __del__(self):
+        self.m_cargo['dll'].IceRayC_Material_Pigment_Surface_Instruction_Release( self.m_cargo['this'] )
+
 
 #print( '</' + __name__ + ' name=\'' +   __file__ + '>' )

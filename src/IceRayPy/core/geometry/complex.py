@@ -38,6 +38,9 @@ class Intersect:
             self.m_cargo['dll'].IceRayC_Geometry_Complex_Intersect_Right1( self.m_cargo['this'], P_right.m_cargo['this'], IntegerType( P_where ) )
         self.m_cargo['right'] = P_right
 
+    def invert( self, P_invert ):
+        return self.m_cargo['dll'].IceRayC_Geometry_Complex_Intersect_Invert( self.m_cargo['this'], IntegerType( P_invert ) )
+
     def box( self ):
         result = IceRayPy.type.math.interval.Scalar3D()
         self.m_cargo['dll'].IceRayC_Geometry__Base_GetBox( self.m_cargo['this'], AddressOf( result ) )

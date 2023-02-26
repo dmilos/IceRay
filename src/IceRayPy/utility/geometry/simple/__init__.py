@@ -5,7 +5,7 @@ import IceRayPy
 import IceRayPy.utility.geometry.simple.hyperboloid
 
 class Torus:  #( IceRayPy.core.geometry.Generic ):
-    def __init__( self, P_dll ):
+    def __init__( self, P_dll, P_config = None ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
 
@@ -32,18 +32,24 @@ class Torus:  #( IceRayPy.core.geometry.Generic ):
         self.m_cargo = {}
 
     def minor( self, P_minor ):
-        self.m_cargo['minor-original'] = P_minor
-        self.m_cargo['minor-scale'] = self.m_cargo['minor-original'] / self.m_cargo['mayor']
-        self.m_cargo['torus'].minor( self.m_cargo['minor-scale'] )
-        return
+        if( None != P_minor ):
+            self.m_cargo['minor-original'] = P_minor
+            self.m_cargo['minor-scale'] = self.m_cargo['minor-original'] / self.m_cargo['mayor']
+            self.m_cargo['torus'].minor( self.m_cargo['minor-scale'] )
+
+        return self.m_cargo['minor-original']
 
     def mayor( self, P_mayor ):
-        self.m_cargo['mayor'] = P_mayor
-        return self.minor( self.m_cargo['minor-original'] );
+        if( None != P_mayor ):
+            self.m_cargo['mayor'] = P_mayor 
+            self.minor( self.m_cargo['minor-original'] )
+        return self.m_cargo['mayor'];
 
-    def center( self, P_center ):
-        self.m_cargo['center'] = P_center
-        return self._recalc( )
+    def center( self, P_center = None ):
+        if( None != P_center ):
+            self.m_cargo['center'] = P_center
+            self._recalc( )
+        return self.m_cargo['center']
 
     def normal( self, P_normal ):
         I_len = IceRayPy.type.math.coord.length3D( self.m_cargo['dll'], P_normal )
@@ -60,7 +66,7 @@ class Torus:  #( IceRayPy.core.geometry.Generic ):
 
 
 class CylinderG:  #( IceRayPy.core.geometry.Generic ):
-    def __init__( self, P_dll ):
+    def __init__( self, P_dll, P_config = None ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
 
@@ -83,19 +89,33 @@ class CylinderG:  #( IceRayPy.core.geometry.Generic ):
         self.top(    IceRayPy.type.math.coord.Scalar3D( +0.5, -0.5, 0.0 ) )#!< debug
         self.radius( 0.33 )#!< debug
 
+        if( None != P_config ):
+            if( 'top' in P_config ):
+                self.top( P_config['top'] )
+            if( 'bottom' in P_config ):
+                self.bottom( P_config['bottom'] )
+            if( 'radius' in P_config ):
+                self.radius( P_config['radius'] )
+
         return
 
-    def top( self, P_top ):
-        self.m_cargo['top'] = P_top
-        return self._recalc()
+    def top( self, P_top = None ):
+        if( None != P_top ):
+            self.m_cargo['top'] = P_top
+            self._recalc()
+        return self.m_cargo['top']
 
-    def bottom( self, P_bottom ):
-        self.m_cargo['bottom'] = P_bottom
-        return self._recalc()
+    def bottom( self, P_bottom = None ):
+        if( None != P_bottom ):
+            self.m_cargo['bottom'] = P_bottom
+            self._recalc()
+        return self.m_cargo['bottom']
 
-    def radius( self, P_radius ):
-        self.m_cargo['radius'] = P_radius
-        return self._recalc()
+    def radius( self, P_radius = None  ):
+        if( None != P_radius ):
+            self.m_cargo['radius'] = P_radius
+            self._recalc()
+        return self.m_cargo['radius']
 
     def _recalc( self ):
         self.m_cargo['direction'] = IceRayPy.type.math.coord.subtraction3D( self.m_cargo['dll'], self.m_cargo['top'], self.m_cargo['bottom'] )
@@ -133,6 +153,7 @@ class ConeG:  #( IceRayPy.core.geometry.Generic ):
         self.bottom( IceRayPy.type.math.coord.Scalar3D( -0.5, -0.5, -1.0 ) )#!< debug
         self.top(    IceRayPy.type.math.coord.Scalar3D( +0.5, +0.5, +1.0 ) )#!< debug
         self.radius(  0.1 )#!< debug
+
         return
 
 
@@ -287,11 +308,16 @@ class Parallelepiped:
         self.m_cargo['affine'].child( self.m_cargo['box'] )
 
         self.m_cargo['origin'] = IceRayPy.type.math.coord.Scalar3D( 0, 0, -1 )
-        
-        self.m_cargo['X'] = IceRayPy.type.math.coord.Scalar3D(   1.0,  0.0,   math.sqrt( 0.5 ) )
-        self.m_cargo['Y'] = IceRayPy.type.math.coord.Scalar3D(  -0.5, +0.866, math.sqrt( 0.5 ) )
-        self.m_cargo['Z'] = IceRayPy.type.math.coord.Scalar3D(  -0.5, -0.866, math.sqrt( 0.5 ) )
 
+        self.m_cargo['X'] = IceRayPy.type.math.coord.Scalar3D( +1.0,  0.0,   math.sqrt( 0.5 ) )
+        self.m_cargo['Y'] = IceRayPy.type.math.coord.Scalar3D( -0.5, +math.sqrt( 0.75 ), math.sqrt( 0.5 ) )
+        self.m_cargo['Z'] = IceRayPy.type.math.coord.Scalar3D( -0.5, -math.sqrt( 0.75 ), math.sqrt( 0.5 ) )
+
+        scale = 2 / math.sqrt(3.0) / math.sqrt(1.5);
+
+        self.m_cargo['X'] = IceRayPy.type.math.coord.scale3D( self.m_cargo['dll'], scale, self.m_cargo['X'] )
+        self.m_cargo['Y'] = IceRayPy.type.math.coord.scale3D( self.m_cargo['dll'], scale, self.m_cargo['Y'] )
+        self.m_cargo['Z'] = IceRayPy.type.math.coord.scale3D( self.m_cargo['dll'], scale, self.m_cargo['Z'] )
         self._recalc()
 
         return

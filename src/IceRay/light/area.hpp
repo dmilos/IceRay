@@ -44,25 +44,26 @@
            T_coord   const& F_origin()const{ return M2_spot.F_center(); }
            bool             F_origin( T_coord const& P_position ){ return M2_spot.F_center( P_position ); }
 
-          public:  // property coord  x
-            T_coord    const& F_x()const{ return M2_x; }
-            bool              F_x( T_coord const& P_x ){ M2_x = P_x; return bool( true ); }
-          protected:
-            T_coord        & F1_x(){ return M2_x; }
-          private:
-            T_coord M2_x;
+         public:  // property coord  x
+           T_coord    const& F_x()const{ return M2_x; }
+           bool              F_x( T_coord const& P_x ){ M2_x = P_x; return bool( true ); }
+         protected:
+           T_coord        & F1_x(){ return M2_x; }
+         private:
+           T_coord M2_x;
 
-          public:  // property coord  y
-            T_coord    const& F_y()const{ return M2_y; }
-            bool              F_y( T_coord const& P_y ){ M2_y = P_y; return bool( true ); }
-          protected:
-            T_coord        & F1_y(){ return M2_y; }
-          private:
-            T_coord M2_y;
-          private: 
-            mutable GS_DDMRM::S_IceRay::S_utility::S_random::GT_sobol2D       M2_randSobol2D;
-            mutable GS_DDMRM::S_IceRay::S_utility::S_random::GC_standard2D    M2_randStandard2D;
-            mutable GS_DDMRM::S_IceRay::S_utility::S_random::GT_VaLND         M2_randVaLND;
+         public:  // property coord  y
+           T_coord    const& F_y()const{ return M2_y; }
+           bool              F_y( T_coord const& P_y ){ M2_y = P_y; return bool( true ); }
+         protected:
+           T_coord        & F1_y(){ return M2_y; }
+         private:
+           T_coord M2_y;
+         private: 
+           mutable GS_DDMRM::S_IceRay::S_utility::S_random::GT_sobol2D       M2_randSobol2D;
+           mutable GS_DDMRM::S_IceRay::S_utility::S_random::GC_standard2D    M2_randStandard2D;
+           mutable GS_DDMRM::S_IceRay::S_utility::S_random::GT_VaLND         M2_randVaLND;
+           mutable GS_DDMRM::S_IceRay::S_utility::S_random::GT_congruent2D   M2_randCongruent2D;
        };
 
       }

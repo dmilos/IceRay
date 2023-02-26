@@ -55,7 +55,7 @@ class Coord3D:
     def __init__(self, P_dll, P_pattern, P_result, P_input ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
-        self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Material_Pigment_Surface_Instruction_Pattern_Coord_Scalar3D( P_pattern.m_cargo['this'], SizeType( P_result ), SizeType( P_input ) )
+        self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Material_Pigment_Surface_Instruction_Pattern_Coord_Scalar3D0( P_pattern.m_cargo['this'], SizeType( P_result ), SizeType( P_input ) )
         self.m_cargo['pattern'] = P_pattern
 
     def __del__(self):

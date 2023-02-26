@@ -80,7 +80,7 @@
                      T_coord I_x; ::math::linear::vector::cross( I_x, I_y, I_normal ); ::math::linear::vector::length<T_scalar>( I_x, 1 );
                      T_coord I_z; ::math::linear::vector::cross( I_z, I_x, I_y );      ::math::linear::vector::length<T_scalar>( I_z, 1 );
 
-                     GS_DDMRM::S_IceRay::S_utility::S_random::GF_disc2D( I_disc2d, M2_randStandard2D );
+                     GS_DDMRM::S_IceRay::S_utility::S_random::GF_disc2D( I_disc2d, M2_generator );
                      ::math::linear::vector::scale( I_disc2d, I_radius );
                      T_scalar I_height = sqrt( T_scalar( 1 ) - ::math::linear::vector::dot( I_disc2d, I_disc2d ) );
                      ::math::linear::vector::combine( I_original.M_direction, I_disc2d[0], I_x, I_height, I_y, I_disc2d[1], I_z );
@@ -91,7 +91,7 @@
                   }
 
                private:
-                 mutable GS_DDMRM::S_IceRay::S_utility::S_random::GC_standard2D    M2_randStandard2D;
+                 mutable GS_DDMRM::S_IceRay::S_utility::S_random::GC_standard2D    M2_generator;
                private:
                  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC__base<T_size>    T2_memorySize;
                  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC__base<T_scalar>  T2_memoryScalar;

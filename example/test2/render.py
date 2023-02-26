@@ -29,29 +29,32 @@ def doIt( P_dll, P_picture, P_scene, P_inventory, P_config ):
     I_light     ['name'] = P_scene['light']
     I_decoration['name'] = P_scene['decoration']
 
+    P_picture['temp'] = {}
     P_picture['temp']['name'] = I_room['name'] +"_"+ I_camera['name'] +'_'+ I_geometry['name'] +"_"+ I_medium['name']  +"_"+ I_pigment['name']+"_" + I_light['name']
-    P_picture['temp']['file'] = P_picture['folder'] + "/" + P_picture['temp']['name'] + '_'+ "{:04d}".format( P_picture['frame']['index'] ) + '.' + P_picture['extension']
+    P_picture['temp']['file'] = P_picture['folder'] + "/" + P_picture['temp']['name'] + '_'+ "{:04d}".format( P_picture['index'] ) + '.' + P_picture['extension']
 
-    print( P_picture['file'], flush = True  )
+    print( P_picture['temp']['file'], flush = True  )
 
     my_file = pathlib.Path( P_picture['temp']['file'] )
     if my_file.is_file():
         return
 
     I_geometry['the'] = P_inventory['geometry'][ I_geometry['name'] ]( P_dll )
-    I_light['the']    = P_inventory['light'   ][ I_light   ['name'] ]( P_dll )
-    I_pigment['the']  = P_inventory['pigment' ][ I_pigment ['name'] ]( P_dll, P_config['pigment'] )
+    I_light['the']    = P_inventory['light'   ][ I_light   ['name'] ]( P_dll, P_config['light'] )
     I_medium['the']   = P_inventory['medium'  ][ I_medium  ['name'] ]( P_dll )
     I_camera['the']   = P_inventory['camera'  ][ I_camera  ['name'] ]( P_dll, P_config['camera'] )
-
 
     I_light['enclose'] = light_enclose = IceRayPy.core.light.transform.Translate( P_dll, I_light['the'], IceRayPy.type.math.coord.Scalar3D( 0, 0, 2 ) )
     I_light['blocked'] = IceRayPy.core.light.Obstruct( P_dll, I_light['enclose'], I_geometry['the'] );
     I_light['final']   = I_light['blocked']
 
+    P_config['composer'] = {}
     P_config['composer']['light']            = I_light['enclose']
     P_config['composer']['geometry']         = I_geometry['the']
+    P_config['composer']['pigment'] = {}
     P_config['composer']['pigment']['light'] = I_light['enclose']
+    P_config['pigment']['light'] = I_light['final']
+    I_pigment['the']  = P_inventory['pigment' ][ I_pigment ['name'] ]( P_dll, P_config['pigment'] )
 
     object = composer.object( P_dll, I_geometry['the'], I_pigment['the'], I_medium['the'] )
 
@@ -59,13 +62,13 @@ def doIt( P_dll, P_picture, P_scene, P_inventory, P_config ):
 
     I_room['the'] = P_inventory['room'][ I_room['name'] ]( P_dll, P_config['room'], I_light['final'], I_geometry['the'] )
 
-    I_decoration['the'] = P_inventory['decoration'][ I_decoration['name'] ](  P_dll, {   }, I_light['final'], object )
+    I_decoration['the'] = P_inventory['decoration'][ I_decoration['name'] ](  P_dll, P_config['decoration'], I_light['final'], object )
     scene = composer.arange( P_dll, object, I_room['the'], I_decoration['the'] )
 
     P_picture['temp']['object'] = IceRayPy.type.graph.Picture( P_dll )
     P_picture['temp']['object'].size( P_picture['width'], P_picture['height'] )
 
-    manager = composer.manager( P_config['composer'], I_camera['final'], scene )
+    manager = composer.manager( P_dll, P_config['composer'], I_camera['final'], scene )
     start = time.time()
     manager.start( P_picture['temp']['object'] )
     delta = time.time() - start
@@ -78,7 +81,87 @@ def doIt( P_dll, P_picture, P_scene, P_inventory, P_config ):
 
     IceRayPy.type.graph.Crop( P_dll, P_picture['temp']['crop'], P_picture['temp']['object'], A, B )
 
-    P_picture['temp']['crop'].storePNM( P_picture['temp']['file'] )
+    #P_picture['temp']['crop'].store( P_picture['temp']['file'] )
+
+    if( 'pnm' == P_picture['extension'] ):
+        P_picture['temp']['crop'].storePNM( P_picture['temp']['file'] )
+    if( 'png' == P_picture['extension'] ):
+        P_picture['temp']['crop'].storePNG( P_picture['temp']['file'] )
+    if( 'jpeg' == P_picture['extension'] ):
+        P_picture['temp']['crop'].storeJPEG( P_picture['temp']['file'] )
 
     P_dll.IceRayC_Utility_Random_Table_Next()
 
+
+
+dll_path = IceRayPy.system.SearchCDLL()
+
+if 0 != len( dll_path ):
+    I_dll = IceRayPy.system.LoadCDLL( dll_path )
+else:
+    print("Can not find DLL")
+    time.sleep(200)
+    exit()
+
+I_picture ={}
+I_picture[ 'width']  = 800
+I_picture['height']  = 600
+I_picture['aspect']  = I_picture['width'] / I_picture['height']
+
+I_picture['folder'] = './_out'
+I_picture['extension'] = 'png'
+
+I_picture['index'] = 0
+I_picture['time'] = 123.123
+
+
+I_picture['window'] = {}
+I_picture['window']['A'] = {}
+I_picture['window']['A']['x'] = 0
+I_picture['window']['A']['y'] = 0
+I_picture['window']['B'] = {}
+I_picture['window']['B']['x'] = I_picture['width']
+I_picture['window']['B']['y'] = I_picture['height']
+
+I_scene = {}
+I_scene['room']       = 'C-close'
+I_scene['camera']     =  'F-persp'
+I_scene['geometry']   = 'F-box'
+I_scene['medium']     = 'trans'
+I_scene['pigment']    = 'I-ALP'
+I_scene['light']      = 'point'
+I_scene['decoration'] = 'vacuum'
+
+
+import library_room
+import library_camera
+import library_light
+import library_pigment
+import library_medium
+import library_geometry
+import library_decoration
+
+
+I_inventory= {}
+I_inventory['room']       = library_room.list
+I_inventory['camera']     = library_camera.list
+I_inventory['geometry']   = library_geometry.list
+I_inventory['medium']     = library_medium.list
+I_inventory['pigment']    = library_pigment.list
+I_inventory['light']      = library_light.list
+I_inventory['decoration'] = library_decoration.list
+
+I_config  = {}
+I_config['pigment']  = {}
+I_config['camera']  = {}
+I_config['room']   = {}
+I_config['decoration']   = {}
+
+I_config['camera'][ 'eye']   = IceRayPy.type.math.coord.Scalar3D( 1, 2, 3 )
+I_config['camera']['view']   = IceRayPy.type.math.coord.Scalar3D( 0, 0, 0 )
+I_config['camera']['aspect'] = I_picture['aspect']
+#I_config['camera']['hfov']   = math.radians( 90 )
+#I_config['camera']['vfov']   = math.radians( 90 )
+
+if __name__ == "__main__":
+    doIt( I_dll, I_picture, I_scene, I_inventory, I_config )

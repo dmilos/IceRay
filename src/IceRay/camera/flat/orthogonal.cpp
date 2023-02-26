@@ -78,7 +78,7 @@ bool               GC_orthogonal::F_height( T_scalar const& P_height )
 bool  GC_orthogonal::F_aspect( T_scalar const& P_aspect )
  {
   M2_aspect = P_aspect;
-  M2_height1 = M2_aspect * M2_width1;
+  M2_height1 = M2_width1 / M2_aspect;
   M2_height2 = M2_height1/2;
   return bool( true );
  }

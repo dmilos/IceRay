@@ -58,6 +58,7 @@
            mutable GS_DDMRM::S_IceRay::S_utility::S_random::GT_vdc2          M2_randVDC;
            mutable GS_DDMRM::S_IceRay::S_utility::S_random::GC_standard1D    M2_randStandard1D;
            mutable GS_DDMRM::S_IceRay::S_utility::S_random::GC_table1D       M2_randTable1D;
+           mutable GS_DDMRM::S_IceRay::S_utility::S_random::GT_congruent1D   M2_congurent1D;
        };
 
       }

@@ -55,6 +55,7 @@
 
                 virtual void           Fv_store( T_size const& P_index,  T_type const& P_value )=0;
                 virtual T_type const&  Fv_load(  T_size const& P_index )const=0;
+                virtual T_type      &  Fv_direct( T_size const& P_index )=0;
 
                virtual T_size const&  Fv_size()const=0;
                virtual bool           Fv_size( T_size const& P_size )=0;
@@ -82,6 +83,10 @@
                  }
 
                 T_type const&   Fv_load( T_size const& P_index )const{ return M2_data[P_index]; }
+                T_type      &   Fv_direct(  T_size const& P_index )
+                 {
+                  return M2_data[P_index];
+                 }
                 T_size const&   Fv_size()const{ static T_size Ir_size = N_size; return Ir_size; }
                 bool            Fv_size( T_size const& P_size ){ return false; }
 
@@ -102,7 +107,10 @@
 
                 void            Fv_store( T_size const& P_index,  T_type const& P_value )     { M2_data[P_index] = P_value; }
                 T_type const&   Fv_load( T_size const& P_index )const{ return M2_data[P_index]; }
-
+                T_type      &   Fv_direct(  T_size const& P_index )
+                 {
+                  return M2_data[P_index];
+                 }
                 T_size const&  Fv_size()const{ static T_size Ir_size = M2_data.size(); return Ir_size; }
                 bool           Fv_size( T_size const& P_size ){ M2_data.resize( P_size ); return true; }
                 void           Fv_reset(){ this->M2_data.fill( N_type() ); }
@@ -134,7 +142,10 @@
                   this->M2_data[P_index] = P_value;
                  }
                 T_type const&   Fv_load( T_size const& P_index )const{ return this->M2_data[P_index]; }
-
+                T_type      &   Fv_direct(  T_size const& P_index )
+                 {
+                  return M2_data[P_index];
+                 }
                 T_size const&  Fv_size()const{ static T_size Ir_size = this->M2_data.size(); return Ir_size; }
                 bool           Fv_size( T_size const& P_size ){ this->M2_data.resize( P_size ); return true; }
                 void           Fv_reset(){ std::fill(this-> M2_data.begin(), this->M2_data.end(), N_type() ); }
@@ -169,7 +180,10 @@
                  }
 
                 T_type const&   Fv_load( T_size const& P_index )const{ return (*this)[P_index]; }
-
+                T_type      &   Fv_direct(  T_size const& P_index )
+                 {
+                  return (*this)[P_index];
+                 }
                 T_size const&  Fv_size()const{ static T_size Ir_size = (*this).F_size(); return Ir_size; }
                 bool           Fv_size( T_size const& P_size ){ (*this).F_size( P_size ); return true; }
                 void           Fv_reset(){ auto I_size = (*this).F_size();  (*this).F_size( 0 ); (*this).F_size( I_size ); }

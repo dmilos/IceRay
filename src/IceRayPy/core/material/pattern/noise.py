@@ -55,6 +55,15 @@ class Sobol:
     def __del__(self):
         self.m_cargo['dll'].IceRayC_Material_Pattern_Release( self.m_cargo['this'] )
 
+class Congruent:
+    def __init__(self, P_dll):
+        self.m_cargo = {}
+        self.m_cargo['dll'] = P_dll
+        self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Material_Pattern_Noise_Congruentl0( )
+
+    def __del__(self):
+        self.m_cargo['dll'].IceRayC_Material_Pattern_Release( self.m_cargo['this'] )
+
 
 class Value:
     def __init__(self, P_dll):
@@ -71,6 +80,15 @@ class VDC:
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Material_Pattern_Noise_Vdc0( )
+
+    def __del__(self):
+        self.m_cargo['dll'].IceRayC_Material_Pattern_Release( self.m_cargo['this'] )
+
+class Congruent3D:
+    def __init__(self, P_dll ):
+        self.m_cargo = {}
+        self.m_cargo['dll'] = P_dll
+        self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Material_Pattern_Noise_Congruent3D0( )
 
     def __del__(self):
         self.m_cargo['dll'].IceRayC_Material_Pattern_Release( self.m_cargo['this'] )

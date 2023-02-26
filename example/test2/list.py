@@ -17,7 +17,6 @@ import IceRayPy
 
 
 import composer
-import decoration
 import obseravtion
 import signal
 import faulthandler
@@ -28,6 +27,7 @@ import library_light
 import library_pigment
 import library_medium
 import library_geometry
+import library_decoration
 
 
 gc.enable()
@@ -48,15 +48,34 @@ geometry_list = [
  #'C-hfieldT30x30',
   #'C-hfieldI'
   #'S-sphere'
-  'F-piped'
+  #'F-piped' 
+  #'S-torus',
+  'C-cookie',
+  #'S-util-torus'
  ]
 
 pigment_inventory =  library_pigment.list
 pigment_list =[
-        'I-gaussian',
-        'P-gradientBW'
-       #,'P-gradientTop'
-       #,'P-gradientRnb'
+      'I-ALP'           ,
+      #'I-ambient'       ,
+      #'I-AsDiffuse'     ,
+      #'I-AsSpecular'    ,
+      #'I-Beckmann'      ,
+      #'I-Blinn'         ,
+      #'I-gaussian'      ,
+      #'I-HsLambert'     ,
+      #'I-HsPhong'       ,
+      #'I-Lambert'       ,
+      #'I-ONf29'         ,
+      #'I-ONf30'         ,
+      #'I-ONYFP'         ,
+      #'I-ONYFQ'         ,
+      #'I-ONJvO'         ,
+      #'I-Phong'         ,
+      #'I-WardApprox'    ,
+      #'I-WardIsotropic' ,
+      #'I-WardReal'      ,
+      'T-B-refract-schlick' 
 ]
 
 room_inventory = library_room.list
@@ -72,8 +91,8 @@ room_list = [
    #'vacuum',
  ]
 
-decoration_inventory = decoration.list
-decoration_item = 'vacuum'
+decoration_inventory = library_decoration.list
+decoration_item = 'plate'
 
 path_inventory= obseravtion.list
 
@@ -153,7 +172,7 @@ def doRendering(P_config):
                        GI_save_image_image = IceRayPy.type.graph.Picture( P_config['dll'] )
                        GI_save_image_image.size( P_config['picture']['width'], P_config['picture']['height'] )
 
-                       manager = composer.manager( P_config, camera, scene )
+                       manager = composer.manager( P_config['dll'], P_config, camera, scene )
                        start = time.time()
                        manager.start( GI_save_image_image )
                        delta = time.time() - start
@@ -226,7 +245,7 @@ config['camera']['path']['radius'] = 1.75
 config['camera']['path']['height'] = 0.9
 
 config['pigment'] = {}
-config['pigment']['ior'] = 1.0
+config['pigment']['ior'] = 2.41
 config['pigment']['albedo'] = IceRayPy.type.color.RGB( 1, 1, 1 )
 
 config['ray-trace']={}
@@ -236,12 +255,12 @@ config['ray-trace']['next'] = 17000
 
 config['room'] = {}
 config['room']['radiosity'] = {}
-config['room']['radiosity']['blossom'] = 'sobol'
+config['room']['radiosity']['blossom'] = 'congruent'
 config['room']['radiosity']['patch']  = math.radians( 4 )
 config['room']['radiosity']['angle']  = math.radians( 89 )
 config['room']['radiosity']['sample'] = int( (1 - math.cos(config['room']['radiosity']['angle']) ) / ( 1 - math.cos( config['room']['radiosity']['patch'] ) ) + 1 )
 config['room']['radiosity']['jitter-angle'] = math.radians( 4 )
-config['room']['radiosity']['jitter-type'] = 'none' #'random''sobol''vdc''none'
+config['room']['radiosity']['jitter-type'] = 'none' #'random''sobol''vdc''none', 'congruent'
 
 config['room']['radiosity']['correction-leader'] = True
 config['room']['radiosity']['correction-cone']   = False
@@ -299,7 +318,7 @@ dilatation  = config['observer']['dilatation'];
 #IceRayPy.type.graph.Default( I_picture )
 #I_picture.storePNG( "default_1024.png" )
 
-path_item = 'looker' # 'looker', 'fixed', 'circle'
+path_item = 'looker' # 'looker', 'fixed', 'circle' 'presentation'
 
 config['pigment']['sigma'] = IceRayPy.type.color.RGB( 1, 1, 1 )
 config['pigment']['rho']   = IceRayPy.type.color.RGB( 3.1415926, 3.1415926, 3.1415926 )
@@ -322,7 +341,6 @@ for index in range( start, 360 * int( dilatation ), step ):
     config['camera'][ 'eye'] = IceRayPy.type.math.coord.Scalar3D( x, y, height ) #!< MAIN
     config['camera']['view'] = IceRayPy.type.math.coord.Scalar3D( 0, 0, 0 ) #!< MAIN
 
-    config['camera']['view'] = IceRayPy.type.math.coord.Scalar3D( 0, 0,-0.15 - 0.7 ) #!< debug
     #config['camera']['eye']  = IceRayPy.type.math.coord.Scalar3D(  0, -3, 3 ) #!< debug
     #config['camera']['view'] = IceRayPy.type.math.coord.Scalar3D(  0,  0, 0 ) #!< debug
 
@@ -336,7 +354,7 @@ for index in range( start, 360 * int( dilatation ), step ):
     #config['pigment']['ior'] = config['pigment']['ior'] + index*0.01;
     #config['room']['radiosity']['sample'] = config['room']['radiosity']['sample'] + index
     #config['pigment']['ior'] = 1.0 + 0.01*index;
-    config['pigment']['ior'] = config['pigment']['ior'] + 0.01;
+    #config['pigment']['ior'] = config['pigment']['ior'] + 0.01;
     #config['room']['radiosity']['angle'] = math.radians( index )
     #config['room']['radiosity']['sample'] = 3 #int( (1 - math.cos(config['room']['radiosity']['angle']) ) / ( 1 - math.cos( config['room']['radiosity']['patch'] ) ) + 1 )
     #config['pigment']['rho'] = IceRayPy.type.color.RGB( 3.1415926, 3.1415926, 3.1415926 )

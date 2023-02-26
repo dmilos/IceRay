@@ -66,7 +66,7 @@ def looker( P_time, P_config = None ):
     radiusX_hi = 3.2
 
     heightHi = 2
-    heightLo = 0.66
+    heightLo = 0
 
     alpha = P_time * ( 2 * 3.1415926 )
     height = heightLo

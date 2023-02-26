@@ -73,14 +73,13 @@ bool               GC_perspective::F_width( T_scalar const& P_width )
 bool               GC_perspective::F_height( T_scalar const& P_height )
  {
   M2_height = P_height;
-  M2_aspect = M2_width/ M2_height;
-
+  M2_aspect = M2_width / M2_height;
   return true;
  }
 
 bool  GC_perspective::F_aspect( T_scalar const& P_aspect )
  {
   M2_aspect = P_aspect;
-  M2_height = M2_aspect * M2_width;
+  M2_height =  M2_width / M2_aspect;
   return bool( true );
  }

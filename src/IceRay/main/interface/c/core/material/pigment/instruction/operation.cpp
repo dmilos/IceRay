@@ -94,6 +94,67 @@ H F( Color_Divide0 )(      S P_result, S P_left, S P_right )
 #undef P
 
 #define P(D_P) IceRayC_##D_P
+#define F(D_P) IceRayC_Material_Pigment_Surface_Instruction_Operation_Random_##D_P
+#define S IceRayC_Type_Size
+#define H IceRayC_Material_Pigment_Surfcace_Instruction_Handle
+
+
+H F( Congruent1D0 )( S P_count, S P_leader )
+ {
+  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_random::GC_congruent1d    Tf_this;
+  auto Ir_result = new Tf_this{ P_count, P_leader };
+  return cpp2c( Ir_result );
+ }
+H F( Congruent2D0 )( S P_count, S P_leader )
+ {
+  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_random::GC_congruent2d    Tf_this;
+  auto Ir_result = new Tf_this{ P_count, P_leader };
+  return cpp2c( Ir_result );
+ }
+H F( Sobol1D0     )( S P_count, S P_leader )
+ {
+  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_random::GC_sobol1d    Tf_this;
+  auto Ir_result = new Tf_this{ P_count, P_leader };
+  return cpp2c( Ir_result );
+ }
+H F( Sobol2D0     )( S P_count, S P_leader )
+ {
+  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_random::GC_sobol2d    Tf_this;
+  auto Ir_result = new Tf_this{ P_count, P_leader };
+  return cpp2c( Ir_result );
+ }
+H F( Standard1D0  )( S P_count, S P_leader )
+ {
+  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_random::GC_standard   Tf_this;
+  auto Ir_result = new Tf_this{ P_count, P_leader };
+  return cpp2c( Ir_result );
+ }
+H F( Table1D0     )( S P_count, S P_leader )
+ {
+  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_random::GC_table1d   Tf_this;
+  auto Ir_result = new Tf_this{ P_count, P_leader };
+  return cpp2c( Ir_result );
+ }
+H F( Table2D0     )( S P_count, S P_leader )
+ {
+  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_random::GC_table2d   Tf_this;
+  auto Ir_result = new Tf_this{ P_count, P_leader };
+  return cpp2c( Ir_result );
+ }
+H F( VDC1D0       )( S P_count, S P_leader )
+ {
+  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_random::GC_vdc1d    Tf_this;
+  auto Ir_result = new Tf_this{ P_count, P_leader };
+  return cpp2c( Ir_result );
+ }
+
+#undef H
+#undef S
+#undef F
+#undef P
+
+
+#define P(D_P) IceRayC_##D_P
 #define F(D_P) IceRayC_Material_Pigment_Surface_Instruction_Operation_Mapping_##D_P
 #define S IceRayC_Type_Size
 #define H IceRayC_Material_Pigment_Surfcace_Instruction_Handle

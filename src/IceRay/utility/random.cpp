@@ -1,5 +1,6 @@
 #include "./random.hpp"
-
+#include <iostream>
+#include <iomanip>
 
  namespace GS_DDMRM
   {
@@ -10,21 +11,64 @@
        namespace S_random
         {
 
-         //GC_table1D::T_table GC_table1D::M2_table = {  0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19 };
-         //GC_table1D::T_table GC_table1D::M2_table = {  0, 6, 2, 8, 4, 10, 1, 7, 3, 9, 5, 11 };
-         //GC_table1D::T_table GC_table1D::M2_table = { 0, 11, 5, 14, 2, 9, 6, 17, 3, 13, 7, 16, 1, 10, 4, 12, 8, 15,  };
-         GC_table1D::T_table GC_table1D::M2_table = {
-            0, 16,  8, 24,4, 20, 12, 28,2, 18, 10, 26,6, 22, 14, 30,
-            1, 17,  9, 25,5, 21, 13, 29,3, 19, 11, 27,7, 23, 15, 31
-         };
+         GC_table1D::T_size  GC_table1D::M2_size = 1;
+         GC_table1D::T_table GC_table1D::M2_table;
 
-         // not tested 61=14+14+10+ 7+ 9+ 7+:{ 0, 16, 10, 5, 12, 2, 9, 15, 3, 6, 13, 1, 17, 8, 11, 4, 14, 7,  }
-         // not tested 35=12+ 8+ 6+ 4+ 4+ 1+:{ 0, 6, 1, 8, 4, 10, 2, 7, 3, 9, 5, 11,  }
+         GC_table1D::GC_table1D()
+          {
+           bool Is_a = F2s_fill( );
+           bool Is_b = F2s_init( M2_table.data(), M2_table.size() );
+           M2_counter = 0;
+           ++M2_size;
+          }
 
          void GC_table1D::Fs_next()
           {
-           //std::next_permutation( M2_table.begin()+1, M2_table.end() );
-           //std::random_shuffle( M2_table.begin() + 1, M2_table.end() );
+          }
+
+         bool GC_table1D::F2s_fill()
+          {
+           std::cout << "0000000000" << __FILE__ << " - "<< __FUNCTION__ << " _ " << M2_size << std::endl; 
+           M2_table.resize( M2_size );
+           for( T_size i = 0; i < M2_table.size(); ++i )
+            {
+             M2_table[i] = i;
+            }
+            return true;
+          }
+
+         bool GC_table1D::F2s_init( T_scalar *P_begin, T_size const& P_size )
+          {
+           if( 0 == P_size ) return true;
+           if( 1 == P_size ) return true;
+           if( 2 == P_size ) return true;
+
+           F2s_init( P_begin, P_size/2+ (P_size%2) );
+
+           F2s_init(    P_begin + P_size/2+ (P_size%2), P_size/2 );
+           Fs_reverse( P_begin + P_size/2+ (P_size%2), P_size/2 );
+
+           Fs_riffle( P_begin , P_size  );
+           return true;
+          }
+
+         void GC_table1D::Fs_reverse( T_scalar *P_begin, T_size const& P_size )
+          {
+           std::reverse( P_begin, P_begin + P_size );
+          }
+         void GC_table1D::Fs_riffle( T_scalar *P_begin, T_size const& P_size )
+          {
+           std::vector<T_scalar> I_left( P_begin, P_begin + P_size/2 + (P_size%2) );
+           std::vector<T_scalar> I_right( P_begin + P_size/2 + (P_size%2),  P_begin + P_size );
+
+           for( T_size i=0; i < I_left.size(); ++i )
+            {
+             P_begin[2*i] = I_left[i];
+            }
+           for( T_size i=0; i < I_right.size(); ++i )
+            {
+             P_begin[2*i+1] = I_right[i];
+            }
           }
 
         }

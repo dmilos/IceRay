@@ -9,6 +9,9 @@ SizeType = IceRayPy.type.basic.Size
 AddressOf = ctypes.addressof
 
 
+#import PIL
+#from PIL import Image
+#import io
 
 
 
@@ -45,6 +48,19 @@ class Picture:
     def storeJPEG( self, P_filename ):
         self.m_cargo['dll'].IceRayC_Type_Picture_StoreJPEG( self.m_cargo['this'], P_filename.encode('utf-8') )
 
+    #def store( self, P_filename ):
+    #    #s = self.size()
+    #    #I_image = PIL.Image.frombytes( 'RGB', ( s[0], s[1] ), self.buffer(), 'raw', 'RGB', 0, 1 )
+    #    #I_image.save( P_filename )
+    #    pass
+
+    def buffer( self ):
+        pointer = self.m_cargo['dll'].IceRayC_Type_Picture_Buffer( self.m_cargo['this'] )
+        return pointer
+        #return ctypes.create_string_buffer( pointer, self.size()[0] * self.size()[1] ) 
+
+    def crop( self, P_target, P_A, P_B ):
+        self.m_cargo['dll'].IceRayC_Type_Picture_Crop( P_target.m_cargo['this'], self.m_cargo['this'], AddressOf( P_A ), AddressOf( P_B ) )
 
 def Crop( P_dll, P_target, P_source, P_A, P_B ):
     P_dll.IceRayC_Type_Picture_Crop( P_target.m_cargo['this'], P_source.m_cargo['this'], AddressOf( P_A ), AddressOf( P_B ) )

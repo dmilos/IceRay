@@ -6,37 +6,43 @@ Coord3D = IceRayPy.type.math.coord.Scalar3D
 
 def Cookie( P_dll, P_config = None ):
 
+    radius = 1;
+    top = 0
+    bottom = -0.5
+
+    cylinder = IceRayPy.utility.geometry.simple.CylinderG( P_dll )
+    cylinder.top(    Coord3D( 0, 0,  top    ) )
+    cylinder.bottom( Coord3D( 0, 0,  bottom ) )
+    cylinder.radius( radius )
+
     torus = IceRayPy.utility.geometry.simple.Torus( P_dll )
     torus.minor( 0.2 )
     torus.mayor( 0.8 )
+    torus.center( Coord3D( 0, 0, top ) )
+    torus.normal( Coord3D( 0, 0, 1 ) )
 
-    cylinder = IceRayPy.utility.geometry.simple.CylinderG( P_dll )
-    cylinder.top( Coord3D(0,0,0))
-    cylinder.bottom( Coord3D(0,0,-1) )
-
-    discB = IceRayPy.core.geometry.flat.Disc( P_dll )
-    discB.center( Coord3D( 0, 0, -1 ) )
-    discB.normal( Coord3D( 0, 0, -1 ) )
-
-    discT = IceRayPy.core.geometry.flat.Disc( P_dll )
-    discT.center( Coord3D( 0, 0, 0 ) )
-    discT.normal( Coord3D( 0, 0, +1 ) )
+    discT = IceRayPy.core.geometry.flat.Plane( P_dll )
+    discT.origin( Coord3D( 0, 0, top - 0.0001 ) )
+    discT.normal( Coord3D( 0, 0,  +1 ) )
 
     unionA = IceRayPy.core.geometry.complex.Intersect( P_dll )
-    unionA.left(  cylinder, IceRayPy.core.geometry.complex.Intersect.IN )
-    unionA.right( discB,    IceRayPy.core.geometry.complex.Intersect.IN )
+    unionA.left(  cylinder )
+    unionA.right( discT    )
+
+    discB = IceRayPy.core.geometry.flat.Plane( P_dll )
+    discB.origin( Coord3D( 0, 0,  bottom + 0.0001 ) )
+    discB.normal( Coord3D( 0, 0, -1 ) )
 
     unionB = IceRayPy.core.geometry.complex.Intersect( P_dll )
-    unionB.left(  unionA, IceRayPy.core.geometry.complex.Intersect.IN )
-    unionB.right( discB,  IceRayPy.core.geometry.complex.Intersect.IN )
+    unionB.left(  unionA  )
+    unionB.right( discB   )
 
-    #unionC = IceRayPy.core.geometry.complex.Intersect( P_dll )
-    #unionC.left(  unionB, IceRayPy.core.geometry.complex.Intersect.IN )
-    #unionC.right( torus,  IceRayPy.core.geometry.complex.Intersect.IN )
+    unionC = IceRayPy.core.geometry.complex.Intersect( P_dll )
+    unionC.left(  unionB, IceRayPy.core.geometry.complex.Intersect.OUT )
+    unionC.right( torus,  IceRayPy.core.geometry.complex.Intersect.OUT )
+    unionC.invert( True )
 
-    return unionB
-
-
+    return unionC
 
 def IntersectGeneral( P_dll
      ,surfaceA = IceRayPy.core.geometry.complex.Intersect.IN
