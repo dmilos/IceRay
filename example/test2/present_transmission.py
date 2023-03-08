@@ -21,8 +21,8 @@ else:
 
 
 I_picture ={}
-I_picture[ 'width']  = 2*800
-I_picture['height']  = 2*600
+I_picture[ 'width']  = 800
+I_picture['height']  = 600
 I_picture['aspect']  = I_picture['width'] / I_picture['height']
 
 if( 1 < len( sys.argv ) ):

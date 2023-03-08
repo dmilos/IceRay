@@ -41,9 +41,12 @@ class Intersect:
     def invert( self, P_invert ):
         return self.m_cargo['dll'].IceRayC_Geometry_Complex_Intersect_Invert( self.m_cargo['this'], IntegerType( P_invert ) )
 
-    def box( self ):
+    def box( self, P_box = None ):
         result = IceRayPy.type.math.interval.Scalar3D()
-        self.m_cargo['dll'].IceRayC_Geometry__Base_GetBox( self.m_cargo['this'], AddressOf( result ) )
+        if( None != P_box ):
+            self.m_cargo['dll'].IceRayC_Geometry__Base_Box_Set( self.m_cargo['this'], AddressOf( result ) )
+        result = IceRayPy.type.math.interval.Scalar3D()
+        self.m_cargo['dll'].IceRayC_Geometry__Base_Box_Get( self.m_cargo['this'], AddressOf( result ) )
         return result
 
 class Enclose:

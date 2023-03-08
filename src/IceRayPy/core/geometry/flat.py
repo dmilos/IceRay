@@ -19,7 +19,7 @@ Coord3D = IceRayPy.type.math.coord.Scalar3D
 
 class Box: #( IceRayPy.core.geometry.Generic ):
 
-    def __init__( self, P_dll,  P_lo = None , P_hi = None ):
+    def __init__( self, P_dll, P_lo = None , P_hi = None ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Geometry_Box0()
@@ -112,6 +112,10 @@ class Triangle:  #( IceRayPy.core.geometry.Generic ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Geometry_Triangle0()
+
+        self.origin( Coord3D(-1,-1,-1) )#!< debug
+        self.eX( Coord3D(0,2,2) )#!< debug
+        self.eY( Coord3D(2,0,0) )#!< debug
 
     def __del__( self ):
         self.m_cargo['dll'].IceRayC_Geometry_Release( self.m_cargo['this'] )

@@ -61,7 +61,7 @@ class Torus:  #( IceRayPy.core.geometry.Generic ):
         I_decline = IceRayPy.type.math.affine.system3D_Z( self.m_cargo['dll'], self.m_cargo['center'], self.m_cargo['normal'] )
 
         I_result = IceRayPy.type.math.affine.compose3D( self.m_cargo['dll'], I_decline, I_scale )
-        self.m_cargo['affine'].toWorldSet( I_result )
+        self.m_cargo['affine'].toWorld( I_result )
         return True
 
 
@@ -126,7 +126,7 @@ class CylinderG:  #( IceRayPy.core.geometry.Generic ):
         I_scale   = IceRayPy.type.math.affine.scaleV(     self.m_cargo['dll'], IceRayPy.type.math.coord.Scalar3D( self.m_cargo['radius'], self.m_cargo['radius'], I_height ) )
 
         I_result = IceRayPy.type.math.affine.compose3D( self.m_cargo['dll'], I_decline, I_scale )
-        self.m_cargo['affine'].toWorldSet( I_result )
+        self.m_cargo['affine'].toWorld( I_result )
         return True
 
 
@@ -178,7 +178,7 @@ class ConeG:  #( IceRayPy.core.geometry.Generic ):
         I_scale   = IceRayPy.type.math.affine.scaleV(     self.m_cargo['dll'], IceRayPy.type.math.coord.Scalar3D( self.m_cargo['radius'], self.m_cargo['radius'], I_height ) )
 
         I_result = IceRayPy.type.math.affine.compose3D( self.m_cargo['dll'], I_decline, I_scale )
-        self.m_cargo['affine'].toWorldSet( I_result )
+        self.m_cargo['affine'].toWorld( I_result )
         return True
 
 
@@ -229,7 +229,7 @@ class ParaboloidG:  #( IceRayPy.core.geometry.Generic ):
         I_scale   = IceRayPy.type.math.affine.scaleV(     self.m_cargo['dll'], IceRayPy.type.math.coord.Scalar3D( self.m_cargo['radius'], self.m_cargo['radius'], I_height ) )
 
         I_result = IceRayPy.type.math.affine.compose3D( self.m_cargo['dll'], I_decline, I_scale )
-        self.m_cargo['affine'].toWorldSet( I_result )
+        self.m_cargo['affine'].toWorld( I_result )
         return True
 
 
@@ -290,7 +290,7 @@ class HyperboloidG:  #( IceRayPy.core.geometry.Generic ): # TODO have bug !!!
         I_scale   = IceRayPy.type.math.affine.scaleV(     self.m_cargo['dll'], IceRayPy.type.math.coord.Scalar3D( self.m_cargo['radius'], self.m_cargo['radius'], I_height ) )
 
         I_result = IceRayPy.type.math.affine.compose3D( self.m_cargo['dll'], I_decline, I_scale )
-        self.m_cargo['affine'].toWorldSet( I_result )
+        self.m_cargo['affine'].toWorld( I_result )
         return True
 
 
@@ -299,7 +299,7 @@ class Parallelepiped:
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
 
-        self.m_cargo['box']  =  IceRayPy.core.geometry.simple.Box( self.m_cargo['dll'] )
+        self.m_cargo['box']  =  IceRayPy.core.geometry.flat.Box( self.m_cargo['dll'] )
         self.m_cargo['box'].lo(  IceRayPy.type.math.coord.Scalar3D( 0, 0, 0 ) )
         self.m_cargo['box'].hi(  IceRayPy.type.math.coord.Scalar3D( 1, 1, 1 ) )
         self.m_cargo['affine'] = IceRayPy.core.geometry.transform.Affine( self.m_cargo['dll'] )
@@ -346,7 +346,7 @@ class Parallelepiped:
 
         I_affine = IceRayPy.type.math.affine.system3D( self.m_cargo['dll'], O, X, Y, Z )
 
-        self.m_cargo['affine'].toWorldSet( I_affine )
+        self.m_cargo['affine'].toWorld( I_affine )
         return True
 
 
@@ -355,7 +355,7 @@ class Cube:  #( IceRayPy.core.geometry.Generic ): # TODO have bug !!!
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
 
-        self.m_cargo['box']  =  IceRayPy.core.geometry.simple.Box( self.m_cargo['dll'] )
+        self.m_cargo['box']  =  IceRayPy.core.geometry.flat.Box( self.m_cargo['dll'] )
 
         self.center( IceRayPy.type.math.coord.Scalar3D( 0, 0, 0 ) )
         self.size(   IceRayPy.type.math.coord.Scalar3D( 1, 1, 1 ) )

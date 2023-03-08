@@ -5,12 +5,12 @@ import IceRayPy
 
 list = {
 
-     'F-box'              : IceRayPy.core.geometry.simple.Box,
-     'F-disc'             : IceRayPy.core.geometry.simple.Disc,
-     'F-udisc'            : IceRayPy.core.geometry.simple.UDisc,
-     'F-triangle'         : IceRayPy.core.geometry.simple.Triangle,
-     'F-triangleU'        : IceRayPy.core.geometry.simple.TriangleU, #!< TODO
-     'F-plane'            : IceRayPy.core.geometry.simple.Plane,
+     'F-box'              : IceRayPy.core.geometry.flat.Box,
+     'F-disc'             : IceRayPy.core.geometry.flat.Disc,
+     'F-udisc'            : IceRayPy.core.geometry.flat.UDisc,
+     'F-triangle'         : IceRayPy.core.geometry.flat.Triangle,
+     'F-triangleU'        : IceRayPy.core.geometry.flat.TriangleU, #!< TODO
+     'F-plane'            : IceRayPy.core.geometry.flat.Plane,
      'F-piped'            : IceRayPy.utility.geometry.simple.Parallelepiped,
 
      'Q-sphere'           : IceRayPy.core.geometry.simple.Sphere,

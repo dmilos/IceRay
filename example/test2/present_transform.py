@@ -93,6 +93,11 @@ geometry_list = [
      'T-mblur'     ,
  ]
 
+I_config['composer'] = {}
+I_config['composer']['hot'] = {}
+I_config['composer']['hot']['x'] = 400
+I_config['composer']['hot']['y'] = 300
+
 for item in geometry_list :
     I_scene['geometry']= item
     render.doIt( I_dll, I_picture, I_scene, I_inventory, I_config )

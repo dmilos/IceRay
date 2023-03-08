@@ -50,7 +50,9 @@ geometry_list = [
   #'S-sphere'
   #'F-piped' 
   #'S-torus',
-  'C-cookie',
+   #  'T-affine'    ,
+   #  'T-hgraphy'
+    'T-hgraphy'
   #'S-util-torus'
  ]
 
@@ -75,7 +77,7 @@ pigment_list =[
       #'I-WardApprox'    ,
       #'I-WardIsotropic' ,
       #'I-WardReal'      ,
-      'T-B-refract-schlick' 
+      #'T-B-refract-schlick' 
 ]
 
 room_inventory = library_room.list

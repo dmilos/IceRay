@@ -53,7 +53,7 @@ def IntersectGeneral( P_dll
 
     edge = 0.999
     left  = IceRayPy.core.geometry.simple.Sphere( P_dll, IceRayPy.type.math.coord.Scalar3D( 0,0, 0 ), radius )
-    right = IceRayPy.core.geometry.simple.Box( P_dll, IceRayPy.type.math.coord.Scalar3D(  -edge, -edge, -edge ), IceRayPy.type.math.coord.Scalar3D( +edge, +edge, +edge ) )
+    right = IceRayPy.core.geometry.flat.Box( P_dll, IceRayPy.type.math.coord.Scalar3D(  -edge, -edge, -edge ), IceRayPy.type.math.coord.Scalar3D( +edge, +edge, +edge ) )
 
     intersect = IceRayPy.core.geometry.complex.Intersect( P_dll )
     intersect.left(  left, surfaceA )

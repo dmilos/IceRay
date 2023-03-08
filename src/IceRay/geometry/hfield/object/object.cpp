@@ -2,5 +2,4 @@
 #include "./flat.cpp"
 #include "./triangle.cpp"
 #include "./vacuum.cpp"
-#include "./geometry.cpp"
 #include "./quad.cpp"

@@ -91,7 +91,6 @@ IceRay/geometry/hfield/hfield.hpp
 IceRay/geometry/hfield/object/_pure.hpp
 IceRay/geometry/hfield/object/b3.hpp
 IceRay/geometry/hfield/object/flat.hpp
-IceRay/geometry/hfield/object/geometry.hpp
 IceRay/geometry/hfield/object/object.hpp
 IceRay/geometry/hfield/object/quad.hpp
 IceRay/geometry/hfield/object/triangle.hpp

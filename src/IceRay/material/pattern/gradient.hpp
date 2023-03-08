@@ -32,7 +32,14 @@
                F_top( T_coord{ 0, 0, 1 } );
               }
 
-            bool F_set( T_scalar const P_position, T_color const& P_value )
+             void F_clear()
+              {
+               M_map.clear();
+               F_bottom( T_coord{ 0, 0, 0 } );
+               F_top( T_coord{ 0, 0, 1 } );
+              }
+
+             bool F_set( T_scalar const P_position, T_color const& P_value )
               {
                T_scalar I_epsilon = 1e-5;
                for( auto & item : M_map )
@@ -47,7 +54,7 @@
                return true;
               }
 
-            bool F_bottom( T_coord const P_bottom )
+             bool F_bottom( T_coord const P_bottom )
               {
                M_bottom = P_bottom;
                ::math::linear::vector::subtraction( M2_direction, M_top, M_bottom );
@@ -55,7 +62,7 @@
                ::math::linear::vector::scale( M2_direction, T_scalar(1)/I_scale );
                return true;
               }
-            bool F_top( T_coord const P_top )
+             bool F_top( T_coord const P_top )
               {
                M_top = P_top;
                ::math::linear::vector::subtraction( M2_direction, M_top, M_bottom );

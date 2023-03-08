@@ -52,7 +52,7 @@ def Asymetric( P_dll,
     union.left(   left, IceRayPy.core.geometry.complex.Intersect.OUT )
     union.right( right, IceRayPy.core.geometry.complex.Intersect.OUT )
 
-    cylinder = IceRayPy.core.geometry.simple.Box( P_dll, IceRayPy.type.math.coord.Scalar3D( -0.2,-0.2, -0.75 ), IceRayPy.type.math.coord.Scalar3D( +0.2, +0.2, +0.75 ) )
+    cylinder = IceRayPy.core.geometry.flat.Box( P_dll, IceRayPy.type.math.coord.Scalar3D( -0.2,-0.2, -0.75 ), IceRayPy.type.math.coord.Scalar3D( +0.2, +0.2, +0.75 ) )
     intersect = IceRayPy.core.geometry.complex.Intersect( P_dll )
     intersect.left( union, IceRayPy.core.geometry.complex.Intersect.OUT )
     intersect.right( cylinder )

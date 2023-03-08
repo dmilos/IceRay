@@ -78,6 +78,8 @@ class Size1D(ctypes.Structure):
         if( 0 == key ): return self.x
         return 0;
 
+    def __setitem__(self, key, value : Size_T ):
+        if( 0 == key ): self.x = Size_T( value )
 
 class Size2D(ctypes.Structure):
     _fields_ = [("x", Size_T),
@@ -88,6 +90,9 @@ class Size2D(ctypes.Structure):
         if( 0 == key ): return self.x
         if( 1 == key ): return self.y
 
+    def __setitem__(self, key, value : Size_T ):
+        if( 0 == key ): self.x = Size_T( value )
+        if( 1 == key ): self.y = Size_T( value )
 
 class Size3D(ctypes.Structure):
     _fields_ = [("x", Size_T),
@@ -99,6 +104,10 @@ class Size3D(ctypes.Structure):
         if( 0 == key ): return self.x
         if( 1 == key ): return self.y
         if( 2 == key ): return self.z
+    def __setitem__(self, key, value : Size_T ):
+        if( 0 == key ): self.x = Size_T( value )
+        if( 1 == key ): self.y = Size_T( value )
+        if( 2 == key ): self.z = Size_T( value )
 
 
 class Size4D(ctypes.Structure):
@@ -119,6 +128,9 @@ class Size4D(ctypes.Structure):
         if( 1 == key ): self.y = Size_T( value )
         if( 2 == key ): self.z = Size_T( value )
         if( 3 == key ): self.t = Size_T( value )
+
+def print3D( P_3D : Scalar3D ):
+    print( "[ " + str(P_3D[0]) + ', ' + str(P_3D[1])+ ', ' + str(P_3D[2]) + ' ]', flush = True )
 
 
 def fill3D( P_dll, P_scalar ):

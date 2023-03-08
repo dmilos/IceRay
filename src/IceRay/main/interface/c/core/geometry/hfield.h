@@ -48,8 +48,5 @@ IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_Geometry_HField_Object_Handle    IceRa
 IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_Geometry_HField_Object_Handle    IceRayC_Geometry_HField_Object_Quad0();
 IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_Geometry_HField_Object_Handle    IceRayC_Geometry_HField_Object_Triangle0();
 IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_Geometry_HField_Object_Handle    IceRayC_Geometry_HField_Object_Vacuuum0();
-IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_Geometry_HField_Object_Handle    IceRayC_Geometry_HField_Object_Geometry0();
-IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_Geometry_HField_Object_Handle    IceRayC_Geometry_HField_Object_Geometry1( IceRayC_Geometry_Handle P_child );
-IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_Type_Bool                        IceRayC_Geometry_HField_Object_Geometry_Set( IceRayC_Geometry_HField_Object_Handle P_this, IceRayC_Geometry_Handle P_child );
 
 #endif

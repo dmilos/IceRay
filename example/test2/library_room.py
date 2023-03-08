@@ -20,7 +20,7 @@ def plate( P_dll, P_config = { 'level':  - 1.01, 'size' : 3, 'shadow': False, 'p
     if( 'size' in P_config ):
         size = P_config['size']
 
-    geometry = IceRayPy.core.geometry.simple.Box( P_dll )
+    geometry = IceRayPy.core.geometry.flat.Box( P_dll )
     geometry.box(        Coord3D(  -size, -size, level - 0.1) , Coord3D( size,      size, level ) )
 
     wrapper = IceRayPy.core.object.Wrapper( P_dll )
@@ -172,35 +172,35 @@ def cornel_open( P_dll, P_config = {}, P_light = None, P_exponat = None ): # non
         if( False == P_config['shadow'] ):
             I_scene['barrier'] = IceRayPy.core.geometry.volumetric.Vacuum( P_dll )
 
-    leftG = IceRayPy.core.geometry.simple.Box( P_dll )
+    leftG = IceRayPy.core.geometry.flat.Box( P_dll )
     leftG.box(        Coord3D(  lo[0]-wall, lo[1], lo[2]) , Coord3D(lo[0],      hi[1], hi[2]) )
     leftW = IceRayPy.core.object.Wrapper( P_dll )
     pigment = IceRayPy.utility.material.illumination.Lambert( P_dll, I_scene, IceRayPy.type.color.RGB( 1, 0.33, 0.33 ) )
     leftW.pigment( pigment )
     leftW.geometrySet( leftG )
 
-    rightG = IceRayPy.core.geometry.simple.Box( P_dll )
+    rightG = IceRayPy.core.geometry.flat.Box( P_dll )
     rightG.box(       Coord3D( hi[0],      lo[1], lo[2]) ,  Coord3D(hi[0]+ wall,hi[1], hi[2]) )
     rightW = IceRayPy.core.object.Wrapper( P_dll )
     pigment = IceRayPy.utility.material.illumination.Lambert( P_dll, I_scene, IceRayPy.type.color.RGB( 0.33, 1, 0.33 ) )
     rightW.pigment( pigment )
     rightW.geometrySet( rightG )
 
-    backgroundG = IceRayPy.core.geometry.simple.Box( P_dll )
+    backgroundG = IceRayPy.core.geometry.flat.Box( P_dll )
     backgroundG.box(  Coord3D( lo[0], lo[1]-wall, lo[2] ) , Coord3D( hi[0], lo[1], hi[2] ) )
     backgroundW = IceRayPy.core.object.Wrapper( P_dll )
     pigment = IceRayPy.utility.material.illumination.Lambert( P_dll, I_scene, IceRayPy.type.color.RGB( 0.33, 0.33, 1 ) )
     backgroundW.pigment( pigment )
     backgroundW.geometrySet( backgroundG )
 
-    floorG = IceRayPy.core.geometry.simple.Box( P_dll )
+    floorG = IceRayPy.core.geometry.flat.Box( P_dll )
     floorG.box(       Coord3D( lo[0], lo[1], lo[2]-wall ) , Coord3D( hi[0], hi[0], lo[2] ) )
     floorW = IceRayPy.core.object.Wrapper( P_dll )
     pigment = IceRayPy.utility.material.illumination.Lambert( P_dll, I_scene, IceRayPy.type.color.RGB( 0.5, 0.5, 0.5 ) )
     floorW.pigment( pigment )
     floorW.geometrySet( floorG )
 
-    ceilG = IceRayPy.core.geometry.simple.Box( P_dll )
+    ceilG = IceRayPy.core.geometry.flat.Box( P_dll )
     ceilG.box(        Coord3D( lo[0], lo[1], hi[2] ),       Coord3D( hi[0], hi[1], hi[2] + wall ) )
     ceilW = IceRayPy.core.object.Wrapper( P_dll )
     pigment = IceRayPy.utility.material.illumination.Lambert( P_dll, I_scene, IceRayPy.type.color.RGB( 0.5, 0.5, 0.5 ) )
@@ -248,42 +248,42 @@ def cornel_close( P_dll, P_config = {}, P_light = None, P_exponat = None ): # no
         if( False == P_config['shadow'] ):
             I_scene['barrier'] = IceRayPy.core.geometry.volumetric.Vacuum( P_dll )
 
-    leftG = IceRayPy.core.geometry.simple.Box( P_dll )
+    leftG = IceRayPy.core.geometry.flat.Box( P_dll )
     leftG.box(        Coord3D(  lo[0]-wall, lo[1], lo[2]) , Coord3D(lo[0],      hi[1], hi[2]) )
     leftW = IceRayPy.core.object.Wrapper( P_dll )
     pigment = IceRayPy.utility.material.illumination.Lambert( P_dll, I_scene, IceRayPy.type.color.RGB( 1, 0.33, 0.33 ) )
     leftW.pigment( pigment )
     leftW.geometrySet( leftG )
 
-    rightG = IceRayPy.core.geometry.simple.Box( P_dll )
+    rightG = IceRayPy.core.geometry.flat.Box( P_dll )
     rightG.box(       Coord3D( hi[0],      lo[1], lo[2]) ,  Coord3D(hi[0]+ wall,hi[1], hi[2]) )
     rightW = IceRayPy.core.object.Wrapper( P_dll )
     pigment = IceRayPy.utility.material.illumination.Lambert( P_dll, I_scene, IceRayPy.type.color.RGB( 0.33, 1, 0.33 ) )
     rightW.pigment( pigment )
     rightW.geometrySet( rightG )
 
-    backgroundG = IceRayPy.core.geometry.simple.Box( P_dll )
+    backgroundG = IceRayPy.core.geometry.flat.Box( P_dll )
     backgroundG.box(  Coord3D( lo[0], lo[1]-wall, lo[2] ) , Coord3D( hi[0], lo[1], hi[2] ) )
     backgroundW = IceRayPy.core.object.Wrapper( P_dll )
     pigment = IceRayPy.utility.material.illumination.Lambert( P_dll, I_scene, IceRayPy.type.color.RGB( 0.33, 0.33, 1 ) )
     backgroundW.pigment( pigment )
     backgroundW.geometrySet( backgroundG )
 
-    foregroundG = IceRayPy.core.geometry.simple.Box( P_dll )
+    foregroundG = IceRayPy.core.geometry.flat.Box( P_dll )
     foregroundG.box(  Coord3D( lo[0], hi[1],  lo[2] ),      Coord3D( hi[0], hi[1] + wall, hi[2] ) )
     foregroundW = IceRayPy.core.object.Wrapper( P_dll )
     pigment = IceRayPy.utility.material.transmission.reflect.One( P_dll, I_scene )
     foregroundW.pigment( pigment )
     foregroundW.geometrySet( foregroundG )
 
-    floorG = IceRayPy.core.geometry.simple.Box( P_dll )
+    floorG = IceRayPy.core.geometry.flat.Box( P_dll )
     floorG.box(       Coord3D( lo[0], lo[1], lo[2]-wall ) , Coord3D( hi[0], hi[0], lo[2] ) )
     floorW = IceRayPy.core.object.Wrapper( P_dll )
     pigment = IceRayPy.utility.material.illumination.Lambert( P_dll, I_scene, IceRayPy.type.color.RGB( 0.5, 0.5, 0.5 ) )
     floorW.pigment( pigment )
     floorW.geometrySet( floorG )
 
-    ceilG = IceRayPy.core.geometry.simple.Box( P_dll )
+    ceilG = IceRayPy.core.geometry.flat.Box( P_dll )
     ceilG.box(        Coord3D( lo[0], lo[1], hi[2] ),       Coord3D( hi[0], hi[1], hi[2] + wall ) )
     ceilW = IceRayPy.core.object.Wrapper( P_dll )
     pigment = IceRayPy.utility.material.illumination.Lambert( P_dll, I_scene, IceRayPy.type.color.RGB( 0.5, 0.5, 0.5 ) )
@@ -334,7 +334,7 @@ def cornell_radiosity(
         if( False == P_config['shadow'] ):
             I_scene['barrier'] = IceRayPy.core.geometry.volumetric.Vacuum( P_dll )
 
-    leftG = IceRayPy.core.geometry.simple.Box( P_dll )
+    leftG = IceRayPy.core.geometry.flat.Box( P_dll )
     leftG.box(        Coord3D(  lo[0]-wall, lo[1], lo[2]) , Coord3D(lo[0],      hi[1], hi[2]) )
     leftW = IceRayPy.core.object.Wrapper( P_dll )
     P_config['albedo'] = IceRayPy.type.color.RGB( 1, 0.33, 0.33 )
@@ -342,7 +342,7 @@ def cornell_radiosity(
     leftW.pigment( pigment )
     leftW.geometrySet( leftG )
 
-    rightG = IceRayPy.core.geometry.simple.Box( P_dll )
+    rightG = IceRayPy.core.geometry.flat.Box( P_dll )
     rightG.box(       Coord3D( hi[0],      lo[1], lo[2]) ,  Coord3D(hi[0]+ wall,hi[1], hi[2]) )
     rightW = IceRayPy.core.object.Wrapper( P_dll )
     P_config['albedo'] = IceRayPy.type.color.RGB( 0.33, 1, 0.33 )
@@ -350,7 +350,7 @@ def cornell_radiosity(
     rightW.pigment( pigment )
     rightW.geometrySet( rightG )
 
-    backgroundG = IceRayPy.core.geometry.simple.Box( P_dll )
+    backgroundG = IceRayPy.core.geometry.flat.Box( P_dll )
     backgroundG.box(  Coord3D( lo[0], lo[1]-wall, lo[2] ) , Coord3D( hi[0], lo[1], hi[2] ) )
     backgroundW = IceRayPy.core.object.Wrapper( P_dll )
     P_config['albedo'] = IceRayPy.type.color.RGB( 0.33, 0.33, 1 )
@@ -358,14 +358,14 @@ def cornell_radiosity(
     backgroundW.pigment( pigment )
     backgroundW.geometrySet( backgroundG )
 
-    foregroundG = IceRayPy.core.geometry.simple.Box( P_dll )
+    foregroundG = IceRayPy.core.geometry.flat.Box( P_dll )
     foregroundG.box(  Coord3D( lo[0], hi[1],  lo[2] ),      Coord3D( hi[0], hi[1] + wall, hi[2] ) )
     foregroundW = IceRayPy.core.object.Wrapper( P_dll )
     pigment = IceRayPy.utility.material.transmission.reflect.Mirror( P_dll, I_scene )
     foregroundW.pigment( pigment )
     foregroundW.geometrySet( foregroundG )
 
-    floorG = IceRayPy.core.geometry.simple.Box( P_dll )
+    floorG = IceRayPy.core.geometry.flat.Box( P_dll )
     floorG.box(       Coord3D( lo[0], lo[1], lo[2]-wall ) , Coord3D( hi[0], hi[0], lo[2] ) )
     floorW = IceRayPy.core.object.Wrapper( P_dll )
     P_config['albedo'] = IceRayPy.type.color.RGB( 0.5, 0.5, 0.5 )
@@ -373,7 +373,7 @@ def cornell_radiosity(
     floorW.pigment( pigment )
     floorW.geometrySet( floorG )
 
-    ceilG = IceRayPy.core.geometry.simple.Box( P_dll )
+    ceilG = IceRayPy.core.geometry.flat.Box( P_dll )
     ceilG.box(        Coord3D( lo[0], lo[1], hi[2] ),       Coord3D( hi[0], hi[1], hi[2] + wall ) )
     ceilW = IceRayPy.core.object.Wrapper( P_dll )
     P_config['albedo'] = IceRayPy.type.color.RGB( 0.5, 0.5, 0.5 )
@@ -425,35 +425,35 @@ def mirror_box(
         if( False == P_config['shadow'] ):
             I_scene['barrier'] = IceRayPy.core.geometry.volumetric.Vacuum( P_dll )
 
-    leftG = IceRayPy.core.geometry.simple.Box( P_dll )
+    leftG = IceRayPy.core.geometry.flat.Box( P_dll )
     leftG.box(        Coord3D(  lo[0]-wall, lo[1], lo[2]) , Coord3D(lo[0],      hi[1], hi[2]) )
     leftW = IceRayPy.core.object.Wrapper( P_dll )
     pigment = IceRayPy.utility.material.transmission.reflect.Mirror( P_dll, I_scene )
     leftW.pigment( pigment )
     leftW.geometrySet( leftG )
 
-    rightG = IceRayPy.core.geometry.simple.Box( P_dll )
+    rightG = IceRayPy.core.geometry.flat.Box( P_dll )
     rightG.box(       Coord3D( hi[0],      lo[1], lo[2]) ,  Coord3D(hi[0]+ wall,hi[1], hi[2]) )
     rightW = IceRayPy.core.object.Wrapper( P_dll )
     pigment = IceRayPy.utility.material.transmission.reflect.Mirror( P_dll, I_scene )
     rightW.pigment( pigment )
     rightW.geometrySet( rightG )
 
-    backgroundG = IceRayPy.core.geometry.simple.Box( P_dll )
+    backgroundG = IceRayPy.core.geometry.flat.Box( P_dll )
     backgroundG.box(  Coord3D( lo[0], lo[1]-wall, lo[2] ) , Coord3D( hi[0], lo[1], hi[2] ) )
     backgroundW = IceRayPy.core.object.Wrapper( P_dll )
     pigment = IceRayPy.utility.material.transmission.reflect.Mirror( P_dll, I_scene )
     backgroundW.pigment( pigment )
     backgroundW.geometrySet( backgroundG )
 
-    foregroundG = IceRayPy.core.geometry.simple.Box( P_dll )
+    foregroundG = IceRayPy.core.geometry.flat.Box( P_dll )
     foregroundG.box(  Coord3D( lo[0], hi[1],  lo[2] ),      Coord3D( hi[0], hi[1] + wall, hi[2] ) )
     foregroundW = IceRayPy.core.object.Wrapper( P_dll )
     pigment = IceRayPy.utility.material.transmission.reflect.Mirror( P_dll, I_scene )
     foregroundW.pigment( pigment )
     foregroundW.geometrySet( foregroundG )
 
-    floorG = IceRayPy.core.geometry.simple.Box( P_dll )
+    floorG = IceRayPy.core.geometry.flat.Box( P_dll )
     floorG.box(       Coord3D( lo[0], lo[1], lo[2]-wall ) , Coord3D( hi[0], hi[0], lo[2] ) )
     floorW = IceRayPy.core.object.Wrapper( P_dll )
     pigment = IceRayPy.utility.material.transmission.reflect.Mirror( P_dll, I_scene )
@@ -461,7 +461,7 @@ def mirror_box(
     floorW.pigment( pigment )
     floorW.geometrySet( floorG )
 
-    ceilG = IceRayPy.core.geometry.simple.Box( P_dll )
+    ceilG = IceRayPy.core.geometry.flat.Box( P_dll )
     ceilG.box(        Coord3D( lo[0], lo[1], hi[2] ),       Coord3D( hi[0], hi[1], hi[2] + wall ) )
     ceilW = IceRayPy.core.object.Wrapper( P_dll )
     pigment = IceRayPy.utility.material.transmission.reflect.Mirror( P_dll, I_scene )

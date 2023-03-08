@@ -3,6 +3,7 @@
 
 #include "./_pure.hpp"
 #include "IceRay/type/basic/string.hpp"
+#include "IceRay/type/math/interval.hpp"
 
  namespace GS_DDMRM
   {

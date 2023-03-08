@@ -15,7 +15,7 @@ def Box(
 
     pigment = IceRayPy.utility.material.illumination.Ambient( P_dll, P_config, P_color )
     wrapper.pigment( pigment )
-    geometry = IceRayPy.core.geometry.simple.Box( P_dll )
+    geometry = IceRayPy.core.geometry.flat.Box( P_dll )
     geometry.box( P_lo, P_hi )
     wrapper.geometrySet( geometry )
 

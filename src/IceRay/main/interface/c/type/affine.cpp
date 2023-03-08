@@ -78,7 +78,7 @@ IceRayC_Type_Math_Affine4D cpp2c( GS_DDMRM::S_IceRay::S_type::S_affine::GT_scala
   return  I_that;
  }
 
-int   IceRayC_Type_Math_Affine3D_ID( IceRayC_Type_Math_Affine3D *P_that )
+int   IceRayC_Type_Math_Affine_ID3D( IceRayC_Type_Math_Affine3D *P_that )
  {
   GS_DDMRM::S_IceRay::S_type::S_affine::GT_scalar3D I_id;
   ::math::linear::affine::id(I_id);
@@ -86,16 +86,34 @@ int   IceRayC_Type_Math_Affine3D_ID( IceRayC_Type_Math_Affine3D *P_that )
   return 1;
  }
 
-int   IceRayC_Type_Math_Affine3D_Zero( IceRayC_Type_Math_Affine3D *P_that )
+int   IceRayC_Type_Math_Affine_Zero3D( IceRayC_Type_Math_Affine3D *P_that )
  {
   GS_DDMRM::S_IceRay::S_type::S_affine::GT_scalar3D I_zero;
   ::math::linear::affine::zero(I_zero);
   *P_that = cpp2c( I_zero );
   return 1;
  }
+#define C3D IceRayC_TypeCoordScalar3D
+int IceRayC_Type_Math_Affine_Construct3D
+  ( 
+    IceRayC_Type_Math_Affine3D *P_result
+   ,C3D *P_tO, C3D *P_tX, C3D* P_tY, C3D * P_tZ 
+   ,C3D *P_sO, C3D *P_sX, C3D* P_sY, C3D * P_sZ
+  )
+ {
+  GS_DDMRM::S_IceRay::S_type::S_affine::GT_scalar3D I_result;
+  ::math::linear::affine::construct( I_result
+      ,{ c2cpp( *P_tO ), c2cpp( *P_tX ), c2cpp( *P_tY ), c2cpp( *P_tZ ) }
+      ,{ c2cpp( *P_sO ), c2cpp( *P_sX ), c2cpp( *P_sY ), c2cpp( *P_sZ ) }
+    );
 
+  *P_result = cpp2c( I_result );
+ return 1;
+  }
 
-int  IceRayC_Type_Math_Affine3D_System( IceRayC_Type_Math_Affine3D *P_this, IceRayC_TypeCoordScalar3D* P_origin, IceRayC_TypeCoordScalar3D* P_X, IceRayC_TypeCoordScalar3D* P_Y, IceRayC_TypeCoordScalar3D* P_Z )
+#undef C3D
+
+int  IceRayC_Type_Math_Affine_System3D( IceRayC_Type_Math_Affine3D *P_this, IceRayC_TypeCoordScalar3D* P_origin, IceRayC_TypeCoordScalar3D* P_X, IceRayC_TypeCoordScalar3D* P_Y, IceRayC_TypeCoordScalar3D* P_Z )
  {
   GS_DDMRM::S_IceRay::S_type::S_affine::GT_scalar3D I_this;
   ::math::linear::affine::system( I_this, c2cpp( *P_origin ), c2cpp( *P_X ), c2cpp( *P_Y ), c2cpp( *P_Z ) );
@@ -104,7 +122,7 @@ int  IceRayC_Type_Math_Affine3D_System( IceRayC_Type_Math_Affine3D *P_this, IceR
   return 1;
  }
 
-int  IceRayC_Type_Math_Affine3D_SystemZ( IceRayC_Type_Math_Affine3D *P_this, IceRayC_TypeCoordScalar3D* P_origin, IceRayC_TypeCoordScalar3D* P_Z )
+int  IceRayC_Type_Math_Affine_SystemZ3D( IceRayC_Type_Math_Affine3D *P_this, IceRayC_TypeCoordScalar3D* P_origin, IceRayC_TypeCoordScalar3D* P_Z )
  {
   GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar3D I_x, I_y,I_z{ c2cpp( *P_Z )};
 
@@ -125,34 +143,34 @@ int  IceRayC_Type_Math_Affine3D_SystemZ( IceRayC_Type_Math_Affine3D *P_this, Ice
   return 1;
  }
 
-int    IceRayC_Type_Math_Affine3D_Move( IceRayC_Type_Math_Affine3D *P_that, IceRayC_TypeCoordScalar3D* P_move )
+int    IceRayC_Type_Math_Affine_Move3D( IceRayC_Type_Math_Affine3D *P_that, IceRayC_TypeCoordScalar3D* P_move )
  {
-  IceRayC_Type_Math_Affine3D_ID( P_that );
+  IceRayC_Type_Math_Affine_ID3D( P_that );
   P_that->value[3][0] = P_move->value[0];
   P_that->value[3][1] = P_move->value[1];
   P_that->value[3][2] = P_move->value[2];
   return 0;
  }
 
-int    IceRayC_Type_Math_Affine3D_ScaleS( IceRayC_Type_Math_Affine3D *P_that, IceRayC_TypeScalar P_scale )
+int    IceRayC_Type_Math_Affine_ScaleS3D( IceRayC_Type_Math_Affine3D *P_that, IceRayC_TypeScalar P_scale )
  {
-  IceRayC_Type_Math_Affine3D_ID( P_that );
+  IceRayC_Type_Math_Affine_ID3D( P_that );
   P_that->value[0][0] = P_scale;
   P_that->value[1][1] = P_scale;
   P_that->value[2][2] = P_scale;
   return 1;
  }
 
-int    IceRayC_Type_Math_Affine3D_ScaleV( IceRayC_Type_Math_Affine3D *P_that, IceRayC_TypeCoordScalar3D * P_scale )
+int    IceRayC_Type_Math_Affine_ScaleV3D( IceRayC_Type_Math_Affine3D *P_that, IceRayC_TypeCoordScalar3D * P_scale )
  {
-  IceRayC_Type_Math_Affine3D_ID( P_that );
+  IceRayC_Type_Math_Affine_ID3D( P_that );
   P_that->value[0][0] = P_scale->value[0];
   P_that->value[1][1] = P_scale->value[1];
   P_that->value[2][2] = P_scale->value[2];
   return 1;
  }
 
-int    IceRayC_Type_Math_Affine3D_RotateX( IceRayC_Type_Math_Affine3D *P_result, IceRayC_TypeScalar P_alpha )
+int    IceRayC_Type_Math_Affine_RotateX3D( IceRayC_Type_Math_Affine3D *P_result, IceRayC_TypeScalar P_alpha )
  {
   GS_DDMRM::S_IceRay::S_type::S_affine::GT_scalar3D I_result;
   ::math::linear::matrix::rotateX(I_result.matrix(),P_alpha);
@@ -161,7 +179,7 @@ int    IceRayC_Type_Math_Affine3D_RotateX( IceRayC_Type_Math_Affine3D *P_result,
   return 1;
  }
 
-int    IceRayC_Type_Math_Affine3D_RotateY( IceRayC_Type_Math_Affine3D *P_result, IceRayC_TypeScalar P_alpha )
+int    IceRayC_Type_Math_Affine_RotateY3D( IceRayC_Type_Math_Affine3D *P_result, IceRayC_TypeScalar P_alpha )
  {
   GS_DDMRM::S_IceRay::S_type::S_affine::GT_scalar3D I_result;
   ::math::linear::matrix::rotateY( I_result.matrix(), P_alpha );
@@ -170,7 +188,7 @@ int    IceRayC_Type_Math_Affine3D_RotateY( IceRayC_Type_Math_Affine3D *P_result,
   return 1;
  }
 
-int    IceRayC_Type_Math_Affine3D_RotateZ( IceRayC_Type_Math_Affine3D *P_result, IceRayC_TypeScalar P_alpha )
+int    IceRayC_Type_Math_Affine_RotateZ3D( IceRayC_Type_Math_Affine3D *P_result, IceRayC_TypeScalar P_alpha )
  {
   GS_DDMRM::S_IceRay::S_type::S_affine::GT_scalar3D I_result;
   ::math::linear::matrix::rotateZ( I_result.matrix(),P_alpha);
@@ -179,7 +197,7 @@ int    IceRayC_Type_Math_Affine3D_RotateZ( IceRayC_Type_Math_Affine3D *P_result,
   return 1;
  }
 
-int    IceRayC_Type_Math_Affine3D_RotateA( IceRayC_Type_Math_Affine3D *P_result, IceRayC_TypeCoordScalar3D *P_direction, IceRayC_TypeScalar P_alpha )
+int    IceRayC_Type_Math_Affine_RotateA3D( IceRayC_Type_Math_Affine3D *P_result, IceRayC_TypeCoordScalar3D *P_direction, IceRayC_TypeScalar P_alpha )
  {
   GS_DDMRM::S_IceRay::S_type::S_affine::GT_scalar3D I_result;
   ::math::linear::matrix::rotate( I_result.matrix(), c2cpp(*P_direction), P_alpha );
@@ -188,7 +206,7 @@ int    IceRayC_Type_Math_Affine3D_RotateA( IceRayC_Type_Math_Affine3D *P_result,
   return 1;
  }
 
-int    IceRayC_Type_Math_Affine3D_RotateD( IceRayC_Type_Math_Affine3D *P_result, IceRayC_TypeCoordScalar3D* P_pivot, IceRayC_TypeCoordScalar3D* P_direction, IceRayC_TypeScalar P_alpha )
+int    IceRayC_Type_Math_Affine_RotateD3D( IceRayC_Type_Math_Affine3D *P_result, IceRayC_TypeCoordScalar3D* P_pivot, IceRayC_TypeCoordScalar3D* P_direction, IceRayC_TypeScalar P_alpha )
  {
   GS_DDMRM::S_IceRay::S_type::S_affine::GT_scalar3D I_rotate;    ::math::linear::vector::fill( I_rotate.vector(), 0 );
   GS_DDMRM::S_IceRay::S_type::S_affine::GT_scalar3D I_2center;   ::math::linear::affine::id( I_2center );
@@ -206,7 +224,7 @@ int    IceRayC_Type_Math_Affine3D_RotateD( IceRayC_Type_Math_Affine3D *P_result,
   return 1;
  }
 
-int  IceRayC_Type_Math_Affine3D_Invert( IceRayC_Type_Math_Affine3D *P_result, IceRayC_Type_Math_Affine3D* P_right )
+int  IceRayC_Type_Math_Affine_Invert3D( IceRayC_Type_Math_Affine3D *P_result, IceRayC_Type_Math_Affine3D* P_right )
  {
   GS_DDMRM::S_IceRay::S_type::S_affine::GT_scalar3D I_result;
   if( false ==::math::linear::affine::invert( I_result, c2cpp( *P_right ) ) )
@@ -217,7 +235,7 @@ int  IceRayC_Type_Math_Affine3D_Invert( IceRayC_Type_Math_Affine3D *P_result, Ic
   return 1;
  }
 
-int    IceRayC_Type_Math_Affine3D_LookAt( IceRayC_Type_Math_Affine3D *P_result, IceRayC_TypeCoordScalar3D * P_eye, IceRayC_TypeCoordScalar3D * P_view, IceRayC_TypeCoordScalar3D * P_up )
+int    IceRayC_Type_Math_Affine_LookAt3D( IceRayC_Type_Math_Affine3D *P_result, IceRayC_TypeCoordScalar3D * P_eye, IceRayC_TypeCoordScalar3D * P_view, IceRayC_TypeCoordScalar3D * P_up )
  {
   GS_DDMRM::S_IceRay::S_type::S_affine::GT_scalar3D I_2world;
 
@@ -227,10 +245,18 @@ int    IceRayC_Type_Math_Affine3D_LookAt( IceRayC_Type_Math_Affine3D *P_result, 
   return 1;
  }
 
-int    IceRayC_Type_Math_Affine3D_Compose( IceRayC_Type_Math_Affine3D *P_result, IceRayC_Type_Math_Affine3D * P_left, IceRayC_Type_Math_Affine3D * P_right )
+int    IceRayC_Type_Math_Affine_Compose3D( IceRayC_Type_Math_Affine3D *P_result, IceRayC_Type_Math_Affine3D * P_left, IceRayC_Type_Math_Affine3D * P_right )
  {
   GS_DDMRM::S_IceRay::S_type::S_affine::GT_scalar3D I_result;
   ::math::linear::affine::compose( I_result, c2cpp(*P_left), c2cpp(*P_right) );
+  *P_result = cpp2c( I_result );
+  return 1;
+ }
+
+int  IceRayC_Type_Math_Affine_Transform3D( IceRayC_TypeCoordScalar3D *P_result, IceRayC_Type_Math_Affine3D* P_affine, IceRayC_TypeCoordScalar3D* P_point )
+ {
+  GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar3D I_result;
+  ::math::linear::affine::transform( I_result, c2cpp(*P_affine), c2cpp(*P_point) );
   *P_result = cpp2c( I_result );
   return 1;
  }

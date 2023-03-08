@@ -128,19 +128,15 @@ bool GC_affine::Fv_intersect( T_scalar &P_lambda, T_state &P_state, T_ray const&
 
   ::math::linear::matrix::transform( I_ray.M_direction, F_2local().matrix(), P_ray.M_direction ); // on the right side
 
-  T_scalar I_length = ::math::linear::vector::length( I_ray.M_direction );
+  T_scalar I_length = ::math::linear::vector::length( I_ray.M_direction, T_scalar( 1 ) );
 
-  I_length = T_scalar( 1 )/I_length;
-
-  ::math::linear::vector::scale( I_ray.M_direction, I_length );
-
-  T_scalar I_lambda = P_lambda / I_length;
+  T_scalar I_lambda = P_lambda * I_length;
   if( false == M2_geometry.M2_intersect->Fv_intersect( I_lambda, I_tail, I_ray ) )
    {
     return I_head.M_hit = false;
    }
 
-  P_lambda = I_lambda * I_length;
+  P_lambda = I_lambda / I_length;
 
   return I_head.M_hit = true;
  }

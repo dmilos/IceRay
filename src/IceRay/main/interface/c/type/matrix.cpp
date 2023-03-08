@@ -64,7 +64,7 @@ GS_DDMRM::S_IceRay::S_type::S_matrix:: GT_scalar4D c2cpp( IceRayC_Type_Math_Matr
  {
   GS_DDMRM::S_IceRay::S_type::S_matrix::GT_scalar4D Ir_result;
   for(int i=0; i< 4; ++i)
-   for(int j=0; i< 4; ++j)
+   for(int j=0; j< 4; ++j)
     Ir_result[i][j] = P_that.value[i][j];
   return Ir_result;
  }
@@ -78,19 +78,67 @@ IceRayC_Type_Math_Matrix4D cpp2c( GS_DDMRM::S_IceRay::S_type::S_matrix::GT_scala
   return  I_that;
  }
 
-int   IceRayC_Type_Math_Matrix3D_ID( IceRayC_Type_Math_Matrix3D *P_that )
+int   IceRayC_Type_Math_Matrix1D_ID( IceRayC_Type_Math_Matrix1D *P_this )
  {
-  GS_DDMRM::S_IceRay::S_type::S_matrix::GT_scalar3D I_id;
+  GS_DDMRM::S_IceRay::S_type::S_matrix::GT_scalar1D I_id;
   ::math::linear::matrix::id(I_id);
-  *P_that = cpp2c( I_id );
+  *P_this = cpp2c( I_id );
   return 1;
  }
 
-int   IceRayC_Type_Math_Matrix3D_Zero( IceRayC_Type_Math_Matrix3D *P_that )
+int   IceRayC_Type_Math_Matrix2D_ID( IceRayC_Type_Math_Matrix2D *P_this )
+ {
+  GS_DDMRM::S_IceRay::S_type::S_matrix::GT_scalar2D I_id;
+  ::math::linear::matrix::id(I_id);
+  *P_this = cpp2c( I_id );
+  return 1;
+ }
+
+int   IceRayC_Type_Math_Matrix3D_ID( IceRayC_Type_Math_Matrix3D *P_this )
+ {
+  GS_DDMRM::S_IceRay::S_type::S_matrix::GT_scalar3D I_id;
+  ::math::linear::matrix::id(I_id);
+  *P_this = cpp2c( I_id );
+  return 1;
+ }
+
+int   IceRayC_Type_Math_Matrix4D_ID( IceRayC_Type_Math_Matrix4D *P_this )
+ {
+  GS_DDMRM::S_IceRay::S_type::S_matrix::GT_scalar4D I_id;
+  ::math::linear::matrix::id(I_id);
+  *P_this = cpp2c( I_id );
+  return 1;
+ }
+
+int   IceRayC_Type_Math_Matrix1D_Zero( IceRayC_Type_Math_Matrix1D *P_this )
+ {
+  GS_DDMRM::S_IceRay::S_type::S_matrix::GT_scalar1D I_zero;
+  ::math::linear::matrix::zero(I_zero);
+  *P_this = cpp2c( I_zero );
+  return 1;
+ }
+
+int   IceRayC_Type_Math_Matrix2D_Zero( IceRayC_Type_Math_Matrix2D *P_this )
+ {
+  GS_DDMRM::S_IceRay::S_type::S_matrix::GT_scalar2D I_zero;
+  ::math::linear::matrix::zero(I_zero);
+  *P_this = cpp2c( I_zero );
+  return 1;
+ }
+
+int   IceRayC_Type_Math_Matrix3D_Zero( IceRayC_Type_Math_Matrix3D *P_this )
  {
   GS_DDMRM::S_IceRay::S_type::S_matrix::GT_scalar3D I_zero;
   ::math::linear::matrix::zero(I_zero);
-  *P_that = cpp2c( I_zero );
+  *P_this = cpp2c( I_zero );
+  return 1;
+ }
+
+int   IceRayC_Type_Math_Matrix4D_Zero( IceRayC_Type_Math_Matrix4D *P_this )
+ {
+  GS_DDMRM::S_IceRay::S_type::S_matrix::GT_scalar4D I_zero;
+  ::math::linear::matrix::zero(I_zero);
+  *P_this = cpp2c( I_zero );
   return 1;
  }
 
@@ -143,7 +191,7 @@ int    IceRayC_Type_Math_Matrix3D_RotateA( IceRayC_Type_Math_Matrix3D *P_that, I
   *P_that = cpp2c( I_result );
   return 1;
  }
- 
+
 int    IceRayC_Type_Math_Matrix1D_Multiply( IceRayC_Type_Math_Matrix1D *P_that, IceRayC_Type_Math_Matrix1D* P_left, IceRayC_Type_Math_Matrix1D* P_right )
  {
   GS_DDMRM::S_IceRay::S_type::S_matrix::GT_scalar1D I_result;
@@ -165,10 +213,108 @@ int    IceRayC_Type_Math_Matrix3D_Multiply( IceRayC_Type_Math_Matrix3D *P_that, 
   *P_that = cpp2c( I_result );
   return 1;
  }
-int    IceRayC_Type_Math_Matrix4D_Multiply( IceRayC_Type_Math_Matrix4D *P_that, IceRayC_Type_Math_Matrix4D* P_left, IceRayC_Type_Math_Matrix4D* P_right )
+int    IceRayC_Type_Math_Matrix4D_Multiply( IceRayC_Type_Math_Matrix4D *P_result, IceRayC_Type_Math_Matrix4D* P_left, IceRayC_Type_Math_Matrix4D* P_right )
  {
   GS_DDMRM::S_IceRay::S_type::S_matrix::GT_scalar4D I_result;
   ::math::linear::matrix::multiply( I_result, c2cpp(*P_left), c2cpp(*P_right) );
-  *P_that = cpp2c( I_result );
+  *P_result = cpp2c( I_result );
   return 1;
  }
+
+int  IceRayC_Type_Math_Matrix1D_Addition(    IceRayC_Type_Math_Matrix1D *P_result, IceRayC_Type_Math_Matrix1D* P_left, IceRayC_Type_Math_Matrix1D* P_right )
+ {
+  GS_DDMRM::S_IceRay::S_type::S_matrix::GT_scalar1D I_result;
+  ::math::linear::matrix::subtraction( I_result, c2cpp(*P_left), c2cpp(*P_right) );
+  *P_result = cpp2c( I_result );
+  return 1;
+ }
+int  IceRayC_Type_Math_Matrix2D_Addition(    IceRayC_Type_Math_Matrix2D *P_result, IceRayC_Type_Math_Matrix2D* P_left, IceRayC_Type_Math_Matrix2D* P_right )
+ {
+  GS_DDMRM::S_IceRay::S_type::S_matrix::GT_scalar2D I_result;
+  ::math::linear::matrix::subtraction( I_result, c2cpp(*P_left), c2cpp(*P_right) );
+  *P_result = cpp2c( I_result );
+  return 1;
+ }
+int  IceRayC_Type_Math_Matrix3D_Addition(    IceRayC_Type_Math_Matrix3D *P_result, IceRayC_Type_Math_Matrix3D* P_left, IceRayC_Type_Math_Matrix3D* P_right )
+ {
+  GS_DDMRM::S_IceRay::S_type::S_matrix::GT_scalar3D I_result;
+  ::math::linear::matrix::subtraction( I_result, c2cpp(*P_left), c2cpp(*P_right) );
+  *P_result = cpp2c( I_result );
+  return 1;
+ }
+int  IceRayC_Type_Math_Matrix4D_Addition(    IceRayC_Type_Math_Matrix4D *P_result, IceRayC_Type_Math_Matrix4D* P_left, IceRayC_Type_Math_Matrix4D* P_right )
+ {
+  GS_DDMRM::S_IceRay::S_type::S_matrix::GT_scalar4D I_result;
+  ::math::linear::matrix::subtraction( I_result, c2cpp(*P_left), c2cpp(*P_right) );
+  *P_result = cpp2c( I_result );
+  return 1;
+ }
+
+int  IceRayC_Type_Math_Matrix1D_Subtraction( IceRayC_Type_Math_Matrix1D *P_result, IceRayC_Type_Math_Matrix1D* P_left, IceRayC_Type_Math_Matrix1D* P_right )
+ {
+  GS_DDMRM::S_IceRay::S_type::S_matrix::GT_scalar1D I_result;
+  ::math::linear::matrix::subtraction( I_result, c2cpp(*P_left), c2cpp(*P_right) );
+  *P_result = cpp2c( I_result );
+  return 1;
+ }
+int  IceRayC_Type_Math_Matrix2D_Subtraction( IceRayC_Type_Math_Matrix2D *P_result, IceRayC_Type_Math_Matrix2D* P_left, IceRayC_Type_Math_Matrix2D* P_right )
+ {
+  GS_DDMRM::S_IceRay::S_type::S_matrix::GT_scalar2D I_result;
+  ::math::linear::matrix::subtraction( I_result, c2cpp(*P_left), c2cpp(*P_right) );
+  *P_result = cpp2c( I_result );
+  return 1;
+ }
+int  IceRayC_Type_Math_Matrix3D_Subtraction( IceRayC_Type_Math_Matrix3D *P_result, IceRayC_Type_Math_Matrix3D* P_left, IceRayC_Type_Math_Matrix3D* P_right )
+ {
+  GS_DDMRM::S_IceRay::S_type::S_matrix::GT_scalar3D I_result;
+  ::math::linear::matrix::subtraction( I_result, c2cpp(*P_left), c2cpp(*P_right) );
+  *P_result = cpp2c( I_result );
+  return 1;
+ }
+int  IceRayC_Type_Math_Matrix4D_Subtraction( IceRayC_Type_Math_Matrix4D *P_result, IceRayC_Type_Math_Matrix4D* P_left, IceRayC_Type_Math_Matrix4D* P_right )
+ {
+  GS_DDMRM::S_IceRay::S_type::S_matrix::GT_scalar4D I_result;
+  ::math::linear::matrix::subtraction( I_result, c2cpp(*P_left), c2cpp(*P_right) );
+  *P_result = cpp2c( I_result );
+  return 1;
+ }
+
+int  IceRayC_Type_Math_Matrix1D_Scale( IceRayC_Type_Math_Matrix1D *P_that, IceRayC_TypeScalar P_scalar, IceRayC_Type_Math_Matrix1D* P_right );
+int  IceRayC_Type_Math_Matrix2D_Scale( IceRayC_Type_Math_Matrix2D *P_that, IceRayC_TypeScalar P_scalar, IceRayC_Type_Math_Matrix2D* P_right );
+int  IceRayC_Type_Math_Matrix3D_Scale( IceRayC_Type_Math_Matrix3D *P_that, IceRayC_TypeScalar P_scalar, IceRayC_Type_Math_Matrix3D* P_right );
+int  IceRayC_Type_Math_Matrix4D_Scale( IceRayC_Type_Math_Matrix4D *P_that, IceRayC_TypeScalar P_scalar, IceRayC_Type_Math_Matrix4D* P_right );
+
+
+
+int  IceRayC_Type_Math_Matrix1D_Invert( IceRayC_Type_Math_Matrix1D *P_result, IceRayC_Type_Math_Matrix1D* P_right )
+ {
+  GS_DDMRM::S_IceRay::S_type::S_matrix::GT_scalar1D I_result;
+  ::math::linear::matrix::invert( I_result, c2cpp(*P_right) );
+  *P_result = cpp2c( I_result );
+  return 1;
+ }
+
+int  IceRayC_Type_Math_Matrix2D_Invert( IceRayC_Type_Math_Matrix2D *P_result, IceRayC_Type_Math_Matrix2D* P_right )
+ {
+  GS_DDMRM::S_IceRay::S_type::S_matrix::GT_scalar2D I_result;
+  ::math::linear::matrix::invert( I_result, c2cpp(*P_right) );
+  *P_result = cpp2c( I_result );
+  return 1;
+ }
+
+int  IceRayC_Type_Math_Matrix3D_Invert( IceRayC_Type_Math_Matrix3D *P_result, IceRayC_Type_Math_Matrix3D* P_right )
+ {
+  GS_DDMRM::S_IceRay::S_type::S_matrix::GT_scalar3D I_result;
+  ::math::linear::matrix::invert( I_result, c2cpp(*P_right) );
+  *P_result = cpp2c( I_result );
+  return 1;
+ }
+
+int  IceRayC_Type_Math_Matrix4D_Invert( IceRayC_Type_Math_Matrix4D *P_result, IceRayC_Type_Math_Matrix4D* P_right )
+ {
+  GS_DDMRM::S_IceRay::S_type::S_matrix::GT_scalar4D I_result;
+  ::math::linear::matrix::invert( I_result, c2cpp(*P_right) );
+  *P_result = cpp2c( I_result );
+  return 1;
+ }
+

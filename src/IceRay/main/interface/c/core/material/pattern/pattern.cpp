@@ -241,3 +241,15 @@ int                             IceRayC_Material_Pattern_Gradient_Top(    IceRay
   return 1;
  }
 
+int                             IceRayC_Material_Pattern_Gradient_Clear(    IceRayC_Material_Pattern_Handle P_this )
+ {
+  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GC_gradient        Tf_surface;
+
+  auto I_this = dynamic_cast< Tf_surface *>( c2cpp( P_this ) );
+  if( nullptr == I_this )
+   {
+    return 0;
+   }
+  I_this->F_clear();
+  return 1;
+ }

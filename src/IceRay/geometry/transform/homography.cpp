@@ -16,7 +16,6 @@ GC_homography::GC_homography()
  {
   ::math::linear::matrix::id( M2_2world      );
   ::math::linear::matrix::id( M2_2local      );
-  ::math::linear::matrix::id( M2_transponate );
 
   F_child( nullptr );
  }
@@ -111,27 +110,26 @@ bool GC_homography::Fv_intersect( T_scalar &P_lambda, T_state &P_state, T_ray co
 
   T_ray I_ray;
 
-  ::math::linear::vector::addition( I_ray.M_direction,P_ray.M_direction, P_ray.M_origin );
-
-  ::math::linear::homography::transform( I_ray.M_direction, M2_2local );
   ::math::linear::homography::transform( I_ray.M_origin, M2_2local, P_ray.M_origin );
 
+  ::math::linear::vector::addition( I_ray.M_direction, P_ray.M_direction, P_ray.M_origin );
+  ::math::linear::homography::transform( I_ray.M_direction, M2_2local );
   ::math::linear::vector::subtraction( I_ray.M_direction, I_ray.M_origin );
-  ::math::linear::vector::length( I_ray.M_direction, T_scalar(1) );
+  auto I_length = ::math::linear::vector::length( I_ray.M_direction, T_scalar(1) );
 
-  T_scalar I_lambda = P_lambda;
+  T_scalar I_lambda = 1e6; // TODO P_lambda * I_length;
 
   if( false == M2_geometry.M2_intersect->Fv_intersect( I_lambda, I_tail, I_ray ) )
    {
     return I_head.M_hit = false;
    }
+  T_scalar I_check = I_lambda / I_length;
 
   ::math::linear::vector::combine( I_ray.M_origin, I_ray.M_origin, I_lambda, I_ray.M_direction );
   ::math::linear::homography::transform( I_ray.M_origin, M2_2world );
   ::math::linear::vector::subtraction( I_ray.M_origin, P_ray.M_origin );
 
   I_lambda = ::math::linear::vector::dot( P_ray.M_direction, I_ray.M_origin );
-
   if( P_lambda < I_lambda )
    {
     return I_head.M_hit = false;
@@ -150,44 +148,43 @@ void GC_homography::Fv_normal( T_coord &P_normal, T_coord const& P_point, T_stat
   T_coord I_point;
 
   T_matrix m3;
-  T_homography m4;
+  T_homography const& m4 = M2_2local;
 
-  m4 = M2_2world;
   ::math::linear::homography::transform( I_point, M2_2local, P_point );
 
   T_coord I_normal;
   M2_geometry.M2_normal->Fv_normal( I_normal, I_point, I_tail );
 
   T_scalar d3 =  m4[3][0]*I_point[0]
-       +m4[3][1]*I_point[1]
-       +m4[3][2]*I_point[2]
-       +m4[3][3];
+                +m4[3][1]*I_point[1]
+                +m4[3][2]*I_point[2]
+                +m4[3][3];
 
   T_scalar det =1.0/(d3*d3);
 
   T_scalar d0 =  m4[0][0]*I_point[0]
-       +m4[0][1]*I_point[1]
-       +m4[0][2]*I_point[2]
-       +m4[0][3];
-  m3[0][0] = ( m4[0][0] * d3  +  m4[3][0] * d0 ) * det;
-  m3[0][1] = ( m4[1][0] * d3  +  m4[3][0] * d0 ) * det;
-  m3[0][2] = ( m4[2][0] * d3  +  m4[3][0] * d0 ) * det;
+                +m4[0][1]*I_point[1]
+                +m4[0][2]*I_point[2]
+                +m4[0][3];
+  m3[0][0] = ( m4[0][0] * d3  -  m4[3][0] * d0 ) * det;
+  m3[0][1] = ( m4[1][0] * d3  -  m4[3][0] * d0 ) * det;
+  m3[0][2] = ( m4[2][0] * d3  -  m4[3][0] * d0 ) * det;
 
   T_scalar d1 =  m4[1][0]*I_point[0]
-      + m4[1][1]*I_point[1]
-      + m4[1][2]*I_point[2]
-      + m4[1][3] ;
-  m3[1][0] = ( m4[0][1] * d3  +  m4[3][1] * d1 ) * det;
-  m3[1][1] = ( m4[1][1] * d3  +  m4[3][1] * d1 ) * det;
-  m3[1][2] = ( m4[2][1] * d3  +  m4[3][1] * d1 ) * det;
+               + m4[1][1]*I_point[1]
+               + m4[1][2]*I_point[2]
+               + m4[1][3] ;
+  m3[1][0] = ( m4[0][1] * d3  -  m4[3][1] * d1 ) * det;
+  m3[1][1] = ( m4[1][1] * d3  -  m4[3][1] * d1 ) * det;
+  m3[1][2] = ( m4[2][1] * d3  -  m4[3][1] * d1 ) * det;
 
   T_scalar d2 =  m4[2][0]*I_point[0]
-      + m4[2][1]*I_point[1]
-      + m4[2][2]*I_point[2]
-      + m4[2][3];
-  m3[2][0] = ( m4[0][2] * d3  +  m4[3][2] * d2 ) * det;
-  m3[2][1] = ( m4[1][2] * d3  +  m4[3][2] * d2 ) * det;
-  m3[2][2] = ( m4[2][2] * d3  +  m4[3][2] * d2 ) * det;
+               + m4[2][1]*I_point[1]
+               + m4[2][2]*I_point[2]
+               + m4[2][3];
+  m3[2][0] = ( m4[0][2] * d3  -  m4[3][2] * d2 ) * det;
+  m3[2][1] = ( m4[1][2] * d3  -  m4[3][2] * d2 ) * det;
+  m3[2][2] = ( m4[2][2] * d3  -  m4[3][2] * d2 ) * det;
 
   ::math::linear::matrix::transform( P_normal, m3, I_normal );
 

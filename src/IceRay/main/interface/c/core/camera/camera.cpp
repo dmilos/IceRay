@@ -571,7 +571,7 @@ IceRayC_Type_Bool                        IceRayC_Camera_Transform_Affine_2World_
   auto I_this = dynamic_cast<Tf_affine*>( c2cpp( P_that ) );
   if( nullptr == I_this )
    {
-    IceRayC_Type_Math_Affine3D_ID( P_2world );
+    IceRayC_Type_Math_Affine_ID3D( P_2world );
     return 0;
    }
   *P_2world = cpp2c( I_this->F_2world() );
@@ -598,7 +598,7 @@ IceRayC_Type_Bool                        IceRayC_Camera_Transform_Affine_2Local_
   auto I_this = dynamic_cast<Tf_affine*>( c2cpp( P_that ) );
   if( nullptr == I_this )
    {
-    IceRayC_Type_Math_Affine3D_ID( P_2local );
+    IceRayC_Type_Math_Affine_ID3D( P_2local );
     return 0;
    }
   *P_2local = cpp2c( I_this->F_2local() );

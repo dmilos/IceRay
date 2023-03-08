@@ -105,5 +105,8 @@ class Gradient:
     def top( self, P_top ):
         self.m_cargo['dll'].IceRayC_Material_Pattern_Gradient_Top( self.m_cargo['this'], AddressOf( P_top ) )
 
+    def clear( self ):
+        self.m_cargo['dll'].IceRayC_Material_Pattern_Gradient_Clear( self.m_cargo['this'] )
+
 
 #print( '</' + __name__ + ' name=\'' +   __file__ + '\'>' )

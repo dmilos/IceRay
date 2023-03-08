@@ -7,6 +7,7 @@
 
 #include "./handle.h"
 
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool IceRayC_Geometry__Base_GetBox( IceRayC_Geometry_Handle P_this, IceRayC_TypeInterval3D* P_box );
+IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_Type_Bool IceRayC_Geometry__Base_Box_Get( IceRayC_Geometry_Handle P_this, IceRayC_TypeInterval3D* P_box );
+IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_Type_Bool IceRayC_Geometry__Base_Box_Set( IceRayC_Geometry_Handle P_this, IceRayC_TypeInterval3D* P_box );
 
 #endif

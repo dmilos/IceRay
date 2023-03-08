@@ -48,11 +48,13 @@ def doIt( P_dll, P_picture, P_scene, P_inventory, P_config ):
     I_light['blocked'] = IceRayPy.core.light.Obstruct( P_dll, I_light['enclose'], I_geometry['the'] );
     I_light['final']   = I_light['blocked']
 
-    P_config['composer'] = {}
+    if( 'composer' not in P_config ):
+        P_config['composer'] = {}
     P_config['composer']['light']            = I_light['enclose']
     P_config['composer']['geometry']         = I_geometry['the']
     P_config['composer']['pigment'] = {}
     P_config['composer']['pigment']['light'] = I_light['enclose']
+
     P_config['pigment']['light'] = I_light['final']
     I_pigment['the']  = P_inventory['pigment' ][ I_pigment ['name'] ]( P_dll, P_config['pigment'] )
 

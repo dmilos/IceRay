@@ -255,35 +255,3 @@ IceRayC_Geometry_HField_Object_Handle  IceRayC_Geometry_HField_Object_Vacuuum0()
   return cpp2c( Ir_result );
  }
 
-IceRayC_Geometry_HField_Object_Handle  IceRayC_Geometry_HField_Object_Geometry0()
- {
-  typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;
-  typedef GS_DDMRM::S_IceRay::S_geometry::S_hfield::S_object::GC_geometry Tf_geometry;
-  auto Ir_result = new Tf_geometry{};
-  return cpp2c( Ir_result );
- }
-
-IceRayC_Geometry_HField_Object_Handle    IceRayC_Geometry_HField_Object_Geometry1( IceRayC_Geometry_Handle P_child )
- {
-  typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;
-  typedef GS_DDMRM::S_IceRay::S_geometry::S_hfield::S_object::GC_geometry Tf_geometry;
-  auto Ir_result = new Tf_geometry{ c2cpp(P_child) };
-  return cpp2c( Ir_result );
- }
-
-IceRayC_Type_Bool    IceRayC_Geometry_HField_Object_Geometry_Set( IceRayC_Geometry_HField_Object_Handle P_this, IceRayC_Geometry_Handle P_child )
- {
-  typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;
-  typedef GS_DDMRM::S_IceRay::S_geometry::S_hfield::S_object::GC_geometry Tf_geometry;
-
-  auto I_this = dynamic_cast< Tf_geometry *>( c2cpp( P_this ) );
-  if( nullptr == I_this )
-   {
-    return 0;
-   }
-  I_this->F_child( c2cpp( P_child ) );
-  return 1;
- }
-
-
-

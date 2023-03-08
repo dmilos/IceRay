@@ -153,7 +153,6 @@ if( False ):
         cc_files += [ os.path.join( 'geometry', 'hfield', 'object', 'triangle.cpp' ) ]
         cc_files += [ os.path.join( 'geometry', 'hfield', 'object', 'vacuum.cpp' ) ]
         cc_files += [ os.path.join( 'geometry', 'hfield', 'object', 'quad.cpp' ) ]
-        cc_files += [ os.path.join( 'geometry', 'hfield', 'object', 'geometry.cpp' ) ]
 
 cc_files += [ os.path.join( 'geometry', 'rtss', 'rtss.cpp' ) ]
 if( False ):

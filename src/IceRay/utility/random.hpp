@@ -143,7 +143,7 @@
                }
 
             public:
-              void static Fs_next();
+              static void Fs_size( T_size const& P_size );
             private:
               static bool F2s_fill( );
               static bool F2s_init(   T_scalar *P_begin, T_size const& P_size );
@@ -195,6 +195,33 @@
               T_size  M2_counter;
               T_table M2_table;
            };
+
+          class GC_poisson1D
+           {
+            public:
+              typedef GS_DDMRM::S_IceRay::S_type::GT_size   T_size;
+              typedef GS_DDMRM::S_IceRay::S_type::GT_scalar T_scalar;
+              typedef std::vector<T_scalar> T_table;
+            public:
+              GC_poisson1D();
+            public:
+              T_scalar operator()()
+               {
+                return this->next();
+               }
+
+            public:
+              T_scalar next()
+               {
+                return M2_table[ ++M2_counter % M2_table.size() ];
+               }
+
+            private:
+              static bool F2s_init( T_size const& P_size );
+              T_size  M2_counter;
+              static T_table M2_table;
+           };
+
 
 
           typedef ::math::random::vdc< GS_DDMRM::S_IceRay::S_type::GT_scalar, GS_DDMRM::S_IceRay::S_type::GT_size, 2 > GT_vdc2;

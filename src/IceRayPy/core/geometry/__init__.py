@@ -35,12 +35,12 @@ class Generic:
     def __del__( self ):
         pass
 
-    def boxGet( self ): #!< TODO
-        pass
-
-    def boxSet( self ): #!< TODO
-        pass
-
+    def box( self, P_box = None ): #!< TODO
+        if( None != P_box ):
+            self.m_cargo['dll'].IceRayC_Geometry__Base_Box_Set( self.m_cargo['this'], AddressOf( P_box ) )
+        result = IceRayPy.type.math.interval.Scalar3D()
+        self.m_cargo['dll'].IceRayC_Geometry__Base_Box_Get( self.m_cargo['this'], AddressOf( P_box ) )
+        return result
 
 class Pretender:
     def __init__( self, P_dll, P_this, P_that ):

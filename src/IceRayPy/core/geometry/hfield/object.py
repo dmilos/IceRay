@@ -53,17 +53,4 @@ class Vacuum:
     def __del__( self ):
         self.m_cargo['dll'].IceRayC_Geometry_HField_Object_Release( self.m_cargo['this'] )
 
-class Geometry:
-    def __init__( self, P_dll ):
-        self.m_cargo = {}
-        self.m_cargo['dll'] = P_dll
-        self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Geometry_HField_Object_Geometry0()
-
-    def __del__( self ):
-        self.m_cargo['dll'].IceRayC_Geometry_HField_Object_Release( self.m_cargo['this'] )
-
-    def geometry( self, P_geometry ):
-        self.m_cargo['geometry'] = P_geometry
-        self.m_cargo['dll'].IceRayC_Geometry_HField_Geometry( self.m_cargo['this'], P_geometry.self['geometry'] )
-
 #print( '</' + __name__ + ' name=\'' +   __file__ + '\'>' )

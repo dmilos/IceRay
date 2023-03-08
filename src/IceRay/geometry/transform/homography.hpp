@@ -82,8 +82,6 @@
              bool                   F_2local( T_homography const& P_2local );
            private:
              T_homography M2_2local;
-           private:
-             T_matrix M2_transponate;
 
            public:
              bool F_child( T__base *P_child );
