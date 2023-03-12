@@ -16,8 +16,6 @@ class Perspective:
         if( None != P_config ):
             if( 'width' in P_config ):
                 self.width( P_config['width'] )
-
-        if( None != P_config ):
             if( 'height' in P_config ):
                 self.height( P_config['height'] )
 
@@ -39,18 +37,14 @@ class Orthogonal:
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Camera_Flat_Orthogonal0()
-        #self.width(4*1920/1280) # TODO test purpose only, Delete after use
-        #self.height(4)          # TODO test purpose only, Delete after use
 
-    #def __init__( self, P_dll, P_aspect ):
-    #    self.m_cargo = {}
-    #    self.m_cargo['dll'] = P_dll
-    #    self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Camera_Flat_Orthogonal1(P_aspect)
-    #
-    #def __init__( self, P_dll, P_width, P_height ):
-    #    self.m_cargo = {}
-    #    self.m_cargo['dll'] = P_dll
-    #    self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Camera_Flat_Orthogonal2(P_width, P_height)
+        if( None != P_config ):
+            if( 'width' in P_config ):
+                self.width( P_config['width'] )
+            if( 'height' in P_config ):
+                self.height( P_config['height'] )
+            if( 'aspect' in P_config ):
+                self.aspect( P_config['aspect'] )
 
     def __del__(self):
         self.m_cargo['dll'].IceRayC_Camera_Release( self.m_cargo['this'] )

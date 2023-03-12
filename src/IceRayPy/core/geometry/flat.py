@@ -68,14 +68,13 @@ class Disc: #( IceRayPy.core.geometry.Generic ):
     def radius( self, P_radius ):
         self.m_cargo['dll'].IceRayC_Geometry_Disc_Radius( self.m_cargo['this'], Scalar( P_radius ) )
 
+
 class UDisc: #( IceRayPy.core.geometry.Generic ):
 
     def __init__( self, P_dll ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Geometry_UDisc0()
-
-        # TODO lo hi
 
     def __del__( self ):
         self.m_cargo['dll'].IceRayC_Geometry_Release( self.m_cargo['this'] )
@@ -113,9 +112,9 @@ class Triangle:  #( IceRayPy.core.geometry.Generic ):
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Geometry_Triangle0()
 
-        self.origin( Coord3D(-1,-1,-1) )#!< debug
-        self.eX( Coord3D(0,2,2) )#!< debug
-        self.eY( Coord3D(2,0,0) )#!< debug
+        self.origin( Coord3D( -1, -1, -1) )#!< debug
+        self.pX(     Coord3D( +1.0, -1.0, -1.0 ) )#!< debug
+        self.pY(     Coord3D( -0.5, -0.5,  1.0 ) )#!< debug
 
     def __del__( self ):
         self.m_cargo['dll'].IceRayC_Geometry_Release( self.m_cargo['this'] )
@@ -128,6 +127,13 @@ class Triangle:  #( IceRayPy.core.geometry.Generic ):
 
     def eY( self, P_eY: Coord3D  ):
         return self.m_cargo['dll'].IceRayC_Geometry_Triangle_eY( self.m_cargo['this'], AddressOf( P_eY ) )
+
+    def pX( self, P_pX: Coord3D  ):
+        return self.m_cargo['dll'].IceRayC_Geometry_Triangle_pX( self.m_cargo['this'], AddressOf( P_pX ) )
+
+    def pY( self, P_pY: Coord3D  ):
+        return self.m_cargo['dll'].IceRayC_Geometry_Triangle_pY( self.m_cargo['this'], AddressOf( P_pY ) )
+
 
 class TriangleU:  #( IceRayPy.core.geometry.Generic ):
     def __init__( self, P_dll ):

@@ -115,9 +115,21 @@ bool   GC_triangle::F_eX( T_coord const& P_eX )
   return F2_setV( M2_origin, F_eX(), F_eY() );
  }
 
+bool   GC_triangle::F_pX( T_coord const& P_pX )
+ {
+  ::math::linear::vector::subtraction( M1_eX, P_pX, M2_origin );
+  return F2_setV( M2_origin, F_eX(), F_eY() );
+ }
+
 bool  GC_triangle::F_eY( T_coord const& P_eY )
  {
   M1_eY = P_eY;
+  return F2_setV( M2_origin, F_eX(), F_eY() );
+ }
+
+bool  GC_triangle::F_pY( T_coord const& P_pY )
+ {
+  ::math::linear::vector::subtraction( M1_eY, P_pY, M2_origin );
   return F2_setV( M2_origin, F_eX(), F_eY() );
  }
 

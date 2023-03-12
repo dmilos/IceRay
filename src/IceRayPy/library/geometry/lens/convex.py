@@ -75,7 +75,7 @@ def Plano( P_dll,
     cL = IceRayPy.type.math.coord.addition3D( P_dll, IceRayPy.type.math.coord.scale3D( P_dll, +center, I_normal ), P_center )
 
     left  = IceRayPy.core.geometry.simple.Sphere( P_dll, cL, radius )
-    right = IceRayPy.core.geometry.simple.Plane( P_dll, P_center, I_normal )
+    right = IceRayPy.core.geometry.flat.Plane( P_dll, P_center, I_normal )
     intersect = IceRayPy.core.geometry.complex.Intersect( P_dll )
 
     intersect.left( left )

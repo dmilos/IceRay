@@ -9,6 +9,15 @@ class Fisheye:
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Camera_Sphere_Fisheye0()
+        if( None != P_config ):
+            if( 'radius' in P_config ):
+                self.radius( P_config['radius'] )
+            if( 'phi' in P_config ):
+                self.phi( P_config['phi'] )
+            if( 'theta' in P_config ):
+                self.theta( P_config['theta'] )
+
+
     def __del__(self):
         self.m_cargo['dll'].IceRayC_Camera_Release( self.m_cargo['this'] )
 
@@ -27,6 +36,15 @@ class Horizontal:
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Camera_Sphere_Horizontal0()
+        if( None != P_config ):
+            if( 'radius' in P_config ):
+                self.radius( P_config['radius'] )
+            if( 'phi' in P_config ):
+                self.phi( P_config['phi'] )
+            if( 'theta' in P_config ):
+                self.theta( P_config['theta'] )
+
+
     def __del__(self):
         self.m_cargo['dll'].IceRayC_Camera_Release( self.m_cargo['this'] )
 
@@ -45,6 +63,13 @@ class Vertical:
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Camera_Sphere_Vertical0()
+        if( None != P_config ):
+            if( 'radius' in P_config ):
+                self.radius( P_config['radius'] )
+            if( 'phi' in P_config ):
+                self.phi( P_config['phi'] )
+            if( 'theta' in P_config ):
+                self.theta( P_config['theta'] )
 
     def __del__(self):
         self.m_cargo['dll'].IceRayC_Camera_Release( self.m_cargo['this'] )

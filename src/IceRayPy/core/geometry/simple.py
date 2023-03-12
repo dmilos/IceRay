@@ -15,6 +15,7 @@ Scalar  = IceRayPy.type.basic.Scalar
 VoidPtr = IceRayPy.type.basic.VoidPtr
 Integer = IceRayPy.type.basic.Integer
 Coord3D = IceRayPy.type.math.coord.Scalar3D
+Matrix3D = IceRayPy.type.math.matrix.Scalar3D
 
 
 class Sphere : #( IceRayPy.core.geometry.Generic ):
@@ -129,10 +130,43 @@ class Quadric:  #( IceRayPy.core.geometry.Generic ):
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Geometry_Quadric0()
 
-        # TODO lo hi
-
     def __del__( self ):
         self.m_cargo['dll'].IceRayC_Geometry_Release( self.m_cargo['this'] )
+
+    def lo( self, P_lo = None ):
+        if( None != P_lo ):
+            self.m_cargo['dll'].IceRayC_Geometry_Quadric_Lo_Set( self.m_cargo['this'], AddressOf( P_lo ) )
+        result = Coord3D()
+        self.m_cargo['dll'].IceRayC_Geometry_Quadric_Lo_Get( self.m_cargo['this'], AddressOf( result ) )
+        return result
+
+    def hi( self, P_hi ):
+        if( None != P_hi ):
+            self.m_cargo['dll'].IceRayC_Geometry_Quadric_Hi_Set( self.m_cargo['this'], AddressOf( P_hi ) )
+        result = Coord3D()
+        self.m_cargo['dll'].IceRayC_Geometry_Quadric_Hi_Get( self.m_cargo['this'], AddressOf( result ) )
+        return result
+
+    def matrix( self, P_matrix ):
+        if( None != P_matrix ):
+            self.m_cargo['dll'].IceRayC_Geometry_Quadric_Matrix_Set( self.m_cargo['this'], AddressOf( P_matrix ) )
+        result = Matrix3D()
+        self.m_cargo['dll'].IceRayC_Geometry_Quadric_Matrix_Get( self.m_cargo['this'], AddressOf( result ) )
+        return result
+
+    def vector( self, P_vector ):
+        if( None != P_vector ):
+            self.m_cargo['dll'].IceRayC_Geometry_Quadric_Vector_Set( self.m_cargo['this'], AddressOf( P_vector ) )
+        result = Coord3D()
+        self.m_cargo['dll'].IceRayC_Geometry_Quadric_Vector_Get( self.m_cargo['this'], AddressOf( result ) )
+        return result
+
+    def scalar( self, P_scalar ):
+        if( None != P_scalar ):
+            self.m_cargo['dll'].IceRayC_Geometry_Quadric_Scalar_Set( self.m_cargo['this'], Scalar( P_scalar ) )
+        result = Scalar()
+        self.m_cargo['dll'].IceRayC_Geometry_Quadric_Scalar_Get( self.m_cargo['this'], AddressOf( result ) )
+        return result
 
 
 class Saddle:  #( IceRayPy.core.geometry.Generic ):

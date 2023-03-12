@@ -69,7 +69,7 @@ class Affine:
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Geometry_Transform_Affine0()
-        
+
         if( None == P_child ):
             self.child(  IceRayPy.core.geometry.simple.Sphere( P_dll ) )
            #self.m_cargo['object'] = IceRayPy.library.geometry.Grid( P_dll )
@@ -78,17 +78,16 @@ class Affine:
         if( None != P_child ):
             self.child( P_child )
 
-        tO = Coord3D( -1,-1,-1 )
-        tX = Coord3D(  1, 0, 0 )
-        tY = Coord3D(  0, 1, 0 )
-        tZ = Coord3D(  0, 0, 1 )
-        tT = Coord3D(  1, 1, 1 )
+        tO = Coord3D( -1, -1, -1 )
+        tX = Coord3D(  1, -1, -1 )
+        tY = Coord3D( -1, +1, -1 )
+        tZ = Coord3D( -1, -1, -0.5 )   #tZ = Coord3D( -0.5, -0.5, +1 )
 
-        sO = Coord3D( -1,-1,-1 )
-        sX = Coord3D(  1, 0, 0 )
-        sY = Coord3D(  0, 1, 0 )
-        sZ = Coord3D(  0, 0, 1 )
-        sT = Coord3D(  1, 1, 1 )
+
+        sO = Coord3D( -1, -1, -1 )
+        sX = Coord3D(  1, -1, -1 )
+        sY = Coord3D( -1, +1, -1 )
+        sZ = Coord3D( -1, -1, +1 )
 
         result = IceRayPy.type.math.affine.construct3D( P_dll, tO, tX, tY, tZ, sO, sX, sY, sZ )
 
@@ -178,8 +177,8 @@ class Homography:
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Geometry_Transform_Homography0()
-        self.child(  IceRayPy.core.geometry.flat.Box( P_dll, Coord3D( 0, 0, 0 ), Coord3D( 1, 1, 1 ) ) )
         self.child(  IceRayPy.core.geometry.simple.Cylinder( P_dll ) )
+        self.child(  IceRayPy.core.geometry.flat.Box( P_dll, Coord3D( -1, -1, -1 ), Coord3D( +1, +1, +1 ) ) )
         self.child(  IceRayPy.core.geometry.simple.Sphere( P_dll ) )
 
         #self.m_cargo['object'] = IceRayPy.library.geometry.Grid( P_dll )
@@ -193,8 +192,8 @@ class Homography:
         tO = Coord3D( -1, -1, -1 )
         tX = Coord3D(  1, -1, -1 )
         tY = Coord3D( -1, +1, -1 )
-        tZ = Coord3D( -1, -1, +1 )
-        tT = Coord3D(  1,  1,  1 )
+        tZ = Coord3D( -1, -1, -0.5 )   #tZ = Coord3D( -0.5, -0.5, +1 )
+        tT = Coord3D(  1,  1, -0.5 )   #tT = Coord3D( 0.5, 0.5,  1 )
 
         sO = Coord3D( -1, -1, -1 )
         sX = Coord3D(  1, -1, -1 )

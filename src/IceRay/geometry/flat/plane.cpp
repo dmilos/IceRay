@@ -91,7 +91,7 @@ GC_plane::T_location  GC_plane::Fv_inside( T_coord const& P_point/*, T_state &P_
   T_coord I_point; ::math::linear::vector::subtraction( I_point, P_point, M2_pivot );
   T_scalar I_distance = ::math::linear::vector::dot( I_point, M2_normal );
 
-  if( +Is_epsilon < I_distance )
+  if( +Is_epsilon < I_distance  )
    {
     return En_out;
    }

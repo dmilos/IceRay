@@ -157,8 +157,9 @@ bool GC_hyperboloid::F_core( T_scalar const& P_core )
   M2_b = T_scalar(1)-M2_core*fabs( M2_core );
   M2_c = P_core * fabs( M2_core );
 
-  F1_box()[0][0] = F1_box()[0][1] = - std::max<T_scalar>( 1, fabs( M2_core ) );
-  F1_box()[1][0] = F1_box()[1][1] = + std::max<T_scalar>( 1, fabs( M2_core ) );
-
+  T_box I_box;
+  I_box[0][0] = I_box[0][1] = - std::max<T_scalar>( 1, fabs( M2_core ) );
+  I_box[1][0] = I_box[1][1] = + std::max<T_scalar>( 1, fabs( M2_core ) );
+  F1_box( I_box );
   return true;
  }

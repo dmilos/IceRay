@@ -72,6 +72,19 @@ IceRayC_Geometry_Handle IceRayC_Geometry_Triangle1( IceRayC_TypeCoordScalar3D* P
   auto Ir_result = new Tf_triangle{ c2cpp( *P_e0 ), c2cpp( *P_ex ), c2cpp( *P_ey ) };
   return cpp2c( Ir_result );
 }
+
+IceRayC_Geometry_Handle IceRayC_Geometry_Triangle2( IceRayC_TypeCoordScalar3D* P_p0, IceRayC_TypeCoordScalar3D* P_pX, IceRayC_TypeCoordScalar3D* P_pY )
+ {
+  typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;
+  typedef GS_DDMRM::S_IceRay::S_geometry::GC_triangle Tf_triangle;
+
+  GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar3D I_eX; ::math::linear::vector::subtraction( I_eX, c2cpp( *P_pX ), c2cpp( *P_p0 ) );
+  GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar3D I_eY; ::math::linear::vector::subtraction( I_eY, c2cpp( *P_pY ), c2cpp( *P_p0 ) );
+
+  auto Ir_result = new Tf_triangle{ c2cpp( *P_p0 ), I_eX, I_eY };
+  return cpp2c( Ir_result );
+}
+
 int IceRayC_Geometry_Triangle_Origin( IceRayC_Geometry_Handle P_this, IceRayC_TypeCoordScalar3D* P_origin )
  {
   typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;
@@ -111,6 +124,34 @@ int IceRayC_Geometry_Triangle_eY( IceRayC_Geometry_Handle P_this, IceRayC_TypeCo
     return 0;
    }
   I_this->F_eY( c2cpp( *P_eY ) );
+  return 1;
+ }
+
+int IceRayC_Geometry_Triangle_pX( IceRayC_Geometry_Handle P_this, IceRayC_TypeCoordScalar3D* P_pX )
+ {
+  typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;
+  typedef GS_DDMRM::S_IceRay::S_geometry::GC_triangle Tf_triangle;
+
+  auto I_this = dynamic_cast< Tf_triangle *>( c2cpp( P_this ) );
+  if( nullptr == I_this )
+   {
+    return 0;
+   }
+  I_this->F_pX( c2cpp( *P_pX ) );
+  return 1;
+ }
+
+int IceRayC_Geometry_Triangle_pY( IceRayC_Geometry_Handle P_this, IceRayC_TypeCoordScalar3D* P_pY )
+ {
+  typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;
+  typedef GS_DDMRM::S_IceRay::S_geometry::GC_triangle Tf_triangle;
+
+  auto I_this = dynamic_cast< Tf_triangle *>( c2cpp( P_this ) );
+  if( nullptr == I_this )
+   {
+    return 0;
+   }
+  I_this->F_pY( c2cpp( *P_pY ) );
   return 1;
  }
 

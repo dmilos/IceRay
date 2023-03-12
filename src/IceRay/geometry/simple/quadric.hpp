@@ -27,6 +27,8 @@
         //, public GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_distance
         { 
          public:
+           typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base              T__base;
+
            typedef GS_DDMRM::S_IceRay::S_type::GT_scalar              T_scalar;
            typedef GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar     T_coord;
            typedef GS_DDMRM::S_IceRay::S_type::S_matrix::GT_scalar3D  T_matrix;
@@ -39,6 +41,8 @@
          public:
            void    Fv_reset( T_state &P_state )const;
            T_size  Fv_weight( )const;
+         public:
+           bool Fv_box( T_box const& P_box );
 
          public:
            bool        Fv_intersect( T_scalar &P_lambda, T_state &P_state, T_ray const& P_ray  )const;
@@ -48,19 +52,19 @@
 
          public:  // property matrix  matrix
            T_matrix    const& F_matrix()const{ return M2_matrix; }
-           bool                 F_matrix( T_matrix const& P_matrix );
+           bool               F_matrix( T_matrix const& P_matrix );
          protected:
            T_matrix        & F1_matrix(){ return M2_matrix; }
          private:
            T_matrix M2_matrix;
 
          public:  // property coord  coord
-           T_coord    const& F_coord()const{ return M2_coord; }
-           bool              F_coord( T_coord const& P_coord );
+           T_coord    const& F_vector()const{ return M2_vector; }
+           bool              F_vector( T_coord const& P_cvector );
          protected:
-           T_coord        & F1_coord(){ return M2_coord; }
+           T_coord        & F1_vector(){ return M2_vector; }
          private:
-           T_coord M2_coord;
+           T_coord M2_vector;
 
          public:  // property scalar  scalar
            T_scalar    const& F_scalar()const{ return M2_scalar; }

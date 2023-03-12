@@ -2,6 +2,7 @@
 
 #include "../../type/coord.hpp"
 #include "../../type/interval.hpp"
+#include "../../type/matrix.hpp"
 #include "../../type/affine.hpp"
 
 #include "IceRay/geometry/simple/simple.hpp"
@@ -122,6 +123,135 @@ IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Quadric0()
   auto Ir_result = new Tf_quadric{};
   return cpp2c( Ir_result );
  }
+
+IceRayC_Type_Bool IceRayC_Geometry_Quadric_Matrix_Get( IceRayC_Geometry_Handle P_this,  IceRayC_Type_Math_Matrix3D* P_matrix )
+ {
+  typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;
+  typedef GS_DDMRM::S_IceRay::S_geometry::GC_quadric Tf_quadric;
+  auto I_this = dynamic_cast< Tf_quadric *>( c2cpp( P_this ) );
+  if( nullptr == I_this )
+   {
+    return 0;
+   }
+  *P_matrix = cpp2c( I_this->F_matrix() );
+  return 1;
+ }
+IceRayC_Type_Bool IceRayC_Geometry_Quadric_Matrix_Set( IceRayC_Geometry_Handle P_this,  IceRayC_Type_Math_Matrix3D* P_matrix )
+ {
+  typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;
+  typedef GS_DDMRM::S_IceRay::S_geometry::GC_quadric Tf_quadric;
+  auto I_this = dynamic_cast< Tf_quadric *>( c2cpp( P_this ) );
+  if( nullptr == I_this )
+   {
+    return 0;
+   }
+  return I_this->F_matrix( c2cpp( *P_matrix ) );
+ }
+
+IceRayC_Type_Bool IceRayC_Geometry_Quadric_Vector_Get( IceRayC_Geometry_Handle P_this,  IceRayC_TypeCoordScalar3D* P_vector )
+ {
+  typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;
+  typedef GS_DDMRM::S_IceRay::S_geometry::GC_quadric Tf_quadric;
+  auto I_this = dynamic_cast< Tf_quadric *>( c2cpp( P_this ) );
+  if( nullptr == I_this )
+   {
+    return 0;
+   }
+  *P_vector = cpp2c( I_this->F_vector() );
+  return 1;
+ }
+IceRayC_Type_Bool IceRayC_Geometry_Quadric_Vector_Set( IceRayC_Geometry_Handle P_this,  IceRayC_TypeCoordScalar3D* P_vector )
+ {
+  typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;
+  typedef GS_DDMRM::S_IceRay::S_geometry::GC_quadric Tf_quadric;
+  auto I_this = dynamic_cast< Tf_quadric *>( c2cpp( P_this ) );
+  if( nullptr == I_this )
+   {
+    return 0;
+   }
+  return I_this->F_vector( c2cpp( *P_vector ) );
+ }
+IceRayC_Type_Bool IceRayC_Geometry_Quadric_Scalar_Get( IceRayC_Geometry_Handle P_this,  IceRayC_TypeScalar* P_scalar )
+ {
+  typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;
+  typedef GS_DDMRM::S_IceRay::S_geometry::GC_quadric Tf_quadric;
+  auto I_this = dynamic_cast< Tf_quadric *>( c2cpp( P_this ) );
+  if( nullptr == I_this )
+   {
+    return 0;
+   }
+  *P_scalar = I_this->F_scalar() ;
+  return 1;
+ }
+IceRayC_Type_Bool IceRayC_Geometry_Quadric_Scalar_Set( IceRayC_Geometry_Handle P_this,  IceRayC_TypeScalar  P_scalar )
+ {
+  typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;
+  typedef GS_DDMRM::S_IceRay::S_geometry::GC_quadric Tf_quadric;
+  auto I_this = dynamic_cast< Tf_quadric *>( c2cpp( P_this ) );
+  if( nullptr == I_this )
+   {
+    return 0;
+   }
+  return I_this->F_scalar( P_scalar );
+ }
+
+IceRayC_Type_Bool IceRayC_Geometry_Quadric_Lo_Get( IceRayC_Geometry_Handle P_this,  IceRayC_TypeCoordScalar3D* P_lo )
+ {
+  typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;
+  typedef GS_DDMRM::S_IceRay::S_geometry::GC_quadric Tf_quadric;
+  auto I_this = dynamic_cast< Tf_quadric *>( c2cpp( P_this ) );
+  if( nullptr == I_this )
+   {
+    return 0;
+   }
+  auto I_box = I_this->F_box();
+  *P_lo = cpp2c( I_box[0] );
+  return 1;
+ }
+IceRayC_Type_Bool IceRayC_Geometry_Quadric_Lo_Set( IceRayC_Geometry_Handle P_this,  IceRayC_TypeCoordScalar3D* P_lo )
+ {
+  typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;
+  typedef GS_DDMRM::S_IceRay::S_geometry::GC_quadric Tf_quadric;
+  auto I_this = dynamic_cast< Tf_quadric *>( c2cpp( P_this ) );
+  if( nullptr == I_this )
+   {
+    return 0;
+   }
+  auto I_box = I_this->F_box();
+  I_box[0] = c2cpp( *P_lo );
+  I_this->Fv_box( I_box );
+  return 1;
+ }
+IceRayC_Type_Bool IceRayC_Geometry_Quadric_Hi_Get( IceRayC_Geometry_Handle P_this,  IceRayC_TypeCoordScalar3D* P_hi )
+ {
+  typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;
+  typedef GS_DDMRM::S_IceRay::S_geometry::GC_quadric Tf_quadric;
+  auto I_this = dynamic_cast< Tf_quadric *>( c2cpp( P_this ) );
+  if( nullptr == I_this )
+   {
+    return 0;
+   }
+  auto I_box = I_this->F_box();
+  *P_hi = cpp2c( I_box[1] );
+  return 1;
+ }
+IceRayC_Type_Bool IceRayC_Geometry_Quadric_Hi_Set( IceRayC_Geometry_Handle P_this,  IceRayC_TypeCoordScalar3D* P_hi )
+ {
+  typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;
+  typedef GS_DDMRM::S_IceRay::S_geometry::GC_quadric Tf_quadric;
+  auto I_this = dynamic_cast< Tf_quadric *>( c2cpp( P_this ) );
+  if( nullptr == I_this )
+   {
+    return 0;
+   }
+  auto I_box = I_this->F_box();
+  I_box[0] = c2cpp( *P_hi );
+  I_this->Fv_box( I_box );
+  return 1;
+ }
+
+
+
 
 IceRayC_Geometry_Handle IceRayC_Geometry_Cylinder0()
  {

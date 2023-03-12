@@ -78,6 +78,7 @@ list = {
      'T-9-refract-fresnel'           : IceRayPy.utility.material.transmission.refract.Fresnel,  #OK
      'T-A-refract-Snell'             : IceRayPy.utility.material.transmission.refract.Snell,    #OK
      'T-B-refract-schlick'           : IceRayPy.utility.material.transmission.refract.Schlick,  #OK
+     'X-Coord3D2Color'               : IceRayPy.utility.material.operation.Coord3D2Color,  #OK
 }
 
 print( '</' + __name__ + ' file=\'' +   __file__ + '\'>' )

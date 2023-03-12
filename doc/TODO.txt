@@ -5,8 +5,6 @@
 - geometries
 --blobby
 -- etc
-- pattern
-- CSG
 - bezier
 - projective
 - camera
@@ -15,4 +13,3 @@
 - check sunLine
 - blossom has some bugs
 - rerender examples.
-- fix cornell room

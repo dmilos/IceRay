@@ -192,11 +192,6 @@ GC_affine::T_affine const&  GC_affine::Fv_2world( T_state const&P_state )const
   return M2_2world;
  }
 
-GC_affine::T_affine const&  GC_affine::Fv_2local( T_state const&P_state )const
-{
-  return M2_2local;
-}
-
 bool GC_affine::F_2world( T_affine const& P_2world )
  {
   M2_2world = P_2world;
@@ -209,6 +204,11 @@ bool GC_affine::F_2world( T_affine const& P_2world )
   F1_box( I_box );
   return true;
  }
+
+GC_affine::T_affine const&  GC_affine::Fv_2local( T_state const&P_state )const
+{
+  return M2_2local;
+}
 
 bool   GC_affine::F_2local( T_affine const& P_2local )
  {

@@ -14,11 +14,14 @@ class Focus:
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Camera_DOF_Focus0()
-        self.aperture( IceRayPy.type.math.interval.Scalar1D( IceRayPy.type.math.coord.Scalar1D(0.2), IceRayPy.type.math.coord.Scalar1D(0.0) ) )
-        self.focus(    IceRayPy.type.math.interval.Scalar1D( IceRayPy.type.math.coord.Scalar1D(2.9), IceRayPy.type.math.coord.Scalar1D(3.1) ) )
-        global G_sample
-        self.sample( G_sample ) # 32
-        G_sample = G_sample + 1
+
+        if( None != P_config ):
+            if( 'sample' in P_config ):
+                self.phi( P_config['sample'] )
+            if( 'aperture' in P_config ):
+                self.aperture( P_config['aperture'] )
+            if( 'focus' in P_config ):
+                self.focus( P_config['focus'] )
 
     def __del__(self):
         self.m_cargo['dll'].IceRayC_Camera_Release( self.m_cargo['this'] )
@@ -45,9 +48,13 @@ class Cone:
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Camera_DOF_Cone0()
         self.aperture( 0.225 )
-        #global G_sample
-        self.sample( 8 )
-        #G_sample = G_sample + 1
+
+        if( None != P_config ):
+            if( 'sample' in P_config ):
+                self.phi( P_config['sample'] )
+            if( 'aperture' in P_config ):
+                self.aperture( P_config['aperture'] )
+
 
     def __del__(self):
         self.m_cargo['dll'].IceRayC_Camera_Release( self.m_cargo['this'] )
@@ -71,8 +78,11 @@ class Cylinder:
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Camera_DOF_Cylinder0()
-        self.aperture( 0.1 )
-        self.sample( 1 )
+        if( None != P_config ):
+            if( 'sample' in P_config ):
+                self.phi( P_config['sample'] )
+            if( 'aperture' in P_config ):
+                self.aperture( P_config['aperture'] )
 
     def __del__(self):
         self.m_cargo['dll'].IceRayC_Camera_Release( self.m_cargo['this'] )

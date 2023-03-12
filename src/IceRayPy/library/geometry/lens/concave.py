@@ -99,7 +99,7 @@ def Plano( P_dll,
     cR = IceRayPy.type.math.coord.addition3D( P_dll, IceRayPy.type.math.coord.scale3D( P_dll, +center, I_normal ), P_center )
 
     sphere  = IceRayPy.core.geometry.simple.Sphere( P_dll, cL, radius )
-    plane  = IceRayPy.core.geometry.simple.Plane( P_dll, P_center, I_normal )
+    plane  = IceRayPy.core.geometry.flat.Plane( P_dll, P_center, I_normal )
     cylinder = IceRayPy.core.geometry.simple.Cylinder( P_dll )
     cylinder = IceRayPy.utility.geometry.simple.CylinderG( P_dll )
     cylinder.top( cL )

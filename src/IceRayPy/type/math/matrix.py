@@ -13,14 +13,14 @@ class Scalar1D(ctypes.Structure):
                 ]
 
 class Scalar2D(ctypes.Structure):
-    _fields_ = [ ("11", Scalar), ("12", Scalar),
-                 ("21", Scalar), ("22", Scalar)
+    _fields_ = [ ("a11", Scalar), ("a12", Scalar),
+                 ("a21", Scalar), ("a22", Scalar)
                 ]
 
 class Scalar3D(ctypes.Structure):
-    _fields_ = [ ("11", Scalar), ("12", Scalar), ("13", Scalar),
-                 ("21", Scalar), ("22", Scalar), ("23", Scalar),
-                 ("31", Scalar), ("32", Scalar), ("33", Scalar)
+    _fields_ = [ ("a11", Scalar), ("a12", Scalar), ("a13", Scalar),
+                 ("a21", Scalar), ("a22", Scalar), ("a23", Scalar),
+                 ("a31", Scalar), ("a32", Scalar), ("a33", Scalar)
                 ]
 
 class Scalar4D(ctypes.Structure):

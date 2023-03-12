@@ -36,6 +36,18 @@ IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool       IceRayC_Geometry_Elli
 
 
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Quadric0();
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool IceRayC_Geometry_Quadric_Matrix_Get( IceRayC_Geometry_Handle P_this,  IceRayC_Type_Math_Matrix3D* P_matrix );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool IceRayC_Geometry_Quadric_Matrix_Set( IceRayC_Geometry_Handle P_this,  IceRayC_Type_Math_Matrix3D* P_matrix );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool IceRayC_Geometry_Quadric_Vector_Get( IceRayC_Geometry_Handle P_this,  IceRayC_TypeCoordScalar3D* P_vector );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool IceRayC_Geometry_Quadric_Vector_Set( IceRayC_Geometry_Handle P_this,  IceRayC_TypeCoordScalar3D* P_vector );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool IceRayC_Geometry_Quadric_Scalar_Get( IceRayC_Geometry_Handle P_this,  IceRayC_TypeScalar* P_scalar );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool IceRayC_Geometry_Quadric_Scalar_Set( IceRayC_Geometry_Handle P_this,  IceRayC_TypeScalar  P_scalar );
+
+
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool IceRayC_Geometry_Quadric_Lo_Get( IceRayC_Geometry_Handle P_this,  IceRayC_TypeCoordScalar3D* P_lo );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool IceRayC_Geometry_Quadric_Lo_Set( IceRayC_Geometry_Handle P_this,  IceRayC_TypeCoordScalar3D* P_lo );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool IceRayC_Geometry_Quadric_Hi_Get( IceRayC_Geometry_Handle P_this,  IceRayC_TypeCoordScalar3D* P_Hi );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool IceRayC_Geometry_Quadric_Hi_Set( IceRayC_Geometry_Handle P_this,  IceRayC_TypeCoordScalar3D* P_Hi );
 
 
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_CylinderU0();

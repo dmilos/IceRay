@@ -86,26 +86,33 @@ I_config['camera']['aspect'] = I_picture['aspect']
 #I_config['camera']['vfov']   = math.radians( 90 )
 
 geometry_list = [
-  'Q-sphere'           ,
-  'Q-sphereu'          ,
-  'Q-cylinder'         ,
-  'Q-cylinderu'        ,
-  'Q-util-cylinder'    ,
-  'Q-cone'             ,
-  'Q-util-cone'        ,
-  'Q-ellipsoid'        ,
-  'Q-paraboloid'       ,
-  'Q-util-paraboloid'  ,
-  'Q-quadric'          ,
-  'Q-saddle'           ,
-  'Q-hyper-nuke'       ,
-  'Q-hyper-sphere'     ,
-  'Q-hyper-cone'       ,
-  'Q-hyper-cylinder'   ,
-  'Q-hyper-negative'
+     'Q-sphere'           ,
+     'Q-sphereu'          ,
+     'Q-cylinder'         ,
+     'Q-cylinderu'        ,
+     'Q-util-cylinder'    ,
+     'Q-cone'             ,
+     'Q-util-cone'        ,
+     'Q-ellipsoid'        ,
+     'Q-paraboloid'       ,
+     'Q-util-paraboloid'  ,
+     'Q-Q-defailt'        ,
+     'Q-Q-sphere'         ,
+     'Q-Q-cylinder'       ,
+     'Q-Q-para'           ,
+     'Q-Q-saddle'         ,
+     'Q-Q-nuke'           ,
+     'Q-Q-cone'           ,
+     'Q-saddle'           ,
+     'Q-hyper-nuke'       ,
+     'Q-hyper-sphere'     ,
+     'Q-hyper-cone'       ,
+     'Q-hyper-cylinder'   ,
+     'Q-hyper-negative'   ,
+
  ]
 
 for item in geometry_list :
     I_scene['geometry']= item
     render.doIt( I_dll, I_picture, I_scene, I_inventory, I_config )
- 
+

@@ -40,11 +40,11 @@ def plate( P_dll, P_config = { 'level':  - 1.01, 'size' : 3, 'shadow': False, 'p
 
     return wrapper
 
-def plane( P_dll, P_config = { 'level':  - 1.001, 'shadow': False, 'pigment': None }, P_light = None, P_exponat = None ):
+def plane_gray( P_dll, P_config = { 'level':  - 1.001, 'shadow': False, 'pigment': None }, P_light = None, P_exponat = None ):
     level = -1.0001;
     if( 'level' in P_config ):
         level = P_config['level']
-    geometry = IceRayPy.core.geometry.simple.Plane( P_dll )
+    geometry = IceRayPy.core.geometry.flat.Plane( P_dll )
     geometry.origin( Coord3D(0,   0, level ) )
 
     I_scene = { 'light': P_light, 'barrier' : P_exponat }
@@ -61,6 +61,29 @@ def plane( P_dll, P_config = { 'level':  - 1.001, 'shadow': False, 'pigment': No
     wrapper.geometrySet( geometry )
 
     return wrapper
+
+def plane_checker( P_dll, P_config = { 'level':  - 1.001, 'shadow': False, 'pigment': None }, P_light = None, P_exponat = None ):
+    level = -1.0001;
+    if( 'level' in P_config ):
+        level = P_config['level']
+    geometry = IceRayPy.core.geometry.flat.Plane( P_dll )
+    geometry.origin( Coord3D(0,   0, level ) )
+
+    I_scene = { 'light': P_light, 'barrier' : P_exponat }
+    if( 'shadow' in P_config ):
+        if( False == P_config['shadow'] ):
+            I_scene['barrier'] = IceRayPy.core.geometry.volumetric.Vacuum( P_dll )
+
+    pigment = IceRayPy.utility.material.illumination.Lambert( P_dll, I_scene, IceRayPy.type.color.RGB( 0.5, 0.5, 0.5 ) )
+    if( 'pigment' in P_config ):
+        pigment = P_config['pigment'] #utility.material.pattern.Checker( P_dll, I_scene )
+
+    wrapper = IceRayPy.core.object.Wrapper( P_dll )
+    wrapper.pigment( pigment )
+    wrapper.geometrySet( geometry )
+
+    return wrapper
+
 
 
 def pigment_radiosity( P_dll, P_scene, P_config ):
@@ -105,7 +128,7 @@ def radiosity_plane( P_dll, P_config = { 'level':  - 1.001, 'shadow': False, 'pi
     level = -1.0001;
     if( 'level' in P_config ):
         level = P_config['level']
-    geometry = IceRayPy.core.geometry.simple.Plane( P_dll )
+    geometry = IceRayPy.core.geometry.flat.Plane( P_dll )
     geometry.origin( Coord3D(0,   0, level ) )
 
     I_scene = { 'light': P_light, 'barrier' : P_exponat }
@@ -130,7 +153,7 @@ def disc( P_dll, P_config = { 'level':  - 1.001, 'shadow': False, 'pigment': Non
     level = -1.0001;
     if( 'level' in P_config ):
         level = P_config['level']
-    geometry = IceRayPy.core.geometry.simple.Disc( P_dll )
+    geometry = IceRayPy.core.geometry.flat.Disc( P_dll )
     geometry.radius( 3 )
     geometry.center( Coord3D( 0, 0, level ) )
     geometry.normal( Coord3D( 0, 0, 1 ) )
@@ -530,13 +553,14 @@ def mirror_sphere(
 
 list = {
       'vacuum'      : vacuum,
-      'plane'       : plane,
+      'P-gray'  : plane_gray,
+      'P-checker'  : plane_checker,
+      'P-radiosity'     : radiosity_plane,
       'plate'       : plate,
       'disc'        : disc,
-      'R-M-box'     : mirror_box,
-       'R-M-sphere' : mirror_sphere,
+      'B-mirror'     : mirror_box,
+      'R-M-sphere' : mirror_sphere,
       'C-radiosity' : cornell_radiosity,
       'C-open'      : cornel_open,
       'C-close'     : cornel_close,
-      'R-plane'     : radiosity_plane
     }

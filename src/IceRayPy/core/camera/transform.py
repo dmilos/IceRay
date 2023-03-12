@@ -16,7 +16,7 @@ Affine3D = IceRayPy.type.math.affine.Scalar3D
 
 
 class Pin:
-    def __init__( self, P_dll    ):
+    def __init__( self, P_dll, P_config = None ):
         self.m_cargo={}
         self.m_cargo['dll']= P_dll
         self.m_cargo['child']= {}

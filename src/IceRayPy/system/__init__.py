@@ -553,7 +553,20 @@ def _MapFunction_Geometry( P_dll ): #TODO
     _MakeFunction( P_dll.IceRayC_Geometry_Plane1                              , ctypes.c_void_p  , [] )
     _MakeFunction( P_dll.IceRayC_Geometry_Plane_Normal                        , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_void_p] )
     _MakeFunction( P_dll.IceRayC_Geometry_Plane_Origin                        , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_void_p] )
+
     _MakeFunction( P_dll.IceRayC_Geometry_Quadric0                            , ctypes.c_void_p  , [] )
+    _MakeFunction( P_dll.IceRayC_Geometry_Quadric_Lo_Get                      , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_void_p] )
+    _MakeFunction( P_dll.IceRayC_Geometry_Quadric_Lo_Set                      , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_void_p] )
+    _MakeFunction( P_dll.IceRayC_Geometry_Quadric_Hi_Get                      , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_void_p] )
+    _MakeFunction( P_dll.IceRayC_Geometry_Quadric_Hi_Set                      , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_void_p] )
+    _MakeFunction( P_dll.IceRayC_Geometry_Quadric_Matrix_Get                  , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_void_p] )
+    _MakeFunction( P_dll.IceRayC_Geometry_Quadric_Matrix_Set                  , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_void_p] )
+    _MakeFunction( P_dll.IceRayC_Geometry_Quadric_Vector_Get                  , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_void_p] )
+    _MakeFunction( P_dll.IceRayC_Geometry_Quadric_Vector_Set                  , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_void_p] )
+    _MakeFunction( P_dll.IceRayC_Geometry_Quadric_Scalar_Get                  , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_void_p] )
+    _MakeFunction( P_dll.IceRayC_Geometry_Quadric_Scalar_Set                  , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_double] )
+
+
     _MakeFunction( P_dll.IceRayC_Geometry_Saddle0                             , ctypes.c_void_p  , [] )
     _MakeFunction( P_dll.IceRayC_Geometry_USphere0                            , ctypes.c_void_p  , [] )
     _MakeFunction( P_dll.IceRayC_Geometry_Sphere0                             , ctypes.c_void_p  , [] )
@@ -565,14 +578,17 @@ def _MapFunction_Geometry( P_dll ): #TODO
     _MakeFunction( P_dll.IceRayC_Geometry_Torus_Minor                         , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_double] )
 
     _MakeFunction( P_dll.IceRayC_Geometry_Triangle0                           , ctypes.c_void_p  , [] )
-    _MakeFunction( P_dll.IceRayC_Geometry_Triangle1                           , ctypes.c_void_p  , [] ) #!<mTODO
-    _MakeFunction( P_dll.IceRayC_Geometry_Triangle_Origin                     , ctypes.c_int     , [] )
-    _MakeFunction( P_dll.IceRayC_Geometry_Triangle_eX                         , ctypes.c_int     , [] )
-    _MakeFunction( P_dll.IceRayC_Geometry_Triangle_eY                         , ctypes.c_int     , [] )
+    _MakeFunction( P_dll.IceRayC_Geometry_Triangle1                           , ctypes.c_void_p  , [ctypes.c_void_p,ctypes.c_void_p,ctypes.c_void_p] )
+    _MakeFunction( P_dll.IceRayC_Geometry_Triangle2                           , ctypes.c_void_p  , [ctypes.c_void_p,ctypes.c_void_p,ctypes.c_void_p] )
+    _MakeFunction( P_dll.IceRayC_Geometry_Triangle_Origin                     , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_void_p] )
+    _MakeFunction( P_dll.IceRayC_Geometry_Triangle_eX                         , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_void_p] )
+    _MakeFunction( P_dll.IceRayC_Geometry_Triangle_eY                         , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_void_p] )
+    _MakeFunction( P_dll.IceRayC_Geometry_Triangle_pX                         , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_void_p] )
+    _MakeFunction( P_dll.IceRayC_Geometry_Triangle_pY                         , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_void_p] )
 
     _MakeFunction( P_dll.IceRayC_Geometry_UDisc0                              , ctypes.c_void_p  , [] )
-    _MakeFunction( P_dll.IceRayC_Geometry_UDisc1                              , ctypes.c_void_p  , [] ) #!<mTODO
-    _MakeFunction( P_dll.IceRayC_Geometry_UDisc_Radius                        , ctypes.c_int     , [] )
+    _MakeFunction( P_dll.IceRayC_Geometry_UDisc1                              , ctypes.c_void_p  , [ctypes.c_double] )
+    _MakeFunction( P_dll.IceRayC_Geometry_UDisc_Radius                        , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_double] )
     _MakeFunction( P_dll.IceRayC_Geometry_TriangleU0                          , ctypes.c_void_p  , [] )
 
 

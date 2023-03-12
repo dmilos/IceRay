@@ -81,6 +81,7 @@
              bool               F_2local( T_affine const& P_2local );
            private:
              T_affine M2_2local;
+
            private:
             T_matrix M2_transpose;
 

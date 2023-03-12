@@ -61,8 +61,8 @@
 
            public:
              T_coord const& F_size()const{ return M2_size; }
-           protected:
-             T_box      & F1_box(){ return M2_box; }
+           private:
+             T_box      & F2_box(){ return M2_box; }
            private:
              T_coord M2_size;
 

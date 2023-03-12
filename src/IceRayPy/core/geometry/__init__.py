@@ -35,7 +35,7 @@ class Generic:
     def __del__( self ):
         pass
 
-    def box( self, P_box = None ): #!< TODO
+    def box( self, P_box = None ):
         if( None != P_box ):
             self.m_cargo['dll'].IceRayC_Geometry__Base_Box_Set( self.m_cargo['this'], AddressOf( P_box ) )
         result = IceRayPy.type.math.interval.Scalar3D()

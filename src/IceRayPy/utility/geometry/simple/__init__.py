@@ -3,6 +3,7 @@
 import math
 import IceRayPy
 import IceRayPy.utility.geometry.simple.hyperboloid
+import IceRayPy.utility.geometry.simple.quadric
 
 class Torus:  #( IceRayPy.core.geometry.Generic ):
     def __init__( self, P_dll, P_config = None ):

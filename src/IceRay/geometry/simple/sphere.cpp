@@ -145,16 +145,17 @@ GC_sphere::Fv_inside
   T_coord const& P_point
  )const
  {
+  static T_scalar Is_epsilon = 1e-5;// T_scalar( std::numeric_limits<T_scalar>::epsilon() );
   T_scalar  I_distance = ::math::linear::vector::distance( P_point, M2_center ) - M2_radius;
 
-  if( I_distance  < 0 )
-   {
-    return En_in;
-   }
-
-  if( 0 < I_distance )
+  if( +Is_epsilon < I_distance  )
    {
     return En_out;
+   }
+
+  if( I_distance  < -Is_epsilon )
+   {
+    return En_in;
    }
 
   return En_surface;

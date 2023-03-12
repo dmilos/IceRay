@@ -16,7 +16,7 @@ def Fresnel(
     tempScalar = IceRayPy.core.material.instruction.label.scalar.temp._BEGIN
     tempColor  = IceRayPy.core.material.instruction.label.color.temp._BEGIN
 
-    I_iorValue = 2.42
+    I_iorValue = 1.635
     if( 'ior' in P_config ):
         I_iorValue = P_config['ior']
     if( None != P_ior ):
@@ -59,7 +59,7 @@ def Snell(
     tempScalar = IceRayPy.core.material.instruction.label.scalar.temp._BEGIN
     tempColor  = IceRayPy.core.material.instruction.label.color.temp._BEGIN
 
-    I_iorValue = 2.42
+    I_iorValue = 1.635
     if( 'ior' in P_config ):
         I_iorValue = P_config['ior']
     if( None != P_ior ):
@@ -113,7 +113,7 @@ def Schlick(
     I_ior    = tempScalar + 0
     I_albedo = tempScalar + 1
 
-    I_iorValue = 2.42
+    I_iorValue = 1.635
     if( 'ior' in P_config ):
         I_iorValue = P_config['ior']
     if( None != P_ior ):

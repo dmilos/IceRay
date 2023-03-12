@@ -55,6 +55,7 @@
          public:  // property coord  e0
            T_coord    const& F_eX()const{ return M1_eX; }
            bool              F_eX( T_coord const& P_e0 );
+           bool              F_pX( T_coord const& P_pX );
          protected:
            T_coord         & F1_eX(){ return M1_eX; }
          private:
@@ -63,6 +64,7 @@
          public:  // property coord  e1
            T_coord    const& F_eY()const{ return M1_eY; }
            bool              F_eY( T_coord const& P_e1 );
+           bool              F_pY( T_coord const& P_pY );
          protected:
            T_coord         & F1_eY(){ return M1_eY; }
          private:

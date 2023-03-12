@@ -4,7 +4,7 @@
     An ancient ray tracer that I finally put in public.
 
  - Status: \
-    Still in development.
+    Still in development, near beta status.
 
 ## Key features:
  - Like any ancient ray tracers posses.

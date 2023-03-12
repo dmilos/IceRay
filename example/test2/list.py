@@ -45,39 +45,18 @@ medium_list = ['trans']
 
 geometry_inventory =  library_geometry.list
 geometry_list = [
- #'C-hfieldT30x30',
-  #'C-hfieldI'
-  #'S-sphere'
-  #'F-piped' 
-  #'S-torus',
-   #  'T-affine'    ,
-   #  'T-hgraphy'
-    'T-hgraphy'
-  #'S-util-torus'
+
+
+  'Q-Q-sphere'    ,
+  'Q-sphere'
  ]
 
 pigment_inventory =  library_pigment.list
 pigment_list =[
-      'I-ALP'           ,
-      #'I-ambient'       ,
-      #'I-AsDiffuse'     ,
-      #'I-AsSpecular'    ,
-      #'I-Beckmann'      ,
-      #'I-Blinn'         ,
-      #'I-gaussian'      ,
-      #'I-HsLambert'     ,
-      #'I-HsPhong'       ,
-      #'I-Lambert'       ,
+      #'I-ALP'           ,
+      'T-B-refract-schlick' ,
+      #'X-Coord3D2Color'  ,
       #'I-ONf29'         ,
-      #'I-ONf30'         ,
-      #'I-ONYFP'         ,
-      #'I-ONYFQ'         ,
-      #'I-ONJvO'         ,
-      #'I-Phong'         ,
-      #'I-WardApprox'    ,
-      #'I-WardIsotropic' ,
-      #'I-WardReal'      ,
-      #'T-B-refract-schlick' 
 ]
 
 room_inventory = library_room.list
@@ -86,7 +65,7 @@ room_list = [
    'C-close',
    #'R-M-box',
    #'R-M-sphere',
-   #'R-plane',
+   #'P-gray',
    #'disc',
    #'plane',
    #'plate',
@@ -281,8 +260,8 @@ config['frame']['time'] = 0
 
 
 config['hot'] = {}
-config['hot']['x'] = 300 #int( (0.5) * config['picture']['width']  )
-config['hot']['y'] = 500 #int( (0.5) * config['picture']['height'] )
+config['hot']['x'] = 600 #int( (0.5) * config['picture']['width']  )
+config['hot']['y'] = 600 #int( (0.5) * config['picture']['height'] )
 
 print( "config:" + str( config ), flush = True  )
 print( "OS:" + os.getcwd(), flush = True  )

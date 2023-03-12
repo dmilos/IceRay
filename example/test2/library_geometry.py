@@ -2,6 +2,11 @@
 
 import IceRayPy
 
+Coord3D = IceRayPy.type.math.coord.Scalar3D
+Matrix3D = IceRayPy.type.math.matrix.Scalar3D
+
+
+
 
 list = {
 
@@ -23,7 +28,15 @@ list = {
      'Q-ellipsoid'        : IceRayPy.core.geometry.simple.Ellipsoid,
      'Q-paraboloid'       : IceRayPy.core.geometry.simple.Paraboloid,
      'Q-util-paraboloid'  : IceRayPy.utility.geometry.simple.ParaboloidG,
-     'Q-quadric'          : IceRayPy.core.geometry.simple.Quadric,
+     
+     'Q-Q-defailt'        : IceRayPy.core.geometry.simple.Quadric,
+     'Q-Q-sphere'         : IceRayPy.utility.geometry.simple.quadric.Sphere,
+     'Q-Q-cylinder'       : IceRayPy.utility.geometry.simple.quadric.Cylinder,
+     'Q-Q-para'           : IceRayPy.utility.geometry.simple.quadric.Paraboloid,
+     'Q-Q-saddle'         : IceRayPy.utility.geometry.simple.quadric.Saddle,
+     'Q-Q-nuke'           : IceRayPy.utility.geometry.simple.quadric.Nuke,
+     'Q-Q-cone'           : IceRayPy.utility.geometry.simple.quadric.Cone,
+
      'Q-saddle'           : IceRayPy.core.geometry.simple.Saddle,
      'Q-hyper-nuke'       : IceRayPy.utility.geometry.simple.hyperboloid.Nuke,
      'Q-hyper-sphere'     : IceRayPy.utility.geometry.simple.hyperboloid.Sphere,
@@ -33,7 +46,6 @@ list = {
 
      'S-torus'            : IceRayPy.core.geometry.simple.Torus,
      'S-util-torus'       : IceRayPy.utility.geometry.simple.Torus,
-
 
      'C-I-i-i'    : IceRayPy.library.geometry.example.Intersect_IN_IN,
      'C-I-i-o'    : IceRayPy.library.geometry.example.Intersect_IN_OUT,
