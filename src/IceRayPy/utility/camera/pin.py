@@ -6,7 +6,7 @@ import inspect
 import IceRayPy
 
 
-class PinCylinderVertical:
+class CylinderVertical:
     def __init__( self, P_dll, P_config = None ):
         self.m_cargo={}
         self.m_cargo['dll']= P_dll

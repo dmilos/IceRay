@@ -17,7 +17,6 @@ class Fisheye:
             if( 'theta' in P_config ):
                 self.theta( P_config['theta'] )
 
-
     def __del__(self):
         self.m_cargo['dll'].IceRayC_Camera_Release( self.m_cargo['this'] )
 

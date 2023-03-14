@@ -112,9 +112,9 @@ class Triangle:  #( IceRayPy.core.geometry.Generic ):
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Geometry_Triangle0()
 
-        self.origin( Coord3D( -1, -1, -1) )#!< debug
-        self.pX(     Coord3D( +1.0, -1.0, -1.0 ) )#!< debug
-        self.pY(     Coord3D( -0.5, -0.5,  1.0 ) )#!< debug
+        #self.origin( Coord3D( -1, -1, -1) )#!< debug
+        #self.pX(     Coord3D( +1.0, -1.0, -1.0 ) )#!< debug
+        #self.pY(     Coord3D( -0.5, -0.5,  1.0 ) )#!< debug
 
     def __del__( self ):
         self.m_cargo['dll'].IceRayC_Geometry_Release( self.m_cargo['this'] )

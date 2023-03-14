@@ -65,7 +65,7 @@ class Translate:
         return self.m_cargo['dll'].IceRayC_Geometry_Transform_Translate_Move( self.m_cargo['this'], AddressOf( P_move ) )
 
 class Affine:
-    def __init__( self, P_dll,  P_child = None , P_affine = None ):
+    def __init__( self, P_dll,  P_child = None, P_affine = None ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Geometry_Transform_Affine0()
@@ -78,11 +78,10 @@ class Affine:
         if( None != P_child ):
             self.child( P_child )
 
-        tO = Coord3D( -1, -1, -1 )
-        tX = Coord3D(  1, -1, -1 )
-        tY = Coord3D( -1, +1, -1 )
-        tZ = Coord3D( -1, -1, -0.5 )   #tZ = Coord3D( -0.5, -0.5, +1 )
-
+        tO = Coord3D( -1, -1, -0.5 )
+        tX = Coord3D(  1, -1, -0.5 )
+        tY = Coord3D( -1, +1, -0.5 )
+        tZ = Coord3D( -1, -1, +0.5 )
 
         sO = Coord3D( -1, -1, -1 )
         sX = Coord3D(  1, -1, -1 )
@@ -189,11 +188,11 @@ class Homography:
 
         move = Coord3D( 1, 0*1, 0 )
 
-        tO = Coord3D( -1, -1, -1 )
-        tX = Coord3D(  1, -1, -1 )
-        tY = Coord3D( -1, +1, -1 )
-        tZ = Coord3D( -1, -1, -0.5 )   #tZ = Coord3D( -0.5, -0.5, +1 )
-        tT = Coord3D(  1,  1, -0.5 )   #tT = Coord3D( 0.5, 0.5,  1 )
+        tO = Coord3D( -1, -1, -0.5 )
+        tX = Coord3D(  1, -1, -0.5 )
+        tY = Coord3D( -1, +1, -0.5 )
+        tZ = Coord3D( -1, -1, +0.5 )
+        tT = Coord3D(  1,  1, +0.5 )
 
         sO = Coord3D( -1, -1, -1 )
         sX = Coord3D(  1, -1, -1 )

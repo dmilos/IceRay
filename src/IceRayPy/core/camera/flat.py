@@ -18,6 +18,8 @@ class Perspective:
                 self.width( P_config['width'] )
             if( 'height' in P_config ):
                 self.height( P_config['height'] )
+            if( 'aspect' in P_config ):
+                self.aspect( P_config['aspect'] )
 
     def __del__(self):
         self.m_cargo['dll'].IceRayC_Camera_Release( self.m_cargo['this'] )
@@ -64,18 +66,25 @@ class Super:
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Camera_Flat_Super0()
+        if( None != P_config ):
+            if( 'ocular' in P_config ):
+                self.ocular( P_config['ocular'] )
+            if( 'objective' in P_config ):
+                self.objective( P_config['objective'] )
+            if( 'focus' in P_config ):
+                self.focus( P_config['focus'] )
 
-    def eye(self, P_eye : Coord3D ):
+    def eye( self, P_eye : Coord3D ):
         self.m_cargo['dll'].IceRayC_Camera_Flat_Super_Eye(self.m_cargo['this'], AddressOf( P_eye ) )
 
-    def ocular(self, P_ocular : Coord3D):
+    def ocular( self, P_ocular : Coord3D ):
         self.m_cargo['dll'].IceRayC_Camera_Flat_Super_Ocular(self.m_cargo['this'], AddressOf( P_ocular ) )
 
-    def view(self, P_view : Coord3D):
+    def view( self, P_view : Coord3D ):
         self.m_cargo['dll'].IceRayC_Camera_Flat_Super_View(self.m_cargo['this'], AddressOf( P_view ) )
 
-    def objective(self, P_objective : Coord3D):
+    def objective( self, P_objective : Coord3D ):
         self.m_cargo['dll'].IceRayC_Camera_Flat_Super_Objective(self.m_cargo['this'], AddressOf( P_objective ) )
 
-    def focus(self, P_focus : Coord3D):
+    def focus( self, P_focus : Coord3D ):
         self.m_cargo['dll'].IceRayC_Camera_Flat_Super_Focus(self.m_cargo['this'], AddressOf( P_focus ) )

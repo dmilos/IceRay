@@ -33,7 +33,7 @@ I_picture['folder'] = './_out'
 I_picture['extension'] = 'pnm'
 
 I_picture['index'] = 0
-I_picture['time'] = 0
+I_picture['time']  = 0
 
 I_picture['window'] = {}
 I_picture['window']['A'] = {}
@@ -45,7 +45,7 @@ I_picture['window']['B']['y'] = I_picture['height']
 
 I_scene = {}
 I_scene['room']       = 'C-close'
-I_scene['camera']     =  'F-persp'
+I_scene['camera']     = 'F-persp'
 I_scene['geometry']   = 'Q-sphere'
 I_scene['medium']     = 'trans'
 I_scene['pigment']    = 'I-ALP'
@@ -82,6 +82,7 @@ I_config['light']['sample']   = 1
 I_config['camera'][ 'eye']   = IceRayPy.type.math.coord.Scalar3D( 1, 3, 2 )
 I_config['camera']['view']   = IceRayPy.type.math.coord.Scalar3D( 0, 0, 0 )
 I_config['camera']['aspect'] = I_picture['aspect']
+I_config['camera']['sample'] = 1
 #I_config['camera']['hfov']   = math.radians( 90 )
 #I_config['camera']['vfov']   = math.radians( 90 )
 
@@ -96,7 +97,7 @@ camera_list = [
     'C-horizontal'   ,
     'I-C-vertical'   ,
     'P-C-vertical'   ,
-    'DOF-persp'      ,
+    'DOF-persp'       ,
     'DOF-cone'       ,
     'DOF-cylinder'
 ]

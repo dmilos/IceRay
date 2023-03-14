@@ -35,7 +35,7 @@ faulthandler.enable()
 
 camera_inventory = library_camera.list
 
-camera_list = [ 'F-persp' ]
+camera_list = [ 'DOF-persp'  ]
 
 light_inventory = library_light.list
 light_list = [ 'point' ]
@@ -45,9 +45,6 @@ medium_list = ['trans']
 
 geometry_inventory =  library_geometry.list
 geometry_list = [
-
-
-  'Q-Q-sphere'    ,
   'Q-sphere'
  ]
 

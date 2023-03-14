@@ -53,7 +53,10 @@
               bool          F_sample( T_size const& P_size ){ return Fv_size( P_size ); }
 
             public:
-              T_scalar  const& F_gauss( void )const{ return M2_gauss; }
+              T_scalar  const& F_gauss( void )const
+               {
+                return M2_gauss; 
+               }
              bool              F_gauss( T_scalar const& P_gauss );
             private:
               T_scalar M2_gauss;

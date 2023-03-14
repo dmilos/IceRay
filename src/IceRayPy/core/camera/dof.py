@@ -15,9 +15,12 @@ class Focus:
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Camera_DOF_Focus0()
 
+        self.aperture( IceRayPy.type.math.interval.Scalar1D( IceRayPy.type.math.coord.Scalar1D(0.2), IceRayPy.type.math.coord.Scalar1D(0.0) ) )
+        self.focus(    IceRayPy.type.math.interval.Scalar1D( IceRayPy.type.math.coord.Scalar1D(2.9), IceRayPy.type.math.coord.Scalar1D(3.1) ) )
+
         if( None != P_config ):
             if( 'sample' in P_config ):
-                self.phi( P_config['sample'] )
+                self.sample( P_config['sample'] )
             if( 'aperture' in P_config ):
                 self.aperture( P_config['aperture'] )
             if( 'focus' in P_config ):
@@ -51,7 +54,7 @@ class Cone:
 
         if( None != P_config ):
             if( 'sample' in P_config ):
-                self.phi( P_config['sample'] )
+                self.sample( P_config['sample'] )
             if( 'aperture' in P_config ):
                 self.aperture( P_config['aperture'] )
 
@@ -78,9 +81,12 @@ class Cylinder:
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Camera_DOF_Cylinder0()
+
+        self.aperture( 0.1 )
+
         if( None != P_config ):
             if( 'sample' in P_config ):
-                self.phi( P_config['sample'] )
+                self.sample( P_config['sample'] )
             if( 'aperture' in P_config ):
                 self.aperture( P_config['aperture'] )
 

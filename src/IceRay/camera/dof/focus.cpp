@@ -9,13 +9,13 @@ using namespace GS_DDMRM::S_IceRay::S_camera::S_dof;
 
 GC_focus::GC_focus ()
  {
-  M2_focus    = T_interval1D{ 1, 1000 };
-  M2_aperture = T_interval1D{ 0, 1 };
-  M2_gauss    = 1;
+  F_aperture( T_interval1D{ 0, 0 } );
+  F_gauss( 1 );
+  F_focus( T_interval1D{ 1, 2 } );
  }
 
 GC_focus::GC_focus( T_size const& P_sample, T_interval1D const& P_aperture, T_interval1D const& P_focus, T_scalar const& P_gauss )
-: GC__parent( nullptr, P_sample)
+: GC__parent( nullptr, P_sample )
  {
   F_aperture( P_aperture );
   F_gauss( P_gauss );

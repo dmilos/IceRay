@@ -9,8 +9,8 @@
 
 #include "./handle.hpp"
 
-#include "./simple.h"
-#include "./simple.hpp"
+#include "./quadric.h"
+#include "./quadric.hpp"
 
 
 IceRayC_Geometry_Handle IceRayC_Geometry_Sphere0()
