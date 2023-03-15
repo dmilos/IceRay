@@ -50,6 +50,11 @@ class Scalar3D(ctypes.Structure):
         if( 1 == key ): self.y = Scalar( value )
         if( 2 == key ): self.z = Scalar( value )
 
+    def __str__(self):
+        return '[ ' + str( self.x ) + ', ' + str( self.y )+ ', ' +str( self.z ) + ' ]'
+
+    def __repr__(self):
+        return '[ ' + str( self.x ) + ', ' + str( self.y )+ ', ' +str( self.z ) + ' ]'
 
 class Scalar4D(ctypes.Structure):
     _fields_ = [("x", Scalar),

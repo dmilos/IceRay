@@ -11,7 +11,7 @@ GC_point::GC_point( )
  }
 
 GC_point::GC_point( T_coord const& P_center )
- :T__pure( T_interval(P_center,P_center), 1 )
+ :T__pure( T_interval( P_center, P_center ), 1 )
  ,M2_spot( P_center )
  {
 
@@ -25,7 +25,7 @@ GC_point::GC_point( T_coord const & P_center, T_color const& P_0, T_color const&
  }
 
 GC_point::GC_point( T_spot const& P_spot )
- :T__pure( T_interval(P_spot.F_center(),P_spot.F_center()), 1 )
+ :T__pure( T_interval( P_spot.F_center(), P_spot.F_center() ), 1 )
  ,M2_spot( P_spot )
  {
 
@@ -44,4 +44,14 @@ GC_point::Fv_swarm
  {
   P_swarm.F_push( M2_spot );
   return 1;
+ }
+
+bool
+GC_point::F_spot 
+ (
+   T_spot const& P_spot
+ )
+ {
+  M2_spot = P_spot; 
+  return bool( true ); 
  }

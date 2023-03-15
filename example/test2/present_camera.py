@@ -79,7 +79,7 @@ I_config['decoration']   = {}
 I_config['light']   = {}
 I_config['light']['sample']   = 1
 
-I_config['camera'][ 'eye']   = IceRayPy.type.math.coord.Scalar3D( 1, 3, 2 )
+I_config['camera'][ 'eye']   = IceRayPy.type.math.coord.Scalar3D( +2, +3, 1.5 )
 I_config['camera']['view']   = IceRayPy.type.math.coord.Scalar3D( 0, 0, 0 )
 I_config['camera']['aspect'] = I_picture['aspect']
 I_config['camera']['sample'] = 1

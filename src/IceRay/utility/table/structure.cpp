@@ -46,7 +46,7 @@ namespace GS_DDMRM
           return;
 
           //std::cout<< std::endl << "Max grid size: " << M2_size.size() << std::endl;
- 
+
           // /*debug*/ auto & outputSvg = std::ofstream( "table_" + std::to_string( I_size )+ "-"+ std::to_string(I_rsize) +".svg" );
           // /*debug*/ outputSvg << "<svg height=\"100\" width=\"100\">" << std::endl;
           for( auto const& I_spot: M2_point )
@@ -76,6 +76,37 @@ namespace GS_DDMRM
           M2_size.clear();
           M2_radius.clear();
           M2_point.clear();
+         }
+
+        GC_structure::T_scalar GC_structure::F_size2radius( T_size const& P_size )const
+         {
+          for( T_size I_index=0; I_index < M2_size.size(); ++I_index )
+           {
+            if( M2_size[ I_index ] < P_size )
+             {
+              continue;
+             }
+            return M2_radius[ I_index - 1];
+           }
+          return M2_radius.back();
+         }
+
+        GC_structure::T_size GC_structure::F_size2index( T_size const& P_size )const
+         {
+          for( T_size I_index=0; I_index < M2_size.size(); ++I_index )
+           {
+            if( M2_size[ I_index ] < P_size )
+             {
+              continue;
+             }
+            return I_index-1;
+           }
+          std::cout << "Attempt to query size larger than existing. "
+                    << "size(in): "   << P_size << "; "
+                    << "size(back): " << M2_size.back() << "; "
+                    << "size(max): "  << M2_point.size() << "; "
+                   ;
+          return M2_size.size() - 1;
          }
 
        }

@@ -60,6 +60,25 @@
               }while( Tf_scalar(1)< ( P_x * P_x  +  P_y * P_y ) );
             }
 
+
+          template< typename N_random >
+           void GF_polar2D
+            (
+              GS_DDMRM::S_IceRay::S_type::GT_scalar & P_x
+             ,GS_DDMRM::S_IceRay::S_type::GT_scalar & P_y
+             ,N_random & P_random = N_random()
+            )
+            {
+             typedef GS_DDMRM::S_IceRay::S_type::GT_scalar  Tf_scalar;
+
+             Tf_scalar I_r;
+             Tf_scalar I_t;
+             P_random( I_r, I_t );
+
+             P_x = I_r * cos( I_t * 2 * ::math::constants::PHI );
+             P_y = I_r * sin( I_t * 2 * ::math::constants::PHI );
+            }
+
           class GC_standard1D
            {
             public:

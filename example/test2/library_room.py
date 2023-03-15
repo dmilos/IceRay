@@ -85,9 +85,9 @@ def plane_checker( P_dll, P_config = { 'level':  - 1.001, 'shadow': False, 'pigm
     return wrapper
 
 
-
 def pigment_radiosity( P_dll, P_scene, P_config ):
-    I_blossom = 'triangle'
+
+    I_blossom = 'congruent'
     I_sample = 1
     I_angle = math.radians( 75 )
     I_jitter = math.radians( 15 )
@@ -124,12 +124,17 @@ def pigment_radiosity( P_dll, P_scene, P_config ):
 
     return pigment
 
+
 def radiosity_plane( P_dll, P_config = { 'level':  - 1.001, 'shadow': False, 'pigment': None }, P_light = None, P_exponat = None ):
-    level = -1.0001;
+
+    I_room = [ 8, 8, 4 ] # [ 6, 6, 3.5 ]
+    I_move = [ 0, 0, I_room[2]/2-1 ]
+    wall = 0.1
+    level = -I_room[2]/2 + I_move[2];
     if( 'level' in P_config ):
         level = P_config['level']
     geometry = IceRayPy.core.geometry.flat.Plane( P_dll )
-    geometry.origin( Coord3D(0,   0, level ) )
+    geometry.origin( Coord3D( 0,   0, level ) )
 
     I_scene = { 'light': P_light, 'barrier' : P_exponat }
     if( 'shadow' in P_config ):
@@ -150,7 +155,12 @@ def radiosity_plane( P_dll, P_config = { 'level':  - 1.001, 'shadow': False, 'pi
 
 
 def disc( P_dll, P_config = { 'level':  - 1.001, 'shadow': False, 'pigment': None }, P_light = None, P_exponat = None ):
-    level = -1.0001;
+
+    I_room = [ 8, 8, 4 ] # [ 6, 6, 3.5 ]
+    I_move = [ 0, 0, I_room[2]/2-1 ]
+    wall = 0.1
+    level = -I_room[2]/2 + I_move[2];
+
     if( 'level' in P_config ):
         level = P_config['level']
     geometry = IceRayPy.core.geometry.flat.Disc( P_dll )
@@ -173,9 +183,9 @@ def disc( P_dll, P_config = { 'level':  - 1.001, 'shadow': False, 'pigment': Non
 
     return wrapper
 
+
 def cornel_open( P_dll, P_config = {}, P_light = None, P_exponat = None ): # non-classic
 
-    global G_dimesion
     I_room = [ 8, 8, 4 ] # [ 6, 6, 3.5 ]
     I_move = [ 0, 0, I_room[2]/2-1 ]
     wall = 0.1
@@ -286,14 +296,14 @@ def cornel_close( P_dll, P_config = {}, P_light = None, P_exponat = None ): # no
     rightW.geometrySet( rightG )
 
     backgroundG = IceRayPy.core.geometry.flat.Box( P_dll )
-    backgroundG.box(  Coord3D( lo[0], lo[1]-wall, lo[2] ) , Coord3D( hi[0], lo[1], hi[2] ) )
+    backgroundG.box(  Coord3D( lo[0], hi[1],  lo[2] ),      Coord3D( hi[0], hi[1] + wall, hi[2] ) )
     backgroundW = IceRayPy.core.object.Wrapper( P_dll )
     pigment = IceRayPy.utility.material.illumination.Lambert( P_dll, I_scene, IceRayPy.type.color.RGB( 0.33, 0.33, 1 ) )
     backgroundW.pigment( pigment )
     backgroundW.geometrySet( backgroundG )
 
     foregroundG = IceRayPy.core.geometry.flat.Box( P_dll )
-    foregroundG.box(  Coord3D( lo[0], hi[1],  lo[2] ),      Coord3D( hi[0], hi[1] + wall, hi[2] ) )
+    foregroundG.box(   Coord3D( lo[0], lo[1]-wall, lo[2] ) , Coord3D( hi[0], lo[1], hi[2] ))
     foregroundW = IceRayPy.core.object.Wrapper( P_dll )
     pigment = IceRayPy.utility.material.transmission.reflect.One( P_dll, I_scene )
     foregroundW.pigment( pigment )

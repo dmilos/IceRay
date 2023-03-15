@@ -119,7 +119,7 @@ def Schlick(
     if( None != P_ior ):
         I_iorValue = P_ior
 
-    I_albedoValue = IceRayPy.type.color.RGB( 0.9, 0.9, 0.9 )
+    I_albedoValue = IceRayPy.type.color.RGB( 0.99, 0.99, 0.99 )
     if( 'albedo' in P_config ):
         I_albedoValue = P_config['albedo']
     if( None != P_albedo ):

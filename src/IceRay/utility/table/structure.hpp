@@ -37,7 +37,7 @@
            public:
              T_sizeContainer const& F_size()const{ return M2_size; }
            private:
-             T_sizeContainer    M2_size;
+             T_sizeContainer    M2_size; //!< M2_size[index] Number of points inside disk M2_radius[index]
            public:
              T_radiusContainer const& F_radius()const{ return M2_radius; }
            private:
@@ -47,6 +47,9 @@
              T_pointContainer      & F_spot()     { return M2_point; }
            private:
              T_pointContainer M2_point;
+           public:
+             T_scalar F_size2radius( T_size const& P_size )const;
+             T_size   F_size2index( T_size const& P_size )const; //!< maximal size lower than P_size 
           };
 
         }

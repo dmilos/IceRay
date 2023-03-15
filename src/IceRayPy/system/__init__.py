@@ -56,8 +56,10 @@ def SearchCDLL( P_path = None, P_preferDebug = False ):
         path_retreat = "../../.."
         path_root  = path_current + "/" + path_retreat
 
+        print( "--------------", flush = True )
         arch = platform.architecture();
-        print( "Architecture" + str( arch ) )
+        print( "Architecture: " + str( arch ) )
+        print( "--------------", flush = True )
 
         #if( 32 == platform.architecture() ) :
         list_all={

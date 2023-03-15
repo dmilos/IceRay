@@ -50,40 +50,56 @@
               }
 
            public:
-              void F_energy( T_color & P_color, T_coord const& P_point )const
-               {
-                T_scalar I_distance = ::math::linear::vector::distance( P_point, F_center() );
-              //P_color = M2_0 + ( M2_1 + M2_2 / I_distance ) / I_distance;
-                P_color = M2_2 / I_distance;
-                P_color += M2_1;
-                P_color /= I_distance;
-                P_color += M2_0;
-               }
+             void F_energy( T_color & P_color, T_coord const& P_point )const
+              {
+               T_scalar I_distance = ::math::linear::vector::distance( P_point, F_center() );
+             //P_color = M2_0 + ( M2_1 + M2_2 / I_distance ) / I_distance;
+               P_color = M2_2 / I_distance;
+               P_color += M2_1;
+               P_color /= I_distance;
+               P_color += M2_0;
+              }
            public:
              T_coord const& F_center()const{ return M2_center; }
              T_coord      & F_center(){ return M2_center; }
-             bool           F_center( T_coord const& P_center ){ M2_center = P_center; return bool( true ); }
+             bool           F_center( T_coord const& P_center )
+              {
+               M2_center = P_center; 
+               return bool( true ); 
+              }
            private:
              T_coord  M2_center;
 
            public:
              T_color const& F_0()const{ return M2_0; }
              T_color      & F_0()     { return M2_0; }
-             bool           F_0( T_color const& P_0 ){ M2_0 = P_0; return bool( true ); }
+             bool           F_0( T_color const& P_0 ) 
+              {
+               M2_0 = P_0; 
+               return bool( true ); 
+              }
            private:
              T_color  M2_0;
 
            public:
              T_color const& F_1()const{ return M2_1; }
              T_color      & F_1()     { return M2_1; }
-             bool           F_1( T_color const& P_1 ){ M2_1 = P_1; return bool( true ); }
+             bool           F_1( T_color const& P_1 )
+              {
+               M2_1 = P_1; 
+               return bool( true ); 
+              }
            private:
              T_color  M2_1;
 
            public:
              T_color const& F_2()const{ return M2_2; }
              T_color      & F_2()     { return M2_2; }
-             bool           F_2( T_color const& P_2 ){ M2_2 = P_2; return bool( true ); }
+             bool           F_2( T_color const& P_2 )
+              {
+               M2_2 = P_2; 
+               return bool( true ); 
+              }
            private:
              T_color  M2_2;
           };

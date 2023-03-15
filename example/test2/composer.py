@@ -71,7 +71,6 @@ def manager( P_dll, P_config, P_camera, P_object ):
         manager.window(  IceRayPy.type.math.coord.Size2D( P_config['window']['A']['x'], P_config['window']['A']['y'] )
                         ,IceRayPy.type.math.coord.Size2D( P_config['window']['B']['x'], P_config['window']['B']['y'] )
                       )
-
     if( 'ray-trace' in P_config ):
         if( 'depth' in P_config['ray-trace'] ):
             manager.tracer().depth( P_config['ray-trace']['depth'] )

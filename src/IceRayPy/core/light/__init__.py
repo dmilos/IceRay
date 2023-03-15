@@ -14,7 +14,7 @@ ScalarType   = IceRayPy.type.basic.Scalar
 
 
 class Spot(ctypes.Structure):
-    _fields_ = [("m_center", Coord3D)
+    _fields_ = [ ("m_center", Coord3D)
                 ,("m_c0", Color)
                 ,("m_c1", Color)
                 ,("m_c2", Color)

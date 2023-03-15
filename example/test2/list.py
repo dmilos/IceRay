@@ -35,10 +35,10 @@ faulthandler.enable()
 
 camera_inventory = library_camera.list
 
-camera_list = [ 'DOF-persp'  ]
+camera_list = [ 'F-persp'  ]
 
 light_inventory = library_light.list
-light_list = [ 'point' ]
+light_list = [ 'chand-studio', 'point' ]
 
 medium_inventory = library_medium.list
 medium_list = ['trans']
@@ -70,7 +70,7 @@ room_list = [
  ]
 
 decoration_inventory = library_decoration.list
-decoration_item = 'plate'
+decoration_item = 'rings'
 
 path_inventory= obseravtion.list
 
@@ -242,8 +242,7 @@ config['room']['radiosity']['jitter-type'] = 'none' #'random''sobol''vdc''none',
 
 config['room']['radiosity']['correction-leader'] = True
 config['room']['radiosity']['correction-cone']   = False
-config['room']['radiosity']['correction-trim']   = False
-config['room']['radiosity']['correction-claim']  = False
+config['room']['radiosity']['correction']   = 'trim'  # 'trim', 'claim'
 
 config['observer'] = {}
 config['observer']['radius'] = 4

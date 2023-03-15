@@ -31,7 +31,7 @@ def doIt( P_dll, P_picture, P_scene, P_inventory, P_config ):
 
     P_picture['temp'] = {}
     P_picture['temp']['name'] = I_room['name'] +"_"+ I_camera['name'] +'_'+ I_geometry['name'] +"_"+ I_medium['name']  +"_"+ I_pigment['name']+"_" + I_light['name']
-    P_picture['temp']['file'] = P_picture['folder'] + "/" + P_picture['temp']['name'] + '_'+ "{:04d}".format( P_picture['index'] ) + '.' + P_picture['extension']
+    P_picture['temp']['file'] =  P_picture['folder'] + "/" + P_picture['prefix'] + P_picture['temp']['name'] + '_'+ "{:04d}".format( P_picture['index'] ) + '.' + P_picture['extension']
 
     print( P_picture['temp']['file'], flush = True  )
 
@@ -52,7 +52,10 @@ def doIt( P_dll, P_picture, P_scene, P_inventory, P_config ):
         P_config['composer'] = {}
     P_config['composer']['light']            = I_light['enclose']
     P_config['composer']['geometry']         = I_geometry['the']
-    P_config['composer']['pigment'] = {}
+
+    if( 'pigment' not in P_config['composer'] ):
+        P_config['composer']['pigment'] = {}
+
     P_config['composer']['pigment']['light'] = I_light['enclose']
 
     P_config['pigment']['light'] = I_light['final']
@@ -71,6 +74,9 @@ def doIt( P_dll, P_picture, P_scene, P_inventory, P_config ):
     P_picture['temp']['object'].size( P_picture['width'], P_picture['height'] )
 
     manager = composer.manager( P_dll, P_config['composer'], I_camera['final'], scene )
+    print( "picture:" + str(P_picture), flush = True )
+    print( "config:"  + str(P_config),  flush = True )
+    print( "scene:"   + str(P_scene),   flush = True )
     start = time.time()
     manager.start( P_picture['temp']['object'] )
     delta = time.time() - start

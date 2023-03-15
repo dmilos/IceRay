@@ -33,11 +33,7 @@
 
          public:  // property spot  spot
            T_spot    const& F_spot()const{ return M2_spot; }
-           bool             F_spot( T_spot const& P_spot )
-            {
-             M2_spot = P_spot; 
-             return bool( true ); 
-            }
+           bool             F_spot( T_spot const& P_spot );
          protected:
            T_spot        & F1_spot(){ return M2_spot; }
          private:

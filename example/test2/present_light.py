@@ -77,9 +77,14 @@ I_config['camera']  = {}
 I_config['room']   = {}
 I_config['decoration']   = {}
 I_config['light']   = {}
-I_config['light']['sample']   = 1
+I_config['light']['sample']   = 32
 
-I_config['camera'][ 'eye']   = IceRayPy.type.math.coord.Scalar3D( 1, 3, 2 )
+g = 1.22074408460575947536 #(math.sqrt(5)+1)/2
+
+g = (math.sqrt(5)+1)/2
+p = 1.324717957244746025960908854
+c = 1.22074408460575947536
+I_config['camera'][ 'eye']   = IceRayPy.type.math.coord.Scalar3D( +c*p*g, +p*g , +g )
 I_config['camera']['view']   = IceRayPy.type.math.coord.Scalar3D( 0, 0, 0 )
 I_config['camera']['aspect'] = I_picture['aspect']
 #I_config['camera']['hfov']   = math.radians( 90 )

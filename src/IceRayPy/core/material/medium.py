@@ -32,7 +32,7 @@ class Solid:
 g_value = 0.0
 
 class Constant:
-    def __init__(self, P_dll, P_value = None, P_deplete = None ):
+    def __init__( self, P_dll, P_value = None, P_deplete = None ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Material_Medium_Constant0()
@@ -50,7 +50,6 @@ class Constant:
     def deplete( self, P_deplete : Color ):
         self.m_cargo['dll'].IceRayC_Material_Medium_Constant_Deplete( self.m_cargo['this'], AddressOf( P_deplete ) )
 
-import colorsys
 g_hue = 0;
 
 class Linear:
@@ -59,9 +58,8 @@ class Linear:
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Material_Medium_Linear0()
         global g_hue
-        rgb = colorsys.hsv_to_rgb(g_hue/360.0,1,1)
         g_hue = g_hue + 1
-        self.value( IceRayPy.type.color.RGB( rgb[0], rgb[0], rgb[0] ) )
+        self.value( IceRayPy.type.color.HSL2RGB( IceRayPy.type.color.HSL( g_hue, 100, 50 ) ) )
         self.A( 0 )
         self.B( 1 )
 

@@ -10,7 +10,7 @@ G_gauss =  1
 # todo def _ApplyJitter( P_surface, P_config ):
 # todo     if( 'jitter-angle' in P_config ):
 # todo         I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_config['jitter-angle'], I_jitter ) )
-# todo 
+# todo
 # todo     if( 'jitter-type' in P_config ):
 # todo         if( 'random' == P_config['jitter-type'] ):
 # todo             P_surface.append( IceRayPy.core.material.instruction.transmission.jitter.Random( P_dll, normal, I_total, I_start, I_jitter ) )
@@ -23,7 +23,7 @@ G_gauss =  1
 # todo         if( 'none'    == P_config['jitter-type'] ):
 # todo             pass
 # todo     return True
-# todo 
+# todo
 # todo  def _ApplyCorrectionPre( P_surface, P_config ):
 # todo     if( 'correction-leader' in P_config ):
 # todo         if( True == P_config['correction-leader'] ):
@@ -31,18 +31,18 @@ G_gauss =  1
 # todo     if( 'correction-cone' in P_config ):
 # todo         if( True == P_config['correction-cone'] ):
 # todo             P_surface.append( IceRayPy.core.material.instruction.transmission.correct.Cone( P_dll, normal, incident, I_angle, I_angle ) )
-# todo 
+# todo
 # todo     return True
-# todo 
+# todo
 # todo   def _ApplyCorrectionPost( P_surface, P_config ):
 # todo     if( 'correction-claim' in P_config ):
 # todo         if( True == P_config['correction-claim'] ):
 # todo             P_surface.append( IceRayPy.core.material.instruction.transmission.correct.Claim( P_dll, normal, I_total, I_start ) )
-# todo 
+# todo
 # todo     if( 'correction-trim' in P_config ):
 # todo         if( True == P_config['correction-trim'] ):
 # todo             P_surface.append( IceRayPy.core.material.instruction.transmission.correct.Trim(  P_dll, normal, I_total, I_start ) )
-# todo 
+# todo
 # todo     return True
 
 
@@ -118,17 +118,17 @@ def Grid(
         if( 'vdc'    == P_config['jitter-type'] ):
             I_surface.append( IceRayPy.core.material.instruction.transmission.jitter.VDC(    P_dll, normal, I_total, I_start, I_jitter ) )
         if( 'congruent'== P_config['jitter-type'] ):
-            P_surface.append( IceRayPy.core.material.instruction.transmission.jitter.Congruent(  P_dll, normal, I_total, I_start, I_jitter ) )
+            I_surface.append( IceRayPy.core.material.instruction.transmission.jitter.Congruent(  P_dll, normal, I_total, I_start, I_jitter ) )
         if( 'none'    == P_config['jitter-type'] ):
             pass
 
-    if( 'correction-claim' in P_config ):
-        if( True == P_config['correction-claim'] ):
+    if( 'correction' in P_config ):
+        if( 'claim' == P_config['correction'] ):
             I_surface.append( IceRayPy.core.material.instruction.transmission.correct.Claim( P_dll, normal, I_total, I_start ) )
 
-    if( 'correction-trim' in P_config ):
-        if( True == P_config['correction-trim'] ):
+        if( 'trim' == P_config['correction'] ):
             I_surface.append( IceRayPy.core.material.instruction.transmission.correct.Trim(  P_dll, normal, I_total, I_start ) )
+    
 
 
     return I_surface
@@ -193,20 +193,20 @@ def Hexagon(
         if( 'vdc'    == P_config['jitter-type'] ):
             I_surface.append( IceRayPy.core.material.instruction.transmission.jitter.VDC(    P_dll, normal, I_total, I_start, I_jitter ) )
         if( 'congruent'== P_config['jitter-type'] ):
-            P_surface.append( IceRayPy.core.material.instruction.transmission.jitter.Congruent(  P_dll, normal, I_total, I_start, I_jitter ) )
+            I_surface.append( IceRayPy.core.material.instruction.transmission.jitter.Congruent(  P_dll, normal, I_total, I_start, I_jitter ) )
         if( 'none'    == P_config['jitter-type'] ):
             pass
 
-    if( 'correction-claim' in P_config ):
-        if( True == P_config['correction-claim'] ):
+    if( 'correction' in P_config ):
+        if( 'claim' == P_config['correction'] ):
             I_surface.append( IceRayPy.core.material.instruction.transmission.correct.Claim( P_dll, normal, I_total, I_start ) )
 
-    if( 'correction-trim' in P_config ):
-        if( True == P_config['correction-trim'] ):
+        if( 'trim' == P_config['correction'] ):
             I_surface.append( IceRayPy.core.material.instruction.transmission.correct.Trim(  P_dll, normal, I_total, I_start ) )
-
+    
 
     return I_surface
+
 
 def Pinwheel(
      P_dll
@@ -266,17 +266,17 @@ def Pinwheel(
         if( 'vdc'    == P_config['jitter-type'] ):
             I_surface.append( IceRayPy.core.material.instruction.transmission.jitter.VDC(    P_dll, normal, I_total, I_start, I_jitter ) )
         if( 'congruent'== P_config['jitter-type'] ):
-            P_surface.append( IceRayPy.core.material.instruction.transmission.jitter.Congruent(  P_dll, normal, I_total, I_start, I_jitter ) )
+            I_surface.append( IceRayPy.core.material.instruction.transmission.jitter.Congruent(  P_dll, normal, I_total, I_start, I_jitter ) )
         if( 'none'    == P_config['jitter-type'] ):
             pass
 
-    if( 'correction-claim' in P_config ):
-        if( True == P_config['correction-claim'] ):
+    if( 'correction' in P_config ):
+        if( 'claim' == P_config['correction'] ):
             I_surface.append( IceRayPy.core.material.instruction.transmission.correct.Claim( P_dll, normal, I_total, I_start ) )
 
-    if( 'correction-trim' in P_config ):
-        if( True == P_config['correction-trim'] ):
+        if( 'trim' == P_config['correction'] ):
             I_surface.append( IceRayPy.core.material.instruction.transmission.correct.Trim(  P_dll, normal, I_total, I_start ) )
+    
 
     return I_surface
 
@@ -340,19 +340,20 @@ def LD(
         if( 'vdc'    == P_config['jitter-type'] ):
             I_surface.append( IceRayPy.core.material.instruction.transmission.jitter.VDC(    P_dll, normal, I_total, I_start, I_jitter ) )
         if( 'congruent'== P_config['jitter-type'] ):
-            P_surface.append( IceRayPy.core.material.instruction.transmission.jitter.Congruent(  P_dll, normal, I_total, I_start, I_jitter ) )
+            I_surface.append( IceRayPy.core.material.instruction.transmission.jitter.Congruent(  P_dll, normal, I_total, I_start, I_jitter ) )
         if( 'none'    == P_config['jitter-type'] ):
             pass
 
-    if( 'correction-claim' in P_config ):
-        if( True == P_config['correction-claim'] ):
+    if( 'correction' in P_config ):
+        if( 'claim' == P_config['correction'] ):
             I_surface.append( IceRayPy.core.material.instruction.transmission.correct.Claim( P_dll, normal, I_total, I_start ) )
 
-    if( 'correction-trim' in P_config ):
-        if( True == P_config['correction-trim'] ):
+        if( 'trim' == P_config['correction'] ):
             I_surface.append( IceRayPy.core.material.instruction.transmission.correct.Trim(  P_dll, normal, I_total, I_start ) )
+    
 
     return I_surface
+
 
 
 def Sobol(
@@ -414,92 +415,20 @@ def Sobol(
         if( 'vdc'    == P_config['jitter-type'] ):
             I_surface.append( IceRayPy.core.material.instruction.transmission.jitter.VDC(    P_dll, normal, I_total, I_start, I_jitter ) )
         if( 'congruent'== P_config['jitter-type'] ):
-            P_surface.append( IceRayPy.core.material.instruction.transmission.jitter.Congruent(  P_dll, normal, I_total, I_start, I_jitter ) )
+            I_surface.append( IceRayPy.core.material.instruction.transmission.jitter.Congruent(  P_dll, normal, I_total, I_start, I_jitter ) )
         if( 'none'    == P_config['jitter-type'] ):
             pass
 
-    if( 'correction-claim' in P_config ):
-        if( True == P_config['correction-claim'] ):
+    if( 'correction' in P_config ):
+        if( 'claim' == P_config['correction'] ):
             I_surface.append( IceRayPy.core.material.instruction.transmission.correct.Claim( P_dll, normal, I_total, I_start ) )
 
-    if( 'correction-trim' in P_config ):
-        if( True == P_config['correction-trim'] ):
+        if( 'trim' == P_config['correction'] ):
             I_surface.append( IceRayPy.core.material.instruction.transmission.correct.Trim(  P_dll, normal, I_total, I_start ) )
+    
 
     return I_surface
 
-def Random(
-     P_dll
-    ,P_config = None
-    ,P_albedo : IceRayPy.type.color.RGB = G_albedo
-    ,P_count = G_countRandom
-    ,P_leader = 0
-    ,P_angle = G_angle
-    ,P_gauss = G_gauss
-    ):
-    result     = IceRayPy.core.material.instruction.label.color.dynamic.RESULT
-    point      = IceRayPy.core.material.instruction.label.coord3d.dynamic.POINT
-    normal     = IceRayPy.core.material.instruction.label.coord3d.dynamic.NORMAL
-    incident   = IceRayPy.core.material.instruction.label.coord3d.dynamic.INCIDENT
-    tempSize   = IceRayPy.core.material.instruction.label.size.temp._BEGIN
-    tempScalar = IceRayPy.core.material.instruction.label.scalar.temp._BEGIN
-    tempColor  = IceRayPy.core.material.instruction.label.color.temp._BEGIN
-    lightThe   = IceRayPy.core.material.instruction.label.light.temp._BEGIN
-    spotBegin  = IceRayPy.core.material.instruction.label.size.dynamic.SpotBegin
-    spotEnd    = IceRayPy.core.material.instruction.label.size.dynamic.SpotEnd
-
-    I_leader = tempSize + 0
-    I_count  = tempSize + 1 # total and count are the same for random
-    I_total  = tempSize + 1 # total and count are the same for random
-    I_start  = tempSize + 2
-    I_angle = tempScalar + 0
-    I_gauss = tempScalar + 1
-    I_jitter = tempScalar + 2
-    I_albedo = tempColor + 0
-
-    I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
-    I_surface.append( IceRayPy.core.material.instruction.constant.Color(  P_dll, IceRayPy.type.color.RGB( 0, 0, 0 ), result ) )
-
-    I_surface.append( IceRayPy.core.material.instruction.constant.Color(  P_dll, P_albedo, I_albedo ) )
-    I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, P_leader, I_leader ) )
-    I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, P_count,  I_count  ) )
-    I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_angle,  I_angle  ) )
-    I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_gauss,  I_gauss  ) )
-    if( 'jitter-angle' in P_config ):
-        I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_config['jitter-angle'], I_jitter ) )
-
-    I_surface.append( IceRayPy.core.material.instruction.transmission.reflect.One( P_dll, point, normal, I_albedo, I_leader ) )
-
-    if( 'correction-leader' in P_config ):
-        if( True == P_config['correction-leader'] ):
-            I_surface.append( IceRayPy.core.material.instruction.transmission.correct.Leader( P_dll, normal, I_angle, I_angle ) )
-    if( 'correction-cone' in P_config ):
-        if( True == P_config['correction-cone'] ):
-            I_surface.append( IceRayPy.core.material.instruction.transmission.correct.Cone( P_dll, normal, incident, I_angle, I_angle ) )
-
-    I_surface.append( IceRayPy.core.material.instruction.transmission.blossom.Random( P_dll, normal, I_count, I_leader, I_angle, I_gauss, I_start ) )
-
-    if( 'jitter-type' in P_config ):
-        if( 'random' == P_config['jitter-type'] ):
-            I_surface.append( IceRayPy.core.material.instruction.transmission.jitter.Random( P_dll, normal, I_total, I_start, I_jitter ) )
-        if( 'sobol'  == P_config['jitter-type'] ):
-            I_surface.append( IceRayPy.core.material.instruction.transmission.jitter.Sobol(  P_dll, normal, I_total, I_start, I_jitter ) )
-        if( 'vdc'    == P_config['jitter-type'] ):
-            I_surface.append( IceRayPy.core.material.instruction.transmission.jitter.VDC(    P_dll, normal, I_total, I_start, I_jitter ) )
-        if( 'congruent'== P_config['jitter-type'] ):
-            P_surface.append( IceRayPy.core.material.instruction.transmission.jitter.Congruent(  P_dll, normal, I_total, I_start, I_jitter ) )
-        if( 'none'    == P_config['jitter-type'] ):
-            pass
-
-    if( 'correction-claim' in P_config ):
-        if( True == P_config['correction-claim'] ):
-            I_surface.append( IceRayPy.core.material.instruction.transmission.correct.Claim( P_dll, normal, I_total, I_start ) )
-
-    if( 'correction-trim' in P_config ):
-        if( True == P_config['correction-trim'] ):
-            I_surface.append( IceRayPy.core.material.instruction.transmission.correct.Trim(  P_dll, normal, I_total, I_start ) )
-
-    return I_surface
 
 
 def Random(
@@ -561,19 +490,95 @@ def Random(
         if( 'vdc'    == P_config['jitter-type'] ):
             I_surface.append( IceRayPy.core.material.instruction.transmission.jitter.VDC(    P_dll, normal, I_total, I_start, I_jitter ) )
         if( 'congruent'== P_config['jitter-type'] ):
-            P_surface.append( IceRayPy.core.material.instruction.transmission.jitter.Congruent(  P_dll, normal, I_total, I_start, I_jitter ) )
+            I_surface.append( IceRayPy.core.material.instruction.transmission.jitter.Congruent(  P_dll, normal, I_total, I_start, I_jitter ) )
         if( 'none'    == P_config['jitter-type'] ):
             pass
 
-    if( 'correction-claim' in P_config ):
-        if( True == P_config['correction-claim'] ):
+    if( 'correction' in P_config ):
+        if( 'claim' == P_config['correction'] ):
             I_surface.append( IceRayPy.core.material.instruction.transmission.correct.Claim( P_dll, normal, I_total, I_start ) )
 
-    if( 'correction-trim' in P_config ):
-        if( True == P_config['correction-trim'] ):
+        if( 'trim' == P_config['correction'] ):
             I_surface.append( IceRayPy.core.material.instruction.transmission.correct.Trim(  P_dll, normal, I_total, I_start ) )
+    
 
     return I_surface
+
+
+
+def Random(
+     P_dll
+    ,P_config = None
+    ,P_albedo : IceRayPy.type.color.RGB = G_albedo
+    ,P_count = G_countRandom
+    ,P_leader = 0
+    ,P_angle = G_angle
+    ,P_gauss = G_gauss
+    ):
+    result     = IceRayPy.core.material.instruction.label.color.dynamic.RESULT
+    point      = IceRayPy.core.material.instruction.label.coord3d.dynamic.POINT
+    normal     = IceRayPy.core.material.instruction.label.coord3d.dynamic.NORMAL
+    incident   = IceRayPy.core.material.instruction.label.coord3d.dynamic.INCIDENT
+    tempSize   = IceRayPy.core.material.instruction.label.size.temp._BEGIN
+    tempScalar = IceRayPy.core.material.instruction.label.scalar.temp._BEGIN
+    tempColor  = IceRayPy.core.material.instruction.label.color.temp._BEGIN
+    lightThe   = IceRayPy.core.material.instruction.label.light.temp._BEGIN
+    spotBegin  = IceRayPy.core.material.instruction.label.size.dynamic.SpotBegin
+    spotEnd    = IceRayPy.core.material.instruction.label.size.dynamic.SpotEnd
+
+    I_leader = tempSize + 0
+    I_count  = tempSize + 1 # total and count are the same for random
+    I_total  = tempSize + 1 # total and count are the same for random
+    I_start  = tempSize + 2
+    I_angle = tempScalar + 0
+    I_gauss = tempScalar + 1
+    I_jitter = tempScalar + 2
+    I_albedo = tempColor + 0
+
+    I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Color(  P_dll, IceRayPy.type.color.RGB( 0, 0, 0 ), result ) )
+
+    I_surface.append( IceRayPy.core.material.instruction.constant.Color(  P_dll, P_albedo, I_albedo ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, P_leader, I_leader ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, P_count,  I_count  ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_angle,  I_angle  ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_gauss,  I_gauss  ) )
+    if( 'jitter-angle' in P_config ):
+        I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_config['jitter-angle'], I_jitter ) )
+
+    I_surface.append( IceRayPy.core.material.instruction.transmission.reflect.One( P_dll, point, normal, I_albedo, I_leader ) )
+
+    if( 'correction-leader' in P_config ):
+        if( True == P_config['correction-leader'] ):
+            I_surface.append( IceRayPy.core.material.instruction.transmission.correct.Leader( P_dll, normal, I_angle, I_angle ) )
+    if( 'correction-cone' in P_config ):
+        if( True == P_config['correction-cone'] ):
+            I_surface.append( IceRayPy.core.material.instruction.transmission.correct.Cone( P_dll, normal, incident, I_angle, I_angle ) )
+
+    I_surface.append( IceRayPy.core.material.instruction.transmission.blossom.Random( P_dll, normal, I_count, I_leader, I_angle, I_gauss, I_start ) )
+
+    if( 'jitter-type' in P_config ):
+        if( 'random' == P_config['jitter-type'] ):
+            I_surface.append( IceRayPy.core.material.instruction.transmission.jitter.Random( P_dll, normal, I_total, I_start, I_jitter ) )
+        if( 'sobol'  == P_config['jitter-type'] ):
+            I_surface.append( IceRayPy.core.material.instruction.transmission.jitter.Sobol(  P_dll, normal, I_total, I_start, I_jitter ) )
+        if( 'vdc'    == P_config['jitter-type'] ):
+            I_surface.append( IceRayPy.core.material.instruction.transmission.jitter.VDC(    P_dll, normal, I_total, I_start, I_jitter ) )
+        if( 'congruent'== P_config['jitter-type'] ):
+            I_surface.append( IceRayPy.core.material.instruction.transmission.jitter.Congruent(  P_dll, normal, I_total, I_start, I_jitter ) )
+        if( 'none'    == P_config['jitter-type'] ):
+            pass
+
+    if( 'correction' in P_config ):
+        if( 'claim' == P_config['correction'] ):
+            I_surface.append( IceRayPy.core.material.instruction.transmission.correct.Claim( P_dll, normal, I_total, I_start ) )
+
+        if( 'trim' == P_config['correction'] ):
+            I_surface.append( IceRayPy.core.material.instruction.transmission.correct.Trim(  P_dll, normal, I_total, I_start ) )
+    
+
+    return I_surface
+
 
 def Triangle(
      P_dll
@@ -635,17 +640,17 @@ def Triangle(
         if( 'vdc'    == P_config['jitter-type'] ):
             I_surface.append( IceRayPy.core.material.instruction.transmission.jitter.VDC(    P_dll, normal, I_total, I_start, I_jitter ) )
         if( 'congruent'== P_config['jitter-type'] ):
-            P_surface.append( IceRayPy.core.material.instruction.transmission.jitter.Congruent(  P_dll, normal, I_total, I_start, I_jitter ) )
+            I_surface.append( IceRayPy.core.material.instruction.transmission.jitter.Congruent(  P_dll, normal, I_total, I_start, I_jitter ) )
         if( 'none'    == P_config['jitter-type'] ):
             pass
 
-    if( 'correction-claim' in P_config ):
-        if( True == P_config['correction-claim'] ):
+    if( 'correction' in P_config ):
+        if( 'claim' == P_config['correction'] ):
             I_surface.append( IceRayPy.core.material.instruction.transmission.correct.Claim( P_dll, normal, I_total, I_start ) )
 
-    if( 'correction-trim' in P_config ):
-        if( True == P_config['correction-trim'] ):
+        if( 'trim' == P_config['correction'] ):
             I_surface.append( IceRayPy.core.material.instruction.transmission.correct.Trim(  P_dll, normal, I_total, I_start ) )
+    
 
     return I_surface
 
@@ -659,8 +664,6 @@ def VDC(
     ,P_angle = G_angle
     ,P_gauss = G_gauss
     ):
-
-    print( "VDC::config:" + str( P_config ), flush = True  )
 
     result     = IceRayPy.core.material.instruction.label.color.dynamic.RESULT
     point      = IceRayPy.core.material.instruction.label.coord3d.dynamic.POINT
@@ -712,17 +715,17 @@ def VDC(
         if( 'vdc'    == P_config['jitter-type'] ):
             I_surface.append( IceRayPy.core.material.instruction.transmission.jitter.VDC(    P_dll, normal, I_total, I_start, I_jitter ) )
         if( 'congruent'== P_config['jitter-type'] ):
-            P_surface.append( IceRayPy.core.material.instruction.transmission.jitter.Congruent(  P_dll, normal, I_total, I_start, I_jitter ) )
+            I_surface.append( IceRayPy.core.material.instruction.transmission.jitter.Congruent(  P_dll, normal, I_total, I_start, I_jitter ) )
         if( 'none'    == P_config['jitter-type'] ):
             pass
 
-    if( 'correction-claim' in P_config ):
-        if( True == P_config['correction-claim'] ):
+    if( 'correction' in P_config ):
+        if( 'claim' == P_config['correction'] ):
             I_surface.append( IceRayPy.core.material.instruction.transmission.correct.Claim( P_dll, normal, I_total, I_start ) )
 
-    if( 'correction-trim' in P_config ):
-        if( True == P_config['correction-trim'] ):
+        if( 'trim' == P_config['correction'] ):
             I_surface.append( IceRayPy.core.material.instruction.transmission.correct.Trim(  P_dll, normal, I_total, I_start ) )
+    
 
     return I_surface
 
@@ -786,17 +789,17 @@ def Congruent(
         if( 'vdc'    == P_config['jitter-type'] ):
             I_surface.append( IceRayPy.core.material.instruction.transmission.jitter.VDC(    P_dll, normal, I_total, I_start, I_jitter ) )
         if( 'congruent'== P_config['jitter-type'] ):
-            P_surface.append( IceRayPy.core.material.instruction.transmission.jitter.Congruent(  P_dll, normal, I_total, I_start, I_jitter ) )
+            I_surface.append( IceRayPy.core.material.instruction.transmission.jitter.Congruent(  P_dll, normal, I_total, I_start, I_jitter ) )
         if( 'none'    == P_config['jitter-type'] ):
             pass
 
-    if( 'correction-claim' in P_config ):
-        if( True == P_config['correction-claim'] ):
+    if( 'correction' in P_config ):
+        if( 'claim' == P_config['correction'] ):
             I_surface.append( IceRayPy.core.material.instruction.transmission.correct.Claim( P_dll, normal, I_total, I_start ) )
 
-    if( 'correction-trim' in P_config ):
-        if( True == P_config['correction-trim'] ):
+        if( 'trim' == P_config['correction'] ):
             I_surface.append( IceRayPy.core.material.instruction.transmission.correct.Trim(  P_dll, normal, I_total, I_start ) )
+    
 
     return I_surface
 

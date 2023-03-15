@@ -13,6 +13,12 @@ class RGB(ctypes.Structure):
                 ("g", Scalar),
                 ("b", Scalar)
                 ]
+    def __str__(self):
+        return '[' + str( self.r ) + ', ' + str( self.g )+ ', ' +str( self.b ) + ' ]'
+
+    def __repr__(self):
+        return '[' + str( self.r ) + ', ' + str( self.g )+ ', ' +str( self.b ) + ' ]'
+
 
 class RGBA(ctypes.Structure):
     _fields_ = [("r", Scalar),
@@ -26,6 +32,11 @@ class HSL(ctypes.Structure):
                 ("s", Scalar),
                 ("l", Scalar)
                 ]
+    def __str__(self):
+        return '[' + str( self.h ) + ', ' + str( self.s )+ ', ' +str( self.l ) + ' ]'
+
+    def __repr__(self):
+        return '[' + str( self.h ) + ', ' + str( self.s )+ ', ' +str( self.l ) + ' ]'
 
 def RGB2HSL( P_dll, P_rgb ):
     result = HSL()

@@ -71,8 +71,8 @@
                  bool    Fv_execute( T_beam &P_next, T_pigment::T_intersect const& P_intersect, T_state const& P_state )const
                   {
                    T_coord  const& I_normal   = M2_memoryCoord->Fv_load(  F_input<T_coord >( En_inCoord_Normal ) );
-                   T_size   const& I_leader   = M2_memorySize->Fv_load(   F_input<T_size  >( En_inSize_Leader  ) );
                    T_size   const& I_count    = M2_memorySize->Fv_load(   F_input<T_size  >( En_inSize_Count   ) );
+                   T_size   const& I_leader   = M2_memorySize->Fv_load(   F_input<T_size  >( En_inSize_Leader  ) );
                    T_scalar const& I_angle    = M2_memoryScalar->Fv_load( F_input<T_scalar>( En_inScalar_Angle ) );
                    T_scalar const& I_gauss    = M2_memoryScalar->Fv_load( F_input<T_scalar>( En_inScalar_Gauss ) );
 
@@ -131,13 +131,14 @@
                    ::math::linear::vector::length( I_z, I_radius );
                    I_radius *= I_radius;
 
-                   auto I_perimeter = M2s_table.F_structure().F_radius()[ P_count ];
-                   T_size const I_count = M2s_table.F_structure().F_size()[ P_count ];
-                   T_coord I_direction;
+                   auto I_index = M2s_table.F_structure().F_size2index( P_count );
+                   auto const& I_perimeter = M2s_table.F_structure().F_radius()[ I_index ];
+                   T_size const& I_count = M2s_table.F_structure().F_size()[ I_index ];
                    T_size I_total=0;
+                   T_coord I_direction;
+                   T_coord2D I_disc2d;
                    for( T_size I_index=0; I_index < I_count; ++I_index )
                     {
-                     T_coord2D I_disc2d;
                      ::math::linear::vector::scale( I_disc2d, T_scalar(1)/I_perimeter, M2s_table.F_structure().F_spot()[ I_index ] );
 
                      T_scalar I_height = sqrt( T_scalar( 1 ) - I_radius * ::math::linear::vector::dot( I_disc2d, I_disc2d ) );

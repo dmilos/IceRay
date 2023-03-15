@@ -112,19 +112,20 @@
                    ::math::linear::vector::length<T_scalar>( I_x, 1 );
                    ::math::linear::vector::length<T_scalar>( I_z, 1 );
 
-                   auto   const& I_perimeter = M2s_table.F_structure().F_radius()[ P_count ];
-                   T_size const& I_count     = M2s_table.F_structure().F_size()[ P_count ];
+                   auto I_index = M2s_table.F_structure().F_size2index( P_count );
+                   auto   const& I_perimeter = M2s_table.F_structure().F_radius()[ I_index ];
+                   T_size const& I_count     = M2s_table.F_structure().F_size()[ I_index ];
                    auto   const& I_table     = M2s_table.F_structure().F_spot();
-                   T_coord I_direction;
                    T_size I_total = 0;
                    T_size I_beginA = P_next.Fv_size();
 
+                   T_coord I_direction;
+                   T_coord2D I_disc2d;
                    for( T_size I_index=0; I_index < I_count; ++I_index )
                     {
-                     T_coord2D I_disc2d;
                      ::math::linear::vector::scale( I_disc2d, I_radius/I_perimeter, I_table[ I_index ] );
-
                      T_scalar I_height = sqrt( T_scalar( 1 ) - ::math::linear::vector::dot( I_disc2d, I_disc2d ) );
+
                      ::math::linear::vector::combine( I_direction, I_disc2d[0], I_x, I_height, I_y, I_disc2d[1], I_z );
                      ::math::linear::vector::length( I_direction, T_scalar( 1 ) );
 
