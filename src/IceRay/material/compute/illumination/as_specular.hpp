@@ -46,14 +46,14 @@
                public:
                  GC_specular
                   (
-                    T_size const& P_result            = 0
-                   ,T_size const& P_inCoord_Point     = 0
-                   ,T_size const& P_inCoord_Normal    = 1
-                   ,T_size const& P_inSize_SpotBegin  = 1
-                   ,T_size const& P_inSize_SpotEnd    = 0
-                   ,T_size const& P_specular          = 1
-                   ,T_size const& P_nu                = 1
-                   ,T_size const& P_nv                = 2
+                    T_size const& P_result            //= 0
+                   ,T_size const& P_inCoord_Point     //= 0
+                   ,T_size const& P_inCoord_Normal    //= 1
+                   ,T_size const& P_inSize_SpotBegin  //= 1
+                   ,T_size const& P_inSize_SpotEnd    //= 0
+                   ,T_size const& P_specular          //= 1
+                   ,T_size const& P_nu                //= 1
+                   ,T_size const& P_nv                //= 2
                   )
                   {
                    F_input<T_coord>(  En_inCoord_Point,     P_inCoord_Point      );
@@ -84,7 +84,7 @@
                  //T_size  const& I_rayStart = M2_memorySize->Fv_load(  F_input()[ T_memory::En_size  ][ En_inSize_RayStart ] );
 
 
-                   GS_DDMRM::S_IceRay::S_material::S_illumination::S_AshikhminShirley::GC_specular I_ass( I_specular, I_nu, I_nv );
+                   GS_DDMRM::S_IceRay::S_material::S_illumination::S_AshikhminShirley::GC_specular I_as( I_specular, I_nu, I_nv );
 
                    T_color I_summae( ::color::constant::black_t{} );
                    T_coord I_2viewer; ::math::linear::vector::negate( I_2viewer, I_incoming.M_direction );
@@ -97,6 +97,7 @@
                      T_coord I_2light;
                      ::math::linear::vector::subtraction( I_2light, I_spot.F_center(), I_point );
                      ::math::linear::vector::length( I_2light , T_scalar(1) );
+
                      T_coord I_u, I_v;
                      ::math::linear::vector::cross( I_u, I_normal, I_2light );          ::math::linear::vector::length( I_u , T_scalar(1) );
                      ::math::linear::vector::cross( I_v, I_normal, I_u );               ::math::linear::vector::length( I_v , T_scalar(1) );
@@ -104,7 +105,7 @@
                      ::math::linear::vector::addition( I_half, I_2viewer, I_2light );   ::math::linear::vector::length( I_half , T_scalar(1) );
 
                      T_color I_color;
-                     if( true == I_ass.F_process( I_color, I_normal, I_2light, I_2viewer, I_half, I_u, I_v ) )
+                     if( true == I_as.F_process( I_color, I_normal, I_2light, I_2viewer, I_half, I_u, I_v ) )
                       {
                        ::color::operation::multiply( I_color, I_energy );
                        I_summae += I_color;
@@ -114,7 +115,6 @@
                    M2_memoryColor->Fv_store( F_output<T_color>( En_outColor_result ), I_summae );
                    return true;
                   }
-
 
                private:
                  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC__base<T_size>    T2_memorySize;

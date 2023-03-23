@@ -1,8 +1,18 @@
-_BEGIN  = 10
-POINT      = 11
-INCIDENT   = 12
-ORIGIN     = 13
-NORMAL     = 14
-BUMP       = 15
-UVW        = 16
+_BEGIN  = 11
+
+ORIGIN     = 12
+INCIDENT   = 13
+POINT      = 14
+NORMAL     = 15
+REFLECTED  = 16
+BUMP       = 17
+UVW        = 18
+VIEWER     = 19
+SURFACE_X  = 20
+SURFACE_Y  = 21
+INCIDENT_X = 22
+INCIDENT_Y = 23
+REFLECT_X  = 24
+REFLECT_Y  = 25
+
 _END   = 30

@@ -43,6 +43,10 @@ namespace GS_DDMRM
             M2_size.push_back( 1+M2_size.back() );
             M2_radius.push_back( I_radius );
            }
+          if( ::math::linear::vector::length( M2_point[0] ) < I_epsilon )
+           {
+            M2_radius[ 0 ] = 1;
+           }
           return;
 
           //std::cout<< std::endl << "Max grid size: " << M2_size.size() << std::endl;
@@ -99,7 +103,7 @@ namespace GS_DDMRM
              {
               continue;
              }
-            return I_index-1;
+            return I_index ? I_index-1: I_index;
            }
           std::cout << "Attempt to query size larger than existing. "
                     << "size(in): "   << P_size << "; "

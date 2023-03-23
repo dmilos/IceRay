@@ -37,11 +37,13 @@
           , public GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_inside
           , public GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_distance
           , public GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_uvw
+          , public GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_transform
           {
            public:
              typedef GS_DDMRM::S_IceRay::S_type::GT_scalar              T_scalar;
              typedef GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar     T_coord;
              typedef GS_DDMRM::S_IceRay::S_type::S_matrix::GT_matrix    T_matrix;
+             typedef GS_DDMRM::S_IceRay::S_type::S_affine::GT_scalar3D  T_affine;
 
              typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base  T_geometry, T__base;
 
@@ -64,10 +66,13 @@
              T_location       Fv_inside( T_coord const& P_point/*, T_state const&P_state*/ )const;
              T_scalar         Fv_distance( T_coord const& P_point )const;
              bool             Fv_uvw( T_coord & P_uvw, T_coord const& P_point, T_state const& P_state)const;
+             T_affine const&  Fv_2world( T_state const&P_state )const;
+             T_affine const&  Fv_2local( T_state const&P_state )const;
+
 
            public:
              bool  F_child( T__base *P_child );
-           //TODO T__base* F_child( );
+
            private:
              typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_intersect    T2_intersect;
              typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_normal       T2_normal;
@@ -92,6 +97,7 @@
              typedef GS_DDMRM::S_IceRay::S_geometry::S_volumetric::GC_vacuum T_vacuum;
              static T_vacuum & Fs_vacuum();
            private:
+             static T_affine  M2s_ID;
              struct C_intersect;
           };
 

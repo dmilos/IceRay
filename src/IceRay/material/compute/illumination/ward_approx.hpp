@@ -34,10 +34,10 @@
 
                  enum Ee_input
                   {
-                   En_inColor_Specular = 0, En_inScalar_AlphaX = 1, En_inScalar_AlphaY = 2,
-                   En_inCoord_Direction = 2,
                    En_inSize_SpotBegin=0, En_inSize_SpotEnd=1,
-                   En_inCoord_Point = 0, En_inCoord_Normal = 1
+                   En_inCoord_Point = 0, En_inCoord_Normal = 1,
+                   En_inColor_Specular = 0, En_inScalar_AlphaX = 1, En_inScalar_AlphaY = 2,
+                   En_inCoord_Thread = 2
                   };
                  enum Ee_output{ En_outColor_result=0 };
 
@@ -52,7 +52,7 @@
                    ,T_size const& P_specular          // = 0
                    ,T_size const& P_alphaX            // = 1
                    ,T_size const& P_alphaY            // = 2
-                   ,T_size const& P_direction         // = 2
+                   ,T_size const& P_thread         // = 2
                   )
                   {
                    F_input<T_coord>( En_inCoord_Point,     P_inCoord_Point     );
@@ -63,7 +63,7 @@
                    F_input<T_color>(  En_inColor_Specular,  P_specular  );
                    F_input<T_scalar>( En_inScalar_AlphaX,   P_alphaX    );
                    F_input<T_scalar>( En_inScalar_AlphaY,   P_alphaY    );
-                   F_input<T_coord>(  En_inCoord_Direction, P_direction );
+                   F_input<T_coord>(  En_inCoord_Thread,    P_thread );
 
                    F_output<T_color>(  En_outColor_result, P_result );
                   }
@@ -80,9 +80,9 @@
                    T_color const& I_specular   = M2_memoryColor->Fv_load(  F_input<T_color>(  En_inColor_Specular  ) );
                    T_scalar const& I_alphaX    = M2_memoryScalar->Fv_load( F_input<T_scalar>( En_inScalar_AlphaX   ) );
                    T_scalar const& I_alphaY    = M2_memoryScalar->Fv_load( F_input<T_scalar>( En_inScalar_AlphaY   ) );
-                   T_coord const& I_direction  = M2_memoryCoord->Fv_load(  F_input<T_coord>(  En_inCoord_Direction ) );
+                   T_coord const& I_thread     = M2_memoryCoord->Fv_load(  F_input<T_coord>(  En_inCoord_Thread ) );
 
-                   GS_DDMRM::S_IceRay::S_material::S_illumination::S_ward::GC_approx I_approx( I_direction, I_specular, I_alphaX, I_alphaY );
+                   GS_DDMRM::S_IceRay::S_material::S_illumination::S_ward::GC_approx I_approx( I_thread, I_specular, I_alphaX, I_alphaY );
 
                    T_color I_summae( ::color::constant::black_t{} );
                    T_coord I_2viewer; ::math::linear::vector::negate( I_2viewer, I_incoming.M_direction );
@@ -99,7 +99,6 @@
                      ::math::linear::vector::subtraction( I_2light, I_spot.F_center(), I_point );
                      ::math::linear::vector::length( I_2light, T_scalar(1) );
 
-
                      ::math::linear::vector::subtraction( I_half, I_2light, I_incoming.M_direction );
                      ::math::linear::vector::length( I_half, T_scalar(1) );
 
@@ -112,7 +111,6 @@
                    M2_memoryColor->Fv_store( F_output<T_color>( En_outColor_result ), I_summae );
                    return true;
                   }
-
 
                private:
                  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC__base<T_size>    T2_memorySize;

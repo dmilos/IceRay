@@ -29,9 +29,12 @@ def doIt( P_dll, P_picture, P_scene, P_inventory, P_config ):
     I_light     ['name'] = P_scene['light']
     I_decoration['name'] = P_scene['decoration']
 
+    I_prefix = ''
+    if( 'prefix' in P_picture ):
+        I_prefix = P_picture['prefix']
     P_picture['temp'] = {}
     P_picture['temp']['name'] = I_room['name'] +"_"+ I_camera['name'] +'_'+ I_geometry['name'] +"_"+ I_medium['name']  +"_"+ I_pigment['name']+"_" + I_light['name']
-    P_picture['temp']['file'] =  P_picture['folder'] + "/" + P_picture['prefix'] + P_picture['temp']['name'] + '_'+ "{:04d}".format( P_picture['index'] ) + '.' + P_picture['extension']
+    P_picture['temp']['file'] =  P_picture['folder'] + "/" + I_prefix + P_picture['temp']['name'] + '_'+ "{:04d}".format( P_picture['index'] ) + '.' + P_picture['extension']
 
     print( P_picture['temp']['file'], flush = True  )
 
@@ -87,7 +90,9 @@ def doIt( P_dll, P_picture, P_scene, P_inventory, P_config ):
     A = IceRayPy.type.math.coord.Size2D( P_picture['window']['A']['x'], P_picture['window']['A']['y'] )
     B = IceRayPy.type.math.coord.Size2D( P_picture['window']['B']['x'], P_picture['window']['B']['y'] )
 
-    IceRayPy.type.graph.Crop( P_dll, P_picture['temp']['crop'], P_picture['temp']['object'], A, B )
+    IceRayPy.type.graph.Crop( P_picture['temp']['crop'], P_picture['temp']['object'], A, B )
+    #if( 'watermark' in P_picture ):
+    #IceRayPy.type.graph.Print( P_picture['temp']['crop'], Size2D(0,0), P_picture['watermark'] )
 
     #P_picture['temp']['crop'].store( P_picture['temp']['file'] )
 

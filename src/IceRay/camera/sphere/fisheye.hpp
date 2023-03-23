@@ -30,12 +30,12 @@
               void   Fv_system( T_affine &, T_coord2D const& P_uv )const;
 
             public:  // property scalar  horizon
-              T_scalar  const& F_horizont()const{ return M2_horizont; }
-              bool             F_horizont( T_scalar const& P_horizont ){ M2_horizont = P_horizont; return bool( true ); }
+              T_scalar  const& F_horizontal()const{ return M2_horizontal; }
+              bool             F_horizontal( T_scalar const& P_horizontal ){ M2_horizontal = P_horizontal; return bool( true ); }
             protected:
-              T_scalar        & F1_horizont(){ return M2_horizont; }
+              T_scalar        & F1_horizontal(){ return M2_horizontal; }
             private:
-              T_scalar M2_horizont;
+              T_scalar M2_horizontal;
 
             public:  // property scalar  vertical
               T_scalar    const& F_vertical()const{ return M2_vertical; }

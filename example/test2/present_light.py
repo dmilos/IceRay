@@ -101,9 +101,24 @@ light_list = [
         'disc'        ,
  ]
 
-for index in range( 0, 1, 1 ) :
-    I_picture['index'] = index
-    for item in light_list :
-        I_scene['light']= item
-        render.doIt( I_dll, I_picture, I_scene, I_inventory, I_config )
+for item in light_list :
+    I_scene['light']= item
+    render.doIt( I_dll, I_picture, I_scene, I_inventory, I_config )
 
+import os
+def prepare_readme():
+    os.rename( I_picture['folder']+'/'+    'TODO.pnm'            , I_picture['folder']+'/'+'TODO.pnm' ) 
+
+
+
+#debug
+#for index in range( 0, 1, 1 ) :
+#    I_picture['index'] = index
+#    for item in light_list :
+#        I_scene['light']= item
+#        render.doIt( I_dll, I_picture, I_scene, I_inventory, I_config )
+
+
+#import os
+#def prepare_readme():
+#   os.rename

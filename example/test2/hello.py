@@ -84,7 +84,7 @@ def doRendering(P_config): # P_folder, P_dll, P_eye, P_view
     A = IceRayPy.type.math.coord.Size2D( P_config['window']['A']['x'], P_config['window']['A']['y'] )
     B = IceRayPy.type.math.coord.Size2D( P_config['window']['B']['x'], P_config['window']['B']['y'] )
 
-    IceRayPy.type.graph.Crop( P_config['dll'], crop, picture, A, B )
+    IceRayPy.type.graph.Crop( crop, picture, A, B )
 
     crop.storePNM( filen_name )
 

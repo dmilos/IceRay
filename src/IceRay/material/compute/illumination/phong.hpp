@@ -113,6 +113,7 @@
                typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC__base<T_size>    T2_memorySize;
 
                typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC__base<T_color >  T2_memoryColor;
+
                typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC__base<T_spot>    T2_memorySpot;
 
              public:
@@ -120,6 +121,7 @@
                 {
                  T_instruction::Fv_memory( P_memory );
                  M2_memorySize   = P_memory->F_get<T_size>();
+
                  M2_memoryColor  = P_memory->F_get<T_color>(   );
 
                  M2_memorySpot   = P_memory->F_get<T_spot>( );

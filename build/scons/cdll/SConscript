@@ -142,6 +142,7 @@ if( False ):
             cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'material', 'pigment', 'instruction', 'illumination.cpp' ) ]
             cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'material', 'pigment', 'instruction', 'light.cpp' ) ]
             cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'material', 'pigment', 'instruction', 'nop.cpp' ) ]
+            cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'material', 'pigment', 'instruction', 'setup.cpp' ) ]
             cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'material', 'pigment', 'instruction', 'operation.cpp' ) ]
             cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'material', 'pigment', 'instruction', 'pattern.cpp' ) ]
             cc_files += [ os.path.join( 'main', 'interface', 'c', 'core', 'material', 'pigment', 'instruction', 'transmission.cpp' ) ]

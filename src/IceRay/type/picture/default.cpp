@@ -4,16 +4,20 @@ namespace GS_DDMRM{ namespace S_IceRay{ namespace S_type{ namespace S_picture {
 
 void GF_default( GS_DDMRM::S_IceRay::S_type::S_picture::GC__pure & P_image )
  {
-  GS_DDMRM::S_IceRay::S_type::S_picture::GC__pure::T_coord I_coord;
-  double I_width  = P_image.F_size()[0];
-  double I_height = P_image.F_size()[1];
-  typedef   color::hsl<double> hsl_t;
-  typedef  GS_DDMRM::S_IceRay::S_type::S_picture::GC__pure::T_color Tf_color;
   typedef  GS_DDMRM::S_IceRay::S_type::GT_scalar Tf_scalar;
+  typedef  GS_DDMRM::S_IceRay::S_type::S_picture::GC__pure::T_color Tf_color;
+  
+  GS_DDMRM::S_IceRay::S_type::S_picture::GC__pure::T_coord I_coord;
+
+  Tf_scalar I_width  = (Tf_scalar)P_image.F_size()[0];
+  Tf_scalar I_height = (Tf_scalar)P_image.F_size()[1];
+  typedef   color::hsl<Tf_scalar> hsl_t;
+  typedef   color::rgb<Tf_scalar> rgb_t;
+  typedef   color::gray<Tf_scalar> gray_t;
 
   auto rainbow_ribbon = []( Tf_scalar const& P_scalar )-> Tf_color
    {
-    color::hsl<double> c;
+    hsl_t c;
     c[0] = 360*P_scalar;
     c[1] = 100;
     c[2] = 50;
@@ -22,17 +26,17 @@ void GF_default( GS_DDMRM::S_IceRay::S_type::S_picture::GC__pure & P_image )
 
   auto gray_ribbon = []( Tf_scalar const& P_scalar )-> Tf_color
    {
-    return Tf_color( ::color::gray<Tf_scalar>( { P_scalar } ) );
+    return Tf_color( gray_t( { P_scalar } ) );
    };
 
-  auto rgb_ribbon = []( Tf_scalar const& P_scalar )-> color::rgb<Tf_scalar>
+  auto rgb_ribbon = []( Tf_scalar const& P_scalar )-> rgb_t
    {
-    if( P_scalar < Tf_scalar(1)/ Tf_scalar(6) ) return color::rgb<Tf_scalar>( { 6*P_scalar-0,            0,            0 } );
-    if( P_scalar < Tf_scalar(2)/ Tf_scalar(6) ) return color::rgb<Tf_scalar>( {            0, 6*P_scalar-1,            0 } );
-    if( P_scalar < Tf_scalar(3)/ Tf_scalar(6) ) return color::rgb<Tf_scalar>( {            0,            0, 6*P_scalar-2 } );
-    if( P_scalar < Tf_scalar(4)/ Tf_scalar(6) ) return color::rgb<Tf_scalar>( {            0, 6*P_scalar-3, 6*P_scalar-3 } );
-    if( P_scalar < Tf_scalar(5)/ Tf_scalar(6) ) return color::rgb<Tf_scalar>( { 6*P_scalar-4,            0, 6*P_scalar-4 } );
-    if( P_scalar < Tf_scalar(6)/ Tf_scalar(6) ) return color::rgb<Tf_scalar>( { 6*P_scalar-5, 6*P_scalar-5,            0 });
+    if( P_scalar < Tf_scalar(1)/ Tf_scalar(6) ) return rgb_t( { 6*P_scalar-0,            0,            0 } );
+    if( P_scalar < Tf_scalar(2)/ Tf_scalar(6) ) return rgb_t( {            0, 6*P_scalar-1,            0 } );
+    if( P_scalar < Tf_scalar(3)/ Tf_scalar(6) ) return rgb_t( {            0,            0, 6*P_scalar-2 } );
+    if( P_scalar < Tf_scalar(4)/ Tf_scalar(6) ) return rgb_t( {            0, 6*P_scalar-3, 6*P_scalar-3 } );
+    if( P_scalar < Tf_scalar(5)/ Tf_scalar(6) ) return rgb_t( { 6*P_scalar-4,            0, 6*P_scalar-4 } );
+    if( P_scalar < Tf_scalar(6)/ Tf_scalar(6) ) return rgb_t( { 6*P_scalar-5, 6*P_scalar-5,            0 });
     return color::rgb<Tf_scalar>( { 1, 1, 1 } );
    };
 

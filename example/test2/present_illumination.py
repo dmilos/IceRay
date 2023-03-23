@@ -49,7 +49,7 @@ I_scene['camera']     = 'F-persp'
 I_scene['geometry']   = 'Q-sphere' # + cookie + torus ??
 I_scene['medium']     = 'trans'
 I_scene['pigment']    = 'I-ALP'
-I_scene['light']      = 'chand-nine'
+I_scene['light']      = 'point'
 I_scene['decoration'] = 'plate'
 
 
@@ -60,6 +60,7 @@ import library_pigment
 import library_medium
 import library_geometry
 import library_decoration
+import library_path
 
 
 I_inventory= {}
@@ -95,8 +96,11 @@ pigment_list =[
       'I-ambient'       ,
       'I-AsDiffuse'     ,
       'I-AsSpecular'    ,
-      'I-Beckmann'      ,
+      'I-AS'    ,
+      'I-beckmann-iso'  ,
       'I-Blinn'         ,
+      'I-Burley-diff'   ,
+      'I-Burley-spec'   ,
       'I-gaussian'      ,
       'I-HsLambert'     ,
       'I-HsPhong'       ,
@@ -110,18 +114,64 @@ pigment_list =[
       'I-WardApprox'    ,
       'I-WardIsotropic' ,
       'I-WardReal'      ,
+      'I-CT'
 ]
 
-for item in pigment_list :
-    I_scene['pigment']= item
-    render.doIt( I_dll, I_picture, I_scene, I_inventory, I_config )
- 
+I_config['composer'] = {}
+I_config['composer']['hot'] = {}
+I_config['composer']['hot']['x'] = 400
+I_config['composer']['hot']['y'] = 300
+
 geometry_list = [
-     'Q-sphere'
+      'Q-sphere'
+     # 'F-box'
  ]
+
+I_picture['prefix'] = ''
 
 for geometry_item in geometry_list :
     I_scene['geometry']= geometry_item
     for pigment_item in pigment_list :
         I_scene['pigment']= pigment_item
         render.doIt( I_dll, I_picture, I_scene, I_inventory, I_config )
+
+import os
+def prepare_readme():
+    os.rename( I_picture['folder']+'/'+    'TODO.pnm'            , I_picture['folder']+'/'+'TODO.pnm' ) 
+
+##debug
+#I_scene['geometry']=  'F-plane'
+#
+#for index in range( 0, 3, 4 ):
+#    I_picture['index'] = index
+#    #I_config['pigment']['specular']  = IceRayPy.type.color.RGB(1, 0.1, 0.01)
+#    #I_config['pigment']['roughness'] = 0.3
+#    #I_config['pigment']['gamma']     = 2
+#    #I_config['pigment']['F0']        = 0.1
+#
+#    t = index / 360.0
+#    I_picture['time'] = t
+#    I_picture['index'] = index
+#    [x,y,height] = library_path.list['circle']( t, {'height':2} )
+#    I_config['camera'][ 'eye']   = IceRayPy.type.math.coord.Scalar3D( 0, -2,  3 )
+#    I_config['camera']['view']   = IceRayPy.type.math.coord.Scalar3D(  0, 0, +1 )
+#
+#    I_scene['pigment']    = 'I-TR-ani'
+#    render.doIt( I_dll, I_picture, I_scene, I_inventory, I_config )
+
+#I_config['pigment']['diffuse']  = IceRayPy.type.color.RGB( 3.5, 2.5, 1.5 )
+#I_config['pigment']['specular']  = IceRayPy.type.color.RGB( 0.5, 0.5, 0.5 )
+
+#for u in [10,1000, 10000]:
+#    for v in [100,1000, 10000]:
+#
+#        I_picture['prefix'] = 'u'+str(u)+ "_v" + str(v)
+#
+#        I_picture['index'] = 0
+#        I_config['pigment']['roughnessX']        = 30
+#        I_config['pigment']['roughnessY']        = 30
+#
+#        I_scene['pigment']    = 'I-TR-ani'
+#        render.doIt( I_dll, I_picture, I_scene, I_inventory, I_config )
+#        break
+#    break

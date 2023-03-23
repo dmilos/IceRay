@@ -17,7 +17,7 @@ import IceRayPy
 
 
 import composer
-import obseravtion
+import library_path
 import signal
 import faulthandler
 
@@ -38,7 +38,7 @@ camera_inventory = library_camera.list
 camera_list = [ 'F-persp'  ]
 
 light_inventory = library_light.list
-light_list = [ 'chand-studio', 'point' ]
+light_list = [  'point' ]
 
 medium_inventory = library_medium.list
 medium_list = ['trans']
@@ -51,7 +51,7 @@ geometry_list = [
 pigment_inventory =  library_pigment.list
 pigment_list =[
       #'I-ALP'           ,
-      'T-B-refract-schlick' ,
+      'I-TR-ani' ,
       #'X-Coord3D2Color'  ,
       #'I-ONf29'         ,
 ]
@@ -72,7 +72,7 @@ room_list = [
 decoration_inventory = library_decoration.list
 decoration_item = 'rings'
 
-path_inventory= obseravtion.list
+path_inventory = library_path.list
 
 path_item = 'looker'
 
@@ -161,7 +161,7 @@ def doRendering(P_config):
                        A = IceRayPy.type.math.coord.Size2D( P_config['window']['A']['x'], P_config['window']['A']['y'] )
                        B = IceRayPy.type.math.coord.Size2D( P_config['window']['B']['x'], P_config['window']['B']['y'] )
 
-                       IceRayPy.type.graph.Crop( P_config['dll'], crop, GI_save_image_image, A, B )
+                       IceRayPy.type.graph.Crop( crop, GI_save_image_image, A, B )
 
                        crop.storePNM( filen_name )
 
@@ -181,7 +181,7 @@ start = 0;
 if( 1 < len( sys.argv ) ):
     start = int( sys.argv[1] )
 
-step = 1
+step = 6
 if( 2 < len( sys.argv ) ):
     step = int( sys.argv[2] )
 

@@ -11,6 +11,7 @@ class Horizontal:
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Camera_Cylinder_Horizontal0()
+
         if( None != P_config ):
             if( 'width' in P_config ):
                 self.width( P_config['width'] )

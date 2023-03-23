@@ -31,18 +31,52 @@ H F( AsSpecular0 )( S( result ), S( point     ), S( normal    ), S( spotBegin ),
   auto I_this = new Tf_this{ P_result, P_point     ,P_normal    ,P_spotBegin , P_spotEnd, P_specular, P_nu  ,P_nv  };
   return cpp2c( I_this );
  }
-H F( Beckmann0    )( S( result ), S( point     ), S( normal    ), S( spotBegin ), S( spotEnd ), S( specular   ), S( roughness  ) )
+H F( Beckmann_Isotropic0    )( S( result ), S( point     ), S( normal    ), S( spotBegin ), S( spotEnd ), S( specular   ), S( roughness  ) )
  {
-  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_illumination::GC_beckmann Tf_this;
+  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_illumination::S_beckmann::GC_isotropic Tf_this;
   auto I_this = new Tf_this{ P_result, P_point     ,P_normal    ,P_spotBegin , P_spotEnd, P_specular  ,P_roughness  };
   return cpp2c( I_this );
  }
+H F( Beckmann_Anisotropic0    )( S( result ), S( point     ), S( normal    ), S( spotBegin ), S( spotEnd ), S( specular   ), S( roughnessX  ), S( roughnessY  ) )
+ {
+  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_illumination::S_beckmann::GC_anisotropic Tf_this;
+  auto I_this = new Tf_this{ P_result, P_point     ,P_normal    ,P_spotBegin , P_spotEnd, P_specular, P_roughnessX, P_roughnessY  };
+  return cpp2c( I_this );
+ }
+
+H F( TrowbridgeReitz_Isotropic0    )( S( result ), S( point     ), S( normal    ), S( spotBegin ), S( spotEnd ), S( specular   ), S( roughness  ) )
+ {
+  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_illumination::S_TrowbridgeReitz::GC_isotropic Tf_this;
+  auto I_this = new Tf_this{ P_result, P_point     ,P_normal    ,P_spotBegin , P_spotEnd, P_specular  ,P_roughness  };
+  return cpp2c( I_this );
+ }
+H F( TrowbridgeReitz_Anisotropic0    )( S( result ), S( point     ), S( normal    ), S( spotBegin ), S( spotEnd ), S( specular   ), S( roughnessX  ), S( roughnessY  ) )
+ {
+  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_illumination::S_TrowbridgeReitz::GC_anisotropic Tf_this;
+  auto I_this = new Tf_this{ P_result, P_point     ,P_normal    ,P_spotBegin , P_spotEnd, P_specular, P_roughnessX, P_roughnessY  };
+  return cpp2c( I_this );
+ }
+
 H F( Blinn0       )( S( result ), S( point     ), S( normal    ), S( spotBegin ), S( spotEnd ), S( specular   ), S( shininess  ) )
  {
   typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_illumination::GC_blinn Tf_this;
   auto I_this = new Tf_this{ P_result, P_point     ,P_normal    ,P_spotBegin , P_spotEnd, P_specular  ,P_shininess };
   return cpp2c( I_this );
  }
+
+H F( Burley_Diffuse0       )( S( result ), S( point     ), S( normal    ), S( spotBegin ), S( spotEnd ), S( diffuse   ), S( roughness  ) )
+ {
+  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_illumination::S_burley::GC_diffuse Tf_this;
+  auto I_this = new Tf_this{ P_result, P_point     ,P_normal    ,P_spotBegin , P_spotEnd, P_diffuse, P_roughness };
+  return cpp2c( I_this );
+ }
+H F( Burley_Specular0       )( S( result ), S( point     ), S( normal    ), S( spotBegin ), S( spotEnd ), S( specular ), S( roughness  ), S( gamma  ), S( F0  ) )
+ { //! TODO
+  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_illumination::S_burley::GC_specular Tf_this;
+  auto I_this = new Tf_this{ P_result, P_point     ,P_normal    ,P_spotBegin , P_spotEnd, P_specular, P_roughness, P_gamma, P_F0 };
+  return cpp2c( I_this );
+ }
+
 H F( Gaussian0    )( S( result ), S( point     ), S( normal    ), S( spotBegin ), S( spotEnd ), S( specular   ), S( smoothness ) )
  {
   typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_illumination::GC_gaussian Tf_this;
@@ -132,6 +166,14 @@ H F( WardReal0      )( S( result ), S( point     ), S( normal    ), S( spotBegin
   auto I_this = new Tf_this{ P_result, P_point     ,P_normal    ,P_spotBegin,  P_spotEnd, P_specular, P_alphaX, P_alphaY, P_direction };
   return cpp2c( I_this );
  }
+
+H F( CookTorrance0  )( S( result ), S( point     ), S( normal    ), S( spotBegin  ), S( spotEnd ), S( distribution ), S( fresnel  ), S( ior  ) )
+ {
+  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_illumination::GC_CookTorrance Tf_this;
+  auto I_this = new Tf_this{ P_result, P_point     ,P_normal    ,P_spotBegin,  P_spotEnd, P_distribution, P_fresnel, P_ior };
+  return cpp2c( I_this );
+ }
+
 
 #undef H
 #undef S

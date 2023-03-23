@@ -46,6 +46,7 @@ IceRayC__EXPORT IceRayC__DECLSPEC  H F( Relu0     )( S P_result, S P_input );
 
 IceRayC__EXPORT IceRayC__DECLSPEC  H F( Congruent1D0 )( S P_count, S P_leader );
 IceRayC__EXPORT IceRayC__DECLSPEC  H F( Congruent2D0 )( S P_count, S P_leader );
+IceRayC__EXPORT IceRayC__DECLSPEC  H F( Congruent3D0 )( S P_count, S P_leader );
 IceRayC__EXPORT IceRayC__DECLSPEC  H F( Sobol1D0     )( S P_count, S P_leader );
 IceRayC__EXPORT IceRayC__DECLSPEC  H F( Sobol2D0     )( S P_count, S P_leader );
 IceRayC__EXPORT IceRayC__DECLSPEC  H F( Standard1D0  )( S P_count, S P_leader );

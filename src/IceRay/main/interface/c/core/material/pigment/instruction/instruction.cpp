@@ -15,6 +15,7 @@
 #include "./scalar.cpp"
 #include "./size.cpp"
 #include "./color.cpp"
+#include "./setup.cpp"
 
 
 

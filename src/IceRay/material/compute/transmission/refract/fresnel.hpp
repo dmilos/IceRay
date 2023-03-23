@@ -74,10 +74,10 @@
 
                      auto const& I_incoming = P_intersect.M_incoming; //!< The ONE
                      auto const& I_intersection = P_intersect.M_intersection;
-                     T_coord  const& I_point    = M2_memoryCoord->Fv_load( F_input<T_coord>(  En_inCoord_Point ) );
-                     T_coord  const& I_normal   = M2_memoryCoord->Fv_load( F_input<T_coord>(  En_inCoord_Normal) );
-                     T_scalar const& I_IOR      = M2_memoryScalar->Fv_load( F_input<T_scalar>( En_inScalar_IOR  ) );
-                     T_color  const& I_albedo   = M2_memoryColor->Fv_load( F_input<T_color>(  En_inColor_Albedo) );
+                     T_coord  const& I_point    = M2_memoryCoord->Fv_load(  F_input<T_coord>(  En_inCoord_Point  ) );
+                     T_coord  const& I_normal   = M2_memoryCoord->Fv_load(  F_input<T_coord>(  En_inCoord_Normal ) );
+                     T_scalar const& I_IOR      = M2_memoryScalar->Fv_load( F_input<T_scalar>( En_inScalar_IOR   ) );
+                     T_color  const& I_albedo   = M2_memoryColor->Fv_load(  F_input<T_color>(  En_inColor_Albedo ) );
 
                      T_scalar I_air   ;
                      T_scalar I_watter;

@@ -52,6 +52,7 @@
                    ,T_size const& P_specular         // = 1
                   )
                   {
+                   F_output<T_color>( En_outColor_result,     P_result );
                    F_input<T_coord>( En_inCoord_Point,      P_inCoord_Point      );
                    F_input<T_coord>( En_inCoord_Normal,     P_inCoord_Normal     );
                    F_input<T_size>(   En_inSize_SpotBegin,  P_inSize_SpotBegin   );
@@ -59,7 +60,6 @@
                    F_input<T_color>( En_inColor_Diffuse,    P_diffuse    );
                    F_input<T_color>( En_inColor_Specular,   P_specular   );
 
-                   F_output<T_color>( En_outColor_result,     P_result );
                   }
 
                public:
@@ -100,7 +100,6 @@
                    M2_memoryColor->Fv_store( F_output<T_color>( En_outColor_result ), I_summae );
                    return true;
                   }
-
 
                private:
                  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC__base<T_size>    T2_memorySize;

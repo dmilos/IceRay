@@ -14,8 +14,10 @@ E D H F( ALP0           )( S( result ), S( point     ), S( normal    ), S( spotB
 E D H F( Ambient0       )( S( result ), S( emission  ) );
 E D H F( AsDiffuse0     )( S( result ), S( point     ), S( normal    ), S( spotBegin ), S( spotEnd ), S( diffuse    ), S( specular   )  );
 E D H F( AsSpecular0    )( S( result ), S( point     ), S( normal    ), S( spotBegin ), S( spotEnd ), S( specular   ), S( nu         ), S( nv        ) );
-E D H F( Beckmann0      )( S( result ), S( point     ), S( normal    ), S( spotBegin ), S( spotEnd ), S( specular   ), S( roughness  ) );
 E D H F( Blinn0         )( S( result ), S( point     ), S( normal    ), S( spotBegin ), S( spotEnd ), S( specular   ), S( shininess  ) );
+E D H F( Burley_Diffuse0  )( S( result ), S( point     ), S( normal    ), S( spotBegin ), S( spotEnd ), S( diffuse ), S( roughness  ) );
+E D H F( Burley_Specular0 )( S( result ), S( point     ), S( normal    ), S( spotBegin ), S( spotEnd ), S( specular ), S( roughness  ), S( gamma  ), S( F0  ) );
+  
 E D H F( Gaussian0      )( S( result ), S( point     ), S( normal    ), S( spotBegin ), S( spotEnd ), S( specular   ), S( smoothness ) );
 E D H F( Lambert0       )( S( result ), S( point     ), S( normal    ), S( spotBegin ), S( spotEnd ), S( diffuse    ) );
 E D H F( Phong0         )( S( result ),                                 S( spotBegin ), S( spotEnd ), S( specular   ), S( shininess  )  );
@@ -30,9 +32,19 @@ E D H F( ON_Fujii_Proposed    )( S( result ), S( point     ), S( normal    ), S(
 E D H F( ON_Fujii_Qualitative )( S( result ), S( point     ), S( normal    ), S( spotBegin  ), S( spotEnd ), S( rho ), S( sigma ) );
 E D H F( ON_Ouwerkerk         )( S( result ), S( point     ), S( normal    ), S( spotBegin  ), S( spotEnd ), S( rho ), S( sigma ) );
 
+E D H F( Beckmann_Isotropic0   )( S( result ), S( point     ), S( normal    ), S( spotBegin ), S( spotEnd ), S( specular   ), S( roughness  ) );
+E D H F( Beckmann_Anisotropic0 )( S( result ), S( point     ), S( normal    ), S( spotBegin ), S( spotEnd ), S( specular   ), S( roughnessX  ), S( roughnessY  ) );
+
+E D H F( TrowbridgeReitz_Isotropic0   )( S( result ), S( point     ), S( normal    ), S( spotBegin ), S( spotEnd ), S( specular   ), S( roughness  ) );
+E D H F( TrowbridgeReitz_Anisotropic0 )( S( result ), S( point     ), S( normal    ), S( spotBegin ), S( spotEnd ), S( specular   ), S( roughnessX  ), S( roughnessY  ) );
+
+
 E D H F( WardApprox0    )( S( result ), S( point     ), S( normal    ), S( spotBegin  ), S( spotEnd ), S( specular ), S( alphaX  ), S( alphaY ), S( direction ) );
 E D H F( WardIsotropic0 )( S( result ), S( point     ), S( normal    ), S( spotBegin  ), S( spotEnd ), S( specular ), S( alpha   ) );
 E D H F( WardReal0      )( S( result ), S( point     ), S( normal    ), S( spotBegin  ), S( spotEnd ), S( specular ), S( alphaX  ), S( alphaY ), S( direction ) );
+
+E D H F( CookTorrance0  )( S( result ), S( point     ), S( normal    ), S( spotBegin  ), S( spotEnd ), S( distribution ), S( fresnel  ), S( ior  ) );
+
 
 
 #undef D

@@ -38,7 +38,7 @@
                M2_structure.F_clear();
                M2_structure.F_spot().reserve( P_size * P_size );
 
-               T_scalar I_radius = P_size;
+               T_scalar I_radius = (T_scalar)P_size;
 
                T_scalar I_height = sqrt(T_scalar(3))/T_scalar(2);
                T_integer I_gridX = T_integer(I_radius + 0.5 );

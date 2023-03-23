@@ -35,9 +35,9 @@
                 public:
                   GC__model
                   (
-                    T_size const& P_outResult           = 0
-                   ,T_size const& P_inValue             = 1 // !< index in candidate list. Do not care for length
-                   ,T_size const& P_inCandidateStart    = 2
+                    T_size const& P_outResult           
+                   ,T_size const& P_inValue              // !< index in candidate list. Do not care for length
+                   ,T_size const& P_inCandidateStart    
                   )
                   {
                    this->F_output<T_type>( En_outTYPE_ResultValue,  P_outResult );
@@ -50,7 +50,8 @@
                   bool    Fv_execute( T_beam &P_next, T_pigment::T_intersect const& P_intersect, T_state const& P_state )const
                    {
                     T_size const& I_index  = M2_memorySize->Fv_load( this->F_input<T_size>(En_inSize_Value) );
-                    T_type const& I_result = M2_memoryTYPE->Fv_load( this->F_input<T_type>(En_inTYPE_StartCandidate) + I_index );
+                    T_size const& I_begin  = this->F_input<T_type>(En_inTYPE_StartCandidate);
+                    T_type const& I_result = M2_memoryTYPE->Fv_load( I_begin + I_index );
 
                     M2_memoryTYPE->Fv_store( this->F_output<T_type>(En_outTYPE_ResultValue), I_result );
                     return true;

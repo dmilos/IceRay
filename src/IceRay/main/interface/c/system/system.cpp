@@ -19,7 +19,7 @@ int  IceRayC_System_First( std::size_t P_capacity, char*P_key )
   memcpy( P_key, I_key.c_str(), I_key.size() );
   P_key[ I_key.size() ] = 0;
 
-  return I_key.size();
+  return (int)I_key.size();
  }
 
 int  IceRayC_System_Value( std::size_t P_length, char*P_key, std::size_t P_capacity, char* P_value )
@@ -38,7 +38,7 @@ int  IceRayC_System_Value( std::size_t P_length, char*P_key, std::size_t P_capac
   memcpy( P_value, iterator->second.c_str(), iterator->second.size() );
   P_value[ iterator->second.size() ] = 0;
 
-  return iterator->second.size();
+  return (int)iterator->second.size();
  }
 
 int  IceRayC_System_Next( std::size_t P_length, char*P_current, std::size_t P_capacity, char* P_next )
@@ -62,5 +62,5 @@ int  IceRayC_System_Next( std::size_t P_length, char*P_current, std::size_t P_ca
   memcpy( P_next, iterator->first.c_str(), iterator->first.size() );
   P_next[ iterator->first.size() ] = 0;
 
-  return iterator->first.size();
+  return (int)iterator->first.size();
  }

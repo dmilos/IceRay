@@ -27,7 +27,7 @@
              public:
                GC_approx
                 (
-                  T_coord const&  P_direction  //!< unit vector
+                  T_coord const&  P_thread  //!< unit vector
                  ,T_color const&  P_specular   //!< no limits
                  ,T_scalar const&  P_alphaX     //!< 0 != P_alphaX[i] * P_alphaY[i]
                  ,T_scalar const&  P_alphaY     //!< 0 != P_alphaX[i] * P_alphaY[i]
@@ -35,7 +35,7 @@
                 : M2_specular( P_specular )
                 , M2_alphaX( P_alphaX )
                 , M2_alphaY( P_alphaY )
-                , M2_direction( P_direction )
+                , M2_thread( P_thread )
                 {
                  M2_aX2 = M2_alphaX * M2_alphaX;
                  M2_aY2 = M2_alphaY * M2_alphaY;
@@ -58,7 +58,7 @@
                  T_scalar I_hn =  ::math::linear::vector::dot( P_half,    P_normal );
 
                  T_coord I_y;
-                 ::math::linear::vector::cross( I_y, P_normal, M2_direction );
+                 ::math::linear::vector::cross( I_y, P_normal, M2_thread );
                  ::math::linear::vector::length( I_y, T_scalar(1) );
 
                  T_coord I_x;
@@ -85,7 +85,7 @@
                T_scalar const& M2_alphaX;  T_scalar M2_aX2;
                T_scalar const& M2_alphaY;  T_scalar M2_aY2;
                T_scalar M2_aXY;
-               T_coord const& M2_direction;
+               T_coord const& M2_thread;
             };
 
           }

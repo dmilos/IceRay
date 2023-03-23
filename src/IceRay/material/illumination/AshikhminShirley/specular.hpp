@@ -43,13 +43,11 @@
                 ,T_coord const&  P_v
                )
                {
-                T_coord const& I_k = P_2viewer;
-
                 T_scalar I_hu = ::math::linear::vector::dot( P_half, P_u  );
                 T_scalar I_hv = ::math::linear::vector::dot( P_half, P_v  );
                 T_scalar I_hn = ::math::linear::vector::dot( P_half, P_normal  );
 
-                T_scalar I_hk = ::math::linear::vector::dot( P_half, I_k  );
+                T_scalar I_hk = ::math::linear::vector::dot( P_half, P_2viewer  );
 
                 T_scalar I_nL = ::math::linear::vector::dot( P_normal, P_2light  );
                 T_scalar I_nV = ::math::linear::vector::dot( P_normal, P_2viewer );

@@ -2,8 +2,8 @@
 
 import time
 import math
-import sys
 import os
+import sys
 import IceRayPy
 
 import IceRayPy
@@ -45,7 +45,7 @@ I_picture['window']['B']['y'] = I_picture['height']
 
 I_scene = {}
 I_scene['room']       = 'C-close'
-I_scene['camera']     =  'F-persp'
+I_scene['camera']     = 'F-persp'
 I_scene['geometry']   = 'vacuum'
 I_scene['medium']     = 'trans'
 I_scene['pigment']    = 'I-ALP'
@@ -96,9 +96,9 @@ geometry_list = [
  ]
 
 pigment_list =[
-      'P-noise-vdc'        ,
+
       'P-image'            ,
-      
+
       'P-level'            ,
       'P-gradientBW' ,
 
@@ -114,6 +114,16 @@ pigment_list =[
       'M-o-Spherical2Cartesian'    ,
       'M-o-Spherical2Cylindric'    ,
 ]
+
+geometry_list = [ 'F-plane' ] #debug
+pigment_list =[ 'P-noise-congruent3d' ]
+for geometry_item in geometry_list :
+    I_scene['geometry']= geometry_item
+    for pigment_item in pigment_list :
+        I_scene['pigment']= pigment_item
+        render.doIt( I_dll, I_picture, I_scene, I_inventory, I_config )
+
+
 
 for geometry_item in geometry_list :
     I_scene['geometry']= geometry_item
@@ -148,7 +158,7 @@ for geometry_item in geometry_list :
         render.doIt( I_dll, I_picture, I_scene, I_inventory, I_config )
 
 geometry_list = [ 'F-plane' ]
-pigment_list =[ 'P-onion','P-checker' , 'P-hexagon',  'P-noise-cells', 'P-noise-crackle'    , 'P-noise-perlin'     ,'P-noise-random', 'P-noise-congruent', 'P-noise-value', 'M-o-Cartesian2Spherical' ]
+pigment_list =[ 'P-onion','P-checker' , 'P-hexagon', 'P-noise-vdc' , 'P-noise-cells', 'P-noise-crackle'    , 'P-noise-perlin'     ,'P-noise-random', 'P-noise-congruent1d', 'P-noise-congruent3d', 'P-noise-value', 'M-o-Cartesian2Spherical' ]
 for geometry_item in geometry_list :
     I_scene['geometry']= geometry_item
     for pigment_item in pigment_list :
@@ -164,3 +174,39 @@ for geometry_item in geometry_list :
         I_scene['pigment']= pigment_item
         render.doIt( I_dll, I_picture, I_scene, I_inventory, I_config )
 
+
+import os
+def prepare_readme():
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-box_trans_M-o-Cartesian2Cylindric_point_0000.pnm' ,     I_picture['folder']+'/'+   'transform-Cartesian2Cylindric.pnm'   )
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-box_trans_M-o-Cartesian2Package_point_0000.pnm' ,       I_picture['folder']+'/'+   'transform-Cartesian2Package.pnm'   )
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-box_trans_M-o-Cylindric2Cartesian_point_0000.pnm' ,     I_picture['folder']+'/'+   'transform-Cylindric2Cartesian_point.pnm'   )
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-box_trans_M-o-Cylindric2Spherical_point_0000.pnm' ,     I_picture['folder']+'/'+   'transform-Cylindric2Spherical.pnm'   )
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-box_trans_M-o-Euclid2Max_point_0000.pnm' ,              I_picture['folder']+'/'+   'transform-Euclid2Max.pnm'   )
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-box_trans_M-o-Max2Euclid_point_0000.pnm' ,              I_picture['folder']+'/'+   'transform-Max2Euclid.pnm'   )
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-box_trans_M-o-Spherical2Cartesian_point_0000.pnm' ,     I_picture['folder']+'/'+   'transform-Spherical2Cartesian.pnm'   )
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-box_trans_M-o-Spherical2Cylindric_point_0000.pnm' ,     I_picture['folder']+'/'+   'transform-Spherical2Cylindric.pnm'   )
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_Q-sphere_trans_M-o-Cartesian2Fisheye_point_0000.pnm' ,    I_picture['folder']+'/'+   'transform-Cartesian2Fisheye.pnm'   )
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_Q-sphere_trans_M-o-Cartesian2Tablecloth_point_0000.pnm' , I_picture['folder']+'/'+   'transform-Cartesian2Tablecloth.pnm'   )
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_Q-sphere_trans_M-o-Cartesian2WoodX_point_0000.pnm' ,      I_picture['folder']+'/'+   'transform-Cartesian2WoodX.pnm'   )
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_Q-sphere_trans_M-o-Cartesian2WoodY_point_0000.pnm' ,      I_picture['folder']+'/'+   'transform-Cartesian2WoodY.pnm'   )
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_Q-cylinder_trans_M-o-Cartesian2WoodZ_point_0000.pnm' ,    I_picture['folder']+'/'+   'transform-Cartesian2WoodZ.pnm'   )
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_S-torus_trans_M-o-Cartesian2Torus_point_0000.pnm' ,       I_picture['folder']+'/'+   'transform-Cartesian2Torus.pnm'   )
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-plane_trans_M-o-Cartesian2Spherical_point_0000.pnm' ,   I_picture['folder']+'/'+   'transform-Cartesian2Spherical.pnm'   )
+
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-box_trans_P-gradientBW_point_0000.pnm' ,        I_picture['folder']+'/'+   'function-gradient.pnm'   )
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-plane_trans_P-checker_point_0000.pnm' ,         I_picture['folder']+'/'+   'function-checker.pnm'   )
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-plane_trans_P-hexagon_point_0000.pnm' ,         I_picture['folder']+'/'+   'function-hexagon.pnm'   )
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-plane_trans_P-onion_point_0000.pnm' ,           I_picture['folder']+'/'+   'function-onion.pnm'   )
+
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-plane_trans_P-noise-cells_point_0000.pnm' ,     I_picture['folder']+'/'+   'noise-cells.pnm'   )
+
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-plane_trans_P-noise-congruent1d_point_0000.pnm' , I_picture['folder']+'/'+   'noise-congruent1d.pnm'   )
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-plane_trans_P-noise-congruent3d_point_0000.pnm' , I_picture['folder']+'/'+   'noise-congruent3d.pnm'   )
+
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-plane_trans_P-noise-crackle_point_0000.pnm' ,   I_picture['folder']+'/'+   'noise-crackle.pnm'   )
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-plane_trans_P-noise-perlin_point_0000.pnm' ,    I_picture['folder']+'/'+   'noise-perlin.pnm'   )
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-plane_trans_P-noise-random_point_0000.pnm' ,    I_picture['folder']+'/'+   'noise-random.pnm'   )
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-plane_trans_P-noise-value_point_0000.pnm' ,     I_picture['folder']+'/'+   'noise-value.pnm'   )
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-plane_trans_P-noise-vdc_point_0000.pnm' ,       I_picture['folder']+'/'+   'noise-vdc.pnm'   )
+
+# prepare_readme()

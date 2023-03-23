@@ -5,6 +5,7 @@
 #include "./pattern/pattern.hpp"
 #include "./transmission/transmission.hpp"
 #include "./convert/convert.hpp"
+#include "./setup/setup.hpp"
 
 #include "./instruction.hpp"
 #include "./memory.hpp"

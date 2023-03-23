@@ -164,10 +164,25 @@
              En_inCoord3D_Const__End = En_inCoord3D_Const__Begin + 10,
 
              En_inCoord3D_Dynamic__Begin = En_inCoord3D_Const__End,
-             En_inCoord3D_DynamicPoint,
-             En_inCoord3D_DynamicNormal,
-             En_inCoord3D_DynamicBump,
-             En_inCoord3D_DynamicUVW,
+
+             En_inCoord3D_Dynamic_Origin,
+             En_inCoord3D_Dynamic_Incident,
+             En_inCoord3D_Dynamic_Point,
+             En_inCoord3D_Dynamic_Normal,
+             En_inCoord3D_Dynamic_Reflected,
+             En_inCoord3D_Dynamic_Bump,
+             En_inCoord3D_Dynamic_UVW,
+             En_inCoord3D_Dynamic_2Viewer,
+
+             En_inCoord3D_Dynamic_Surface_X, //!Local coordinate system at point with normal as Z, Y = NxV, x = Nx(NxV)
+             En_inCoord3D_Dynamic_Surface_Y, //!Local coordinate system at point with normal as Z, Y = NxV, x = Nx(NxV)
+
+             En_inCoord3D_Dynamic_Incident_X, //!Local coordinate system at point with incident as Z, Y = NxV, x = Nx(NxV)
+             En_inCoord3D_Dynamic_Incident_Y, //!Local coordinate system at point with incident as Z, Y = NxV, x = Nx(NxV)
+
+             En_inCoord3D_Dynamic_Reflect_X, //!Local coordinate system at point with reflected as Z, Y = NxV, x = Nx(NxV)
+             En_inCoord3D_Dynamic_Reflect_Y, //!Local coordinate system at point with reflected as Z, Y = NxV, x = Nx(NxV)
+
              En_inCoord3D_Dynamic__End = En_inCoord3D_Dynamic__Begin + 10,
 
              En_inCoord3D_Temporal__Begin = En_inCoord3D_Dynamic__End + 1,

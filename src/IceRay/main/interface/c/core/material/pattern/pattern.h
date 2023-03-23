@@ -32,6 +32,9 @@ IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Material_Pattern_Handle IceRayC_Mater
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Noise_Random0( );
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Noise_Value0( );
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Noise_Vdc0( );
+
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Noise_Congruent1D0( );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Noise_Congruent2D0( );
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Noise_Congruent3D0( );
 
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Side_Cube0( );

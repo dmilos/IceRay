@@ -85,7 +85,6 @@
 
            public:
              bool F_child( T__base *P_child );
-             //T_geometry* F_child( );
 
            private:
              typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_intersect    T2_intersect;

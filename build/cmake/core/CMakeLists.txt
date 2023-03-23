@@ -31,7 +31,7 @@ set( cpp_file_list    "./cpp.lst.txt" )
 
 #Processing
 
-file( GLOB_RECURSE SOURCE_HPP "${directory_source}/*IceRay/.hpp")
+file( GLOB_RECURSE SOURCE_HPP "${directory_source}/IceRay/*.hpp")
 
 source_group( TREE "${directory_include}/" PREFIX "Header Files\\${PROJECT_NAME_BARE}" FILES ${SOURCE_HPP} )
 

@@ -15,7 +15,7 @@
        namespace S_illumination
         {
 
-         class GC_phong
+         class GC_phong //!< Illuminati for computer generated Picture, Bui Tuong Phong, formula (3)
           //: public S_IceRay::S_material::S_illumination::GC__pure
           {
            public:
@@ -36,10 +36,10 @@
                T_color      &  P_result,
                T_color const&  P_light,
                T_coord const&  P_reflected,
-               T_coord const&  P_viewer
+               T_coord const&  P_2light
                )
                {
-                T_scalar I_scalar = ::math::linear::vector::dot( P_reflected, P_viewer );
+                T_scalar I_scalar = ::math::linear::vector::dot( P_reflected, P_2light );
 
                 if( I_scalar < 0 )
                  {

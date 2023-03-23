@@ -66,6 +66,7 @@ class Super:
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Camera_Flat_Super0()
+
         if( None != P_config ):
             if( 'ocular' in P_config ):
                 self.ocular( P_config['ocular'] )

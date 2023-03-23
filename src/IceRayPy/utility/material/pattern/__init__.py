@@ -76,28 +76,54 @@ def Image(
 def Checker(
       P_dll
      ,P_config
-     ,P_black = IceRayPy.type.color.RGB(0,0,0)
-     ,P_white = IceRayPy.type.color.RGB(1,1,1)
+     ,P_black = None
+     ,P_white = None
     ):
 
-    I_pattern = IceRayPy.core.material.pattern.Checker( P_dll )
+    I_black = IceRayPy.type.color.RGB(0,0,0)
+    if( 'black' in P_config ):
+        I_black = P_config[ 'black' ]
+    if(  None != P_black ):
+        I_black = P_black
+
+    I_white = IceRayPy.type.color.RGB(1,1,1)
+    if( 'white' in P_config ):
+        I_white = P_config[ 'white' ]
+    if(  None != P_white ):
+        I_white = P_white
 
     result     = IceRayPy.core.material.instruction.label.color.dynamic.RESULT
     point      = IceRayPy.core.material.instruction.label.coord3d.dynamic.POINT
     normal     = IceRayPy.core.material.instruction.label.coord3d.dynamic.NORMAL
     tempColor  = IceRayPy.core.material.instruction.label.color.temp._BEGIN
     tempSize   = IceRayPy.core.material.instruction.label.size.temp._BEGIN
+    spotBegin  = IceRayPy.core.material.instruction.label.size.dynamic.SpotBegin
+    spotEnd    = IceRayPy.core.material.instruction.label.size.dynamic.SpotEnd
+    lightThe   = IceRayPy.core.material.instruction.label.light.temp._BEGIN
 
     switch = tempSize
+    I_light = IceRayPy.core.light.Point( P_dll, IceRayPy.core.light.Spot( IceRayPy.type.math.coord.Scalar3D( 0, 0, 5 ) ) )
+    if( 'light' in P_config ):
+        I_light = P_config['light']
 
-    temp = IceRayPy.core.material.instruction.label.color.temp._BEGIN
+    I_barrier = IceRayPy.core.geometry.volumetric.Vacuum( P_dll )
+    if( 'barrier' in P_config ):
+        I_barrier = P_config['barrier']
+
 
     I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
 
+    I_surface.append( IceRayPy.core.material.instruction.light.Generator( P_dll, I_light, lightThe ) )
+    I_surface.append( IceRayPy.core.material.instruction.light.SwarmA( P_dll, spotEnd, spotBegin, lightThe, point ) )
+    I_surface.append( IceRayPy.core.material.instruction.light.SpotCull( P_dll, point, normal, spotEnd, spotBegin, spotEnd ) )
+    I_surface.append( IceRayPy.core.material.instruction.light.SpotObstruct( P_dll, I_barrier, spotEnd, spotBegin, spotEnd ) )
+    I_pattern = IceRayPy.core.material.pattern.Checker( P_dll )
+
     I_surface.append( IceRayPy.core.material.instruction.pattern.Size( P_dll, I_pattern, switch, point ) )
-    I_surface.append( IceRayPy.core.material.instruction.constant.Color( P_dll, P_black, temp + 0 ) )
-    I_surface.append( IceRayPy.core.material.instruction.constant.Color( P_dll, P_white, temp + 1 ) )
-    I_surface.append( IceRayPy.core.material.instruction.operation.switch.Color( P_dll, result, switch,  temp + 0 ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Color( P_dll, I_black, tempColor + 0 ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Color( P_dll, I_white, tempColor + 1 ) )
+    I_surface.append( IceRayPy.core.material.instruction.operation.switch.Color( P_dll, tempColor + 2, switch, tempColor + 0 ) )
+    I_surface.append( IceRayPy.core.material.instruction.illumination.Lambert(  P_dll, result, point, normal, spotBegin, spotEnd, tempColor + 2 ) )
 
     return I_surface
 

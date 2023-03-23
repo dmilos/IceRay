@@ -12,4 +12,6 @@
 #include "./scalar.h"
 #include "./size.h"
 #include "./color.h"
+#include "./setup.h"
+
 

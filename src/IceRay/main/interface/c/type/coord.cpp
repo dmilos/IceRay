@@ -228,7 +228,7 @@ int  IceRayC_Type_Math_Coord3D_Cross(    IceRayC_TypeCoordScalar3D *P_this, IceR
 IceRayC__EXPORT IceRayC__DECLSPEC  int  IceRayC_Type_Math_Coord3D_DominantIndex( IceRayC_TypeCoordScalar3D *P_this )
  {
   auto result = ::math::linear::vector::dominant( c2cpp( *P_this ) );
-  return result.first;
+  return (int)result.first;
  }
 
 int  IceRayC_Type_Math_Coord1D_Addition(    IceRayC_TypeCoordScalar1D *P_this, IceRayC_TypeCoordScalar1D* P_left, IceRayC_TypeCoordScalar1D* P_right )

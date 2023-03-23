@@ -10,8 +10,8 @@ S_sphere::GC_fisheye::GC_fisheye()
  {
  }
 
-S_sphere::GC_fisheye::GC_fisheye( T_scalar const& P_horizont, T_scalar const& P_vertical, T_scalar const& P_radius )
- :M2_horizont( P_horizont )
+S_sphere::GC_fisheye::GC_fisheye( T_scalar const& P_horizontal, T_scalar const& P_vertical, T_scalar const& P_radius )
+ :M2_horizontal( P_horizontal )
  ,M2_vertical( P_vertical )
  ,M2_radius( P_radius )
  {
@@ -37,8 +37,8 @@ S_sphere::GC_fisheye::Fv_beam
   I_origin[2] = 0;
 
   T_coord2D I_uv;
-  I_uv[0] = M2_horizont * P_uv[0];
-  I_uv[1] = M2_vertical * P_uv[1];
+  I_uv[0] = M2_horizontal * P_uv[0];
+  I_uv[1] = M2_vertical   * P_uv[1];
 
   T_scalar I_angle = - atan2( I_uv[1], I_uv[0] );
   T_scalar I_len   = ::math::linear::vector::length( I_uv );

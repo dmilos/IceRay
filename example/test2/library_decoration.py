@@ -189,15 +189,16 @@ def plate( P_dll, P_config = { 'shadow': False, 'pigment': None }, P_light = Non
     wrapper.geometrySet( geometry )
     return wrapper
 
-G_angle = math.radians( 180 )
+G_angle = math.radians( 180 + 45 )
 def radiosity( P_dll, P_config = { 'shadow': False, 'pigment': None }, P_light = None, P_exponat = None ):
     I_room = [ 8, 8, 4 ] # [ 6, 6, 3.5 ]
     I_move = [ 1, 1, I_room[2]/2-1 ]
 
-    I_size  = [ 1.8, 1.8, 0.1 ]
+    I_size  = [ 0.1, 0.1, 0.1 ] #!< debug
+    I_size  = [ 1.8, 1.8, 0.1 ] #!< original
     global G_angle
     I_scale = 1.5
-    I_scaleZ = 0.65
+    I_scaleZ = 0.6
     I_center = [ I_scale * I_room[0]/4 * math.cos( G_angle ), I_scale * I_room[1]/4* math.sin( G_angle ), I_scaleZ*(I_room[2]/2 + I_move[2]) ]
 
     I_color = IceRayPy.type.color.RGB( 22.6, 22.6,  22.6 )
@@ -214,16 +215,13 @@ def radiosity( P_dll, P_config = { 'shadow': False, 'pigment': None }, P_light =
 
     geometry = IceRayPy.core.geometry.flat.Box( P_dll )
     geometry.box( Coord3D( lo[0], lo[1], lo[2] ), Coord3D( hi[0], hi[1], hi[2] ) )
-    pigment = IceRayPy.utility.material.pattern.Constant( P_dll, {}, I_color )
     pigment = IceRayPy.utility.material.pattern.Hexagon( P_dll, {}, RGB(15,0,0), RGB(0,15,0), RGB(0,0,15) )
+    pigment = IceRayPy.utility.material.pattern.Constant( P_dll, {}, I_color )
 
     wrapper = IceRayPy.core.object.Wrapper( P_dll )
     wrapper.pigment( pigment )
     wrapper.geometrySet( geometry )
     return wrapper
-
-
-
 
 list = {
       'vacuum'      : vacuum,
@@ -231,5 +229,6 @@ list = {
       #'ptrs-A'     : pointers,
       'radiosity'   : radiosity,
       'plate'       : plate,
-      'rings'       : rings
+      'rings'       : rings,
+      'grid'        : grid
     }

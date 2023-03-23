@@ -27,10 +27,12 @@ set( hpp_file_list    "./hpp.lst.txt" )
 set( cpp_file_list    "./cpp.lst.txt" )
 
 #Processing
-
-file( GLOB_RECURSE SOURCE_HPP "${directory_source}/*IceRay/.hpp")
+set( SOURCE_HPP "" )
+#file( STRINGS ${hpp_file_list} FILE_LIST )
+file( GLOB_RECURSE SOURCE_HPP "${directory_source}/IceRay/main/interface/c/*.hpp")
 source_group( TREE "${directory_include}/" PREFIX "Header Files\\${PROJECT_NAME_BARE}" FILES ${SOURCE_HPP} )
 
+set( SOURCE_CPP "" )
 file( STRINGS ${cpp_file_list} FILE_LIST )
 foreach(file_item IN LISTS FILE_LIST )
   list( APPEND SOURCE_CPP "${directory_source}/${file_item}")

@@ -74,7 +74,7 @@ def plane_checker( P_dll, P_config = { 'level':  - 1.001, 'shadow': False, 'pigm
         if( False == P_config['shadow'] ):
             I_scene['barrier'] = IceRayPy.core.geometry.volumetric.Vacuum( P_dll )
 
-    pigment = IceRayPy.utility.material.illumination.Lambert( P_dll, I_scene, IceRayPy.type.color.RGB( 0.5, 0.5, 0.5 ) )
+    pigment = IceRayPy.utility.material.pattern.Checker( P_dll, I_scene )
     if( 'pigment' in P_config ):
         pigment = P_config['pigment'] #utility.material.pattern.Checker( P_dll, I_scene )
 
@@ -562,10 +562,10 @@ def mirror_sphere(
     return wrapper
 
 list = {
-      'vacuum'      : vacuum,
-      'P-gray'  : plane_gray,
-      'P-checker'  : plane_checker,
-      'P-radiosity'     : radiosity_plane,
+      'V-vacuum'      : vacuum,
+      'P-gray'       : plane_gray,
+      'P-checker'    : plane_checker,
+      'P-radiosity'  : radiosity_plane,
       'plate'       : plate,
       'disc'        : disc,
       'B-mirror'     : mirror_box,

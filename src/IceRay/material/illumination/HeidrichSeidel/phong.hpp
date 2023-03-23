@@ -29,7 +29,7 @@
                GC_phong( T_color const& P_specular, T_color const& P_shininess, /* T_coord const& P_radius,*/ T_coord const& P_groove )
                 : M2_specular( P_specular )
                 , M2_shininess( P_shininess )
-                //, M2_radius( 1 )
+                //, M2_radius( P_radius )
                 , M2_groove( P_groove )
                 {
                  M2_radius[0] = 1.0;
@@ -47,8 +47,6 @@
                  T_coord const&  P_viewer
                  )
                  {
-
-
                   T_coord I_T;
                   ::math::linear::vector::project( I_T, M2_groove, P_normal );
                   ::math::linear::vector::length( I_T, T_scalar(1) );

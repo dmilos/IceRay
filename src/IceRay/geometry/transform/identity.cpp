@@ -7,7 +7,8 @@ struct GC_identity::C_intersect
  {
   bool M_hit;
  };
-
+ 
+GC_identity::T_affine  GC_identity::M2s_ID;
 
 GC_identity::GC_identity()
  :GC_identity( nullptr )
@@ -94,6 +95,15 @@ GC_identity::Fv_uvw( T_coord & P_uvw, T_coord const& P_point, T_state const & P_
   return M2_geometry.M2_uvw->Fv_uvw( P_uvw,  P_point, I_tail );
  }
 
+GC_identity::T_affine const&  GC_identity::Fv_2world( T_state const&P_state )const
+ {
+  return M2s_ID;
+}
+
+GC_identity::T_affine const&  GC_identity::Fv_2local( T_state const&P_state )const
+{
+  return M2s_ID;
+}
 void    GC_identity::Fv_reset( T_state &P_intersect )const
  {
   C_intersect   &I_head = P_intersect.F_content<C_intersect>();

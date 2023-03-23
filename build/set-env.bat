@@ -20,7 +20,7 @@ setx PYTHON37_MSVC12_INCLUDE  c:\prg\Python37\include
 setx PYTHON37_MSVC12_LIBPATH  c:\prg\Python37\libs
 setx PYTHON37_MSVC12_VERSION  37
 
-setx PYTHONPATH %PYTHONPATH%;z:\work\code\cpp\prj\github\IceRay\work\bin\x86-release
-setx PYTHONPATH %PYTHONPATH%;z:\work\code\cpp\prj\github\IceRay\work\bin\x86-release
 setx PYTHONPATH %PYTHONPATH%;z:\work\code\cpp\prj\github\IceRay\work\src;
+setx PYTHONPATH %PYTHONPATH%;z:\work\code\cpp\prj\github\IceRay\work\example
 
+setx PYTHONPATH z:\work\code\cpp\prj\github\IceRay\work\src;z:\work\code\cpp\prj\github\IceRay\work\example

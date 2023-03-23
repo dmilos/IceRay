@@ -48,9 +48,9 @@
            private:
              static T_scalar Fs_table( int x, int y, int z )
                {
-               if( x < 0 ) { x = M2s_table.F_size()[0] - (- x)%M2s_table.F_size()[0]; }
-               if( y < 0 ) { y = M2s_table.F_size()[1] - (- y)%M2s_table.F_size()[1]; }
-               if( z < 0 ) { z = M2s_table.F_size()[2] - (- z)%M2s_table.F_size()[2]; }
+               if( x < 0 ) { x = (int)( M2s_table.F_size()[0] - T_size(-x)%M2s_table.F_size()[0] ); }
+               if( y < 0 ) { y = (int)( M2s_table.F_size()[1] - T_size(-y)%M2s_table.F_size()[1] ); }
+               if( z < 0 ) { z = (int)( M2s_table.F_size()[2] - T_size(-z)%M2s_table.F_size()[2] ); }
                return M2s_table[ { x%M2s_table.F_size()[0], y%M2s_table.F_size()[1], z%M2s_table.F_size()[2] } ][0];
               }
 

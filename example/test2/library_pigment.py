@@ -11,7 +11,8 @@ list = {
       'P-noise-cells'      : IceRayPy.utility.material.pattern.noise.Cells,
       'P-noise-crackle'    : IceRayPy.utility.material.pattern.noise.Crackle,
       'P-noise-perlin'     : IceRayPy.utility.material.pattern.noise.Perlin,
-      'P-noise-congruent'  : IceRayPy.utility.material.pattern.noise.Congruent3D,
+      'P-noise-congruent1d'  : IceRayPy.utility.material.pattern.noise.Congruent1D,
+      'P-noise-congruent3d'  : IceRayPy.utility.material.pattern.noise.Congruent3D,
       'P-noise-random'     : IceRayPy.utility.material.pattern.noise.Random,
       'P-noise-value'      : IceRayPy.utility.material.pattern.noise.Value,
       'P-noise-vdc'        : IceRayPy.utility.material.pattern.noise.VDC,
@@ -26,8 +27,14 @@ list = {
       'I-ambient'       : IceRayPy.utility.material.illumination.Ambient,   # OK OK TODO align with ALP
       'I-AsDiffuse'     : IceRayPy.utility.material.illumination.AsDiffuse, # OK OK TODO align with ALP
       'I-AsSpecular'    : IceRayPy.utility.material.illumination.AsSpecular,# OK OK TODO align with ALP
-      'I-Beckmann'      : IceRayPy.utility.material.illumination.Beckmann,  # OK Check again  TODO problem on terminator
+      'I-AS'            : IceRayPy.utility.material.illumination.AshikminShirley,# OK OK TODO align with ALP
+      'I-beckmann-iso'  : IceRayPy.utility.material.illumination.Beckmann_Isotropic,  # OK Check again  TODO problem on terminator
+      #'I-beckmann-ani'  : IceRayPy.utility.material.illumination.Beckmann_Anisotropic,  # OK Check again  TODO problem on terminator
+      #'I-TR-iso'        : IceRayPy.utility.material.illumination.TrowbridgeReitz_Isotropic,  # TODO
+      'I-TR-ani'        : IceRayPy.utility.material.illumination.TrowbridgeReitz_Anisotropic,  # TODO
       'I-Blinn'         : IceRayPy.utility.material.illumination.Blinn,     # OK OK TODO fix color TODO problem on terminator
+      'I-Burley-diff'   : IceRayPy.utility.material.illumination.Burley_Diffuse,
+      'I-Burley-spec'    : IceRayPy.utility.material.illumination.Burley_Specular,
       'I-gaussian'      : IceRayPy.utility.material.illumination.Gaussian,  # OK OK TODO problem on terminator
       'I-HsLambert'     : IceRayPy.utility.material.illumination.HsLambert, # OK OK TODO align with Alp
       'I-HsPhong'       : IceRayPy.utility.material.illumination.HsPhong,   # OK OK TODO align with Alp
@@ -41,6 +48,7 @@ list = {
       'I-WardApprox'    : IceRayPy.utility.material.illumination.WardApprox,    # OK OK TODO align with ALP
       'I-WardIsotropic' : IceRayPy.utility.material.illumination.WardIsotropic, # OK OK TODO align with ALP
       'I-WardReal'      : IceRayPy.utility.material.illumination.WardReal,      # OK OK TODO align with ALP
+      'I-CT'            : IceRayPy.utility.material.illumination.CookTorrance, # OK OK TODO align with ALP
 
       'M-o-ID'                     : IceRayPy.utility.material.operation.mapping.Identity3D,
       'M-o-translate'              : IceRayPy.utility.material.operation.mapping.Translate3D,

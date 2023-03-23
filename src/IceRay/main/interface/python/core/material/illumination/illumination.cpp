@@ -2,6 +2,7 @@
 #include "./ambient.cpp"
 #include "./beckmann.cpp"
 #include "./blinn.cpp"
+#include "./burley.cpp"
 #include "./gaussian.cpp"
 #include "./hs_lambert.cpp"
 #include "./hs_phong.cpp"

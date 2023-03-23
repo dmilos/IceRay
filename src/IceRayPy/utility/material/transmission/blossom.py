@@ -3,7 +3,7 @@ import math
 import IceRayPy
 
 G_albedo = IceRayPy.type.color.RGB( 1, 1, 1 )
-G_angle = math.radians(15)
+G_angle = math.radians(30)
 G_gauss =  1
 
 
@@ -48,21 +48,21 @@ G_gauss =  1
 
 
 
-G_sizeGrid      =  2 #1,   1     3    7  13
-G_countHex      =  1 #1,   1,    3,   7, 13
+G_sizeGrid      =  6 #1,   1     3    7  13
+G_countHex      =  7 #1,   1,    3,   7, 13
 G_countPinwheel =  0 #0,   0,    0,   0,  0,
 G_countLD       =  0 #0,   0,    0,   0,  0,
 G_countRandom   = 33 #1,   2,   12,  33, 74
 G_countCongruent= 33 #1,   2,   12,  33, 74
 G_countSobol    = 33 #1,   2,   12,  33, 74
-G_countTriangle =  1 #1,   1,    2,   5,  9,  17
+G_countTriangle =  8 #1,   1,    2,   5,  9,  17
 G_countVDC      = 33 #1,   2,   12,  33, 74
 
 def Grid(
      P_dll
     ,P_config = None
     ,P_albedo : IceRayPy.type.color.RGB = G_albedo
-    ,P_side   = G_sizeGrid
+    ,P_sample   = G_sizeGrid
     ,P_leader = 0
     ,P_angle  = G_angle
     ,P_gauss  = G_gauss
@@ -92,7 +92,7 @@ def Grid(
     I_surface.append( IceRayPy.core.material.instruction.constant.Color(  P_dll, IceRayPy.type.color.RGB( 0, 0, 0 ), result ) )
 
     I_surface.append( IceRayPy.core.material.instruction.constant.Color(  P_dll, P_albedo, I_albedo ) )
-    I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, P_side,   I_side   ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, P_sample, I_side   ) )
     I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, P_leader, I_leader ) )
     I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_angle,  I_angle  ) )
     I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_gauss,  I_gauss  ) )

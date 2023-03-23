@@ -36,7 +36,7 @@
            M2_table.resize( M2_size );
            for( T_size i = 0; i < M2_table.size(); ++i )
             {
-             M2_table[i] = i;
+             M2_table[i] = (T_scalar)i;
             }
             return true;
           }

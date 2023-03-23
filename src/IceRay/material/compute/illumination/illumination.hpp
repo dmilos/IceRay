@@ -2,11 +2,21 @@
 #include "./ambient.hpp"
 #include "./as_diffuse.hpp"
 #include "./as_specular.hpp"
-#include "./beckmann.hpp"
-#include "./blinn.hpp"
 
-#include "./ct_fresnel.hpp"
-#include "./ct_schlick.hpp"
+#include "./beckmann_anisotropic.hpp"
+#include "./beckmann_isotrpic.hpp"
+
+#include "./tr_ani.hpp"
+#include "./tr_iso.hpp"
+
+#include "./blinn.hpp"
+#include "./burley_diffuse.hpp"
+#include "./burley_specular.hpp"
+
+#include "./ct.hpp"
+
+#include "./fresnel_approx.hpp"
+#include "./fresnel_complete.hpp"
 
 #include "./gaussian.hpp"
 #include "./hs_lambert.hpp"
@@ -25,3 +35,6 @@
 #include "./ward_approx.hpp"
 #include "./ward_isotropic.hpp"
 #include "./ward_real.hpp"
+
+#include "./aps_gauss.hpp"
+#include "./aps_velvet.hpp"

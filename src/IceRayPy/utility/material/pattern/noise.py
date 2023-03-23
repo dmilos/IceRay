@@ -121,6 +121,22 @@ def VDC(
 
     return I_surface
 
+def Congruent1D(
+      P_dll
+     ,P_config
+    ):
+    I_pattern = IceRayPy.core.material.pattern.noise.Congruent1D( P_dll )
+
+    result = IceRayPy.core.material.instruction.label.color.dynamic.RESULT
+    point = IceRayPy.core.material.instruction.label.coord3d.dynamic.POINT
+    value = IceRayPy.core.material.instruction.label.scalar.temp._BEGIN
+
+    I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
+    I_surface.append( IceRayPy.core.material.instruction.pattern.Scalar( P_dll, I_pattern, value, point ) )
+    I_surface.append( IceRayPy.core.material.instruction.convert.Scalar2Color( P_dll, result, value ) )
+
+    return I_surface
+
 def Congruent3D(
       P_dll
      ,P_config

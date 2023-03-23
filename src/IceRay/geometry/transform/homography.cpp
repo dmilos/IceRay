@@ -227,7 +227,6 @@ bool GC_homography::Fv_uvw( T_coord & P_uvw, T_coord const& P_point, T_state con
   return M2_geometry.M2_uvw->Fv_uvw( P_uvw, I_point, I_tail );
  }
 
-
 GC_homography::T_affine const&  GC_homography::Fv_2world( T_state const&P_state )const
  {
   C_intersect const&I_intersect = P_state.F_content<C_intersect>();

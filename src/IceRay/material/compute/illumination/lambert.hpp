@@ -87,14 +87,13 @@
 
                    if( true == I_lambert.F_process( I_color, I_energy, I_2light, I_normal ) )
                     {
-                     I_summae +=I_color;
+                     I_summae += I_color;
                     }
                   }
 
                  M2_memoryColor->Fv_store( F_output<T_color>( En_outColor_result ), I_summae );
                  return true;
                 }
-
 
              private:
                typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC__base<T_size>    T2_memorySize;

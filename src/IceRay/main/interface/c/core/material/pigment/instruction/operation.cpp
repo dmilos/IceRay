@@ -111,6 +111,12 @@ H F( Congruent2D0 )( S P_count, S P_leader )
   auto Ir_result = new Tf_this{ P_count, P_leader };
   return cpp2c( Ir_result );
  }
+H F( Congruent3D0 )( S P_count, S P_leader )
+ {
+  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_random::GC_congruent3d    Tf_this;
+  auto Ir_result = new Tf_this{ P_count, P_leader };
+  return cpp2c( Ir_result );
+ }
 H F( Sobol1D0     )( S P_count, S P_leader )
  {
   typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_random::GC_sobol1d    Tf_this;
