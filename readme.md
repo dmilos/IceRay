@@ -107,7 +107,7 @@
 ![Heidrich-Seidel lambert](data/sample/material/illumination/hslambert.png)
 ![Heidrich-Seidel Phong](data/sample/material/illumination/hsphong.png)
 ![Lambert](data/sample/material/illumination/lambert.png)
-![Oren-Nayar f29](data/sample/material/illumination/onf29.png)
+![Oren-Nayar f29](data/sample/material/illumination/ONf29.png)
 ![Oren-Nayar f30](data/sample/material/illumination/onf30.png)
 ![Oren-Nayar Ouwerkerk](data/sample/material/illumination/onjvo.png)
 ![Oren-Nayar Fujii proposed](data/sample/material/illumination/onyfp.png)
