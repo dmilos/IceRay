@@ -9,5 +9,4 @@ add_subdirectory(memorylib)
 add_subdirectory(core)
 add_subdirectory(clib)
 add_subdirectory(cdll)
-add_subdirectory(sizeof)
-
+#add_subdirectory(sizeof)

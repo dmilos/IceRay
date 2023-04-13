@@ -32,7 +32,7 @@ def Random(
     # TODO I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_angle, tempScalar + 0 ) )
     # TODO I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_gauss, tempScalar + 1 ) )
     # TODO 
-    # TODO I_surface.append( IceRayPy.core.material.instruction.transmission.blossom.Grid( P_dll, normal, tempSize+0, tempSize+1, tempScalar+0, tempScalar+1 ) )
+    # TODO I_surface.append( IceRayPy.core.material.instruction.transmission.blossom.Random( P_dll, normal, tempSize+0, tempSize+1, tempScalar+0, tempScalar+1 ) )
     # TODO I_surface.append( IceRayPy.core.material.instruction.constant.Color(  P_dll, IceRayPy.type.color.RGB( 0, 0, 0 ), result ) )
 
     return I_surface
@@ -66,12 +66,30 @@ def VDC(
     # TODO I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_angle, tempScalar + 0 ) )
     # TODO I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_gauss, tempScalar + 1 ) )
     # TODO 
-    # TODO I_surface.append( IceRayPy.core.material.instruction.transmission.blossom.Hexagon( P_dll, normal, tempSize+0, tempSize+1, tempScalar+0, tempScalar+1 ) )
+    # TODO I_surface.append( IceRayPy.core.material.instruction.transmission.blossom.VDC( P_dll, normal, tempSize+0, tempSize+1, tempScalar+0, tempScalar+1 ) )
     # TODO I_surface.append( IceRayPy.core.material.instruction.constant.Color(  P_dll, IceRayPy.type.color.RGB( 0, 0, 0 ), result ) )
 
     return I_surface
 
 def Sobol(
+     P_dll
+    ,P_config = None
+    ,P_total 
+    ,P_start 
+    ,P_angle
+    ):
+    pass
+
+def Poisson(
+     P_dll
+    ,P_config = None
+    ,P_total 
+    ,P_start 
+    ,P_angle
+    ):
+    pass
+
+def Sunflower(
      P_dll
     ,P_config = None
     ,P_total 

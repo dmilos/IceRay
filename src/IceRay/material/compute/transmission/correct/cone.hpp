@@ -18,7 +18,7 @@
            namespace S_correct
             {
 
-             class GC_cone  //!< (re)calculate max angle( direction and side-direction) depend on normal of surface and  cone's axis
+             class GC_cone  //!< (re)calculate max angle( direction and side-direction) depend on normal of surface and cone's axis
               : public GS_DDMRM::S_IceRay::S_material::S_compute::GC_instruction
               {
                public:

@@ -105,11 +105,14 @@ namespace GS_DDMRM
              }
             return I_index ? I_index-1: I_index;
            }
+
+#if defined( ICERAY_SWITCH_DEBUG )
           std::cout << "Attempt to query size larger than existing. "
                     << "size(in): "   << P_size << "; "
                     << "size(back): " << M2_size.back() << "; "
                     << "size(max): "  << M2_point.size() << "; "
                    ;
+#endif
           return M2_size.size() - 1;
          }
 

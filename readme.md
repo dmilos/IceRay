@@ -120,22 +120,17 @@
 ![checker](data/sample/material/pattern/function/checker.png)
 ![gradient](data/sample/material/pattern/function/gradient.png)
 ![hexagon](data/sample/material/pattern/function/hexagon.png)
+![brick](data/sample/material/pattern/function/brick.png)
 
 ##### Noise
 ![cells](data/sample/material//pattern/noise/cells.png)
+![random](data/sample/material/pattern/noise/random.png)
 ![congruent1d](data/sample/material/pattern/noise/congruent1d.png)
 ![congruent3d](data/sample/material/pattern/noise/congruent3d.png)
+![vdc](data/sample/material/pattern/noise/vdc.png)
 ![Crackle](data/sample/material/pattern/noise/Crackle.png)
 ![perlin](data/sample/material/pattern/noise/Perlin.png)
-![random](data/sample/material/pattern/noise/random.png)
 ![value](data/sample/material/pattern/noise/Value.png)
-![vdc](data/sample/material/pattern/noise/vdc.png)
-
-##### Function
-![checker](data/sample/material/pattern/function/checker.png)
-![gradient](data/sample/material/pattern/function/gradient.png)
-![hexagon](data/sample/material/pattern/function/hexagon.png)
-![onion](data/sample/material/pattern/function/onion.png)
 
 ##### Transform
 ![cartesian2cylindric](data/sample/material/pattern/transform/cartesian2cylindric.png)
@@ -171,6 +166,11 @@
 ![img](data/sample/material/transmission/refract-schlick-torus.png)
 ![img](data/sample/material/transmission/refract-snell.png)
 
+#### Radiosity and Caustics
+![img](data/sample/caustic-s.png)
+![img](data/sample/caustic-t.png)
+![img](data/sample/caustic-c.png)
+![img](data/sample/radiosity.png)
 
 # Install
   - install git
@@ -182,10 +182,10 @@
   - git submodule init
   - git submodule update
   - Build using SCons
-    - cd ./IceRay/work/build/scons/cdll
+    - cd //IceRay/work/build/scons/cdll
     - scons
   - Build using CMake 
-    - cd ./IceRay/work/build/cmake
+    - cd //IceRay/work/build/cmake
     - run make.bat on Windows or make.sh on Unix
-  - put $\src and $\example in to PYTHONPATH path
-  - run some examples in $\example\test2
+  - put //src and //example in to PYTHONPATH path
+  - run some examples in //example/test2

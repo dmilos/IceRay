@@ -21,6 +21,8 @@ GdiplusStartupOutput GIs_GdiplusStartupOutput;
 
 void InitSystemWindows( void )
  {
+  _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF | _CRTDBG_CHECK_ALWAYS_DF );
+
   HMODULE I_com = LoadLibrary( "comctl32.dll" );
   GdiplusStartup( &GIs_GdiplusToken, &GIs_GdiplusStartupInput, &GIs_GdiplusStartupOutput );
 

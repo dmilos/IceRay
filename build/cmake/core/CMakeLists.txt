@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.10)
 
 #primary variables
 set( PROJECT_NAME_BARE            "IceRay" ) #!< TODO Take this from INI
-set( PROJECT_NAME_DECOR_POSTFIX     "Core" ) 
+set( PROJECT_NAME_DECOR_POSTFIX     "Core" )
 set( ICERAY_PROJECT_VERSION      "1.0.0.0" )#!< TODO Take this from INI
 
 set( ICERAY_PROJECT_NAME_FULL                  ${PROJECT_NAME_BARE}${PROJECT_NAME_DECOR_POSTFIX}-${ICERAY_PROJECT_VERSION} )
@@ -65,13 +65,12 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${directory_obj}/arc)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${directory_lib}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${directory_dll}/bin)
 
+
 add_library(${ICERAY_PROJECT_NAME_FULL} STATIC ${SOURCE_CPP} ${SOURCE_HPP})
 
 
 set_property( TARGET ${ICERAY_PROJECT_NAME_FULL} PROPERTY POSITION_INDEPENDENT_CODE ON )
 set_property( TARGET ${ICERAY_PROJECT_NAME_FULL} PROPERTY CXX_VISIBILITY_PRESET hidden )
-
-#set_target_properties( ${ICERAY_PROJECT_NAME_FULL} PROPERTIES CXX_VISIBILITY_PRESET hidden )
 
 if( UNIX )
     target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -frtti )
@@ -81,6 +80,7 @@ if( UNIX )
     if( ICERAY_SWITCH_DEBUG )
         #target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -fsanitize=address )
         #target_link_options(    ${ICERAY_PROJECT_NAME_FULL} PRIVATE -fsanitize=address )
+
         target_compile_definitions( ${ICERAY_PROJECT_NAME_FULL} PRIVATE DEBUG )
         target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -g )
         target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -rdynamic )
@@ -90,10 +90,19 @@ if( UNIX )
         set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -DDEBUG -g -rdynamic -ggdb -g3 -O0")
     endif()
 endif()
+if( MSVC )
+    target_compile_options(${ICERAY_PROJECT_NAME_FULL} PRIVATE /Zp1)
 
-message(STATUS "CMAKE_CXX_FLAGS: ${CMAKE_CXX_FLAGS}")
-message(STATUS "CMAKE_CXX_FLAGS: ${CMAKE_C_FLAGS}")
+    target_compile_definitions( ${ICERAY_PROJECT_NAME_FULL} PRIVATE  $<$<CONFIG:DEBUG>:_SECURE_SCL> )
+    target_compile_definitions( ${ICERAY_PROJECT_NAME_FULL} PRIVATE  $<$<CONFIG:DEBUG>:_ITERATOR_DEBUG_LEVEL=2> )
+    target_compile_definitions( ${ICERAY_PROJECT_NAME_FULL} PRIVATE  $<$<CONFIG:DEBUG>:_HAS_ITERATOR_DEBUGGING> )
+endif()
+
 
 
 target_link_libraries(${ICERAY_PROJECT_NAME_FULL} PRIVATE   ${ICERAY_SUBMODULE_MEMORY_PROJECT_NAME_FULL} )
 add_dependencies(     ${ICERAY_PROJECT_NAME_FULL}           ${ICERAY_SUBMODULE_MEMORY_PROJECT_NAME_FULL} )
+
+message(STATUS "CMAKE_CXX_FLAGS: ${CMAKE_CXX_FLAGS}")
+message(STATUS "CMAKE_CXX_FLAGS: ${CMAKE_C_FLAGS}")
+

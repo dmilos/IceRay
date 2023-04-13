@@ -206,7 +206,7 @@ void GC_algorithm::F2_trace( T_color &P_color )
           case( T2_ray::Ee_derivation::En_Refracted  ) : ++M2_statistic.M_depth[ I_incoming.M_depth ][ (T_size)C_statistic::Ee_type::En_refracted  ]; break;
           case( T2_ray::Ee_derivation::En_Teleported ) : ++M2_statistic.M_depth[ I_incoming.M_depth ][ (T_size)C_statistic::Ee_type::En_teleported ]; break;
           case( T2_ray::Ee_derivation::En_Broken     ) : ++M2_statistic.M_depth[ I_incoming.M_depth ][ (T_size)C_statistic::Ee_type::En_broken     ]; break;
-          case( T2_ray::Ee_derivation::En__Unknown   ) : ++M2_statistic.M_depth[ I_incoming.M_depth ][ (T_size)C_statistic::Ee_type::En__Unknown   ];break;
+          case( T2_ray::Ee_derivation::En__Unknown   ) : ++M2_statistic.M_depth[ I_incoming.M_depth ][ (T_size)C_statistic::Ee_type::En__Unknown   ]; break;
          }
        } break;
      }

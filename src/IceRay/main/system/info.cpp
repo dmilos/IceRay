@@ -18,6 +18,15 @@ int InitInfo( )
 
   I_info["size-size_t"] = std::to_string( sizeof( std::size_t ) );
   I_info["size-void*"] = std::to_string( sizeof( void* ) );
+  I_info["size-float"] = std::to_string( sizeof( float ) );
+
+  I_info["size-char"] = std::to_string( sizeof( char ) );
+  I_info["size-long-double"] = std::to_string( sizeof( long double ) );
+  I_info["size-double"] = std::to_string( sizeof( double ) );
+  I_info["size-int"] = std::to_string( sizeof( int ) );
+  I_info["size-long"] = std::to_string( sizeof( long ) );
+  I_info["size-short"] = std::to_string( sizeof( short ) );
+
   I_info["__func__"] = __func__ ;
   I_info["__cplusplus"] = std::to_string(__cplusplus);
   I_info["__TIME__"] = __TIME__ ;

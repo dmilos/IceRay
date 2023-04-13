@@ -74,11 +74,10 @@
                       {
                        continue;
                       }
-                     auto I_A = ::math::linear::vector::angle( I_normal, I_current.M_direction );
-                     auto I_Ad = math::geometry::deg2rad( I_A );
+                     auto I_dot  = ::math::linear::vector::dot( I_normal, I_current.M_direction );
                      I_total += I_current.M_coefficient; //!< debug
 
-                     if( I_A < math::geometry::deg2rad(90) )
+                     if( 0 < I_dot )
                       {
                        ++I_active;
                        I_old += I_current.M_coefficient; //!< debug

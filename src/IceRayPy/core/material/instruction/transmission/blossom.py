@@ -61,8 +61,45 @@ class Pinwheel:
     def __del__(self):
         self.m_cargo['dll'].IceRayC_Material_Pigment_Surface_Instruction_Release( self.m_cargo['this'] )
 
+
+class Poisson:
+    def __init__(self, P_dll, P_normal, P_count, P_leader, P_angle, P_gauss, P_total, P_beam ):
+        self.m_cargo = {}
+        self.m_cargo['dll'] = P_dll
+        self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Material_Pigment_Surface_Instruction_Transmission_Blossom_Poisson0(
+            SizeType( P_normal )
+           ,SizeType( P_count )
+           ,SizeType( P_leader )
+           ,SizeType( P_angle )
+           ,SizeType( P_gauss )
+           ,SizeType( P_total )
+           ,SizeType( P_beam )
+        )
+
+    def __del__(self):
+        self.m_cargo['dll'].IceRayC_Material_Pigment_Surface_Instruction_Release( self.m_cargo['this'] )
+
+
+class Sunflower:
+    def __init__(self, P_dll, P_normal, P_count, P_leader, P_angle, P_gauss, P_total, P_beam ):
+        self.m_cargo = {}
+        self.m_cargo['dll'] = P_dll
+        self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Material_Pigment_Surface_Instruction_Transmission_Blossom_Sunflower0(
+            SizeType( P_normal )
+           ,SizeType( P_count )
+           ,SizeType( P_leader )
+           ,SizeType( P_angle )
+           ,SizeType( P_gauss )
+           ,SizeType( P_total )
+           ,SizeType( P_beam )
+        )
+
+    def __del__(self):
+        self.m_cargo['dll'].IceRayC_Material_Pigment_Surface_Instruction_Release( self.m_cargo['this'] )
+
+
 class LD:
-    def __init__(self, P_dll, P_normal, P_count, P_leader, P_angle, P_gauss, P_beam ):
+    def __init__( self, P_dll, P_normal, P_count, P_leader, P_angle, P_gauss, P_beam ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Material_Pigment_Surface_Instruction_Transmission_Blossom_LD0(
@@ -79,7 +116,7 @@ class LD:
 
 
 class Random:
-    def __init__(self, P_dll, P_normal, P_count, P_leader, P_angle, P_gauss, P_beam ):
+    def __init__( self, P_dll, P_normal, P_count, P_leader, P_angle, P_gauss, P_beam ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Material_Pigment_Surface_Instruction_Transmission_Blossom_Random0(

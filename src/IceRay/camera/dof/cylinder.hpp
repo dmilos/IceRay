@@ -8,6 +8,8 @@
  #include "IceRay/type/basic/size.hpp"
  #include "IceRay/type/basic/scalar.hpp"
  #include "IceRay/utility/table/hexagon.hpp"
+ #include "IceRay/utility/table/poisson.hpp"
+ #include "IceRay/utility/table/sunflower.hpp"
 
  #include "../_parent.hpp"
 
@@ -66,6 +68,8 @@
              mutable GS_DDMRM::S_IceRay::S_utility::S_random::GT_sobol2D     M2_randSobol2D;
              mutable GS_DDMRM::S_IceRay::S_utility::S_random::GT_VaLND       M2_randVaLND;
              static  GS_DDMRM::S_IceRay::S_utility::S_table::GC_hexagon      M2s_hexagon;
+             static  GS_DDMRM::S_IceRay::S_utility::S_table::GC_poisson      M2s_poisson;
+             static  GS_DDMRM::S_IceRay::S_utility::S_table::GC_sunflower    M2s_sunflower;
           };
 
         }

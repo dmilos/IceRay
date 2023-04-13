@@ -62,10 +62,12 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${directory_obj}/arc)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${directory_lib}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${directory_dll}/bin)
 
+
 add_library(${ICERAY_PROJECT_NAME_FULL} STATIC ${SOURCE_CPP} ${SOURCE_HPP})
 
 
 set_property( TARGET ${ICERAY_PROJECT_NAME_FULL} PROPERTY POSITION_INDEPENDENT_CODE ON )
+
 
 if( UNIX )
     target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -frtti )
@@ -75,6 +77,7 @@ if( UNIX )
     if( ICERAY_SWITCH_DEBUG )
         #target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -fsanitize=address )
         #target_link_options(    ${ICERAY_PROJECT_NAME_FULL} PRIVATE -fsanitize=address )
+
         target_compile_definitions( ${ICERAY_PROJECT_NAME_FULL} PRIVATE DEBUG )
         target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -g )
         target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -rdynamic )
@@ -83,6 +86,13 @@ if( UNIX )
         target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -O0 )
         set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -DDEBUG -g -rdynamic -ggdb -g3 -O0")
     endif()
+endif()
+if( MSVC )
+    target_compile_options(${ICERAY_PROJECT_NAME_FULL} PRIVATE /Zp1)
+
+    target_compile_definitions( ${ICERAY_PROJECT_NAME_FULL} PRIVATE  $<$<CONFIG:DEBUG>:_SECURE_SCL> )
+    target_compile_definitions( ${ICERAY_PROJECT_NAME_FULL} PRIVATE  $<$<CONFIG:DEBUG>:_ITERATOR_DEBUG_LEVEL=2> )
+    target_compile_definitions( ${ICERAY_PROJECT_NAME_FULL} PRIVATE  $<$<CONFIG:DEBUG>:_HAS_ITERATOR_DEBUGGING> )
 endif()
 
 message(STATUS "CMAKE_CXX_FLAGS: ${CMAKE_CXX_FLAGS}")

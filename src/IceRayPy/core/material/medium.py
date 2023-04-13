@@ -29,17 +29,20 @@ class Solid:
 
 
 
-g_value = 0.0
 
 class Constant:
     def __init__( self, P_dll, P_value = None, P_deplete = None ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Material_Medium_Constant0()
+
         self.value(   IceRayPy.type.color.RGB( 1.0, 1.0, 1.0 ) )
-        global g_value
-        self.deplete( IceRayPy.type.color.RGB( g_value, g_value, g_value ) )
-        g_value = g_value + 1/360.0
+        self.deplete( IceRayPy.type.color.RGB( 0, 0, 0 ) )
+
+        if( None != P_deplete ):
+            self.deplete( P_deplete )
+        if( None != P_value ):
+            self.value( P_value )
 
     def __del__(self):
         self.m_cargo['dll'].IceRayC_Material_Medium_Release( self.m_cargo['this'] )

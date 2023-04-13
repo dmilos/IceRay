@@ -1,10 +1,11 @@
-#ifndef Dh_DDMRM_Iceray_material_compute_transmission_blossom_pinwheel_HPP_
- #define Dh_DDMRM_Iceray_material_compute_transmission_blossom_pinwheel_HPP_
+#ifndef Dh_DDMRM_Iceray_material_compute_transmission_blossom_poisson_HPP_
+ #define Dh_DDMRM_Iceray_material_compute_transmission_blossom_poisson_HPP_
 
-// GS_DDMRM::S_IceRay::S_material::S_compute::S_transmission::S_blossom::GC_pinwheel
+// GS_DDMRM::S_IceRay::S_material::S_compute::S_transmission::S_blossom::GC_poisson
 
 #include "../../instruction.hpp"
-#include "IceRay/utility/table/pinwheel.hpp"
+#include "IceRay/utility/random.hpp"
+#include "IceRay/utility/table/poisson.hpp"
 #include "math/math.hpp"
 
  namespace GS_DDMRM
@@ -20,7 +21,7 @@
            namespace S_blossom
             {
 
-             class GC_pinwheel
+             class GC_poisson
               : public GS_DDMRM::S_IceRay::S_material::S_compute::GC_instruction
               {
                public:
@@ -42,18 +43,19 @@
                  enum Ee_output
                   {
                     En_outSize_RayCount=0
-                   ,En_outRay_out=1
+                   ,En_outSize_RayStart=1
                   };
 
                public:
-                 GC_pinwheel
+                 GC_poisson
                   (
-                    T_size const& P_inCoord_Normal     //= 1
-                   ,T_size const& P_inCount            //= 1
-                   ,T_size const& P_inLeader           //= 0
-                   ,T_size const& P_inAngle            //= 0
-                   ,T_size const& P_inGauss            //= 1
-                   ,T_size   const& P_outSize_RayCount // = 2
+                    T_size const& P_inCoord_Normal    //= 1
+                   ,T_size const& P_inCount           //= 1
+                   ,T_size const& P_inLeader          //= 0
+                   ,T_size const& P_inAngle           //= 0
+                   ,T_size const& P_inGauss           //= 1
+                   ,T_size const& P_outSize_RayCount  // = 1
+                   ,T_size const& P_outSize_RayStart  // = 2
                   )
                   {
                    static auto dummy = F2s_init();
@@ -64,7 +66,8 @@
                    F_input<T_scalar>(  En_inScalar_Angle,  P_inAngle        );
                    F_input<T_scalar>(  En_inScalar_Gauss,  P_inGauss        );
 
-                   F_output<T_size>( En_outSize_RayCount,     P_outSize_RayCount );
+                   F_output<T_size>( En_outSize_RayCount, P_outSize_RayCount );
+                   F_output<T_size>( En_outSize_RayStart, P_outSize_RayStart );
                   }
 
                public:
@@ -105,52 +108,26 @@
                    T_coord I_x; ::math::linear::vector::cross( I_x, I_y, P_normal ); ::math::linear::vector::length( I_x, T_scalar( 1 ) );
                    T_coord I_z; ::math::linear::vector::cross( I_z, I_x, I_y );      ::math::linear::vector::length( I_z, T_scalar( 1 ) );
 
-                   auto I_bounce = ::math::linear::vector::angle( P_heading.M_direction, P_normal );
-
-                   if( ::math::geometry::deg2rad( 90 ) < I_bounce )
-                    {
-                     I_bounce = ::math::geometry::deg2rad( 180 ) - I_bounce;
-                    }
-
-                   T_scalar I_fix = P_angle/T_scalar(2) + I_bounce - ::math::geometry::deg2rad( 90 );
-
-                   if( T_scalar(0) < I_fix )
-                    { // Need correction
-                     T_scalar a = cos( I_fix ), b = sin( I_fix );
-                     T_coord I_newY;
-
-                     ::math::linear::vector::combine( I_newY, a, I_y, b, I_z  );
-                     ::math::linear::vector::length( I_y, I_newY, T_scalar( 1 ) );
-
-                     ::math::linear::vector::cross( I_z, I_x, I_y );
-                     ::math::linear::vector::length( I_z, T_scalar( 1 ) );
-                    }
-
-                   T_scalar I_radius = sin( P_angle/T_scalar( 2 ) );
-                   ::math::linear::vector::length( I_x, I_radius );
-                   ::math::linear::vector::length( I_z, I_radius );
-                   I_radius *= I_radius;
+                   T_scalar I_radius = sin( P_angle );
+                   ::math::linear::vector::length<T_scalar>( I_x, 1 );
+                   ::math::linear::vector::length<T_scalar>( I_z, 1 );
 
                    auto I_index = M2s_table.F_structure().F_size2index( P_count );
-                   auto const& I_perimeter = M2s_table.F_structure().F_radius()[ I_index ];
-                   T_size const& I_count = M2s_table.F_structure().F_size()[ I_index ];
+                   auto   const& I_perimeter = M2s_table.F_structure().F_radius()[ I_index ];
+                   T_size const& I_count     = M2s_table.F_structure().F_size()[ I_index ];
+                   auto   const& I_table     = M2s_table.F_structure().F_spot();
                    T_size I_total=0;
+                   T_size I_beginA = P_next.Fv_size();
+
                    T_coord I_direction;
-                   T_coord2D I_disc2d;
+                   T_coord2D I_disc2d; 
                    for( T_size I_index=0; I_index < I_count; ++I_index )
                     {
-                     ::math::linear::vector::scale( I_disc2d, T_scalar(1)/I_perimeter, M2s_table.F_structure().F_spot()[ I_index ] );
+                     ::math::linear::vector::scale( I_disc2d, I_radius/I_perimeter, I_table[ I_index ] );
+                     T_scalar I_height = sqrt( T_scalar( 1 ) - ::math::linear::vector::dot( I_disc2d, I_disc2d ) );
 
-                     T_scalar I_height = sqrt( T_scalar( 1 ) - I_radius * ::math::linear::vector::dot( I_disc2d, I_disc2d ) );
                      ::math::linear::vector::combine( I_direction, I_disc2d[0], I_x, I_height, I_y, I_disc2d[1], I_z );
                      ::math::linear::vector::length( I_direction, T_scalar( 1 ) );
-
-                     T_scalar I_check = ::math::linear::vector::dot( I_direction, P_normal );
-                     if( I_check < T_scalar(0) )
-                      {
-                       I_check = I_check;
-                       continue;
-                      }
 
                      {
                       P_next.Fv_push();  ++I_total;
@@ -163,16 +140,16 @@
                       I_ray.M_direction   = I_direction;
                       I_ray.M_derivation  = P_heading.M_derivation;
                       I_ray.M_ior         = P_heading.M_ior;
-                      I_ray.M_intesity    = P_heading.M_intesity / I_count;  //!< todo Not optimised;  P_gauss?
-                      I_ray.M_coefficient = T_scalar(1)/ I_count;     //!< todo Not optimised; P_gauss?
+                      I_ray.M_intesity    = P_heading.M_intesity / I_count;  //!< todo Not optimized;  P_gauss?
+                      I_ray.M_coefficient = T_scalar(1) / I_count;     //!< todo Not optimized; P_gauss?
                       I_ray.M_hierarchy   = T_ray::Ee_hierarchy::En_solo;
                       //if( 0 == I_index ) I_ray.M_hierarchy = T_ray::Ee_hierarchy::En_back;
                       //if( (P_count-1) == I_index ) I_ray.M_hierarchy = T_ray::Ee_hierarchy::En_lead;
                      }
                    }
 
-                  //M2_memoryRay->Fv_store(  F_output<T_size>(En_outRay_Reflected), I_rectified );
                   M2_memorySize->Fv_store( F_output<T_size>(En_outSize_RayCount), I_total );
+                  M2_memorySize->Fv_store( F_output<T_size>(En_outSize_RayStart), I_beginA );
                   return I_count;
                  }
 
@@ -198,13 +175,13 @@
                  T2_memoryScalar   *M2_memoryScalar;
 
                private:
-                 static bool F2s_init() 
+                 static bool F2s_init()
                   {
-                   M2s_table.F_init( 130 ); 
-                   return true; 
+                   M2s_table.F_init( 130 );
+                   return true;
                   }
                private:
-                 static GS_DDMRM::S_IceRay::S_utility::S_table::GC_pinwheel   M2s_table;
+                 static GS_DDMRM::S_IceRay::S_utility::S_table::GC_poisson    M2s_table;
               };
 
             }

@@ -74,8 +74,8 @@
                  bool    Fv_execute( T_beam &P_next, T_pigment::T_intersect const& P_intersect, T_state const& P_state )const
                   {
                    T_coord  const& I_normal   = M2_memoryCoord->Fv_load(  F_input<T_coord >( En_inCoord_Normal ) );
-                   T_size   const& I_count    = M2_memorySize->Fv_load(   F_input<T_size  >( En_inSize_Count   ) );
                    T_size   const& I_leader   = M2_memorySize->Fv_load(   F_input<T_size  >( En_inSize_Leader  ) );
+                   T_size   const& I_count    = M2_memorySize->Fv_load(   F_input<T_size  >( En_inSize_Count   ) );
                    T_scalar const& I_angle    = M2_memoryScalar->Fv_load( F_input<T_scalar>( En_inScalar_Angle ) );
                    T_scalar const& I_gauss    = M2_memoryScalar->Fv_load( F_input<T_scalar>( En_inScalar_Gauss ) );
 
@@ -113,9 +113,9 @@
                    ::math::linear::vector::length<T_scalar>( I_z, 1 );
 
                    auto I_index = M2s_table.F_structure().F_size2index( P_count );
-                   auto   const& I_perimeter = M2s_table.F_structure().F_radius()[ I_index ];
-                   T_size const& I_count     = M2s_table.F_structure().F_size()[ I_index ];
-                   auto   const& I_table     = M2s_table.F_structure().F_spot();
+                   T_scalar  const& I_perimeter = M2s_table.F_structure().F_radius()[ I_index ];
+                   T_size    const& I_count     = M2s_table.F_structure().F_size( )[ I_index ];
+                   auto      const& I_table     = M2s_table.F_structure().F_spot();
                    T_size I_total=0;
                    T_size I_beginA = P_next.Fv_size();
 
@@ -177,7 +177,10 @@
                private:
                  static bool F2s_init()
                   {
-                   M2s_table.F_init( 130 );
+                   M2s_table.F_init( 80 );
+#if defined( ICERAY_SWITCH_DEBUG )
+                   std::cout << __FILE__ << " " << M2s_table.F_structure().F_spot().size() << std::endl;
+#endif
                    return true;
                   }
                private:

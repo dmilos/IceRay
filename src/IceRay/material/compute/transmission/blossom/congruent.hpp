@@ -102,7 +102,7 @@
                    ,T_scalar const& P_gauss
                   )const
                   {
-                   auto const& I_count = P_count;
+                   T_size const& I_count = P_count;
 
                    T_coord I_y = P_heading.M_direction;
                    T_coord I_x; ::math::linear::vector::cross( I_x, I_y, P_normal ); ::math::linear::vector::length( I_x, T_scalar( 1 ) );
@@ -113,13 +113,15 @@
                    ::math::linear::vector::length( I_z, I_radius );
                    I_radius *= I_radius;
 
-                   T_coord I_direction;
+                   T_coord2D I_disc2d;
+
                    T_size I_total = 0;
                    T_size I_beginA = P_next.Fv_size();
 
+                   T_coord I_direction;
+
                    for( T_size I_index=0; I_index < I_count; ++I_index )
                     {
-                     T_coord2D I_disc2d;
                      GS_DDMRM::S_IceRay::S_utility::S_random::GF_disc2D( I_disc2d, M2_randCongruent2D );
 
                      T_scalar I_height = sqrt( T_scalar( 1 ) - I_radius * ::math::linear::vector::dot( I_disc2d, I_disc2d ) );
@@ -151,9 +153,6 @@
                  }
 
                private:
-                 mutable GS_DDMRM::S_IceRay::S_utility::S_random::GT_congruent2D       M2_randCongruent2D;
-
-               private:
                  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC__base<T_size>    T2_memorySize;
                  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC__base<T_coord>   T2_memoryCoord;
                  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC__base<T_scalar>  T2_memoryScalar;
@@ -173,6 +172,10 @@
                  T2_memoryCoord    *M2_memoryCoord;
                  T2_memoryColor    *M2_memoryColor;
                  T2_memoryScalar   *M2_memoryScalar;
+
+               private:
+                 mutable GS_DDMRM::S_IceRay::S_utility::S_random::GT_congruent2D       M2_randCongruent2D;
+
               };
 
             }

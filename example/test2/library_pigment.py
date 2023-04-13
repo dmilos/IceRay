@@ -17,6 +17,7 @@ list = {
       'P-noise-value'      : IceRayPy.utility.material.pattern.noise.Value,
       'P-noise-vdc'        : IceRayPy.utility.material.pattern.noise.VDC,
       'P-image'            : IceRayPy.utility.material.pattern.Image,
+      'P-brick'            : IceRayPy.utility.material.pattern.Brick,
       'P-checker'          : IceRayPy.utility.material.pattern.Checker,
       'P-hexagon'          : IceRayPy.utility.material.pattern.Hexagon,
       'P-onion'            : IceRayPy.utility.material.pattern.Onion, #TODO check
@@ -76,13 +77,14 @@ list = {
      'T-2-reflect-blossom-Grid'      : IceRayPy.utility.material.transmission.blossom.Grid,     #TODO edge bug
      'T-3-reflect-blossom-Hexagon'   : IceRayPy.utility.material.transmission.blossom.Hexagon,  #CHECK
      'T-4-reflect-blossom-trg'       : IceRayPy.utility.material.transmission.blossom.Triangle, #OK
-    #'T-5-reflect-blossom-LD'        : IceRayPy.utility.material.transmission.blossom.LD,       #Experimental
+     'T-5-reflect-blossom-LD'        : IceRayPy.utility.material.transmission.blossom.LD,       #Experimental
     #'T-5-reflect-blossom-Pinwheel' : IceRayPy.utility.material.transmission.blossom.Pinwheel, #TODO
     #'T-5-reflect-blossom-penrose'  : IceRayPy.utility.material.transmission.blossom.Penrose, #TODO
      'T-6-reflect-blossom-Rand'      : IceRayPy.utility.material.transmission.blossom.Random,   #OK
      'T-7-reflect-blossom-sobol'     : IceRayPy.utility.material.transmission.blossom.Sobol, #OK
      'T-8-reflect-blossom-VDC'       : IceRayPy.utility.material.transmission.blossom.VDC,      #OK
      'T-8-reflect-blossom-congruent' : IceRayPy.utility.material.transmission.blossom.Congruent,      #OK
+     'T-8-reflect-blossom-sunflower' : IceRayPy.utility.material.transmission.blossom.Sunflower,      #OK
      'T-9-refract-fresnel'           : IceRayPy.utility.material.transmission.refract.Fresnel,  #OK
      'T-A-refract-Snell'             : IceRayPy.utility.material.transmission.refract.Snell,    #OK
      'T-B-refract-schlick'           : IceRayPy.utility.material.transmission.refract.Schlick,  #OK

@@ -106,21 +106,27 @@ def pigment_radiosity( P_dll, P_scene, P_config ):
             I_albedo = P_config['albedo']
 
     if 'one' == I_blossom :
-        pigment = IceRayPy.utility.material.transmission.reflect.One(      P_dll, {}, I_albedo ) #OK
+        pigment = IceRayPy.utility.material.transmission.reflect.One(       P_dll, {}, I_albedo ) #OK
     if 'vdc' == I_blossom :
-        pigment = IceRayPy.utility.material.transmission.blossom.VDC(      P_dll, P_config, I_albedo, I_sample, 0, I_angle )#OK
+        pigment = IceRayPy.utility.material.transmission.blossom.VDC(       P_dll, P_config, I_albedo, I_sample, 0, I_angle )#OK
     if 'random' == I_blossom :
-        pigment = IceRayPy.utility.material.transmission.blossom.Random(   P_dll, P_config, I_albedo, I_sample, 0, I_angle )#OK
+        pigment = IceRayPy.utility.material.transmission.blossom.Random(    P_dll, P_config, I_albedo, I_sample, 0, I_angle )#OK
     if 'sobol' == I_blossom :
-        pigment = IceRayPy.utility.material.transmission.blossom.Sobol(    P_dll, P_config, I_albedo, I_sample, 0, I_angle )#OK
+        pigment = IceRayPy.utility.material.transmission.blossom.Sobol(     P_dll, P_config, I_albedo, I_sample, 0, I_angle )#OK
     if 'hexagon' == I_blossom :
-        pigment = IceRayPy.utility.material.transmission.blossom.Hexagon(  P_dll, P_config, I_albedo, I_sample, 0, I_angle )#OK
+        pigment = IceRayPy.utility.material.transmission.blossom.Hexagon(   P_dll, P_config, I_albedo, I_sample, 0, I_angle )#OK
     if 'grid' == I_blossom :
-        pigment = IceRayPy.utility.material.transmission.blossom.Grid(     P_dll, P_config, I_albedo, I_sample, 0, I_angle )#OK
+        pigment = IceRayPy.utility.material.transmission.blossom.Grid(      P_dll, P_config, I_albedo, I_sample, 0, I_angle )#OK
     if 'triangle' == I_blossom :
-        pigment = IceRayPy.utility.material.transmission.blossom.Triangle( P_dll, P_config, I_albedo, I_sample, 0, I_angle )#OK
+        pigment = IceRayPy.utility.material.transmission.blossom.Triangle(  P_dll, P_config, I_albedo, I_sample, 0, I_angle )#OK
     if 'congruent' == I_blossom :
         pigment = IceRayPy.utility.material.transmission.blossom.Congruent( P_dll, P_config, I_albedo, I_sample, 0, I_angle )#OK
+    if 'sunflower' == I_blossom :
+        pigment = IceRayPy.utility.material.transmission.blossom.Sunflower( P_dll, P_config, I_albedo, I_sample, 0, I_angle )#OK
+    if 'LD' == I_blossom :
+        pigment = IceRayPy.utility.material.transmission.blossom.LD( P_dll, P_config, I_albedo, I_sample, 0, I_angle )#OK
+    if 'poisson' == I_blossom :
+        pigment = IceRayPy.utility.material.transmission.blossom.Poisson( P_dll, P_config, I_albedo, I_sample, 0, I_angle )#OK
 
     return pigment
 

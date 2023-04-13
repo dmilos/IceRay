@@ -33,7 +33,7 @@
                F_init( P_size );
               }
            public:
-             bool F_init( T_size const& P_size ) ;
+             bool F_init( T_size const& P_size );
 
            public:
              T_structure const& F_structure()const{ return M2_structure; }

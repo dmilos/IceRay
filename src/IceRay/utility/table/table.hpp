@@ -5,6 +5,11 @@
 
 #include "./grid.hpp"
 #include "./pinwheel.hpp"
-#include "./table.cpp"
 #include "./triangle.hpp"
 #include "./ld.hpp"
+
+#include "./poisson.hpp"
+#include "./sunflower.hpp"
+
+//#include "./penrose.hpp"
+//#include "./random.hpp"

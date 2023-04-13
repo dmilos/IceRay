@@ -43,13 +43,12 @@ GC_block::F_window( T_range const& P_window )
   return T_report( true );
  }
 
-
 GC_block::T_report      GC_block:: F_hot( T_cell2D const& P_hot )
  {
   M2_hot = P_hot;
   return T_report( true );
  }
- 
+
 void
 GC_block::F1v_render( T_picture & P_picture )
  {
@@ -70,13 +69,14 @@ GC_block::F1v_render( T_picture & P_picture )
   auto image_start = std::chrono::steady_clock::now();
   auto block_start = std::chrono::steady_clock::now();
   std::cout << std::endl;
+  T_size I_setw = (T_size)ceil( log10( P_picture.F_size()[0] ) + 0.01 );
 
   for( I_cell[1] = I_down; I_cell[1] <= I_up;  )
    {
 
     {
      block_start = std::chrono::steady_clock::now();
-     std::cout << I_cell[1] << " / " << I_up ;
+     std::cout << std::setw(I_setw) << I_cell[1] << "/" << std::setw(I_setw) << I_up ;
     }
 
     T_size I_end = std::min<T_size>( I_cell[1] + M2_step, I_up+1 );
@@ -113,12 +113,12 @@ GC_block::F1v_render( T_picture & P_picture )
       auto image_delta = image_current - image_start;
       auto block_delta = block_end - block_start;
 
-      std::cout << "[" << std::setw(8) << std::chrono::duration_cast< std::chrono::duration<double> >(block_delta).count() << " ]"; 
-      std::cout << "[" << std::setw(8) << std::chrono::duration_cast< std::chrono::duration<double> >(image_delta).count() << " / "; 
-      std::cout << std::setw(8) << std::chrono::duration_cast<std::chrono::duration<double> >(image_delta).count() * T_scalar( I_up - I_down)/T_scalar( I_cell[1] - I_down ) << " ]"; 
+      std::cout << "[" << std::setw(8) << std::chrono::duration_cast< std::chrono::duration<double> >(block_delta).count() << " ]";
+      std::cout << "[" << std::setw(8) << std::chrono::duration_cast< std::chrono::duration<double> >(image_delta).count() << " / ";
+      std::cout << std::setw(8) << std::chrono::duration_cast<std::chrono::duration<double> >(image_delta).count() * T_scalar( I_up - I_down)/T_scalar( I_cell[1] - I_down ) << " ]";
 
       block_start = std::chrono::steady_clock::now();
-      std::cout << std::endl; 
+      std::cout << std::endl;
      }
 
    }

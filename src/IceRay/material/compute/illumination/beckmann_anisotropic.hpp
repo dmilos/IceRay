@@ -85,7 +85,7 @@
                    T_coord I_2light;
                    T_coord I_half;
                    T_color I_energy;
-                   bool I_valid = false;
+                   //bool I_valid = false;
 
                    for( T_size I_spotIndex = I_spotBegin; I_spotIndex < I_spotEnd; ++I_spotIndex )
                     {
@@ -102,7 +102,7 @@
                      if( true == I_beckmann.F_process( I_color, I_energy, I_normal, I_half ) )
                       {
                        I_summae += I_color;
-                       I_valid = true;
+                       //I_valid = true;
                       }
                     }
 

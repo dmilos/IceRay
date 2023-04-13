@@ -5,8 +5,6 @@ import math
 
 Coord3D = IceRayPy.type.math.coord.Scalar3D
 
-G_innerA = 0;
-
 def Symetric( P_dll,
         P_center = Coord3D( 0, 0, 0 ),
         P_normal = Coord3D( 1, 1, 1 ),
@@ -73,7 +71,6 @@ def Asymetric( P_dll,
 
     return union
 
-G_innerB = 0;
 def Plano( P_dll,
         P_center = Coord3D( 0, 0, 0 ),
         P_normal = Coord3D( 1, 1, 1 ),
@@ -81,9 +78,6 @@ def Plano( P_dll,
         P_out = 0.25,
         ):
 
-    #global  G_innerB
-    #G_innerB = G_innerB + 0.01
-    #P_out = G_innerB
     center = ( P_out+P_inner + 1/( P_out-P_inner ) ) /2
     radius = math.fabs( center - P_inner )
 

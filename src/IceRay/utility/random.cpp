@@ -32,7 +32,9 @@
 
          bool GC_table1D::F2s_fill()
           {
+#if defined( ICERAY_SWITCH_DEBUG )
            std::cout << "0000000000" << __FILE__ << " - "<< __FUNCTION__<< "("<< __LINE__ << "): size: " << M2_size << std::endl;
+#endif
            M2_table.resize( M2_size );
            for( T_size i = 0; i < M2_table.size(); ++i )
             {

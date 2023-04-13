@@ -10,7 +10,7 @@ class Torus:  #( IceRayPy.core.geometry.Generic ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
 
-        I_minor = 0.2
+        I_minor = 0.3
 
         self.m_cargo['torus']  =  IceRayPy.core.geometry.simple.Torus( self.m_cargo['dll'], I_minor )
         self.m_cargo['affine'] = IceRayPy.core.geometry.transform.Affine( self.m_cargo['dll'] )
@@ -27,7 +27,7 @@ class Torus:  #( IceRayPy.core.geometry.Generic ):
         self._recalc()
 
         self.center( IceRayPy.type.math.coord.Scalar3D( 0, 0, I_minor - 1 ) ) #< debug
-        self.normal( IceRayPy.type.math.coord.Scalar3D( 0.5, 0.5, 0.5 ) ) #< debug
+        #self.normal( IceRayPy.type.math.coord.Scalar3D( 0.5, 0.5, 0.5 ) ) #< debug
 
     def __del__( self ):
         self.m_cargo = {}
@@ -42,7 +42,7 @@ class Torus:  #( IceRayPy.core.geometry.Generic ):
 
     def mayor( self, P_mayor ):
         if( None != P_mayor ):
-            self.m_cargo['mayor'] = P_mayor 
+            self.m_cargo['mayor'] = P_mayor
             self.minor( self.m_cargo['minor-original'] )
         return self.m_cargo['mayor'];
 
@@ -88,7 +88,10 @@ class CylinderG:  #( IceRayPy.core.geometry.Generic ):
         #self.top(    IceRayPy.type.math.coord.Scalar3D( +0.0, +0.0, +0.0 ) )#!< debug
         self.bottom( IceRayPy.type.math.coord.Scalar3D( -0.5, +0.5, 0.0 ) )#!< debug
         self.top(    IceRayPy.type.math.coord.Scalar3D( +0.5, -0.5, 0.0 ) )#!< debug
+        self.bottom( IceRayPy.type.math.coord.Scalar3D( 0, 0, -1.0 ) )#!< debug
+        self.top(    IceRayPy.type.math.coord.Scalar3D( 0, 0, -0.5 ) )#!< debug
         self.radius( 0.33 )#!< debug
+        self.radius( 1.25 )#!< debug
 
         if( None != P_config ):
             if( 'top' in P_config ):

@@ -125,8 +125,8 @@ for blossom in [ 'random', 'sobol',  'vdc' ]:
     I_config['room']['radiosity']['blossom']  = blossom
     render.doIt( I_dll, I_picture, I_scene, I_inventory, I_config )
 
-for blossom in [  'congruent' ]:
-    I_picture['prefix'] = '1-' + blossom + "_"
+for blossom in [ 'congruent' ]:
+    I_picture['prefix'] = '2-' + blossom + "_"
     I_config['room']['radiosity']['patch' ]  = math.radians( 3 )
     I_config['room']['radiosity']['jitter-type'  ]   = "none"
     I_config['room']['radiosity']['angle'  ]  = math.radians( 90 )
@@ -145,7 +145,6 @@ for blossom in [  'congruent' ]:
 #
 #    I_config['camera'][ 'eye'] = IceRayPy.type.math.coord.Scalar3D( x, y, height ) #!< MAIN
 #    I_config['camera']['view'] = IceRayPy.type.math.coord.Scalar3D( 0, 0, 0 ) #!< MAIN
-#
 #
 #    I_scene['pigment']    = 'P-hexagon'
 #    I_picture['prefix'] = '1-' + 'vdc' + "_"

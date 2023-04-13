@@ -71,9 +71,10 @@ set( COMMAND_ENVIRONMENT_RELEASE "PATH=%PATH%" )
 set( COMMAND_ENVIRONMENT_DEBUG   "PATH=%PATH%" )
 configure_file( template.vcxproj.user.in ${CMAKE_BINARY_DIR}/cdll/${ICERAY_PROJECT_NAME_FULL}.vcxproj.user @ONLY )
 
+
 add_library( ${ICERAY_PROJECT_NAME_FULL} SHARED ${SOURCE_CPP} ${SOURCE_HPP}  )
 
-#set_target_properties( ${ICERAY_PROJECT_NAME_FULL} PROPERTIES CXX_VISIBILITY_PRESET hidden )
+
 set_property( TARGET ${ICERAY_PROJECT_NAME_FULL} PROPERTY CXX_VISIBILITY_PRESET hidden )
 set_property( TARGET ${ICERAY_PROJECT_NAME_FULL} PROPERTY POSITION_INDEPENDENT_CODE ON )
 
@@ -85,6 +86,7 @@ if( UNIX )
     if( ICERAY_SWITCH_DEBUG )
         #target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -fsanitize=address )
         #target_link_options(    ${ICERAY_PROJECT_NAME_FULL} PRIVATE -fsanitize=address )
+
         target_compile_definitions( ${ICERAY_PROJECT_NAME_FULL} PRIVATE DEBUG )
         target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -g )
         target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -rdynamic )
@@ -94,12 +96,20 @@ if( UNIX )
         set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -DDEBUG -g -rdynamic -ggdb -g3 -O0")
     endif()
 endif()
+if( MSVC )
+    target_compile_options(     ${ICERAY_PROJECT_NAME_FULL} PRIVATE /Zp1)
 
-message(STATUS "CMAKE_CXX_FLAGS: ${CMAKE_CXX_FLAGS}")
-message(STATUS "CMAKE_CXX_FLAGS: ${CMAKE_C_FLAGS}")
+    target_compile_definitions( ${ICERAY_PROJECT_NAME_FULL} PRIVATE  $<$<CONFIG:DEBUG>:_SECURE_SCL> )
+    target_compile_definitions( ${ICERAY_PROJECT_NAME_FULL} PRIVATE  $<$<CONFIG:DEBUG>:_ITERATOR_DEBUG_LEVEL=2> )
+    target_compile_definitions( ${ICERAY_PROJECT_NAME_FULL} PRIVATE  $<$<CONFIG:DEBUG>:_HAS_ITERATOR_DEBUGGING> )
+endif()
 
 target_include_directories(  ${ICERAY_PROJECT_NAME_FULL} PRIVATE "${directory_include}")
 
 target_link_libraries(${ICERAY_PROJECT_NAME_FULL} PRIVATE ${ICERAY_CORE_LIBRARY_PROJECT_NAME_FULL} )
-
 add_dependencies(     ${ICERAY_PROJECT_NAME_FULL}         ${ICERAY_CORE_LIBRARY_PROJECT_NAME_FULL} )
+
+
+message(STATUS "CMAKE_CXX_FLAGS: ${CMAKE_CXX_FLAGS}")
+message(STATUS "CMAKE_CXX_FLAGS: ${CMAKE_C_FLAGS}")
+

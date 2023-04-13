@@ -9,8 +9,6 @@ def Constant(
      ,P_config
      ,P_color = IceRayPy.type.color.RGB(0.5,0.5,0.5)
     ):
-    I_pattern = IceRayPy.core.material.pattern.Checker( P_dll )
-
     result = IceRayPy.core.material.instruction.label.color.dynamic.RESULT
 
     I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
@@ -72,6 +70,81 @@ def Image(
         I_surface.append( IceRayPy.core.material.instruction.pattern.Color( P_dll, I_image, result, point ) )
 
     return I_surface
+
+def Brick(
+      P_dll
+     ,P_config
+     ,P_mortar = None
+     ,P_brick  = None
+     ,P_move   = None
+     ,P_size   = None
+    ):
+
+    I_mortar = IceRayPy.type.color.RGB( 0.5, 0.5, 0.5 )
+    if( 'mortar' in P_config ):
+        I_mortar = P_config[ 'mortar' ]
+    if(  None != P_mortar ):
+        I_mortar = P_mortar
+
+    I_brick = IceRayPy.type.color.RGB( 0.6, 0.25, 0.2 )
+    if( 'brick' in P_config ):
+        I_brick = P_config[ 'brick' ]
+    if(  None != P_brick ):
+        I_brick = P_brick
+
+    I_size = IceRayPy.type.math.coord.Scalar3D( 2.5, 4.5, 6.1 )
+    if( 'size' in P_config ):
+        I_size = P_config[ 'size' ]
+    if(  None != P_size ):
+        I_size = P_size
+        
+    I_move = IceRayPy.type.math.coord.Scalar3D( 0.35, 0.5, 0.35 )
+    if( 'move' in P_config ):
+        I_move = P_config[ 'move' ]
+    if(  None != P_move ):
+        I_move = P_move
+
+    result     = IceRayPy.core.material.instruction.label.color.dynamic.RESULT
+    point      = IceRayPy.core.material.instruction.label.coord3d.dynamic.POINT
+    normal     = IceRayPy.core.material.instruction.label.coord3d.dynamic.NORMAL
+    tempSize   = IceRayPy.core.material.instruction.label.size.temp._BEGIN
+    tempColor  = IceRayPy.core.material.instruction.label.color.temp._BEGIN
+    tempCoord  = IceRayPy.core.material.instruction.label.coord3d.temp._BEGIN
+    spotBegin  = IceRayPy.core.material.instruction.label.size.dynamic.SpotBegin
+    spotEnd    = IceRayPy.core.material.instruction.label.size.dynamic.SpotEnd
+    lightThe   = IceRayPy.core.material.instruction.label.light.temp._BEGIN
+
+    switch = tempSize
+    I_light = IceRayPy.core.light.Point( P_dll, IceRayPy.core.light.Spot( IceRayPy.type.math.coord.Scalar3D( 0, 0, 5 ) ) )
+    if( 'light' in P_config ):
+        I_light = P_config['light']
+
+    I_barrier = IceRayPy.core.geometry.volumetric.Vacuum( P_dll )
+    if( 'barrier' in P_config ):
+        I_barrier = P_config['barrier']
+
+    I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
+
+    I_surface.append( IceRayPy.core.material.instruction.light.Generator( P_dll, I_light, lightThe ) )
+    I_surface.append( IceRayPy.core.material.instruction.light.SwarmA( P_dll, spotEnd, spotBegin, lightThe, point ) )
+    I_surface.append( IceRayPy.core.material.instruction.light.SpotCull( P_dll, point, normal, spotEnd, spotBegin, spotEnd ) )
+    I_surface.append( IceRayPy.core.material.instruction.light.SpotObstruct( P_dll, I_barrier, spotEnd, spotBegin, spotEnd ) )
+    I_pattern = IceRayPy.core.material.pattern.Brick( P_dll )
+
+    I_surface.append( IceRayPy.core.material.instruction.constant.Coord3D( P_dll, I_size, tempCoord + 0 ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Coord3D( P_dll, I_move, tempCoord + 1 ) )
+    I_surface.append( IceRayPy.core.material.instruction.operation.coord3d.Addition( P_dll, tempCoord + 2, tempCoord+1, point ) )
+    I_surface.append( IceRayPy.core.material.instruction.operation.coord3d.Multiply( P_dll, tempCoord + 3, tempCoord+0, tempCoord+2 ) )
+
+    I_surface.append( IceRayPy.core.material.instruction.pattern.Size( P_dll, I_pattern, switch, tempCoord + 3 ) )
+
+    I_surface.append( IceRayPy.core.material.instruction.constant.Color( P_dll, I_mortar, tempColor + 0 ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Color( P_dll, I_brick, tempColor + 1 ) )
+    I_surface.append( IceRayPy.core.material.instruction.operation.switch.Color( P_dll, tempColor + 2, switch, tempColor + 0 ) )
+    I_surface.append( IceRayPy.core.material.instruction.illumination.Lambert(  P_dll, result, point, normal, spotBegin, spotEnd, tempColor + 2 ) )
+
+    return I_surface
+
 
 def Checker(
       P_dll

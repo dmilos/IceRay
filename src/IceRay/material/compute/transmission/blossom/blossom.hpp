@@ -8,4 +8,6 @@
 #include "./pinwheel.hpp"
 #include "./ld.hpp"
 #include "./triangle.hpp"
+#include "./poisson.hpp"
+#include "./sunflower.hpp"
 //#include "./general.hpp"

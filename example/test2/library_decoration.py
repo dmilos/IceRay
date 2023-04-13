@@ -189,20 +189,22 @@ def plate( P_dll, P_config = { 'shadow': False, 'pigment': None }, P_light = Non
     wrapper.geometrySet( geometry )
     return wrapper
 
-G_angle = math.radians( 180 + 45 )
 def radiosity( P_dll, P_config = { 'shadow': False, 'pigment': None }, P_light = None, P_exponat = None ):
     I_room = [ 8, 8, 4 ] # [ 6, 6, 3.5 ]
     I_move = [ 1, 1, I_room[2]/2-1 ]
 
-    I_size  = [ 0.1, 0.1, 0.1 ] #!< debug
     I_size  = [ 1.8, 1.8, 0.1 ] #!< original
-    global G_angle
+    I_size  = [ 0.6, 0.6, 0.1 ] #!< debug
+    I_angle = 0;
+    if( 'angle' in P_config ):
+        I_angle = P_config['angle']
+
     I_scale = 1.5
     I_scaleZ = 0.6
-    I_center = [ I_scale * I_room[0]/4 * math.cos( G_angle ), I_scale * I_room[1]/4* math.sin( G_angle ), I_scaleZ*(I_room[2]/2 + I_move[2]) ]
+    I_center = [ I_scale * I_room[0]/6 * math.cos( I_angle ), I_scale * I_room[1]/6* math.sin( I_angle ), I_scaleZ*(I_room[2]/2 + I_move[2]) ]
 
-    I_color = IceRayPy.type.color.RGB( 22.6, 22.6,  22.6 )
     I_color = IceRayPy.type.color.RGB( 4.6, 4.6, 4.6 )
+    I_color = IceRayPy.type.color.RGB( 25.6, 25.6,  25.6 )
 
     lo = Coord3D()
     lo[0] = -I_size[0]/2 + I_center[0]

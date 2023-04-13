@@ -39,12 +39,14 @@
                auto index = P_coord[1] * F_size()[0] + P_coord[0];
                if( M2_data.size() <= index )
                 {
-                 std::cout << std::endl << __FUNCTION__<< "(" << __LINE__ << "):" << "Error: Index out of range." 
+#if defined( ICERAY_SWITCH_DEBUG )
+                 std::cout << std::endl << __FUNCTION__<< "(" << __LINE__ << "):" << "Error: Index out of range."
                   << "index:" << index << "; "
                   << "x: " << P_coord[0] << "; " << "y: " << P_coord[1] << "; "
                   << "W: " << this->F_size()[0] << "; " << "H: " << this->F_size()[1] << "; "
                   << "s: " << M2_data.size() << "; "
                   << std::endl;
+#endif
                 }
                P_color = M2_data[ index ];
                return true;
@@ -55,12 +57,14 @@
                auto index = P_coord[1] * F_size()[0] + P_coord[0];
                if( M2_data.size() <= index )
                 {
-                 std::cout << std::endl << __FUNCTION__<< "(" << __LINE__ << "):" << "Error: Index out of range." 
+#if defined( ICERAY_SWITCH_DEBUG )
+                 std::cout << std::endl << __FUNCTION__<< "(" << __LINE__ << "):" << "Error: Index out of range."
                   << "index:" << index << "; "
                   << "x:" << P_coord[0] << "; " << "y:" << P_coord[1] << "; "
                   << "W: " << this->F_size()[0] << "; " << "H: " << this->F_size()[1] << "; "
                   << "s:" << M2_data.size() << "; "
                   << std::endl;
+#endif
                 }
                M2_data[ index ] = P_color;
                return true;

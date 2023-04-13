@@ -1,3 +1,12 @@
 #include "./hexagon.cpp"
 #include "./structure.cpp"
 #include "./ld.cpp"
+#include "./grid.cpp"
+#include "./perlin.cpp"
+#include "./poisson.cpp"
+#include "./grid.cpp"
+#include "./triangle.cpp"
+#include "./sunflower.cpp"
+
+//#include "./penrose.cpp"
+#include "./random.cpp"
