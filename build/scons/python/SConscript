@@ -188,6 +188,7 @@ if( False ):
     cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'light', 'area.cpp' ) ]
     cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'light', 'blocked.cpp' ) ]
     cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'light', 'chandelier.cpp' ) ]
+    cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'light', '_pure.cpp' ) ]
     cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'light', 'circle.cpp' ) ]
     cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'light', 'dark.cpp' ) ]
     cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'light', 'line.cpp' ) ]

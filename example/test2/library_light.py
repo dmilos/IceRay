@@ -28,8 +28,8 @@ list = {
         #'chandelier-H'   : IceRayPy.utility.light.chandelier.Hexa   # TODO NYI
         #'chandelier-T'   : IceRayPy.utility.light.chandelier.Tetra, # TODO NYI
         #'chandelier-O'   : IceRayPy.utility.light.chandelier.Octa   # TODO NYI
-        'chand-studio'   : IceRayPy.utility.light.chandelier.Studio,   # TODO NYI
-        'chand-nine'   : IceRayPy.utility.light.chandelier.Nine    
+        'chand-studio'    : IceRayPy.utility.light.chandelier.Studio,   # TODO NYI
+        'chand-nine'      : IceRayPy.utility.light.chandelier.Nine    
     }
 
 print( '</' + __name__ + ' file=\'' +   __file__ + '\'>' )

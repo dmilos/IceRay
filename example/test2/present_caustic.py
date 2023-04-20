@@ -121,7 +121,7 @@ I_config['composer']['hot']['y'] = 316
 index = 0;
 for object in [ 'Q-sphere' ]:  # 'V-Vacuum'
     I_scene['geometry']   = object
-    for blossom in [ 'sunflower', 'vdc', 'congruent', 'random', 'triangle', 'grid', 'hexagon', 'LD'  ]: # 
+    for blossom in [ 'vdc', 'congruent', 'sobol', 'random',  'sunflower', 'triangle', 'grid', 'hexagon'  ]: #
         I_picture['index'] = index
         I_picture['prefix'] = "%03i"%(index) + '_' + blossom + "_"
         I_config['room']['radiosity']['patch' ]  = math.radians( 10 )
@@ -135,7 +135,7 @@ for object in [ 'Q-sphere' ]:  # 'V-Vacuum'
         index = index + 1
 
 
-for blossom in [ 'LD', 'vdc', 'congruent', 'sobol', 'random',  'sunflower', 'triangle', 'grid', 'hexagon', 'grid'  ]: #   
+for blossom in [ 'vdc', 'congruent', 'sobol', 'random',  'sunflower', 'triangle', 'grid', 'hexagon'  ]: #'LD'
     I_scene['geometry']   ='Q-util-cylinder'  #'V-vacuum' 'Q-sphere'  'S-util-torus'
     I_picture['index'] = index
     I_picture['prefix'] = "%03i"%(index)+ '_' + blossom + "_"
@@ -150,4 +150,25 @@ for blossom in [ 'LD', 'vdc', 'congruent', 'sobol', 'random',  'sunflower', 'tri
     I_config['room']['radiosity'][ 'blossom']  = blossom
     render.doIt( I_dll, I_picture, I_scene, I_inventory, I_config )
     index = index + 1
+
+
+#start = 0;
+#if( 1 < len( sys.argv ) ):
+#    start = int( sys.argv[1] )
+#
+#for index in range( start, 360, 10 ):  # 'V-Vacuum'
+#    I_scene['geometry']   = 'Q-sphere'
+#    for blossom in [ 'sobol' ]: # , 'vdc', 'congruent', 'sobol', 'random', 'sunflower', 'triangle', 'grid', 'hexagon', ##'LD'
+#        I_picture['index'] = index
+#        I_picture['prefix'] = "%03i"%(index) + '_' + blossom + "_"
+#        I_config['room']['radiosity']['patch' ]  = math.radians( 2.5 )
+#        I_config['room']['radiosity']['jitter-type' ]   = "none"
+#        I_config['room']['radiosity']['jitter-angle' ]   = 0.25*I_config['room']['radiosity']['patch']
+#        I_config['room']['radiosity'][ 'correction-leader' ]  = True
+#        I_config['room']['radiosity']['angle'  ]  = math.radians( 89.9 )
+#        I_config['room']['radiosity']['sample'] = int( (1 - math.cos(I_config['room']['radiosity']['angle']) ) / ( 1 - math.cos( I_config['room']['radiosity']['patch'] ) ) + 1 )
+#        I_config['room']['radiosity']['blossom']  = blossom
+#        I_config['camera'][ 'eye']   = IceRayPy.type.math.coord.Scalar3D( 2.6 * math.cos( math.radians( index ) ), 2.6 * math.sin( math.radians( index ) ) ,  +g )
+#        render.doIt( I_dll, I_picture, I_scene, I_inventory, I_config )
+#        index = index + 1
 

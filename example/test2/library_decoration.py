@@ -217,8 +217,8 @@ def radiosity( P_dll, P_config = { 'shadow': False, 'pigment': None }, P_light =
 
     geometry = IceRayPy.core.geometry.flat.Box( P_dll )
     geometry.box( Coord3D( lo[0], lo[1], lo[2] ), Coord3D( hi[0], hi[1], hi[2] ) )
-    pigment = IceRayPy.utility.material.pattern.Hexagon( P_dll, {}, RGB(15,0,0), RGB(0,15,0), RGB(0,0,15) )
     pigment = IceRayPy.utility.material.pattern.Constant( P_dll, {}, I_color )
+    pigment = IceRayPy.utility.material.pattern.Hexagon( P_dll, {}, RGB(25,0,0), RGB(0,25,0), RGB(0,0,25) )
 
     wrapper = IceRayPy.core.object.Wrapper( P_dll )
     wrapper.pigment( pigment )

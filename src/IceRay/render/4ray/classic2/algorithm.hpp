@@ -119,6 +119,7 @@
                    ,En_teleported
                    ,En_refracted
                    ,En_broken
+                   ,En_blossom
                    ,En_2far
                    ,En_2deep
                    ,En_under

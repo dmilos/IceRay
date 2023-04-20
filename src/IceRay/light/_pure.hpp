@@ -33,14 +33,14 @@
          public:
           typedef GS_DDMRM::S_IceRay::S_light::S_type::GC_spot   T_spot;
           typedef GS_DDMRM::S_IceRay::S_light::S_type::GT_swarm  T_swarm;
-          
+
           typedef GS_DDMRM::S_IceRay::S_light::GC__pure T__pure, T_this;
 
 
          public:
-          explicit GC__pure( T_size     const& P_max = 1 ):M2_max(P_max){ ; }
-          explicit GC__pure( T_interval const& P_interval, T_size const& P_max = 1 ):M2_box(P_interval), M2_max(P_max){ ; }
-          virtual ~GC__pure( ){ ; }
+          explicit GC__pure( T_size     const& P_max = 1 );
+          explicit GC__pure( T_interval const& P_interval, T_size const& P_max = 1 );
+          virtual ~GC__pure( );
 
           virtual T_size  Fv_swarm( T_swarm & P_swarm, T_coord const& P_point )const=0; //!< Push only
 

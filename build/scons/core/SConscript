@@ -201,6 +201,7 @@ if( False ):
     cc_files += [ os.path.join( 'light', 'dark.cpp' ) ]
     cc_files += [ os.path.join( 'light', 'circle.cpp' ) ]
     cc_files += [ os.path.join( 'light', 'chandelier.cpp' ) ]
+    cc_files += [ os.path.join( 'light', '_pure.cpp' ) ]
     cc_files += [ os.path.join( 'light', 'blocked.cpp' ) ]
     cc_files += [ os.path.join( 'light', 'basic.cpp' ) ]
     cc_files += [ os.path.join( 'light', 'area.cpp' ) ]
