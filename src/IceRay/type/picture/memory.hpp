@@ -81,6 +81,10 @@
               {
                return M2_data.data();
               }
+             virtual T_color  * Fv_data(  )
+              {
+               return M2_data.data();
+              }
 
            private:
              std::vector<T_color> M2_data;

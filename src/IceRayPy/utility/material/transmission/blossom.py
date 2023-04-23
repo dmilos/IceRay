@@ -67,6 +67,9 @@ def Grid(
     ,P_angle  = G_angle
     ,P_gauss  = G_gauss
     ):
+    I_count_param = G_sizeGrid
+    if( 'count' in P_config ):
+        I_count_param = P_config['count']
 
     result     = IceRayPy.core.material.instruction.label.color.dynamic.RESULT
     point      = IceRayPy.core.material.instruction.label.coord3d.dynamic.POINT
@@ -91,11 +94,11 @@ def Grid(
     I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
     I_surface.append( IceRayPy.core.material.instruction.constant.Color(  P_dll, IceRayPy.type.color.RGB( 0, 0, 0 ), result ) )
 
-    I_surface.append( IceRayPy.core.material.instruction.constant.Color(  P_dll, P_albedo, I_albedo ) )
-    I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, P_count , I_count  ) )
-    I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, P_leader, I_leader ) )
-    I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_angle,  I_angle  ) )
-    I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_gauss,  I_gauss  ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Color(  P_dll, P_albedo,       I_albedo ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, I_count_param , I_count  ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, P_leader,       I_leader ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_angle,        I_angle  ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_gauss,        I_gauss  ) )
     if( 'jitter-angle' in P_config ):
         I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_config['jitter-angle'], I_jitter ) )
 
@@ -135,11 +138,15 @@ def Hexagon(
      P_dll
     ,P_config = None
     ,P_albedo : IceRayPy.type.color.RGB = G_albedo
-    ,P_count = G_countHex
+    ,P_count = None
     ,P_leader = 0
     ,P_angle = G_angle
     ,P_gauss = G_gauss
     ):
+
+    I_count_param = G_sizeGrid
+    if( 'count' in P_config ):
+        I_count_param = P_config['count']
 
     result     = IceRayPy.core.material.instruction.label.color.dynamic.RESULT
     point      = IceRayPy.core.material.instruction.label.coord3d.dynamic.POINT
@@ -164,11 +171,11 @@ def Hexagon(
     I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
     I_surface.append( IceRayPy.core.material.instruction.constant.Color(  P_dll, IceRayPy.type.color.RGB( 0, 0, 0 ), result ) )
 
-    I_surface.append( IceRayPy.core.material.instruction.constant.Color(  P_dll, P_albedo, I_albedo ) )
-    I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, P_count,  I_count  ) )
-    I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, P_leader, I_leader ) )
-    I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_angle,  I_angle  ) )
-    I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_gauss,  I_gauss  ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Color(  P_dll, P_albedo,       I_albedo ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, I_count_param,  I_count  ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, P_leader,       I_leader ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_angle,        I_angle  ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_gauss,        I_gauss  ) )
     if( 'jitter-angle' in P_config ):
         I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_config['jitter-angle'], I_jitter ) )
 
@@ -213,6 +220,11 @@ def Pinwheel(
     ,P_angle = G_angle
     ,P_gauss = G_gauss
     ):
+
+    I_count_param = G_sizeGrid
+    if( 'count' in P_config ):
+        I_count_param = P_config['count']
+
     result     = IceRayPy.core.material.instruction.label.color.dynamic.RESULT
     point      = IceRayPy.core.material.instruction.label.coord3d.dynamic.POINT
     normal     = IceRayPy.core.material.instruction.label.coord3d.dynamic.NORMAL
@@ -235,11 +247,11 @@ def Pinwheel(
     I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
     I_surface.append( IceRayPy.core.material.instruction.constant.Color(  P_dll, IceRayPy.type.color.RGB( 0, 0, 0 ), result ) )
 
-    I_surface.append( IceRayPy.core.material.instruction.constant.Color(  P_dll, P_albedo, I_albedo) )
-    I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, P_count,  I_count  ) )
-    I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, P_leader, I_leader ) )
-    I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_angle,  I_angle  ) )
-    I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_gauss,  I_gauss  ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Color(  P_dll, P_albedo,       I_albedo) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, I_count_param,  I_count  ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, P_leader,       I_leader ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_angle,        I_angle  ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_gauss,        I_gauss  ) )
     if( 'jitter-angle' in P_config ):
         I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_config['jitter-angle'], I_jitter ) )
 
@@ -269,10 +281,8 @@ def Pinwheel(
     if( 'correction' in P_config ):
         if( 'claim' == P_config['correction'] ):
             I_surface.append( IceRayPy.core.material.instruction.transmission.correct.Claim( P_dll, normal, I_total, I_start ) )
-
         if( 'trim' == P_config['correction'] ):
             I_surface.append( IceRayPy.core.material.instruction.transmission.correct.Trim(  P_dll, normal, I_total, I_start ) )
-
 
     return I_surface
 
@@ -287,6 +297,10 @@ def Sunflower(
     ,P_angle = G_angle
     ,P_gauss = G_gauss
     ):
+
+    I_count_param = G_sizeGrid
+    if( 'count' in P_config ):
+        I_count_param = P_config['count']
 
     result     = IceRayPy.core.material.instruction.label.color.dynamic.RESULT
     point      = IceRayPy.core.material.instruction.label.coord3d.dynamic.POINT
@@ -311,11 +325,11 @@ def Sunflower(
     I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
     I_surface.append( IceRayPy.core.material.instruction.constant.Color(  P_dll, IceRayPy.type.color.RGB( 0, 0, 0 ), result ) )
 
-    I_surface.append( IceRayPy.core.material.instruction.constant.Color(  P_dll, P_albedo, I_albedo ) )
-    I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, P_count,  I_count  ) )
-    I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, P_leader, I_leader ) )
-    I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_angle,  I_angle  ) )
-    I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_gauss,  I_gauss  ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Color(  P_dll, P_albedo,       I_albedo ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, I_count_param,  I_count  ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, P_leader,       I_leader ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_angle,        I_angle  ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_gauss,        I_gauss  ) )
     if( 'jitter-angle' in P_config ):
         I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_config['jitter-angle'], I_jitter ) )
 
@@ -362,6 +376,10 @@ def Poisson(
     ,P_gauss = G_gauss
     ):
 
+    I_count_param = G_sizeGrid
+    if( 'count' in P_config ):
+        I_count_param = P_config['count']
+
     result     = IceRayPy.core.material.instruction.label.color.dynamic.RESULT
     point      = IceRayPy.core.material.instruction.label.coord3d.dynamic.POINT
     normal     = IceRayPy.core.material.instruction.label.coord3d.dynamic.NORMAL
@@ -385,11 +403,11 @@ def Poisson(
     I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
     I_surface.append( IceRayPy.core.material.instruction.constant.Color(  P_dll, IceRayPy.type.color.RGB( 0, 0, 0 ), result ) )
 
-    I_surface.append( IceRayPy.core.material.instruction.constant.Color(  P_dll, P_albedo, I_albedo ) )
-    I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, P_count,  I_count  ) )
-    I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, P_leader, I_leader ) )
-    I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_angle,  I_angle  ) )
-    I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_gauss,  I_gauss  ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Color(  P_dll, P_albedo,       I_albedo ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, I_count_param,  I_count  ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, P_leader,       I_leader ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_angle,        I_angle  ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_gauss,        I_gauss  ) )
     if( 'jitter-angle' in P_config ):
         I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_config['jitter-angle'], I_jitter ) )
 
@@ -435,6 +453,11 @@ def LD(
     ,P_angle = G_angle
     ,P_gauss = G_gauss
     ):
+
+    I_count_param = G_sizeGrid
+    if( 'count' in P_config ):
+        I_count_param = P_config['count']
+
     result     = IceRayPy.core.material.instruction.label.color.dynamic.RESULT
     point      = IceRayPy.core.material.instruction.label.coord3d.dynamic.POINT
     normal     = IceRayPy.core.material.instruction.label.coord3d.dynamic.NORMAL
@@ -458,11 +481,11 @@ def LD(
     I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
     I_surface.append( IceRayPy.core.material.instruction.constant.Color(  P_dll, IceRayPy.type.color.RGB( 0, 0, 0 ), result ) )
 
-    I_surface.append( IceRayPy.core.material.instruction.constant.Color(  P_dll, P_albedo, I_albedo ) )
-    I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, P_leader, I_leader ) )
-    I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, P_count,  I_count  ) )
-    I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_angle,  I_angle  ) )
-    I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_gauss,  I_gauss  ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Color(  P_dll, P_albedo,       I_albedo ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, P_leader,       I_leader ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, I_count_param,  I_count  ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_angle,        I_angle  ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_gauss,        I_gauss  ) )
     if( 'jitter-angle' in P_config ):
         I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_config['jitter-angle'], I_jitter ) )
 
@@ -509,6 +532,11 @@ def Sobol(
     ,P_angle = G_angle
     ,P_gauss = G_gauss
     ):
+
+    I_count_param = G_sizeGrid
+    if( 'count' in P_config ):
+        I_count_param = P_config['count']
+
     result     = IceRayPy.core.material.instruction.label.color.dynamic.RESULT
     point      = IceRayPy.core.material.instruction.label.coord3d.dynamic.POINT
     normal     = IceRayPy.core.material.instruction.label.coord3d.dynamic.NORMAL
@@ -532,11 +560,11 @@ def Sobol(
     I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
     I_surface.append( IceRayPy.core.material.instruction.constant.Color(  P_dll, IceRayPy.type.color.RGB( 0, 0, 0 ), result ) )
 
-    I_surface.append( IceRayPy.core.material.instruction.constant.Color(  P_dll, P_albedo, I_albedo ) )
-    I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, P_count,  I_count  ) )
-    I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, P_leader, I_leader ) )
-    I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_angle,  I_angle  ) )
-    I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_gauss,  I_gauss  ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Color(  P_dll, P_albedo,       I_albedo ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, I_count_param,  I_count  ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, P_leader,       I_leader ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_angle,        I_angle  ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_gauss,        I_gauss  ) )
     if( 'jitter-angle' in P_config ):
         I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_config['jitter-angle'], I_jitter ) )
 
@@ -566,7 +594,6 @@ def Sobol(
     if( 'correction' in P_config ):
         if( 'claim' == P_config['correction'] ):
             I_surface.append( IceRayPy.core.material.instruction.transmission.correct.Claim( P_dll, normal, I_total, I_start ) )
-
         if( 'trim' == P_config['correction'] ):
             I_surface.append( IceRayPy.core.material.instruction.transmission.correct.Trim(  P_dll, normal, I_total, I_start ) )
 
@@ -584,6 +611,11 @@ def Random(
     ,P_angle = G_angle
     ,P_gauss = G_gauss
     ):
+
+    I_count_param = G_sizeGrid
+    if( 'count' in P_config ):
+        I_count_param = P_config['count']
+
     result     = IceRayPy.core.material.instruction.label.color.dynamic.RESULT
     point      = IceRayPy.core.material.instruction.label.coord3d.dynamic.POINT
     normal     = IceRayPy.core.material.instruction.label.coord3d.dynamic.NORMAL
@@ -607,11 +639,11 @@ def Random(
     I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
     I_surface.append( IceRayPy.core.material.instruction.constant.Color(  P_dll, IceRayPy.type.color.RGB( 0, 0, 0 ), result ) )
 
-    I_surface.append( IceRayPy.core.material.instruction.constant.Color(  P_dll, P_albedo, I_albedo ) )
-    I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, P_leader, I_leader ) )
-    I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, P_count,  I_count  ) )
-    I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_angle,  I_angle  ) )
-    I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_gauss,  I_gauss  ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Color(  P_dll, P_albedo,       I_albedo ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, P_leader,       I_leader ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, I_count_param,  I_count  ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_angle,        I_angle  ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_gauss,        I_gauss  ) )
     if( 'jitter-angle' in P_config ):
         I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_config['jitter-angle'], I_jitter ) )
 
@@ -641,7 +673,6 @@ def Random(
     if( 'correction' in P_config ):
         if( 'claim' == P_config['correction'] ):
             I_surface.append( IceRayPy.core.material.instruction.transmission.correct.Claim( P_dll, normal, I_total, I_start ) )
-
         if( 'trim' == P_config['correction'] ):
             I_surface.append( IceRayPy.core.material.instruction.transmission.correct.Trim(  P_dll, normal, I_total, I_start ) )
 
@@ -659,6 +690,11 @@ def Random(
     ,P_angle = G_angle
     ,P_gauss = G_gauss
     ):
+
+    I_count_param = G_sizeGrid
+    if( 'count' in P_config ):
+        I_count_param = P_config['count']
+
     result     = IceRayPy.core.material.instruction.label.color.dynamic.RESULT
     point      = IceRayPy.core.material.instruction.label.coord3d.dynamic.POINT
     normal     = IceRayPy.core.material.instruction.label.coord3d.dynamic.NORMAL
@@ -682,11 +718,11 @@ def Random(
     I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
     I_surface.append( IceRayPy.core.material.instruction.constant.Color(  P_dll, IceRayPy.type.color.RGB( 0, 0, 0 ), result ) )
 
-    I_surface.append( IceRayPy.core.material.instruction.constant.Color(  P_dll, P_albedo, I_albedo ) )
-    I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, P_leader, I_leader ) )
-    I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, P_count,  I_count  ) )
-    I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_angle,  I_angle  ) )
-    I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_gauss,  I_gauss  ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Color(  P_dll, P_albedo,       I_albedo ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, P_leader,       I_leader ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, I_count_param,  I_count  ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_angle,        I_angle  ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_gauss,        I_gauss  ) )
     if( 'jitter-angle' in P_config ):
         I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_config['jitter-angle'], I_jitter ) )
 
@@ -716,7 +752,6 @@ def Random(
     if( 'correction' in P_config ):
         if( 'claim' == P_config['correction'] ):
             I_surface.append( IceRayPy.core.material.instruction.transmission.correct.Claim( P_dll, normal, I_total, I_start ) )
-
         if( 'trim' == P_config['correction'] ):
             I_surface.append( IceRayPy.core.material.instruction.transmission.correct.Trim(  P_dll, normal, I_total, I_start ) )
 
@@ -791,7 +826,6 @@ def Triangle(
     if( 'correction' in P_config ):
         if( 'claim' == P_config['correction'] ):
             I_surface.append( IceRayPy.core.material.instruction.transmission.correct.Claim( P_dll, normal, I_total, I_start ) )
-
         if( 'trim' == P_config['correction'] ):
             I_surface.append( IceRayPy.core.material.instruction.transmission.correct.Trim(  P_dll, normal, I_total, I_start ) )
 
@@ -808,6 +842,10 @@ def VDC(
     ,P_angle = G_angle
     ,P_gauss = G_gauss
     ):
+
+    I_count_param = G_sizeGrid
+    if( 'count' in P_config ):
+        I_count_param = P_config['count']
 
     result     = IceRayPy.core.material.instruction.label.color.dynamic.RESULT
     point      = IceRayPy.core.material.instruction.label.coord3d.dynamic.POINT
@@ -833,7 +871,7 @@ def VDC(
     I_surface.append( IceRayPy.core.material.instruction.constant.Color(  P_dll, IceRayPy.type.color.RGB( 0, 0, 0 ), result ) )
 
     I_surface.append( IceRayPy.core.material.instruction.constant.Color(  P_dll, P_albedo, I_albedo ) )
-    I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, P_count,  I_count  ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, I_count_param,  I_count  ) )
     I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, P_leader, I_leader ) )
     I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_angle,  I_angle  ) )
     I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_gauss,  I_gauss  ) )
@@ -866,7 +904,6 @@ def VDC(
     if( 'correction' in P_config ):
         if( 'claim' == P_config['correction'] ):
             I_surface.append( IceRayPy.core.material.instruction.transmission.correct.Claim( P_dll, normal, I_total, I_start ) )
-
         if( 'trim' == P_config['correction'] ):
             I_surface.append( IceRayPy.core.material.instruction.transmission.correct.Trim(  P_dll, normal, I_total, I_start ) )
 
@@ -883,6 +920,11 @@ def Congruent(
     ,P_angle = G_angle
     ,P_gauss = G_gauss
     ):
+
+    I_count_param = G_sizeGrid
+    if( 'count' in P_config ):
+        I_count_param = P_config['count']
+
     result     = IceRayPy.core.material.instruction.label.color.dynamic.RESULT
     point      = IceRayPy.core.material.instruction.label.coord3d.dynamic.POINT
     normal     = IceRayPy.core.material.instruction.label.coord3d.dynamic.NORMAL
@@ -908,7 +950,7 @@ def Congruent(
 
     I_surface.append( IceRayPy.core.material.instruction.constant.Color(  P_dll, P_albedo, I_albedo ) )
     I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, P_leader, I_leader ) )
-    I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, P_count,  I_count  ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Size(   P_dll, I_count_param,  I_count  ) )
     I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_angle,  I_angle  ) )
     I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, P_gauss,  I_gauss  ) )
     if( 'jitter-angle' in P_config ):

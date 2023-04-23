@@ -37,10 +37,12 @@ def camera( P_dll,
         if( hasattr( P_camera, 'aspect' ) ):
             P_camera.aspect( P_config['aspect'] )
 
-    #if( 'hfov' in P_config ):
-    #    P_camera.sample( P_config['sample'] )
-    #if( 'vfov' in P_config ):
-    #    P_camera.sample( P_config['sample'] )
+    if( 'width' in P_config ):
+        if( hasattr( P_camera, 'width' ) ):
+            P_camera.width( P_config['width'] )
+    if( 'height' in P_config ):
+        if( hasattr( P_camera, 'height' ) ):
+            P_camera.height( P_config['height'] )
 
     transform.child( P_camera )
 
@@ -67,10 +69,11 @@ def manager( P_dll, P_config, P_camera, P_object ):
     if( 'hot' in P_config ):
         manager.hot( IceRayPy.type.math.coord.Size2D( P_config['hot']['x'], P_config['hot']['y'] ) )
 
-    if( 'window' in P_config ):
-        manager.window(  IceRayPy.type.math.coord.Size2D( P_config['window']['A']['x'], P_config['window']['A']['y'] )
-                        ,IceRayPy.type.math.coord.Size2D( P_config['window']['B']['x'], P_config['window']['B']['y'] )
+    if( 'picture' in P_config ) and ( 'window' in P_config['picture'] ):
+        manager.window(  IceRayPy.type.math.coord.Size2D( P_config['picture']['window']['A']['x'], P_config['picture']['window']['A']['y'] )
+                        ,IceRayPy.type.math.coord.Size2D( P_config['picture']['window']['B']['x'], P_config['picture']['window']['B']['y'] )
                       )
+
     if( 'ray-trace' in P_config ):
         if( 'depth' in P_config['ray-trace'] ):
             manager.tracer().depth( P_config['ray-trace']['depth'] )

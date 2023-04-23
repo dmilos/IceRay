@@ -28,6 +28,9 @@ class Picture:
         self.m_cargo['dll'].IceRayC_Type_Picture_Release( self.m_cargo['this'] )
 
 
+    def set( self, P_location, P_color ):
+        return self.m_cargo['dll'].IceRayC_Type_Picture_Set( self.m_cargo['this'], AddressOf( P_location ), AddressOf( P_color ) )
+
     def size( self, P_width=None, P_height=None ):
         if( ( None != P_width ) and ( None != P_height ) ):
             self.m_cargo['dll'].IceRayC_Type_Picture_Size( self.m_cargo['this'], SizeType( P_width ), SizeType( P_height ) );
@@ -57,10 +60,19 @@ class Picture:
     def buffer( self ):
         pointer = self.m_cargo['dll'].IceRayC_Type_Picture_Buffer( self.m_cargo['this'] )
         return pointer
-        #return ctypes.create_string_buffer( pointer, self.size()[0] * self.size()[1] ) 
+        #return ctypes.create_string_buffer( pointer, self.size()[0] * self.size()[1] )
 
     def crop( self, P_target, P_A, P_B ):
         self.m_cargo['dll'].IceRayC_Type_Picture_Crop( P_target.m_cargo['this'], self.m_cargo['this'], AddressOf( P_A ), AddressOf( P_B ) )
+
+    def clear( self, P_color ):
+        self.m_cargo['dll'].IceRayC_Type_Picture_Clear( self.m_cargo['this'], AddressOf( P_color ) )
+
+    def average( self, P_average ):
+        self.m_cargo['dll'].IceRayC_Type_Picture_Average( self.m_cargo['this'], AddressOf( P_average ) )
+
+    def dispersion( self ):
+        return self.m_cargo['dll'].IceRayC_Type_Picture_Dispersion( self.m_cargo['this'] )
 
 def Crop( P_target, P_source, P_A, P_B ):
     P_source.m_cargo['dll'].IceRayC_Type_Picture_Crop( P_target.m_cargo['this'], P_source.m_cargo['this'], AddressOf( P_A ), AddressOf( P_B ) )

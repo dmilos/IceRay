@@ -7,9 +7,9 @@
  // GS_DDMRM::S_IceRay::S_utility::S_random::GT_vdc2
  // GS_DDMRM::S_IceRay::S_utility::S_random::GT_sobol1D
  // GS_DDMRM::S_IceRay::S_utility::S_random::GT_sobol2D
- // GS_DDMRM::S_IceRay::S_utility::S_random::GT_congurent1D
- // GS_DDMRM::S_IceRay::S_utility::S_random::GT_congurent2D
- // GS_DDMRM::S_IceRay::S_utility::S_random::GT_congurent3D
+ // GS_DDMRM::S_IceRay::S_utility::S_random::GT_congruent1D
+ // GS_DDMRM::S_IceRay::S_utility::S_random::GT_congruent2D
+ // GS_DDMRM::S_IceRay::S_utility::S_random::GT_congruent3D
 
 
 #include "math/math.hpp"
@@ -35,12 +35,14 @@
             typedef GS_DDMRM::S_IceRay::S_type::GT_scalar Tf_scalar;
             Tf_scalar & I_x = P_coord[0];
             Tf_scalar & I_y = P_coord[1];
+            Tf_scalar I_distance;
             do
              {
               P_random( P_coord );
               I_x = Tf_scalar(2)*I_x - Tf_scalar(1);
               I_y = Tf_scalar(2)*I_y - Tf_scalar(1);
-             }while( Tf_scalar(1)< ( I_x * I_x  +  I_y * I_y ) );
+              I_distance = I_x * I_x  +  I_y * I_y;
+             }while( Tf_scalar(1) < I_distance );
            }
 
           template< typename N_random >

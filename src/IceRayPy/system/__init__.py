@@ -61,19 +61,20 @@ def SearchCDLL( P_path = None, P_preferDebug = False ):
         print( "Architecture: " + str( arch ) )
         print( "--------------", flush = True )
 
-        #if( 32 == platform.architecture() ) :
-        list_all={
-              "build/cmake/_makeVS/cdll/Debug/IceRayDLL-1.0.0.0.dll"       : { 'exists': False, 'config': 'debug',  'arch' : '32' }
-            , "build/cmake/_makeVS/cdll/Release/IceRayDLL-1.0.0.0.dll"     : { 'exists': False, 'config': 'release','arch' : '32' }
-            , "bin/IceRayCDLL-x86-Release/IceRayCDLL-1.0.0.0-dynamic.dll"  : { 'exists': False, 'config': 'release','arch' : '32' }
-            , "bin/IceRayCDLL-x86-Debug/IceRayCDLL-1.0.0.0-dynamic.dll"    : { 'exists': False, 'config': 'debug',  'arch' : '32' }
-        }
+        list_all = {}
+        if( "32bit" == str( platform.architecture()[0] ) ) :
+            list_all={
+                "build/cmake/_makeVS/cdll/Debug/IceRayDLL-1.0.0.0.dll"         : { 'exists': False, 'config': 'debug',  'arch' : '32' }
+                , "build/cmake/_makeVS/cdll/Release/IceRayDLL-1.0.0.0.dll"     : { 'exists': False, 'config': 'release','arch' : '32' }
+                , "bin/IceRayCDLL-x86-Release/IceRayCDLL-1.0.0.0-dynamic.dll"  : { 'exists': False, 'config': 'release','arch' : '32' }
+                , "bin/IceRayCDLL-x86-Debug/IceRayCDLL-1.0.0.0-dynamic.dll"    : { 'exists': False, 'config': 'debug',  'arch' : '32' }
+            }
 
-        # if( 32 == platform.architecture() ) :
-        # list_all={
-        #       "bin/IceRayCDLL-x86_64-Release/IceRayCDLL-1.0.0.0-dynamic.dll"  : { 'exists': False, 'config': 'release','arch' : '64' }
-        #     , "bin/IceRayCDLL-x86_64-Debug/IceRayCDLL-1.0.0.0-dynamic.dll"    : { 'exists': False, 'config': 'debug',  'arch' : '64' }
-        # }
+        if( "64bit" == str( platform.architecture()[0] ) ) :
+            list_all={
+                "build/cmake/_makeVS64/cdll/Release/IceRayDLL-1.0.0.0.dll"   : { 'exists': False, 'config': 'release','arch' : '64' }
+              , "build/cmake/_makeVS64/cdll/Debug/IceRayDLL-1.0.0.0.dll"     : { 'exists': False, 'config': 'debug',  'arch' : '64' }
+            }
 
         for item in list_all:
             list_all[item]['absolute'] = path_root + '/' + item
@@ -760,17 +761,26 @@ def _MapFunction_Type_Picture(P_dll): #!< DONE
 
     _MakeFunction( P_dll.IceRayC_Type_Picture0           , ctypes.c_void_p , [] )
     _MakeFunction( P_dll.IceRayC_Type_Picture1           , ctypes.c_void_p , [ctypes.c_char_p] )
+    _MakeFunction( P_dll.IceRayC_Type_Picture_Set        , ctypes.c_void_p , [ctypes.c_void_p, ctypes.c_void_p, ctypes.c_void_p] )
+
     _MakeFunction( P_dll.IceRayC_Type_Picture_Buffer     , ctypes.c_void_p , [ctypes.c_void_p] )
-    _MakeFunction( P_dll.IceRayC_Type_Picture_Crop       , ctypes.c_int    , [ctypes.c_void_p, ctypes.c_void_p, ctypes.c_void_p, ctypes.c_void_p] )
     _MakeFunction( P_dll.IceRayC_Type_Picture_Crop0      , ctypes.c_int    , [ctypes.c_void_p, ctypes.c_void_p, ctypes.c_void_p ] )
-    _MakeFunction( P_dll.IceRayC_Type_Picture_Default    , ctypes.c_int    , [ctypes.c_void_p] )
+    _MakeFunction( P_dll.IceRayC_Type_Picture_Crop       , ctypes.c_int    , [ctypes.c_void_p, ctypes.c_void_p, ctypes.c_void_p, ctypes.c_void_p] )
     _MakeFunction( P_dll.IceRayC_Type_Picture_Load       , ctypes.c_int    , [ctypes.c_void_p, ctypes.c_char_p] )
     _MakeFunction( P_dll.IceRayC_Type_Picture_Size       , ctypes.c_int    , [ctypes.c_void_p, ctypes.c_size_t, ctypes.c_size_t] )
     _MakeFunction( P_dll.IceRayC_Type_Picture_SizeGet    , ctypes.c_int    , [ctypes.c_void_p, ctypes.c_void_p] )
     _MakeFunction( P_dll.IceRayC_Type_Picture_SizeSet    , ctypes.c_int    , [ctypes.c_void_p, ctypes.c_void_p] )
+
     _MakeFunction( P_dll.IceRayC_Type_Picture_StorePNM   , ctypes.c_int    , [ctypes.c_void_p, ctypes.c_char_p] )
     _MakeFunction( P_dll.IceRayC_Type_Picture_StorePNG   , ctypes.c_int    , [ctypes.c_void_p, ctypes.c_char_p] )
     _MakeFunction( P_dll.IceRayC_Type_Picture_StoreJPEG  , ctypes.c_int    , [ctypes.c_void_p, ctypes.c_char_p] )
+
+    _MakeFunction( P_dll.IceRayC_Type_Picture_Default    , ctypes.c_int    , [ctypes.c_void_p] )
+
+    _MakeFunction( P_dll.IceRayC_Type_Picture_Clear      , ctypes.c_int    , [ctypes.c_void_p, ctypes.c_void_p] )
+    _MakeFunction( P_dll.IceRayC_Type_Picture_Average    , ctypes.c_int    , [ctypes.c_void_p, ctypes.c_void_p] )
+    _MakeFunction( P_dll.IceRayC_Type_Picture_Dispersion , ctypes.c_double , [ctypes.c_void_p ] );
+
     return
 
 def _MapFunction_Type(P_dll): #!< DONE
@@ -1150,8 +1160,8 @@ def LoadCDLL( P_path ):
     _MapSystem( dll )
 
     #_MakeFunction( P_dll.IceRayC_WhatEver                                     , ctypes.c_void_p , [] )
+    _MakeFunction( dll.IceRayC_Utility_Random_Table_Next,  ctypes.c_int     , [ ctypes.c_double, ctypes.c_double, ctypes.c_int ] )
 
-    dll.IceRayC_Utility_Random_Table_Next #!< TODO
     info = Info( dll );
     info.to_string()
     return dll

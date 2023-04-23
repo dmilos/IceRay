@@ -36,7 +36,7 @@ GC_sphere::Fv_swarm( T_swarm &P_swarm, T_coord const& P_point )const
   ::math::linear::affine::id( I_affine );
   T_coord I_x, I_y;
 
-  int I_axis = ::math::linear::vector::dominant( I_z ).first;
+  auto I_axis = ::math::linear::vector::dominant( I_z ).first;
 
   switch( I_axis )
    {

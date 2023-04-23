@@ -3,7 +3,7 @@
 
 #include "../system/system.h"
 
-IceRayC__EXPORT IceRayC__DECLSPEC  int IceRayC_Utility_Random_Table_Next( void );
+IceRayC__EXPORT IceRayC__DECLSPEC  int IceRayC_Utility_Random_Table_Next( double x, double y, int resolution );
 
 #endif
 

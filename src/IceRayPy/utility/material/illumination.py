@@ -62,13 +62,19 @@ def Alp(
 def Ambient(
       P_dll
      ,P_config
-     ,P_emmision : IceRayPy.type.color.RGB = IceRayPy.type.color.RGB( 0.5, 0.5, 0.5 )
+     ,P_emission : IceRayPy.type.color.RGB = None
     ):
     result = IceRayPy.core.material.instruction.label.color.dynamic.RESULT
     tempColor   = IceRayPy.core.material.instruction.label.color.temp._BEGIN
 
+    I_emission = IceRayPy.type.color.RGB( 0.5, 0.5, 0.5 )
+    if( 'emission' in P_config ):
+        I_emission = P_config['emission']
+    if( None != P_emission ):
+        I_emission = P_emission
+
     I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
-    I_surface.append( IceRayPy.core.material.instruction.constant.Color( P_dll, P_emmision, tempColor + 0 ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Color( P_dll, I_emission, tempColor + 0 ) )
     I_surface.append( IceRayPy.core.material.instruction.illumination.Ambient( P_dll, result, tempColor + 0 ) )
     return I_surface
 

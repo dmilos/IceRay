@@ -16,6 +16,7 @@
 
 #include "./picture.h"
 #include "./coord.hpp"
+#include "./color.hpp"
 
 #include "IceRay/type/picture/picture.hpp"
 
@@ -52,6 +53,21 @@ IceRayC_Type_Picture_Handle IceRayC_Type_Picture1( char * P_fileName )
   IceRayC_Type_Picture_Load( Ir_result, P_fileName );
   return Ir_result;
 }
+
+IceRayC_Type_Bool IceRayC_Type_Picture_Set(    IceRayC_Type_Picture_Handle P_this, IceRayC_TypeCoordSize2D const* P_location, IceRayC_TypeColorRGB const*P_color )
+ {
+  typedef GS_DDMRM::S_IceRay::S_type::S_picture::GC__pure      Tf__pure;
+  typedef GS_DDMRM::S_IceRay::S_type::S_picture::GC_memory    Tf_memory;
+  typedef GS_DDMRM::S_IceRay::S_type::S_color::GT_char        Tf_color;
+
+  auto I_this = dynamic_cast<Tf_memory*>( c2cpp( P_this ) );
+  if( nullptr == I_this )
+   {
+    return 0;
+   }
+  I_this->Fv_pixel( c2cpp( *P_location ), Tf_color( c2cpp( *P_color ) ) );
+  return 1;
+ }
 
 IceRayC_Type_Bool IceRayC_Type_Picture_Size(     IceRayC_Type_Picture_Handle P_this, IceRayC_TypeSize width, IceRayC_TypeSize height )
  {
@@ -252,3 +268,73 @@ IceRayC_Type_Bool IceRayC_Type_Picture_Default( IceRayC_Type_Picture_Handle P_th
   return true;
  }
 
+IceRayC_Type_Bool IceRayC_Type_Picture_Clear( IceRayC_Type_Picture_Handle P_this, IceRayC_TypeColorRGB * P_color )
+ {
+  typedef GS_DDMRM::S_IceRay::S_type::S_picture::GC__pure      Tf__pure;
+  typedef GS_DDMRM::S_IceRay::S_type::S_picture::GC_memory    Tf_memory;
+
+  auto I_this = dynamic_cast<Tf_memory*>( c2cpp( P_this ) );
+  if( nullptr == I_this )
+   {
+    return 0;
+   }
+  auto const I_color = c2cpp( *P_color );
+
+  std::for_each( I_this->Fv_data()+0, I_this->Fv_data() + I_this->F_size()[0]* I_this->F_size()[1],
+    [&I_color]( auto & P_pixel )
+     {
+      P_pixel = I_color;
+     }
+  );
+
+  return true;
+ }
+
+IceRayC_Type_Bool   IceRayC_Type_Picture_Average(    IceRayC_Type_Picture_Handle P_this, IceRayC_TypeColorRGB * P_average )
+ {
+  typedef GS_DDMRM::S_IceRay::S_type::S_picture::GC__pure      Tf__pure;
+  typedef GS_DDMRM::S_IceRay::S_type::S_picture::GC_memory    Tf_memory;
+  typedef GS_DDMRM::S_IceRay::S_type::GT_scalar   Tf_scalar;
+  typedef GS_DDMRM::S_IceRay::S_type::S_color::GT_scalar   Tf_color;
+
+  auto I_this = dynamic_cast<Tf_memory*>( c2cpp( P_this ) );
+  if( nullptr == I_this )
+   {
+    return 0;
+   }
+
+  ::math::statistic::average<Tf_scalar,3> statistic;
+
+  std::for_each( I_this->Fv_data()+0, I_this->Fv_data() + I_this->F_size()[0]* I_this->F_size()[1],
+    [&statistic]( auto const& P_color )
+    {
+     statistic.push( color::rgb<Tf_scalar>( P_color ).container() );
+    }
+  );
+  *P_average= cpp2c( Tf_color( statistic.value() ) );
+  return 1;
+ }
+
+IceRayC_Type_Scalar IceRayC_Type_Picture_Dispersion( IceRayC_Type_Picture_Handle P_this )
+ {
+  typedef GS_DDMRM::S_IceRay::S_type::S_picture::GC__pure      Tf__pure;
+  typedef GS_DDMRM::S_IceRay::S_type::S_picture::GC_memory    Tf_memory;
+  typedef GS_DDMRM::S_IceRay::S_type::GT_scalar   Tf_scalar;
+
+  auto I_this = dynamic_cast<Tf_memory*>( c2cpp( P_this ) );
+  if( nullptr == I_this )
+   {
+    return 0;
+   }
+
+  ::math::statistic::gauss::V2< Tf_scalar, std::size_t > statistic;
+
+  std::for_each( I_this->Fv_data()+0, I_this->Fv_data() + I_this->F_size()[0]* I_this->F_size()[1],
+    [&statistic]( auto const& P_color)
+    {
+     statistic.push( ::color::gray<Tf_scalar>( P_color )[0] );
+    }
+   );
+
+  return statistic.deviation();
+ }

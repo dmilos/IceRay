@@ -4,6 +4,7 @@ import sys
 import time
 import math
 import os
+import gc
 
 import pathlib
 
@@ -11,7 +12,7 @@ import IceRayPy
 
 import composer
 
-def doIt( P_dll, P_picture, P_scene, P_inventory, P_config ):
+def doIt( P_dll, P_picture, P_scene, P_inventory, P_config, P_result=None ):
 
     I_light = {}
     I_camera = {}
@@ -55,6 +56,7 @@ def doIt( P_dll, P_picture, P_scene, P_inventory, P_config ):
         P_config['composer'] = {}
     P_config['composer']['light']            = I_light['enclose']
     P_config['composer']['geometry']         = I_geometry['the']
+    P_config['composer']['picture']          = P_picture
 
     if( 'pigment' not in P_config['composer'] ):
         P_config['composer']['pigment'] = {}
@@ -62,7 +64,7 @@ def doIt( P_dll, P_picture, P_scene, P_inventory, P_config ):
     P_config['composer']['pigment']['light'] = I_light['enclose']
 
     P_config['pigment']['light'] = I_light['final']
-    I_pigment['the']  = P_inventory['pigment' ][ I_pigment ['name'] ]( P_dll, P_config['pigment'] )
+    I_pigment['the']  = P_inventory[ 'pigment' ][ I_pigment ['name'] ]( P_dll, P_config['pigment'] )
 
     object = composer.object( P_dll, I_geometry['the'], I_pigment['the'], I_medium['the'] )
 
@@ -89,12 +91,12 @@ def doIt( P_dll, P_picture, P_scene, P_inventory, P_config ):
 
     A = IceRayPy.type.math.coord.Size2D( P_picture['window']['A']['x'], P_picture['window']['A']['y'] )
     B = IceRayPy.type.math.coord.Size2D( P_picture['window']['B']['x'], P_picture['window']['B']['y'] )
-
     IceRayPy.type.graph.Crop( P_picture['temp']['crop'], P_picture['temp']['object'], A, B )
-    #if( 'watermark' in P_picture ):
-    #IceRayPy.type.graph.Print( P_picture['temp']['crop'], Size2D(0,0), P_picture['watermark'] )
 
-    #P_picture['temp']['crop'].store( P_picture['temp']['file'] )
+    #TODO if( 'watermark' in P_picture ):
+    #TODO    IceRayPy.type.graph.Print( P_picture['temp']['crop'], Size2D(0,0), P_picture['watermark'] )
+
+    #TODO P_picture['temp']['crop'].store( P_picture['temp']['file'] )
 
     if( 'pnm' == P_picture['extension'] ):
         P_picture['temp']['crop'].storePNM( P_picture['temp']['file'] )
@@ -103,78 +105,90 @@ def doIt( P_dll, P_picture, P_scene, P_inventory, P_config ):
     if( 'jpeg' == P_picture['extension'] ):
         P_picture['temp']['crop'].storeJPEG( P_picture['temp']['file'] )
 
-    P_dll.IceRayC_Utility_Random_Table_Next()
+    I_average = IceRayPy.type.color.RGB()
+    P_picture['temp']['crop'].average( I_average )
+    I_dispersion = P_picture['temp']['crop'].dispersion()
+
+    if( None != P_result ):
+        P_result['picture'] = {}
+        P_result['picture']['dispersion'] = I_dispersion
+        P_result['picture']['average'] = I_average
+
+    print( 'garbage collector: get_threshold() ' + str( gc.get_threshold() ), flush = True  )
+    print( 'garbage collector: get_count()     ' + str( gc.get_count()     ), flush = True  )
+    print( 'garbage collector: collect()       ' + str( gc.collect()       ), flush = True  )
+    print( 'garbage collector: get_count()    )' + str( gc.get_count()     ), flush = True  )
+    print( 'garbage collector: get_threshold() ' + str( gc.get_threshold() ), flush = True  )
 
 
-
-dll_path = IceRayPy.system.SearchCDLL()
-
-if 0 != len( dll_path ):
-    I_dll = IceRayPy.system.LoadCDLL( dll_path )
-else:
-    print("Can not find DLL")
-    time.sleep(200)
-    exit()
-
-I_picture ={}
-I_picture[ 'width']  = 800
-I_picture['height']  = 600
-I_picture['aspect']  = I_picture['width'] / I_picture['height']
-
-I_picture['folder'] = './_out'
-I_picture['extension'] = 'png'
-
-I_picture['index'] = 0
-I_picture['time'] = 123.123
-
-
-I_picture['window'] = {}
-I_picture['window']['A'] = {}
-I_picture['window']['A']['x'] = 0
-I_picture['window']['A']['y'] = 0
-I_picture['window']['B'] = {}
-I_picture['window']['B']['x'] = I_picture['width']
-I_picture['window']['B']['y'] = I_picture['height']
-
-I_scene = {}
-I_scene['room']       = 'C-close'
-I_scene['camera']     =  'F-persp'
-I_scene['geometry']   = 'F-box'
-I_scene['medium']     = 'trans'
-I_scene['pigment']    = 'I-ALP'
-I_scene['light']      = 'point'
-I_scene['decoration'] = 'vacuum'
-
-
-import library_room
-import library_camera
-import library_light
-import library_pigment
-import library_medium
-import library_geometry
-import library_decoration
-
-
-I_inventory= {}
-I_inventory['room']       = library_room.list
-I_inventory['camera']     = library_camera.list
-I_inventory['geometry']   = library_geometry.list
-I_inventory['medium']     = library_medium.list
-I_inventory['pigment']    = library_pigment.list
-I_inventory['light']      = library_light.list
-I_inventory['decoration'] = library_decoration.list
-
-I_config  = {}
-I_config['pigment']  = {}
-I_config['camera']  = {}
-I_config['room']   = {}
-I_config['decoration']   = {}
-
-I_config['camera'][ 'eye']   = IceRayPy.type.math.coord.Scalar3D( 1, 2, 3 )
-I_config['camera']['view']   = IceRayPy.type.math.coord.Scalar3D( 0, 0, 0 )
-I_config['camera']['aspect'] = I_picture['aspect']
-#I_config['camera']['hfov']   = math.radians( 90 )
-#I_config['camera']['vfov']   = math.radians( 90 )
-
-if __name__ == "__main__":
-    doIt( I_dll, I_picture, I_scene, I_inventory, I_config )
+#dll_path = IceRayPy.system.SearchCDLL()
+#
+#if 0 != len( dll_path ):
+#    I_dll = IceRayPy.system.LoadCDLL( dll_path )
+#else:
+#    print("Can not find DLL")
+#    time.sleep(200)
+#    exit()
+#
+#I_picture ={}
+#I_picture[ 'width']  = 800
+#I_picture['height']  = 600
+#I_picture['aspect']  = I_picture['width'] / I_picture['height']
+#
+#I_picture['folder'] = './_out'
+#I_picture['extension'] = 'png'
+#
+#I_picture['index'] = 0
+#I_picture['time'] = 123.123
+#
+#
+#I_picture['window'] = {}
+#I_picture['window']['A'] = {}
+#I_picture['window']['A']['x'] = 0
+#I_picture['window']['A']['y'] = 0
+#I_picture['window']['B'] = {}
+#I_picture['window']['B']['x'] = I_picture['width']
+#I_picture['window']['B']['y'] = I_picture['height']
+#
+#I_scene = {}
+#I_scene['room']       = 'C-close'
+#I_scene['camera']     =  'F-persp'
+#I_scene['geometry']   = 'F-box'
+#I_scene['medium']     = 'trans'
+#I_scene['pigment']    = 'I-ALP'
+#I_scene['light']      = 'point'
+#I_scene['decoration'] = 'vacuum'
+#
+#
+#import library_room
+#import library_camera
+#import library_light
+#import library_pigment
+#import library_medium
+#import library_geometry
+#import library_decoration
+#
+#
+#I_inventory= {}
+#I_inventory['room']       = library_room.list
+#I_inventory['camera']     = library_camera.list
+#I_inventory['geometry']   = library_geometry.list
+#I_inventory['medium']     = library_medium.list
+#I_inventory['pigment']    = library_pigment.list
+#I_inventory['light']      = library_light.list
+#I_inventory['decoration'] = library_decoration.list
+#
+#I_config  = {}
+#I_config['pigment']  = {}
+#I_config['camera']  = {}
+#I_config['room']   = {}
+#I_config['decoration']   = {}
+#
+#I_config['camera'][ 'eye']   = IceRayPy.type.math.coord.Scalar3D( 1, 2, 3 )
+#I_config['camera']['view']   = IceRayPy.type.math.coord.Scalar3D( 0, 0, 0 )
+#I_config['camera']['aspect'] = I_picture['aspect']
+##I_config['camera']['hfov']   = math.radians( 90 )
+##I_config['camera']['vfov']   = math.radians( 90 )
+#
+#if __name__ == "__main__":
+#    doIt( I_dll, I_picture, I_scene, I_inventory, I_config )

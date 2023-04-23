@@ -19,20 +19,10 @@ else:
     time.sleep(200)
     exit()
 
-#IceRayPy.core.material.instruction.transmission.blossom.Sunflower( I_dll, 1, 2, 3, 4, 5, 6, 7 )
-#IceRayPy.utility.material.transmission.blossom.Sunflower( I_dll, {}, IceRayPy.type.color.RGB(), 1, 2, 3, 4 );
-
-#exit()
-
 I_picture ={}
-I_picture[ 'width']  = int( 800/4 )
-I_picture['height']  = int( 600/4 )
+I_picture[ 'width']  = int( 800/2 )
+I_picture['height']  = int( 600/2 )
 I_picture['aspect']  = I_picture['width'] / I_picture['height']
-
-
-start = 0;
-if( 1 < len( sys.argv ) ):
-    start = int( sys.argv[1] )
 
 #if( 1 < len( sys.argv ) ):
 #    I_picture[ 'width'] = int( sys.argv[1] )
@@ -117,8 +107,9 @@ I_config['composer']['hot'] = {}
 I_config['composer']['hot']['x'] = 132
 I_config['composer']['hot']['y'] = 316
 
-
 index = 0;
+
+
 for object in [ 'Q-sphere' ]:  # 'V-Vacuum'
     I_scene['geometry']   = object
     for blossom in [ 'vdc', 'congruent', 'sobol', 'random',  'sunflower', 'triangle', 'grid', 'hexagon'  ]: #
@@ -151,6 +142,74 @@ for blossom in [ 'vdc', 'congruent', 'sobol', 'random',  'sunflower', 'triangle'
     render.doIt( I_dll, I_picture, I_scene, I_inventory, I_config )
     index = index + 1
 
+exit()
+
+start = 0;
+if( 1 < len( sys.argv ) ):
+    start = int( sys.argv[1] )
+
+end = 10;
+if( 2 < len( sys.argv ) ):
+    end = int( sys.argv[2] )
+
+
+I_picture['window']['A']['x'] = int( I_picture['width']/2 - I_picture['width']/10 )
+I_picture['window']['B']['x'] = int( I_picture['width']/2 + I_picture['width']/10 )
+I_picture['window']['A']['y'] = int( I_picture['height']/2 + I_picture['height']/6  )
+I_picture['window']['B']['y'] = int( I_picture['height']/2 + I_picture['height']/6 + I_picture['height']/10 )
+
+resolution = 2000
+I_pictureAverage = IceRayPy.type.graph.Picture( I_dll )
+I_pictureAverage.size( resolution,resolution)
+I_pictureAverage.clear( IceRayPy.type.color.RGB( 0, 0, 0 ) )
+I_pictureDispersion = IceRayPy.type.graph.Picture( I_dll )
+I_pictureDispersion.size(resolution,resolution)
+I_pictureDispersion.clear( IceRayPy.type.color.RGB( 0, 0, 0 ) )
+time_start = time.time()
+
+
+for x in range( start, end ): # 
+    for y in range( x, int(resolution/2) ):
+        I_blossom = 'congruent'
+        I_scene['geometry']   = 'V-vacuum'
+        I_picture['index'] = index
+        I_picture['prefix'] = "%03i"%(index)+ '_' + I_blossom + "_"
+        #I_scene['pigment']    = 'T-0-reflect-mirror'  #<! irrelevant
+        #I_config['pigment']['angle']  = math.radians( 89.9 )
+        I_config['room']['radiosity'][ 'patch' ]  = math.radians( 10 )
+        I_config['room']['radiosity'][ 'jitter-type' ]   = "none"
+        I_config['room']['radiosity'][ 'jitter-angle' ]  = I_config['room']['radiosity']['patch']
+        I_config['room']['radiosity'][ 'correction-leader' ]  = True
+        I_config['room']['radiosity'][ 'angle' ]  = math.radians( 89.99 )
+        I_config['room']['radiosity'][ 'sample'] = int( (1 - math.cos(I_config['room']['radiosity']['angle']) ) / ( 1 - math.cos( I_config['room']['radiosity']['patch'] ) ) + 1 )
+        I_config['room']['radiosity'][ 'blossom']  = I_blossom
+        I_config['decoration'][ 'center']  = IceRayPy.type.math.coord.Scalar3D( 0, 0, 1 )
+        I_config['camera'][ 'eye']   = IceRayPy.type.math.coord.Scalar3D( 3, 0 , 0 )
+        I_config['camera'][ 'view']  = IceRayPy.type.math.coord.Scalar3D( 0, 0 , 0 )
+        I_result = {}
+        I_dll.IceRayC_Utility_Random_Table_Next( x/resolution, y/resolution, resolution )
+        render.doIt( I_dll, I_picture, I_scene, I_inventory, I_config, I_result )
+
+        c = I_result['picture']['average'].r
+        c = ( 255.0*c - (161.048-50.0) )/100.0
+        if( c < 0 ): c = 0
+        if( 1 < c ): c = 1
+        I_pictureAverage.set(    IceRayPy.type.math.coord.Size2D( x, y ), IceRayPy.type.color.RGB( c, c, c ) )
+        I_pictureAverage.set(    IceRayPy.type.math.coord.Size2D( y, x ), IceRayPy.type.color.RGB( c, c, c ) )
+
+        d = 10*I_result['picture']['dispersion']
+        I_pictureDispersion.set( IceRayPy.type.math.coord.Size2D( x, y ), IceRayPy.type.color.RGB( d, d, d ) )
+        I_pictureDispersion.set( IceRayPy.type.math.coord.Size2D( y, x ), IceRayPy.type.color.RGB( d, d, d ) )
+
+        print( "Image Statistics: [ " + str(x)+ "," +str(y)+ " ] " + str( I_result ) )
+        index = index + 1
+  #      break
+    I_pictureAverage.storePNG(    "statistic-"+str(resolution)+"_"+"%04i"%(start) + "-" "%04i"%(end)+"-average.png" )
+    I_pictureDispersion.storePNG( "statistic-"+str(resolution)+"_"+"%04i"%(start) + "-" "%04i"%(end)+"-dispersion.png" )
+  #  break
+
+time_delta = time.time() - time_start
+print( "Time Total:" + str( time_delta ), flush = True )
 
 #start = 0;
 #if( 1 < len( sys.argv ) ):

@@ -31,6 +31,7 @@
              virtual T_report Fv_size( T_coord const& P_size )=0;
 
              virtual T_color const* Fv_data()const=0;
+             virtual T_color      * Fv_data()=0;
 
            public:
                       GC__pure():M2_size{1,1}{ }

@@ -4,6 +4,8 @@
 #include "../system/system.h"
 #include "../type/bool.h"
 #include "../type/size.h"
+#include "../type/color.h"
+#include "../type/scalar.h"
 
 struct  IceRayC_Type_Picture_Struct {};
 typedef IceRayC_Type_Picture_Struct* IceRayC_Type_Picture_Handle;
@@ -13,6 +15,8 @@ IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_Type_Bool IceRayC_Type_Picture_Release
 
 IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_Type_Picture_Handle IceRayC_Type_Picture0();
 IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_Type_Picture_Handle IceRayC_Type_Picture1( char * P_filename );
+
+IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_Type_Bool IceRayC_Type_Picture_Set(    IceRayC_Type_Picture_Handle P_this, IceRayC_TypeCoordSize2D const* P_location, IceRayC_TypeColorRGB const*P_color );
 
 IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_Type_Bool IceRayC_Type_Picture_Size(    IceRayC_Type_Picture_Handle P_this, IceRayC_TypeSize width, IceRayC_TypeSize height );
 IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_Type_Bool IceRayC_Type_Picture_SizeGet( IceRayC_Type_Picture_Handle P_this, IceRayC_TypeCoordSize2D      * P_size );
@@ -28,8 +32,12 @@ IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_Type_Bool IceRayC_Type_Picture_StoreJP
 
 IceRayC__EXPORT IceRayC__DECLSPEC unsigned char const* IceRayC_Type_Picture_Buffer( IceRayC_Type_Picture_Handle P_this );
 
-
 IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_Type_Bool IceRayC_Type_Picture_Default( IceRayC_Type_Picture_Handle P_this );
 
+IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_Type_Bool IceRayC_Type_Picture_Clear( IceRayC_Type_Picture_Handle P_this, IceRayC_TypeColorRGB * P_average );
+
+
+IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_Type_Bool   IceRayC_Type_Picture_Average(    IceRayC_Type_Picture_Handle P_this, IceRayC_TypeColorRGB * P_average );
+IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_Type_Scalar IceRayC_Type_Picture_Dispersion( IceRayC_Type_Picture_Handle P_this );
 
 #endif

@@ -14,11 +14,21 @@ class RGB(ctypes.Structure):
                 ("b", Scalar)
                 ]
     def __str__(self):
-        return '[' + str( self.r ) + ', ' + str( self.g )+ ', ' +str( self.b ) + ' ]'
+        return '[ ' + str( 255*self.r ) + ', ' + str( 255*self.g )+ ', ' +str( 255*self.b ) + ' ]'
 
     def __repr__(self):
-        return '[' + str( self.r ) + ', ' + str( self.g )+ ', ' +str( self.b ) + ' ]'
+        return '[ ' + str( 255*self.r ) + ', ' + str( 255*self.g )+ ', ' +str( 255*self.b ) + ' ]'
 
+    def __getitem__(self, key):
+        if( 0 == key ): return self.r
+        if( 1 == key ): return self.g
+        if( 2 == key ): return self.b
+        return 0
+
+    def __setitem__(self, key, value):
+        if( 0 == key ): self.r = Scalar( value )
+        if( 1 == key ): self.g = Scalar( value )
+        if( 3 == key ): self.b = Scalar( value )
 
 class RGBA(ctypes.Structure):
     _fields_ = [("r", Scalar),
@@ -33,10 +43,22 @@ class HSL(ctypes.Structure):
                 ("l", Scalar)
                 ]
     def __str__(self):
-        return '[' + str( self.h ) + ', ' + str( self.s )+ ', ' +str( self.l ) + ' ]'
+        return '[ ' + str( self.h ) + ', ' + str( self.s )+ ', ' +str( self.l ) + ' ]'
 
     def __repr__(self):
-        return '[' + str( self.h ) + ', ' + str( self.s )+ ', ' +str( self.l ) + ' ]'
+        return '[ ' + str( self.h ) + ', ' + str( self.s )+ ', ' +str( self.l ) + ' ]'
+
+    def __getitem__(self, key):
+        if( 0 == key ): return self.h
+        if( 1 == key ): return self.s
+        if( 2 == key ): return self.l
+        return 0
+
+    def __setitem__(self, key, value):
+        if( 0 == key ): self.h = Scalar( value )
+        if( 1 == key ): self.s = Scalar( value )
+        if( 3 == key ): self.l = Scalar( value )
+
 
 def RGB2HSL( P_dll, P_rgb ):
     result = HSL()

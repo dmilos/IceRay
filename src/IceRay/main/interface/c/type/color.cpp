@@ -2,8 +2,21 @@
 
 #include "IceRay/type/color.hpp"
 
+GS_DDMRM::S_IceRay::S_type::S_color::S_gray::GT_scalar c2cpp( IceRayC_Type_Color_Gray const& P_that )
+ {
+  GS_DDMRM::S_IceRay::S_type::S_color::S_gray::GT_scalar Ir_result;
+  Ir_result[0] = P_that.value;
+  return Ir_result;
+ }
 
-GS_DDMRM::S_IceRay::S_type::S_color::GT_scalar c2cpp( IceRayC_TypeColorRGB P_that )
+IceRayC_Type_Color_Gray cpp2c( GS_DDMRM::S_IceRay::S_type::S_color::S_gray::GT_scalar const& P_that )
+ {
+  IceRayC_Type_Color_Gray Ir_result;
+  Ir_result.value = P_that[0];
+  return Ir_result;
+ }
+
+GS_DDMRM::S_IceRay::S_type::S_color::GT_scalar c2cpp( IceRayC_TypeColorRGB const& P_that )
  {
   GS_DDMRM::S_IceRay::S_type::S_color::GT_scalar Ir_result;
   Ir_result[0] = P_that.value[0];
@@ -12,7 +25,7 @@ GS_DDMRM::S_IceRay::S_type::S_color::GT_scalar c2cpp( IceRayC_TypeColorRGB P_tha
   return Ir_result;
  }
 
-IceRayC_TypeColorRGB                           cpp2c( GS_DDMRM::S_IceRay::S_type::S_color::GT_scalar P_this )
+IceRayC_TypeColorRGB                           cpp2c( GS_DDMRM::S_IceRay::S_type::S_color::GT_scalar const& P_this )
  {
   IceRayC_TypeColorRGB I_that;
   I_that.value[0] = P_this[0];
@@ -21,7 +34,7 @@ IceRayC_TypeColorRGB                           cpp2c( GS_DDMRM::S_IceRay::S_type
   return I_that;
  }
 
-GS_DDMRM::S_IceRay::S_type::S_color::S_HSL::GT_scalar c2cpp( IceRayC_TypeColorHSL P_that )
+GS_DDMRM::S_IceRay::S_type::S_color::S_HSL::GT_scalar c2cpp( IceRayC_TypeColorHSL const& P_that )
  {
   GS_DDMRM::S_IceRay::S_type::S_color::S_HSL::GT_scalar Ir_result;
   Ir_result[0] = P_that.value[0];
@@ -38,6 +51,11 @@ IceRayC_TypeColorHSL                           cpp2c( GS_DDMRM::S_IceRay::S_type
   I_that.value[2] = P_this[2];
   return I_that;
  }
+
+
+//GS_DDMRM::S_IceRay::S_type::S_color::GT_size4D c2cpp( IceRayC_Type_Color_RGBA const&  );
+//IceRayC_Type_Color_RGBA cpp2c( GS_DDMRM::S_IceRay::S_type::S_coord::GT_size4D const& );
+
 
 int  IceRayC_Type_Color_HSL2RGB( IceRayC_TypeColorRGB *P_left, IceRayC_TypeColorHSL* P_right )
  {

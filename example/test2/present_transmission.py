@@ -109,6 +109,8 @@ pigment_list =[
    'T-B-refract-schlick'
 ]
 
+I_config['pigment']['count']  = 1
+
 for item in pigment_list :
     I_scene['pigment']= item
     render.doIt( I_dll, I_picture, I_scene, I_inventory, I_config )
@@ -122,6 +124,8 @@ pigment_list =[
     'T-0-reflect-mirror',
     'T-B-refract-schlick'
 ]
+
+I_config['pigment']['specular']  = IceRayPy.type.color.RGB( 1, 0.1, 0.01 ) 
 
 for geometry_name in geometry_list :
     I_scene['geometry']= geometry_name

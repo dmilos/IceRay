@@ -6,4 +6,4 @@
 #include "./poisson.cpp"
 #include "./sunflower.cpp"
 
-//#include "./congruent.cpp"
+#include "./congruent.cpp"
