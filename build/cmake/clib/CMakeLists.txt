@@ -72,6 +72,7 @@ if( UNIX )
         set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -DDEBUG -g -rdynamic -ggdb -g3 -O0")
     endif()
 endif()
+
 if( MSVC )
     target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE /Zp1    )
     target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE /wd4624 )

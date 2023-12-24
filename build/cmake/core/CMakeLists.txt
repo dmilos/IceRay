@@ -52,13 +52,6 @@ include_directories( "${directory_submodule__root}/memory/src")
 include_directories( "${directory_submodule__root}/PNM/src")
 include_directories( "${directory_submodule__root}/TopLog/src")
 
-if ( CMAKE_COMPILER_IS_GNUCC )
-    set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -Wall")
-endif()
-if ( MSVC )
-    set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} /wd4624")
-endif()
-
 
 
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${directory_obj}/arc)
@@ -74,6 +67,7 @@ set_property( TARGET ${ICERAY_PROJECT_NAME_FULL} PROPERTY CXX_VISIBILITY_PRESET 
 
 if( UNIX )
     target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -frtti )
+    target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -Wall )
     target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -fexceptions )
     target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -Wno-unused-local-typedefs )
     target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -Wno-unused-variable )
@@ -90,9 +84,10 @@ if( UNIX )
         set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -DDEBUG -g -rdynamic -ggdb -g3 -O0")
     endif()
 endif()
-if( MSVC )
-    target_compile_options(${ICERAY_PROJECT_NAME_FULL} PRIVATE /Zp1)
 
+if( MSVC )
+    target_compile_options(${ICERAY_PROJECT_NAME_FULL} PRIVATE /Zp1 )
+    target_compile_options(${ICERAY_PROJECT_NAME_FULL} PRIVATE /wd4624 )
     target_compile_definitions( ${ICERAY_PROJECT_NAME_FULL} PRIVATE  $<$<CONFIG:DEBUG>:_SECURE_SCL> )
     target_compile_definitions( ${ICERAY_PROJECT_NAME_FULL} PRIVATE  $<$<CONFIG:DEBUG>:_ITERATOR_DEBUG_LEVEL=2> )
     target_compile_definitions( ${ICERAY_PROJECT_NAME_FULL} PRIVATE  $<$<CONFIG:DEBUG>:_HAS_ITERATOR_DEBUGGING> )
@@ -105,4 +100,3 @@ add_dependencies(     ${ICERAY_PROJECT_NAME_FULL}           ${ICERAY_SUBMODULE_M
 
 message(STATUS "CMAKE_CXX_FLAGS: ${CMAKE_CXX_FLAGS}")
 message(STATUS "CMAKE_CXX_FLAGS: ${CMAKE_C_FLAGS}")
-

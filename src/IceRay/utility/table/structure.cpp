@@ -69,7 +69,7 @@ namespace GS_DDMRM
           for( std::size_t index=1; index < M2_size.size(); ++index )
            {
             sample.push_back( (double) M2_size[index] );
-            average.push( M2_size[index] - M2_size[index-1] );
+            average.push( (double)M2_size[index] - (double)M2_size[index-1] );
             ::math::geometry::direction::fit2D<double>::process( a,b, sample );
             // /*debug*/ outputTxt << M2_size[index]<< ", "<< average.value() << "," << "[" << a << ", "<< b <<"] " << std::endl ;
            }

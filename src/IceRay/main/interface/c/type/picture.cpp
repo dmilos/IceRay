@@ -162,7 +162,7 @@ IceRayC_Type_Bool IceRayC_Type_Picture_Load( IceRayC_Type_Picture_Handle P_this,
       for( Tf__pure::T_size y=0; y< I_this->F_size()[1]; ++y )
        for( Tf__pure::T_size x=0; x< I_this->F_size()[0]; ++x )
         {
-         I_image->GetPixel( x, y, &I_color );
+         I_image->GetPixel( (int)x, (int)y, &I_color );
          I_this-> Fv_pixel( {x,y}, Tf__pure::T_color{ I_color.GetRed(), I_color.GetGreen(), I_color.GetBlue() } );
         }
 

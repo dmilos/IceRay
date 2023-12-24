@@ -22,6 +22,6 @@ void GC__pure::F_render( T_color & P_color, T_coord const& P_coord )
 
 void  GC__pure::F_resolution( T_resolution const& P_resolution )
  {
-  ::math::linear::vector::load(  M2_scale, P_resolution[0], P_resolution[1] );
+  ::math::linear::vector::load(  M2_scale, (T_scalar)P_resolution[0], (T_scalar)P_resolution[1] );
   ::math::linear::vector::invert( M2_scale, { T_scalar( P_resolution[0] ), T_scalar( P_resolution[1] ) }  );
  }

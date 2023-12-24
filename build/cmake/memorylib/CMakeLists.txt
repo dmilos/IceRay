@@ -51,13 +51,6 @@ source_group( TREE "${directory_source}" FILES ${SOURCE_CPP} )
 include_directories( "${directory_source}")
 
 
-if ( CMAKE_COMPILER_IS_GNUCC )
-    set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -Wall")
-endif()
-if ( MSVC )
-    set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} /wd4624")
-endif()
-
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${directory_obj}/arc)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${directory_lib}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${directory_dll}/bin)
@@ -71,6 +64,7 @@ set_property( TARGET ${ICERAY_PROJECT_NAME_FULL} PROPERTY POSITION_INDEPENDENT_C
 
 if( UNIX )
     target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -frtti )
+    target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -Wall )
     target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -fexceptions )
     target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -Wno-unused-local-typedefs )
     target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -Wno-unused-variable )
@@ -87,8 +81,10 @@ if( UNIX )
         set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -DDEBUG -g -rdynamic -ggdb -g3 -O0")
     endif()
 endif()
+
 if( MSVC )
     target_compile_options(${ICERAY_PROJECT_NAME_FULL} PRIVATE /Zp1)
+    target_compile_options(${ICERAY_PROJECT_NAME_FULL} PRIVATE /wd4624)
 
     target_compile_definitions( ${ICERAY_PROJECT_NAME_FULL} PRIVATE  $<$<CONFIG:DEBUG>:_SECURE_SCL> )
     target_compile_definitions( ${ICERAY_PROJECT_NAME_FULL} PRIVATE  $<$<CONFIG:DEBUG>:_ITERATOR_DEBUG_LEVEL=2> )

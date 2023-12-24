@@ -86,7 +86,7 @@ bool      GC_uniform::Fv_intersect( T_scalar &P_lambda, T_state &P_state, T_ray 
     if( Is_epsilon < I_direction[I_projection] )
      {
       I_step[ I_projection ] = +1;
-      I_fence[ I_projection ] = M2_dimension[I_projection];
+      I_fence[ I_projection ] = (T_integer)M2_dimension[I_projection];
       I_orientation[I_projection] = +1;
       continue;
      }
