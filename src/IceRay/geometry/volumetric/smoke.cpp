@@ -37,10 +37,10 @@ typedef GS_DDMRM::S_IceRay::S_type::GT_scalar          GTs_scalar;
    return r;
   }
   
-  static int GIs_counter=0;
 
   GTs_scalar GFs_rand()
    {
+    static int Is_counter=0;
 
     //static int Is_duzina = 4; static int niz[]={ 1,  2,  3,  4 };
     //static int Is_duzina = 4; static int niz[]={ 1,  3,  4,  2 };
@@ -57,10 +57,10 @@ typedef GS_DDMRM::S_IceRay::S_type::GT_scalar          GTs_scalar;
     //return (rand()%3)/3.0;
     //return (i++%5)/4.0;
     //return (niz[GIs_counter++%Is_duzina]-1)/GTs_scalar(Is_duzina-1.0);
-    return (  GF_VanDerCorput(GIs_counter++,3)
-            - GF_VanDerCorput(GIs_counter++,2)/3.0  + 1/3.0
-            + GF_VanDerCorput(GIs_counter++,5)/5.0
-            - GF_VanDerCorput(GIs_counter++,7)/7.0  + 1/7.0
+    return (  GF_VanDerCorput(Is_counter++,3)
+            - GF_VanDerCorput(Is_counter++,2)/3.0  + 1/3.0
+            + GF_VanDerCorput(Is_counter++,5)/5.0
+            - GF_VanDerCorput(Is_counter++,7)/7.0  + 1/7.0
             ) /(1+1/3.0+1/5.0+1/7.0);
    }
 

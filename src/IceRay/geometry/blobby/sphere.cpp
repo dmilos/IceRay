@@ -89,6 +89,11 @@ bool GC_sphere::Fv_intersect
 
   switch( I_intersect.M_hit )
    {
+    case( C_intersect::En_undefined ): 
+    case( C_intersect::En_miss ):   /* TODO */ break;
+    case( C_intersect::En_2far ):   /* TODO */ break;
+    case( C_intersect::En_behind ): /* TODO */ break;
+    
     case( C_intersect::En_enter ):
      {
       if( - Is_epsilon < b )
