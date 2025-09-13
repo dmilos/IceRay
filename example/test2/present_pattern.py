@@ -29,6 +29,10 @@ if( 1 < len( sys.argv ) ):
     I_picture[ 'width'] = int( sys.argv[1] )
     I_picture['height'] = int( I_picture['width'] / I_picture['aspect'] )
 
+try:
+    os.mkdir( "_out" )
+except OSError as e:
+    pass
 I_picture['folder'] = './_out'
 I_picture['extension'] = 'pnm'
 
@@ -75,9 +79,9 @@ I_config  = {}
 I_config['pigment']  = {}
 I_config['camera']  = {}
 I_config['room']   = {}
-I_config['decoration']   = {}
 I_config['light']   = {}
 I_config['light']['sample']   = 1
+I_config['decoration']   = {}
 
 g = 1.22074408460575947536 #(math.sqrt(5)+1)/2
 
@@ -176,6 +180,16 @@ for geometry_item in geometry_list :
 
 import os
 def prepare_readme():
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-box_trans_M-o-affine_point_0000.pnm' ,          I_picture['folder']+'/'+   'transform-box-TODO.pnm'   )
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-box_trans_M-o-ID_point_0000.pnm' ,              I_picture['folder']+'/'+   'transform-box-TODO.pnm'   )
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-box_trans_M-o-translate_point_0000.pnm' ,       I_picture['folder']+'/'+   'transform-box-TODO.pnm'   )
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-box_trans_M-o-homography_point_0000.pnm' ,      I_picture['folder']+'/'+   'transform-box-TODO.pnm'   )
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-box_trans_P-image_point_0000.pnm' ,             I_picture['folder']+'/'+   'transform-box-TODO.pnm'   )
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-box_trans_P-level_point_0000.pnm' ,             I_picture['folder']+'/'+   'transform-box-TODO.pnm'   )
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_Q-sphere_trans_P-level_point_0000.pnm' ,          I_picture['folder']+'/'+   'transform-TODO.pnm'   )
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_Q-sphere_trans_M-o-homography_point_0000.pnm' ,   I_picture['folder']+'/'+   'transform-TODO.pnm'   )
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_Q-sphere_trans_M-o-ID_point_0000.pnm' ,           I_picture['folder']+'/'+   'transform-TODO.pnm'   )
+
     os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-box_trans_M-o-Cartesian2Cylindric_point_0000.pnm' ,     I_picture['folder']+'/'+   'transform-Cartesian2Cylindric.pnm'   )
     os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-box_trans_M-o-Cartesian2Package_point_0000.pnm' ,       I_picture['folder']+'/'+   'transform-Cartesian2Package.pnm'   )
     os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-box_trans_M-o-Cylindric2Cartesian_point_0000.pnm' ,     I_picture['folder']+'/'+   'transform-Cylindric2Cartesian.pnm'   )
@@ -184,6 +198,7 @@ def prepare_readme():
     os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-box_trans_M-o-Max2Euclid_point_0000.pnm' ,              I_picture['folder']+'/'+   'transform-Max2Euclid.pnm'   )
     os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-box_trans_M-o-Spherical2Cartesian_point_0000.pnm' ,     I_picture['folder']+'/'+   'transform-Spherical2Cartesian.pnm'   )
     os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-box_trans_M-o-Spherical2Cylindric_point_0000.pnm' ,     I_picture['folder']+'/'+   'transform-Spherical2Cylindric.pnm'   )
+
     os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_Q-sphere_trans_M-o-Cartesian2Fisheye_point_0000.pnm' ,    I_picture['folder']+'/'+   'transform-Cartesian2Fisheye.pnm'   )
     os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_Q-sphere_trans_M-o-Cartesian2Tablecloth_point_0000.pnm' , I_picture['folder']+'/'+   'transform-Cartesian2Tablecloth.pnm'   )
     os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_Q-sphere_trans_M-o-Cartesian2WoodX_point_0000.pnm' ,      I_picture['folder']+'/'+   'transform-Cartesian2WoodX.pnm'   )

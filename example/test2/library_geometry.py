@@ -29,7 +29,7 @@ list = {
      'Q-paraboloid'       : IceRayPy.core.geometry.simple.Paraboloid,
      'Q-util-paraboloid'  : IceRayPy.utility.geometry.simple.ParaboloidG,
      
-     'Q-Q-defailt'        : IceRayPy.core.geometry.simple.Quadric,
+     'Q-Q-default'        : IceRayPy.core.geometry.simple.Quadric,
      'Q-Q-sphere'         : IceRayPy.utility.geometry.simple.quadric.Sphere,
      'Q-Q-cylinder'       : IceRayPy.utility.geometry.simple.quadric.Cylinder,
      'Q-Q-para'           : IceRayPy.utility.geometry.simple.quadric.Paraboloid,

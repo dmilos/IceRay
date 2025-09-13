@@ -29,6 +29,10 @@ if( 1 < len( sys.argv ) ):
     I_picture[ 'width'] = int( sys.argv[1] )
     I_picture['height'] = int( I_picture['width'] / I_picture['aspect'] )
 
+try:
+    os.mkdir( "_out" )
+except OSError as e:
+    pass
 I_picture['folder'] = './_out'
 I_picture['extension'] = 'pnm'
 
@@ -50,7 +54,7 @@ I_scene['geometry']   = 'vacuum'
 I_scene['medium']     = 'trans'
 I_scene['pigment']    = 'I-ALP'
 I_scene['light']      = 'chand-nine'
-I_scene['decoration'] = 'vacuum'
+I_scene['decoration'] = 'grid'
 
 
 import library_room
@@ -75,9 +79,9 @@ I_config  = {}
 I_config['pigment']  = {}
 I_config['camera']  = {}
 I_config['room']   = {}
-I_config['decoration']   = {}
 I_config['light']   = {}
 I_config['light']['sample']   = 1
+I_config['decoration']   = {}
 
 g = 1.22074408460575947536 #(math.sqrt(5)+1)/2
 
@@ -114,4 +118,12 @@ for item in geometry_list :
 
 import os
 def prepare_readme():
-    os.rename( I_picture['folder']+'/'+    'TODO.pnm'            , I_picture['folder']+'/'+'TODO.pnm' ) 
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_C-I-i-i_trans_I-ALP_chand-nine_0000.pnm' , I_picture['folder']+'/'+'geometry_intersect_c-i-i-i.pnm' ) 
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_C-I-i-o_trans_I-ALP_chand-nine_0000.pnm' , I_picture['folder']+'/'+'geometry_intersect_c-i-i-o.pnm' ) 
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_C-I-i-s_trans_I-ALP_chand-nine_0000.pnm' , I_picture['folder']+'/'+'geometry_intersect_c-i-i-s.pnm' ) 
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_C-I-o-i_trans_I-ALP_chand-nine_0000.pnm' , I_picture['folder']+'/'+'geometry_intersect_c-i-o-i.pnm' ) 
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_C-I-o-o_trans_I-ALP_chand-nine_0000.pnm' , I_picture['folder']+'/'+'geometry_intersect_c-i-o-o.pnm' ) 
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_C-I-o-s_trans_I-ALP_chand-nine_0000.pnm' , I_picture['folder']+'/'+'geometry_intersect_c-i-o-s.pnm' ) 
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_C-I-s-i_trans_I-ALP_chand-nine_0000.pnm' , I_picture['folder']+'/'+'geometry_intersect_c-i-s-i.pnm' ) 
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_C-I-s-o_trans_I-ALP_chand-nine_0000.pnm' , I_picture['folder']+'/'+'geometry_intersect_c-i-s-o.pnm' ) 
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_C-I-s-s_trans_I-ALP_chand-nine_0000.pnm' , I_picture['folder']+'/'+'geometry_intersect_c-i-s-s.pnm' ) 

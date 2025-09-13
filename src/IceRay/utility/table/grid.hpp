@@ -38,7 +38,7 @@
                M2_structure.F_spot().reserve( P_size * P_size );
 
                T_size I_grid = 2*( P_size / 2 ) +1;
-               T_scalar I_perimeter = I_grid/2 - 2;
+               T_scalar I_perimeter = T_scalar( I_grid/2 - 2 );
 
                for( T_size I_v =0; I_v < I_grid; ++ I_v )
                for( T_size I_u =0; I_u < I_grid; ++ I_u )

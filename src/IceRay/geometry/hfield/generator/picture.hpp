@@ -10,6 +10,7 @@
 
 
 #include "./_pure.hpp"
+#include "./table.hpp"
 
  namespace GS_DDMRM
   {

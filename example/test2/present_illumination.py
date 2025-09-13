@@ -29,6 +29,10 @@ if( 1 < len( sys.argv ) ):
     I_picture[ 'width'] = int( sys.argv[1] )
     I_picture['height'] = int( I_picture['width'] / I_picture['aspect'] )
 
+try:
+    os.mkdir( "_out" )
+except OSError as e:
+    pass
 I_picture['folder'] = './_out'
 I_picture['extension'] = 'pnm'
 
@@ -76,9 +80,9 @@ I_config  = {}
 I_config['pigment']  = {  }
 I_config['camera']  = {}
 I_config['room']   = {}
-I_config['decoration']   = {}
 I_config['light']   = {}
 I_config['light']['sample']   = 1
+I_config['decoration']   = {}
 
 g = 1.22074408460575947536 #(math.sqrt(5)+1)/2
 
@@ -137,10 +141,35 @@ for geometry_item in geometry_list :
 
 import os
 def prepare_readme():
-    os.rename( I_picture['folder']+'/'+    'TODO.pnm'            , I_picture['folder']+'/'+'TODO.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-ALP_point_0000.pnm'            , I_picture['folder']+'/'+'material_illumination_alp.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-ambient_point_0000.pnm'        , I_picture['folder']+'/'+'material_illumination_ambient.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-AS_point_0000.pnm'             , I_picture['folder']+'/'+'material_illumination_as.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-AsDiffuse_point_0000.pnm'      , I_picture['folder']+'/'+'material_illumination_asdiffuse.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-AsSpecular_point_0000.pnm'     , I_picture['folder']+'/'+'material_illumination_asspecular.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-beckmann-iso_point_0000.pnm'   , I_picture['folder']+'/'+'material_illumination_beckmann.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-Blinn_point_0000.pnm'          , I_picture['folder']+'/'+'material_illumination_blinn.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-Burley-diff_point_0000.pnm'    , I_picture['folder']+'/'+'material_illumination_burley-diff.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-Burley-spec_point_0000.pnm'    , I_picture['folder']+'/'+'material_illumination_burley-spec.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-CT_point_0000.pnm'             , I_picture['folder']+'/'+'material_illumination_ct.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-gaussian_point_0000.pnm'       , I_picture['folder']+'/'+'material_illumination_gaussian.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-HsLambert_point_0000.pnm'      , I_picture['folder']+'/'+'material_illumination_hslambert.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-HsPhong_point_0000.pnm'        , I_picture['folder']+'/'+'material_illumination_hsphong.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-Lambert_point_0000.pnm'        , I_picture['folder']+'/'+'material_illumination_lambert.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-ONf29_point_0000.pnm'          , I_picture['folder']+'/'+'material_illumination_ONf29.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-ONf30_point_0000.pnm'          , I_picture['folder']+'/'+'material_illumination_onf30.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-ONJvO_point_0000.pnm'          , I_picture['folder']+'/'+'material_illumination_onjvo.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-ONYFP_point_0000.pnm'          , I_picture['folder']+'/'+'material_illumination_onyfp.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-ONYFQ_point_0000.pnm'          , I_picture['folder']+'/'+'material_illumination_onyfq.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-Phong_point_0000.pnm'          , I_picture['folder']+'/'+'material_illumination_phong.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-WardApprox_point_0000.pnm'     , I_picture['folder']+'/'+'material_illumination_wardapprox.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-WardIsotropic_point_0000.pnm'  , I_picture['folder']+'/'+'material_illumination_wardisotropic.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-WardReal_point_0000.pnm'       , I_picture['folder']+'/'+'material_illumination_wardreal.pnm' )
+
 
 ##debug
 #I_scene['geometry']=  'F-plane'
+
+
 #
 #for index in range( 0, 3, 4 ):
 #    I_picture['index'] = index

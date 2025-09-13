@@ -67,5 +67,5 @@ int InitInfo( )
   I_info["__OPTIMIZE_SIZE__"] = "__GNUC_PATCHLEVEL__";
   I_info["__NO_INLINE__"] = "__GNUC_PATCHLEVEL__";
 #endif
-  return I_info.size();
+  return (int)I_info.size();
  }

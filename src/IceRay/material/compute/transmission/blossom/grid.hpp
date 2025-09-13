@@ -113,9 +113,9 @@
                    ::math::linear::vector::length<T_scalar>( I_z, 1 );
 
                    auto I_index = M2s_table.F_structure().F_size2index( P_count );
-                   auto   const& I_perimeter = M2s_table.F_structure().F_radius()[ I_index ];
-                   T_size const& I_count     = M2s_table.F_structure().F_size()[ I_index ];
-                   auto   const& I_table     = M2s_table.F_structure().F_spot();
+                   T_scalar  const& I_perimeter = M2s_table.F_structure().F_radius()[ I_index ];
+                   T_size    const& I_count     = M2s_table.F_structure().F_size()[ I_index ];
+                   auto      const& I_table     = M2s_table.F_structure().F_spot();
                    T_size I_total=0;
                    T_size I_beginA = P_next.Fv_size();
 
@@ -129,10 +129,12 @@
                      ::math::linear::vector::combine( I_direction, I_disc2d[0], I_x, I_height, I_y, I_disc2d[1], I_z );
                      ::math::linear::vector::length( I_direction, T_scalar( 1 ) );
 
-                     // debug if( math::geometry::deg2rad( 90 )  < ::math::linear::vector::angle( P_normal, I_direction ) )
-                     // debug  {
-                     // debug   continue;
-                     // debug  }
+                     //T_scalar I_check = ::math::linear::vector::dot( I_direction, P_normal );
+                     //if( I_check < T_scalar(0) )
+                     // {
+                     //  I_check = I_check;
+                     //  continue;
+                     // }
 
                      {
                       P_next.Fv_push();  ++I_total;

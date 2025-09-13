@@ -29,6 +29,10 @@ if( 1 < len( sys.argv ) ):
     I_picture[ 'width'] = int( sys.argv[1] )
     I_picture['height'] = int( I_picture['width'] / I_picture['aspect'] )
 
+try:
+    os.mkdir( "_out" )
+except OSError as e:
+    pass
 I_picture['folder'] = './_out'
 I_picture['extension'] = 'pnm'
 
@@ -75,9 +79,9 @@ I_config  = {}
 I_config['pigment']  = {}
 I_config['camera']  = {}
 I_config['room']   = {}
-I_config['decoration']   = {}
 I_config['light']   = {}
 I_config['light']['sample']   = 1
+I_config['decoration']   = {}
 
 g = 1.22074408460575947536 #(math.sqrt(5)+1)/2
 
@@ -101,7 +105,7 @@ geometry_list = [
      'Q-ellipsoid'        ,
      'Q-paraboloid'       ,
      'Q-util-paraboloid'  ,
-     'Q-Q-defailt'        ,
+     'Q-Q-default'        ,
      'Q-Q-sphere'         ,
      'Q-Q-cylinder'       ,
      'Q-Q-para'           ,
@@ -122,11 +126,26 @@ for item in geometry_list :
 
 import os
 def prepare_readme():
-    os.rename( I_picture['folder']+'/'+    'TODO.pnm'       , I_picture['folder']+'/'+'sphere.pnm' )
-    os.rename( I_picture['folder']+'/'+    'TODO.pnm'       , I_picture['folder']+'/'+'cylinder.pnm' )
-    os.rename( I_picture['folder']+'/'+    'TODO.pnm'       , I_picture['folder']+'/'+'cone.pnm' )
-    os.rename( I_picture['folder']+'/'+    'TODO.pnm'       , I_picture['folder']+'/'+'ellipsoid.pnm' )
-    os.rename( I_picture['folder']+'/'+    'TODO.pnm'       , I_picture['folder']+'/'+'hyper-nuke.pnm' )
-    os.rename( I_picture['folder']+'/'+    'TODO.pnm'       , I_picture['folder']+'/'+'hyper-negative.pnm' )
-    os.rename( I_picture['folder']+'/'+    'TODO.pnm'       , I_picture['folder']+'/'+'paraboloid.pnm' )
-    os.rename( I_picture['folder']+'/'+    'TODO.pnm'       , I_picture['folder']+'/'+'saddle.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-cone_trans_I-ALP_chand-nine_0000.pnm',            I_picture['folder']+'/'+'geometry_quadric_cone.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-cylinder_trans_I-ALP_chand-nine_0000.pnm',        I_picture['folder']+'/'+'geometry_quadric_cylinder.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-cylinderu_trans_I-ALP_chand-nine_0000.pnm',       I_picture['folder']+'/'+'geometry_quadric_cylinderu.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-ellipsoid_trans_I-ALP_chand-nine_0000.pnm',       I_picture['folder']+'/'+'geometry_quadric_ellipsoid.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-hyper-cone_trans_I-ALP_chand-nine_0000.pnm',      I_picture['folder']+'/'+'geometry_quadric_hyper-cone.pnm' )         
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-hyper-cylinder_trans_I-ALP_chand-nine_0000.pnm',  I_picture['folder']+'/'+'geometry_quadric_hyper-cylinder.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-hyper-negative_trans_I-ALP_chand-nine_0000.pnm' , I_picture['folder']+'/'+'geometry_quadric_hyper-negative.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-hyper-nuke_trans_I-ALP_chand-nine_0000.pnm'     , I_picture['folder']+'/'+'geometry_quadric_hyper-nuke.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-hyper-sphere_trans_I-ALP_chand-nine_0000.pnm',    I_picture['folder']+'/'+'geometry_quadric_hyper-sphere.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-paraboloid_trans_I-ALP_chand-nine_0000.pnm'     , I_picture['folder']+'/'+'geometry_quadric_paraboloid.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-Q-cone_trans_I-ALP_chand-nine_0000.pnm'         , I_picture['folder']+'/'+'geometry_quadric_q-cone.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-Q-cylinder_trans_I-ALP_chand-nine_0000.pnm'     , I_picture['folder']+'/'+'geometry_quadric_q-cylinder.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-Q-default_trans_I-ALP_chand-nine_0000.pnm',       I_picture['folder']+'/'+'geometry_quadric_q-default.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-Q-nuke_trans_I-ALP_chand-nine_0000.pnm',          I_picture['folder']+'/'+'geometry_quadric_q-nuke.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-Q-para_trans_I-ALP_chand-nine_0000.pnm',          I_picture['folder']+'/'+'geometry_quadric_q-para.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-Q-saddle_trans_I-ALP_chand-nine_0000.pnm',        I_picture['folder']+'/'+'geometry_quadric_q-saddle.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-Q-sphere_trans_I-ALP_chand-nine_0000.pnm'       , I_picture['folder']+'/'+'geometry_quadric_q-sphere.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-saddle_trans_I-ALP_chand-nine_0000.pnm'         , I_picture['folder']+'/'+'geometry_quadric_saddle.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-ALP_chand-nine_0000.pnm',          I_picture['folder']+'/'+'geometry_quadric_sphere.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphereu_trans_I-ALP_chand-nine_0000.pnm',         I_picture['folder']+'/'+'geometry_quadric_sphereu.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-util-cone_trans_I-ALP_chand-nine_0000.pnm',       I_picture['folder']+'/'+'geometry_quadric_util-cone.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-util-cylinder_trans_I-ALP_chand-nine_0000.pnm',   I_picture['folder']+'/'+'geometry_quadric_util-cylinder.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-util-paraboloid_trans_I-ALP_chand-nine_0000.pnm', I_picture['folder']+'/'+'geometry_quadric_util-paraboloid.pnm' )

@@ -29,6 +29,10 @@ if( 1 < len( sys.argv ) ):
     I_picture[ 'width'] = int( sys.argv[1] )
     I_picture['height'] = int( I_picture['width'] / I_picture['aspect'] )
 
+try:
+    os.mkdir( "_out" )
+except OSError as e:
+    pass
 I_picture['folder'] = './_out'
 I_picture['extension'] = 'pnm'
 
@@ -75,9 +79,9 @@ I_config  = {}
 I_config['pigment']  = {}
 I_config['camera']  = {}
 I_config['room']   = {}
-I_config['decoration']   = {}
 I_config['light']   = {}
 I_config['light']['sample']   = 1
+I_config['decoration']   = {}
 
 g = 1.22074408460575947536 #(math.sqrt(5)+1)/2
 
@@ -112,9 +116,10 @@ for item in geometry_list :
 
 import os
 def prepare_readme():
-    os.rename( I_picture['folder']+'/'+    'TODO.pnm'       , I_picture['folder']+'/'+'box.pnm' )
-    os.rename( I_picture['folder']+'/'+    'TODO.pnm'         , I_picture['folder']+'/'+'disc.pnm' )
-    os.rename( I_picture['folder']+'/'+    'TODO.pnm'           , I_picture['folder']+'/'+'triangle.pnm' )
-    os.rename( I_picture['folder']+'/'+    'TODO.pnm'       , I_picture['folder']+'/'+'plane.pnm' )
-    os.rename( I_picture['folder']+'/'+    'TODO.pnm'          , I_picture['folder']+'/'+'piped.pnm' )
- 
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_F-box_trans_I-ALP_chand-nine_0000.pnm'       , I_picture['folder']+'/'+'geometry_flat_box.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_F-disc_trans_I-ALP_chand-nine_0000.pnm'      , I_picture['folder']+'/'+'geometry_flat_disc.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_F-piped_trans_I-ALP_chand-nine_0000.pnm'     , I_picture['folder']+'/'+'geometry_flat_piped.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_F-plane_trans_I-ALP_chand-nine_0000.pnm'     , I_picture['folder']+'/'+'geometry_flat_plane.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_F-triangle_trans_I-ALP_chand-nine_0000.pnm'  , I_picture['folder']+'/'+'geometry_flat_triangle.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_F-triangleU_trans_I-ALP_chand-nine_0000.pnm' , I_picture['folder']+'/'+'geometry_flat_triangle-u.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_F-udisc_trans_I-ALP_chand-nine_0000.pnm'     , I_picture['folder']+'/'+'geometry_flat_disc-u.pnm' )

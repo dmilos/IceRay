@@ -20,7 +20,7 @@ S_hfield::S_generator::GC_function::T_scalar S_hfield::S_generator::GC_function:
 
 S_hfield::S_generator::GC_function::T_scalar S_hfield::S_generator::GC_function::Fv_value( T_size2D const& P_position )const
  {
-  return M2_function( P_position[0]/(F_size()[0]-1), P_position[0]/(T_scalar)(F_size()[1]-1) ) ;
+  return M2_function( P_position[0]/ static_cast<T_scalar>(F_size()[0]-1), P_position[0]/static_cast<T_scalar>(F_size()[1]-1) ) ;
  }
 
 S_hfield::S_generator::GC_function::T_function

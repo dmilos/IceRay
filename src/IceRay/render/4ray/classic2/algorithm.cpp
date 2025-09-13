@@ -43,7 +43,7 @@ GC_algorithm::~GC_algorithm( )
 
   for( auto const& I_info : M2_statistic.M_depth )
    {
-    I_summae = std::accumulate( I_info.begin(), I_info.end(), 0 );
+    I_summae = std::accumulate( I_info.begin(), I_info.end(), T_size(0) );
 
     std::cout << "Total:      " << PRINT( I_summae ) ;
     std::cout << "Eye:        " << PRINT( I_info[ (int)C_statistic::Ee_type::En_eye        ] );
@@ -60,7 +60,7 @@ GC_algorithm::~GC_algorithm( )
     //std::cout << "Unknown:    " << PRINT( I_info[ (int)C_statistic::Ee_type::En__Unknown   ] );
     std::cout << std::endl;
    }
-  std::setfill(' ');
+  std::cout << std::setfill(' ');
   std::cout << std::endl;
  }
 

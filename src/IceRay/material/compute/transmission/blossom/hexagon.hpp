@@ -129,6 +129,13 @@
                      ::math::linear::vector::combine( I_direction, I_disc2d[0], I_x, I_height, I_y, I_disc2d[1], I_z );
                      ::math::linear::vector::length( I_direction, T_scalar( 1 ) );
 
+                     //T_scalar I_check = ::math::linear::vector::dot( I_direction, P_normal );
+                     //if( I_check < T_scalar(0) )
+                     // {
+                     //  I_check = I_check;
+                     //  continue;
+                     // }
+
                      {
                       P_next.Fv_push();  ++I_total;
                       auto & I_ray = P_next.Fv_top();

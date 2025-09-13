@@ -10,7 +10,6 @@
 #include "../_pure/distance.hpp"
 #include "../_pure/uvw.hpp"
 
-#include "../../util/bound/box.hpp"
 
  namespace GS_DDMRM
   {

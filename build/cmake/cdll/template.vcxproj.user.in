@@ -4,13 +4,13 @@
     <LocalDebuggerCommandArguments>@COMMAND_ARG64_DEBUG@</LocalDebuggerCommandArguments>
     <LocalDebuggerEnvironment>@COMMAND_ENVIRONMENT_DEBUG@$(LocalDebuggerEnvironment)</LocalDebuggerEnvironment>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
-    <LocalDebuggerCommand>@COMMAND_CMD64@</LocalDebuggerCommand>
+    <LocalDebuggerCommand>@COMMAND_CMD64_DEBUG@</LocalDebuggerCommand>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LocalDebuggerCommandArguments>@COMMAND_ARG64_RELEASE@</LocalDebuggerCommandArguments>
     <LocalDebuggerEnvironment>@COMMAND_ENVIRONMENT_RELEASE@$(LocalDebuggerEnvironment)</LocalDebuggerEnvironment>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
-    <LocalDebuggerCommand>@COMMAND_CMD64@</LocalDebuggerCommand>
+    <LocalDebuggerCommand>@COMMAND_CMD64_RELEASE@</LocalDebuggerCommand>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LocalDebuggerCommandArguments>@COMMAND_ARG32_DEBUG@</LocalDebuggerCommandArguments>

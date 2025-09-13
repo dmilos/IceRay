@@ -58,9 +58,6 @@ target_include_directories(  ${ICERAY_PROJECT_NAME_FULL} PRIVATE "${directory_in
 
 
 if(MSVC)
-    target_compile_options( ${ICERAY_PROJECT_NAME_FULL}
-        PRIVATE
-            "/wd4624;"
-    )
+    target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE "/wd4624;" )
 endif()
 

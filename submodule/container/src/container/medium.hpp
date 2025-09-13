@@ -26,7 +26,7 @@
          public:
            typedef N_data T_data;
            typedef typename std::allocator<T_data>::size_type   T_size;
-           typedef std::allocator<T_data>              T_allocator;
+           //typedef std::allocator<T_data>              T_allocator;
 
            enum  Ee_state { En_unused = -1, En_open = 0, En_close = 1 };
 
@@ -68,7 +68,7 @@
               T_size prev = Fs_invalid();
               T_size next = Fs_invalid();
              };
-           typedef std::vector<C_list, T_allocator>  T2_list;
+           typedef std::vector<C_list>  T2_list;
 
            struct C_record
             {
@@ -79,7 +79,7 @@
              T_size next_prev = Fs_invalid();
              T_size head_next = Fs_invalid();
             };
-           typedef std::vector<C_record, T_allocator> T2_undo;
+           typedef std::vector<C_record> T2_undo;
 
            T2_undo       M2_undo;  // undo stack
            T2_list       M1_list;   // actual

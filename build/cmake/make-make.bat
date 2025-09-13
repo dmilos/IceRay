@@ -9,5 +9,4 @@ mkdir _makeVS64
 cd _makeVS64
 
 %prg_cmake% .. -A x64
-
-pause
+ pause

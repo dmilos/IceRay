@@ -165,7 +165,7 @@ def doRendering(P_config):
 
                        crop.storePNM( filen_name )
 
-                       P_config['dll'].IceRayC_Utility_Random_Table_Next()
+                       P_config['dll'].IceRayC_Utility_Random_Table_Next(1,1,1)
 
                        #break
                    #break
@@ -191,6 +191,10 @@ if( 3 < len( sys.argv ) ):
     config['picture'][ 'width'] = int( sys.argv[3] )
     config['picture']['height'] = int( int( sys.argv[3] ) * 0.66666667 )
 
+try:
+    os.mkdir( "_out" )
+except OSError as e:
+    pass
 config['folder'] = './_out'
 
 #config['pixel']['type'] = 'basic'
@@ -234,7 +238,7 @@ config['ray-trace']['next'] = 17000
 config['room'] = {}
 config['room']['radiosity'] = {}
 config['room']['radiosity']['blossom'] = 'congruent'
-config['room']['radiosity']['patch']  = math.radians( 4 )
+config['room']['radiosity']['patch']  = math.radians( 4 ) #<! Used for sample number calculation
 config['room']['radiosity']['angle']  = math.radians( 89 )
 config['room']['radiosity']['sample'] = int( (1 - math.cos(config['room']['radiosity']['angle']) ) / ( 1 - math.cos( config['room']['radiosity']['patch'] ) ) + 1 )
 config['room']['radiosity']['jitter-angle'] = math.radians( 4 )

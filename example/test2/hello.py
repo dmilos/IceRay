@@ -88,7 +88,7 @@ def doRendering(P_config): # P_folder, P_dll, P_eye, P_view
 
     crop.storePNM( filen_name )
 
-    P_config['dll'].IceRayC_Utility_Random_Table_Next()
+    P_config['dll'].IceRayC_Utility_Random_Table_Next(1,1,1)
 
 
 start = 0;
@@ -100,6 +100,10 @@ if( 2 < len( sys.argv ) ):
     step  = int( sys.argv[2] )
 
 config={}
+try:
+    os.mkdir( "_out" )
+except OSError as e:
+    pass
 config['folder'] = '_out'
 config['index'] = 0
 

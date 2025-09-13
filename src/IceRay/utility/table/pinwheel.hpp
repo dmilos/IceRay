@@ -38,7 +38,7 @@
                M2_structure.F_spot().reserve( P_size * P_size );
 
                T_size I_grid = P_size;
-               T_scalar I_perimeter = I_grid/2 - 2;
+               T_scalar I_perimeter = T_scalar( I_grid/2 - 2 );
                T_scalar I_offset = T_scalar(1)/T_scalar(2);
                T_scalar I_height = sqrt(T_scalar(3))/T_scalar(2);
 

@@ -182,10 +182,11 @@
   - git submodule init
   - git submodule update
   - Build using SCons
-    - cd //IceRay/work/build/scons/cdll
+    - cd //build/scons/cdll
     - scons
   - Build using CMake 
-    - cd //IceRay/work/build/cmake
+    - cd //build/cmake
     - run make.bat on Windows or make.sh on Unix
   - put //src and //example in to PYTHONPATH path
+    - on Windows run  //build/cmake/set-env.bat
   - run some examples in //example/test2

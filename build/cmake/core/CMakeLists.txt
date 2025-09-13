@@ -27,7 +27,8 @@ set( directory_dll    "${directory_temp}/${directory_output}/dll" )
 
 #Internal variables
 set( hpp_file_list    "./hpp.lst.txt" )
-set( cpp_file_list    "./cpp.lst.txt" )
+#set( cpp_file_list    "./cpp.lst.txt" )
+set( cpp_file_list    "./cpp-expand.lst.txt" )
 
 #Processing
 
@@ -91,11 +92,10 @@ if( UNIX )
     endif()
 endif()
 if( MSVC )
-    target_compile_options(${ICERAY_PROJECT_NAME_FULL} PRIVATE /Zp1)
-
-    target_compile_definitions( ${ICERAY_PROJECT_NAME_FULL} PRIVATE  $<$<CONFIG:DEBUG>:_SECURE_SCL> )
-    target_compile_definitions( ${ICERAY_PROJECT_NAME_FULL} PRIVATE  $<$<CONFIG:DEBUG>:_ITERATOR_DEBUG_LEVEL=2> )
-    target_compile_definitions( ${ICERAY_PROJECT_NAME_FULL} PRIVATE  $<$<CONFIG:DEBUG>:_HAS_ITERATOR_DEBUGGING> )
+    #target_compile_options(${ICERAY_PROJECT_NAME_FULL} PRIVATE /Zp1)
+    #target_compile_definitions( ${ICERAY_PROJECT_NAME_FULL} PRIVATE  $<$<CONFIG:DEBUG>:_SECURE_SCL> )
+    #target_compile_definitions( ${ICERAY_PROJECT_NAME_FULL} PRIVATE  $<$<CONFIG:DEBUG>:_ITERATOR_DEBUG_LEVEL=2> )
+    #target_compile_definitions( ${ICERAY_PROJECT_NAME_FULL} PRIVATE  $<$<CONFIG:DEBUG>:_HAS_ITERATOR_DEBUGGING> )
 endif()
 
 

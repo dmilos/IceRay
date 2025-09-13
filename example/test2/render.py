@@ -72,7 +72,7 @@ def doIt( P_dll, P_picture, P_scene, P_inventory, P_config, P_result=None ):
 
     I_room['the'] = P_inventory['room'][ I_room['name'] ]( P_dll, P_config['room'], I_light['final'], I_geometry['the'] )
 
-    I_decoration['the'] = P_inventory['decoration'][ I_decoration['name'] ](  P_dll, P_config['decoration'], I_light['final'], object )
+    I_decoration['the'] = P_inventory['decoration'][ I_decoration['name'] ](  P_dll, P_scene['decoration'], I_light['final'], object )
     scene = composer.arange( P_dll, object, I_room['the'], I_decoration['the'] )
 
     P_picture['temp']['object'] = IceRayPy.type.graph.Picture( P_dll )
@@ -134,7 +134,10 @@ def doIt( P_dll, P_picture, P_scene, P_inventory, P_config, P_result=None ):
 #I_picture[ 'width']  = 800
 #I_picture['height']  = 600
 #I_picture['aspect']  = I_picture['width'] / I_picture['height']
-#
+#try:
+#   os.mkdir( "_out" )
+# except OSError as e:
+#   pass
 #I_picture['folder'] = './_out'
 #I_picture['extension'] = 'png'
 #
@@ -182,7 +185,6 @@ def doIt( P_dll, P_picture, P_scene, P_inventory, P_config, P_result=None ):
 #I_config['pigment']  = {}
 #I_config['camera']  = {}
 #I_config['room']   = {}
-#I_config['decoration']   = {}
 #
 #I_config['camera'][ 'eye']   = IceRayPy.type.math.coord.Scalar3D( 1, 2, 3 )
 #I_config['camera']['view']   = IceRayPy.type.math.coord.Scalar3D( 0, 0, 0 )

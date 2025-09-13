@@ -113,12 +113,11 @@
                    ::math::linear::vector::length( I_z, I_radius );
                    I_radius *= I_radius;
 
+                   T_coord I_direction;
                    T_coord2D I_disc2d;
 
                    T_size I_total = 0;
                    T_size I_beginA = P_next.Fv_size();
-
-                   T_coord I_direction;
 
                    for( T_size I_index=0; I_index < I_count; ++I_index )
                     {
@@ -153,6 +152,9 @@
                  }
 
                private:
+                 mutable GS_DDMRM::S_IceRay::S_utility::S_random::GT_congruent2D       M2_randCongruent2D;
+
+               private:
                  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC__base<T_size>    T2_memorySize;
                  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC__base<T_coord>   T2_memoryCoord;
                  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_data::GC__base<T_scalar>  T2_memoryScalar;
@@ -172,10 +174,6 @@
                  T2_memoryCoord    *M2_memoryCoord;
                  T2_memoryColor    *M2_memoryColor;
                  T2_memoryScalar   *M2_memoryScalar;
-
-               private:
-                 mutable GS_DDMRM::S_IceRay::S_utility::S_random::GT_congruent2D       M2_randCongruent2D;
-
               };
 
             }

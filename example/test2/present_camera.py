@@ -29,6 +29,10 @@ if( 1 < len( sys.argv ) ):
     I_picture[ 'width'] = int( sys.argv[1] )
     I_picture['height'] = int( I_picture['width'] / I_picture['aspect'] )
 
+try:
+    os.mkdir( "_out" )
+except OSError as e:
+    pass
 I_picture['folder'] = './_out'
 I_picture['extension'] = 'pnm'
 
@@ -73,12 +77,12 @@ I_inventory['light']      = library_light.list
 I_inventory['decoration'] = library_decoration.list
 
 I_config  = {}
-I_config['pigment']  = {}
-I_config['camera']  = {}
 I_config['room']   = {}
-I_config['decoration']   = {}
+I_config['camera']  = {}
+I_config['pigment']  = {}
 I_config['light']   = {}
 I_config['light']['sample']   = 1
+I_config['decoration']   = {}
 
 g = 1.22074408460575947536 #(math.sqrt(5)+1)/2
 
@@ -121,16 +125,16 @@ for item in camera_list :
 
 import os
 def prepare_readme():
-    os.rename( I_picture['folder']+'/'+    'C-close_C-horizontal_Q-sphere_trans_I-ALP_chand-nine_0000.pnm'       , I_picture['folder']+'/'+'cylinder-horizontal.pnm' )
-    os.rename( I_picture['folder']+'/'+    'C-close_C-vertical_Q-sphere_trans_I-ALP_chand-nine_0000.pnm'         , I_picture['folder']+'/'+'cylinder-vertical.pnm' )
-    os.rename( I_picture['folder']+'/'+    'C-close_DOF-cone_Q-sphere_trans_I-ALP_chand-nine_0000.pnm'           , I_picture['folder']+'/'+'dof-cone.pnm' )
-    os.rename( I_picture['folder']+'/'+    'C-close_DOF-cylinder_Q-sphere_trans_I-ALP_chand-nine_0000.pnm'       , I_picture['folder']+'/'+'dof-cylinder.pnm' )
-    os.rename( I_picture['folder']+'/'+    'C-close_DOF-persp_Q-sphere_trans_I-ALP_chand-nine_0000.pnm'          , I_picture['folder']+'/'+'dof-persp.pnm' )
-    os.rename( I_picture['folder']+'/'+    'C-close_F-orth_Q-sphere_trans_I-ALP_chand-nine_0000.pnm'             , I_picture['folder']+'/'+'flat-orthogonal.pnm' )
-    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-ALP_chand-nine_0000.pnm'            , I_picture['folder']+'/'+'flat-perspective.pnm' )
-    os.rename( I_picture['folder']+'/'+    'C-close_S-fisheye_Q-sphere_trans_I-ALP_chand-nine_0000.pnm'          , I_picture['folder']+'/'+'sphere-fisheye.pnm' )
-    os.rename( I_picture['folder']+'/'+    'C-close_S-horizontal_Q-sphere_trans_I-ALP_chand-nine_0000.pnm'       , I_picture['folder']+'/'+'sphere-horizontal.pnm' )
-    os.rename( I_picture['folder']+'/'+    'C-close_S-vertical_Q-sphere_trans_I-ALP_chand-nine_0000.pnm'         , I_picture['folder']+'/'+'sphere-vertical.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_C-horizontal_Q-sphere_trans_I-ALP_chand-nine_0000.pnm'       , I_picture['folder']+'/'+'camera-cylinder-horizontal.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_C-vertical_Q-sphere_trans_I-ALP_chand-nine_0000.pnm'         , I_picture['folder']+'/'+'camera-cylinder-vertical.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_DOF-cone_Q-sphere_trans_I-ALP_chand-nine_0000.pnm'           , I_picture['folder']+'/'+'camera-dof-cone.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_DOF-cylinder_Q-sphere_trans_I-ALP_chand-nine_0000.pnm'       , I_picture['folder']+'/'+'camera-dof-cylinder.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_DOF-persp_Q-sphere_trans_I-ALP_chand-nine_0000.pnm'          , I_picture['folder']+'/'+'camera-dof-persp.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-orth_Q-sphere_trans_I-ALP_chand-nine_0000.pnm'             , I_picture['folder']+'/'+'camera-flat-orthogonal.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-ALP_chand-nine_0000.pnm'            , I_picture['folder']+'/'+'camera-flat-perspective.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_S-fisheye_Q-sphere_trans_I-ALP_chand-nine_0000.pnm'          , I_picture['folder']+'/'+'camera-sphere-fisheye.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_S-horizontal_Q-sphere_trans_I-ALP_chand-nine_0000.pnm'       , I_picture['folder']+'/'+'camera-sphere-horizontal.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_S-vertical_Q-sphere_trans_I-ALP_chand-nine_0000.pnm'         , I_picture['folder']+'/'+'camera-sphere-vertical.pnm' )
 
 
 ##debug  ************************************

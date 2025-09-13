@@ -119,12 +119,12 @@
                    I_radius *= I_radius;
 
                    T_coord I_direction;
+                   T_coord2D I_disc2d;
                    T_size I_total = 0;
                    T_size I_beginA = P_next.Fv_size();
 
                    for( T_size I_index=0; I_index < I_count; ++I_index )
                     {
-                     T_coord2D I_disc2d;
                      GS_DDMRM::S_IceRay::S_utility::S_random::GF_disc2D( I_disc2d, M2_randgeneral2D );
 
                      T_scalar I_height = sqrt( T_scalar( 1 ) - I_radius * ::math::linear::vector::dot( I_disc2d, I_disc2d ) );

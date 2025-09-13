@@ -18,7 +18,7 @@
            namespace S_correct
             {
 
-             class GC_trim  //!< trim everything outside of cone
+             class GC_trim  //!< trim everything outside of plane
               : public GS_DDMRM::S_IceRay::S_material::S_compute::GC_instruction
               {
                public:

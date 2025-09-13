@@ -29,6 +29,11 @@ if( 1 < len( sys.argv ) ):
     I_picture[ 'width'] = int( sys.argv[1] )
     I_picture['height'] = int( I_picture['width'] / I_picture['aspect'] )
 
+try:
+    os.mkdir( "_out" )
+except OSError as e:
+    pass
+
 I_picture['folder'] = './_out'
 I_picture['extension'] = 'pnm'
 
@@ -50,7 +55,7 @@ I_scene['geometry']   = 'Q-sphere'
 I_scene['medium']     = 'trans'
 I_scene['pigment']    = 'I-ALP'
 I_scene['light']      = 'point'
-I_scene['decoration'] = 'vacuum'
+I_scene['decoration'] = 'grid'
 
 
 import library_room
@@ -75,9 +80,9 @@ I_config  = {}
 I_config['pigment']  = {}
 I_config['camera']  = {}
 I_config['room']   = {}
-I_config['decoration']   = {}
 I_config['light']   = {}
 I_config['light']['sample']   = 32
+I_config['decoration']   = {}
 
 g = 1.22074408460575947536 #(math.sqrt(5)+1)/2
 
@@ -107,10 +112,19 @@ for item in light_list :
 
 import os
 def prepare_readme():
-    os.rename( I_picture['folder']+'/'+    'TODO.pnm'            , I_picture['folder']+'/'+'TODO.pnm' ) 
 
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-ALP_area_0000.pnm'       , I_picture['folder']+'/'+'light_area.pnm' ) 
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-ALP_circle_0000.pnm'     , I_picture['folder']+'/'+'light_circle.pnm' ) 
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-ALP_dark_0000.pnm'       , I_picture['folder']+'/'+'light_dark.pnm' ) 
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-ALP_disc_0000.pnm'       , I_picture['folder']+'/'+'light_disc.pnm' ) 
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-ALP_line_0000.pnm'       , I_picture['folder']+'/'+'light_line.pnm' ) 
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-ALP_point_0000.pnm'      , I_picture['folder']+'/'+'light_point.pnm' ) 
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-ALP_reflector_0000.pnm'  , I_picture['folder']+'/'+'light_reflector.pnm' ) 
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-ALP_spline_0000.pnm'     , I_picture['folder']+'/'+'light_spline.pnm' ) 
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-ALP_spline_0000.pnm'     , I_picture['folder']+'/'+'light_sun-point.pnm' ) 
+ 
 
-
+ 
 #debug
 #for index in range( 0, 1, 1 ) :
 #    I_picture['index'] = index

@@ -365,9 +365,9 @@ bool GC_system::F_generator( T_generator* P_generator )
   M2_generator = P_generator;
   ::math::linear::vector::fill( M2_area[0], 0 );
 
-  M2_area[1][0] = P_generator->F_size()[0] -1;
-  M2_area[1][1] = P_generator->F_size()[1] -1;
-  M2_area[1][2] = 1;
+  M2_area[1][0] = T_scalar( P_generator->F_size()[0] -1);
+  M2_area[1][1] = T_scalar( P_generator->F_size()[1] -1);
+  M2_area[1][2] = T_scalar(1);
 
   auto const& I_lo = F_box().lo();
   auto const& I_hi = F_box().hi();

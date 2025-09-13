@@ -36,8 +36,8 @@ bool S_hfield::S_generator::GC_table::Fv_size( T_size2D    const& P_size )
    { //! default values
     for( T_size I_x = 0; I_x < F_size()[0]; ++I_x )
      {
-      auto I_u = ::math::function::any_to_any<double>( I_x, 0, (double)F_size()[0]-1, -3.14, +3.14 );
-      auto I_v = ::math::function::any_to_any<double>( I_y, 0, (double)F_size()[1]-1, -3.14, +3.14 );
+      auto I_u = ::math::function::any_to_any<double>( (double)I_x, (double)0, (double)F_size()[0]-1, -3.14, +3.14 );
+      auto I_v = ::math::function::any_to_any<double>( (double)I_y, (double)0, (double)F_size()[1]-1, -3.14, +3.14 );
       auto I_value = 0.5 * ( sin( sqrt( I_u*I_u + I_v*I_v ) ) + 1) /2;
       //auto I_value = 0.5 * ( sin( atan2( I_v, I_u ) ) + 1) /2;
       //auto I_value = 0.5;
