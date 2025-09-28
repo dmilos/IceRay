@@ -417,6 +417,7 @@ IceRay/material/compute/transmission/blossom/poisson.hpp
 IceRay/material/compute/transmission/blossom/random.hpp
 IceRay/material/compute/transmission/blossom/sobol.hpp
 IceRay/material/compute/transmission/blossom/sunflower.hpp
+IceRay/material/compute/transmission/blossom/kmeans.hpp
 IceRay/material/compute/transmission/blossom/triangle.hpp
 IceRay/material/compute/transmission/correct/claim.hpp
 IceRay/material/compute/transmission/correct/cone.hpp
@@ -633,6 +634,7 @@ IceRay/utility/table/random.hpp
 IceRay/utility/table/simple.hpp
 IceRay/utility/table/structure.hpp
 IceRay/utility/table/sunflower.hpp
+IceRay/utility/table/kmeans.hpp
 IceRay/utility/table/table.hpp
 IceRay/utility/table/triangle.hpp
 IceRay/utility/tile.hpp

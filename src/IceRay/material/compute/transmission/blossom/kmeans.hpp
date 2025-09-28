@@ -1,10 +1,11 @@
-#ifndef Dh_DDMRM_Iceray_material_compute_transmission_blossom_pinwheel_HPP_
- #define Dh_DDMRM_Iceray_material_compute_transmission_blossom_pinwheel_HPP_
+#ifndef Dh_DDMRM_Iceray_material_compute_transmission_blossom_kmeans_HPP_
+ #define Dh_DDMRM_Iceray_material_compute_transmission_blossom_kmeans_HPP_
 
-// GS_DDMRM::S_IceRay::S_material::S_compute::S_transmission::S_blossom::GC_pinwheel
+// GS_DDMRM::S_IceRay::S_material::S_compute::S_transmission::S_blossom::GC_kmeans
 
 #include "../../instruction.hpp"
-#include "IceRay/utility/table/pinwheel.hpp"
+#include "IceRay/utility/random.hpp"
+#include "IceRay/utility/table/kmeans.hpp"
 #include "math/math.hpp"
 
  namespace GS_DDMRM
@@ -20,7 +21,7 @@
            namespace S_blossom
             {
 
-             class GC_pinwheel
+             class GC_kmeans
               : public GS_DDMRM::S_IceRay::S_material::S_compute::GC_instruction
               {
                public:
@@ -42,29 +43,29 @@
                  enum Ee_output
                   {
                     En_outSize_RayCount=0
-                   ,En_outRay_out=1
+                   ,En_outSize_RayStart=1
                   };
 
                public:
-                 GC_pinwheel
+                 GC_kmeans
                   (
-                    T_size const& P_inCoord_Normal     //= 1
-                   ,T_size const& P_inCount            //= 1
-                   ,T_size const& P_inLeader           //= 0
-                   ,T_size const& P_inAngle            //= 0
-                   ,T_size const& P_inGauss            //= 1
-                   ,T_size   const& P_outSize_RayCount // = 2
+                    T_size const& P_inCoord_Normal    //= 1
+                   ,T_size const& P_inCount           //= 1
+                   ,T_size const& P_inLeader          //= 0
+                   ,T_size const& P_inAngle           //= 0
+                   ,T_size const& P_inGauss           //= 1
+                   ,T_size const& P_outSize_RayCount  // = 1
+                   ,T_size const& P_outSize_RayStart  // = 2
                   )
                   {
-                   static auto dummy = F2s_init();
-
                    F_input<T_coord>(   En_inCoord_Normal,  P_inCoord_Normal );
                    F_input<T_size>(    En_inSize_Count,    P_inCount        );
                    F_input<T_size>(    En_inSize_Leader,   P_inLeader       );
                    F_input<T_scalar>(  En_inScalar_Angle,  P_inAngle        );
                    F_input<T_scalar>(  En_inScalar_Gauss,  P_inGauss        );
 
-                   F_output<T_size>( En_outSize_RayCount,     P_outSize_RayCount );
+                   F_output<T_size>( En_outSize_RayCount, P_outSize_RayCount );
+                   F_output<T_size>( En_outSize_RayStart, P_outSize_RayStart );
                   }
 
                public:
@@ -105,14 +106,16 @@
                    T_coord I_x; ::math::linear::vector::cross( I_x, I_z, P_normal ); ::math::linear::vector::length( I_x, T_scalar( 1 ) );
                    T_coord I_y; ::math::linear::vector::cross( I_y, I_z, I_x );      ::math::linear::vector::length( I_y, T_scalar( 1 ) );
 
-                   auto I_index = M2s_table.F_structure().F_size2index( P_count );
-                   T_scalar const& I_perimeter = M2s_table.F_structure().F_radius()[ I_index ];
-                   T_size   const& I_count = M2s_table.F_structure().F_size()[ I_index ];
-                   auto     const& I_table = M2s_table.F_structure().F_spot();
+
+                   T_scalar  const  I_perimeter = 1;
+                   auto      const& I_table     = M2s_table.F_table( P_count );
+                   T_size    const& I_count     = I_table.size();
 
                    T_size I_total=0;
+                   T_size I_beginA = P_next.Fv_size();
+
                    T_coord I_direction;
-                   T_coord2D I_disc2d;
+                   T_coord2D I_disc2d; 
                    for( T_size I_index=0; I_index < I_count; ++I_index )
                     {
                      ::math::linear::vector::scale( I_disc2d, P_angle/I_perimeter, I_table[ I_index ] );
@@ -126,12 +129,12 @@
 
                      ::math::linear::vector::length( I_direction, T_scalar( 1 ) );
 
-                     T_scalar I_check = ::math::linear::vector::dot( I_direction, P_normal );
-                     if( I_check < T_scalar(0) )
-                      {
-                       I_check = I_check;
-                       continue;
-                      }
+                     //T_scalar I_check = ::math::linear::vector::dot( I_direction, P_normal );
+                     //if( I_check < T_scalar(0) )
+                     // {
+                     //  I_check = I_check;
+                     //  continue;
+                     // }
 
                      {
                       P_next.Fv_push();  ++I_total;
@@ -144,16 +147,16 @@
                       I_ray.M_direction   = I_direction;
                       I_ray.M_derivation  = P_heading.M_derivation;
                       I_ray.M_ior         = P_heading.M_ior;
-                      I_ray.M_intesity    = P_heading.M_intesity / I_count;  //!< todo Not optimised;  P_gauss?
-                      I_ray.M_coefficient = T_scalar(1)/ I_count;     //!< todo Not optimised; P_gauss?
+                      I_ray.M_intesity    = P_heading.M_intesity / I_count;  //!< todo Not optimized;  P_gauss?
+                      I_ray.M_coefficient = T_scalar(1) / I_count;     //!< todo Not optimized; P_gauss?
                       I_ray.M_hierarchy   = T_ray::Ee_hierarchy::En_solo;
                       //if( 0 == I_index ) I_ray.M_hierarchy = T_ray::Ee_hierarchy::En_back;
                       //if( (P_count-1) == I_index ) I_ray.M_hierarchy = T_ray::Ee_hierarchy::En_lead;
                      }
                    }
 
-                  //M2_memoryRay->Fv_store(  F_output<T_size>(En_outRay_Reflected), I_rectified );
                   M2_memorySize->Fv_store( F_output<T_size>(En_outSize_RayCount), I_total );
+                  M2_memorySize->Fv_store( F_output<T_size>(En_outSize_RayStart), I_beginA );
                   return I_count;
                  }
 
@@ -179,13 +182,7 @@
                  T2_memoryScalar   *M2_memoryScalar;
 
                private:
-                 static bool F2s_init() 
-                  {
-                   M2s_table.F_init( 130 ); 
-                   return true; 
-                  }
-               private:
-                 static GS_DDMRM::S_IceRay::S_utility::S_table::GC_pinwheel   M2s_table;
+                 static GS_DDMRM::S_IceRay::S_utility::S_table::GC_kmeans M2s_table;
               };
 
             }

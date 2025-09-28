@@ -1076,6 +1076,7 @@ def _MapFunction_Material_Pigment_Surface_Instruction_Transmission_Blossom(P_dll
     _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Transmission_Blossom_Poisson0  , ctypes.c_void_p , [ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t] )
     _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Transmission_Blossom_Triangle0 , ctypes.c_void_p , [ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t] )
     _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Transmission_Blossom_Sunflower0, ctypes.c_void_p , [ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Transmission_Blossom_KMeans0,    ctypes.c_void_p , [ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t] )
 
     _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Transmission_Blossom_Pinwheel0 , ctypes.c_void_p , [ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t] )
 

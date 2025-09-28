@@ -72,8 +72,8 @@
                  bool    Fv_execute( T_beam &P_next, T_pigment::T_intersect const& P_intersect, T_state const& P_state )const
                   {
                    T_coord  const& I_normal   = M2_memoryCoord->Fv_load(  F_input<T_coord >( En_inCoord_Normal ) );
-                   T_size   const& I_count    = M2_memorySize->Fv_load(   F_input<T_size  >( En_inSize_Count   ) );
                    T_size   const& I_leader   = M2_memorySize->Fv_load(   F_input<T_size  >( En_inSize_Leader  ) );
+                   T_size   const& I_count    = M2_memorySize->Fv_load(   F_input<T_size  >( En_inSize_Count   ) );
                    T_scalar const& I_angle    = M2_memoryScalar->Fv_load( F_input<T_scalar>( En_inScalar_Angle ) );
                    T_scalar const& I_gauss    = M2_memoryScalar->Fv_load( F_input<T_scalar>( En_inScalar_Gauss ) );
 
@@ -102,30 +102,32 @@
                    ,T_scalar const& P_gauss
                   )const
                   {
-                   auto const& I_count = P_count;
+                   T_coord I_z = P_heading.M_direction;
+                   T_coord I_x; ::math::linear::vector::cross( I_x, I_z, P_normal ); ::math::linear::vector::length( I_x, T_scalar( 1 ) );
+                   T_coord I_y; ::math::linear::vector::cross( I_y, I_z, I_x );      ::math::linear::vector::length( I_y, T_scalar( 1 ) );
 
-                   T_coord I_y = P_heading.M_direction;
-                   T_coord I_x; ::math::linear::vector::cross( I_x, I_y, P_normal ); ::math::linear::vector::length( I_x, T_scalar( 1 ) );
-                   T_coord I_z; ::math::linear::vector::cross( I_z, I_x, I_y );      ::math::linear::vector::length( I_z, T_scalar( 1 ) );
 
-                   T_scalar I_radius = sin( P_angle );
-                   ::math::linear::vector::length( I_x, I_radius );
-                   ::math::linear::vector::length( I_z, I_radius );
-                   I_radius *= I_radius;
 
-                   T_coord I_direction;
-                   T_coord2D I_disc2d;
+                   T_size const& I_count = P_count;
+                   
+
                    T_size I_total = 0;
                    T_size I_beginA = P_next.Fv_size();
 
+                   T_coord I_direction;
+                   T_coord2D I_disc2d;
                    for( T_size I_index=0; I_index < I_count; ++I_index )
                     {
                      GS_DDMRM::S_IceRay::S_utility::S_random::GF_disc2D( I_disc2d, M2_randStandard2D );
 
-                     T_scalar I_height = sqrt( T_scalar( 1 ) - I_radius * ::math::linear::vector::dot( I_disc2d, I_disc2d ) );
-                     ::math::linear::vector::combine( I_direction, I_disc2d[0], I_x, I_height, I_y, I_disc2d[1], I_z );
-                     ::math::linear::vector::length( I_direction, T_scalar( 1 ) );
+                     T_scalar I_rotation = atan2( I_disc2d[1], I_disc2d[0] );
+                     T_scalar I_distance = P_angle * ::math::linear::vector::length( I_disc2d );
+                     T_scalar I_u = cos( I_rotation ) * sin( I_distance );
+                     T_scalar I_v = sin( I_rotation ) * sin( I_distance );
+                     T_scalar I_w =                     cos( I_distance );
+                     ::math::linear::vector::combine( I_direction, I_u, I_x, I_v, I_y, I_w, I_z );
 
+                     ::math::linear::vector::length( I_direction, T_scalar( 1 ) );
                      {
                       P_next.Fv_push(); ++I_total;
                       auto & I_ray = P_next.Fv_top();

@@ -192,8 +192,10 @@ def plate( P_dll, P_config = { 'shadow': False, 'pigment': None }, P_light = Non
 def radiosity( P_dll, P_config = { 'shadow': False, 'pigment': None }, P_light = None, P_exponat = None ):
 
     I_room = [ 8, 8, 4 ] # [ 6, 6, 3.5 ]
+    if( 'room' in P_config ):
+        I_room = P_config['room']
 
-    I_size  = [ 1, 1, 0.1 ] #!< debug
+    I_size  = [ 0.1, 1, 0.1 ] #!< debug
     if( 'size' in P_config ):
         I_size = P_config['size']
 
@@ -202,7 +204,8 @@ def radiosity( P_dll, P_config = { 'shadow': False, 'pigment': None }, P_light =
         I_center = P_config['center']
 
     I_color = IceRayPy.type.color.RGB( 4.6, 4.6, 4.6 )
-    I_color = IceRayPy.type.color.RGB( 10, 10, 10 )
+    if( 'color' in P_config ):
+        I_color = P_config['color']
 
     lo = Coord3D()
     lo[0] = -I_size[0]/2 + I_center[0]
@@ -215,8 +218,14 @@ def radiosity( P_dll, P_config = { 'shadow': False, 'pigment': None }, P_light =
 
     geometry = IceRayPy.core.geometry.flat.Box( P_dll )
     geometry.box( Coord3D( lo[0], lo[1], lo[2] ), Coord3D( hi[0], hi[1], hi[2] ) )
-    pigment = IceRayPy.utility.material.pattern.Hexagon( P_dll, {}, RGB(25,0,0), RGB(0,25,0), RGB(0,0,25) )
+    #geometry = IceRayPy.core.geometry.simple.Sphere( P_dll, I_center, (I_size[0] +I_size[1] +I_size[2] )/3 )
+    
     pigment = IceRayPy.utility.material.pattern.Constant( P_dll, {}, I_color )
+    if( 'pigment' in P_config ):
+        if( 'hexagon' == P_config['pigment'] ):
+            pigment = IceRayPy.utility.material.pattern.Hexagon( P_dll, {}, RGB(25,0,0), RGB(0,25,0), RGB(0,0,25) )
+        if( 'constant' in P_config['pigment'] ):
+            pigment = IceRayPy.utility.material.pattern.Constant( P_dll, {}, I_color )
 
     wrapper = IceRayPy.core.object.Wrapper( P_dll )
     wrapper.pigment( pigment )

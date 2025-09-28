@@ -180,12 +180,12 @@ for geometry_item in geometry_list :
 
 import os
 def prepare_readme():
-    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-box_trans_M-o-affine_point_0000.pnm' ,          I_picture['folder']+'/'+   'transform-box-TODO.pnm'   )
-    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-box_trans_M-o-ID_point_0000.pnm' ,              I_picture['folder']+'/'+   'transform-box-TODO.pnm'   )
-    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-box_trans_M-o-translate_point_0000.pnm' ,       I_picture['folder']+'/'+   'transform-box-TODO.pnm'   )
-    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-box_trans_M-o-homography_point_0000.pnm' ,      I_picture['folder']+'/'+   'transform-box-TODO.pnm'   )
-    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-box_trans_P-image_point_0000.pnm' ,             I_picture['folder']+'/'+   'transform-box-TODO.pnm'   )
-    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-box_trans_P-level_point_0000.pnm' ,             I_picture['folder']+'/'+   'transform-box-TODO.pnm'   )
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-box_trans_M-o-affine_point_0000.pnm' ,          I_picture['folder']+'/'+   'transform-box-affine.pnm'   )
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-box_trans_M-o-ID_point_0000.pnm' ,              I_picture['folder']+'/'+   'transform-box-ID.pnm'   )
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-box_trans_M-o-translate_point_0000.pnm' ,       I_picture['folder']+'/'+   'transform-box-translate.pnm'   )
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-box_trans_M-o-homography_point_0000.pnm' ,      I_picture['folder']+'/'+   'transform-box-homography.pnm'   )
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-box_trans_P-image_point_0000.pnm' ,             I_picture['folder']+'/'+   'transform-box-image.pnm'   )
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-box_trans_P-level_point_0000.pnm' ,             I_picture['folder']+'/'+   'transform-box-level.pnm'   )
     os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_Q-sphere_trans_P-level_point_0000.pnm' ,          I_picture['folder']+'/'+   'transform-TODO.pnm'   )
     os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_Q-sphere_trans_M-o-homography_point_0000.pnm' ,   I_picture['folder']+'/'+   'transform-TODO.pnm'   )
     os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_Q-sphere_trans_M-o-ID_point_0000.pnm' ,           I_picture['folder']+'/'+   'transform-TODO.pnm'   )

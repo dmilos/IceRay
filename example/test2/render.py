@@ -39,9 +39,14 @@ def doIt( P_dll, P_picture, P_scene, P_inventory, P_config, P_result=None ):
 
     print( P_picture['temp']['file'], flush = True  )
 
-    my_file = pathlib.Path( P_picture['temp']['file'] )
-    if my_file.is_file():
-        return
+    if 'overwrite' in P_picture:
+        if True == P_picture['overwrite']:
+            pass
+        else:    
+            my_file = pathlib.Path( P_picture['temp']['file'] )
+            if my_file.is_file():
+                print( "Image already exists. " + P_picture['temp']['file'], flush = True  )
+                return
 
     I_geometry['the'] = P_inventory['geometry'][ I_geometry['name'] ]( P_dll )
     I_light['the']    = P_inventory['light'   ][ I_light   ['name'] ]( P_dll, P_config['light'] )
@@ -72,7 +77,7 @@ def doIt( P_dll, P_picture, P_scene, P_inventory, P_config, P_result=None ):
 
     I_room['the'] = P_inventory['room'][ I_room['name'] ]( P_dll, P_config['room'], I_light['final'], I_geometry['the'] )
 
-    I_decoration['the'] = P_inventory['decoration'][ I_decoration['name'] ](  P_dll, P_scene['decoration'], I_light['final'], object )
+    I_decoration['the'] = P_inventory['decoration'][ I_decoration['name'] ](  P_dll, P_config['decoration'], I_light['final'], object )
     scene = composer.arange( P_dll, object, I_room['the'], I_decoration['the'] )
 
     P_picture['temp']['object'] = IceRayPy.type.graph.Picture( P_dll )

@@ -87,7 +87,7 @@ GC_block::F1v_render( T_picture & P_picture )
        {
         if( ( M2_hot[0] == I_cell[0] ) && ( M2_hot[1] == I_cell[1] ) )
          {
-          I_cell = I_cell;
+          I_cell = I_cell; //!< Place break point here
           // debug ON
          }
         else

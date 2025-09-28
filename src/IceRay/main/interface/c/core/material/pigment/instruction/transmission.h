@@ -11,6 +11,7 @@
 
 
 IceRayC__EXPORT IceRayC__DECLSPEC  H F( Blossom_Grid0      )( S P_normal, S P_count, S P_leader, S P_angle, S P_gauss, S P_total, S P_beam );
+IceRayC__EXPORT IceRayC__DECLSPEC  H F( Blossom_KMeans0    )( S P_normal, S P_count, S P_leader, S P_angle, S P_gauss, S P_total, S P_beam );
 IceRayC__EXPORT IceRayC__DECLSPEC  H F( Blossom_Hexagon0   )( S P_normal, S P_count, S P_leader, S P_angle, S P_gauss, S P_total, S P_beam );
 IceRayC__EXPORT IceRayC__DECLSPEC  H F( Blossom_Poisson0   )( S P_normal, S P_count, S P_leader, S P_angle, S P_gauss, S P_total, S P_beam );
 IceRayC__EXPORT IceRayC__DECLSPEC  H F( Blossom_Sunflower0 )( S P_normal, S P_count, S P_leader, S P_angle, S P_gauss, S P_total, S P_beam );

@@ -96,14 +96,14 @@ def pigment_radiosity( P_dll, P_scene, P_config ):
     if( None != P_config ):
         if( 'blossom' in P_config ):
             I_blossom = P_config['blossom']
-        if( 'sample' in P_config ):
-            I_sample = P_config['sample']
-        if( 'angle' in P_config ):
-            I_angle = P_config['angle']
-        if( 'jitter' in P_config ):
-            I_jitter = P_config['jitter']
-        if( 'albedo' in P_config ):
-            I_albedo = P_config['albedo']
+        if( 'sample'  in P_config ):
+            I_sample  = P_config['sample']
+        if( 'angle'   in P_config ):
+            I_angle   = P_config['angle']
+        if( 'jitter'  in P_config ):
+            I_jitter  = P_config['jitter']
+        if( 'albedo'  in P_config ):
+            I_albedo  = P_config['albedo']
 
     if 'one' == I_blossom :
         pigment = IceRayPy.utility.material.transmission.reflect.One(       P_dll, {}, I_albedo ) #OK
@@ -123,6 +123,8 @@ def pigment_radiosity( P_dll, P_scene, P_config ):
         pigment = IceRayPy.utility.material.transmission.blossom.Congruent( P_dll, P_config, I_albedo, I_sample, 0, I_angle )#OK
     if 'sunflower' == I_blossom :
         pigment = IceRayPy.utility.material.transmission.blossom.Sunflower( P_dll, P_config, I_albedo, I_sample, 0, I_angle )#OK
+    if 'kmeans' == I_blossom :
+        pigment = IceRayPy.utility.material.transmission.blossom.KMeans( P_dll, P_config, I_albedo, I_sample, 0, I_angle )#OK
     if 'LD' == I_blossom :
         pigment = IceRayPy.utility.material.transmission.blossom.LD( P_dll, P_config, I_albedo, I_sample, 0, I_angle )#OK
     if 'poisson' == I_blossom :
@@ -134,14 +136,17 @@ def pigment_radiosity( P_dll, P_scene, P_config ):
 def radiosity_plane( P_dll, P_config = { 'level':  - 1.001, 'shadow': False, 'pigment': None }, P_light = None, P_exponat = None ):
 
     I_room = [ 8, 8, 4 ] # [ 6, 6, 3.5 ]
+    if( 'size' in P_config ):
+        I_room = P_config['size']
     I_move = [ 0, 0, I_room[2]/2-1 ]
     wall = 0.1
-    level = -I_room[2]/2 + I_move[2];
+    I_level = -I_room[2]/2 + I_move[2];
     if( 'level' in P_config ):
-        level = P_config['level']
-    geometry = IceRayPy.core.geometry.flat.Plane( P_dll )
-    geometry.origin( Coord3D( 0,   0, level ) )
-
+        I_level = P_config['level']
+        
+    I_point = Coord3D( 0,   0, I_level )
+    geometry = IceRayPy.core.geometry.flat.Plane( P_dll, I_point )
+    
     I_scene = { 'light': P_light, 'barrier' : P_exponat }
     if( 'shadow' in P_config ):
         if( False == P_config['shadow'] ):

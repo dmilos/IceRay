@@ -7,6 +7,7 @@
 #include "./grid.cpp"
 #include "./triangle.cpp"
 #include "./sunflower.cpp"
+#include "./kmeans.cpp"
 
 //#include "./penrose.cpp"
 #include "./random.cpp"

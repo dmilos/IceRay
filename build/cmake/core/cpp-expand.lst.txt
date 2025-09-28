@@ -102,6 +102,7 @@ IceRay/material/compute/transmission/blossom/ld.cpp
 IceRay/material/compute/transmission/blossom/pinwheel.cpp
 IceRay/material/compute/transmission/blossom/poisson.cpp
 IceRay/material/compute/transmission/blossom/sunflower.cpp
+IceRay/material/compute/transmission/blossom/kmeans.cpp
 IceRay/material/compute/transmission/blossom/triangle.cpp
 IceRay/material/compute/transmission/jitter/jitter.cpp
 IceRay/material/compute/transmission/reflect/reflect.cpp
@@ -150,4 +151,5 @@ IceRay/utility/table/poisson.cpp
 IceRay/utility/table/random.cpp
 IceRay/utility/table/structure.cpp
 IceRay/utility/table/sunflower.cpp
+IceRay/utility/table/kmeans.cpp
 IceRay/utility/table/triangle.cpp

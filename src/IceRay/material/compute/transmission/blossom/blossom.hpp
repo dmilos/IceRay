@@ -1,4 +1,5 @@
 #include "./grid.hpp"
+#include "./kmeans.hpp"
 #include "./hexagon.hpp"
 #include "./vdc.hpp"
 #include "./random.hpp"

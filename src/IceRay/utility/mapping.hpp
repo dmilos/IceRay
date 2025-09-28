@@ -321,7 +321,7 @@
 
               T_coord Ir_result;
               Ir_result[0] =  cos( I_angle ) * sin( I_len );
-              Ir_result[1] =  cos( I_len );
+              Ir_result[1] =                   cos( I_len );
               Ir_result[2] = -sin( I_angle ) * sin( I_len );
 
               ::math::linear::vector::scale( Ir_result, P_point[2] );

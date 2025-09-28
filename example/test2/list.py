@@ -244,9 +244,9 @@ config['room']['radiosity']['sample'] = int( (1 - math.cos(config['room']['radio
 config['room']['radiosity']['jitter-angle'] = math.radians( 4 )
 config['room']['radiosity']['jitter-type'] = 'none' #'random''sobol''vdc''none', 'congruent'
 
-config['room']['radiosity']['correction-leader'] = True
+config['room']['radiosity']['correction-leader'] = False
 config['room']['radiosity']['correction-cone']   = False
-config['room']['radiosity']['correction']   = 'trim'  # 'trim', 'claim'
+config['room']['radiosity']['correction-rays']        = 'trim'  # 'trim', 'claim'
 
 config['observer'] = {}
 config['observer']['radius'] = 4

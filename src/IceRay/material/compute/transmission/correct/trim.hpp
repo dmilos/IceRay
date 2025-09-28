@@ -59,13 +59,15 @@
                    T_size   const& I_count    = M2_memorySize->Fv_load(   F_input<T_size  >( En_inSize_Count   ) );
                    T_size   const& I_leader   = M2_memorySize->Fv_load(   F_input<T_size  >( En_inSize_Leader  ) );
 
-                   T_size   I_active=0;
-                   T_scalar I_coefficient_loss=0;
-                   T_color I_intesity_loss{ ::color::constant::black_t{} };
+                   T_size  I_pass = 0;  //!< debug
+                   T_size  I_loss = 0; 
 
-                   T_scalar I_old=0; //!< debug
-                   T_scalar I_total=0; //!< debug
-                   T_size  I_trim=0; //!< debug
+                   T_scalar I_coefficient_loss = 0;
+                   T_scalar I_coefficient_pass = 0; //!< debug
+                   T_scalar I_coefficient_total = 0; //!< debug
+                   T_color  I_intesity_loss{ ::color::constant::black_t{} };
+                   T_color  I_intesity_pass{ ::color::constant::black_t{} };   //!< debug
+                   T_color  I_intesity_total{ ::color::constant::black_t{} };   //!< debug
 
                    for( T_size I_index = I_leader; I_index < I_leader+I_count; ++I_index )
                     {
@@ -75,31 +77,38 @@
                        continue;
                       }
                      auto I_dot  = ::math::linear::vector::dot( I_normal, I_current.M_direction );
-                     I_total += I_current.M_coefficient; //!< debug
+                     I_coefficient_total += I_current.M_coefficient; //!< debug
+                     I_intesity_total    += I_current.M_intesity;    //!< debug
 
                      if( 0 < I_dot )
                       {
-                       ++I_active;
-                       I_old += I_current.M_coefficient; //!< debug
+                       ++I_pass;
+                       I_coefficient_pass += I_current.M_coefficient; //!< debug
+                       I_intesity_pass    += I_current.M_intesity; //!< debug
                        continue;
                       }
                      I_current.M_status = T_ray::Ee_status::En_abandoned;
-                     I_intesity_loss    += I_current.M_intesity;
                      I_coefficient_loss += I_current.M_coefficient;
-                     I_trim++; //!< debug
+                     I_intesity_loss    += I_current.M_intesity;
+                     I_loss++; //!< debug
                     }
 
-                   T_scalar I_check=0;  //!< debug
-                   for( T_size I_index = I_leader+1; I_index < I_leader+I_count; ++I_index )
+                   T_scalar I_coefficient_final=0;  //!< debug
+                   T_color  I_intesity_final{ ::color::constant::black_t{} };   //!< debug
+                   I_coefficient_loss /= I_pass;
+                   I_intesity_loss    /= I_pass;
+                   for( T_size I_index = I_leader; I_index < I_leader+I_count; ++I_index )
                     {
                      auto      & I_current = P_next.Fv_expose( I_index );
-                     if( I_current.M_status == T_ray::Ee_status::En_active )
+                     if( I_current.M_status != T_ray::Ee_status::En_active )
                       {
-                       I_current.M_intesity    += I_intesity_loss    / I_active;
-                       I_current.M_coefficient += I_coefficient_loss / I_active;
-                       I_check += I_current.M_coefficient;  //!< debug
+                       continue;
                       }
-                    }
+                     I_current.M_intesity    += I_intesity_loss;
+                     I_current.M_coefficient += I_coefficient_loss;
+                     I_coefficient_final     += I_current.M_coefficient;  //!< debug
+                     I_intesity_final        += I_current.M_intesity;     //!< debug
+                   }
 
                    return true;
                   }

@@ -59,20 +59,41 @@
                    T_size   const& I_count    = M2_memorySize->Fv_load(   F_input<T_size  >( En_inSize_Count   ) );
                    T_size   const& I_leader   = M2_memorySize->Fv_load(   F_input<T_size  >( En_inSize_Leader  ) );
 
+                   T_size  I_pass = 0;  //!< debug
+                   T_size  I_save = 0;  //!< debug
+
                    for( T_size I_index = I_leader; I_index < I_leader+I_count; ++I_index )
                     {
                      auto      & I_current = P_next.Fv_expose( I_index );
-                     if( I_current.M_status == T_ray::Ee_status::En_abandoned )
+                     if( I_current.M_status != T_ray::Ee_status::En_active )
                       {
                        continue;
                       }
-                     auto I_A = ::math::linear::vector::angle( I_current.M_direction, I_normal );
-                     if( I_A < math::geometry::deg2rad(90) )
-                      { // DEBUG I_current.M_coefficient = 0.5;
+
+                     auto & I_direction = I_current.M_direction;
+
+                     //auto I_angle = ::math::linear::vector::angle( I_direction, I_normal );
+                     auto I_dot = ::math::linear::vector::dot( I_normal, I_direction );
+                     if( T_scalar( 0 ) < I_dot)
+                     //if( I_angle < math::geometry::deg2rad(90) )
+                      {
+                       //I_current.M_coefficient = 0.0; //!< DEBUG
+                       //I_current.M_intesity = ::color::constant::black_t{}; //!< DEBUG
+                       //++I_pass; //!< debug
                        continue;  
                       }
-                     ::math::linear::vector::reflect( I_current.M_direction, I_current.M_direction, I_normal );
-                     // DEBUG I_current.M_coefficient = 0;
+
+                     //++I_save; //!< debug
+                     //I_current.M_coefficient = 1; //!< DEBUG
+                     //I_current.M_intesity = ::color::constant::white_t{}; //!< DEBUG
+                     ::math::linear::vector::reflect( I_direction, I_direction, I_normal );
+
+                     I_dot = ::math::linear::vector::dot( I_normal, I_direction );
+                     if( I_dot < T_scalar( 0 ))
+                      {
+                       I_dot = I_dot;
+                      }
+
                     }
 
                    return true;

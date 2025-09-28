@@ -85,6 +85,7 @@ list = {
      'T-8-reflect-blossom-VDC'       : IceRayPy.utility.material.transmission.blossom.VDC,      #OK
      'T-8-reflect-blossom-congruent' : IceRayPy.utility.material.transmission.blossom.Congruent,      #OK
      'T-8-reflect-blossom-sunflower' : IceRayPy.utility.material.transmission.blossom.Sunflower,      #OK
+     'T-8-reflect-blossom-kmeans'    : IceRayPy.utility.material.transmission.blossom.KMeans,      #OK
      'T-9-refract-fresnel'           : IceRayPy.utility.material.transmission.refract.Fresnel,  #OK
      'T-A-refract-Snell'             : IceRayPy.utility.material.transmission.refract.Snell,    #OK
      'T-B-refract-schlick'           : IceRayPy.utility.material.transmission.refract.Schlick,  #OK
