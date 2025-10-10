@@ -155,6 +155,12 @@ IceRayC__EXPORT IceRayC__DECLSPEC  H F( Reflect_One0)( S P_point, S P_normal, S 
   auto Ir_result = new Tf_this{ P_point, P_normal, P_albedo, P_leader };
   return cpp2c( Ir_result );
  }
+IceRayC__EXPORT IceRayC__DECLSPEC  H F( Reflect_Diffusive0)( S P_point, S P_normal, S P_albedo, S P_coefficient, S P_leader  )
+ {
+  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_transmission::S_reflect::GC_diffusive    Tf_this;
+  auto Ir_result = new Tf_this{ P_point, P_normal, P_albedo, P_coefficient, P_leader };
+  return cpp2c( Ir_result );
+ }
 
 IceRayC__EXPORT IceRayC__DECLSPEC  H F( Reflect_Schlick0)( S P_point, S P_normal, S P_ior, S P_leader )
  {

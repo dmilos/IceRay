@@ -223,7 +223,7 @@ def radiosity( P_dll, P_config = { 'shadow': False, 'pigment': None }, P_light =
     pigment = IceRayPy.utility.material.pattern.Constant( P_dll, {}, I_color )
     if( 'pigment' in P_config ):
         if( 'hexagon' == P_config['pigment'] ):
-            pigment = IceRayPy.utility.material.pattern.Hexagon( P_dll, {}, RGB(25,0,0), RGB(0,25,0), RGB(0,0,25) )
+            pigment = IceRayPy.utility.material.pattern.Hexagon( P_dll, {}, RGB(5,0,0), RGB(0,5,0), RGB(0,0,5) )
         if( 'constant' in P_config['pigment'] ):
             pigment = IceRayPy.utility.material.pattern.Constant( P_dll, {}, I_color )
 

@@ -1088,6 +1088,7 @@ def _MapFunction_Material_Pigment_Surface_Instruction_Transmission_Blossom(P_dll
 
 def _MapFunction_Material_Pigment_Surface_Instruction_Transmission_Reflect(P_dll):
     _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Transmission_Reflect_One0      , ctypes.c_void_p , [ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Transmission_Reflect_Diffusive0, ctypes.c_void_p , [ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t] )
     _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Transmission_Reflect_Schlick0  , ctypes.c_void_p , [ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t,ctypes.c_size_t] )
 
 def _MapFunction_Material_Pigment_Surface_Instruction_Transmission_Refract(P_dll):

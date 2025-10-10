@@ -431,6 +431,7 @@ IceRay/material/compute/transmission/jitter/jitter.hpp
 IceRay/material/compute/transmission/jitter/random.hpp
 IceRay/material/compute/transmission/jitter/sobol.hpp
 IceRay/material/compute/transmission/reflect/one.hpp
+IceRay/material/compute/transmission/reflect/diffusive.hpp
 IceRay/material/compute/transmission/reflect/reflect.hpp
 IceRay/material/compute/transmission/reflect/schlick.hpp
 IceRay/material/compute/transmission/refract/fresnel.hpp

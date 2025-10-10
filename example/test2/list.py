@@ -77,36 +77,6 @@ path_inventory = library_path.list
 path_item = 'looker'
 
 
-#### radiosity {{{
-#camera_list     = { 'F-persp'  }
-#light_list      = { 'dark'  }
-#medium_list     = { 'trans'      }
-#geometry_list   = { 'S-sphere'  }
-##geometry_list   = { 'S-torus'          : utility.geometry.simple.Torus }
-##geometry_list   = { 'U-cylinder'      : utility.geometry.simple.Cylinder }
-##geometry_list   = { 'V-vacuum'              : core.geometry.volumetric.Vacuum }
-#geometry_list   = {
-#     'T-lensCS'      : library.geometry.lens.concave.Symetric,
-#     'T-lensCP'      : library.geometry.lens.concave.Plano,
-#     'T-lensVS'      : library.geometry.lens.convex.Symetric,
-#     'T-lensVP'      : library.geometry.lens.convex.Plano
-#  }
-#pigment_list    = { 'M-o-Cartesian2Fisheye' : utility.material.operation.mapping.Cartesian2Fisheye }
-#pigment_list    = { 'T-reflect-one'         : utility.material.transmission.reflect.One }
-#pigment_list    = { 'P-hexagon'             : utility.material.pattern.Hexagon }
-#pigment_list    = { 'P-hexagon'          : utility.material.pattern.Hexagon }
-#pigment_list    = {
-#                   #'T-8-refract-snell'       : utility.material.transmission.refract.Snell,
-#                   #'T-A-refract-fresnel'     : utility.material.transmission.refract.Fresnel,
-#                   'T-9-refract-schlick'     : utility.material.transmission.refract.Schlick
-#                  }
-##room_list       = { 'C-close'               : room.cornel_close }
-##room_list       = { 'plane'                 : room.plane }
-#room_list       = { 'R-plane'               : room.radiosity_plane }
-##room_list       = { 'C-radiosity'           : room.cornell_radiosity }
-#decoration_item = 'radiosity'
-#### }}}
-
 def doRendering(P_config):
     folder = P_config['folder']
 
@@ -241,12 +211,12 @@ config['room']['radiosity']['blossom'] = 'congruent'
 config['room']['radiosity']['patch']  = math.radians( 4 ) #<! Used for sample number calculation
 config['room']['radiosity']['angle']  = math.radians( 89 )
 config['room']['radiosity']['sample'] = int( (1 - math.cos(config['room']['radiosity']['angle']) ) / ( 1 - math.cos( config['room']['radiosity']['patch'] ) ) + 1 )
-config['room']['radiosity']['jitter-angle'] = math.radians( 4 )
-config['room']['radiosity']['jitter-type'] = 'none' #'random''sobol''vdc''none', 'congruent'
+config['room']['radiosity']['jitter']['angle'] = math.radians( 4 )
+config['room']['radiosity']['jitter']['type'] = 'none' #'random''sobol''vdc''none', 'congruent'
 
-config['room']['radiosity']['correction-leader'] = False
-config['room']['radiosity']['correction-cone']   = False
-config['room']['radiosity']['correction-rays']        = 'trim'  # 'trim', 'claim'
+config['room']['radiosity']['correction']['leader'] = False
+config['room']['radiosity']['correction']['cone']   = False
+config['room']['radiosity']['correction']['rays']        = 'trim'  # 'trim', 'claim'
 
 config['observer'] = {}
 config['observer']['radius'] = 4
@@ -331,7 +301,7 @@ for index in range( start, 360 * int( dilatation ), step ):
     #config['camera']['eye']  = IceRayPy.type.math.coord.Scalar3D( 0, -3,   2 );
 
     #config['room']['radiosity']['angle'] = math.radians( 85 )
-    #config['room']['radiosity']['jitter-angle'] = math.fmod( config['room']['radiosity']['jitter-angle'] + math.radians( index*0.1 ), 5 )
+    #config['room']['radiosity']['jitter']['angle'] = math.fmod( config['room']['radiosity']['jitter']['angle'] + math.radians( index*0.1 ), 5 )
     #config['pigment']['ior'] = config['pigment']['ior'] + index*0.01;
     #config['room']['radiosity']['sample'] = config['room']['radiosity']['sample'] + index
     #config['pigment']['ior'] = 1.0 + 0.01*index;

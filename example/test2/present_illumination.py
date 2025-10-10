@@ -98,9 +98,10 @@ I_config['camera']['aspect'] = I_picture['aspect']
 pigment_list =[
       'I-ALP'           ,
       'I-ambient'       ,
+      'I-diffusive'     ,
       'I-AsDiffuse'     ,
       'I-AsSpecular'    ,
-      'I-AS'    ,
+      'I-AS'            ,
       'I-beckmann-iso'  ,
       'I-Blinn'         ,
       'I-Burley-diff'   ,
@@ -137,13 +138,18 @@ for geometry_item in geometry_list :
     I_scene['geometry']= geometry_item
     for pigment_item in pigment_list :
         I_scene['pigment']= pigment_item
-        render.doIt( I_dll, I_picture, I_scene, I_inventory, I_config )
+        for index in range( 0, 1, 1 ):
+            #I_picture['index'] = index
+            #I_picture['prefix'] = "%04i"%(index) + "_"
+            #I_config['pigment']['coefficient'] = index /100;
+            render.doIt( I_dll, I_picture, I_scene, I_inventory, I_config )
 
 import os
 def prepare_readme():
     os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-ALP_point_0000.pnm'            , I_picture['folder']+'/'+'material_illumination_alp.pnm' )
     os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-ambient_point_0000.pnm'        , I_picture['folder']+'/'+'material_illumination_ambient.pnm' )
     os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-AS_point_0000.pnm'             , I_picture['folder']+'/'+'material_illumination_as.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-diffusive_point_0000.pnm'      , I_picture['folder']+'/'+'material_illumination_diffusive.pnm' )
     os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-AsDiffuse_point_0000.pnm'      , I_picture['folder']+'/'+'material_illumination_asdiffuse.pnm' )
     os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-AsSpecular_point_0000.pnm'     , I_picture['folder']+'/'+'material_illumination_asspecular.pnm' )
     os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-beckmann-iso_point_0000.pnm'   , I_picture['folder']+'/'+'material_illumination_beckmann.pnm' )
@@ -165,6 +171,7 @@ def prepare_readme():
     os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-WardIsotropic_point_0000.pnm'  , I_picture['folder']+'/'+'material_illumination_wardisotropic.pnm' )
     os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-WardReal_point_0000.pnm'       , I_picture['folder']+'/'+'material_illumination_wardreal.pnm' )
 
+prepare_readme()
 
 ##debug
 #I_scene['geometry']=  'F-plane'

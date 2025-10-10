@@ -27,6 +27,7 @@ list = {
       'I-ALP'           : IceRayPy.utility.material.illumination.Alp,       # OK OK
       'I-ambient'       : IceRayPy.utility.material.illumination.Ambient,   # OK OK TODO align with ALP
       'I-AsDiffuse'     : IceRayPy.utility.material.illumination.AsDiffuse, # OK OK TODO align with ALP
+      'I-diffusive'     : IceRayPy.utility.material.illumination.Diffusive, # OK OK TODO align with ALP
       'I-AsSpecular'    : IceRayPy.utility.material.illumination.AsSpecular,# OK OK TODO align with ALP
       'I-AS'            : IceRayPy.utility.material.illumination.AshikminShirley,# OK OK TODO align with ALP
       'I-beckmann-iso'  : IceRayPy.utility.material.illumination.Beckmann_Isotropic,  # OK Check again  TODO problem on terminator
@@ -72,7 +73,9 @@ list = {
       'M-o-Cartesian2Fisheye'      : IceRayPy.utility.material.operation.mapping.Cartesian2Fisheye,    #TODO check
 
      'T-0-reflect-One'               : IceRayPy.utility.material.transmission.reflect.One,      #OK
+     'T-0-reflect-diffusive'         : IceRayPy.utility.material.transmission.reflect.Diffusive,      #OK
      'T-0-reflect-mirror'            : IceRayPy.utility.material.transmission.reflect.Mirror,      #OK
+     'T-0-reflect-blossom-generic'   : IceRayPy.utility.material.transmission.reflect.Blossom,      #OK
      'T-1-reflect-schlick'           : IceRayPy.utility.material.transmission.reflect.Schlick,  #OK
      'T-2-reflect-blossom-Grid'      : IceRayPy.utility.material.transmission.blossom.Grid,     #TODO edge bug
      'T-3-reflect-blossom-Hexagon'   : IceRayPy.utility.material.transmission.blossom.Hexagon,  #CHECK

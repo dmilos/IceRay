@@ -109,7 +109,7 @@
 
 
                    T_size const& I_count = P_count;
-                   
+
 
                    T_size I_total=0;
                    T_size I_beginA = P_next.Fv_size();
