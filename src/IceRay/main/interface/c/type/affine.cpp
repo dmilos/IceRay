@@ -174,7 +174,7 @@ int    IceRayC_Type_Math_Affine_RotateX3D( IceRayC_Type_Math_Affine3D *P_result,
  {
   GS_DDMRM::S_IceRay::S_type::S_affine::GT_scalar3D I_result;
   ::math::linear::matrix::rotateX(I_result.matrix(),P_alpha);
-  ::math::linear::vector::fill(I_result.vector(),0);
+  ::math::linear::vector::fill( I_result.vector(), 0 );
   *P_result = cpp2c( I_result );
   return 1;
  }
@@ -216,10 +216,9 @@ int    IceRayC_Type_Math_Affine_RotateD3D( IceRayC_Type_Math_Affine3D *P_result,
   I_2back.vector() = c2cpp( * P_pivot );
 
   ::math::linear::matrix::rotate( I_rotate.matrix(), c2cpp(*P_direction), P_alpha );
-  GS_DDMRM::S_IceRay::S_type::S_affine::GT_scalar3D I_tmp;
-  ::math::linear::affine::compose( I_tmp, I_rotate, I_2center );
-
   GS_DDMRM::S_IceRay::S_type::S_affine::GT_scalar3D I_result;
+  ::math::linear::affine::compose( I_result, I_rotate, I_2center );
+
   *P_result = cpp2c( I_result );
   return 1;
  }

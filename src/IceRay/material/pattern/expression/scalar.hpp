@@ -6,7 +6,7 @@
 #include "../_pure.hpp"
 
 
-
+#include "IceRay/utility/expression/compiler.hpp"
 
 
 
@@ -26,22 +26,38 @@
             : public GS_DDMRM::S_IceRay::S_material::S_pattern::GT__scalar
             {
              public:
+               typedef std::string  T_string;
+               typedef GS_DDMRM::S_IceRay::S_utility::S_expression::GC_compiler  T_compiler;
+               typedef GS_DDMRM::S_IceRay::S_utility::S_expression::GC_program   T_program;
+               typedef GS_DDMRM::S_IceRay::S_utility::S_expression::GC_memory    T_memory;
+               typedef GS_DDMRM::S_IceRay::S_utility::S_expression::GC_mapper    T_mapper;
+
                // f(x,y,z) - no n for normal or similar things
-               explicit GC_scalar( std::string const& expression="X" )
+               explicit GC_scalar( std::string const& P_expression = "X*x" )
                 {
-                    // TODO
+                 M2_mapper.F_tie( "X", 1 ); M2_mapper.F_tie( "x", 1 );
+                 M2_mapper.F_tie( "Y", 2 ); M2_mapper.F_tie( "y", 2 );
+                 M2_mapper.F_tie( "Z", 3 ); M2_mapper.F_tie( "z", 3 );
+
+                 T_compiler I_compiler;
+                 I_compiler.F_compile( M2_program, M2_mapper, P_expression );
+                 M2_program.F_memory( M2_memory );
                 }
 
              public:
                void  Fv_process( T_result &P_result, T_coord const& P_coord )const
                 {
-                 // TODO
-                 //P_result = execute( );
+                 M2_memory.F_set( 0, P_coord[0] );
+                 M2_memory.F_set( 1, P_coord[1] );
+                 M2_memory.F_set( 2, P_coord[2] );
                 }
 
              private:
-               std::string M2_expression;
-            };
+               T_string  M2_expression;
+               T_program M2_program;
+               mutable T_memory  M2_memory;
+               T_mapper  M2_mapper;
+           };
 
           }
         }

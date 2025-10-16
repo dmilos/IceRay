@@ -85,6 +85,7 @@
                       auto const& I_jurisdiction = P_next.F_jurisdiction();
                       switch( I_jurisdiction.F_in( P_intersect.M_intersection.M_geometryID ) )
                        {
+                        default:
                         case( T_jurisdiction::En_unused ):
                         case( T_jurisdiction::En_close ):
                          {

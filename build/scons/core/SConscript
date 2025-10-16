@@ -93,184 +93,192 @@ settings.accumulate( 'compiler:warning', { 'unused-local-typedefs'      : 'enabl
 
 cc_files = []
 
-cc_files += [ os.path.join( 'camera', 'camera.cpp' ) ]
-if( False ):
-    cc_files += [ os.path.join( 'camera', '_parent.cpp' ) ]
-    cc_files += [ os.path.join( 'camera', '_pure.cpp' ) ]
-    cc_files += [ os.path.join( 'camera', 'cylinder', 'vertical.cpp' ) ]
-    cc_files += [ os.path.join( 'camera', 'sphere',    'vertical.cpp' ) ]
-    cc_files += [ os.path.join( 'camera', 'dof', 'cone.cpp' ) ]
-    cc_files += [ os.path.join( 'camera', 'dof', 'focus.cpp' ) ]
-    cc_files += [ os.path.join( 'camera', 'flat', 'general.cpp' ) ]
-    cc_files += [ os.path.join( 'camera', 'flat', 'hybrid.cpp' ) ]
-    cc_files += [ os.path.join( 'camera', 'invert.cpp' ) ]
-    cc_files += [ os.path.join( 'camera', 'flat', 'orthogonal.cpp' ) ]
-    cc_files += [ os.path.join( 'camera', 'flat', 'perspective.cpp' ) ]
-    cc_files += [ os.path.join( 'camera', 'transform.cpp' ) ]
+cc_list = open( "./cpp.lst.txt", "r" )
+for line in  cc_list :
+    if( 0 == len( line.rstrip()) ):
+        continue
+    cc_files += [ line.rstrip() ]
 
-cc_files += [ os.path.join( 'geometry', '_pure', '_pure.cpp' ) ]
-if( False ):
-    cc_files += [ os.path.join( 'geometry', '_pure', '_base.cpp' ) ]
-    cc_files += [ os.path.join( 'geometry', '_pure', 'child.cpp' ) ]
-    cc_files += [ os.path.join( 'geometry', '_pure', 'parent.cpp' ) ]
+print( cc_files )
 
-cc_files += [ os.path.join( 'geometry', 'blobby', 'blobby.cpp' ) ]
-if( False ):
-    cc_files += [ os.path.join( 'geometry', 'blobby', 'sphere.cpp' ) ]
-    cc_files += [ os.path.join( 'geometry', 'blobby', 'system.cpp' ) ]
-    cc_files += [ os.path.join( 'geometry', 'blobby', 'translate.cpp' ) ]
-    cc_files += [ os.path.join( 'geometry', 'blobby', 'ucylinderZ.cpp' ) ]
-    cc_files += [ os.path.join( 'geometry', 'blobby', 'usphere.cpp' ) ]
-    cc_files += [ os.path.join( 'geometry', 'blobby', 'uwaterZ.cpp' ) ]
-
-cc_files += [ os.path.join( 'geometry', 'complex', 'complex.cpp' ) ]
-if( False ):
-    cc_files += [ os.path.join( 'geometry', 'complex', 'intersect.cpp' ) ]
-    cc_files += [ os.path.join( 'geometry', 'complex', 'aifs.cpp' ) ]
-    cc_files += [ os.path.join( 'geometry', 'complex', 'enclose.cpp' ) ]
-
-cc_files += [ os.path.join( 'geometry', 'transform', 'transform.cpp' ) ]
-if( False ):
-    cc_files += [ os.path.join( 'geometry', 'transform', 'affine.cpp' ) ]
-    cc_files += [ os.path.join( 'geometry', 'transform', 'mblur.cpp' ) ]
-    cc_files += [ os.path.join( 'geometry', 'transform', 'projective.cpp' ) ]
-    cc_files += [ os.path.join( 'geometry', 'transform', 'translate.cpp' ) ]
-    cc_files += [ os.path.join( 'geometry', 'transform', 'identical.cpp' ) ]
-
-cc_files += [ os.path.join( 'geometry', 'hfield', 'hfield.cpp' ) ]
-if( False ):
-    cc_files += [ os.path.join( 'geometry', 'hfield', 'generator', 'generator.cpp' ) ]
-    if( False ):
-        cc_files += [ os.path.join( 'geometry', 'hfield', 'generator', 'function.cpp' ) ]
-        cc_files += [ os.path.join( 'geometry', 'hfield', 'generator', 'picture.cpp' ) ]
-        cc_files += [ os.path.join( 'geometry', 'hfield', 'generator', 'table.cpp' ) ]
-        cc_files += [ os.path.join( 'geometry', 'hfield', 'generator', 'expression.cpp' ) ]
-
-    cc_files += [ os.path.join( 'geometry', 'hfield', 'object', 'object.cpp' ) ]
-    if( False ):
-        cc_files += [ os.path.join( 'geometry', 'hfield', 'object', 'b3.cpp' ) ]
-        cc_files += [ os.path.join( 'geometry', 'hfield', 'object', 'flat.cpp' ) ]
-        cc_files += [ os.path.join( 'geometry', 'hfield', 'object', 'triangle.cpp' ) ]
-        cc_files += [ os.path.join( 'geometry', 'hfield', 'object', 'vacuum.cpp' ) ]
-        cc_files += [ os.path.join( 'geometry', 'hfield', 'object', 'quad.cpp' ) ]
-
-cc_files += [ os.path.join( 'geometry', 'rtss', 'rtss.cpp' ) ]
-if( False ):
-    cc_files += [ os.path.join( 'geometry', 'rtss', '_pure.cpp' ) ]
-    cc_files += [ os.path.join( 'geometry', 'rtss', 'list.cpp' ) ]
-    cc_files += [ os.path.join( 'geometry', 'rtss', 'object.cpp' ) ]
-    cc_files += [ os.path.join( 'geometry', 'rtss', 'uniform.cpp' ) ]
-
-cc_files += [ os.path.join( 'geometry', 'simple', 'simple.cpp' ) ]
-if( False ):
-    cc_files += [ os.path.join( 'geometry', 'simple', 'cone.cpp'       ) ]
-    cc_files += [ os.path.join( 'geometry', 'simple', 'cylinder.cpp'   ) ]
-    cc_files += [ os.path.join( 'geometry', 'simple', 'cylinderu.cpp'   ) ]
-    cc_files += [ os.path.join( 'geometry', 'simple', 'paraboloid.cpp' ) ]
-    cc_files += [ os.path.join( 'geometry', 'simple', 'sphere.cpp'     ) ]
-    cc_files += [ os.path.join( 'geometry', 'simple', 'usphere.cpp'    ) ]
-    cc_files += [ os.path.join( 'geometry', 'simple', 'torus.cpp'      ) ]
-    cc_files += [ os.path.join( 'geometry', 'simple', 'quadric.cpp'    ) ]
-
-cc_files += [ os.path.join( 'geometry', 'flat', 'flat.cpp' ) ]
-if( False ):
-    cc_files += [ os.path.join( 'geometry', 'flat', 'box.cpp'       ) ]
-    cc_files += [ os.path.join( 'geometry', 'flat', 'disc.cpp'      ) ]
-    cc_files += [ os.path.join( 'geometry', 'flat', 'udisc.cpp'     ) ]
-    cc_files += [ os.path.join( 'geometry', 'flat', 'plane.cpp'     ) ]
-    cc_files += [ os.path.join( 'geometry', 'flat', 'triangle.cpp'  ) ]
-    cc_files += [ os.path.join( 'geometry', 'flat', 'triangleu.cpp' ) ]
-
-
-#TODO cc_files += [ os.path.join( 'geometry', 'spline', 'spline.cpp' ) ]
-
-cc_files += [ os.path.join( 'geometry', 'volumetric', 'volumetric.cpp' ) ]
-if( False ):
-    cc_files += [ os.path.join( 'geometry', 'volumetric', 'mist.cpp'   ) ]
-    cc_files += [ os.path.join( 'geometry', 'volumetric', 'smoke.cpp'  ) ]
-    cc_files += [ os.path.join( 'geometry', 'volumetric', 'vacuum.cpp' ) ]
-
-cc_files += [ os.path.join( 'light', 'light.cpp' ) ]
-if( False ):
-    cc_files += [ os.path.join( 'light', 'sun.cpp' ) ]
-    cc_files += [ os.path.join( 'light', 'spline.cpp' ) ]
-    cc_files += [ os.path.join( 'light', 'sphere.cpp' ) ]
-    cc_files += [ os.path.join( 'light', 'reflector.cpp' ) ]
-    cc_files += [ os.path.join( 'light', 'point.cpp' ) ]
-    cc_files += [ os.path.join( 'light', 'line.cpp' ) ]
-    cc_files += [ os.path.join( 'light', 'dark.cpp' ) ]
-    cc_files += [ os.path.join( 'light', 'circle.cpp' ) ]
-    cc_files += [ os.path.join( 'light', 'chandelier.cpp' ) ]
-    cc_files += [ os.path.join( 'light', '_pure.cpp' ) ]
-    cc_files += [ os.path.join( 'light', 'blocked.cpp' ) ]
-    cc_files += [ os.path.join( 'light', 'basic.cpp' ) ]
-    cc_files += [ os.path.join( 'light', 'area.cpp' ) ]
-    cc_files += [ os.path.join( 'light', 'clipped.cpp' ) ]
-    cc_files += [ os.path.join( 'light', 'confine.cpp' ) ]
-
-cc_files += [ os.path.join( 'material', 'material.cpp'    ) ]
-if( False ):
-    cc_files += [ os.path.join( 'material', 'compute',      'compute.cpp'      ) ]
-    cc_files += [ os.path.join( 'material', 'illumination', 'illumination.cpp' ) ]
-    cc_files += [ os.path.join( 'material', 'medium',       'medium.cpp'       ) ]
-    cc_files += [ os.path.join( 'material', 'pattern',      'pattern.cpp'      ) ]
-
-cc_files += [ os.path.join( 'object', 'object.cpp' ) ]
-if( False ):
-    cc_files += [ os.path.join( 'object', '_pure.cpp' ) ]
-    cc_files += [ os.path.join( 'object', '_base.cpp' ) ]
-    cc_files += [ os.path.join( 'object', 'wrap.cpp' ) ]
-
-cc_files += [ os.path.join( 'render', '0scanner', 'scanner.cpp' ) ]
-if( False ):
-    cc_files += [ os.path.join( 'render', '0scanner', '_pure.cpp' ) ]
-    cc_files += [ os.path.join( 'render', '0scanner', 'block.cpp' ) ]
-    cc_files += [ os.path.join( 'render', '0scanner', 'parallel.cpp' ) ]
-
-cc_files += [ os.path.join( 'render', '1pixel', 'pixel.cpp' ) ]
-cc_files += [ os.path.join( 'render', '1pixel', 'strategy', 'strategy.cpp' ) ]
-if( False ):
-    cc_files += [ os.path.join( 'render', '1pixel', '_base.cpp' ) ]
-    cc_files += [ os.path.join( 'render', '1pixel', '_pure.cpp' ) ]
-    cc_files += [ os.path.join( 'render', '1pixel', 'strategy', 'center.cpp' ) ]
-    cc_files += [ os.path.join( 'render', '1pixel', 'strategy', 'grid.cpp'   ) ]
-    cc_files += [ os.path.join( 'render', '1pixel', 'strategy', 'random.cpp' ) ]
-    cc_files += [ os.path.join( 'render', '1pixel', 'strategy', 'sobol.cpp'  ) ]
-
-
-cc_files += [ os.path.join( 'render', '2pierce',  'pierce.cpp' ) ]
-if( False ):
-    cc_files += [ os.path.join( 'render', '2pierce',  '_base.cpp' ) ]
-    cc_files += [ os.path.join( 'render', '2pierce',  '_pure.cpp' ) ]
-
-cc_files += [ os.path.join( 'render', '3sheaf',  'sheaf.cpp' ) ]
-if( False ):
-    cc_files += [ os.path.join( 'render', '3sheaf', '_pure.cpp' ) ]
-    cc_files += [ os.path.join( 'render', '3sheaf', 'all.cpp'   ) ]
-
-#cc_files += [ os.path.join( 'render', '4ray',  'ray.cpp' ) ]
-if( True ):
-    cc_files += [ os.path.join( 'render', '4ray',     '_base.cpp' ) ]
-    cc_files += [ os.path.join( 'render', '4ray',     '_pure.cpp' ) ]
-    # del cc_files += [ os.path.join( 'render', '4ray', 'classic', 'class.cpp' ) ]
-    # del cc_files += [ os.path.join( 'render', '4ray', 'classic', 'geometry.cpp' ) ]
-    cc_files += [ os.path.join( 'render', '4ray', 'classic2', 'algorithm.cpp' ) ]
-    cc_files += [ os.path.join( 'render', '4ray', 'classic2', 'stack', 'implementation.cpp' ) ]
-    cc_files += [ os.path.join( 'render', '4ray', 'distance.cpp' ) ]
-    cc_files += [ os.path.join( 'render', '4ray', 'direction.cpp' ) ]
-
-cc_files += [ os.path.join( 'render', 'engine.cpp' ) ]
-
-#cc_files += [ os.path.join( 'type', 'type.cpp'    ) ]
-if( True ):
-    cc_files += [ os.path.join( 'type', 'general', 'child.cpp'   ) ]
-    cc_files += [ os.path.join( 'type', 'general', 'parent.cpp'   ) ]
-    cc_files += [ os.path.join( 'type', 'picture', 'default.cpp'  ) ]
-
-cc_files += [ os.path.join( 'utility', 'utility.cpp'    ) ]
-if( False ):
-    cc_files += [ os.path.join( 'utility', 'random.cpp'    ) ]
-    cc_files += [ os.path.join( 'utility', 'table', 'table.cpp'   ) ]
+#cc_files += [ os.path.join( 'camera', 'camera.cpp' ) ]
+#if( False ):
+#    cc_files += [ os.path.join( 'camera', '_parent.cpp' ) ]
+#    cc_files += [ os.path.join( 'camera', '_pure.cpp' ) ]
+#    cc_files += [ os.path.join( 'camera', 'cylinder', 'vertical.cpp' ) ]
+#    cc_files += [ os.path.join( 'camera', 'sphere',    'vertical.cpp' ) ]
+#    cc_files += [ os.path.join( 'camera', 'dof', 'cone.cpp' ) ]
+#    cc_files += [ os.path.join( 'camera', 'dof', 'focus.cpp' ) ]
+#    cc_files += [ os.path.join( 'camera', 'flat', 'general.cpp' ) ]
+#    cc_files += [ os.path.join( 'camera', 'flat', 'hybrid.cpp' ) ]
+#    cc_files += [ os.path.join( 'camera', 'invert.cpp' ) ]
+#    cc_files += [ os.path.join( 'camera', 'flat', 'orthogonal.cpp' ) ]
+#    cc_files += [ os.path.join( 'camera', 'flat', 'perspective.cpp' ) ]
+#    cc_files += [ os.path.join( 'camera', 'transform.cpp' ) ]
+#
+#cc_files += [ os.path.join( 'geometry', '_pure', '_pure.cpp' ) ]
+#if( False ):
+#    cc_files += [ os.path.join( 'geometry', '_pure', '_base.cpp' ) ]
+#    cc_files += [ os.path.join( 'geometry', '_pure', 'child.cpp' ) ]
+#    cc_files += [ os.path.join( 'geometry', '_pure', 'parent.cpp' ) ]
+#
+#cc_files += [ os.path.join( 'geometry', 'blobby', 'blobby.cpp' ) ]
+#if( False ):
+#    cc_files += [ os.path.join( 'geometry', 'blobby', 'sphere.cpp' ) ]
+#    cc_files += [ os.path.join( 'geometry', 'blobby', 'system.cpp' ) ]
+#    cc_files += [ os.path.join( 'geometry', 'blobby', 'translate.cpp' ) ]
+#    cc_files += [ os.path.join( 'geometry', 'blobby', 'ucylinderZ.cpp' ) ]
+#    cc_files += [ os.path.join( 'geometry', 'blobby', 'usphere.cpp' ) ]
+#    cc_files += [ os.path.join( 'geometry', 'blobby', 'uwaterZ.cpp' ) ]
+#
+#cc_files += [ os.path.join( 'geometry', 'complex', 'complex.cpp' ) ]
+#if( False ):
+#    cc_files += [ os.path.join( 'geometry', 'complex', 'intersect.cpp' ) ]
+#    cc_files += [ os.path.join( 'geometry', 'complex', 'aifs.cpp' ) ]
+#    cc_files += [ os.path.join( 'geometry', 'complex', 'enclose.cpp' ) ]
+#
+#cc_files += [ os.path.join( 'geometry', 'transform', 'transform.cpp' ) ]
+#if( False ):
+#    cc_files += [ os.path.join( 'geometry', 'transform', 'affine.cpp' ) ]
+#    cc_files += [ os.path.join( 'geometry', 'transform', 'mblur.cpp' ) ]
+#    cc_files += [ os.path.join( 'geometry', 'transform', 'projective.cpp' ) ]
+#    cc_files += [ os.path.join( 'geometry', 'transform', 'translate.cpp' ) ]
+#    cc_files += [ os.path.join( 'geometry', 'transform', 'identical.cpp' ) ]
+#
+#cc_files += [ os.path.join( 'geometry', 'hfield', 'hfield.cpp' ) ]
+#if( False ):
+#    cc_files += [ os.path.join( 'geometry', 'hfield', 'generator', 'generator.cpp' ) ]
+#    if( False ):
+#        cc_files += [ os.path.join( 'geometry', 'hfield', 'generator', 'function.cpp' ) ]
+#        cc_files += [ os.path.join( 'geometry', 'hfield', 'generator', 'picture.cpp' ) ]
+#        cc_files += [ os.path.join( 'geometry', 'hfield', 'generator', 'table.cpp' ) ]
+#        cc_files += [ os.path.join( 'geometry', 'hfield', 'generator', 'expression.cpp' ) ]
+#
+#    cc_files += [ os.path.join( 'geometry', 'hfield', 'object', 'object.cpp' ) ]
+#    if( False ):
+#        cc_files += [ os.path.join( 'geometry', 'hfield', 'object', 'b3.cpp' ) ]
+#        cc_files += [ os.path.join( 'geometry', 'hfield', 'object', 'flat.cpp' ) ]
+#        cc_files += [ os.path.join( 'geometry', 'hfield', 'object', 'triangle.cpp' ) ]
+#        cc_files += [ os.path.join( 'geometry', 'hfield', 'object', 'vacuum.cpp' ) ]
+#        cc_files += [ os.path.join( 'geometry', 'hfield', 'object', 'quad.cpp' ) ]
+#
+#cc_files += [ os.path.join( 'geometry', 'rtss', 'rtss.cpp' ) ]
+#if( False ):
+#    cc_files += [ os.path.join( 'geometry', 'rtss', '_pure.cpp' ) ]
+#    cc_files += [ os.path.join( 'geometry', 'rtss', 'list.cpp' ) ]
+#    cc_files += [ os.path.join( 'geometry', 'rtss', 'object.cpp' ) ]
+#    cc_files += [ os.path.join( 'geometry', 'rtss', 'uniform.cpp' ) ]
+#
+#cc_files += [ os.path.join( 'geometry', 'simple', 'simple.cpp' ) ]
+#if( False ):
+#    cc_files += [ os.path.join( 'geometry', 'simple', 'cone.cpp'       ) ]
+#    cc_files += [ os.path.join( 'geometry', 'simple', 'cylinder.cpp'   ) ]
+#    cc_files += [ os.path.join( 'geometry', 'simple', 'cylinderu.cpp'   ) ]
+#    cc_files += [ os.path.join( 'geometry', 'simple', 'paraboloid.cpp' ) ]
+#    cc_files += [ os.path.join( 'geometry', 'simple', 'sphere.cpp'     ) ]
+#    cc_files += [ os.path.join( 'geometry', 'simple', 'usphere.cpp'    ) ]
+#    cc_files += [ os.path.join( 'geometry', 'simple', 'torus.cpp'      ) ]
+#    cc_files += [ os.path.join( 'geometry', 'simple', 'quadric.cpp'    ) ]
+#
+#cc_files += [ os.path.join( 'geometry', 'flat', 'flat.cpp' ) ]
+#if( False ):
+#    cc_files += [ os.path.join( 'geometry', 'flat', 'box.cpp'       ) ]
+#    cc_files += [ os.path.join( 'geometry', 'flat', 'disc.cpp'      ) ]
+#    cc_files += [ os.path.join( 'geometry', 'flat', 'udisc.cpp'     ) ]
+#    cc_files += [ os.path.join( 'geometry', 'flat', 'plane.cpp'     ) ]
+#    cc_files += [ os.path.join( 'geometry', 'flat', 'triangle.cpp'  ) ]
+#    cc_files += [ os.path.join( 'geometry', 'flat', 'triangleu.cpp' ) ]
+#
+#
+##TODO cc_files += [ os.path.join( 'geometry', 'spline', 'spline.cpp' ) ]
+#
+#cc_files += [ os.path.join( 'geometry', 'volumetric', 'volumetric.cpp' ) ]
+#if( False ):
+#    cc_files += [ os.path.join( 'geometry', 'volumetric', 'mist.cpp'   ) ]
+#    cc_files += [ os.path.join( 'geometry', 'volumetric', 'smoke.cpp'  ) ]
+#    cc_files += [ os.path.join( 'geometry', 'volumetric', 'vacuum.cpp' ) ]
+#
+#cc_files += [ os.path.join( 'light', 'light.cpp' ) ]
+#if( False ):
+#    cc_files += [ os.path.join( 'light', 'sun.cpp' ) ]
+#    cc_files += [ os.path.join( 'light', 'spline.cpp' ) ]
+#    cc_files += [ os.path.join( 'light', 'sphere.cpp' ) ]
+#    cc_files += [ os.path.join( 'light', 'reflector.cpp' ) ]
+#    cc_files += [ os.path.join( 'light', 'point.cpp' ) ]
+#    cc_files += [ os.path.join( 'light', 'line.cpp' ) ]
+#    cc_files += [ os.path.join( 'light', 'dark.cpp' ) ]
+#    cc_files += [ os.path.join( 'light', 'circle.cpp' ) ]
+#    cc_files += [ os.path.join( 'light', 'chandelier.cpp' ) ]
+#    cc_files += [ os.path.join( 'light', '_pure.cpp' ) ]
+#    cc_files += [ os.path.join( 'light', 'blocked.cpp' ) ]
+#    cc_files += [ os.path.join( 'light', 'basic.cpp' ) ]
+#    cc_files += [ os.path.join( 'light', 'area.cpp' ) ]
+#    cc_files += [ os.path.join( 'light', 'clipped.cpp' ) ]
+#    cc_files += [ os.path.join( 'light', 'confine.cpp' ) ]
+#
+#cc_files += [ os.path.join( 'material', 'material.cpp'    ) ]
+#if( False ):
+#    cc_files += [ os.path.join( 'material', 'compute',      'compute.cpp'      ) ]
+#    cc_files += [ os.path.join( 'material', 'illumination', 'illumination.cpp' ) ]
+#    cc_files += [ os.path.join( 'material', 'medium',       'medium.cpp'       ) ]
+#    cc_files += [ os.path.join( 'material', 'pattern',      'pattern.cpp'      ) ]
+#
+#cc_files += [ os.path.join( 'object', 'object.cpp' ) ]
+#if( False ):
+#    cc_files += [ os.path.join( 'object', '_pure.cpp' ) ]
+#    cc_files += [ os.path.join( 'object', '_base.cpp' ) ]
+#    cc_files += [ os.path.join( 'object', 'wrap.cpp' ) ]
+#
+#cc_files += [ os.path.join( 'render', '0scanner', 'scanner.cpp' ) ]
+#if( False ):
+#    cc_files += [ os.path.join( 'render', '0scanner', '_pure.cpp' ) ]
+#    cc_files += [ os.path.join( 'render', '0scanner', 'block.cpp' ) ]
+#    cc_files += [ os.path.join( 'render', '0scanner', 'parallel.cpp' ) ]
+#
+#cc_files += [ os.path.join( 'render', '1pixel', 'pixel.cpp' ) ]
+#cc_files += [ os.path.join( 'render', '1pixel', 'strategy', 'strategy.cpp' ) ]
+#if( False ):
+#    cc_files += [ os.path.join( 'render', '1pixel', '_base.cpp' ) ]
+#    cc_files += [ os.path.join( 'render', '1pixel', '_pure.cpp' ) ]
+#    cc_files += [ os.path.join( 'render', '1pixel', 'strategy', 'center.cpp' ) ]
+#    cc_files += [ os.path.join( 'render', '1pixel', 'strategy', 'grid.cpp'   ) ]
+#    cc_files += [ os.path.join( 'render', '1pixel', 'strategy', 'random.cpp' ) ]
+#    cc_files += [ os.path.join( 'render', '1pixel', 'strategy', 'sobol.cpp'  ) ]
+#
+#
+#cc_files += [ os.path.join( 'render', '2pierce',  'pierce.cpp' ) ]
+#if( False ):
+#    cc_files += [ os.path.join( 'render', '2pierce',  '_base.cpp' ) ]
+#    cc_files += [ os.path.join( 'render', '2pierce',  '_pure.cpp' ) ]
+#
+#cc_files += [ os.path.join( 'render', '3sheaf',  'sheaf.cpp' ) ]
+#if( False ):
+#    cc_files += [ os.path.join( 'render', '3sheaf', '_pure.cpp' ) ]
+#    cc_files += [ os.path.join( 'render', '3sheaf', 'all.cpp'   ) ]
+#
+##cc_files += [ os.path.join( 'render', '4ray',  'ray.cpp' ) ]
+#if( True ):
+#    cc_files += [ os.path.join( 'render', '4ray',     '_base.cpp' ) ]
+#    cc_files += [ os.path.join( 'render', '4ray',     '_pure.cpp' ) ]
+#    # del cc_files += [ os.path.join( 'render', '4ray', 'classic', 'class.cpp' ) ]
+#    # del cc_files += [ os.path.join( 'render', '4ray', 'classic', 'geometry.cpp' ) ]
+#    cc_files += [ os.path.join( 'render', '4ray', 'classic2', 'algorithm.cpp' ) ]
+#    cc_files += [ os.path.join( 'render', '4ray', 'classic2', 'stack', 'implementation.cpp' ) ]
+#    cc_files += [ os.path.join( 'render', '4ray', 'distance.cpp' ) ]
+#    cc_files += [ os.path.join( 'render', '4ray', 'direction.cpp' ) ]
+#
+#cc_files += [ os.path.join( 'render', 'engine.cpp' ) ]
+#
+##cc_files += [ os.path.join( 'type', 'type.cpp'    ) ]
+#if( True ):
+#    cc_files += [ os.path.join( 'type', 'general', 'child.cpp'   ) ]
+#    cc_files += [ os.path.join( 'type', 'general', 'parent.cpp'   ) ]
+#    cc_files += [ os.path.join( 'type', 'picture', 'default.cpp'  ) ]
+#
+#cc_files += [ os.path.join( 'utility', 'utility.cpp'    ) ]
+#if( False ):
+#    cc_files += [ os.path.join( 'utility', 'random.cpp'    ) ]
+#    cc_files += [ os.path.join( 'utility', 'table', 'table.cpp'   ) ]
 
 cc_submodule_memory_files = []
 #cc_submodule_files += [ os.path.join(  'math', 'random', 'sobol2D.cpp' ) ]
@@ -281,16 +289,19 @@ cc_submodule_memory_files += [ os.path.join(  'memory' ,'allocator', 'chunk', 'm
 project_common_settings = copy.deepcopy( settings )
 envCommon  = nucleotide.Environment( project_common_settings ).native()
 
+objects = []
+
 def make_object( list, dir_src, dir_obj, prefix_src, prefix_obj ):
     objs = []
     for file in list:
+        print( str( len(file) ) + "    -|" + file +"|-")
         source = os.path.join( dir_src, prefix_src, file )
         target = os.path.join( dir_obj, prefix_obj, file + envCommon['OBJSUFFIX'] )
         objs += envCommon.Object( source = source, target = target )
     return objs
 
-objects = []
-objects += make_object( cc_files,                  directory_src,  directory_obj, 'IceRay', '' )
+print( "directory_src : -|" + directory_src +"|-")
+objects += make_object( cc_files,                  directory_src,  directory_obj, '', '' )
 objects += make_object( cc_submodule_memory_files, directory_subm, directory_obj, os.path.join( 'memory', 'src' ), 'submodule' )
 
 ### ### ### ###

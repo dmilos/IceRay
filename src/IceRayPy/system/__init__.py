@@ -61,19 +61,24 @@ def SearchCDLL( P_path = None, P_preferDebug = False ):
         print( "Architecture: " + str( arch ) )
         print( "--------------", flush = True )
 
+        bin_dll_cmake = "IceRayDLL-1.0.0.0.dll"
+        bin_dll_scons = "IceRayCDLL-1.0.0.0-dynamic.dll"
+
         list_all = {}
         if( "32bit" == str( platform.architecture()[0] ) ) :
             list_all={
-                "build/cmake/_makeVS/cdll/Debug/IceRayDLL-1.0.0.0.dll"         : { 'exists': False, 'config': 'debug',  'arch' : '32' }
-                , "build/cmake/_makeVS/cdll/Release/IceRayDLL-1.0.0.0.dll"     : { 'exists': False, 'config': 'release','arch' : '32' }
-                , "bin/IceRayCDLL-x86-Release/IceRayCDLL-1.0.0.0-dynamic.dll"  : { 'exists': False, 'config': 'release','arch' : '32' }
-                , "bin/IceRayCDLL-x86-Debug/IceRayCDLL-1.0.0.0-dynamic.dll"    : { 'exists': False, 'config': 'debug',  'arch' : '32' }
+                  "build/cmake/_makeVS32/cdll/Debug/"   + bin_dll_cmake  : { 'exists': False, 'config': 'debug',  'arch' : '32' }
+                , "build/cmake/_makeVS32/cdll/Release/" + bin_dll_cmake  : { 'exists': False, 'config': 'release','arch' : '32' }
+                , "install/bin/IceRayCDLL-x86-Release/" + bin_dll_scons  : { 'exists': False, 'config': 'release','arch' : '32' }
+                , "install/bin/IceRayCDLL-x86-Debug/"   + bin_dll_scons  : { 'exists': False, 'config': 'debug',  'arch' : '32' }
             }
 
         if( "64bit" == str( platform.architecture()[0] ) ) :
             list_all={
-                "build/cmake/_makeVS64/cdll/Release/IceRayDLL-1.0.0.0.dll"   : { 'exists': False, 'config': 'release','arch' : '64' }
-              , "build/cmake/_makeVS64/cdll/Debug/IceRayDLL-1.0.0.0.dll"     : { 'exists': False, 'config': 'debug',  'arch' : '64' }
+                "build/cmake/_makeVS64/cdll/Release/"    + bin_dll_cmake  : { 'exists': False, 'config': 'release','arch' : '64' }
+              , "build/cmake/_makeVS64/cdll/Debug/"      + bin_dll_cmake  : { 'exists': False, 'config': 'debug',  'arch' : '64' }
+              , "install/bin/IceRayCDLL-x86_64-Release/" + bin_dll_scons  : { 'exists': False, 'config': 'release','arch' : '64' }
+              , "install/bin/IceRayCDLL-x86_64-Debug/"   + bin_dll_scons  : { 'exists': False, 'config': 'debug',  'arch' : '64' }
             }
 
         for item in list_all:
@@ -87,10 +92,13 @@ def SearchCDLL( P_path = None, P_preferDebug = False ):
             print( "DLL test: "+ str( os.path.exists( list_all[item]['absolute']  ) )  + "\'"+ " -> "+ list_all[item]['absolute'], flush = True  )
 
     if( 'Linux' == platform.system() ):
+        bin_dll_cygwin = 'cygIceRayDLL-1.0.0.0.dll'  #!< cmake Ubuntu
+        bin_dir_cygwin = 'build/cmake/_makeGcc/cdll'
 
         bin_root  = os.getcwd()+ "/../.."         #!< cmake Ubuntu
         bin_dir   = "build/cmake/_makeGcc/cdll"   #!< cmake Ubuntu
         bin_dll   = "libIceRayDLL-1.0.0.0.so"     #!< cmake Ubuntu
+
         bin_test = bin_root +'/'+ bin_dir +'/'+ bin_dll
         print( "DLL exists: "+ str( os.path.exists( bin_test ) )  + "\'"+ " -> "+ bin_test, flush = True  )
         if( True == os.path.exists( bin_test ) ):

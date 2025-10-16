@@ -96,7 +96,7 @@ I_config['camera']['aspect'] = I_picture['aspect']
 
 pigment_list =[
    'T-0-reflect-One'               ,
-   'T-0-reflect-Diffusive'         ,
+   'T-0-reflect-diffusive'         ,
    'T-0-reflect-mirror'            ,
    'T-1-reflect-schlick'           ,
    'T-2-reflect-blossom-Grid'      ,

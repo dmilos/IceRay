@@ -80,6 +80,10 @@ def Schlick(
     ,P_config
     ):
 
+    I_iorValue = 1.20
+    if( 'ior' in P_config ):
+        I_iorValue = P_config['ior']
+
     result     = IceRayPy.core.material.instruction.label.color.dynamic.RESULT
     point      = IceRayPy.core.material.instruction.label.coord3d.dynamic.POINT
     normal     = IceRayPy.core.material.instruction.label.coord3d.dynamic.NORMAL
@@ -93,7 +97,7 @@ def Schlick(
     I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
 
     I_surface.append( IceRayPy.core.material.instruction.constant.Color(               P_dll, IceRayPy.type.color.RGB( 0, 0, 0 ), result ) )
-    I_surface.append( IceRayPy.core.material.instruction.constant.Scalar(              P_dll, P_ior, I_ior ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Scalar(              P_dll, I_iorValue, I_ior ) )
     I_surface.append( IceRayPy.core.material.instruction.transmission.reflect.Schlick( P_dll, point, normal, I_ior, I_leader ) )
 
     return I_surface
