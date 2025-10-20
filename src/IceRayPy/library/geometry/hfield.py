@@ -154,9 +154,10 @@ def Table5x5( P_dll,
     generator = IceRayPy.core.geometry.hfield.generator.Table(P_dll)
 
     I_size = 5
-    if( 'frame' in P_config ):
-        if( 'index' in P_config['frame'] ):
-            I_size = int( P_config['frame']['index'] / 30 + 2 )
+    if( None != P_config ):
+        if( 'frame' in P_config ):
+            if( 'index' in P_config['frame'] ):
+                I_size = int( P_config['frame']['index'] / 30 + 2 )
 
     generator.size( Size2D( I_size, I_size ) )
 

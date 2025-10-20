@@ -23,6 +23,18 @@ namespace
     {
      return arg1+arg2;
     }
+   GC_library::T_scalar  minus( GC_library::T_scalar const& arg1, GC_library::T_scalar const& arg2 )
+    {
+     return arg1-arg2;
+    }
+   GC_library::T_scalar  multiply( GC_library::T_scalar const& arg1, GC_library::T_scalar const& arg2 )
+    {
+     return arg1*arg2;
+    }
+   GC_library::T_scalar  division( GC_library::T_scalar const& arg1, GC_library::T_scalar const& arg2 )
+    {
+     return arg1/arg2;
+    }
  
  }
 
@@ -31,6 +43,12 @@ GC_library::GC_library(   )
   M2_container["cos"] = T_instruction( &cosinus, 0, 0 );
   M2_container["sin"] = T_instruction( &sinus, 0, 0 );
   M2_container["+"]   = T_instruction( &plus, 0, 0, 0 );
+  M2_container["-"]   = T_instruction( &minus, 0, 0, 0 );
+  M2_container["*"]   = T_instruction( &multiply, 0, 0, 0 );
+  M2_container["/"]   = T_instruction( &division, 0, 0, 0 );
+  //M2_container["×"]   = T_instruction( &cross, 0, 0, 0 );
+  //M2_container["."]   = T_instruction( &dot, 0, 0, 0 );
+
  }
 
 

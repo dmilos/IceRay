@@ -12,6 +12,7 @@
 
 #include "./program.hpp"
 #include "./mapper.hpp"
+#include "./library.hpp"
 
 
 
@@ -28,14 +29,29 @@ namespace GS_DDMRM
         class GC_compiler
          {
           public:
-           typedef GS_DDMRM::S_IceRay::S_type::GT_scalar T_scalar;
-           typedef GS_DDMRM::S_IceRay::S_type::GT_size   T_size;
-           typedef GS_DDMRM::S_IceRay::S_type::GT_string T_string;
+            typedef GS_DDMRM::S_IceRay::S_type::GT_scalar T_scalar;
+            typedef GS_DDMRM::S_IceRay::S_type::GT_size   T_size;
+            typedef GS_DDMRM::S_IceRay::S_type::GT_string T_string;
+            
+            typedef GS_DDMRM::S_IceRay::S_utility::S_expression::GC_program   T_program;
+            typedef GS_DDMRM::S_IceRay::S_utility::S_expression::GC_mapper    T_mapper;
+            typedef GS_DDMRM::S_IceRay::S_utility::S_expression::GC_library   T_library;
 
-           typedef GS_DDMRM::S_IceRay::S_utility::S_expression::GC_program   T_program;
-           typedef GS_DDMRM::S_IceRay::S_utility::S_expression::GC_mapper    T_mapper;
+          public:
+            GC_compiler( T_library const& P_library, T_mapper  & P_mapper );
 
-           bool F_compile( T_program & P_program, T_mapper & P_mappe, T_string const& P_expressionr );
+          public:
+            bool F_compile( T_program & P_program, T_string const& P_expression );
+          private:
+            T_library  const& M2_library;
+            T_mapper  & M2_mapper;
+            T_program      * M2_program;    //!< temproal common;
+            T_string  const* M2_expression; //!< temproal common;
+            T_size F2_null()const;
+            T_size F2_constant( T_size const& P_begin, T_size const& P_end );
+            T_size F2_variable( T_size const& P_begin, T_size const& P_end );
+            T_size F2_operator( T_size const& P_begin, T_size const& P_end );
+            T_size F2_function( T_size const& P_begin, T_size const& P_end );
          };
 
        }

@@ -31,6 +31,7 @@
                typedef GS_DDMRM::S_IceRay::S_utility::S_expression::GC_program   T_program;
                typedef GS_DDMRM::S_IceRay::S_utility::S_expression::GC_memory    T_memory;
                typedef GS_DDMRM::S_IceRay::S_utility::S_expression::GC_mapper    T_mapper;
+               typedef GS_DDMRM::S_IceRay::S_utility::S_expression::GC_library    T_library;
 
                // f(x,y,z) - no n for normal or similar things
                explicit GC_scalar( std::string const& P_expression = "X*x" )
@@ -39,8 +40,8 @@
                  M2_mapper.F_tie( "Y", 2 ); M2_mapper.F_tie( "y", 2 );
                  M2_mapper.F_tie( "Z", 3 ); M2_mapper.F_tie( "z", 3 );
 
-                 T_compiler I_compiler;
-                 I_compiler.F_compile( M2_program, M2_mapper, P_expression );
+                 T_compiler I_compiler( M2_library, M2_mapper );
+                 I_compiler.F_compile( M2_program, P_expression );
                  M2_program.F_memory( M2_memory );
                 }
 
@@ -57,6 +58,7 @@
                T_program M2_program;
                mutable T_memory  M2_memory;
                T_mapper  M2_mapper;
+               T_library  M2_library;
            };
 
           }
