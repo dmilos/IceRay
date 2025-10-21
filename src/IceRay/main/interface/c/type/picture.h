@@ -31,6 +31,7 @@ IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_Type_Bool IceRayC_Type_Picture_StorePN
 IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_Type_Bool IceRayC_Type_Picture_StoreJPEG( IceRayC_Type_Picture_Handle P_this, char const* P_filename );
 
 IceRayC__EXPORT IceRayC__DECLSPEC unsigned char const* IceRayC_Type_Picture_Buffer( IceRayC_Type_Picture_Handle P_this );
+IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_Type_Bool    IceRayC_Type_Picture_Transfer( IceRayC_Type_Picture_Handle P_this, unsigned char const* );
 
 IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_Type_Bool IceRayC_Type_Picture_Default( IceRayC_Type_Picture_Handle P_this );
 

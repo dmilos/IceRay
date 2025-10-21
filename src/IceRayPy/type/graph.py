@@ -9,8 +9,9 @@ SizeType = IceRayPy.type.basic.Size
 AddressOf = ctypes.addressof
 
 
-#import PIL
-#from PIL import Image
+import PIL
+from PIL import Image
+from PIL import ImageDraw
 #import io
 
 
@@ -58,9 +59,15 @@ class Picture:
     #    pass
 
     def buffer( self ):
-        pointer = self.m_cargo['dll'].IceRayC_Type_Picture_Buffer( self.m_cargo['this'] )
-        return pointer
+        address = self.m_cargo['dll'].IceRayC_Type_Picture_Buffer( self.m_cargo['this'] )
+        pointer = ctypes.cast( address, ctypes.POINTER(ctypes.c_int) )
+        size = self.size()[0]*self.size()[1] * 3
+        return ctypes.string_at(pointer, size)
         #return ctypes.create_string_buffer( pointer, self.size()[0] * self.size()[1] )
+
+    def transfer( self, raw ):
+        pointer = self.m_cargo['dll'].IceRayC_Type_Picture_Transfer( self.m_cargo['this'], raw )
+        return 
 
     def crop( self, P_target, P_A, P_B ):
         self.m_cargo['dll'].IceRayC_Type_Picture_Crop( P_target.m_cargo['this'], self.m_cargo['this'], AddressOf( P_A ), AddressOf( P_B ) )
@@ -80,10 +87,11 @@ def Crop( P_target, P_source, P_A, P_B ):
 def Default( P_image ):
     P_image.m_cargo['dll'].IceRayC_Type_Picture_Default( P_image.m_cargo['this'] )
 
-#def Print( P_image, P_position, P_string ):
-     #s = self.size()
-     #I_image = PIL.Image.frombytes( 'RGB', ( s[0], s[1] ), self.buffer(), 'raw', 'RGB', 0, 1 )
-     #ImageDraw.Draw( I_image ).text(0,0), P_string )
-
+def Print( P_image, P_position, P_string ):
+     size = P_image.size()
+     buffer =   P_image.buffer()
+     I_image = PIL.Image.frombytes( 'RGB', ( size[0], size[1] ), buffer, 'raw', 'RGB', 0, 1 )
+     PIL.ImageDraw.Draw( I_image ).text( (P_position[0],P_position[1]), P_string )
+     P_image.transfer( I_image.tobytes() )
 
 #print( '</' + __name__ + ' name=\'' +   __file__ + '\'>' )

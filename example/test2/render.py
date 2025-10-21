@@ -98,8 +98,8 @@ def doIt( P_dll, P_picture, P_scene, P_inventory, P_config, P_result=None ):
     B = IceRayPy.type.math.coord.Size2D( P_picture['window']['B']['x'], P_picture['window']['B']['y'] )
     IceRayPy.type.graph.Crop( P_picture['temp']['crop'], P_picture['temp']['object'], A, B )
 
-    #TODO if( 'watermark' in P_picture ):
-    #TODO    IceRayPy.type.graph.Print( P_picture['temp']['crop'], Size2D(0,0), P_picture['watermark'] )
+    if( 'watermark' in P_picture ):
+       IceRayPy.type.graph.Print( P_picture['temp']['crop'], IceRayPy.type.math.coord.Size2D(0,0), P_picture['watermark'] )
 
     #TODO P_picture['temp']['crop'].store( P_picture['temp']['file'] )
 
