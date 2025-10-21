@@ -29,7 +29,7 @@
                typedef GS_DDMRM::S_IceRay::S_type::S_interval::GT_scalar3D         T_box, T_interval;
 
              public:
-               explicit GC_expression( T_string const& P_expreson = "z-0.5");
+               explicit GC_expression( T_string const& P_expression = "z-0.5");
 
              public:
                T_scalar Fv_value( T_size const& P_x, T_size const& P_y )const;

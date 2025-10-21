@@ -10,7 +10,7 @@ import IceRayPy
 
 import render
 
-dll_path = IceRayPy.system.SearchCDLL()
+dll_path = IceRayPy.system.SearchCDLL( P_preferDebug = True )
 
 if 0 != len( dll_path ):
     I_dll = IceRayPy.system.LoadCDLL( dll_path )
@@ -24,6 +24,7 @@ I_picture ={}
 I_picture[ 'width']  = 800
 I_picture['height']  = 600
 I_picture['aspect']  = I_picture['width'] / I_picture['height']
+I_picture['watermark'] = "TODO"
 
 if( 1 < len( sys.argv ) ):
     I_picture[ 'width'] = int( sys.argv[1] )
@@ -95,16 +96,17 @@ I_config['camera']['aspect'] = I_picture['aspect']
 #I_config['camera']['vfov']   = math.radians( 90 )
 
 geometry_list = [
-     'C-hfieldI',
-     'C-hfieldLE',
-     'C-hfieldT2x2',
-     'C-hfieldT3x3',
-     'C-hfieldT4x4',
-     'C-hfieldT30x30'
+     #'C-hfieldI',
+      'C-hfieldLE',
+     #'C-hfieldT2x2',
+     #'C-hfieldT3x3',
+     #'C-hfieldT4x4',
+     #'C-hfieldT30x30'
  ]
 
 for item in geometry_list :
     I_scene['geometry']= item
+    I_picture['watermark'] = item
     render.doIt( I_dll, I_picture, I_scene, I_inventory, I_config )
 
 import os

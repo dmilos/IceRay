@@ -149,6 +149,18 @@ IceRayC_Geometry_HField_Generator_Handle IceRayC_Geometry_HField_Generator_Expre
   auto Ir_result = new Tf_expression{ P_expression };
   return cpp2c( Ir_result );
  }
+IceRayC_Type_Bool                        IceRayC_Geometry_HField_Generator_Expression_Size( IceRayC_Geometry_HField_Generator_Handle P_this, IceRayC_TypeCoordSize2D* P_size  )
+ {
+  typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;
+  typedef GS_DDMRM::S_IceRay::S_geometry::S_hfield::S_generator::GC_expression Tf_expression;
+
+  auto I_this = dynamic_cast< Tf_expression *>( c2cpp( P_this ) );
+  if( nullptr == I_this )
+   {
+    return 0;
+   }
+  return I_this->Fv_size( c2cpp( *P_size ) )?1:0;
+ }
 
 IceRayC_Type_Bool                        IceRayC_Geometry_HField_Generator_Expression_Pattern( IceRayC_Geometry_HField_Generator_Handle P_this, char *P_expression )
  {

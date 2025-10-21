@@ -386,7 +386,7 @@ def _MapFunction_Geometry_Blobby( P_dll ): #TODO
     _MakeFunction( P_dll.IceRayC_Geometry_Blobby_Element_Affine1                      , ctypes.c_void_p  , [ctypes.c_void_p,ctypes.c_void_p] )
     _MakeFunction( P_dll.IceRayC_Geometry_Blobby_Element_Affine_2World_Get            , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_void_p] )
     _MakeFunction( P_dll.IceRayC_Geometry_Blobby_Element_Affine_Child                 , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_void_p] )
-    _MakeFunction( P_dll.IceRayC_Geometry_Blobby_Element_Release              , ctypes.c_int     , [ctypes.c_void_p] )
+    _MakeFunction( P_dll.IceRayC_Geometry_Blobby_Element_Release                      , ctypes.c_int     , [ctypes.c_void_p] )
     _MakeFunction( P_dll.IceRayC_Geometry_Blobby_Element_Sphere0                      , ctypes.c_void_p  , [] )
     _MakeFunction( P_dll.IceRayC_Geometry_Blobby_Element_Sphere1                      , ctypes.c_void_p  , [ctypes.c_void_p,ctypes.c_double,ctypes.c_double] )
     _MakeFunction( P_dll.IceRayC_Geometry_Blobby_Element_Sphere_Center                , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_void_p] )
@@ -417,13 +417,14 @@ def _MapFunction_Geometry_HField( P_dll ): #done
     _MakeFunction( P_dll.IceRayC_Geometry_HField_System_Object                , ctypes.c_int     , [ ctypes.c_void_p, ctypes.c_void_p ] )
     _MakeFunction( P_dll.IceRayC_Geometry_HField_System_Generator             , ctypes.c_int     , [ ctypes.c_void_p, ctypes.c_void_p ] )
 
-    _MakeFunction( P_dll.IceRayC_Geometry_HField_Generator_Release            , ctypes.c_void_p  , [] )
+    _MakeFunction( P_dll.IceRayC_Geometry_HField_Generator_Release            , ctypes.c_int     , [ctypes.c_void_p] )
     _MakeFunction( P_dll.IceRayC_Geometry_HField_Generator_Image0             , ctypes.c_void_p  , [] )
    #_MakeFunction( P_dll.IceRayC_Geometry_HField_Generator_Image1             , ctypes.c_void_p  , [ctypes.c_void_p ] )
     _MakeFunction( P_dll.IceRayC_Geometry_HField_Generator_Image_Picture      , ctypes.c_int     , [ ctypes.c_void_p, ctypes.c_void_p ] )
 
     _MakeFunction( P_dll.IceRayC_Geometry_HField_Generator_Expression0        , ctypes.c_void_p  , [] )
     _MakeFunction( P_dll.IceRayC_Geometry_HField_Generator_Expression1        , ctypes.c_void_p  , [ ctypes.c_char_p ] )
+    _MakeFunction( P_dll.IceRayC_Geometry_HField_Generator_Expression_Size    , ctypes.c_int     , [ ctypes.c_void_p, ctypes.c_void_p ] )
     _MakeFunction( P_dll.IceRayC_Geometry_HField_Generator_Expression_Pattern , ctypes.c_int     , [ ctypes.c_void_p, ctypes.c_char_p ] )
     _MakeFunction( P_dll.IceRayC_Geometry_HField_Generator_Expression_Box     , ctypes.c_int     , [ ctypes.c_void_p, ctypes.c_void_p ] )
 
@@ -434,7 +435,7 @@ def _MapFunction_Geometry_HField( P_dll ): #done
 
 
 
-    _MakeFunction( P_dll.IceRayC_Geometry_HField_Object_Release               , ctypes.c_void_p  , [] )
+    _MakeFunction( P_dll.IceRayC_Geometry_HField_Object_Release               , ctypes.c_int     , [ctypes.c_void_p] )
     _MakeFunction( P_dll.IceRayC_Geometry_HField_Object_Flat0                 , ctypes.c_void_p  , [] )
     _MakeFunction( P_dll.IceRayC_Geometry_HField_Object_Triangle0             , ctypes.c_void_p  , [] )
     _MakeFunction( P_dll.IceRayC_Geometry_HField_Object_Quad0                 , ctypes.c_void_p  , [] )
