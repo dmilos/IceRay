@@ -3,4 +3,5 @@
 #include "./mapper.hpp"
 #include "./memory.hpp"
 #include "./program.hpp"
-#include "./library.cpp"
+#include "./library.hpp"
+#include "./address.hpp"

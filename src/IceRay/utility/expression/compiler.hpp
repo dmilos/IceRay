@@ -13,6 +13,7 @@
 #include "./program.hpp"
 #include "./mapper.hpp"
 #include "./library.hpp"
+#include "./address.hpp"
 
 
 
@@ -36,6 +37,7 @@ namespace GS_DDMRM
             typedef GS_DDMRM::S_IceRay::S_utility::S_expression::GC_program   T_program;
             typedef GS_DDMRM::S_IceRay::S_utility::S_expression::GC_mapper    T_mapper;
             typedef GS_DDMRM::S_IceRay::S_utility::S_expression::GC_library   T_library;
+            typedef GS_DDMRM::S_IceRay::S_utility::S_expression::GC_address   T_address;
 
           public:
             GC_compiler( T_library const& P_library, T_mapper  & P_mapper );
@@ -44,15 +46,17 @@ namespace GS_DDMRM
             bool F_compile( T_program & P_program, T_string const& P_expression );
           private:
             T_library  const& M2_library;
-            T_mapper  & M2_mapper;
+            T_mapper        & M2_mapper;
             T_program      * M2_program;    //!< temproal common;
             T_string  const* M2_expression; //!< temproal common;
-            T_size F2_null()const;
-            T_size F2_constant( T_size const& P_begin, T_size const& P_end );
-            T_size F2_variable( T_size const& P_begin, T_size const& P_end );
-            T_size F2_operator( T_size const& P_begin, T_size const& P_end );
-            T_size F2_function( T_size const& P_begin, T_size const& P_end );
-         };
+
+            T_address F2_constant( T_size const& P_begin, T_size const& P_end );
+            T_address F2_variable( T_size const& P_begin, T_size const& P_end );
+            T_address F2_binary( T_size const& P_begin, T_size const& P_end );
+            T_address F2_function(T_size const& P_begin, T_size const& P_end);
+
+            void F2_trimspace( T_size & P_begin, T_size & P_end ) const;
+        };
 
        }
      }

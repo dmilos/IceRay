@@ -10,8 +10,7 @@ AddressOf = ctypes.addressof
 
 
 import PIL
-from PIL import Image
-from PIL import ImageDraw
+from PIL import Image, ImageDraw, ImageFont
 #import io
 
 
@@ -91,7 +90,10 @@ def Print( P_image, P_position, P_string ):
      size = P_image.size()
      buffer =   P_image.buffer()
      I_image = PIL.Image.frombytes( 'RGB', ( size[0], size[1] ), buffer, 'raw', 'RGB', 0, 1 )
-     PIL.ImageDraw.Draw( I_image ).text( (P_position[0],P_position[1]), P_string )
+     
+     font = PIL.ImageFont.truetype("arial.ttf", size = int( 4 * 1080/100.0 ))
+     PIL.ImageDraw.Draw( I_image ).text( (P_position[0],P_position[1]), P_string, font=font, color=(0, 0, 0) )
+     PIL.ImageDraw.Draw( I_image ).text( (P_position[0],P_position[1]), P_string, font=font, color=(255, 255, 255) )
      P_image.transfer( I_image.tobytes() )
 
 #print( '</' + __name__ + ' name=\'' +   __file__ + '\'>' )
