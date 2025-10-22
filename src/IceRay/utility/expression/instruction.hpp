@@ -24,7 +24,7 @@
          class GC_instruction
           {
            public:
-             typedef int   T_address;
+             typedef GS_DDMRM::S_IceRay::S_type::GT_size   T_address;
              typedef GS_DDMRM::S_IceRay::S_type::GT_scalar T_scalar;
              typedef GS_DDMRM::S_IceRay::S_utility::S_expression::GC_memory T_memory;
 
@@ -49,10 +49,13 @@
              GC_instruction( T_function3 const& P_func3, T_address const& P_0, T_address const& P_1, T_address const& P_2, T_address const& P_3 );
              GC_instruction( T_function4 const& P_func4, T_address const& P_0, T_address const& P_1, T_address const& P_2, T_address const& P_3, T_address const& P_4 );
 
+             bool F_valid( )const;
              bool F_memory( T_memory & P_memory );
              bool F_address( T_address const& P_0, T_address const& P_1 =-1, T_address const& P_2=-1, T_address const& P_3=-1, T_address const& P_4=-1 );
              void F_execute( )const;
+             T_address F_consumption( )const;
 
+           private:
              T_scalar   *M2_data;
 
              T_function0  M2_scalar0;

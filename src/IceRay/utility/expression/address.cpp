@@ -11,11 +11,12 @@ namespace GS_DDMRM
 
 
 GC_address::GC_address(   )
+ : M_length( 0 ), M_position( -1 )
  {
  }
 
-GC_address::GC_address( T_size const& P_length, T_size const& P_position )
- : M_length( P_length ), M_position( P_position )
+GC_address::GC_address( T_size const& P_length, T_size const& P_position, bool const& P_constant )
+ : M_length( P_length ), M_position( P_position ), M_constant( P_constant )
  {
  }
 

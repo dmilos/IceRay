@@ -31,13 +31,14 @@ namespace GS_DDMRM
 
           public:
             GC_address();
-            GC_address( T_size const& P_length, T_size const& P_position );
+            GC_address( T_size const& P_length, T_size const& P_position, bool const& P_constant = true );
 
           public:
 
             bool F_valid()const;
 
           public:
+            bool   M_constant;
             T_size M_length;
             T_size M_position;
 

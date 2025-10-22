@@ -35,7 +35,7 @@ namespace
     {
      return arg1/arg2;
     }
- 
+
  }
 
 GC_library::GC_library(   )
@@ -51,6 +51,17 @@ GC_library::GC_library(   )
 
  }
 
+GC_library::T_instruction const& GC_library::F_get( T_string const& P_name )const
+ {
+  static T_instruction Is_default;
+  auto I_iterator = M2_container.find( P_name );
+  if( I_iterator == M2_container.end() )
+   {
+    return Is_default;
+   }
+
+  return I_iterator->second;
+ }
 
 GC_library::T_container const& GC_library::F_container()const
  {

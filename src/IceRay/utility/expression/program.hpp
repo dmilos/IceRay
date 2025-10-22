@@ -27,15 +27,18 @@
          class GC_program
           {
            public:
-             typedef GS_DDMRM::S_IceRay::S_type::GT_scalar T_scalar;
              typedef GS_DDMRM::S_IceRay::S_type::GT_size T_size;
+             typedef GS_DDMRM::S_IceRay::S_type::GT_scalar T_scalar;
              typedef GS_DDMRM::S_IceRay::S_utility::S_expression::GC_memory T_memory;
              typedef GS_DDMRM::S_IceRay::S_utility::S_expression::GC_instruction T_instruction;
 
              typedef std::vector<T_instruction>  T_container;
 
+             void F_clear( );
              void F_memory( T_memory & P_memory );
-             void F_execute( );
+             void F_push( T_instruction const& P_instruction );
+             void F_execute();
+             T_size F_consumption();
           private:
              T_container M2_container;
           };

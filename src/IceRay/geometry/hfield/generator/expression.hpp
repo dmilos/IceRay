@@ -4,6 +4,8 @@
 #include "./_pure.hpp"
 #include "IceRay/type/basic/string.hpp"
 #include "IceRay/type/math/interval.hpp"
+#include "IceRay/utility/expression/expression.hpp"
+
 
  namespace GS_DDMRM
   {
@@ -21,6 +23,8 @@
             {
              public:
                typedef GS_DDMRM::S_IceRay::S_geometry::S_hfield::S_generator::GC__pure T__pure;
+               typedef GS_DDMRM::S_IceRay::S_utility::S_expression::GC_program   T_program;
+               typedef GS_DDMRM::S_IceRay::S_utility::S_expression::GC_memory    T_memory;
 
              public:
                typedef GS_DDMRM::S_IceRay::S_type::GT_size     T_size;
@@ -51,6 +55,9 @@
              private:
                T_string M2_expression;
                static T_string Fs_one();
+             private:
+               T_program M2_program;
+               T_memory  M2_memory;
             };
 
           }

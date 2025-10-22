@@ -4,6 +4,7 @@
  // GS_DDMRM::S_IceRay::S_utility::S_expression::GC_compiler
 
 #include <map>
+#include <set>
 #include "math/math.hpp"
 
 #include "IceRay/type/basic/scalar.hpp"
@@ -43,6 +44,10 @@ namespace GS_DDMRM
             GC_compiler( T_library const& P_library, T_mapper  & P_mapper );
 
           public:
+            T_address const& F_result( )const;
+          private:
+            T_address M2_result;
+          public:
             bool F_compile( T_program & P_program, T_string const& P_expression );
           private:
             T_library  const& M2_library;
@@ -50,9 +55,10 @@ namespace GS_DDMRM
             T_program      * M2_program;    //!< temproal common;
             T_string  const* M2_expression; //!< temproal common;
 
+            T_address F2_expression( T_size const& P_begin, T_size const& P_end );
             T_address F2_constant( T_size const& P_begin, T_size const& P_end );
             T_address F2_variable( T_size const& P_begin, T_size const& P_end );
-            T_address F2_binary( T_size const& P_begin, T_size const& P_end );
+            T_address F2_binary( std::set<T_string> const& P_set, T_size const& P_begin, T_size const& P_end );
             T_address F2_function(T_size const& P_begin, T_size const& P_end);
 
             void F2_trimspace( T_size & P_begin, T_size & P_end ) const;

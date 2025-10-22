@@ -11,7 +11,7 @@
 #include "IceRay/type/basic/string.hpp"
 
 #include "./instruction.hpp"
- 
+
 
 
 namespace GS_DDMRM
@@ -35,6 +35,9 @@ namespace GS_DDMRM
             typedef std::map<T_string,T_instruction> T_container;
           public:
             GC_library();
+
+          public:
+            T_instruction const& F_get( T_string const& P_name )const;
 
           public:
             T_container const& F_container()const;

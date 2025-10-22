@@ -1,30 +1,27 @@
 #include "./expression.hpp"
 
-#include "IceRay/utility/expression/expression.hpp"
 
 using namespace GS_DDMRM::S_IceRay::S_geometry;
 
 S_hfield::S_generator::GC_expression::GC_expression( T_string const& P_expression )
  {
   typedef GS_DDMRM::S_IceRay::S_utility::S_expression::GC_compiler  T_compiler;
-  typedef GS_DDMRM::S_IceRay::S_utility::S_expression::GC_program   T_program;
-  typedef GS_DDMRM::S_IceRay::S_utility::S_expression::GC_memory    T_memory;
   typedef GS_DDMRM::S_IceRay::S_utility::S_expression::GC_mapper    T_mapper;
   typedef GS_DDMRM::S_IceRay::S_utility::S_expression::GC_library    T_library;
 
-  T_string  M2_expression;
-  T_program M2_program;
-  T_memory  M2_memory;
-  T_mapper  M2_mapper;
-  T_library  M2_library;
+  T_mapper  I_mapper;
+  T_library  I_library;
 
-  M2_mapper.F_tie( "result", 0 );
-  M2_mapper.F_tie( "X", 1 ); M2_mapper.F_tie( "x", 1 );
-  M2_mapper.F_tie( "Y", 2 ); M2_mapper.F_tie( "y", 2 );
-  M2_mapper.F_tie( "Z", 3 ); M2_mapper.F_tie( "z", 3 );
+  I_mapper.F_tie( "result", 0 );
+  I_mapper.F_tie( "X", 1 ); I_mapper.F_tie( "x", 1 );
+  I_mapper.F_tie( "Y", 2 ); I_mapper.F_tie( "y", 2 );
+  I_mapper.F_tie( "Z", 3 ); I_mapper.F_tie( "z", 3 );
 
-  T_compiler I_compiler( M2_library, M2_mapper );
+  T_compiler I_compiler( I_library, I_mapper );
   I_compiler.F_compile( M2_program, P_expression );
+  M2_memory.F_resize( M2_program.F_consumption() );
+
+  I_compiler.F_result(); //< TODO USE this
   M2_program.F_memory( M2_memory );
   M2_program.F_execute( );
   M2_expression = P_expression;
