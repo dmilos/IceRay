@@ -431,7 +431,7 @@ def _MapFunction_Geometry_HField( P_dll ): #done
     _MakeFunction( P_dll.IceRayC_Geometry_HField_Generator_Table0             , ctypes.c_void_p  , [] )
     _MakeFunction( P_dll.IceRayC_Geometry_HField_Generator_Table1             , ctypes.c_void_p  , [ ctypes.c_void_p ] )
     _MakeFunction( P_dll.IceRayC_Geometry_HField_Generator_Table_Size         , ctypes.c_int     , [ ctypes.c_void_p, ctypes.c_void_p ] )
-    _MakeFunction( P_dll.IceRayC_Geometry_HField_Generator_Table_Value        , ctypes.c_int     , [ ctypes.c_void_p, ctypes.c_void_p, ctypes.c_double ] ) 
+    _MakeFunction( P_dll.IceRayC_Geometry_HField_Generator_Table_Value        , ctypes.c_int     , [ ctypes.c_void_p, ctypes.c_void_p, ctypes.c_double ] )
 
 
 
@@ -837,6 +837,8 @@ def _MapFunction_Material_Pattern(P_dll): #!< DONE
     _MakeFunction( P_dll.IceRayC_Material_Pattern_Brick0                          , ctypes.c_void_p , [] )
     _MakeFunction( P_dll.IceRayC_Material_Pattern_Checker0                        , ctypes.c_void_p , [] )
     _MakeFunction( P_dll.IceRayC_Material_Pattern_Hexagon0                        , ctypes.c_void_p , [] )
+    _MakeFunction( P_dll.IceRayC_Material_Pattern_Hexagon1                        , ctypes.c_void_p , [ctypes.c_double] )
+    _MakeFunction( P_dll.IceRayC_Material_Pattern_Hexagon_Scale                   , ctypes.c_void_p , [ctypes.c_void_p, ctypes.c_double] )
     _MakeFunction( P_dll.IceRayC_Material_Pattern_Image0                          , ctypes.c_void_p , [] )
     _MakeFunction( P_dll.IceRayC_Material_Pattern_Image1                          , ctypes.c_void_p , [ctypes.c_void_p] )
     _MakeFunction( P_dll.IceRayC_Material_Pattern_Image_Picture                   , ctypes.c_int    , [ctypes.c_void_p, ctypes.c_void_p] )
