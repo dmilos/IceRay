@@ -77,7 +77,7 @@ GC_compiler::T_address GC_compiler::F2_constant( T_size const& P_begin, T_size c
 
   if( false == M2_mapper.F_exists( subexpress ) )
    {
-    M2_mapper.F_tie( subexpress, M2_mapper.F_next() );
+    M2_mapper.F_tie( subexpress, M2_mapper.F_end() );
    }
 
   return T_address{ 1, M2_mapper.F_container().find(subexpress)->second  };
@@ -121,11 +121,21 @@ GC_compiler::T_address GC_compiler::F2_binary( std::set<T_string> const& P_set, 
     T_address I_right = F2_expression( I_index+1, P_end );
 
     auto I_instruction = M2_library.F_get( I_current );
-    //switch( I_left.M_constant + 2*I_right.M_constant )
-    //{
-    // case TODO
-    //}
-    I_instruction.F_address( std::min( I_left.M_position, I_right.M_position ), I_left.M_position, I_right.M_position );
+    T_size I_result;
+    //switch( (I_left.M_constant?0:1) + (I_right.M_constant?0:2) )
+    // {
+    //  case( 0 ): I_result = std::min( I_left.M_position, I_right.M_position ); break;
+    //  case( 1 ): I_result = I_right.M_position; break;
+    //  case( 2 ): I_result = I_left.M_position;break;
+    //  case( 3 ):
+    //   {
+    //    T_string I_tmp;//="_tmp"++std::to_string(rand()%255)+std::to_string(rand()%255)+std::to_string(rand()%255)+to_string(rand()%255);
+    //    M2_mapper.F_add( I_tmp );
+    //    I_result = M2_mapper;
+    //   }
+    //   break;
+    // }
+    I_instruction.F_address( I_result, I_left.M_position, I_right.M_position );
     M2_program->F_push( I_instruction );
 
     return T_address{1, std::min( I_left.M_position, I_right.M_position ) };

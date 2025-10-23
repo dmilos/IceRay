@@ -15,8 +15,8 @@ GC_address::GC_address(   )
  {
  }
 
-GC_address::GC_address( T_size const& P_length, T_size const& P_position, bool const& P_constant )
- : M_length( P_length ), M_position( P_position ), M_constant( P_constant )
+GC_address::GC_address( T_size const& P_length, T_size const& P_position )
+ : M_length( P_length ), M_position( P_position )
  {
  }
 

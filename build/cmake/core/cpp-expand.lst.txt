@@ -160,3 +160,4 @@ IceRay/utility/expression/memory.cpp
 IceRay/utility/expression/compiler.cpp
 IceRay/utility/expression/library.cpp
 IceRay/utility/expression/address.cpp
+IceRay/utility/expression/cell.cpp

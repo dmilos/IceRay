@@ -36,17 +36,21 @@ namespace GS_DDMRM
             GC_mapper();
 
           public:
+            T_size const& F_index(  T_string const& P_name )const;
+            T_string const& F_name( T_size const& P_index )const;
+            bool F_add( T_string const& P_name );
             bool F_tie( T_string const& P_name, T_size const& P_index );
             bool F_untie( T_string const& P_name, T_size const& P_index );
 
             bool F_exists( T_string const& P_name )const;
-            T_size const& F_next( )const;
+            bool F_exists( T_size const& P_index )const;
+            T_size const& F_end( )const;
 
             T_container const& F_container()const;
             T_reverse const& F_reverse()const;
 
           private:
-            T_size M2_next;
+            T_size M2_end;
             T_container M2_container;
             T_reverse M2_reverse;
          };

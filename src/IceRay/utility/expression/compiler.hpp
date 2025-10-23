@@ -41,7 +41,7 @@ namespace GS_DDMRM
             typedef GS_DDMRM::S_IceRay::S_utility::S_expression::GC_address   T_address;
 
           public:
-            GC_compiler( T_library const& P_library, T_mapper  & P_mapper );
+            GC_compiler( T_library const& P_library, T_mapper & P_mapper );
 
           public:
             T_address const& F_result( )const;

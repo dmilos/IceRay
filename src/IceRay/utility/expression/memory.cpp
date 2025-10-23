@@ -25,16 +25,21 @@ bool GC_memory::F_set( T_size const& P_index, T_size const& P_size, T_scalar* P_
   return false;
  }
 bool GC_memory::F_resize( T_size const& P_size )
-{
-    return false;
-}
+ {
+  return false;
+ }
 
-GC_memory::T_container& GC_memory::F_container()
+GC_memory::T_cell  const& GC_memory::F_cell( T_size const& P_index )const 
+ {
+  return M2_info[P_index];
+ }
+
+GC_memory::T_data& GC_memory::F_container()
  {
   return M2_container;
  }
 
-GC_memory::T_container const& GC_memory::F_container()const
+GC_memory::T_data const& GC_memory::F_container()const
  {
   return M2_container;
  }
