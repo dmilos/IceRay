@@ -45,13 +45,14 @@ def Expression( P_dll,
     generator = IceRayPy.core.geometry.hfield.generator.Expression( P_dll )
 
     generator.size( Size2D( 100, 100 ) )
-    generator.pattern( 'x+y' )
 
     if( None != P_config ):
         if( 'expression' in P_config ):
             generator.pattern( P_config['expression'] )
         if( 'size' in P_config ):
             generator.size( P_config['size'] )
+        if( 'interval' in P_config ):
+            generator.interval( P_config['interval'] )
 
     objectQ = IceRayPy.core.geometry.hfield.object.Quad(P_dll)
     #objectF = IceRayPy.core.geometry.hfield.object.Flat(P_dll)

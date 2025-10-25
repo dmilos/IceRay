@@ -48,9 +48,9 @@ def doIt( P_dll, P_picture, P_scene, P_inventory, P_config, P_result=None ):
                 print( "Image already exists. " + P_picture['temp']['file'], flush = True  )
                 return
 
-    I_geometry['the'] = P_inventory['geometry'][ I_geometry['name'] ]( P_dll )
+    I_geometry['the'] = P_inventory['geometry'][ I_geometry['name'] ]( P_dll, P_config['geometry'] )
     I_light['the']    = P_inventory['light'   ][ I_light   ['name'] ]( P_dll, P_config['light'] )
-    I_medium['the']   = P_inventory['medium'  ][ I_medium  ['name'] ]( P_dll )
+    I_medium['the']   = P_inventory['medium'  ][ I_medium  ['name'] ]( P_dll ) #, P_config['medium']
     I_camera['the']   = P_inventory['camera'  ][ I_camera  ['name'] ]( P_dll, P_config['camera'] )
 
     I_light['enclose'] = light_enclose = IceRayPy.core.light.transform.Translate( P_dll, I_light['the'], IceRayPy.type.math.coord.Scalar3D( 0, 0, 2 ) )

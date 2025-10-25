@@ -426,7 +426,7 @@ def _MapFunction_Geometry_HField( P_dll ): #done
     _MakeFunction( P_dll.IceRayC_Geometry_HField_Generator_Expression1        , ctypes.c_void_p  , [ ctypes.c_char_p ] )
     _MakeFunction( P_dll.IceRayC_Geometry_HField_Generator_Expression_Size    , ctypes.c_int     , [ ctypes.c_void_p, ctypes.c_void_p ] )
     _MakeFunction( P_dll.IceRayC_Geometry_HField_Generator_Expression_Pattern , ctypes.c_int     , [ ctypes.c_void_p, ctypes.c_char_p ] )
-    _MakeFunction( P_dll.IceRayC_Geometry_HField_Generator_Expression_Box     , ctypes.c_int     , [ ctypes.c_void_p, ctypes.c_void_p ] )
+    _MakeFunction( P_dll.IceRayC_Geometry_HField_Generator_Expression_Interval, ctypes.c_int     , [ ctypes.c_void_p, ctypes.c_void_p ] )
 
     _MakeFunction( P_dll.IceRayC_Geometry_HField_Generator_Table0             , ctypes.c_void_p  , [] )
     _MakeFunction( P_dll.IceRayC_Geometry_HField_Generator_Table1             , ctypes.c_void_p  , [ ctypes.c_void_p ] )

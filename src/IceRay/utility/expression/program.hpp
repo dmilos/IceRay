@@ -37,7 +37,7 @@
              void F_clear( );
              void F_memory( T_memory & P_memory );
              void F_push( T_instruction const& P_instruction );
-             void F_execute();
+             void F_execute()const;
              T_size F_consumption();
           private:
              T_container M2_container;

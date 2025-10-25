@@ -105,6 +105,7 @@ I_config['decoration']   = {}
 I_config['decoration']['size']   = IceRayPy.type.math.coord.Scalar3D( 0.9, 0.9, 0.01 )
 I_config['decoration']['center'] = IceRayPy.type.math.coord.Scalar3D( 1, 1, 1 )
 I_config['decoration']['color'] = IceRayPy.type.color.RGB( 20.0, 20.0, 20.0 )
+I_config['geometry']   = {}
 
 g = 1.22074408460575947536 #(math.sqrt(5)+1)/2
 

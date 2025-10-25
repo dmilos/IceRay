@@ -28,7 +28,7 @@ void GC_program::F_push( T_instruction const& P_instruction )
   M2_container.push_back( P_instruction );
  }
 
-void GC_program::F_execute( )
+void GC_program::F_execute( )const
  {
   for( auto const& I_instruction: M2_container )
    {
@@ -43,7 +43,7 @@ GC_program::T_size GC_program::F_consumption()
    {
     Ir_result = std::max( Ir_result, I_instruction.F_consumption() );
    }
-  return Ir_result;
+  return Ir_result+1;
  }
 
 

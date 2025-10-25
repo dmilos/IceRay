@@ -30,26 +30,27 @@
                typedef GS_DDMRM::S_IceRay::S_type::GT_size     T_size;
                typedef GS_DDMRM::S_IceRay::S_type::GT_scalar   T_scalar;
                typedef GS_DDMRM::S_IceRay::S_type::GT_string   T_string;
-               typedef GS_DDMRM::S_IceRay::S_type::S_interval::GT_scalar3D         T_box, T_interval;
+               typedef GS_DDMRM::S_IceRay::S_type::S_interval::GT_scalar3D         T_interval;
 
              public:
-               explicit GC_expression( T_string const& P_expression = "z-0.5");
+               explicit GC_expression( );
+               explicit GC_expression( T_string const& P_expression );
 
              public:
                T_scalar Fv_value( T_size const& P_x, T_size const& P_y )const;
                T_scalar Fv_value( T_size2D const& P_position )const;
 
               public:  // property expression  expression
-                       T_box    const& F_box()const{ return M2_box; }
-               virtual bool            F_box( T_box const& P_box ){ M2_box = P_box; return bool( true ); }
+                T_interval    const& F_interval()const{ return M2_interval; }
+               virtual bool          F_interval( T_interval const& P_interval ){ M2_interval = P_interval; return bool( true ); }
              protected:
-               T_box        & F1_box(){ return M2_box; }
+               T_interval& F1_interval(){ return M2_interval; }
              private:
-               T_box M2_box;
+               T_interval M2_interval;
 
              public:  // property expression  expression
                        T_string    const& F_expression()const{ return M2_expression; }
-               virtual bool               F_expression( T_string const& P_expression ){ M2_expression = P_expression; return bool( true ); }
+               virtual bool               F_expression( T_string const& P_expression );
              protected:
                T_string        & F1_expression(){ return M2_expression; }
              private:
@@ -57,7 +58,8 @@
                static T_string Fs_one();
              private:
                T_program M2_program;
-               T_memory  M2_memory;
+               mutable T_memory  M2_memory;
+               T_size M2_x, M2_y, M2_result;
             };
 
           }

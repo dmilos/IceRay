@@ -175,7 +175,7 @@ IceRayC_Type_Bool                        IceRayC_Geometry_HField_Generator_Expre
   return I_this->F_expression( P_expression )?1:0;
  }
 
-IceRayC_Type_Bool                        IceRayC_Geometry_HField_Generator_Expression_Box( IceRayC_Geometry_HField_Generator_Handle P_this, IceRayC_TypeInterval3D* P_box )
+IceRayC_Type_Bool                        IceRayC_Geometry_HField_Generator_Expression_Interval( IceRayC_Geometry_HField_Generator_Handle P_this, IceRayC_TypeInterval3D* P_interval )
  {
   typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;
   typedef GS_DDMRM::S_IceRay::S_geometry::S_hfield::S_generator::GC_expression Tf_expression;
@@ -185,7 +185,7 @@ IceRayC_Type_Bool                        IceRayC_Geometry_HField_Generator_Expre
    {
     return 0;
    }
-  I_this->F_box( c2cpp( *P_box ) );
+  I_this->F_interval( c2cpp( *P_interval ) );
   return 1;
  }
 

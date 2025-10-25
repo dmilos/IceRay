@@ -30,7 +30,7 @@ GC_mapper::T_size  const&  GC_mapper::F_index(  T_string const& P_name )const
 
 GC_mapper::T_string const& GC_mapper::F_name( T_size const& P_index )const
  {
-  static T_string  Ir_return =0;
+  static T_string  Ir_return;
   auto I_iterator = M2_reverse.find( P_index );
   if( I_iterator == M2_reverse.end())
    {
@@ -98,13 +98,6 @@ GC_mapper::T_reverse const& GC_mapper::F_reverse()const
  {
   return M2_reverse;
  }
-
-
-
-
-
-
-
 
         }
       }
