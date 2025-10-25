@@ -38,16 +38,18 @@ def OneM( P_dll ):
 
     return rtss
 
-def MotionBlur( P_dll ):
-    radius = 0.5
-    center = Coord3D( -1+radius, 0, 0 )
+def MotionBlur( P_dll, P_child = None ):
+    center = Coord3D( -1+0.5, 0, 0 )
     direction = Coord3D( -center[0]-center[0], -center[1]-center[1], -center[2]-center[2] )
 
     result = IceRayPy.core.geometry.transform.MotionBlur( P_dll )
-    child = IceRayPy.core.geometry.simple.Sphere( P_dll, center, radius )
+    I_child = IceRayPy.core.geometry.simple.Sphere( P_dll, center, 0.5 )
+    if( None != P_child ) and ( hasattr( P_child, 'm_cargo' ) ):
+        result.child( P_child )
+    else:
+        result.child( I_child )
 
     result.direction( direction )
-    result.child( child )
 
     return result
 

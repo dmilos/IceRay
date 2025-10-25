@@ -139,7 +139,6 @@ for index in (1999, 2001 ): # range(1,100,1) 1, 2, 5, 10, 20,50, 100, 200, 500, 
             I_config['room']['radiosity']['jitter'] = {}
             I_config['room']['radiosity']['jitter']['type' ]   = "none" # 'none', 'random', 'sobol', 'vdc', 'congruent'
             I_config['room']['radiosity']['jitter']['angle' ]  = I_config['room']['radiosity']['patch']
-            I_config['room']['radiosity']['correction'] = {}
             I_config['room']['radiosity']['correction']['leader' ] = False
             I_config['room']['radiosity']['correction']['cone' ] = False
             I_config['room']['radiosity']['correction']['rays' ] = 'trim' # 'none', 'claim', 'trim'

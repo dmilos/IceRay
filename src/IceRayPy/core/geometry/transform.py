@@ -20,12 +20,13 @@ Matrix4D = IceRayPy.type.math.matrix.Scalar4D
 
 
 class Identity:
-    def __init__( self, P_dll,  P_child = None ):
+    def __init__( self, P_dll, P_child = None ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Geometry_Transform_Identity0()
         self.child( IceRayPy.core.geometry.simple.Sphere( P_dll ) ) #<! default
-        if( None != P_child ):
+
+        if( None != P_child ) and ( hasattr( P_child, 'm_cargo' ) ):
             self.child( P_child )
 
     def __del__( self ):
@@ -47,7 +48,7 @@ class Translate:
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Geometry_Transform_Translate0()
         self.child(  IceRayPy.core.geometry.simple.Sphere( P_dll ) )
 
-        if( None != P_child ):
+        if( None != P_child ) and ( hasattr( P_child, 'm_cargo' ) ):
             self.child( P_child )
 
     def __del__( self ):
@@ -64,18 +65,16 @@ class Translate:
     def move(self, P_move : Coord3D ):
         return self.m_cargo['dll'].IceRayC_Geometry_Transform_Translate_Move( self.m_cargo['this'], AddressOf( P_move ) )
 
+
 class Affine:
     def __init__( self, P_dll,  P_child = None, P_affine = None ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Geometry_Transform_Affine0()
 
-        if( None == P_child ):
-            self.child(  IceRayPy.core.geometry.simple.Sphere( P_dll ) )
-           #self.m_cargo['object'] = IceRayPy.library.geometry.Grid( P_dll )
-           #self.m_cargo['dll'].IceRayC_Geometry_Transform_Homography_Child( self.m_cargo['this'], self.m_cargo['object'].cast2Geometry() )
+        self.child( IceRayPy.core.geometry.simple.Sphere( P_dll ) ) #<! default
 
-        if( None != P_child ):
+        if( None != P_child ) and ( hasattr( P_child, 'm_cargo' ) ):
             self.child( P_child )
 
         tO = Coord3D( -1, -1, -0.5 )
@@ -172,18 +171,19 @@ class Affine:
 
 
 class Homography:
-    def __init__( self, P_dll, P_child = None , P_homography = None ):
+    def __init__( self, P_dll, P_child = None, P_homography = None ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Geometry_Transform_Homography0()
+
         self.child(  IceRayPy.core.geometry.simple.Cylinder( P_dll ) )
         self.child(  IceRayPy.core.geometry.flat.Box( P_dll, Coord3D( -1, -1, -1 ), Coord3D( +1, +1, +1 ) ) )
-        self.child(  IceRayPy.core.geometry.simple.Sphere( P_dll ) )
+        self.child(  IceRayPy.core.geometry.simple.Sphere( P_dll ) )   #<! default
 
         #self.m_cargo['object'] = IceRayPy.library.geometry.Grid( P_dll )
         #self.m_cargo['dll'].IceRayC_Geometry_Transform_Homography_Child( self.m_cargo['this'], self.m_cargo['object'].cast2Geometry() )
 
-        if( None != P_child ):
+        if( None != P_child ) and ( hasattr( P_child, 'm_cargo' ) ):
             self.child( P_child )
 
         move = Coord3D( 1, 0*1, 0 )
@@ -231,14 +231,15 @@ class Homography:
         self.m_cargo['dll'].IceRayC_Geometry_Transform_Homography_2Local_Get( self.m_cargo['this'], AddressOf( result ) )
         return result
 
+
 class MotionBlur:
-    def __init__( self, P_dll,  P_child = None , P_direction = None ):
+    def __init__( self, P_dll, P_child = None , P_direction = None ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Geometry_Transform_MotionBlur0()
         self.child(  IceRayPy.core.geometry.simple.Sphere( P_dll ) )
 
-        if( None != P_child ):
+        if( None != P_child ) and ( hasattr( P_child, 'm_cargo' ) ):
             self.child( P_child )
 
         if( None != P_direction ):

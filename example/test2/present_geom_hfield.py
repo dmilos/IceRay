@@ -10,7 +10,7 @@ import IceRayPy
 
 import render
 
-dll_path = IceRayPy.system.SearchCDLL( P_preferDebug = True )
+dll_path = IceRayPy.system.SearchCDLL( P_preferDebug = False )
 
 if 0 != len( dll_path ):
     I_dll = IceRayPy.system.LoadCDLL( dll_path )
@@ -84,7 +84,9 @@ I_config['light']   = {}
 I_config['light']['sample']   = 1
 I_config['decoration']   = {}
 I_config['geometry'] ={}
-I_config['geometry']['expression']='x*y'
+I_config['geometry']['expression']='sin(sqrt(x*x+y*y))'
+I_config['geometry']['expression']='atan2(y,x)'
+I_config['geometry']['interval']=IceRayPy.type.math.interval.Scalar3D( IceRayPy.type.math.coord.Scalar3D(-20,-20,-10),IceRayPy.type.math.coord.Scalar3D(+20,+20,+10) )
 
 g = 1.22074408460575947536 #(math.sqrt(5)+1)/2
 
@@ -98,18 +100,22 @@ I_config['camera']['aspect'] = I_picture['aspect']
 #I_config['camera']['vfov']   = math.radians( 90 )
 
 geometry_list = [
-     #'C-hfieldI',
-      'C-hfieldLE',
-     #'C-hfieldT2x2',
-     #'C-hfieldT3x3',
-     #'C-hfieldT4x4',
-     #'C-hfieldT30x30'
+     'C-hfieldI',
+     'C-hfieldLE',
+     'C-hfieldT2x2',
+     'C-hfieldT3x3',
+     'C-hfieldT4x4',
+     'C-hfieldT30x30'
  ]
 
-for item in geometry_list :
-    I_scene['geometry']= item
-    I_picture['watermark'] = item
-    render.doIt( I_dll, I_picture, I_scene, I_inventory, I_config )
+for index in (0,): # range(1,360,1) 1, 2, 5, 10, 20,50, 100, 200, 500, 1000,
+    #I_config['camera']['eye']   = IceRayPy.type.math.coord.Scalar3D( p*g * math.cos( math.radians(index)), p*g* math.sin( math.radians(index)) , +g )
+    I_picture['prefix'] = "%04i"%(index)
+
+    for item in geometry_list :
+        I_scene['geometry']= item
+        I_picture['watermark'] = item
+        render.doIt( I_dll, I_picture, I_scene, I_inventory, I_config )
 
 import os
 def prepare_readme():

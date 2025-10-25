@@ -31,8 +31,8 @@ def Image( P_dll,
     objectQ = IceRayPy.core.geometry.hfield.object.Quad(P_dll)
     result.object( objectT )
     result.generator( generator )
-    result.lo( Coord3D( 1.5 *  -1.0, 1.5 *  -picture.size()[1]/( 1.0*picture.size()[0]), -0.05 - 0.5 ) )
-    result.hi( Coord3D( 1.5 *  +1.0, 1.5 *  +picture.size()[1]/( 1.0*picture.size()[0]), +0.05 - 0.5 ) )
+    result.lo( Coord3D( 1.0 *  -1.0, 1.0 *  -picture.size()[1]/( 1.0*picture.size()[0]), -0.05 - 0.5 ) )
+    result.hi( Coord3D( 1.0 *  +1.0, 1.0 *  +picture.size()[1]/( 1.0*picture.size()[0]), +0.05 - 0.5 ) )
     return result
 
 def Expression( P_dll,

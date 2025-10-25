@@ -22,15 +22,14 @@
             : public GS_DDMRM::S_IceRay::S_geometry::S_hfield::S_generator::GC__pure
             {
              public:
-               typedef GS_DDMRM::S_IceRay::S_geometry::S_hfield::S_generator::GC__pure T__pure;
-               typedef GS_DDMRM::S_IceRay::S_utility::S_expression::GC_program   T_program;
-               typedef GS_DDMRM::S_IceRay::S_utility::S_expression::GC_memory    T_memory;
-
-             public:
                typedef GS_DDMRM::S_IceRay::S_type::GT_size     T_size;
                typedef GS_DDMRM::S_IceRay::S_type::GT_scalar   T_scalar;
                typedef GS_DDMRM::S_IceRay::S_type::GT_string   T_string;
                typedef GS_DDMRM::S_IceRay::S_type::S_interval::GT_scalar3D         T_interval;
+
+               typedef GS_DDMRM::S_IceRay::S_geometry::S_hfield::S_generator::GC__pure T__pure;
+               typedef GS_DDMRM::S_IceRay::S_utility::S_expression::GC_program   T_program;
+               typedef GS_DDMRM::S_IceRay::S_utility::S_expression::GC_memory    T_memory;
 
              public:
                explicit GC_expression( );
@@ -55,7 +54,6 @@
                T_string        & F1_expression(){ return M2_expression; }
              private:
                T_string M2_expression;
-               static T_string Fs_one();
              private:
                T_program M2_program;
                mutable T_memory  M2_memory;

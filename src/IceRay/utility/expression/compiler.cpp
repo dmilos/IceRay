@@ -163,7 +163,7 @@ GC_compiler::T_address GC_compiler::F2_function( T_size const& P_begin, T_size c
  {
   T_string I_name;   I_name.reserve( 10 );
   T_size I_index = P_begin; 
-  for(; I_index < P_end;++I_index )
+  for( ; I_index < P_end;++I_index )
    {
     auto const& I_char = M2_expression->at( I_index );
     if( '(' == I_char )
@@ -177,39 +177,52 @@ GC_compiler::T_address GC_compiler::F2_function( T_size const& P_begin, T_size c
    {
     return T_address{};
    }
-  auto I_argument = F2_enclose( I_index, P_end );
-  if( false == I_argument.F_valid() )
+  T_argument  I_list;
+  F2_enclose( I_index, P_end, I_list );
+  if( 0 == I_list.size() )
    {
     return T_address{};
    }
-   T_size I_result;
+   T_size I_result = -1;
 
-   if( true == F2_isTemp( I_argument.M_position ) )
-    {
-     I_result =  I_argument.M_position;
-    }
-   else
-    {
-     T_string I_tmp; F2_makeTemp( I_tmp );
-     M2_mapper.F_add( I_tmp );
-     I_result = M2_mapper.F_index( I_tmp );
+  for( auto const& I_argument : I_list )
+   {
+    if( true == F2_isTemp( I_argument.M_position ) )
+     {
+      I_result = std::min( I_argument.M_position, I_result );
+     }
    }
-  I_instruction.F_address( I_result, I_argument.M_position );
+  if( -1 == I_result  )
+   {
+    T_string I_tmp; F2_makeTemp( I_tmp );
+    M2_mapper.F_add( I_tmp );
+    I_result = M2_mapper.F_index( I_tmp );
+   }
+  switch( I_list.size() )
+   {
+    case(0): return T_address{ 1, I_result };
+    case(1): I_instruction.F_address( I_result, I_list[0].M_position ); break;
+    case(2): I_instruction.F_address( I_result, I_list[0].M_position, I_list[1].M_position ); break;
+    case(3): I_instruction.F_address( I_result, I_list[0].M_position, I_list[1].M_position, I_list[2].M_position ); break;
+    case(4): I_instruction.F_address( I_result, I_list[0].M_position, I_list[1].M_position, I_list[2].M_position, I_list[3].M_position ); break;
+  }
+
   M2_program->F_push( I_instruction );
 
   return T_address{ 1, I_result };
  }
 
-GC_compiler::T_address GC_compiler::F2_enclose( T_size const& P_begin, T_size const& P_end )
+GC_compiler::T_size GC_compiler::F2_enclose( T_size const& P_begin, T_size const& P_end, T_argument& P_list )
 {
+  P_list.clear();
   if( P_end < P_begin + 3 )
    {
-    return T_address{};
+    return P_list.size();
    }
 
-  if( ( '(' != M2_expression->front() ) || ( ')' != M2_expression->back() ) )
+  if( ( '(' != M2_expression->at( P_begin ) ) || ( ')' != M2_expression->at( P_end -1) ) )
    {
-    return T_address{};
+    return P_list.size();
    }
   int I_counter = 1;
   for( T_size I_index = P_begin+1; I_index < P_end-1; ++I_index )
@@ -221,10 +234,53 @@ GC_compiler::T_address GC_compiler::F2_enclose( T_size const& P_begin, T_size co
      }
     if( 0 == I_counter )
      {
-      return T_address{};
+      return P_list.size();
      }
    }
-  return F2_expression( P_begin+1, P_end -1 );
+
+  return F2_comma( P_begin+1, P_end -1, P_list );
+ }
+
+GC_compiler::T_size GC_compiler::F2_comma( T_size const& P_begin, T_size const& P_end, T_argument& P_list )
+ {
+  P_list.clear();   P_list.reserve( 5 );
+  T_size I_counter = 0;
+  T_size I_begin = P_begin;
+  for( T_size I_index = P_begin; I_index < P_end; ++I_index )
+   {
+    auto const& I_char = M2_expression->at( I_index );
+    switch( I_char )
+     {
+      case('('): ++I_counter; continue;
+      case(')'): --I_counter; continue;
+     }
+     if( 0 != I_counter )
+      {
+       continue;
+      }
+    if( ',' != I_char )
+     {
+      continue;
+     }
+    T_address I_address = F2_expression( I_begin, I_index );
+    if( false == I_address.F_valid() )
+     {
+      P_list.clear();
+      return P_list.size();
+     }
+    P_list.push_back( I_address );
+    I_begin = I_index+1;
+   }
+
+  T_address I_address = F2_expression( I_begin, P_end );
+  if( false == I_address.F_valid() )
+   {
+    P_list.clear();
+    return P_list.size();
+   }
+  P_list.push_back( I_address );
+
+  return P_list.size();
  }
 
 
@@ -257,7 +313,7 @@ bool GC_compiler::F2_isTemp( T_size const& P_index )const
 
   if( I_name.size() < M2_tmpPrefix.size() ) return false;
 
-  return 0 == M2_tmpPrefix.compare( 0, M2_tmpPrefix.size(), I_name );
+  return 0 == I_name.compare( 0, M2_tmpPrefix.size(), M2_tmpPrefix );
  }
 
 void GC_compiler::F2_makeTemp( T_string & P_tmp ) const

@@ -87,9 +87,11 @@ I_config['room']['radiosity']['sample' ]  = 256
 I_config['room']['radiosity']['angle'  ]   = math.radians( 90 )
 I_config['room']['radiosity']['albedo' ]   = IceRayPy.type.color.RGB( 0.99, 0.99, 0.99 )
 I_config['room']['radiosity']['blossom']   = 'sobol'
+I_config['room']['radiosity']['correction'] = {}
 I_config['room']['radiosity']['correction']['rays'] = "claim"
 I_config['room']['radiosity']['correction']['leader'] = False
 I_config['room']['radiosity']['correction']['cone']   = False
+I_config['room']['radiosity']['jitter'] = {}
 
 
 I_config['light']  = {}
