@@ -22,4 +22,6 @@ setx PYTHON37_MSVC12_VERSION  37
 
 setx ICERAY_ROOT %cd%\..
 
-setx PYTHONPATH %PYTHONPATH%;%ICERAY_ROOT%\src;%ICERAY_ROOT%\example
+setx PYTHONPATH %PYTHONPATH%;%ICERAY_ROOT%\src
+setx PYTHONPATH %PYTHONPATH%;%ICERAY_ROOT%\example
+setx PYTHONPATH %PYTHONPATH%;/cygdrive/c/work/code/cpp/prj/github/iceray/work/src

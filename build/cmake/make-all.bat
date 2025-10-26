@@ -1,8 +1,8 @@
-@rem mkdir _makeVS
-@rem cd _makeVS
+@rem mkdir _makeVS32
+@rem cd _makeVS32
 @rem 
 @rem %prg_cmake% .. -A Win32
-@rem 
+@rem %prg_cmake% --build . --config Release
 @rem cd ..
 
 mkdir _makeVS64

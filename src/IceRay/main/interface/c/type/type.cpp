@@ -6,4 +6,3 @@
 #include "./affine.cpp"
 #include "./matrix.cpp"
 #include "./homography.cpp"
-

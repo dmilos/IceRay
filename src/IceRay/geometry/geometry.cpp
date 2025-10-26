@@ -7,3 +7,4 @@
 #include "./transform/transform.cpp"
 #include "./volumetric/volumetric.cpp"
 #include "./flat/flat.cpp"
+#include "./implicit.cpp"

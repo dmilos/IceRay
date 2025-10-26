@@ -43,11 +43,18 @@ class Expression:
     def __del__( self ):
         self.m_cargo['dll'].IceRayC_Geometry_HField_Generator_Release( self.m_cargo['this'] )
 
+    def size( self, P_coord ):
+         self.m_cargo['dll'].IceRayC_Geometry_HField_Generator_Expression_Size( self.m_cargo['this'], AddressOf(P_coord) )
+         self.m_cargo['size']  = P_coord;
+         return True
+
     def pattern( self, P_pattern ):
         self.m_cargo['dll'].IceRayC_Geometry_HField_Generator_Expression_Pattern( self.m_cargo['this'], P_pattern.encode('utf-8') )
+        self.m_cargo['pattern']  = P_pattern;
 
-    def box( self, P_box ):
-        self.m_cargo['dll'].IceRayC_Geometry_HField_Generator_Expression_Box( self.m_cargo['this'], AddressOf( P_box ) )
+    def interval( self, P_interval ):
+        self.m_cargo['dll'].IceRayC_Geometry_HField_Generator_Expression_Interval( self.m_cargo['this'], AddressOf( P_interval ) )
+        self.m_cargo['interval']  = P_interval;
 
 class Table:
     def __init__( self, P_dll ):

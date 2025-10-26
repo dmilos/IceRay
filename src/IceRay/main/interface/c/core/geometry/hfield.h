@@ -32,8 +32,9 @@ IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_Type_Bool                        IceRa
 
 IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_Geometry_HField_Generator_Handle IceRayC_Geometry_HField_Generator_Expression0();
 IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_Geometry_HField_Generator_Handle IceRayC_Geometry_HField_Generator_Expression1( char *P_expression );
+IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_Type_Bool                        IceRayC_Geometry_HField_Generator_Expression_Size(    IceRayC_Geometry_HField_Generator_Handle P_this, IceRayC_TypeCoordSize2D* P_size  );
 IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_Type_Bool                        IceRayC_Geometry_HField_Generator_Expression_Pattern( IceRayC_Geometry_HField_Generator_Handle P_this, char *P_expression );
-IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_Type_Bool                        IceRayC_Geometry_HField_Generator_Expression_Box( IceRayC_Geometry_HField_Generator_Handle P_this, IceRayC_TypeInterval3D* P_box );
+IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_Type_Bool                        IceRayC_Geometry_HField_Generator_Expression_Interval(IceRayC_Geometry_HField_Generator_Handle P_this, IceRayC_TypeInterval3D* P_box );
 
 
 IceRayC__EXPORT IceRayC__DECLSPEC IceRayC_Geometry_HField_Generator_Handle IceRayC_Geometry_HField_Generator_Table0();

@@ -8,8 +8,9 @@ import json
 
 settings = nucleotide.Settings()
 
-settings.set_custom( 'directory:_root',            os.path.join('..','..','..') )
-settings.set_custom( 'file:configuration:json',       os.path.join( settings.get_custom( 'directory:_root' ) , 'build', 'info.json' ) )
+settings.set_custom( 'directory:current',          os.getcwd() )
+settings.set_custom( 'directory:_root',            os.path.join( settings.get_custom( 'directory:current' ),'..','..','..') )
+settings.set_custom( 'file:configuration:json',    os.path.join( settings.get_custom( 'directory:_root' ) , 'build', 'info.json' ) )
 
 settings.set_custom( 'architecture' ,           'x86'     )
 settings.set_custom( 'architecture',             ARGUMENTS.get( 'architecture',           settings.get_custom( 'architecture' )      ) )
@@ -39,7 +40,7 @@ settings.set_custom( 'project:name:cdll',         configuration['project']['name
 settings.set_custom( 'project:name:python',       configuration['project']['name']['base'] + configuration['project']['name']['extent']['python']   )
 settings.set_custom( 'project:name:handcode',     configuration['project']['name']['base'] + configuration['project']['name']['extent']['handcode'] )
 
-settings.set_custom( 'directory:install',       os.path.join( settings.get_custom( 'directory:_root' ) , 'bin' ) )
+settings.set_custom( 'directory:install',       os.path.join( settings.get_custom( 'directory:_root' ) , 'install/bin' ) )
 settings.set_custom( 'directory:install',        ARGUMENTS.get( 'directory:install',      settings.get_custom( 'directory:install' ) ) )
 settings.set_custom( 'directory:temp',          os.path.join( settings.get_custom( 'directory:_root' ) , 'temp' ) )
 settings.set_custom( 'directory:temp',           ARGUMENTS.get( 'directory:temp',         settings.get_custom( 'directory:temp' ) ) )

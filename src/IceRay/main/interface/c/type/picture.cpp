@@ -13,6 +13,7 @@
 
 
 #include <fstream>
+#include <cstring>
 
 #include "./picture.h"
 #include "./coord.hpp"
@@ -252,6 +253,23 @@ unsigned char const* IceRayC_Type_Picture_Buffer( IceRayC_Type_Picture_Handle P_
 
   return reinterpret_cast< unsigned char const *> ( I_this->Fv_data() );
  }
+ 
+IceRayC_Type_Bool                 IceRayC_Type_Picture_Transfer( IceRayC_Type_Picture_Handle P_this, unsigned char const*P_data )
+ {
+  typedef GS_DDMRM::S_IceRay::S_type::S_picture::GC__pure      Tf__pure;
+  typedef GS_DDMRM::S_IceRay::S_type::S_picture::GC_memory    Tf_memory;
+
+  auto I_this = dynamic_cast<Tf_memory*>( c2cpp ( P_this ) );
+  if( nullptr == I_this )
+   {
+    return false;
+   }
+
+  auto size = sizeof(Tf__pure::T_color) * I_this->F_size()[0] * I_this->F_size()[1];
+  memcpy( reinterpret_cast< unsigned char *> ( I_this->Fv_data() ), P_data, size );
+  return true;
+ }
+
 
 IceRayC_Type_Bool IceRayC_Type_Picture_Default( IceRayC_Type_Picture_Handle P_this )
  {

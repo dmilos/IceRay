@@ -58,15 +58,15 @@ if ( MSVC )
     set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} /wd4624")
 endif()
 
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${directory_obj}/arc)
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${directory_lib}/lib)
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${directory_dll}/bin)
+#set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${directory_obj}/arc)
+#set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${directory_lib}/lib)
+#set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${directory_dll}/bin)
 
 
 add_library(${ICERAY_PROJECT_NAME_FULL} STATIC ${SOURCE_CPP} ${SOURCE_HPP})
 
 
-set_property( TARGET ${ICERAY_PROJECT_NAME_FULL} PROPERTY POSITION_INDEPENDENT_CODE ON )
+    set_property( TARGET ${ICERAY_PROJECT_NAME_FULL} PROPERTY POSITION_INDEPENDENT_CODE ON )
 
 
 if( UNIX )
@@ -74,6 +74,8 @@ if( UNIX )
     target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -fexceptions )
     target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -Wno-unused-local-typedefs )
     target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -Wno-unused-variable )
+    #target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -Wmaybe-uninitialized )
+
     if( ICERAY_SWITCH_DEBUG )
         #target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -fsanitize=address )
         #target_link_options(    ${ICERAY_PROJECT_NAME_FULL} PRIVATE -fsanitize=address )

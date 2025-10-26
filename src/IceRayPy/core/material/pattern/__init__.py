@@ -48,14 +48,19 @@ class Checker:
 
 
 class Hexagon:
-    def __init__(self, P_dll ):
+    def __init__(self, P_dll, P_scale = None ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Material_Pattern_Hexagon0()
+        if( None != P_scale ):
+            self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Material_Pattern_Hexagon1( P_scale )
 
     def __del__(self):
         self.m_cargo['dll'].IceRayC_Material_Pattern_Release( self.m_cargo['this'] )
 
+    def scale( self, P_scale ):
+        self.m_cargo['dll'].IceRayC_Material_Pattern_Hexagon_Scale( self.m_cargo['this'], ScalarType( P_scale ) )
+        self.m_cargo['picture'] = P_picture
 
 class Wave:
     def __init__(self, P_dll ):
@@ -101,7 +106,7 @@ class Gradient:
 
     def bottom( self, P_bottom ):
         self.m_cargo['dll'].IceRayC_Material_Pattern_Gradient_Bottom( self.m_cargo['this'], AddressOf( P_bottom ) )
-    
+
     def top( self, P_top ):
         self.m_cargo['dll'].IceRayC_Material_Pattern_Gradient_Top( self.m_cargo['this'], AddressOf( P_top ) )
 

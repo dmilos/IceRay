@@ -17,6 +17,9 @@ IceRayC__EXPORT IceRayC__DECLSPEC   int  IceRayC_Material_Pattern_Release( IceRa
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Brick0( );
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Checker0( );
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Hexagon0( );
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Hexagon1( IceRayC_Type_Scalar            P_scale ); 
+IceRayC__EXPORT IceRayC__DECLSPEC  int                             IceRayC_Material_Pattern_Hexagon_Scale(IceRayC_Material_Pattern_Handle P_that, IceRayC_Type_Scalar            P_scale);
+
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Wave0( );
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Onion0( );
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Level0( );

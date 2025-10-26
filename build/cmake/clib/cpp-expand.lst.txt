@@ -71,6 +71,7 @@ IceRay/geometry/transform/translate.cpp
 IceRay/geometry/volumetric/mist.cpp
 IceRay/geometry/volumetric/smoke.cpp
 IceRay/geometry/volumetric/vacuum.cpp
+IceRay/geometry/implicit.cpp
 IceRay/light/_parent.cpp
 IceRay/light/_pure.cpp
 IceRay/light/area.cpp
@@ -153,3 +154,10 @@ IceRay/utility/table/structure.cpp
 IceRay/utility/table/sunflower.cpp
 IceRay/utility/table/kmeans.cpp
 IceRay/utility/table/triangle.cpp
+IceRay/utility/expression/instruction.cpp
+IceRay/utility/expression/mapper.cpp
+IceRay/utility/expression/program.cpp
+IceRay/utility/expression/memory.cpp
+IceRay/utility/expression/compiler.cpp
+IceRay/utility/expression/library.cpp
+IceRay/utility/expression/address.cpp

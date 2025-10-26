@@ -61,7 +61,7 @@ list = {
     #'C-Enclose'      : IceRayPy.core.geometry.complex.Enclose, #NYI
 
      'C-hfieldI'       : IceRayPy.library.geometry.hfield.Image,
-    #'C-hfieldLE'      : IceRayPy.library.geometry.hfield.Expression, #NYI
+     'C-hfieldLE'      : IceRayPy.library.geometry.hfield.Expression, #NYI
      'C-hfieldT2x2'    : IceRayPy.library.geometry.hfield.Table2x2,
      'C-hfieldT3x3'    : IceRayPy.library.geometry.hfield.Table3x3,
      'C-hfieldT4x4'    : IceRayPy.library.geometry.hfield.Table4x4,

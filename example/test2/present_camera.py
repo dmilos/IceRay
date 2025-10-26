@@ -83,6 +83,8 @@ I_config['pigment']  = {}
 I_config['light']   = {}
 I_config['light']['sample']   = 1
 I_config['decoration']   = {}
+I_config['geometry']   = {}
+
 
 g = 1.22074408460575947536 #(math.sqrt(5)+1)/2
 

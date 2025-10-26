@@ -31,8 +31,8 @@ def Image( P_dll,
     objectQ = IceRayPy.core.geometry.hfield.object.Quad(P_dll)
     result.object( objectT )
     result.generator( generator )
-    result.lo( Coord3D( 1.5 *  -1.0, 1.5 *  -picture.size()[1]/( 1.0*picture.size()[0]), -0.05 - 0.5 ) )
-    result.hi( Coord3D( 1.5 *  +1.0, 1.5 *  +picture.size()[1]/( 1.0*picture.size()[0]), +0.05 - 0.5 ) )
+    result.lo( Coord3D( 1.0 *  -1.0, 1.0 *  -picture.size()[1]/( 1.0*picture.size()[0]), -0.05 - 0.5 ) )
+    result.hi( Coord3D( 1.0 *  +1.0, 1.0 *  +picture.size()[1]/( 1.0*picture.size()[0]), +0.05 - 0.5 ) )
     return result
 
 def Expression( P_dll,
@@ -42,12 +42,21 @@ def Expression( P_dll,
 
     result    = IceRayPy.core.geometry.hfield.System(P_dll)
 
-    generator = IceRayPy.core.geometry.hfield.generator.Expression(P_dll)
-    generator.pattern('x+y')
+    generator = IceRayPy.core.geometry.hfield.generator.Expression( P_dll )
+
+    generator.size( Size2D( 100, 100 ) )
+
+    if( None != P_config ):
+        if( 'expression' in P_config ):
+            generator.pattern( P_config['expression'] )
+        if( 'size' in P_config ):
+            generator.size( P_config['size'] )
+        if( 'interval' in P_config ):
+            generator.interval( P_config['interval'] )
 
     objectQ = IceRayPy.core.geometry.hfield.object.Quad(P_dll)
-    objectF = IceRayPy.core.geometry.hfield.object.Flat(P_dll)
-    objectV = IceRayPy.core.geometry.hfield.object.Vacuum(P_dll)
+    #objectF = IceRayPy.core.geometry.hfield.object.Flat(P_dll)
+    #objectV = IceRayPy.core.geometry.hfield.object.Vacuum(P_dll)
     result.object( objectQ )
     result.generator( generator )
     return result
@@ -154,9 +163,10 @@ def Table5x5( P_dll,
     generator = IceRayPy.core.geometry.hfield.generator.Table(P_dll)
 
     I_size = 5
-    if( 'frame' in P_config ):
-        if( 'index' in P_config['frame'] ):
-            I_size = int( P_config['frame']['index'] / 30 + 2 )
+    if( None != P_config ):
+        if( 'frame' in P_config ):
+            if( 'index' in P_config['frame'] ):
+                I_size = int( P_config['frame']['index'] / 30 + 2 )
 
     generator.size( Size2D( I_size, I_size ) )
 

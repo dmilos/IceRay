@@ -82,6 +82,7 @@ I_config['pigment']  = {}
 I_config['light']   = {}
 I_config['light']['sample']   = 1
 I_config['decoration']   = {}
+I_config['geometry']   = {}
 
 g = 1.22074408460575947536 #(math.sqrt(5)+1)/2
 
@@ -96,7 +97,7 @@ I_config['camera']['aspect'] = I_picture['aspect']
 
 pigment_list =[
    'T-0-reflect-One'               ,
-   'T-0-reflect-Diffusive'         ,
+   'T-0-reflect-diffusive'         ,
    'T-0-reflect-mirror'            ,
    'T-1-reflect-schlick'           ,
    'T-2-reflect-blossom-Grid'      ,

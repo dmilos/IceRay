@@ -48,9 +48,9 @@ def doIt( P_dll, P_picture, P_scene, P_inventory, P_config, P_result=None ):
                 print( "Image already exists. " + P_picture['temp']['file'], flush = True  )
                 return
 
-    I_geometry['the'] = P_inventory['geometry'][ I_geometry['name'] ]( P_dll )
+    I_geometry['the'] = P_inventory['geometry'][ I_geometry['name'] ]( P_dll, P_config['geometry'] )
     I_light['the']    = P_inventory['light'   ][ I_light   ['name'] ]( P_dll, P_config['light'] )
-    I_medium['the']   = P_inventory['medium'  ][ I_medium  ['name'] ]( P_dll )
+    I_medium['the']   = P_inventory['medium'  ][ I_medium  ['name'] ]( P_dll ) #, P_config['medium']
     I_camera['the']   = P_inventory['camera'  ][ I_camera  ['name'] ]( P_dll, P_config['camera'] )
 
     I_light['enclose'] = light_enclose = IceRayPy.core.light.transform.Translate( P_dll, I_light['the'], IceRayPy.type.math.coord.Scalar3D( 0, 0, 2 ) )
@@ -98,8 +98,8 @@ def doIt( P_dll, P_picture, P_scene, P_inventory, P_config, P_result=None ):
     B = IceRayPy.type.math.coord.Size2D( P_picture['window']['B']['x'], P_picture['window']['B']['y'] )
     IceRayPy.type.graph.Crop( P_picture['temp']['crop'], P_picture['temp']['object'], A, B )
 
-    #TODO if( 'watermark' in P_picture ):
-    #TODO    IceRayPy.type.graph.Print( P_picture['temp']['crop'], Size2D(0,0), P_picture['watermark'] )
+    if( 'watermark' in P_picture ):
+       IceRayPy.type.graph.Print( P_picture['temp']['crop'], IceRayPy.type.math.coord.Size2D(0,0), P_picture['watermark'] )
 
     #TODO P_picture['temp']['crop'].store( P_picture['temp']['file'] )
 

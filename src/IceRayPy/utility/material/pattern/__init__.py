@@ -1,6 +1,7 @@
 #print( '<' + __name__ + ' name=\'' +   __file__ + '\'>' )
 
 
+import math
 import IceRayPy.utility.material.pattern.noise
 # TODO import IceRayPy.utility.material.pattern.size
 
@@ -203,12 +204,16 @@ def Checker(
 def Hexagon(
       P_dll
      ,P_config
-     ,P_red   = IceRayPy.type.color.RGB(1,0,0)
+     ,P_red   = IceRayPy.type.color.RGB(0.5,0,0)
      ,P_green = IceRayPy.type.color.RGB(0,1,0)
      ,P_blue  = IceRayPy.type.color.RGB(0,0,1)
     ):
 
-    I_pattern = IceRayPy.core.material.pattern.Hexagon( P_dll )
+    I_scale = 1;
+    if( 'scale' in P_config ):
+        I_scale = P_config['scale']
+    
+    I_pattern = IceRayPy.core.material.pattern.Hexagon( P_dll, I_scale )
 
     result = IceRayPy.core.material.instruction.label.color.dynamic.RESULT
     point = IceRayPy.core.material.instruction.label.coord3d.dynamic.POINT

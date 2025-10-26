@@ -4,14 +4,14 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>248507d3-6412-422f-9e84-07e3a6112c4a</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>..\..\..\example\test2\present_caustic-cylinder.py</StartupFile>
+    <StartupFile>..\..\..\example\test2\present_geom_hfield.py</StartupFile>
     <SearchPath>..\..\..\example\test2</SearchPath>
     <WorkingDirectory>../../../example/test2</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>IceRayPy</Name>
     <RootNamespace>IceRayPy</RootNamespace>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
-    <EnableNativeCodeDebugging>True</EnableNativeCodeDebugging>
+    <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
     <IsWindowsApplication>False</IsWindowsApplication>
     <Environment>
     </Environment>
@@ -37,6 +37,7 @@
     <Compile Include="../../../example/test2/present_radiosity.py" />
     <Compile Include="../../../example/test2/present_transform.py" />
     <Compile Include="../../../example/test2/present_transmission.py" />
+    <Compile Include="../../../example/test2/present_geom_hfield.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

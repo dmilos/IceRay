@@ -87,9 +87,11 @@ I_config['room']['radiosity']['sample' ]  = 256
 I_config['room']['radiosity']['angle'  ]   = math.radians( 90 )
 I_config['room']['radiosity']['albedo' ]   = IceRayPy.type.color.RGB( 0.99, 0.99, 0.99 )
 I_config['room']['radiosity']['blossom']   = 'sobol'
+I_config['room']['radiosity']['correction'] = {}
 I_config['room']['radiosity']['correction']['rays'] = "claim"
 I_config['room']['radiosity']['correction']['leader'] = False
 I_config['room']['radiosity']['correction']['cone']   = False
+I_config['room']['radiosity']['jitter'] = {}
 
 
 I_config['light']  = {}
@@ -98,6 +100,7 @@ I_config['decoration']   = {}
 I_config['decoration']['size']   = IceRayPy.type.math.coord.Scalar3D( 0.1, 0.1, 0.1 )
 I_config['decoration']['center'] = IceRayPy.type.math.coord.Scalar3D( 0.0, 0.0, 0.0 )
 I_config['decoration']['color']  = IceRayPy.type.color.RGB( 50, 50, 50 )
+I_config['geometry']   = {}
 
 
 g = 1.22074408460575947536 #(math.sqrt(5)+1)/2
