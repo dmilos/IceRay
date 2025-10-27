@@ -101,7 +101,7 @@ I_config['camera']['aspect'] = I_picture['aspect']
 
 geometry_list = [
      'C-hfieldI',
-     'C-hfieldLE',
+      'C-hfieldLE',
      'C-hfieldT2x2',
      'C-hfieldT3x3',
      'C-hfieldT4x4',

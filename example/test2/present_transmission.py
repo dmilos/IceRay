@@ -21,8 +21,8 @@ else:
 
 
 I_picture ={}
-I_picture[ 'width']  = 800
-I_picture['height']  = 600
+I_picture[ 'width']  = int( 800*1.5 )
+I_picture['height']  = int( 600*1.5 )
 I_picture['aspect']  = I_picture['width'] / I_picture['height']
 
 if( 1 < len( sys.argv ) ):
@@ -35,6 +35,7 @@ except OSError as e:
     pass
 I_picture['folder'] = './_out'
 I_picture['extension'] = 'pnm'
+I_picture['overwrite'] = False
 
 I_picture['index'] = 0
 I_picture['time'] = 0
@@ -95,6 +96,15 @@ I_config['camera']['aspect'] = I_picture['aspect']
 #I_config['camera']['hfov']   = math.radians( 90 )
 #I_config['camera']['vfov']   = math.radians( 90 )
 
+
+I_scene['geometry']= 'T-lensVS'
+I_scene['pigment']= 'T-B-refract-schlick'
+for index in range(1,360,1):
+    I_config['camera']['eye']   = IceRayPy.type.math.coord.Scalar3D( p*g * math.cos( math.radians(index)), p*g* math.sin( math.radians(index)) , +g )
+    I_picture['prefix'] = "%04i"%(index)
+    render.doIt( I_dll, I_picture, I_scene, I_inventory, I_config )
+
+
 pigment_list =[
    'T-0-reflect-One'               ,
    'T-0-reflect-diffusive'         ,
@@ -123,7 +133,11 @@ for item in pigment_list :
 
 geometry_list =[
     'F-box',
-    'S-torus'
+    'S-torus',
+    'T-lensCS',
+    'T-lensCP',
+    'T-lensVS',
+    'T-lensVP' 
 ]
 
 pigment_list =[

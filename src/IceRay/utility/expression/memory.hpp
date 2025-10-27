@@ -8,7 +8,7 @@
 #include "IceRay/type/basic/scalar.hpp"
 #include "IceRay/type/basic/size.hpp"
 
-
+#include "./mapper.hpp"
 
 
  namespace GS_DDMRM
@@ -25,6 +25,7 @@
            public:
              typedef GS_DDMRM::S_IceRay::S_type::GT_scalar T_scalar;
              typedef GS_DDMRM::S_IceRay::S_type::GT_size T_size;
+             typedef GS_DDMRM::S_IceRay::S_utility::S_expression::GC_mapper    T_mapper;
 
              typedef std::vector<T_scalar> T_data;
            public:
@@ -37,6 +38,8 @@
           // bool            F_set( T_size const& P_index, T_uv    const& P_value );
              bool    F_resize( T_size const& P_size );
 
+           public:
+             bool    F_apply( T_mapper const& P_mapper );
            public:
              T_data      & F_container();
              T_data const& F_container()const;

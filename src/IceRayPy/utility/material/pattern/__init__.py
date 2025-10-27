@@ -204,15 +204,21 @@ def Checker(
 def Hexagon(
       P_dll
      ,P_config
-     ,P_red   = IceRayPy.type.color.RGB(0.5,0,0)
-     ,P_green = IceRayPy.type.color.RGB(0,1,0)
-     ,P_blue  = IceRayPy.type.color.RGB(0,0,1)
     ):
 
     I_scale = 1;
     if( 'scale' in P_config ):
         I_scale = P_config['scale']
-    
+    I_red = IceRayPy.type.color.RGB(1.0,0,0);
+    if( 'red' in P_config ):
+        I_red = P_config['red']
+    I_green = IceRayPy.type.color.RGB(0,1,0);
+    if( 'green' in P_config ):
+        I_green = P_config['green']
+    I_blue = IceRayPy.type.color.RGB(0,0,1);
+    if( 'blue' in P_config ):
+        I_blue = P_config['blue']
+
     I_pattern = IceRayPy.core.material.pattern.Hexagon( P_dll, I_scale )
 
     result = IceRayPy.core.material.instruction.label.color.dynamic.RESULT
@@ -223,9 +229,9 @@ def Hexagon(
 
     I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
     I_surface.append( IceRayPy.core.material.instruction.pattern.Size( P_dll, I_pattern, switch, point ) )
-    I_surface.append( IceRayPy.core.material.instruction.constant.Color( P_dll, P_red,   temp + 0 ) )
-    I_surface.append( IceRayPy.core.material.instruction.constant.Color( P_dll, P_green, temp + 1 ) )
-    I_surface.append( IceRayPy.core.material.instruction.constant.Color( P_dll, P_blue,  temp + 2 ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Color( P_dll, I_red,   temp + 0 ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Color( P_dll, I_green, temp + 1 ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Color( P_dll, I_blue,  temp + 2 ) )
     I_surface.append( IceRayPy.core.material.instruction.operation.switch.Color( P_dll, result, switch,  temp + 0 ) )
 
     return I_surface

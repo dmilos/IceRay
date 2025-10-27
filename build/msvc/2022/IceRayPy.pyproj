@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>248507d3-6412-422f-9e84-07e3a6112c4a</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>..\..\..\example\test2\present_geom_hfield.py</StartupFile>
+    <StartupFile>..\..\..\example\test2\present_transmission.py</StartupFile>
     <SearchPath>..\..\..\example\test2</SearchPath>
     <WorkingDirectory>../../../example/test2</WorkingDirectory>
     <OutputPath>.</OutputPath>

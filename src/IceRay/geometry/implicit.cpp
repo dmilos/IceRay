@@ -156,33 +156,13 @@ bool GC_implicit::F_expression( T_string const& P_expression )
     return bool( false );
    }
 
-  M2_memory.F_resize( I_mapper.F_end() );
-
-  for( auto const& I_item : I_mapper.F_container() )
-   {   // to set constants
-    std::size_t total;
-    T_scalar I_value;
-    try
-     {
-      I_value = std::stod( I_item.first, &total );
-     }
-    catch(...)
-     {
-      continue;
-     }
-    if( total != I_item.first.size() )
-     {
-      continue;
-     }
-    M2_memory.F_set( I_item.second, I_value );
-   }
-
+  M2_memory.F_apply( I_mapper );
   M2_program.F_memory( M2_memory );
   M2_result = I_compiler.F_result().M_position;
   M2_expression = P_expression; 
 
-  M2_program.F_execute();
-  M2_memory.F_get( M2_result );
+  //M2_program.F_execute();
+  //M2_memory.F_get( M2_result );
   return bool( true );
  }
 
