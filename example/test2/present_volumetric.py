@@ -10,7 +10,7 @@ import IceRayPy
 
 import render
 
-dll_path = IceRayPy.system.SearchCDLL( P_preferDebug = True )
+dll_path = IceRayPy.system.SearchCDLL( P_preferDebug = False )
 
 if 0 != len( dll_path ):
     I_dll = IceRayPy.system.LoadCDLL( dll_path )
@@ -21,10 +21,10 @@ else:
 
 
 I_picture ={}
-I_picture[ 'width']  = 800
-I_picture['height']  = 600
+I_picture[ 'width']  = int( 800*0.5 )
+I_picture['height']  = int( 600*0.5 )
 I_picture['aspect']  = I_picture['width'] / I_picture['height']
-I_picture['watermark'] = "TODO"
+I_picture['watermark'] = ""
 
 if( 1 < len( sys.argv ) ):
     I_picture[ 'width'] = int( sys.argv[1] )
@@ -89,8 +89,8 @@ I_config['geometry']['density']= 0.99
 
 I_config['composer']={}
 I_config['composer']['hot'] = {}
-I_config['composer']['hot']['x'] = 350
-I_config['composer']['hot']['y'] = 350
+I_config['composer']['hot']['x'] = 400
+I_config['composer']['hot']['y'] = 400
 
 g = 1.22074408460575947536 #(math.sqrt(5)+1)/2
 
@@ -109,13 +109,13 @@ geometry_list = [
      #'V-Smoke',
  ]
 
-for index in (0,): # range(1,360,1) 1, 2, 5, 10, 20,50, 100, 200, 500, 1000,
-    #I_config['camera']['eye']   = IceRayPy.type.math.coord.Scalar3D( p*g * math.cos( math.radians(index)), p*g* math.sin( math.radians(index)) , +g )
+for index in range(0,360,1): #(0,)  1, 2, 5, 10, 20,50, 100, 200, 500, 1000,
+    I_config['camera']['eye']   = IceRayPy.type.math.coord.Scalar3D( p*g * math.cos( math.radians(index)), p*g* math.sin( math.radians(index)) , +g )
     I_picture['prefix'] = "%04i"%(index)
-
+    I_config['geometry']['density']= 0.33333333 # index/360.0
     for item in geometry_list :
         I_scene['geometry']= item
-        I_picture['watermark'] = item
+        I_picture['watermark'] = item + " : " +str(index/360.0) 
         render.doIt( I_dll, I_picture, I_scene, I_inventory, I_config )
 
 import os

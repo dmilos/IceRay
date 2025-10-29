@@ -93,83 +93,87 @@ bool GC_mist::Fv_intersect
  {
   static T_scalar Is_epsilon = 1e-12;// T_scalar( std::numeric_limits<T_scalar>::epsilon() );
 
-  T_scalar I_lam_inf=0, I_lam_sup=P_lambda;
+  T_scalar I_begin= P_lambda, I_end=P_lambda;
 
   // T_scalar I_bound[2];
   // auto count = M2_hull.M_pierce( 2, I_bound, I_intersect.F_tail<C_intersect>(), P_ray ) )
-  // if( 2 != count )
+  // switch( count )
   //  {
+  //   case( 0 ) :return false;
+  //   case( 1 ): I_begin= I_bound[0], I_end=P_lambda;   break;
+  //   case( 2 ): I_begin= I_bound[0], I_end=I_bound[1]; break;
   //   return false;
   //  }
-
 
   C_intersect &I_head  = P_state.F_content<C_intersect>();
   T_state      I_tail;  P_state.F_tail<C_intersect>(I_tail);
 
-  bool I_hit1 = M2_hull.M_intersect->Fv_intersect( I_lam_sup, I_tail, P_ray );
+  bool I_hitB = M2_hull.M_intersect->Fv_intersect( I_begin, I_tail, P_ray );
 
   auto I_location = M2_hull.M_inside->Fv_inside( P_ray.M_origin /*, P_intersect */ );
 
   switch( I_location )
    {
-    case( T_location::En_in  ):  break;
+    case( T_location::En_in  ):
+     {
+      I_end = I_begin;
+      I_begin = 0;
+     }break;
     case( T_location::En_out ): 
      {
-      if( false == I_hit1 )
+      if( false == I_hitB )
        {
         return false;
        }
 
-      I_lam_inf = I_lam_sup;
-      I_lam_sup = P_lambda - I_lam_inf;
       auto I_ray = P_ray;
-      ::math::linear::vector::combine( I_ray.M_origin, P_ray.M_origin, I_lam_inf, P_ray.M_direction );
-      bool I_hit2 = M2_hull.M_intersect->Fv_intersect( I_lam_sup, I_tail, I_ray );
-      break;
-     }
+      ::math::linear::vector::combine( I_ray.M_origin, P_ray.M_origin, I_begin, P_ray.M_direction );
+      I_end -= I_begin;
+      bool I_hitE = M2_hull.M_intersect->Fv_intersect( I_end, I_tail, I_ray );
+      switch( I_hitE )
+       {
+        case( false ): I_end  = P_lambda; break;
+        case( true  ): I_end += I_begin;  break;
+       }
+     }break;
     default: return false;
    }
 
-  T_coord I_position = P_ray.M_origin;
-
-  T_coord I_step;
-  ::math::linear::vector::scale( I_step, M2_precision, P_ray.M_direction );
-
-  T_scalar I_lambda = I_lam_inf;
-  T_scalar I_summa = 0.0;
-  T_scalar I_value;
   T_scalar I_bound = GFs_randX();
-
-  while( I_lambda < I_lam_sup )
+  T_scalar I_steps = (I_end - I_begin) / M2_precision;
+  T_scalar I_total = I_steps * M2_precision * M2_density;
+  if( I_bound < I_total )
    {
-    I_value =  M2_density;
+    I_steps = I_bound /( M2_precision * M2_density );
+    P_lambda = I_begin + I_steps * M2_precision;
+    return true;
+   }
+  return false;
 
-    I_summa += M2_precision * I_value;
+/*
+  T_scalar I_lambda = I_begin;
+  T_scalar I_summa = 0.0;
+  while( I_lambda < I_end )
+   {
+    I_summa  += M2_precision * M2_density;
+    I_lambda += M2_precision;
 
     if( I_bound < I_summa )
      {
-      /*
-      if( not_epsilon( value ) )
-       *lambda +=   delta
-                  * ( info->next  - exp( -summa ) )
-                  / ( exp( -summa ) - exp( -summa +delta* value ) );
+      //if( not_epsilon( value ) )
+      // P_lambda +=   delta
+      //            * ( info->next  - exp( -summa ) )
+      //            / ( exp( -summa ) - exp( -summa +delta* value ) );
+      //
+      // P_lambda = ????;
 
-       *lambda = ????;
-      */
-
-      if( I_lam_sup < I_lambda )
-       {
-        return false;
-       }
       P_lambda = I_lambda;
       return true;
      }
-
-    I_lambda += M2_precision;
-    ::math::linear::vector::addition( I_position, I_step );
    }
 
   return false;
+*/
  }
 
 void GC_mist::Fv_normal
