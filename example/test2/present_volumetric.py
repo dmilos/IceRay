@@ -10,7 +10,7 @@ import IceRayPy
 
 import render
 
-dll_path = IceRayPy.system.SearchCDLL()
+dll_path = IceRayPy.system.SearchCDLL( P_preferDebug = True )
 
 if 0 != len( dll_path ):
     I_dll = IceRayPy.system.LoadCDLL( dll_path )
@@ -24,7 +24,7 @@ I_picture ={}
 I_picture[ 'width']  = 800
 I_picture['height']  = 600
 I_picture['aspect']  = I_picture['width'] / I_picture['height']
-I_picture['watermark'] = ""
+I_picture['watermark'] = "TODO"
 
 if( 1 < len( sys.argv ) ):
     I_picture[ 'width'] = int( sys.argv[1] )
@@ -50,12 +50,12 @@ I_picture['window']['B']['y'] = I_picture['height']
 
 I_scene = {}
 I_scene['room']       = 'C-close'
-I_scene['camera']     =  'F-persp'
+I_scene['camera']     = 'F-persp'
 I_scene['geometry']   = 'vacuum'
 I_scene['medium']     = 'trans'
 I_scene['pigment']    = 'I-ALP'
 I_scene['light']      = 'chand-nine'
-I_scene['decoration'] = 'vacuum'
+I_scene['decoration'] = 'grid'
 
 
 import library_room
@@ -83,45 +83,42 @@ I_config['room']   = {}
 I_config['light']   = {}
 I_config['light']['sample']   = 1
 I_config['decoration']   = {}
-I_config['geometry']   = {}
+I_config['geometry'] ={}
+I_config['geometry']['expression']='sin(sqrt(x*x+y*y))'
+I_config['geometry']['density']= 0.99
+
+I_config['composer']={}
+I_config['composer']['hot'] = {}
+I_config['composer']['hot']['x'] = 350
+I_config['composer']['hot']['y'] = 350
 
 g = 1.22074408460575947536 #(math.sqrt(5)+1)/2
 
-g = (math.sqrt(5)+1)/2  #1.6180339887498948482045868343656
+g = (math.sqrt(5)+1)/2
 p = 1.324717957244746025960908854
 c = 1.22074408460575947536
 I_config['camera'][ 'eye']   = IceRayPy.type.math.coord.Scalar3D( +c*p*g, +p*g , +g )
 I_config['camera']['view']   = IceRayPy.type.math.coord.Scalar3D( 0, 0, 0 )
 I_config['camera']['aspect'] = I_picture['aspect']
-I_config['camera']['sample'] = 1
 #I_config['camera']['hfov']   = math.radians( 90 )
 #I_config['camera']['vfov']   = math.radians( 90 )
 
 geometry_list = [
-     'F-box'      ,
-     'F-disc'     ,
-     'F-udisc'    ,
-     'F-triangle' ,
-     'F-triangleU',
-     'F-plane'    ,
-     'F-piped'
+     #'V-vacuum',
+     'V-Mist',
+     #'V-Smoke',
  ]
 
-I_config['composer'] = {}
-I_config['composer']['hot'] = {}
-I_config['composer']['hot']['x'] = 400
-I_config['composer']['hot']['y'] = 300
+for index in (0,): # range(1,360,1) 1, 2, 5, 10, 20,50, 100, 200, 500, 1000,
+    #I_config['camera']['eye']   = IceRayPy.type.math.coord.Scalar3D( p*g * math.cos( math.radians(index)), p*g* math.sin( math.radians(index)) , +g )
+    I_picture['prefix'] = "%04i"%(index)
 
-for item in geometry_list :
-    I_scene['geometry']= item
-    render.doIt( I_dll, I_picture, I_scene, I_inventory, I_config )
+    for item in geometry_list :
+        I_scene['geometry']= item
+        I_picture['watermark'] = item
+        render.doIt( I_dll, I_picture, I_scene, I_inventory, I_config )
 
 import os
 def prepare_readme():
-    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_F-box_trans_I-ALP_chand-nine_0000.pnm'       , I_picture['folder']+'/'+'geometry_flat_box.pnm' )
-    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_F-disc_trans_I-ALP_chand-nine_0000.pnm'      , I_picture['folder']+'/'+'geometry_flat_disc.pnm' )
-    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_F-piped_trans_I-ALP_chand-nine_0000.pnm'     , I_picture['folder']+'/'+'geometry_flat_piped.pnm' )
-    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_F-plane_trans_I-ALP_chand-nine_0000.pnm'     , I_picture['folder']+'/'+'geometry_flat_plane.pnm' )
-    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_F-triangle_trans_I-ALP_chand-nine_0000.pnm'  , I_picture['folder']+'/'+'geometry_flat_triangle.pnm' )
-    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_F-triangleU_trans_I-ALP_chand-nine_0000.pnm' , I_picture['folder']+'/'+'geometry_flat_triangle-u.pnm' )
-    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_F-udisc_trans_I-ALP_chand-nine_0000.pnm'     , I_picture['folder']+'/'+'geometry_flat_disc-u.pnm' )
+    #os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-cone_trans_I-ALP_chand-nine_0000.pnm',            I_picture['folder']+'/'+'geometry_quadric_cone.pnm' )
+    pass

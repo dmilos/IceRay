@@ -30,23 +30,22 @@
 
              typedef GS_DDMRM::S_IceRay::S_type::GT_scalar                       T_scalar;
 
-             typedef GS_DDMRM::S_IceRay::S_geometry::S_type::GT_ray              T_ray;
+             typedef GS_DDMRM::S_IceRay::S_geometry::S__type::GT_ray              T_ray;
 
              typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base           T__base;
 
                       GC_pierce(){}
              virtual ~GC_pierce(){}
 
-             /*
-              @desc found at least count of intersection along the ray
-              @return number of piercing.
-              @param P_lambda[0] -  bound
-                         New P_lambda[x] must be smaller than supplied
-              @param P_state is in undefined state if return == 0; defined if 0 != return;
-             */
+             // @desc found at least count of intersection along the ray
+             // @return number of piercing.
+             // @param P_lambda[0] -  bound
+             //            New P_lambda[x] must be smaller than supplied
+             // @param P_state is in undefined state if return == 0; defined if 0 != return;
              virtual T_size        Fv_pierce( T_size const& P_count, T_scalar* P_lambda, T_state &P_state, T_ray  const& P_ray )const
               {
                T_ray I_ray = P_ray;
+               T_scalar I_begin = 0;
                T_scalar I_end = P_lambda[0];
                T_scalar I_lambda;
                T_size Ir_count=0;
@@ -57,7 +56,7 @@
                   {
                    break;
                   }
-                  P_lambda[Ir_count] = I_lambda;
+                  P_lambda[Ir_count] = I_lambda + I_begin;
 
                   ++Ir_count;
                   if( Ir_count == P_count )
@@ -65,12 +64,14 @@
                     break;
                    }
 
-                  ::math::linear::vector::combine( I_ray.M_direction, I_ray.M_direction, I_lambda,  I_ray.M_direction );
-                  I_end -= I_lambda
+                  ::math::linear::vector::combine( I_ray.M_origin, I_ray.M_origin, I_lambda, I_ray.M_direction );
+                  I_end -= I_lambda;
+                  I_begin += I_lambda;
                 }
 
                 return Ir_count;
               }
+
           };
 
         }

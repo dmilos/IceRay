@@ -81,7 +81,7 @@ list = {
      'T-lensPCvA'    : IceRayPy.library.geometry.example.IntersectGeneral,
 
      'V-vacuum'      : IceRayPy.core.geometry.volumetric.Vacuum,
-     'V-Mist'        : IceRayPy.core.geometry.volumetric.Mist,
+     'V-Mist'        : IceRayPy.library.geometry.volumetric.Mist,
      'V-Smoke'       : IceRayPy.core.geometry.volumetric.Smoke,
      'library-1m'    : IceRayPy.library.geometry.OneM,
      'L-Bpair'       : IceRayPy.library.geometry.blobby.Pair

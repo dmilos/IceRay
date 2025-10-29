@@ -5,7 +5,7 @@ import IceRayPy.library.geometry.lens
 import IceRayPy.library.geometry.example
 import IceRayPy.library.geometry.hfield
 import IceRayPy.library.geometry.blobby
-
+import IceRayPy.library.geometry.volumetric
 
 import math
 Coord3D = IceRayPy.type.math.coord.Scalar3D

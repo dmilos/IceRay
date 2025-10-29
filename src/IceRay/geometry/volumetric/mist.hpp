@@ -8,6 +8,7 @@
 #include "../_pure/normal.hpp"
 #include "../_pure/inside.hpp"
 #include "../_pure/distance.hpp"
+#include "../_pure/pierce.hpp"
 
 #include "../volumetric/vacuum.hpp"
 
@@ -32,6 +33,7 @@
 
              typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base      T_geometry, T__base;
              typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_intersect  T_intersect;
+             typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_pierce     T_pierce;
              typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_inside     T_inside;
 
            public:
@@ -74,15 +76,15 @@
            private:
               typedef struct C2_hull
                {
-                  T__base   * M__base;
-                T_intersect * M_intersect;
-                T_inside    * M_inside;
-               }T2_hull;
+                T__base      *M__base;
+                T_intersect  *M_intersect;
+                T_inside     *M_inside;
+                T_pierce     *M_pierce;
+              }T2_hull;
               T2_hull M2_hull;
 
            private:
              struct C_intersect;
-
           };
 
         }

@@ -74,7 +74,7 @@ GC_smoke::GC_smoke()
   F1_box( T_box{ I_lo, I_hi } );
 
   M2_precision = 0.01;
-  M2_density = [ ](T_coord const& ){ return 0.25; };
+  //M2_density = [ ](T_coord const& ){ return 0.25; };
   F_hull( &Fs_vacuum() );
  }
 
@@ -289,7 +289,7 @@ GC_smoke::Fv_distance( T_coord const& P_point )const
   return 0;
  }
 
-bool   GC_smoke::F_density( T_function const& P_density )
+bool   GC_smoke::F_density( T_string const& P_density )
  {
   M2_density = P_density;
   return bool( true );

@@ -40,7 +40,7 @@
 
            public:
              /*
-              @param P_lambda is there a hit smaller than and larger then 0 ( epsilon )
+              @param P_lambda is there a hit smaller than and larger then 0 ( epsilon )?
              */
              virtual bool        Fv_poke( T_scalar const&P_lambda, T_state const&P_state, T_ray const& P_ray )const=0;
           };

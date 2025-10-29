@@ -9,6 +9,8 @@
 #include "../_pure/inside.hpp"
 #include "../_pure/distance.hpp"
 #include "../volumetric/vacuum.hpp"
+#include "IceRay/type/basic/string.hpp"
+
 
  namespace GS_DDMRM
   {
@@ -16,7 +18,7 @@
     {
      namespace S_geometry
       {
-       //template< typename N_function >
+
        class GC_smoke
         : public GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_intersect
         , public GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_normal
@@ -29,7 +31,7 @@
 
            typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_intersect        T_hull;
 
-           typedef std::function< T_scalar ( T_coord const& ) > T_function;
+           typedef GS_DDMRM::S_IceRay::S_type::GT_string   T_string;
 
          public:
            GC_smoke();
@@ -46,12 +48,12 @@
            T_size  Fv_weight( )const;
 
          public:
-           T_function    const& F_density()const{ return M2_density; }
-           bool                 F_density( T_function const& P_density );
+           T_string    const& F_density()const{ return M2_density; }
+           bool               F_density( T_string const& P_density );
          protected:
-           T_function        & F1_density(){ return M2_density; }
+           T_string        & F1_density(){ return M2_density; }
          private:
-           T_function M2_density;
+           T_string M2_density;
 
          public:
             T_scalar    const& F_precision()const{ return M2_precision; }

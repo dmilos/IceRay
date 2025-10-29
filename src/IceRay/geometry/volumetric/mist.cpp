@@ -66,7 +66,10 @@ void
 GC_mist::Fv_reset( T_state &P_intersect )const
  {
   C_intersect &I_intersect = P_intersect.F_content<C_intersect>();
+  I_intersect.M_hit = false;
+  T_state      I_tail;  P_intersect.F_tail<C_intersect>(I_tail);
 
+  M2_hull.M__base->Fv_reset( I_tail );
   return;
  }
 
@@ -93,7 +96,7 @@ bool GC_mist::Fv_intersect
   T_scalar I_lam_inf=0, I_lam_sup=P_lambda;
 
   // T_scalar I_bound[2];
-  // auto count = F_hull().Fv_pierce( 2, I_bound, I_intersect.F_tail<C_intersect>(), P_ray ) )
+  // auto count = M2_hull.M_pierce( 2, I_bound, I_intersect.F_tail<C_intersect>(), P_ray ) )
   // if( 2 != count )
   //  {
   //   return false;
@@ -107,25 +110,25 @@ bool GC_mist::Fv_intersect
 
   auto I_location = M2_hull.M_inside->Fv_inside( P_ray.M_origin /*, P_intersect */ );
 
-   switch( I_location )
-    {
-     case( T_location::En_in  ):  break;
-     case( T_location::En_out ): 
-      {
-       if( false == I_hit1 )
-        {
-         return false;
-        }
+  switch( I_location )
+   {
+    case( T_location::En_in  ):  break;
+    case( T_location::En_out ): 
+     {
+      if( false == I_hit1 )
+       {
+        return false;
+       }
 
-       I_lam_inf = I_lam_sup;
-       I_lam_sup = P_lambda - I_lam_inf;
-       auto I_ray = P_ray;
-       ::math::linear::vector::combine( I_ray.M_origin, P_ray.M_origin, I_lam_inf, P_ray.M_origin );
-       bool I_hit2 = M2_hull.M_intersect->Fv_intersect( I_lam_sup, I_tail, I_ray );
-       break;
-      }
-     default: return false;
-    }
+      I_lam_inf = I_lam_sup;
+      I_lam_sup = P_lambda - I_lam_inf;
+      auto I_ray = P_ray;
+      ::math::linear::vector::combine( I_ray.M_origin, P_ray.M_origin, I_lam_inf, P_ray.M_direction );
+      bool I_hit2 = M2_hull.M_intersect->Fv_intersect( I_lam_sup, I_tail, I_ray );
+      break;
+     }
+    default: return false;
+   }
 
   T_coord I_position = P_ray.M_origin;
 

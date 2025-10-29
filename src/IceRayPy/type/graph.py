@@ -91,8 +91,15 @@ def Print( P_image, P_position, P_string ):
      buffer =   P_image.buffer()
      I_image = PIL.Image.frombytes( 'RGB', ( size[0], size[1] ), buffer, 'raw', 'RGB', 0, 1 )
      
-     font = PIL.ImageFont.truetype("arial.ttf", size = int( 4 * 1080/100.0 ))
-     PIL.ImageDraw.Draw( I_image ).text( (P_position[0],P_position[1]), P_string, font=font, color=(0, 0, 0) )
+     font_size = int( 1+size[1]*( 4 /100.0 ) );
+     #font = PIL.ImageFont.truetype( "arial.ttf", size = font_size )
+     if( font_size < 16 ):
+        font_size = 16
+     font = PIL.ImageFont.load_default( font_size )
+
+     for offset_x, offset_y in [(-1, -1), (-1, 1), (1, -1), (1, 1)]:
+        PIL.ImageDraw.Draw( I_image ).text( (P_position[0]+offset_x,P_position[1]+offset_y), P_string, font=font, color=(0, 0, 0) )
+
      PIL.ImageDraw.Draw( I_image ).text( (P_position[0],P_position[1]), P_string, font=font, color=(255, 255, 255) )
      P_image.transfer( I_image.tobytes() )
 
