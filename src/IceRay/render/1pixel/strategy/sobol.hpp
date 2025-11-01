@@ -1,6 +1,8 @@
 #ifndef Dh_DDMRM_Iceray_render_pixel_strategy_sobol_HPP_
  #define Dh_DDMRM_Iceray_render_pixel_strategy_sobol_HPP_
 
+//GS_DDMRM::S_IceRay::S_render::S_pixel::S_strategy::GC_sobol
+
  #include "IceRay/type/basic/size.hpp"
  #include "IceRay/type/basic/scalar.hpp"
  #include "IceRay/utility/random.hpp"
@@ -18,6 +20,7 @@
         {
          namespace S_strategy
           {
+
            class GC_sobol
            : public GS_DDMRM::S_IceRay::S_render::S_pixel::S_strategy::GC__pure
             {
@@ -25,9 +28,16 @@
                typedef GS_DDMRM::S_IceRay::S_type::GT_scalar T_scalar;
                typedef GS_DDMRM::S_IceRay::S_type::GT_size   T_size;
 
-
-              GC_sobol():M2_size( 10 ){}
-              ~GC_sobol(){}
+             public:
+               GC_sobol()
+                :M2_size( 10 )
+                {
+                }
+               explicit GC_sobol( T_size const& P_size ) 
+                :M2_size( P_size ) 
+                {
+                }
+                ~GC_sobol(){}
 
              public:
 
@@ -43,13 +53,17 @@
 
              public:
                T_size const& F_size(){ return M2_size; }
+               bool          F_size( T_size const& P_size )
+                {
+                 M2_size = P_size;
+                 return true;
+                }
              protected:
                T_size  & F1_size(){ return M2_size; }
              private:
                T_size    M2_size;
              private:
                mutable GS_DDMRM::S_IceRay::S_utility::S_random::GT_sobol2D     M2_randSobol2D;
-
             };
 
           }

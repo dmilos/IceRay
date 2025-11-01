@@ -105,6 +105,11 @@
              private:
                typedef GS_DDMRM::S_IceRay::S_geometry::S__type::GT_allocator   T_allocator;
                T_allocator M2_allocator;
+             public:
+               bool const& F_cout( )const{ return M2_cout; }
+               bool            F_cout( bool const& P_cout );
+             private:
+               bool M2_cout;
              private:
                struct C_statistic
                 {

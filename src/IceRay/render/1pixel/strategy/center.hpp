@@ -1,7 +1,8 @@
 #ifndef Dh_DDMRM_Iceray_render_pixel_strategy_center_HPP_
  #define Dh_DDMRM_Iceray_render_pixel_strategy_center_HPP_
 
- 
+// GS_DDMRM::S_IceRay::S_render::S_pixel::S_strategy::GC_center
+
  #include "./_pure.hpp"
 
  namespace GS_DDMRM

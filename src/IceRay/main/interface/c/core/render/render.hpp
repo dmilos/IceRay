@@ -4,3 +4,7 @@
 #include "./ray.hpp"
 #include "./scanner.hpp"
 #include "./sheaf.hpp"
+
+#include "./strategy.hpp"
+#include "./filter.hpp"
+

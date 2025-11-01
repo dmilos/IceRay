@@ -28,6 +28,7 @@
           , public GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_distance
           {
            public:
+             typedef GS_DDMRM::S_IceRay::S_type::GT_size                         T_size;
              typedef GS_DDMRM::S_IceRay::S_type::GT_scalar                       T_scalar;
              typedef GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar3D            T_coord;
 
@@ -49,6 +50,14 @@
 
              void    Fv_reset( T_state &P_state )const;
              T_size  Fv_weight( )const;
+
+           public:
+             T_size    const& F_seed()const{ return M2_seed; }
+             bool               F_seed( T_size const& P_seed );
+           protected:
+             T_size        & F1_seed(){ return M2_seed; }
+           private:
+             T_size         M2_seed;
 
            public:
              T_scalar    const& F_density()const{ return M2_density; }

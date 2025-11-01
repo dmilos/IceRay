@@ -12,6 +12,7 @@ IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Volu
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Volumetric_Mist3( IceRayC_Geometry_Handle P_hull );
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Volumetric_Mist4( IceRayC_Geometry_Handle P_hull, IceRayC_TypeScalar P_density );
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Volumetric_Mist5( IceRayC_Geometry_Handle P_hull, IceRayC_TypeScalar P_density, IceRayC_TypeScalar P_precision );
+IceRayC__EXPORT IceRayC__DECLSPEC  int                     IceRayC_Geometry_Volumetric_Mist_Seed(      IceRayC_Geometry_Handle P_this, IceRayC_TypeSize   P_seed );
 IceRayC__EXPORT IceRayC__DECLSPEC  int                     IceRayC_Geometry_Volumetric_Mist_Density(   IceRayC_Geometry_Handle P_this, IceRayC_TypeScalar P_density );
 IceRayC__EXPORT IceRayC__DECLSPEC  int                     IceRayC_Geometry_Volumetric_Mist_Hull(      IceRayC_Geometry_Handle P_this, IceRayC_Geometry_Handle P_hull );
 IceRayC__EXPORT IceRayC__DECLSPEC  int                     IceRayC_Geometry_Volumetric_Mist_Precision( IceRayC_Geometry_Handle P_this, IceRayC_TypeScalar P_precision );

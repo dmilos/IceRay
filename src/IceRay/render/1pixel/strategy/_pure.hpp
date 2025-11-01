@@ -1,6 +1,8 @@
 #ifndef Dh_DDMRM_Iceray_render_pixel_strategy__pure_HPP_
  #define Dh_DDMRM_Iceray_render_pixel_strategy__pure_HPP_
 
+ // GS_DDMRM::S_IceRay::S_render::S_pixel::S_strategy::GC__pure
+
  #include <vector>
  #include "../../../type/basic/size.hpp"
  #include "../../../type/math/coord.hpp"
@@ -16,6 +18,7 @@
         {
          namespace S_strategy
           {
+
            class GC__pure
             {
              public:

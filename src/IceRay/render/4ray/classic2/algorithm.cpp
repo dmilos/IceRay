@@ -13,6 +13,7 @@ using namespace GS_DDMRM::S_IceRay::S_render::S_ray::S_classic2;
 
 GC_algorithm::GC_algorithm( )
  {
+  M2_cout = false;
   M2_object = &GC_algorithm::Fs_vacuum();
   M2_depth = 8;
   M2_trash = T_scalar( 0.5 );
@@ -36,7 +37,7 @@ GC_algorithm::GC_algorithm( )
 
 GC_algorithm::~GC_algorithm( )
  {
-  if( false ) return;
+  if( false == M2_cout ) return;
 
   T_size I_summae = M2_stack.F_total();
   std::cout << "Summary:      " << PRINT( M2_stack.F_total() )       << std::endl;

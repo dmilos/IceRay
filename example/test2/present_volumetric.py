@@ -21,8 +21,8 @@ else:
 
 
 I_picture ={}
-I_picture[ 'width']  = int( 800*0.5 )
-I_picture['height']  = int( 600*0.5 )
+I_picture[ 'width']  = int( 1920*.25 )
+I_picture['height']  = int( 1080*.25 )
 I_picture['aspect']  = I_picture['width'] / I_picture['height']
 I_picture['watermark'] = ""
 
@@ -42,11 +42,17 @@ I_picture['time'] = 0
 
 I_picture['window'] = {}
 I_picture['window']['A'] = {}
-I_picture['window']['A']['x'] = 0
-I_picture['window']['A']['y'] = 0
 I_picture['window']['B'] = {}
-I_picture['window']['B']['x'] = I_picture['width']
-I_picture['window']['B']['y'] = I_picture['height']
+I_picture['window']['A']['x'] = int( 0.10 * I_picture['width'] )
+I_picture['window']['B']['x'] = int( 0.90 * I_picture['width'] )
+I_picture['window']['A']['y'] = int( 0.43 * I_picture['height'] )
+I_picture['window']['B']['y'] = int( 0.47 * I_picture['height'] )
+
+I_picture['model']={}
+I_picture['model']['name'] = "./_out/sample/384x010.pnm"
+I_picture['model']['name'] = "c:/work/code/cpp/prj/github/iceray/work/example/test2/_out/sample/384x010.pnm"
+I_picture['model']['object'] = IceRayPy.type.graph.Picture( I_dll )
+I_picture['model']['object'].load( I_picture['model']['name'] );
 
 I_scene = {}
 I_scene['room']       = 'C-close'
@@ -91,7 +97,10 @@ I_config['composer']={}
 I_config['composer']['hot'] = {}
 I_config['composer']['hot']['x'] = 400
 I_config['composer']['hot']['y'] = 400
-
+I_config['composer']['manager'] = {}
+I_config['composer']['manager']['pixel'] = {}
+I_config['composer']['manager']['pixel']['type'] = 'grid' # 'center', 'grid', 'random', 'sobol'
+I_config['composer']['manager']['pixel']['size'] = 2
 g = 1.22074408460575947536 #(math.sqrt(5)+1)/2
 
 g = (math.sqrt(5)+1)/2
@@ -109,16 +118,40 @@ geometry_list = [
      #'V-Smoke',
  ]
 
-for index in range(0,360,1): #(0,)  1, 2, 5, 10, 20,50, 100, 200, 500, 1000,
-    I_config['camera']['eye']   = IceRayPy.type.math.coord.Scalar3D( p*g * math.cos( math.radians(index)), p*g* math.sin( math.radians(index)) , +g )
+I_config['camera']['eye']   = IceRayPy.type.math.coord.Scalar3D( p*g * math.cos( math.radians(90)), p*g* math.sin( math.radians(90)) , +g )
+
+array_len = 44
+chunck_len = 3
+
+best_minimum = 100;
+seed = 0;
+for index in range(1,362885,1): #(0,)  1, 2, 5, 10, 20,50, 100, 200, 500, 1000,
+    print("-----------------------------")
     I_picture['prefix'] = "%04i"%(index)
-    I_config['geometry']['density']= 0.33333333 # index/360.0
+    I_config['geometry']['density']= 0.25
+    I_config['geometry']['seed']= seed
+    #I_config['composer']['manager']['pixel']['size'] = index
     for item in geometry_list :
         I_scene['geometry']= item
-        I_picture['watermark'] = item + " : " +str(index/360.0) 
+        I_picture['watermark'] = "" #"index" + " : " +str(index) 
+        
         render.doIt( I_dll, I_picture, I_scene, I_inventory, I_config )
+        
+        current_minimum = IceRayPy.type.graph.Compare( I_picture['temp']['crop'], I_picture['model']['object'] )
+        if( 1000000 < seed ):
+            seed -= 1000000
+        if( 0 == ( index % 50) ):
+            seed = seed + 1;
+            seed += 1000000
+            continue;
+        if( 100 < seed ):
+            seed = seed - 100;
+        if( current_minimum < best_minimum ):
+            seed += 1000000
+            print( "OLD best_minimum: " +  str(best_minimum), flush=True )
+            best_minimum  = current_minimum;   
+            seed = seed + 1;
+            print( "NEW best_minimum: " +  str(best_minimum), flush=True )
+            I_picture['temp']['crop'].storePNM( "goodone.pnm")
 
-import os
-def prepare_readme():
-    #os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-cone_trans_I-ALP_chand-nine_0000.pnm',            I_picture['folder']+'/'+'geometry_quadric_cone.pnm' )
-    pass
+        print(  "I: "+str(index)+ " S: " + str(seed )+ " - best_minimum: " +  str(best_minimum), flush=True  )

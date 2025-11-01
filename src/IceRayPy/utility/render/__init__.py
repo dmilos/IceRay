@@ -19,7 +19,25 @@ class Manager:
         self.m_cargo['manager'] = IceRayPy.core.render.manager.TheOne(  P_dll  )
 
         self.m_cargo['manager'].scanner( IceRayPy.core.render.scanner.Block( P_dll ) )
+
         self.m_cargo['manager'].pixel( IceRayPy.core.render.pixel.Basic( P_dll ) )
+        if( None != P_config ) and ( 'pixel' in P_config )and ( 'type' in P_config['pixel'] ):
+            strategy = None
+            if( 'random' == P_config['pixel']['type'] ):
+                strategy =  IceRayPy.core.render.pixel.strategy.Random( P_dll );
+            if( 'sobol' == P_config['pixel']['type'] ):
+                strategy =  IceRayPy.core.render.pixel.strategy.Sobol( P_dll );
+            if( 'center' == P_config['pixel']['type'] ):
+                strategy =  IceRayPy.core.render.pixel.strategy.Center( P_dll );
+            if( 'grid' == P_config['pixel']['type'] ):
+                strategy =  IceRayPy.core.render.pixel.strategy.Grid( P_dll );
+
+            if( 'size' in  P_config['pixel'] ) and hasattr( strategy, 'size' ):
+                strategy.size( P_config['pixel']['size'] )
+
+            if( None != strategy ):
+                self.m_cargo['manager'].pixelGet().strategy( strategy )
+
         self.m_cargo['manager'].pierce( self.m_cargo['pierce'] )
         self.m_cargo['manager'].sheaf( IceRayPy.core.render.sheaf.ALL( P_dll ) )
         self.m_cargo['manager'].ray( self.m_cargo['tracer'] )

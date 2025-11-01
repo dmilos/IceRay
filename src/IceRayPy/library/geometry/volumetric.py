@@ -16,6 +16,7 @@ def Mist( P_dll,
     result = IceRayPy.core.geometry.volumetric.Mist(P_dll)
     hull   = IceRayPy.core.geometry.flat.Box(P_dll)
 
+    I_seed = 0;
     I_density = 0.5;
     I_lo = Coord3D(-1,-1,-1);
     I_hi = Coord3D(+1,+1,+1);
@@ -23,6 +24,8 @@ def Mist( P_dll,
     if( None != P_config ):
         if( 'density' in P_config ):
             I_density = P_config['density']
+        if( 'seed' in P_config ):
+            I_seed = P_config['seed']
         if( 'lo' in P_config ):
             I_lo = P_config['lo']
         if( 'hi' in P_config ):
@@ -30,6 +33,7 @@ def Mist( P_dll,
 
     hull.lo( I_lo )
     hull.hi( I_hi )
+    result.seed( I_seed )
     result.density( I_density )
     result.hull( hull )
     return result

@@ -35,6 +35,8 @@ IceRay/main/interface/c/core/object/object.cpp
 IceRay/main/interface/c/core/render/engine.cpp
 IceRay/main/interface/c/core/render/pierce.cpp
 IceRay/main/interface/c/core/render/pixel.cpp
+IceRay/main/interface/c/core/render/strategy.cpp
+IceRay/main/interface/c/core/render/filter.cpp
 IceRay/main/interface/c/core/render/ray.cpp
 IceRay/main/interface/c/core/render/scanner.cpp
 IceRay/main/interface/c/core/render/sheaf.cpp

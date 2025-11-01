@@ -101,8 +101,6 @@ def doIt( P_dll, P_picture, P_scene, P_inventory, P_config, P_result=None ):
     if( 'watermark' in P_picture ):
        IceRayPy.type.graph.Print( P_picture['temp']['crop'], IceRayPy.type.math.coord.Size2D(0,0), P_picture['watermark'] )
 
-    #TODO P_picture['temp']['crop'].store( P_picture['temp']['file'] )
-
     if( 'pnm' == P_picture['extension'] ):
         P_picture['temp']['crop'].storePNM( P_picture['temp']['file'] )
     if( 'png' == P_picture['extension'] ):
@@ -113,6 +111,8 @@ def doIt( P_dll, P_picture, P_scene, P_inventory, P_config, P_result=None ):
     I_average = IceRayPy.type.color.RGB()
     P_picture['temp']['crop'].average( I_average )
     I_dispersion = P_picture['temp']['crop'].dispersion()
+    print( 'dispersion: ' + str( I_dispersion ), flush = True  )
+    print( 'average: '    + str( I_average    ), flush = True  )
 
     if( None != P_result ):
         P_result['picture'] = {}

@@ -49,6 +49,21 @@ IceRayC_Geometry_Handle IceRayC_Geometry_Volumetric_Mist5( IceRayC_Geometry_Hand
   auto Ir_result = new Tf_mist{};
   return cpp2c( Ir_result );
  }
+int IceRayC_Geometry_Volumetric_Mist_Seed( IceRayC_Geometry_Handle P_this, IceRayC_TypeSize P_seed )
+ {
+  typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base     Tf__base;
+  typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_intersect Tf_hull;
+  typedef GS_DDMRM::S_IceRay::S_geometry::S_volumetric::GC_mist Tf_mist;
+
+  auto I_this = dynamic_cast< Tf_mist *>( c2cpp( P_this ) );
+  if( nullptr == I_this )
+   {
+    return 0;
+   }
+  I_this->F_seed( P_seed );
+  return 1;
+ }
+ 
 int IceRayC_Geometry_Volumetric_Mist_Density( IceRayC_Geometry_Handle P_this, IceRayC_TypeScalar P_density )
  {
   typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;

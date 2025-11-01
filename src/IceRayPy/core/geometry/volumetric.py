@@ -7,6 +7,7 @@ Pointer  = ctypes.POINTER
 AddressOf = ctypes.addressof
 
 Scalar      = IceRayPy.type.basic.Scalar
+Size        = IceRayPy.type.basic.Size
 Coord3D     = IceRayPy.type.math.coord.Scalar3D
 Interval3D  = IceRayPy.type.math.interval.Scalar3D
 
@@ -45,6 +46,9 @@ class Mist:
     def hull( self, P_hull ):
         self.m_cargo['dll'].IceRayC_Geometry_Volumetric_Mist_Hull( self.m_cargo['this'], P_hull.m_cargo['this'] )
         self.m_cargo['hull'] = P_hull
+
+    def seed( self, P_seed ):
+        self.m_cargo['dll'].IceRayC_Geometry_Volumetric_Mist_Seed( self.m_cargo['this'], Size( P_seed ) )
 
     def density( self, P_density ):
         self.m_cargo['dll'].IceRayC_Geometry_Volumetric_Mist_Density( self.m_cargo['this'], Scalar( P_density ) )

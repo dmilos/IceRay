@@ -64,7 +64,12 @@ def object( P_dll, P_geometry, P_pigment, P_medium ):
     return wrapper
 
 def manager( P_dll, P_config, P_camera, P_object ):
-    manager = IceRayPy.utility.render.Manager( P_dll )
+
+    I_config = {}
+    if( 'manager' in P_config ):
+       I_config = P_config[ 'manager' ]
+
+    manager = IceRayPy.utility.render.Manager( P_dll, I_config )
     manager.camera( P_camera )
     manager.object( P_object )
 

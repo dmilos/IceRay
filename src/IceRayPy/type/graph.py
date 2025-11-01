@@ -10,7 +10,7 @@ AddressOf = ctypes.addressof
 
 
 import PIL
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFont, ImageChops
 #import io
 
 
@@ -86,9 +86,35 @@ def Crop( P_target, P_source, P_A, P_B ):
 def Default( P_image ):
     P_image.m_cargo['dll'].IceRayC_Type_Picture_Default( P_image.m_cargo['this'] )
 
+def Compare( P_left, P_right ):
+     left_size    = P_left.size()
+     left_image = PIL.Image.frombytes( 'RGB', ( left_size[0], left_size[1] ), P_left.buffer(), 'raw', 'RGB', 0, 1 )
+     right_size    = P_right.size()
+     right_image = PIL.Image.frombytes( 'RGB', ( right_size[0], right_size[1] ), P_right.buffer(), 'raw', 'RGB', 0, 1 )
+     diff_img = ImageChops.difference(left_image, right_image)
+     #diff_img.show(title="Differences")
+
+     #diffA = 0
+     diffB = 0
+     for x in range(left_image.width):
+         for y in range(left_image.height):
+             #r1, g1, b1 = left_image.getpixel((x, y))
+             #r2, g2, b2 = right_image.getpixel((x, y))
+             rD, gD, bD = diff_img.getpixel((x, y))
+             #diffA  += abs(r1 - r2)+abs(g1 - g2)+abs(b1 - b2)
+             diffB +=  (rD)+ (gD)+ (bD)
+
+     # Calculate the average difference
+     #avg_diffA = diffA / (left_image.width * left_image.height * 3)
+     #print(f"Average Pixel Difference: {avg_diffA}")
+     avg_diffB = diffB / (left_image.width * left_image.height * 3)
+     print(f"Average Pixel Difference: {avg_diffB}")
+
+     return avg_diffB;
+
 def Print( P_image, P_position, P_string ):
-     size = P_image.size()
-     buffer =   P_image.buffer()
+     size    = P_image.size()
+     buffer  =   P_image.buffer()
      I_image = PIL.Image.frombytes( 'RGB', ( size[0], size[1] ), buffer, 'raw', 'RGB', 0, 1 )
      
      font_size = int( 1+size[1]*( 4 /100.0 ) );
