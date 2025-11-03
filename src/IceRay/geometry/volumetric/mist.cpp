@@ -1,8 +1,4 @@
 #include <limits>
-#include <algorithm>
-#include <iostream>
-#include <iomanip>
-#include <random>
 #include "./mist.hpp"
 
 using namespace GS_DDMRM::S_IceRay::S_geometry::S_volumetric;
@@ -17,60 +13,10 @@ struct GC_mist::C_intersect
  namespace {
 
 typedef GS_DDMRM::S_IceRay::S_type::GT_scalar          GTs_scalar;
-typedef GS_DDMRM::S_IceRay::S_type::GT_size          GTs_size;
-
-bool  GI_init = false;
-GS_DDMRM::S_IceRay::S_type::GT_size  GI_seed = 0;
-GS_DDMRM::S_IceRay::S_type::GT_size  GI_position = 0;
-
-//GTs_size  GI_size = 8; int GIs_niz[]={ 0,  1,   2, 3,   4,  6, 7  };
-GTs_size  GI_size = 18; int GIs_niz[] = { 0, 1,   2,   3,  4,   5,  6,   7,   8,   9,   10,  11,  12,  13,  14,  15,  16,  17 };
-
-//   7 - {  0,   7,   3,   4,   1,   6,   5, }
-//   8 - {  0,   7,   5,   6,   4,   8,   1,   3, };   //!< 18.55045244107744
-//   9 - {  0,   4,   8,   3,   7,   2,   5,   1,   6, };   //!< 15.937413194444444
-//   9 - {  0,   2,   4,   7,   8,   5,   6,   3,   1, }; 
-//   9 - {  0,   1,   2,   4,   3,   5,   8,   9,   6,  10,   7, };
-//  11 - {  0,   1,   2,   5,   9,   6,  10,   8,   3,   7,   4, }; 
-
-std::vector<GTs_size>  GIs_model = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-
-// 19.221801346801346
-//std::vector<GTs_size>  GIs_model = { 43,  20,   6,  37,   3,  21,  31,  24,  34,   4,  27,  19,  25,  11,   8,  38,   0,  41,  32,  22,  16,  33,   7,  26,  39,  14,  40,   5,  35,  17,  23,  36,   2,  12,  13,  10,   1,  15,  18,  29,   9,  30,  28,  42, }; 
-
-std::vector<GTs_size>  GIs_dynamic = GIs_model;
 
   GTs_scalar GFs_randX()
    {
     return rand()/((GTs_scalar)RAND_MAX);
-    return (GIs_dynamic[GI_position++% GI_size])/GTs_scalar( GI_size -1.0);
-
-    static int Is_counter=0;
-    //return (GIs_niz[Is_counter++% GI_size])/GTs_scalar( GI_size -1.0);
-
-    //GI_size = 4; static int niz[]={ 1,  2,  3,  4 };
-    //GI_size = 4; static int niz[]={ 1,  3,  4,  2 };
-
-    //GI_size =13; static int niz[]={ 1,  13,   7,   9,   8,   3,   5,   2,  12,   4,   6,  11  };
-    //GI_size =17; static int niz[]={ 1,  15,   3,  10,   2,  12,  11,   7,   9,  17,   5,   6,   8,  13,  14,  16,   4  };
-    // LOS!! GI_size =17; static int niz[]={ 1,   2,  14,  17,  15,   5,   8,   7,   9,   3,  12,  11,  13,  10,   6,  16,   4  };
-    //GI_size =17; static int niz[]={ 1,   2,   3,   4,   8,  10,  11,   5,  13,  16,   6,  12,   9,  14,  17,   7,  15 };
-    //GI_size =17; static int niz[]={ 1,  17,  10,   5,   4,   2,  15,  14,   3,  13,   8,  16,   6,   7,  12,   9,  11 };
-    //GI_size =17; static int niz[]={ 1,   2,   3,  10,   6,  14,   9,   7,   4,   5,  13,  11,   8,  17,  16,  15,  12 };
-    //return (niz[Is_counter++%Is_duzina]-1)/GTs_scalar(Is_duzina-1.0);
-
-    //return 0.2;
-    //return (rand()%2)/2.0;
-    //return (rand()%2)/2.0+::math::random::VanDerCorput<GTs_scalar>(Is_counter++,2);
-    //return+::math::random::VanDerCorput<GTs_scalar>(Is_counter++,3);
-    //return ;
-    //return (i++%5)/4.0;
-    //return (
-    //        - ::math::random::VanDerCorput<GTs_scalar>(Is_counter++,2)/3.0  + 1/3.0
-    //        + ::math::random::VanDerCorput<GTs_scalar>(Is_counter++,3)
-    //        + ::math::random::VanDerCorput<GTs_scalar>(Is_counter++,5)/5.0
-    //        - ::math::random::VanDerCorput<GTs_scalar>(Is_counter++,7)/7.0  + 1/7.0
-    //        ) /(1+1/3.0+1/5.0+1/7.0);
    }
 
 }
@@ -120,7 +66,7 @@ GC_mist::Fv_weight( )const
 bool GC_mist::Fv_intersect
  (
    T_scalar     & P_lambda
-  ,T_state      & P_state
+  ,T_state      & P_intersect
   ,T_ray   const& P_ray
  )const
  {
@@ -138,8 +84,8 @@ bool GC_mist::Fv_intersect
   //   return false;
   //  }
 
-  C_intersect &I_head  = P_state.F_content<C_intersect>();
-  T_state      I_tail;  P_state.F_tail<C_intersect>(I_tail);
+  C_intersect &I_head  = P_intersect.F_content<C_intersect>();
+  T_state      I_tail;  P_intersect.F_tail<C_intersect>(I_tail);
 
   bool I_hitB = M2_hull.M_intersect->Fv_intersect( I_begin, I_tail, P_ray );
 
@@ -172,8 +118,7 @@ bool GC_mist::Fv_intersect
     default: return false;
    }
   T_scalar I_bound = GFs_randX();
-           //I_bound = 0.5;
-/*
+
   T_scalar I_steps = (I_end - I_begin) / M2_precision;
   T_scalar I_total = I_steps * M2_precision * M2_density;
   if( I_bound < I_total )
@@ -183,8 +128,9 @@ bool GC_mist::Fv_intersect
     return true;
    }
   return false;
-*/
-  T_scalar I_precision = 0.01;
+
+/*
+  T_scalar const& I_precision = M2_precision;
   T_scalar I_lambda = I_begin;
   T_scalar I_summa = 0.0;
   while( I_lambda < I_end )
@@ -205,10 +151,8 @@ bool GC_mist::Fv_intersect
       return true;
      }
    }
-
+*/
   return false;
-
-/**/
  }
 
 void GC_mist::Fv_normal
@@ -253,41 +197,6 @@ GC_mist::Fv_distance( T_coord const& P_point )const
 bool   GC_mist::F_seed( T_size const& P_seed )
  {
   M2_seed = P_seed;
-  if(false){
-    if( 1000000 < P_seed )
-     {
-      M2_seed -= 1000000;
-      GIs_model = GIs_dynamic;
-     }
-    if( GI_seed != M2_seed )
-     {
-      GIs_dynamic = GIs_model;
-     }
-    GI_seed = M2_seed;
-
-   T_size I_chunck = 3;
-   GI_size  = GIs_dynamic.size();
-
-   M2_seed = M2_seed%(GIs_dynamic.size() - I_chunck + 1 );
-   if( true == GI_init  )
-   {
-      std::shuffle( GIs_dynamic.begin()+ M2_seed, GIs_dynamic.begin() + M2_seed + I_chunck, std::mt19937( std::random_device()() ) );
-   }
-   else
-   {
-     GI_init = true;
-   }
-  }
-
-  if(true){
-    std::next_permutation( GIs_dynamic.begin()+1, GIs_dynamic.end() );
-   }
-  std::cout << "PERMUTATION: "<< (GI_size= GIs_dynamic.size()) <<" {";
-  for( T_size I_index =0;  I_index < GI_size; ++I_index )
-   {
-    std::cout << std::setw(3) << GIs_dynamic[ I_index ] << ", ";
-   }
-  std::cout <<"}; " << std::endl;
   return bool( true );
  }
 
@@ -300,7 +209,6 @@ bool   GC_mist::F_density( T_scalar const& P_density )
 bool   GC_mist::F_precision( T_scalar const& P_precision )
  {
   M2_precision = P_precision;
-  // set 
   return bool( true );
  }
 

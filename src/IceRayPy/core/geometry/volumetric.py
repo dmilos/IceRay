@@ -69,6 +69,6 @@ class Smoke:
         self.m_cargo['dll'].IceRayC_Geometry_Volumetric_Smoke_Hull( self.m_cargo['this'], P_hull.m_cargo['this'] )
         self.m_cargo['hull'] = P_hull
 
-    def density( self, P_density ):
-        self.m_cargo['dll'].IceRayC_Geometry_Volumetric_Smoke_Density( self.m_cargo['this'],  P_density.encode('utf-8') )
+    def expression( self, P_density ):
+        self.m_cargo['dll'].IceRayC_Geometry_Volumetric_Smoke_Expression( self.m_cargo['this'],  P_density.encode('utf-8') )
 

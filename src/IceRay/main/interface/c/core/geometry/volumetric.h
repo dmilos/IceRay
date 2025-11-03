@@ -20,7 +20,7 @@ IceRayC__EXPORT IceRayC__DECLSPEC  int                     IceRayC_Geometry_Volu
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Volumetric_Smoke0( );
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Volumetric_Smoke2( IceRayC_Geometry_Handle P_hull );
 IceRayC__EXPORT IceRayC__DECLSPEC  int                     IceRayC_Geometry_Volumetric_Smoke_Hull( IceRayC_Geometry_Handle P_this, IceRayC_Geometry_Handle P_hull );
-IceRayC__EXPORT IceRayC__DECLSPEC  int                     IceRayC_Geometry_Volumetric_Smoke_Density( IceRayC_Geometry_Handle P_this, char *P_density );
+IceRayC__EXPORT IceRayC__DECLSPEC  int                     IceRayC_Geometry_Volumetric_Smoke_Expression( IceRayC_Geometry_Handle P_this, char *P_expression );
 
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Volumetric_Vacuum0();
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Handle IceRayC_Geometry_Volumetric_Vacuum1( IceRayC_TypeCoordScalar3D* P_lo, IceRayC_TypeCoordScalar3D* P_hi );

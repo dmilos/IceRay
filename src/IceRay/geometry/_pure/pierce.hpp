@@ -56,22 +56,21 @@
                   {
                    break;
                   }
-                  P_lambda[Ir_count] = I_lambda + I_begin;
+                 P_lambda[Ir_count] = I_lambda + I_begin;
 
-                  ++Ir_count;
-                  if( Ir_count == P_count )
-                   {
-                    break;
-                   }
+                 ++Ir_count;
+                 if( Ir_count == P_count )
+                  {
+                   break;
+                  }
 
-                  ::math::linear::vector::combine( I_ray.M_origin, I_ray.M_origin, I_lambda, I_ray.M_direction );
-                  I_end -= I_lambda;
-                  I_begin += I_lambda;
+                 ::math::linear::vector::combine( I_ray.M_origin, I_ray.M_origin, I_lambda, I_ray.M_direction );
+                 I_end -= I_lambda;
+                 I_begin += I_lambda;
                 }
 
                 return Ir_count;
               }
-
           };
 
         }

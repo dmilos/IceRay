@@ -8,8 +8,11 @@
 #include "../_pure/normal.hpp"
 #include "../_pure/inside.hpp"
 #include "../_pure/distance.hpp"
+#include "../_pure/pierce.hpp"
+
 #include "../volumetric/vacuum.hpp"
 #include "IceRay/type/basic/string.hpp"
+#include "IceRay/utility/expression/expression.hpp"
 
 
  namespace GS_DDMRM
@@ -18,6 +21,8 @@
     {
      namespace S_geometry
       {
+       namespace S_volumetric
+        {
 
        class GC_smoke
         : public GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_intersect
@@ -26,16 +31,16 @@
         , public GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_distance
         {
          public:
+           typedef GS_DDMRM::S_IceRay::S_type::GT_size                         T_size;
            typedef GS_DDMRM::S_IceRay::S_type::GT_scalar                       T_scalar;
            typedef GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar3D            T_coord;
+           typedef GS_DDMRM::S_IceRay::S_type::GT_string                       T_string;
 
-           typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_intersect        T_hull;
-
-           typedef GS_DDMRM::S_IceRay::S_type::GT_string   T_string;
+           typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base      T_geometry, T__base;
 
          public:
            GC_smoke();
-         //GC_smoke( T_hull * P_hull );
+         //GC_smoke( T__base * P_hull );
           ~GC_smoke( );
 
          public:
@@ -48,12 +53,12 @@
            T_size  Fv_weight( )const;
 
          public:
-           T_string    const& F_density()const{ return M2_density; }
-           bool               F_density( T_string const& P_density );
+           T_string    const& F_expression()const{ return M2_expression; }
+           bool               F_expression( T_string const& P_expression );
          protected:
-           T_string        & F1_density(){ return M2_density; }
+           T_string        & F1_expression(){ return M2_expression; }
          private:
-           T_string M2_density;
+           T_string M2_expression;
 
          public:
             T_scalar    const& F_precision()const{ return M2_precision; }
@@ -68,16 +73,34 @@
            static T_vacuum & Fs_vacuum();
 
          public:
-            T_hull const& F_hull( )const;
-            void F_hull( T_hull * P_hull  );
+              T__base const& F_hull( )const;
+              bool           F_hull( T__base * P_hull );
          private:
-            T_hull *M2_hull;
+             typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_intersect  T_intersect;
+             typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_pierce     T_pierce;
+             typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_inside     T_inside;
+           
+              typedef struct C2_hull
+               {
+                T__base      *M__base;
+                T_intersect  *M_intersect;
+                T_inside     *M_inside;
+                T_pierce     *M_pierce;
+              }T2_hull;
+              T2_hull M2_hull;
 
          private:
            struct C_intersect;
+         private:
+            typedef GS_DDMRM::S_IceRay::S_utility::S_expression::GC_program   T_program;
+            typedef GS_DDMRM::S_IceRay::S_utility::S_expression::GC_memory    T_memory;
 
+            T_program M2_program;
+            mutable T_memory  M2_memory;
+            T_size M2_x, M2_y, M2_z, M2_result;
         };
 
+        }
       }
     }
   }

@@ -110,14 +110,14 @@ int IceRayC_Geometry_Volumetric_Mist_Hull( IceRayC_Geometry_Handle P_this, IceRa
 IceRayC_Geometry_Handle IceRayC_Geometry_Volumetric_Smoke0()
  {
   typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;
-  typedef GS_DDMRM::S_IceRay::S_geometry::GC_smoke Tf_smoke;
+  typedef GS_DDMRM::S_IceRay::S_geometry::S_volumetric::GC_smoke Tf_smoke;
   auto Ir_result = new Tf_smoke{};
   return cpp2c( Ir_result );
 }
 IceRayC_Geometry_Handle IceRayC_Geometry_Volumetric_Smoke2( IceRayC_Geometry_Handle P_hull )
 {
   typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;
-  typedef GS_DDMRM::S_IceRay::S_geometry::GC_smoke Tf_smoke;
+  typedef GS_DDMRM::S_IceRay::S_geometry::S_volumetric::GC_smoke Tf_smoke;
   auto Ir_result = new Tf_smoke{ /*dynamic_cast<Tf_smoke::T_hull*>( c2cpp( P_hull ) )*/ };
   return cpp2c( Ir_result );
 }
@@ -125,7 +125,7 @@ int IceRayC_Geometry_Volumetric_Smoke_Hull( IceRayC_Geometry_Handle P_this, IceR
  {
   typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;
   typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_intersect Tf_hull;
-  typedef GS_DDMRM::S_IceRay::S_geometry::GC_smoke Tf_smoke;
+  typedef GS_DDMRM::S_IceRay::S_geometry::S_volumetric::GC_smoke Tf_smoke;
 
   auto I_this = dynamic_cast< Tf_smoke *>( c2cpp( P_this ) );
   if( nullptr == I_this )
@@ -136,17 +136,17 @@ int IceRayC_Geometry_Volumetric_Smoke_Hull( IceRayC_Geometry_Handle P_this, IceR
   return 1;
  }
 
-int                     IceRayC_Geometry_Volumetric_Smoke_Density( IceRayC_Geometry_Handle P_this, char *P_density )
+int                     IceRayC_Geometry_Volumetric_Smoke_Expression( IceRayC_Geometry_Handle P_this, char *P_expression )
  {
   typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;
-  typedef GS_DDMRM::S_IceRay::S_geometry::GC_smoke Tf_smoke;
+  typedef GS_DDMRM::S_IceRay::S_geometry::S_volumetric::GC_smoke Tf_smoke;
 
   auto I_this = dynamic_cast< Tf_smoke *>( c2cpp( P_this ) );
   if( nullptr == I_this )
    {
     return 0;
    }
-  I_this->F_density( P_density );
+  I_this->F_expression( P_expression );
   return 1;
  }
 

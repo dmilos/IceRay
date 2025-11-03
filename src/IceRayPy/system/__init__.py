@@ -520,7 +520,7 @@ def _MapFunction_Geometry_Volumetric( P_dll ): #DONE
     _MakeFunction( P_dll.IceRayC_Geometry_Volumetric_Smoke0                   , ctypes.c_void_p  , [] )
     _MakeFunction( P_dll.IceRayC_Geometry_Volumetric_Smoke2                   , ctypes.c_void_p  , [ctypes.c_void_p] )
     _MakeFunction( P_dll.IceRayC_Geometry_Volumetric_Smoke_Hull               , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_void_p] )
-    _MakeFunction( P_dll.IceRayC_Geometry_Volumetric_Smoke_Density            , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_char_p] )
+    _MakeFunction( P_dll.IceRayC_Geometry_Volumetric_Smoke_Expression         , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_char_p] )
     _MakeFunction( P_dll.IceRayC_Geometry_Volumetric_Vacuum0                  , ctypes.c_void_p  , [] )
     _MakeFunction( P_dll.IceRayC_Geometry_Volumetric_Vacuum1                  , ctypes.c_void_p  , [ctypes.c_void_p,ctypes.c_void_p] )
     _MakeFunction( P_dll.IceRayC_Geometry_Volumetric_Vacuum_Box               , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_void_p] )

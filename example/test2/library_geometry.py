@@ -82,7 +82,7 @@ list = {
 
      'V-vacuum'      : IceRayPy.core.geometry.volumetric.Vacuum,
      'V-Mist'        : IceRayPy.library.geometry.volumetric.Mist,
-     'V-Smoke'       : IceRayPy.core.geometry.volumetric.Smoke,
+     'V-Smoke'       : IceRayPy.library.geometry.volumetric.Smoke,
      'library-1m'    : IceRayPy.library.geometry.OneM,
      'L-Bpair'       : IceRayPy.library.geometry.blobby.Pair
      }

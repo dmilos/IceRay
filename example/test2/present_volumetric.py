@@ -21,8 +21,8 @@ else:
 
 
 I_picture ={}
-I_picture[ 'width']  = int( 1920*.25 )
-I_picture['height']  = int( 1080*.25 )
+I_picture[ 'width']  = int( 1920 )
+I_picture['height']  = int( 1080 )
 I_picture['aspect']  = I_picture['width'] / I_picture['height']
 I_picture['watermark'] = ""
 
@@ -43,10 +43,10 @@ I_picture['time'] = 0
 I_picture['window'] = {}
 I_picture['window']['A'] = {}
 I_picture['window']['B'] = {}
-I_picture['window']['A']['x'] = int( 0.10 * I_picture['width'] )
-I_picture['window']['B']['x'] = int( 0.90 * I_picture['width'] )
-I_picture['window']['A']['y'] = int( 0.43 * I_picture['height'] )
-I_picture['window']['B']['y'] = int( 0.47 * I_picture['height'] )
+I_picture['window']['A']['x'] = int( 0.0 * I_picture['width'] )
+I_picture['window']['B']['x'] = int( 1.0 * I_picture['width'] )
+I_picture['window']['A']['y'] = int( 0.0 * I_picture['height'] )
+I_picture['window']['B']['y'] = int( 1.0 * I_picture['height'] )
 
 I_picture['model']={}
 I_picture['model']['name'] = "./_out/sample/384x010.pnm"
@@ -59,7 +59,7 @@ I_scene['room']       = 'C-close'
 I_scene['camera']     = 'F-persp'
 I_scene['geometry']   = 'vacuum'
 I_scene['medium']     = 'trans'
-I_scene['pigment']    = 'I-ALP'
+I_scene['pigment']    = 'P-gradientBW'
 I_scene['light']      = 'chand-nine'
 I_scene['decoration'] = 'grid'
 
@@ -90,7 +90,7 @@ I_config['light']   = {}
 I_config['light']['sample']   = 1
 I_config['decoration']   = {}
 I_config['geometry'] ={}
-I_config['geometry']['expression']='sin(sqrt(x*x+y*y))'
+I_config['geometry']['expression']='1/sqrt(x*x+y*y)'
 I_config['geometry']['density']= 0.99
 
 I_config['composer']={}
@@ -100,7 +100,7 @@ I_config['composer']['hot']['y'] = 400
 I_config['composer']['manager'] = {}
 I_config['composer']['manager']['pixel'] = {}
 I_config['composer']['manager']['pixel']['type'] = 'grid' # 'center', 'grid', 'random', 'sobol'
-I_config['composer']['manager']['pixel']['size'] = 2
+I_config['composer']['manager']['pixel']['size'] = 3
 g = 1.22074408460575947536 #(math.sqrt(5)+1)/2
 
 g = (math.sqrt(5)+1)/2
@@ -113,11 +113,11 @@ I_config['camera']['aspect'] = I_picture['aspect']
 #I_config['camera']['vfov']   = math.radians( 90 )
 
 geometry_list = [
-     #'V-vacuum',
-     'V-Mist',
-     #'V-Smoke',
+      'V-vacuum',
+      'V-Mist',
+      'V-Smoke',
  ]
-
+"""
 I_config['camera']['eye']   = IceRayPy.type.math.coord.Scalar3D( p*g * math.cos( math.radians(90)), p*g* math.sin( math.radians(90)) , +g )
 
 array_len = 44
@@ -125,7 +125,7 @@ chunck_len = 3
 
 best_minimum = 100;
 seed = 0;
-for index in range(1,362885,1): #(0,)  1, 2, 5, 10, 20,50, 100, 200, 500, 1000,
+for index in range(1,360,1): #(0,)  1, 2, 5, 10, 20,50, 100, 200, 500, 1000,
     print("-----------------------------")
     I_picture['prefix'] = "%04i"%(index)
     I_config['geometry']['density']= 0.25
@@ -155,3 +155,19 @@ for index in range(1,362885,1): #(0,)  1, 2, 5, 10, 20,50, 100, 200, 500, 1000,
             I_picture['temp']['crop'].storePNM( "goodone.pnm")
 
         print(  "I: "+str(index)+ " S: " + str(seed )+ " - best_minimum: " +  str(best_minimum), flush=True  )
+
+"""
+
+for index in range( 0, 360, 1 ): # 1, 2, 3, 4, 5, 
+    I_config['camera'][ 'eye'] = IceRayPy.type.math.coord.Scalar3D( +c*p*g * math.cos( math.radians(index)  ), +1.5* p*g * math.sin( math.radians(index)  ),  +g )
+    I_config['geometry']['density']= 0.3333333
+    #I_config['composer']['manager']['pixel']['size'] = 2
+    for item in geometry_list :
+        I_picture['prefix'] = item + '/' +"%04i"%(index)
+        I_scene['geometry']= item
+        render.doIt( I_dll, I_picture, I_scene, I_inventory, I_config )
+
+import os
+def prepare_readme():
+    #os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-cone_trans_I-ALP_chand-nine_0000.pnm',            I_picture['folder']+'/'+'geometry_quadric_cone.pnm' )
+    pass

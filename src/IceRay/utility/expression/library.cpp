@@ -120,8 +120,10 @@ GC_library::GC_library(   )
   M2_container["ceil"]  = T_instruction( &lib_ceil,  0, 0 );
   M2_container["floor"] = T_instruction( &lib_floor, 0, 0 );
   M2_container["fmod"]  = T_instruction( &lib_fmod,  0, 0, 0 );
+  M2_container["mod"]   = T_instruction(&lib_fmod, 0, 0, 0);
   M2_container["trunc"] = T_instruction( &lib_trunc, 0, 0 );
   M2_container["fabs"]  = T_instruction( &lib_abs, 0, 0 );
+  M2_container["abs"]   = T_instruction(&lib_abs, 0, 0);
 
   //M2_container["×"]   = T_instruction( &cross, 0, 0, 0 );
   //M2_container["."]   = T_instruction( &dot, 0, 0, 0 );
