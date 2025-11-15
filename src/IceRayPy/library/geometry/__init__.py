@@ -43,7 +43,7 @@ def MotionBlur( P_dll, P_child = None ):
     direction = Coord3D( -center[0]-center[0], -center[1]-center[1], -center[2]-center[2] )
 
     result = IceRayPy.core.geometry.transform.MotionBlur( P_dll )
-    I_child = IceRayPy.core.geometry.simple.Sphere( P_dll, center, 0.5 )
+    I_child = IceRayPy.core.geometry.simple.Sphere( P_dll, center, 0.25 )
     if( None != P_child ) and ( hasattr( P_child, 'm_cargo' ) ):
         result.child( P_child )
     else:

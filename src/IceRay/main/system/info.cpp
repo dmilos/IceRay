@@ -34,15 +34,64 @@ int InitInfo( )
   I_info["__LINE__"] = std::to_string(__LINE__);
   I_info["__FILE__"] = __FILE__;
 
+
+#if defined( __STDC__  )
+  I_info["__STDC__"] = std::to_string( __STDC__ );
+#endif
+
+#if defined( __STDC_HOSTED__  )
+  I_info["__STDC_HOSTED__"] = std::to_string( __STDC_HOSTED__  );
+#endif
+
+#if defined( __STDC_NO_ATOMICS__  )
+  I_info["__STDC_NO_ATOMICS__"] = std::to_string( __STDC_NO_ATOMICS__  );
+#endif
+
+#if defined( __STDC_NO_COMPLEX__  )
+  I_info["__STDC_NO_COMPLEX__"] = std::to_string( __STDC_NO_COMPLEX__ );
+#endif
+
+#if defined( __STDC_NO_THREADS__  )
+  I_info["__STDC_NO_THREADS__"] = std::to_string( __STDC_NO_THREADS__ );
+#endif
+
+#if defined( __STDCPP_THREADS__  )
+  I_info["__STDCPP_THREADS__"] = std::to_string( __STDCPP_THREADS__  );
+#endif
+
+#if defined( __STDC_NO_VLA__  )
+  I_info["__STDC_NO_VLA__"] = std::to_string( __STDC_NO_VLA__  );
+#endif
+
+#if defined( __STDCPP_DEFAULT_NEW_ALIGNMENT__  )
+  I_info["__STDCPP_DEFAULT_NEW_ALIGNMENT__"] = std::to_string( __STDCPP_DEFAULT_NEW_ALIGNMENT__  );
+#endif
+
+#if defined( __STDC_VERSION__  )
+  I_info["__STDC_VERSION__"] = std::to_string( __STDC_VERSION__  );
+#endif
+
+
 #if defined( _DEBUG  )
   I_info["_DEBUG"] =  std::to_string( _DEBUG );
 #endif
 
 #if defined( _MSC_VER  )
+// https://learn.microsoft.com/en-us/cpp/preprocessor/predefined-macros?view=msvc-170
+
   I_info["OS"] = "Microsoft";
   I_info["compiler"] = "MSVC";
   I_info["_MSC_BUILD"] = std::to_string( _MSC_BUILD );
   I_info["_MSC_FULL_VER"] = std::to_string( _MSC_FULL_VER );
+  I_info["_MSC_VER"] = std::to_string( _MSC_VER  );
+  I_info["_MSVC_LANG "] = std::to_string( _MSVC_LANG   );
+  I_info["_MSVC_TRADITIONAL "] = std::to_string( _MSVC_TRADITIONAL   );
+  I_info["_MT"] = std::to_string( _MT );
+  I_info["__TIMESTAMP__"] = __TIMESTAMP__ ;
+
+#if defined( _DLL   )
+  I_info["_DLL "] = std::to_string( _DLL  ) ;
+#endif
 
 #if defined( _WIN32  )
   I_info["_WIN32"] = std::to_string( _WIN32 ) ;
@@ -51,8 +100,24 @@ int InitInfo( )
 #if defined( _WIN64  )
   I_info["_WIN64"] = std::to_string( _WIN64 ) ;
 #endif
+
+#if defined( _MSVC_LANG  )
   I_info["_MSVC_LANG"] = std::to_string( _MSVC_LANG );
 #endif
+
+#if defined( __FUNCDNAME__  )
+  I_info["__FUNCDNAME__"] = __FUNCDNAME__ ;
+#endif
+
+#if defined( __FUNCSIG__  )
+  I_info["__FUNCSIG__"]   =__FUNCSIG__;
+#endif
+
+#if defined( __FUNCTION__  )
+  I_info["__FUNCTION__"]  =__FUNCTION__;
+#endif
+
+#endif   //_MSC_VER
 
 #if defined( __GNUC__  )
  // https://gcc.gnu.org/onlinedocs/cpp/Common-Predefined-Macros.html#Common-Predefined-Macros

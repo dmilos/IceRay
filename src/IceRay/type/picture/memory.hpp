@@ -47,6 +47,7 @@
                   << "s: " << M2_data.size() << "; "
                   << std::endl;
 #endif
+                 return false;
                 }
                P_color = M2_data[ index ];
                return true;

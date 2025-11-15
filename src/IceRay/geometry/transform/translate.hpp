@@ -84,8 +84,8 @@
              // T_affine M2_2world, M2_2local;
 
            public:
-             bool  F_child( T__base *P_child );
-           //TODO T__base* F_child( );
+             bool  F_child( T_geometry *P_child );
+           //TODO T_geometry* F_child( );
            private:
              typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_intersect    T2_intersect;
              typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_normal       T2_normal;
