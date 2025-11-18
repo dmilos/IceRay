@@ -10,7 +10,7 @@ import IceRayPy
 
 import render
 
-dll_path = IceRayPy.system.SearchCDLL()
+dll_path = IceRayPy.system.SearchCDLL( P_preferDebug = False )
 
 if 0 != len( dll_path ):
     I_dll = IceRayPy.system.LoadCDLL( dll_path )
@@ -84,6 +84,11 @@ I_config['light']   = {}
 I_config['light']['sample']   = 1
 I_config['decoration']   = {}
 I_config['geometry']   = {}
+I_config['composer'] = {}
+I_config['composer']['hot'] = {}
+I_config['composer']['hot']['x'] = 112
+I_config['composer']['hot']['y'] = 199
+
 
 
 g = 1.22074408460575947536 #(math.sqrt(5)+1)/2

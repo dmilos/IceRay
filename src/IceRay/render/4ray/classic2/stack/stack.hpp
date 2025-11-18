@@ -33,7 +33,8 @@
                  virtual T_accident      &   Fv_topAccident()=0;
                  virtual T_accident const&   Fv_topAccident()const=0;
 
-                 virtual void            Fv_pop()=0;
+               //virtual void            Fv_clear() = 0;
+                 virtual void            Fv_pop() = 0;
                  virtual T_size const&   Fv_occupancy()const=0;
                  virtual void            Fv_reserve( T_size const& P_capacity )=0;
 

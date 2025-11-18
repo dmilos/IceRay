@@ -1,7 +1,11 @@
 #include <iostream>
 #include <iomanip>
 #include <chrono>
-#include "block.hpp"
+
+#include "./block.hpp"
+
+//#include "memory/allocator/fixed.hpp"
+//#include "IceRay/render/4ray/classic2/algorithm.hpp"
 
 using namespace GS_DDMRM::S_IceRay::S_render::S_scanner;
 
@@ -24,7 +28,7 @@ GC_block::GC_block( T_range const& P_window, T_pixel * P_pixel )
  : T__pure( P_pixel )
  ,M2_window( ::math::linear::vector::fill( T_cell{}, 0 ) , ::math::linear::vector::fill( T_cell{}, -1 ) )
  {
-  M2_cout = false;
+  M2_cout = true;
   M2_hot[0] = M2_hot[1] = 1;
   M2_dot = 10;
   M2_asterisk = 100;
@@ -99,6 +103,8 @@ GC_block::F1v_render( T_picture & P_picture )
         if( ( M2_hot[0] == I_cell[0] ) && ( M2_hot[1] == I_cell[1] ) )
          {
           I_cell = I_cell; //!< Place break point here
+          //GS_DDMRM::S_system::S_allocator::S_fixed::GC_manager::M_debug = true;
+          //GS_DDMRM::S_IceRay::S_render::S_ray::S_classic2::GC_algorithm::M_debug = true;
           // debug ON
          }
         else

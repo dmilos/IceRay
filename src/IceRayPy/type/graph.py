@@ -124,9 +124,9 @@ def Print( P_image, P_position, P_string ):
      font = PIL.ImageFont.load_default( font_size )
 
      for offset_x, offset_y in [(-1, -1), (-1, 1), (1, -1), (1, 1)]:
-        PIL.ImageDraw.Draw( I_image ).text( (P_position[0]+offset_x,P_position[1]+offset_y), P_string, font=font, color=(0, 0, 0) )
+        PIL.ImageDraw.Draw( I_image ).text( (P_position[0]+offset_x,P_position[1]+offset_y), P_string, font=font, fill=(0, 0, 0) )
 
-     PIL.ImageDraw.Draw( I_image ).text( (P_position[0],P_position[1]), P_string, font=font, color=(255, 255, 255) )
+     PIL.ImageDraw.Draw( I_image ).text( (P_position[0],P_position[1]), P_string, font=font, fill=(255, 255, 255) )
      P_image.transfer( I_image.tobytes() )
 
 #print( '</' + __name__ + ' name=\'' +   __file__ + '\'>' )

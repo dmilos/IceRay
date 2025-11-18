@@ -135,12 +135,13 @@
                       P_next.Fv_push(); ++I_total;
                       auto & I_ray = P_next.Fv_top();
 
+                      I_ray.M_derivation  = P_heading.M_derivation;
+                      I_ray.M_parentUID   = P_heading.M_UID;
                       I_ray.M_geometryID  = P_heading.M_geometryID;
                       I_ray.M_depth       = P_heading.M_depth;
                       I_ray.M_origin      = P_heading.M_origin;
                       I_ray.M_state       = P_heading.M_state;
                       I_ray.M_direction   = I_direction;
-                      I_ray.M_derivation  = P_heading.M_derivation;
                       I_ray.M_ior         = P_heading.M_ior;
                       I_ray.M_intesity    = P_heading.M_intesity / I_count;  //!< todo Not optimized;  P_gauss?
                       I_ray.M_coefficient = T_scalar(1)/ I_count;     //!< todo Not optimized; P_gauss?

@@ -10,11 +10,17 @@
 
 using namespace GS_DDMRM::S_IceRay::S_render::S_ray::S_classic2;
 
+#if ! defined(Dc_IceRay_render_ray_classic2_DEBUG)
+#define Dc_IceRay_render_ray_classic2_DEBUG 0
+#endif
+
+bool GC_algorithm::M_debug = false;
 
 GC_algorithm::GC_algorithm( )
  {
   M2_cout = false;
   M2_object = &GC_algorithm::Fs_vacuum();
+  M2_total = 2000;
   M2_depth = 8;
   M2_trash = T_scalar( 0.5 );
   M2_next = 16;
@@ -33,14 +39,14 @@ GC_algorithm::GC_algorithm( )
     << std::setw(3) << std::setfill('0')<< (DP_number / 1            )% 1000 << " "  \
     << "( " << std::setw(12)<< DP_number   << " ) "                                 \
     <<  std::setw(6) << std::fixed << std::setprecision(5) << 100 * (DP_number / (double)I_summae) << " %; "      \
-    <<  std::setw(6) << std::fixed << std::setprecision(5) << 100 * (DP_number / (double)M2_stack.F_total()) << " %; "
+    <<  std::setw(6) << std::fixed << std::setprecision(5) << 100 * (DP_number / (double)M2_stack.F_lastUID()) << " %; "
 
 GC_algorithm::~GC_algorithm( )
  {
   if( false == M2_cout ) return;
 
-  T_size I_summae = M2_stack.F_total();
-  std::cout << "Summary:      " << PRINT( M2_stack.F_total() )       << std::endl;
+  T_size I_summae = M2_stack.F_lastUID();
+  std::cout << "Summary:      " << PRINT( M2_stack.F_lastUID() )       << std::endl;
 
   for( auto const& I_info : M2_statistic.M_depth )
    {
@@ -77,6 +83,11 @@ GC_algorithm::T2_wrap & GC_algorithm::Fs_vacuum()
   return Is_vacuum;
  }
 
+GC_algorithm::T_size const& GC_algorithm::F_depth()const
+ {
+  return M2_depth;
+ }
+
 bool GC_algorithm::F_depth( T_size const& P_depth )
  {
   M2_depth = P_depth;
@@ -102,6 +113,17 @@ bool GC_algorithm::F_depth( T_size const& P_depth )
   return true;
  }
 
+GC_algorithm::T_size const& GC_algorithm::F_total()const
+ {
+  return M2_total;
+ }
+
+bool         GC_algorithm::F_total( T_size const& P_total )
+{
+  M2_total = P_total;
+  return true;
+}
+
 bool GC_algorithm::F_trash( T_scalar const& P_trash )
  {
   M2_trash = P_trash;
@@ -122,13 +144,43 @@ bool GC_algorithm::F_ior( T_scalar const& P_ior )
 
 void GC_algorithm::Fv_trace( T_color &P_color, T_ray const& P_incident )
  {
+#if 1 == Dc_IceRay_render_ray_classic2_DEBUG
+  if( true == M_debug )
+   {
+    std::cout << "Cleanup "<< std::endl;
+   }
+#endif
+
+  if( 0 != M2_allocator.F_acquired() )
+   {
+    M2_stack.F_clear();
+   }
+  if( 0 != M2_stack.Fv_occupancy() )
+   {
+    M2_stack.F_clear();
+   }
+  if( 0 != M2_allocator.F_acquired() )
+   {
+    M2_allocator.F_clear();
+   }
+
+#if 1 == Dc_IceRay_render_ray_classic2_DEBUG
+  if( true == M_debug )
+   {
+    std::cout << "Init "<< std::endl;
+   }
+#endif
+
   {
    M2_stack.Fv_push();
    auto & I_accident = M2_stack.Fv_topAccident();
    auto & I_incoming = I_accident.M_incoming;
 
-    I_incoming.M_derivation = T2_ray::Ee_derivation::En_Eye;
-    (T_ray&)I_incoming = P_incident;
+   I_incoming.M_depth = 0;
+   I_incoming.M_parentUID = 0;
+   I_incoming.M_geometryID = 0;
+   I_incoming.M_derivation = T2_ray::Ee_derivation::En_Eye;
+   (T_ray&)I_incoming = P_incident;
 
    M2_allocator.F_new( I_incoming.M_state.F_chunk() ) ;
    F1_object().F_geometry().Fv_reset( I_incoming.M_state );
@@ -139,10 +191,15 @@ void GC_algorithm::Fv_trace( T_color &P_color, T_ray const& P_incident )
 
   F1_object().F_material().Fv_IOR( M2_stack.F_jurisdiction(), P_incident.M_origin );
 
+#if 1 == Dc_IceRay_render_ray_classic2_DEBUG
+  if( true == M_debug )
+   {
+    std::cout << "Job "<< std::endl;
+   }
+#endif
+
   F2_trace( P_color );
  }
-
-bool GI_debug = false;
 
 void GC_algorithm::F2_trace( T_color &P_color )
  {
@@ -153,19 +210,30 @@ void GC_algorithm::F2_trace( T_color &P_color )
   P_color = ::color::constant::black_t{};
   auto & I_jurisdiction = M2_stack.F_jurisdiction();
 
+  T_size I_total = 0;
+
   while( 0 != M2_stack.Fv_occupancy() )
    {
+    if( F_total() == I_total )
+     {
+      break;
+     }
+
+    ++I_total;
     auto & I_accident = M2_stack.Fv_topAccident();
     auto & I_incoming = I_accident.M_incoming;
-    if( true == GI_debug )
+
+#if 1 == Dc_IceRay_render_ray_classic2_DEBUG
+    if( true == M_debug )
      {
-      std::cout << std::endl;
-      std::cout << (int)I_accident.M_consume << "; ";
-      std::cout << (int)I_incoming.M_derivation << "; ";
-      std::cout << I_incoming.M_geometryID  << "; ";
-      std::cout << I_incoming.M_ior << "; ";
+      std::string I_spaces; I_spaces.resize( 2 * I_incoming.M_depth, ' ' );
+      std::cout << I_spaces ;
+      std::cout << GS_DDMRM::S_IceRay::S_type::S_ray::GC_trace::to_string( I_incoming );
+      std::cout << "s: " << std::setw( 5 ) << M2_stack.Fv_occupancy() << "; ";
+      std::cout << std::setw( 8 ) << GS_DDMRM::S_IceRay::S_material::GC_intersect::to_string( I_accident.M_consume ) << "; ";
       std::cout << std::endl;
      }
+#endif
 
     switch( I_accident.M_consume )
      {
@@ -248,8 +316,13 @@ void GC_algorithm::F2_trace( T_color &P_color )
        }
      }
 
-    M2_stack.Fv_mark();
+    //if( false == I_incoming.M_state.M2_managed.F_allocator()->F_check( I_incoming.M_state.M2_managed ) )
+    // {
+    //  std::cout << "AAA" << std::endl;
+    //  continue;
+    // }
 
+    M2_stack.Fv_mark();
     ++M2_statistic.M_depth[ I_incoming.M_depth ][ (int)C_statistic::Ee_type::En_traced ];
 
     auto & I_intersection = I_accident.M_intersection;
@@ -288,9 +361,10 @@ void GC_algorithm::F2_trace( T_color &P_color )
     P_color += I_color;
    }
 
-  if( 0 != M2_allocator.F_acquired() )
+#if 1 == Dc_IceRay_render_ray_classic2_DEBUG
+  if( true == M_debug )
    {
-    M2_allocator.F_clear();
+    std::cout << "---" << std::endl;
    }
-    /*    */
+#endif
   }

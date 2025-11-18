@@ -72,20 +72,22 @@ class Affine:
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Geometry_Transform_Affine0()
 
+        self.child( IceRayPy.core.geometry.simple.Cylinder( P_dll ) )
+        self.child( IceRayPy.core.geometry.flat.Box( P_dll, Coord3D( -1, -1, -1 ), Coord3D( +1, +1, +1 ) ) )#<! default
         self.child( IceRayPy.core.geometry.simple.Sphere( P_dll ) ) #<! default
 
         if( None != P_child ) and ( hasattr( P_child, 'm_cargo' ) ):
             self.child( P_child )
 
-        tO = Coord3D( -1, -1, -0.5 )
-        tX = Coord3D(  1, -1, -0.5 )
-        tY = Coord3D( -1, +1, -0.5 )
-        tZ = Coord3D( -1, -1, +0.5 )
-
         sO = Coord3D( -1, -1, -1 )
         sX = Coord3D(  1, -1, -1 )
         sY = Coord3D( -1, +1, -1 )
         sZ = Coord3D( -1, -1, +1 )
+
+        tO = Coord3D( -1, -1, -1.0 )
+        tX = Coord3D(  1, -1, -1.0 )
+        tY = Coord3D( -1, +1, -1.0 )
+        tZ = Coord3D( -0.0, -0.0, +1.0 )
 
         result = IceRayPy.type.math.affine.construct3D( P_dll, tO, tX, tY, tZ, sO, sX, sY, sZ )
 
@@ -176,9 +178,9 @@ class Homography:
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Geometry_Transform_Homography0()
 
+        self.child(  IceRayPy.core.geometry.simple.Sphere( P_dll ) )   
+        self.child(  IceRayPy.core.geometry.flat.Box( P_dll, Coord3D( -1, -1, -1 ), Coord3D( +1, +1, +1 ) ) )#<! default
         self.child(  IceRayPy.core.geometry.simple.Cylinder( P_dll ) )
-        self.child(  IceRayPy.core.geometry.flat.Box( P_dll, Coord3D( -1, -1, -1 ), Coord3D( +1, +1, +1 ) ) )
-        self.child(  IceRayPy.core.geometry.simple.Sphere( P_dll ) )   #<! default
 
         #self.m_cargo['object'] = IceRayPy.library.geometry.Grid( P_dll )
         #self.m_cargo['dll'].IceRayC_Geometry_Transform_Homography_Child( self.m_cargo['this'], self.m_cargo['object'].cast2Geometry() )
@@ -188,17 +190,17 @@ class Homography:
 
         move = Coord3D( 1, 0*1, 0 )
 
-        tO = Coord3D( -1, -1, -0.5 )
-        tX = Coord3D(  1, -1, -0.5 )
-        tY = Coord3D( -1, +1, -0.5 )
-        tZ = Coord3D( -1, -1, +0.5 )
-        tT = Coord3D(  1,  1, +0.5 )
+        sO = Coord3D( -1.0, -1.0, -1.0 )
+        sX = Coord3D(  1.0, -1.0, -1.0 )
+        sY = Coord3D( -1.0, +1.0, -1.0 )
+        sZ = Coord3D( -1.0, -1.0, +1.0 )
+        sT = Coord3D(  1.0,  1.0,  1.0 )
 
-        sO = Coord3D( -1, -1, -1 )
-        sX = Coord3D(  1, -1, -1 )
-        sY = Coord3D( -1, +1, -1 )
-        sZ = Coord3D( -1, -1, +1 )
-        sT = Coord3D(  1,  1,  1 )
+        tO = Coord3D( -1.0, -1.0, -1.0 )
+        tX = Coord3D(  1.0, -1.0, -1.0 )
+        tY = Coord3D( -1.0, +1.0, -1.0 )
+        tZ = Coord3D( -0.4, -0.4, +1.0 )
+        tT = Coord3D( +0.4, +0.4, +1.0 )
 
         result = IceRayPy.type.math.homography.construct3D( P_dll, tO, tX, tY, tZ, tT, sO, sX, sY, sZ, sT )
 

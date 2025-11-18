@@ -1,6 +1,8 @@
 #ifndef Dh_DDMRM_system_allocator_fixed_manager_hpp_
  #define Dh_DDMRM_system_allocator_fixed_manager_hpp_
 
+ //   GS_DDMRM::S_system::S_allocator::S_fixed::GC_manager
+
 #include <cstdint>
 #include <vector>
 
@@ -25,6 +27,7 @@
            public:
             typedef std::size_t    T_size;
             typedef std::uint32_t  T_index;
+            typedef std::int64_t   T_long;
 
             typedef GS_DDMRM::S_system::S_allocator::S_chunk::GC_managed T_data, T_chunk;
             typedef void  T_void;
@@ -36,9 +39,11 @@
            public:
              void F_reserve( T_size const & P_data );
              bool F_share( T_chunk & P_data, T_chunk const& P_model ); //!< Increase Instance counter
+             bool F_share( T_chunk & P_data, T_ptr   const& P_ptr );
              bool F_new( T_chunk & P_data );                           //!< Make truly new instance
-             bool F_new( T_chunk & P_data, T_chunk const& P_model );   //!< Make truly new instance
+             bool F_clone( T_chunk & P_data, T_chunk const& P_model );   //!< Make truly new instance
              bool F_release( T_chunk & P_data );
+             bool F_check( T_ptr const& P_ptr )const;
              bool F_check( T_chunk const& P_data )const;
              bool F_clear();
 
@@ -61,6 +66,8 @@
               T2_container M2_container;
 
             public:
+              T2_container const& F_container()const;
+            public:
               T_ptr  F_head(   T_chunk const& P_data )const;
 
             public:
@@ -70,7 +77,7 @@
                }
               T_size F_available()const{ return M2_available; }
             private:
-              typedef std::vector< T_size >  T2_available;
+              typedef std::vector< T_index >  T2_available;
               T2_available M2_vacant;
               T_size M2_acquired, M2_available, M2_top;
               static T_index Fs_invalid(){ return T_index(-1); }
@@ -80,9 +87,15 @@
             private:
               T_size F2_gross()const;
             private:
+              T2_hat      &  F2_hat(    T_ptr   const& P_ptr  )const;
               T2_hat      &  F2_hat(    T_chunk const& P_data )const;
-              T2_hat      &  F2_hat(    T_chunk      & P_data )const;
               T_size         F2_offset( T_chunk const& P_data )const;
+            public:
+              static std::string to_string( T_chunk const& P_chunk );
+#if 1
+            public:
+              static bool M_debug;
+#endif
           };
 
         }

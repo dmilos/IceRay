@@ -36,7 +36,10 @@
                  virtual ~GC__beam(){}
 
                public:
-                 //using T__input::Fv_state;
+                 void F_clear()
+                  {
+                   M2_jurisdiction.F_clear();
+                  }
                  //using T__output::Fv_state;
 
                public:

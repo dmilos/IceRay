@@ -93,6 +93,30 @@ list = {
      'T-A-refract-Snell'             : IceRayPy.utility.material.transmission.refract.Snell,    #OK
      'T-B-refract-schlick'           : IceRayPy.utility.material.transmission.refract.Schlick,  #OK
 
+     'T-C-refract-MgSO4_7H2O'                             : IceRayPy.utility.material.transmission.refract.MgSO4_7H2O,
+     'T-D-refract-B4O5__OH_4_8H2O'                        : IceRayPy.utility.material.transmission.refract.B4O5__OH_4_8H2O,
+     'T-E-refract-NaCaB5O6_OH_6_5H2O'                     : IceRayPy.utility.material.transmission.refract.NaCaB5O6_OH_6_5H2O,
+     'T-F-refract-KAl2_AlSi3O10__F_OH_2'                  : IceRayPy.utility.material.transmission.refract.KAl2_AlSi3O10__F_OH_2,
+     'T-G-refract-K_Mg_Fe_3_AlSi3O10__F_OH_2'             : IceRayPy.utility.material.transmission.refract.K_Mg_Fe_3_AlSi3O10__F_OH_2,
+     'T-H-refract-Al2SiO4_F_OH_2'                         : IceRayPy.utility.material.transmission.refract.Al2SiO4_F_OH_2,
+     'T-I-refract-Mg_Fe_2SiO4'                            : IceRayPy.utility.material.transmission.refract.Mg_Fe_2SiO4,
+     'T-B-refract-CaTiO3'                                 : IceRayPy.utility.material.transmission.refract.CaTiO3,
+     'T-B-refract-BaB2O4'                                 : IceRayPy.utility.material.transmission.refract.BaB2O4,
+     'T-B-refract-Be3Al2_SiO3_6'                          : IceRayPy.utility.material.transmission.refract.Be3Al2_SiO3_6,
+     'T-B-refract-CaCO3'                                  : IceRayPy.utility.material.transmission.refract.CaCO3,
+     'T-B-refract-H2O'                                    : IceRayPy.utility.material.transmission.refract.H2O,
+     'T-B-refract-LiNbO3'                                 : IceRayPy.utility.material.transmission.refract.LiNbO3,
+     'T-B-refract-MgF2'                                   : IceRayPy.utility.material.transmission.refract.MgF2,
+     'T-B-refract-SiO2'                                   : IceRayPy.utility.material.transmission.refract.SiO2,
+     'T-B-refract-Al2O3'                                  : IceRayPy.utility.material.transmission.refract.Al2O3,
+     'T-B-refract-TiO2'                                   : IceRayPy.utility.material.transmission.refract.TiO2,
+     'T-B-refract-Al2O3'                                  : IceRayPy.utility.material.transmission.refract.Al2O3,
+     'T-B-refract-SiC'                                    : IceRayPy.utility.material.transmission.refract.SiC,
+     'T-B-refract-Tourmaline'                             : IceRayPy.utility.material.transmission.refract.Tourmaline,
+     'T-B-refract-ZrSiO4_hight'                           : IceRayPy.utility.material.transmission.refract.ZrSiO4_hight,
+     'T-B-refract-ZrSiO4_low'                             : IceRayPy.utility.material.transmission.refract.ZrSiO4_low,
+
+
      'X-Coord3D2Color'               : IceRayPy.utility.material.operation.Coord3D2Color,  #OK
 }
 

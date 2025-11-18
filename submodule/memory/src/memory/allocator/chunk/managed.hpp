@@ -2,6 +2,9 @@
  #define Dh_DDMRM_system_allocator_chunk_managed_hpp_
 
 // GS_DDMRM::S_system::S_allocator::S_chunk::GC_managed
+// GS_DDMRM::S_system::S_allocator::S_chunk::to_string
+
+#include <string>
 
 #include "./simple.hpp"
 
@@ -31,12 +34,7 @@
 
              explicit GC_managed( T_allocator *P_allocator = nullptr, T_ptr P_ptr = nullptr );
 
-             GC_managed( GC_managed const& P_that )
-              : T_simple( nullptr )
-              , M2_allocator( nullptr )
-              {
-               *this = P_that;
-              }
+             GC_managed( GC_managed const& P_that );
 
             ~GC_managed();
 
@@ -53,7 +51,6 @@
 
            private:
              mutable T_allocator *M2_allocator;
-
           };
 
         }

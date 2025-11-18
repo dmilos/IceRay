@@ -69,10 +69,16 @@
                static T2_wrap & Fs_vacuum();
 
              public:
-               T_size const& F_depth( )const{ return M2_depth; }
+               T_size const& F_depth( )const;
                bool          F_depth( T_size const& P_depth );
              private:
                T_size M2_depth;
+
+            public:
+              T_size const& F_total()const;
+              bool          F_total( T_size const& P_total );
+            private:
+              T_size M2_total;
 
              public:
                T_scalar const& F_trash( )const{ return M2_trash; }
@@ -100,14 +106,15 @@
              private:
                typedef GS_DDMRM::S_IceRay::S_type::S_ray::GC_trace        T2_ray;
                typedef GS_DDMRM::S_IceRay::S_type::S_color::S_gray::GT_scalar T2_gray;
-               void F2_trace( T_color &P_color );
+             //void F2_clear( );
+               void F2_trace( T_color& P_color );
 
              private:
                typedef GS_DDMRM::S_IceRay::S_geometry::S__type::GT_allocator   T_allocator;
                T_allocator M2_allocator;
              public:
                bool const& F_cout( )const{ return M2_cout; }
-               bool            F_cout( bool const& P_cout );
+               bool        F_cout( bool const& P_cout );
              private:
                bool M2_cout;
              private:
@@ -139,6 +146,8 @@
                 }M2_statistic;
              public:
                C_statistic const& F_statistic()const{ return M2_statistic; }
+             public:
+               static bool M_debug;
             };
          }
        }

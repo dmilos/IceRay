@@ -74,7 +74,7 @@
                     {
 
 
-                     auto const&  I_incoming  = P_intersect.M_incoming;
+                     auto const&  I_incoming  = P_intersect.M_incoming; //!< The ONE
                      auto const&  I_intersection = P_intersect.M_intersection;
                      T_coord  const& I_point         = M2_memoryCoord->Fv_load(  F_input<T_coord>(  En_inCoord_Point        ) );
                      T_coord  const& I_normal        = M2_memoryCoord->Fv_load(  F_input<T_coord>(  En_inCoord_Normal       ) );
@@ -105,7 +105,7 @@
                      T_coord I_refracted;
                      switch( ::math::linear::vector::refract( I_refracted, I_incoming.M_direction, I_normal, I_air, I_watter ) )
                       {
-                       case( 0 ): 
+                       case( 0 ):
                        {
                        }
                        break;
@@ -113,33 +113,38 @@
                         {
                          P_next.Fv_push();
                          T_ray &I_ray = P_next.Fv_top();
+
+                         I_ray.M_derivation  = T_ray::Ee_derivation::En_Reflected;
+                         I_ray.M_depth       = I_incoming.M_depth + 1;
+                         I_ray.M_parentUID   = I_incoming.M_UID;
+                         I_ray.M_geometryID  = I_intersection.M_geometryID;
+                         I_ray.M_state       = I_intersection.M_state;
+                         I_ray.M_ior         = I_air;
+                         I_ray.M_coefficient = T_scalar(1);
+                         I_ray.M_hierarchy   = T_ray::Ee_hierarchy::En_solo;
+                         I_ray.M_origin      = I_point;
+
                          T_coord & I_reflected = I_ray.M_direction;
-                         I_ray.M_geometryID = I_intersection.M_geometryID;
-                         I_ray.M_depth = I_incoming.M_depth + 1;
-                         I_ray.M_origin = I_point;
-                         I_ray.M_state = I_intersection.M_state;
                          ::math::linear::vector::reflect( I_reflected, I_incoming.M_direction, I_normal );
                          ::math::linear::vector::length( I_reflected, T_scalar(1) );
-                         I_ray.M_derivation = T_ray::Ee_derivation::En_Reflected;
-                         I_ray.M_hierarchy = T_ray::Ee_hierarchy::En_solo;
-                         I_ray.M_ior  = I_air;
                          ::color::operation::multiply( I_ray.M_intesity, I_albedo, I_incoming.M_intesity );
-                         I_ray.M_coefficient = T_scalar(1);
                         }break;
                        case( +1 ):
                         {
                          P_next.Fv_push();
                          T_ray &I_ray = P_next.Fv_top();
-                         I_ray.M_geometryID = I_intersection.M_geometryID;
-                         I_ray.M_depth = I_incoming.M_depth + 1;
-                         I_ray.M_origin = I_point;
-                         I_ray.M_state = I_intersection.M_state;
-                         ::math::linear::vector::length( I_ray.M_direction, I_refracted, T_scalar(1) );
-                         I_ray.M_derivation = T_ray::Ee_derivation::En_Refracted;
-                         I_ray.M_hierarchy = T_ray::Ee_hierarchy::En_solo;
-                         I_ray.M_ior  = I_watter;
-                         ::color::operation::multiply( I_ray.M_intesity, I_transparency, I_incoming.M_intesity );
+
+                         I_ray.M_derivation  = T_ray::Ee_derivation::En_Refracted;
+                         I_ray.M_depth       = I_incoming.M_depth + 1;
+                         I_ray.M_parentUID   = I_incoming.M_UID;
+                         I_ray.M_geometryID  = I_intersection.M_geometryID;
+                         I_ray.M_state       = I_intersection.M_state;
+                         I_ray.M_ior         = I_watter;
                          I_ray.M_coefficient = T_scalar(1);
+                         I_ray.M_hierarchy   = T_ray::Ee_hierarchy::En_solo;
+                         I_ray.M_origin      = I_point;
+                         ::math::linear::vector::length( I_ray.M_direction, I_refracted, T_scalar(1) );
+                         ::color::operation::multiply( I_ray.M_intesity, I_transparency, I_incoming.M_intesity );
                         }break;
                       }
 
@@ -172,6 +177,7 @@
                    T2_memoryColor    *M2_memoryColor;
                    T2_memoryScalar   *M2_memoryScalar;
                  //T2_memoryRay      *M2_memoryRay;
+                 //T_medium          *M2_medium;
                 };
 
             }
