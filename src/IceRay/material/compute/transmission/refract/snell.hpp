@@ -7,6 +7,8 @@
  #include "../../instruction.hpp"
 
 
+
+
  namespace GS_DDMRM
   {
    namespace S_IceRay
@@ -24,9 +26,9 @@
                 : public GS_DDMRM::S_IceRay::S_material::S_compute::GC_instruction
                 {
                  public:
-                   typedef GS_DDMRM::S_IceRay::S_type::GT_scalar               T_scalar;
-                   typedef GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar      T_coord;
-                   typedef GS_DDMRM::S_IceRay::S_type::S_color::GT_scalar      T_color;
+                   typedef GS_DDMRM::S_IceRay::S_type::GT_scalar             T_scalar;
+                   typedef GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar    T_coord;
+                   typedef GS_DDMRM::S_IceRay::S_type::S_color::GT_scalar    T_color;
 
                    typedef GS_DDMRM::S_IceRay::S_material::S_medium::GT_jurisdiction T_jurisdiction;
 
@@ -59,11 +61,11 @@
                      ,T_size const& P_outSize_RayStart  // = 0,
                      )
                     {
-                     F_input<T_coord>(  En_inCoord_Point,        P_inCoord_Point     );
-                     F_input<T_coord>(  En_inCoord_Normal,       P_inCoord_Normal    );
-                     F_input<T_scalar>( En_inScalar_IOR,         P_ior       );
-                     F_input<T_color>(  En_inColor_Albedo,       P_albedo   );
-                     F_input<T_color>(  En_inColor_Transparency, P_transparency   );
+                     F_input<T_coord>(  En_inCoord_Point,         P_inCoord_Point   );
+                     F_input<T_coord>(  En_inCoord_Normal,        P_inCoord_Normal  );
+                     F_input<T_scalar>( En_inScalar_IOR,          P_ior             );
+                     F_input<T_color>(  En_inColor_Albedo,        P_albedo          );
+                     F_input<T_color>(  En_inColor_Transparency,  P_transparency    );
 
                    //F_output<T_size>( En_outSize_RayCount, P_outSize_RayCount );
                      F_output<T_size>( En_outSize_RayStart, P_outSize_RayStart );
@@ -74,13 +76,13 @@
                     {
 
 
-                     auto const&  I_incoming  = P_intersect.M_incoming; //!< The ONE
-                     auto const&  I_intersection = P_intersect.M_intersection;
-                     T_coord  const& I_point         = M2_memoryCoord->Fv_load(  F_input<T_coord>(  En_inCoord_Point        ) );
-                     T_coord  const& I_normal        = M2_memoryCoord->Fv_load(  F_input<T_coord>(  En_inCoord_Normal       ) );
-                     T_scalar const& I_IOR           = M2_memoryScalar->Fv_load( F_input<T_scalar>( En_inScalar_IOR         ) );
-                     T_color  const& I_albedo        = M2_memoryColor->Fv_load(  F_input<T_color>(  En_inColor_Albedo       ) );
-                     T_color  const& I_transparency  = M2_memoryColor->Fv_load(  F_input<T_color>(  En_inColor_Transparency ) );
+                     auto const& I_incoming     = P_intersect.M_incoming; //!< The ONE
+                     auto const& I_intersection = P_intersect.M_intersection;
+                     T_coord  const& I_point         = M2_memoryCoord->Fv_load(  F_input<T_coord>(   En_inCoord_Point        ) );
+                     T_coord  const& I_normal        = M2_memoryCoord->Fv_load(  F_input<T_coord>(   En_inCoord_Normal       ) );
+                     T_scalar const& I_IOR           = M2_memoryScalar->Fv_load( F_input<T_scalar>(  En_inScalar_IOR         ) );
+                     T_color  const& I_albedo        = M2_memoryColor->Fv_load(  F_input<T_color>(   En_inColor_Albedo       ) );
+                     T_color  const& I_transparency  = M2_memoryColor->Fv_load(  F_input<T_color>(   En_inColor_Transparency ) );
 
                      T_scalar I_air   ;
                      T_scalar I_watter;
@@ -88,6 +90,7 @@
                       auto const& I_jurisdiction = P_next.F_jurisdiction();
                       switch( I_jurisdiction.F_in( P_intersect.M_intersection.M_geometryID ) )
                        {
+                        default:
                         case( T_jurisdiction::En_unused ):
                         case( T_jurisdiction::En_close ):
                          {
@@ -106,9 +109,8 @@
                      switch( ::math::linear::vector::refract( I_refracted, I_incoming.M_direction, I_normal, I_air, I_watter ) )
                       {
                        case( 0 ):
-                       {
-                       }
-                       break;
+                        {
+                        }break;
                        case( -1 ):
                         {
                          P_next.Fv_push();
@@ -121,13 +123,13 @@
                          I_ray.M_state       = I_intersection.M_state;
                          I_ray.M_ior         = I_air;
                          I_ray.M_coefficient = T_scalar(1);
+                         ::color::operation::multiply( I_ray.M_intesity, I_albedo, I_incoming.M_intesity );
                          I_ray.M_hierarchy   = T_ray::Ee_hierarchy::En_solo;
                          I_ray.M_origin      = I_point;
 
                          T_coord & I_reflected = I_ray.M_direction;
                          ::math::linear::vector::reflect( I_reflected, I_incoming.M_direction, I_normal );
                          ::math::linear::vector::length( I_reflected, T_scalar(1) );
-                         ::color::operation::multiply( I_ray.M_intesity, I_albedo, I_incoming.M_intesity );
                         }break;
                        case( +1 ):
                         {
@@ -141,10 +143,10 @@
                          I_ray.M_state       = I_intersection.M_state;
                          I_ray.M_ior         = I_watter;
                          I_ray.M_coefficient = T_scalar(1);
+                         ::color::operation::multiply( I_ray.M_intesity, I_transparency, I_incoming.M_intesity );
                          I_ray.M_hierarchy   = T_ray::Ee_hierarchy::En_solo;
                          I_ray.M_origin      = I_point;
                          ::math::linear::vector::length( I_ray.M_direction, I_refracted, T_scalar(1) );
-                         ::color::operation::multiply( I_ray.M_intesity, I_transparency, I_incoming.M_intesity );
                         }break;
                       }
 
