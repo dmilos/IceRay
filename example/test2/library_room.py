@@ -296,13 +296,11 @@ def cornel_open( P_dll, P_config = {}, P_light = None, P_exponat = None ): # non
     return wrapper
 
 
-
-
 def cornel_close( P_dll, P_config = {}, P_light = None, P_exponat = None ): # non-classic
 
     global G_dimesion
     I_room = [ 8, 8, 4 ] # [ 6, 6, 3.5 ]
-    I_move = [ 0, 0, I_room[2]/2-1 ]
+    I_move = [ 0, 0, I_room[2]/2-1.01 ]
     wall = 0.1
 
     lo = Coord3D()

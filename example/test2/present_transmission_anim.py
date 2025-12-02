@@ -87,7 +87,7 @@ I_config['geometry']   = {}
 I_config['composer'] = {}
 I_config['composer']['manager'] = {}
 I_config['composer']['manager']['pixel'] = {}
-I_config['composer']['manager']['pixel']['type'] = 'grid' # 'center', 'grid', 'random', 'sobol'
+I_config['composer']['manager']['pixel']['type'] = 'grid' #!< { 'center', 'grid', 'random', 'sobol', 'TODO-vdc' }
 I_config['composer']['manager']['pixel']['size'] = 3
 
 
@@ -127,14 +127,16 @@ pigment_refract_list =[
      'T-9-refract-fresnel'           ,
      'T-A-refract-Snell'             ,
      'T-B-refract-schlick'           ,
+
      'T-C-refract-MgSO4_7H2O'                   ,
-     'T-D-refract-B4O5__OH_4_8H2O'              ,
+     'T-D-refract-Na2B4O5__OH_4_8H2O'           ,
      'T-E-refract-NaCaB5O6_OH_6_5H2O'           ,
      'T-F-refract-KAl2_AlSi3O10__F_OH_2'        ,
      'T-G-refract-K_Mg_Fe_3_AlSi3O10__F_OH_2'   ,
      'T-H-refract-Al2SiO4_F_OH_2'               ,
      'T-I-refract-Mg_Fe_2SiO4'                  ,
      'T-B-refract-CaTiO3'                       ,
+
      'T-B-refract-BaB2O4'                       ,
      'T-B-refract-Be3Al2_SiO3_6'                ,
      'T-B-refract-CaCO3'                        ,
@@ -159,12 +161,12 @@ geometry_list =[
 ]
 
 
-for index in range(0,len( pigment_refract_list )*len( geometry_list )*180,1):
+for index in range( 0,len( pigment_refract_list )*len( geometry_list )*360,1):
     I_config['camera']['eye']   = IceRayPy.type.math.coord.Scalar3D( p*g * math.cos( math.radians(index)), p*g* math.sin( math.radians(index)) , +g )
-    I_config['pigment']['ior'] = 1 + 1.5 * ((index%180)/180)
+    I_config['pigment']['ior'] = 1 + 1.5 * ((index%360)/360)
 
-    I_scene['pigment']  = pigment_refract_list[int( index/(180*4)  )]
-    I_scene['geometry'] = geometry_list[ int( index/180 ) % len( geometry_list )]
+    I_scene['pigment']  = pigment_refract_list[ int( index/(360*len( geometry_list        ))) % len( pigment_refract_list ) ]
+    I_scene['geometry'] = geometry_list       [ int( index/(360*len( pigment_refract_list ))) % len( geometry_list )]
 
     I_picture['prefix'] = "%04i"%(index)+"_"
     I_picture['index'] = index
@@ -172,4 +174,3 @@ for index in range(0,len( pigment_refract_list )*len( geometry_list )*180,1):
     I_picture['watermark'] = I_picture['watermark'][12:] + "; " + str( int(I_config['pigment']['ior'] *100) /100 )+ "; "
 
     render.doIt( I_dll, I_picture, I_scene, I_inventory, I_config )
-

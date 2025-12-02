@@ -297,13 +297,14 @@ def Biaxial(
     return I_surface
 
 
+def Na2B4O5__OH_4_8H2O( P_dll, P_config ):         return Biaxial( P_dll, P_config, 1.447, IceRayPy.type.color.RGB( 0.3333, 0.3333, 0.3333 ), 1.469, IceRayPy.type.color.RGB( 0.3333, 0.3333, 0.3333 ), 1.472, IceRayPy.type.color.RGB( 0.3333, 0.3333, 0.3333 ) )
 def MgSO4_7H2O( P_dll, P_config ):                 return Biaxial( P_dll, P_config, 1.433, IceRayPy.type.color.RGB( 0.3333, 0.3333, 0.3333 ), 1.455, IceRayPy.type.color.RGB( 0.3333, 0.3333, 0.3333 ), 1.461, IceRayPy.type.color.RGB( 0.3333, 0.3333, 0.3333 ) )
-def B4O5__OH_4_8H2O( P_dll, P_config ):            return Biaxial( P_dll, P_config, 1.447, IceRayPy.type.color.RGB( 0.3333, 0.3333, 0.3333 ), 1.469, IceRayPy.type.color.RGB( 0.3333, 0.3333, 0.3333 ), 1.472, IceRayPy.type.color.RGB( 0.3333, 0.3333, 0.3333 ) )
-def NaCaB5O6_OH_6_5H2O( P_dll, P_config ):         return Biaxial( P_dll, P_config, 1.490, IceRayPy.type.color.RGB( 0.3333, 0.3333, 0.3333 ), 1.510, IceRayPy.type.color.RGB( 0.3333, 0.3333, 0.3333 ), 1.520, IceRayPy.type.color.RGB( 0.3333, 0.3333, 0.3333 ) )
 def KAl2_AlSi3O10__F_OH_2( P_dll, P_config ):      return Biaxial( P_dll, P_config, 1.563, IceRayPy.type.color.RGB( 0.3333, 0.3333, 0.3333 ), 1.596, IceRayPy.type.color.RGB( 0.3333, 0.3333, 0.3333 ), 1.601, IceRayPy.type.color.RGB( 0.3333, 0.3333, 0.3333 ) )
+
 def K_Mg_Fe_3_AlSi3O10__F_OH_2( P_dll, P_config ): return Biaxial( P_dll, P_config, 1.595, IceRayPy.type.color.RGB( 0.3333, 0.3333, 0.3333 ), 1.640, IceRayPy.type.color.RGB( 0.3333, 0.3333, 0.3333 ), 1.640, IceRayPy.type.color.RGB( 0.3333, 0.3333, 0.3333 ) )
-def Al2SiO4_F_OH_2( P_dll, P_config ):             return Biaxial( P_dll, P_config, 1.618, IceRayPy.type.color.RGB( 0.3333, 0.3333, 0.3333 ), 1.620, IceRayPy.type.color.RGB( 0.3333, 0.3333, 0.3333 ), 1.627, IceRayPy.type.color.RGB( 0.3333, 0.3333, 0.3333 ) )
 def Mg_Fe_2SiO4( P_dll, P_config ):                return Biaxial( P_dll, P_config, 1.640, IceRayPy.type.color.RGB( 0.3333, 0.3333, 0.3333 ), 1.660, IceRayPy.type.color.RGB( 0.3333, 0.3333, 0.3333 ), 1.680, IceRayPy.type.color.RGB( 0.3333, 0.3333, 0.3333 ) )
 def CaTiO3( P_dll, P_config ):                     return Biaxial( P_dll, P_config, 2.300, IceRayPy.type.color.RGB( 0.3333, 0.3333, 0.3333 ), 2.340, IceRayPy.type.color.RGB( 0.3333, 0.3333, 0.3333 ), 2.380, IceRayPy.type.color.RGB( 0.3333, 0.3333, 0.3333 ) )
+def Al2SiO4_F_OH_2( P_dll, P_config ):             return Biaxial( P_dll, P_config, 1.618, IceRayPy.type.color.RGB( 0.3333, 0.3333, 0.3333 ), 1.620, IceRayPy.type.color.RGB( 0.3333, 0.3333, 0.3333 ), 1.627, IceRayPy.type.color.RGB( 0.3333, 0.3333, 0.3333 ) )
+def NaCaB5O6_OH_6_5H2O( P_dll, P_config ):         return Biaxial( P_dll, P_config, 1.490, IceRayPy.type.color.RGB( 0.3333, 0.3333, 0.3333 ), 1.510, IceRayPy.type.color.RGB( 0.3333, 0.3333, 0.3333 ), 1.520, IceRayPy.type.color.RGB( 0.3333, 0.3333, 0.3333 ) )
 
 #print( '</' + __name__ + ' name=\'' +   __file__ + '>' )

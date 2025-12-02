@@ -178,10 +178,9 @@ def rings( P_dll, P_config = { 'shadow': False, 'pigment': None }, P_light = Non
 
     return wrapper
 
-
 def plate( P_dll, P_config = { 'shadow': False, 'pigment': None }, P_light = None, P_exponat = None ):
 
-    geometry = IceRayPy.core.geometry.flat.Box( P_dll, Coord3D( -2, -2, -1.1 ), Coord3D( +2, +2, -0.99 ) )
+    geometry = IceRayPy.core.geometry.flat.Box( P_dll, Coord3D( -2, -2, -1.2 ), Coord3D( +2, +2, -1.001 ) )
 
     wrapper = IceRayPy.core.object.Wrapper( P_dll )
     wrapper.pigment( IceRayPy.utility.material.pattern.Image( P_dll,{ 'scale': 0.25, 'shift': Coord3D( -0.5, -0.5, 0 ), 'size': 2048 } ) )

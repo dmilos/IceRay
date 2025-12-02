@@ -21,8 +21,8 @@ else:
 
 
 I_picture ={}
-I_picture[ 'width']  = int( 800*1.5 )
-I_picture['height']  = int( 600*1.5 )
+I_picture[ 'width']  = int( 800 )
+I_picture['height']  = int( 600 )
 I_picture['aspect']  = I_picture['width'] / I_picture['height']
 
 if( 1 < len( sys.argv ) ):
@@ -97,39 +97,26 @@ I_config['camera']['aspect'] = I_picture['aspect']
 #I_config['camera']['vfov']   = math.radians( 90 )
 
 
-I_scene['geometry']= 'T-lensVS'
-I_scene['pigment']= 'T-B-refract-schlick'
-for index in range(1,360,1):
-    I_config['camera']['eye']   = IceRayPy.type.math.coord.Scalar3D( p*g * math.cos( math.radians(index)), p*g* math.sin( math.radians(index)) , +g )
-    I_picture['prefix'] = "%04i"%(index)
-    render.doIt( I_dll, I_picture, I_scene, I_inventory, I_config )
-
-
 pigment_list =[
-   'T-0-reflect-One'               ,
-   'T-0-reflect-diffusive'         ,
-   'T-0-reflect-mirror'            ,
-   'T-1-reflect-schlick'           ,
-   'T-2-reflect-blossom-Grid'      ,
-   'T-3-reflect-blossom-Hexagon'   ,
-   'T-4-reflect-blossom-trg'       ,
-  #'T-5-reflect-blossom-LD'        ,
-  #'T-5-reflect-blossom-Pinwheel'  ,
-  #'T-5-reflect-blossom-penrose'   ,
+    'T-0-reflect-One'               ,
+    'T-0-reflect-diffusive'         ,
+    'T-0-reflect-mirror'            ,
+    'T-1-reflect-schlick'           ,
+    'T-2-reflect-blossom-Grid'      ,
+    'T-3-reflect-blossom-Hexagon'   ,
+    'T-4-reflect-blossom-trg'       ,
+  ##'T-5-reflect-blossom-LD'        ,
+  ##'T-5-reflect-blossom-Pinwheel'  ,
+  ##'T-5-reflect-blossom-penrose'   ,
    'T-6-reflect-blossom-Rand'      ,
    'T-7-reflect-blossom-sobol'     ,
    'T-8-reflect-blossom-VDC'       ,
    'T-8-reflect-blossom-congruent' ,
    'T-9-refract-fresnel'           ,
    'T-A-refract-Snell'             ,
-   'T-B-refract-schlick'
+   'T-B-refract-schlick',
+   'T-B-refract-CaCO3'
 ]
-
-I_config['pigment']['count']  = 1
-
-for item in pigment_list :
-    I_scene['pigment']= item
-    render.doIt( I_dll, I_picture, I_scene, I_inventory, I_config )
 
 geometry_list =[
     'F-box',
@@ -138,11 +125,6 @@ geometry_list =[
     'T-lensCP',
     'T-lensVS',
     'T-lensVP' 
-]
-
-pigment_list =[
-    'T-0-reflect-mirror',
-    'T-B-refract-schlick'
 ]
 
 I_config['pigment']['specular']  = IceRayPy.type.color.RGB( 1, 0.1, 0.01 ) 
@@ -173,3 +155,5 @@ def prepare_readme():
     os.rename( I_picture['folder']+'/'+'C-close_F-persp_S-torus_trans_T-B-refract-schlick_chand-nine_0000.pnm'             , I_picture['folder']+'/'+'refract-schlick-torus.pnm' )
    #os.rename( I_picture['folder']+'/'+'C-close_F-persp_Q-sphere_trans_T-0-reflect-One_chand-nine_0000.pnm'                , I_picture['folder']+'/'+'-delete.pnm' )
    #os.rename( I_picture['folder']+'/'+'C-close_F-persp_Q-sphere_trans_T-1-reflect-schlick_chand-nine_0000.pnm'            , I_picture['folder']+'/'+'-delete.pnm' )
+   
+#prepare_readme()

@@ -94,7 +94,7 @@ list = {
      'T-B-refract-schlick'           : IceRayPy.utility.material.transmission.refract.Schlick,  #OK
 
      'T-C-refract-MgSO4_7H2O'                             : IceRayPy.utility.material.transmission.refract.MgSO4_7H2O,
-     'T-D-refract-B4O5__OH_4_8H2O'                        : IceRayPy.utility.material.transmission.refract.B4O5__OH_4_8H2O,
+     'T-D-refract-Na2B4O5__OH_4_8H2O'                     : IceRayPy.utility.material.transmission.refract.Na2B4O5__OH_4_8H2O,
      'T-E-refract-NaCaB5O6_OH_6_5H2O'                     : IceRayPy.utility.material.transmission.refract.NaCaB5O6_OH_6_5H2O,
      'T-F-refract-KAl2_AlSi3O10__F_OH_2'                  : IceRayPy.utility.material.transmission.refract.KAl2_AlSi3O10__F_OH_2,
      'T-G-refract-K_Mg_Fe_3_AlSi3O10__F_OH_2'             : IceRayPy.utility.material.transmission.refract.K_Mg_Fe_3_AlSi3O10__F_OH_2,
