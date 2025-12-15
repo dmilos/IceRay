@@ -1,21 +1,16 @@
 IceRay/camera/camera.cpp
-
 IceRay/geometry/_pure/_pure.cpp
 IceRay/geometry/blobby/blobby.cpp
 IceRay/geometry/complex/complex.cpp
-IceRay/geometry/flat/flat.cpp
+IceRay/geometry/transform/transform.cpp
 IceRay/geometry/hfield/hfield.cpp
 IceRay/geometry/rtss/rtss.cpp
 IceRay/geometry/simple/simple.cpp
-IceRay/geometry/transform/transform.cpp
+IceRay/geometry/flat/flat.cpp
 IceRay/geometry/volumetric/volumetric.cpp
-
 IceRay/light/light.cpp
-
 IceRay/material/material.cpp
-
 IceRay/object/object.cpp
-
 IceRay/render/0scanner/scanner.cpp
 IceRay/render/1pixel/pixel.cpp
 IceRay/render/1pixel/strategy/strategy.cpp
@@ -25,13 +20,12 @@ IceRay/render/4ray/_base.cpp
 IceRay/render/4ray/_pure.cpp
 IceRay/render/4ray/classic2/algorithm.cpp
 IceRay/render/4ray/classic2/stack/implementation.cpp
-IceRay/render/4ray/direction.cpp
 IceRay/render/4ray/distance.cpp
+IceRay/render/4ray/direction.cpp
 IceRay/render/engine.cpp
 
 IceRay/type/general/child.cpp
-IceRay/type/general/parent.cpp
 IceRay/type/picture/default.cpp
+IceRay/type/general/parent.cpp
 
 IceRay/utility/utility.cpp
-IceRay/main/system/info.cpp

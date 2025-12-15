@@ -10,4 +10,3 @@ IceRay/main/interface/c/type/type.cpp
 IceRay/main/interface/c/utility/utility.cpp
 IceRay/main/system/info.cpp
 IceRay/main/system/init_system.cpp
-

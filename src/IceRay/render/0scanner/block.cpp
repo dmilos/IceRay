@@ -1,7 +1,11 @@
 #include <iostream>
 #include <iomanip>
 #include <chrono>
-#include "block.hpp"
+
+#include "./block.hpp"
+
+//#include "memory/allocator/fixed.hpp"
+//#include "IceRay/render/4ray/classic2/algorithm.hpp"
 
 using namespace GS_DDMRM::S_IceRay::S_render::S_scanner;
 
@@ -24,6 +28,7 @@ GC_block::GC_block( T_range const& P_window, T_pixel * P_pixel )
  : T__pure( P_pixel )
  ,M2_window( ::math::linear::vector::fill( T_cell{}, 0 ) , ::math::linear::vector::fill( T_cell{}, -1 ) )
  {
+  M2_cout = true;
   M2_hot[0] = M2_hot[1] = 1;
   M2_dot = 10;
   M2_asterisk = 100;
@@ -41,6 +46,16 @@ GC_block::F_window( T_range const& P_window )
   M2_window = P_window;
   ::math::geometry::interval::correct( M2_window );
   return T_report( true );
+ }
+
+bool const& GC_block::F_cout()const
+ {
+  return M2_cout;
+ }
+bool        GC_block::F_cout( bool const& P_cout )
+ {
+  M2_cout = P_cout;
+  return true;
  }
 
 GC_block::T_report      GC_block:: F_hot( T_cell2D const& P_hot )
@@ -68,7 +83,7 @@ GC_block::F1v_render( T_picture & P_picture )
   T2_color I_color;
   auto image_start = std::chrono::steady_clock::now();
   auto block_start = std::chrono::steady_clock::now();
-  std::cout << std::endl;
+  if( true == M2_cout ) std::cout << std::endl;
   T_size I_setw = (T_size)ceil( log10( P_picture.F_size()[0] ) + 0.01 );
 
   for( I_cell[1] = I_down; I_cell[1] <= I_up;  )
@@ -76,7 +91,7 @@ GC_block::F1v_render( T_picture & P_picture )
 
     {
      block_start = std::chrono::steady_clock::now();
-     std::cout << std::setw(I_setw) << I_cell[1] << "/" << std::setw(I_setw) << I_up ;
+     if( true == M2_cout ) std::cout << std::setw(I_setw) << I_cell[1] << "/" << std::setw(I_setw) << I_up ;
     }
 
     T_size I_end = std::min<T_size>( I_cell[1] + M2_step, I_up+1 );
@@ -87,7 +102,9 @@ GC_block::F1v_render( T_picture & P_picture )
        {
         if( ( M2_hot[0] == I_cell[0] ) && ( M2_hot[1] == I_cell[1] ) )
          {
-          I_cell = I_cell;
+          I_cell = I_cell; //!< Place break point here
+          //GS_DDMRM::S_system::S_allocator::S_fixed::GC_manager::M_debug = true;
+          //GS_DDMRM::S_IceRay::S_render::S_ray::S_classic2::GC_algorithm::M_debug = true;
           // debug ON
          }
         else
@@ -98,7 +115,7 @@ GC_block::F1v_render( T_picture & P_picture )
         F1_pixel()->Fv_render( I_color, I_cell );
         P_picture.Fv_pixel(   I_cell, I_color );
         if( false == F_work() ) break;
-        if( 0 == ( I_cell[1] % M2_step ) )
+        if( true == M2_cout ) if( 0 == ( I_cell[1] % M2_step ) )
          {
           if( 0 == ( I_cell[0] %  M2_dot      ) ) { std::cout << "."; }
           if( 0 == ( I_cell[0] %  M2_asterisk ) ) { std::cout << "*"; }
@@ -113,15 +130,15 @@ GC_block::F1v_render( T_picture & P_picture )
       auto image_delta = image_current - image_start;
       auto block_delta = block_end - block_start;
 
-      std::cout << "[" << std::setw(8) << std::chrono::duration_cast< std::chrono::duration<double> >(block_delta).count() << " ]";
-      std::cout << "[" << std::setw(8) << std::chrono::duration_cast< std::chrono::duration<double> >(image_delta).count() << " / ";
-      std::cout << std::setw(8) << std::chrono::duration_cast<std::chrono::duration<double> >(image_delta).count() * T_scalar( I_up - I_down)/T_scalar( I_cell[1] - I_down ) << " ]";
+      if( true == M2_cout )std::cout << "[" << std::setw(8) << std::chrono::duration_cast< std::chrono::duration<double> >(block_delta).count() << " ]";
+      if( true == M2_cout )std::cout << "[" << std::setw(8) << std::chrono::duration_cast< std::chrono::duration<double> >(image_delta).count() << " / ";
+      if( true == M2_cout )std::cout << std::setw(8) << std::chrono::duration_cast<std::chrono::duration<double> >(image_delta).count() * T_scalar( I_up - I_down)/T_scalar( I_cell[1] - I_down ) << " ]";
 
       block_start = std::chrono::steady_clock::now();
-      std::cout << std::endl;
+      if( true == M2_cout )std::cout << std::endl;
      }
 
    }
 
-  std::cout << std::endl;
+  if( true == M2_cout )std::cout << std::endl;
  }

@@ -22,6 +22,9 @@ class TheOne:
     def pixel( self, P_pixel ):
         self.m_cargo['dll'].IceRayC_Render_Engine_Pixel( self.m_cargo['this'], P_pixel.m_cargo['this']  )
         self.m_cargo['pixel'] = P_pixel
+        
+    def pixelGet( self ):
+        return self.m_cargo['pixel']
 
     def pierce( self, P_pierce ):
         self.m_cargo['dll'].IceRayC_Render_Engine_Pierce( self.m_cargo['this'], P_pierce.m_cargo['this']  )

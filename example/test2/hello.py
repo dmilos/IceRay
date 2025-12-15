@@ -24,7 +24,7 @@ def doRendering(P_config): # P_folder, P_dll, P_eye, P_view
     name = "hello1"
     filen_name = folder + "/" + name + '_'+ "{:04d}".format(P_config['index']) + '.ppm'
 
-    print( filen_name, flush = True )
+    print( filen_name, flush = True  )
 
     my_file = pathlib.Path(filen_name)
     if my_file.is_file():
@@ -88,7 +88,7 @@ def doRendering(P_config): # P_folder, P_dll, P_eye, P_view
 
     crop.storePNM( filen_name )
 
-    P_config['dll'].IceRayC_Utility_Random_Table_Next( 1.1, 1.1, 100 )
+    P_config['dll'].IceRayC_Utility_Random_Table_Next(1,1,1)
 
 
 start = 0;
@@ -100,7 +100,11 @@ if( 2 < len( sys.argv ) ):
     step  = int( sys.argv[2] )
 
 config={}
-config['folder'] = './'
+try:
+    os.mkdir( "_out" )
+except OSError as e:
+    pass
+config['folder'] = '_out'
 config['index'] = 0
 
 config['picture'] = {}

@@ -43,10 +43,12 @@ def camera( P_dll,
     if( 'height' in P_config ):
         if( hasattr( P_camera, 'height' ) ):
             P_camera.height( P_config['height'] )
+            
+    I_up   = IceRayPy.type.math.coord.Scalar3D( 0, 0, 1 )
+    if( 'up' in P_config ):
+        I_up   = P_config['up']
 
     transform.child( P_camera )
-
-    I_up   = IceRayPy.type.math.coord.load3D( P_dll, 0, 0, 1 )
 
     transform.toWorldSet( IceRayPy.type.math.affine.lookAt( P_dll, P_config['eye'], P_config['view'], I_up ) )
 
@@ -62,7 +64,12 @@ def object( P_dll, P_geometry, P_pigment, P_medium ):
     return wrapper
 
 def manager( P_dll, P_config, P_camera, P_object ):
-    manager = IceRayPy.utility.render.Manager( P_dll )
+
+    I_config = {}
+    if( 'manager' in P_config ):
+       I_config = P_config[ 'manager' ]
+
+    manager = IceRayPy.utility.render.Manager( P_dll, I_config )
     manager.camera( P_camera )
     manager.object( P_object )
 

@@ -61,21 +61,34 @@
                  T_size  M2_capacity=0;
 
                public:
-                 void          F_clear()
+                 void          F_clear( bool const& P_release = true )
                   { 
                    this->M2_end=0;
+                   if( true == P_release )
+                    {
+                     for( auto &I_item : M2_container )
+                      {
+                       I_item.F_clear();
+                      }
+                    }
                   }
 
-                 T_item &      F_push( T_item const& P_item = T_item() )
+                 T_item &      F_push( )
                   {
                    if( this->M2_container.size() < this->M2_end )
                     {
                      this->M2_end = this->M2_end;
                     }
                    ++this->M2_end;
-                   F_top() = P_item;
                    return F_top(); 
                   }
+
+                 T_item &      F_push( T_item const& P_item )
+                  {
+                   F_push() = P_item;
+                   return F_top(); 
+                  }
+
                  void          F_pop()
                   { 
                    if( 0 == this->M2_end ) return;

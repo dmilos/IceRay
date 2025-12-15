@@ -47,18 +47,24 @@ include_directories( "${directory_submodule__root}/memory/src")
 include_directories( "${directory_submodule__root}/PNM/src")
 include_directories( "${directory_submodule__root}/TopLog/src")
 
-
+if ( CMAKE_COMPILER_IS_GNUCC )
+    set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -Wall")
+endif()
+if ( MSVC )
+     set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} /wd4624  ")
+    #set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} /DICERAY_WINDOWS_USE_GDI")
+endif()
 
 set( COMMAND_ARGUMENTS "0 1" )
-set( COMMAND_CMD32_DEBUG    "$(prg_python3121)" )
-set( COMMAND_ARG32_DEBUG    ${directory__root}"/example/test2/hello.py" )
-set( COMMAND_CMD32_RELEASE  "$(prg_python3121) " )
-set( COMMAND_ARG32_RELEASE  ${directory__root}"/example/test2/hello.py" )
+set( COMMAND_CMD32_DEBUG    "$ENV{prg_python}" )
+set( COMMAND_ARG32_DEBUG    ${directory__root}"/example/test2/present_radiosity.py" )
+set( COMMAND_CMD32_RELEASE  "$ENV{prg_python}" )
+set( COMMAND_ARG32_RELEASE  ${directory__root}"/example/test2/present_radiosity.py" )
 
-set( COMMAND_CMD64_DEBUG    "$(prg_python3121)" )
-set( COMMAND_ARG64_DEBUG    ${directory__root}"/example/test2/hello.py" )
-set( COMMAND_CMD64_RELEASE  "$(prg_python3121) " )
-set( COMMAND_ARG64_RELEASE  ${directory__root}"/example/test2/hello.py" )
+set( COMMAND_CMD64_DEBUG    "$ENV{prg_python}" )
+set( COMMAND_ARG64_DEBUG    ${directory__root}"/example/test2/present_radiosity.py" )
+set( COMMAND_CMD64_RELEASE  "$ENV{prg_python}" )
+set( COMMAND_ARG64_RELEASE  ${directory__root}"/example/test2/present_radiosity.py" )
 
 
 set( COMMAND_ENVIRONMENT_RELEASE "PATH=%PATH%" )
@@ -74,10 +80,11 @@ set_property( TARGET ${ICERAY_PROJECT_NAME_FULL} PROPERTY POSITION_INDEPENDENT_C
 
 if( UNIX )
     target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -frtti )
-    target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -Wall )
     target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -fexceptions )
     target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -Wno-unused-local-typedefs )
     target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -Wno-unused-variable )
+    #target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -Wmaybe-uninitialized )
+
     if( ICERAY_SWITCH_DEBUG )
         #target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -fsanitize=address )
         #target_link_options(    ${ICERAY_PROJECT_NAME_FULL} PRIVATE -fsanitize=address )
@@ -92,16 +99,14 @@ if( UNIX )
     endif()
 endif()
 if( MSVC )
-    target_compile_options(     ${ICERAY_PROJECT_NAME_FULL} PRIVATE /Zp1)
-    target_compile_options(     ${ICERAY_PROJECT_NAME_FULL} PRIVATE /wd4624)
+    if( ICERAY_WINDOWS_USE_GDI )
+        target_compile_definitions(  ${ICERAY_PROJECT_NAME_FULL}  PRIVATE ICERAY_WINDOWS_USE_GDI=1 )
+    endif()
 
-    target_compile_definitions( ${ICERAY_PROJECT_NAME_FULL} PRIVATE  $<$<CONFIG:DEBUG>:_SECURE_SCL> )
-    target_compile_definitions( ${ICERAY_PROJECT_NAME_FULL} PRIVATE  $<$<CONFIG:DEBUG>:_ITERATOR_DEBUG_LEVEL=2> )
-    target_compile_definitions( ${ICERAY_PROJECT_NAME_FULL} PRIVATE  $<$<CONFIG:DEBUG>:_HAS_ITERATOR_DEBUGGING> )
-
-    target_compile_definitions( ${ICERAY_PROJECT_NAME_FULL} PRIVATE   ICERAY_WINDOWS_USE_GDI )
-    target_compile_definitions( ${ICERAY_PROJECT_NAME_FULL} PRIVATE   WINDOWS_IGNORE_PACKING_MISMATCH )
-
+    #target_compile_options(     ${ICERAY_PROJECT_NAME_FULL} PRIVATE /Zp1)
+    #target_compile_definitions( ${ICERAY_PROJECT_NAME_FULL} PRIVATE  $<$<CONFIG:DEBUG>:_SECURE_SCL> )
+    #target_compile_definitions( ${ICERAY_PROJECT_NAME_FULL} PRIVATE  $<$<CONFIG:DEBUG>:_ITERATOR_DEBUG_LEVEL=2> )
+    #target_compile_definitions( ${ICERAY_PROJECT_NAME_FULL} PRIVATE  $<$<CONFIG:DEBUG>:_HAS_ITERATOR_DEBUGGING> )
 endif()
 
 target_include_directories(  ${ICERAY_PROJECT_NAME_FULL} PRIVATE "${directory_include}")
@@ -112,3 +117,4 @@ add_dependencies(     ${ICERAY_PROJECT_NAME_FULL}         ${ICERAY_CORE_LIBRARY_
 
 message(STATUS "CMAKE_CXX_FLAGS: ${CMAKE_CXX_FLAGS}")
 message(STATUS "CMAKE_CXX_FLAGS: ${CMAKE_C_FLAGS}")
+

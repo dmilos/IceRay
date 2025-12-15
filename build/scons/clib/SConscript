@@ -96,6 +96,8 @@ cc_files = []
 
 cc_list = open( "./cpp.lst.txt", "r" )
 for line in  cc_list :
+    if( 0 == len( line.rstrip()) ):
+        continue
     cc_files += [ line.rstrip() ]
 
 print( cc_files )
@@ -150,14 +152,14 @@ print( cc_files )
 #    pass
 
 ### Deal with Scons ###
-
 project_common_settings = copy.deepcopy( settings )
 envCommon  = nucleotide.Environment( project_common_settings ).native()
 
 objects = []
 
 for file in cc_files:
-    source = os.path.join( directory_src, 'IceRay', file )
+    print( str( len(file) ) + "    -|" + file +"|-")
+    source = os.path.join( directory_src, file )
     target = os.path.join( directory_obj, file + envCommon['OBJSUFFIX'] )
     objects += envCommon.Object( source = source, target = target )
 

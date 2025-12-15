@@ -49,7 +49,10 @@
               {
                *this = P_that;
               }
-             ~GC_state(){ }
+             ~GC_state()
+               {
+                F_clear();
+               }
 
            public:
              GC_state & operator =( GC_state const& P_that )
@@ -58,8 +61,13 @@
                return *this;
               }
 
-           public:
-             T_ptr F_ptr()
+          public:
+            void F_clear()
+             {
+              this->M2_managed.F_release();
+             }
+          public:
+            T_ptr F_ptr()
               {
                return this->M2_managed.F_ptr();
               }
@@ -149,6 +157,10 @@
               }
 
            public:
+             T_managed const& F_chunk()const
+              {
+               return M2_managed;
+              }
              T_managed & F_chunk()
               {
                return M2_managed;

@@ -104,18 +104,15 @@
                    ,T_scalar const& P_gauss
                   )const
                   {
-                   T_coord I_y = P_heading.M_direction;
-                   T_coord I_x; ::math::linear::vector::cross( I_x, I_y, P_normal ); ::math::linear::vector::length( I_x, T_scalar( 1 ) );
-                   T_coord I_z; ::math::linear::vector::cross( I_z, I_x, I_y );      ::math::linear::vector::length( I_z, T_scalar( 1 ) );
-
-                   T_scalar I_radius = sin( P_angle );
-                   ::math::linear::vector::length<T_scalar>( I_x, 1 );
-                   ::math::linear::vector::length<T_scalar>( I_z, 1 );
+                   T_coord I_z = P_heading.M_direction;
+                   T_coord I_x; ::math::linear::vector::cross( I_x, I_z, P_normal ); ::math::linear::vector::length( I_x, T_scalar( 1 ) );
+                   T_coord I_y; ::math::linear::vector::cross( I_y, I_z, I_x );      ::math::linear::vector::length( I_y, T_scalar( 1 ) );
 
                    auto I_index = M2s_table.F_structure().F_size2index( P_count );
-                   auto   const& I_perimeter = M2s_table.F_structure().F_radius()[ I_index ];
-                   T_size const& I_count     = M2s_table.F_structure().F_size()[ I_index ];
-                   auto   const& I_table     = M2s_table.F_structure().F_spot();
+                   T_scalar  const& I_perimeter = M2s_table.F_structure().F_radius()[ I_index ];
+                   T_size    const& I_count     = M2s_table.F_structure().F_size()[ I_index ];
+                   auto      const& I_table     = M2s_table.F_structure().F_spot();
+
                    T_size I_total=0;
                    T_size I_beginA = P_next.Fv_size();
 
@@ -123,22 +120,27 @@
                    T_coord2D I_disc2d; 
                    for( T_size I_index=0; I_index < I_count; ++I_index )
                     {
-                     ::math::linear::vector::scale( I_disc2d, I_radius/I_perimeter, I_table[ I_index ] );
-                     T_scalar I_height = sqrt( T_scalar( 1 ) - ::math::linear::vector::dot( I_disc2d, I_disc2d ) );
+                     ::math::linear::vector::scale( I_disc2d, P_angle/I_perimeter, I_table[ I_index ] );
 
-                     ::math::linear::vector::combine( I_direction, I_disc2d[0], I_x, I_height, I_y, I_disc2d[1], I_z );
+                     T_scalar I_rotation = atan2( I_disc2d[1], I_disc2d[0] );
+                     T_scalar I_distance = ::math::linear::vector::length( I_disc2d );
+                     T_scalar I_u = cos( I_rotation ) * sin( I_distance );
+                     T_scalar I_v = sin( I_rotation ) * sin( I_distance );
+                     T_scalar I_w =                     cos( I_distance );
+                     ::math::linear::vector::combine( I_direction, I_u, I_x, I_v, I_y, I_w, I_z );
+
                      ::math::linear::vector::length( I_direction, T_scalar( 1 ) );
-
                      {
                       P_next.Fv_push();  ++I_total;
                       auto & I_ray = P_next.Fv_top();
 
+                      I_ray.M_derivation  = P_heading.M_derivation;
+                      I_ray.M_parentUID   = P_heading.M_UID;
                       I_ray.M_geometryID  = P_heading.M_geometryID;
                       I_ray.M_depth       = P_heading.M_depth;
                       I_ray.M_origin      = P_heading.M_origin;
                       I_ray.M_state       = P_heading.M_state;
                       I_ray.M_direction   = I_direction;
-                      I_ray.M_derivation  = P_heading.M_derivation;
                       I_ray.M_ior         = P_heading.M_ior;
                       I_ray.M_intesity    = P_heading.M_intesity / I_count;  //!< todo Not optimized;  P_gauss?
                       I_ray.M_coefficient = T_scalar(1) / I_count;     //!< todo Not optimized; P_gauss?

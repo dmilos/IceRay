@@ -82,7 +82,10 @@
                   M2_data[P_index] = P_value;
                  }
 
-                T_type const&   Fv_load( T_size const& P_index )const{ return M2_data[P_index]; }
+                T_type const&   Fv_load( T_size const& P_index )const
+                 {
+                  return M2_data[P_index];
+                 }
                 T_type      &   Fv_direct(  T_size const& P_index )
                  {
                   return M2_data[P_index];

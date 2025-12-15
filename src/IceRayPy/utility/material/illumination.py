@@ -115,6 +115,66 @@ def AsDiffuse(
 
     return I_surface
 
+
+###
+
+def Diffusive(
+     P_dll
+    ,P_config
+    ,P_albedo    = IceRayPy.type.color.RGB( 1, 1, 1 )
+    ):
+
+    result     = IceRayPy.core.material.instruction.label.color.dynamic.RESULT
+    point      = IceRayPy.core.material.instruction.label.coord3d.dynamic.POINT
+    normal     = IceRayPy.core.material.instruction.label.coord3d.dynamic.NORMAL
+    tempSize   = IceRayPy.core.material.instruction.label.size.temp._BEGIN
+    tempScalar = IceRayPy.core.material.instruction.label.scalar.temp._BEGIN
+    tempColor  = IceRayPy.core.material.instruction.label.color.temp._BEGIN
+    lightThe   = IceRayPy.core.material.instruction.label.light.temp._BEGIN
+    spotBegin  = IceRayPy.core.material.instruction.label.size.dynamic.SpotBegin
+    spotEnd    = IceRayPy.core.material.instruction.label.size.dynamic.SpotEnd
+
+
+    I_coefficient  = 0.5
+    if( 'coefficient' in P_config ):
+        I_coefficient = P_config['coefficient']
+
+    I_specular   = IceRayPy.type.color.RGB(1*2,2*2,3*2)
+    if( 'specular' in P_config ):
+        I_specular = P_config['specular']
+ 
+    I_shininess = IceRayPy.type.color.RGB(10,100,1000)
+    if( 'shininess' in P_config ):
+        I_shininess = P_config['shininess']
+
+    I_leader = tempSize + 0
+
+    I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
+
+    I_light = IceRayPy.core.light.Point( P_dll, IceRayPy.core.light.Spot( IceRayPy.type.math.coord.Scalar3D( 0, 0, 5 ) ) )
+    if( 'light' in P_config ):
+        I_light = P_config['light']
+
+    I_barrier = IceRayPy.core.geometry.volumetric.Vacuum( P_dll )
+    if( 'barrier' in P_config ):
+        I_barrier = P_config['barrier']
+
+    I_surface.append( IceRayPy.core.material.instruction.light.Generator( P_dll, I_light, lightThe ) )
+    I_surface.append( IceRayPy.core.material.instruction.light.SwarmA( P_dll, spotEnd, spotBegin, lightThe, point ) )
+    I_surface.append( IceRayPy.core.material.instruction.light.SpotCull( P_dll, point, normal, spotEnd, spotBegin, spotEnd ) )
+    I_surface.append( IceRayPy.core.material.instruction.light.SpotObstruct( P_dll, I_barrier, spotEnd, spotBegin, spotEnd ) )
+
+    I_surface.append( IceRayPy.core.material.instruction.constant.Color( P_dll, P_albedo,  tempColor + 2 ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Scalar( P_dll, I_coefficient,  tempScalar + 0 ) )
+    I_surface.append( IceRayPy.core.material.instruction.transmission.reflect.Diffusive( P_dll, point, normal, tempColor + 2, tempScalar + 0 ,I_leader ) )
+
+    I_surface.append( IceRayPy.core.material.instruction.constant.Color( P_dll, I_specular,  tempColor + 0 ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Color( P_dll, I_shininess, tempColor + 1 ) )
+    I_surface.append( IceRayPy.core.material.instruction.illumination.Phong( P_dll, result, spotBegin, spotEnd, tempColor + 0, tempColor + 1 ) )
+
+    return I_surface
+
+###
 def AsSpecular(
       P_dll
      ,P_config

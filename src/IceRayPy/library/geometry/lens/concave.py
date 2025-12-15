@@ -5,15 +5,15 @@ import math
 
 Coord3D = IceRayPy.type.math.coord.Scalar3D
 
-def Symetric( P_dll,
-        P_center = Coord3D( 0, 0, 0 ),
-        P_normal = Coord3D( 1, 1, 1 ),
-        P_inner = 0.1,
-        P_out = 0.5,
-        ):
+def Symetric( P_dll, P_config = None ):
 
-    center = ( P_out/2+P_inner/2 + 1/( P_out/2-P_inner/2 ) ) /2
-    radius = math.fabs( center - P_inner/2 )
+    I_center = Coord3D( 0, 0, 0 )
+    I_normal = Coord3D( 1, 1, 1 )
+    I_inner = 0.1
+    I_out = 0.5
+
+    center = ( I_out/2+I_inner/2 + 1/( I_out/2-I_inner/2 ) ) /2
+    radius = math.fabs( center - I_inner/2 )
 
     #print(__file__ + " inner: "  + str(P_inner), flush = True );
     #print(__file__ + " out: "    + str(P_out),   flush = True );
@@ -22,9 +22,9 @@ def Symetric( P_dll,
     #print(__file__ + " distance(in): " + str( center - radius  ), flush = True );
     #print(__file__ + " ZERO(test): " + str( (P_out/2-center)*(P_out/2-center) + 1 - radius*radius ), flush = True );
 
-    I_normal = IceRayPy.type.math.coord.scale3D( P_dll, 1.0 / IceRayPy.type.math.coord.length3D( P_dll, P_normal ), P_normal )
-    cL = IceRayPy.type.math.coord.addition3D( P_dll, IceRayPy.type.math.coord.scale3D( P_dll, +center, I_normal ), P_center )
-    cR = IceRayPy.type.math.coord.addition3D( P_dll, IceRayPy.type.math.coord.scale3D( P_dll, -center, I_normal ), P_center )
+    I_normal = IceRayPy.type.math.coord.scale3D( P_dll, 1.0 / IceRayPy.type.math.coord.length3D( P_dll, I_normal ), I_normal )
+    cL = IceRayPy.type.math.coord.addition3D( P_dll, IceRayPy.type.math.coord.scale3D( P_dll, +center, I_normal ), I_center )
+    cR = IceRayPy.type.math.coord.addition3D( P_dll, IceRayPy.type.math.coord.scale3D( P_dll, -center, I_normal ), I_center )
 
     left  = IceRayPy.core.geometry.simple.Sphere( P_dll, cL, radius )
     right = IceRayPy.core.geometry.simple.Sphere( P_dll, cR, radius )
@@ -44,13 +44,13 @@ def Symetric( P_dll,
 
     return intersect
 
-def Asymetric( P_dll,
-        P_center = Coord3D( 0, 0,0 ), #!< TODO
-        P_normal = Coord3D( 0, 1,0 ), #!< TODO
-        P_inner = 0.1,
-        P_out = 0.3,
-        P_shift = 0.3,
-        ): #<! TODO
+def Asymetric( P_dll, P_config = None ):
+
+    I_center = Coord3D( 0, 0,0 ), #!< TODO
+    I_normal = Coord3D( 0, 1,0 ), #!< TODO
+    I_inner = 0.1,
+    I_out = 0.3,
+    I_shift = 0.3,
 
     radius = 0.75
     center = 0.5
@@ -71,12 +71,12 @@ def Asymetric( P_dll,
 
     return union
 
-def Plano( P_dll,
-        P_center = Coord3D( 0, 0, 0 ),
-        P_normal = Coord3D( 1, 1, 1 ),
-        P_inner = 0.1,
-        P_out = 0.25,
-        ):
+def Plano( P_dll, P_config = None ):
+
+    P_center = Coord3D( 0, 0, 0 ) 
+    P_normal = Coord3D( 1, 1, 1 ) 
+    P_inner = 0.1 
+    P_out = 0.25 
 
     center = ( P_out+P_inner + 1/( P_out-P_inner ) ) /2
     radius = math.fabs( center - P_inner )

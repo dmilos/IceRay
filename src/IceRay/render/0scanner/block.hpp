@@ -48,6 +48,12 @@
              T_range M2_window;
 
           public:
+            bool const&  F_cout(  )const;
+            bool         F_cout( bool const& P_cout );
+          private:
+            bool M2_cout;
+
+          public:
             T_report       F_hot( T_cell2D const& P_hot );
           private:
             T_cell2D M2_hot;

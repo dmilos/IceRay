@@ -161,6 +161,6 @@ IceRayC_Type_Bool   IceRayC_Render_Ray_Trace_IOR( IceRayC_Render_Ray_Handle P_th
    {
     return 0;
    }
-  I_this->F_next( P_IOR );
+  I_this->F_ior( P_IOR );
   return 1;
  }

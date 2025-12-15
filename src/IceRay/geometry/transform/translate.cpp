@@ -42,6 +42,30 @@ GC_translate::GC_translate( T_geometry *P_child, T_coord const& P_move )
 GC_translate::~GC_translate( )
  {
  }
+void    GC_translate::Fv_reset( T_state &P_intersect )const
+ {
+  C_intersect   &I_head = P_intersect.F_content<C_intersect>();
+  T_state        I_tail;  P_intersect.F_tail<C_intersect>(I_tail);
+
+  I_head.M_hit = false;
+
+  M2_geometry.M2__base->Fv_reset( I_tail );
+ }
+
+GC_translate::T_size  GC_translate::Fv_weight( )const
+ {
+  T_size Ir_weigh = 0;
+
+  Ir_weigh += sizeof( C_intersect );
+  Ir_weigh += M2_geometry.M2__base->Fv_weight();
+
+  return Ir_weigh;
+ }
+
+GC_translate::T_size const& GC_translate::Fv_id( T_state const&P_state )const
+ {
+  return M2_geometry.M2__base->Fv_id( P_state );
+ }
 
 GC_translate::T_size const&    GC_translate::Fv_quantity()const
  {
@@ -73,14 +97,15 @@ bool             GC_translate::Fv_fragment( T_fragment & P_fragment, T_state con
   return true;
  }
 
-bool GC_translate::Fv_intersect( T_scalar &P_lambda, T_state &P_state , T_ray const& P_ray  )const
+bool GC_translate::Fv_intersect( T_scalar &P_lambda, T_state &P_intersect , T_ray const& P_ray  )const
  {
-  C_intersect &I_head = P_state.F_content<C_intersect>();
-  T_state      I_tail;  P_state.F_tail<C_intersect>(I_tail);
+  C_intersect &I_head = P_intersect.F_content<C_intersect>();
+  T_state      I_tail;  P_intersect.F_tail<C_intersect>(I_tail);
 
   T2_intersect::T_ray I_ray = P_ray;
   ::math::linear::vector::addition( I_ray.M_origin, M2_2local );
-  return I_head.M_hit = M2_geometry.M2_intersect->Fv_intersect( P_lambda, I_tail, I_ray );
+  I_head.M_hit = M2_geometry.M2_intersect->Fv_intersect( P_lambda, I_tail, I_ray );
+  return I_head.M_hit;
  }
 
 void GC_translate::Fv_normal( T_coord &P_normal, T_coord const& P_point, T_state const& P_state )const
@@ -93,10 +118,10 @@ void GC_translate::Fv_normal( T_coord &P_normal, T_coord const& P_point, T_state
    M2_geometry.M2_normal->Fv_normal( P_normal, I_point, I_tail );
  }
 
-GC_translate::T_location GC_translate::Fv_inside( T_coord const& P_point/*, T_state &P_state*/ )const
+GC_translate::T_location GC_translate::Fv_inside( T_coord const& P_point/*, T_state &P_intersect*/ )const
  {
-  // C_intersect const&I_head = P_state.F_content<C_intersect>();
-  // T_state           I_tail;  P_state.F_tail<C_intersect>(I_tail);
+  // C_intersect const&I_head = P_intersect.F_content<C_intersect>();
+  // T_state           I_tail;  P_intersect.F_tail<C_intersect>(I_tail);
 
   T_coord I_point( P_point );
   ::math::linear::vector::addition( I_point, M2_2local );
@@ -120,31 +145,6 @@ GC_translate::Fv_uvw( T_coord & P_uvw, T_coord const& P_point, T_state const & P
   T_coord I_point( P_point );
   ::math::linear::vector::addition( I_point, M2_2local );
   return M2_geometry.M2_uvw->Fv_uvw( P_uvw,  I_point, I_tail );
- }
-
-void    GC_translate::Fv_reset( T_state &P_intersect )const
- {
-  C_intersect   &I_head = P_intersect.F_content<C_intersect>();
-  T_state        I_tail;  P_intersect.F_tail<C_intersect>(I_tail);
-
-  I_head.M_hit = false;
-
-  M2_geometry.M2__base->Fv_reset( I_tail );
- }
-
-GC_translate::T_size  GC_translate::Fv_weight( )const
- {
-  T_size Ir_weigh = 0;
-
-  Ir_weigh += sizeof( C_intersect );
-  Ir_weigh += M2_geometry.M2__base->Fv_weight();
-
-  return Ir_weigh;
- }
-
-GC_translate::T_size const& GC_translate::Fv_id( T_state const&P_state )const
- {
-  return M2_geometry.M2__base->Fv_id( P_state );
  }
 
 // TODO GC_translate::T_affine const&  GC_translate::Fv_2world( T_state const&P_state )const

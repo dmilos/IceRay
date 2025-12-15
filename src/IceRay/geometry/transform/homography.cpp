@@ -157,6 +157,15 @@ void GC_homography::Fv_normal( T_coord &P_normal, T_coord const& P_point, T_stat
 
   T_coord I_normal;
   M2_geometry.M2_normal->Fv_normal( I_normal, I_point, I_tail );
+  {
+   T_coord I_vertexL;  ::math::linear::vector::combine( I_vertexL, I_point, 0.001, I_normal );
+   T_coord I_vertexW;  ::math::linear::homography::transform( I_vertexW, M2_2world, I_vertexL );
+
+   ::math::linear::vector::subtraction( P_normal, I_vertexW, P_point );
+   ::math::linear::vector::length( P_normal, T_scalar( 1 ) );
+   return;
+  }
+
 
   T_homography const& m4 = F_2local();
 

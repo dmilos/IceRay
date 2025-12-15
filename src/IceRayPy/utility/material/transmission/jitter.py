@@ -98,4 +98,12 @@ def Sunflower(
     ):
     pass
 
+def KMeans(
+     P_dll
+    ,P_config = None
+    ,P_total 
+    ,P_start 
+    ,P_angle
+    ):
+    pass
 #print( '</' + __name__ + ' name=\'' +   __file__ + '>' )

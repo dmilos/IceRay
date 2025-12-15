@@ -1,5 +1,4 @@
 IceRay/main/interface/c/core/camera/camera.cpp
-
 IceRay/main/interface/c/core/geometry/geometry.cpp
 IceRay/main/interface/c/core/light/light.cpp
 IceRay/main/interface/c/core/material/material.cpp
@@ -11,4 +10,3 @@ IceRay/main/interface/c/type/type.cpp
 IceRay/main/interface/c/utility/utility.cpp
 IceRay/main/system/info.cpp
 IceRay/main/system/init_system.cpp
-

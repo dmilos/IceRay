@@ -27,6 +27,7 @@ list = {
       'I-ALP'           : IceRayPy.utility.material.illumination.Alp,       # OK OK
       'I-ambient'       : IceRayPy.utility.material.illumination.Ambient,   # OK OK TODO align with ALP
       'I-AsDiffuse'     : IceRayPy.utility.material.illumination.AsDiffuse, # OK OK TODO align with ALP
+      'I-diffusive'     : IceRayPy.utility.material.illumination.Diffusive, # OK OK TODO align with ALP
       'I-AsSpecular'    : IceRayPy.utility.material.illumination.AsSpecular,# OK OK TODO align with ALP
       'I-AS'            : IceRayPy.utility.material.illumination.AshikminShirley,# OK OK TODO align with ALP
       'I-beckmann-iso'  : IceRayPy.utility.material.illumination.Beckmann_Isotropic,  # OK Check again  TODO problem on terminator
@@ -72,7 +73,9 @@ list = {
       'M-o-Cartesian2Fisheye'      : IceRayPy.utility.material.operation.mapping.Cartesian2Fisheye,    #TODO check
 
      'T-0-reflect-One'               : IceRayPy.utility.material.transmission.reflect.One,      #OK
+     'T-0-reflect-diffusive'         : IceRayPy.utility.material.transmission.reflect.Diffusive,      #OK
      'T-0-reflect-mirror'            : IceRayPy.utility.material.transmission.reflect.Mirror,      #OK
+     'T-0-reflect-blossom-generic'   : IceRayPy.utility.material.transmission.reflect.Blossom,      #OK
      'T-1-reflect-schlick'           : IceRayPy.utility.material.transmission.reflect.Schlick,  #OK
      'T-2-reflect-blossom-Grid'      : IceRayPy.utility.material.transmission.blossom.Grid,     #TODO edge bug
      'T-3-reflect-blossom-Hexagon'   : IceRayPy.utility.material.transmission.blossom.Hexagon,  #CHECK
@@ -85,9 +88,34 @@ list = {
      'T-8-reflect-blossom-VDC'       : IceRayPy.utility.material.transmission.blossom.VDC,      #OK
      'T-8-reflect-blossom-congruent' : IceRayPy.utility.material.transmission.blossom.Congruent,      #OK
      'T-8-reflect-blossom-sunflower' : IceRayPy.utility.material.transmission.blossom.Sunflower,      #OK
+     'T-8-reflect-blossom-kmeans'    : IceRayPy.utility.material.transmission.blossom.KMeans,      #OK
      'T-9-refract-fresnel'           : IceRayPy.utility.material.transmission.refract.Fresnel,  #OK
      'T-A-refract-Snell'             : IceRayPy.utility.material.transmission.refract.Snell,    #OK
      'T-B-refract-schlick'           : IceRayPy.utility.material.transmission.refract.Schlick,  #OK
+
+     'T-C-refract-MgSO4_7H2O'                             : IceRayPy.utility.material.transmission.refract.MgSO4_7H2O,
+     'T-D-refract-B4O5__OH_4_8H2O'                        : IceRayPy.utility.material.transmission.refract.B4O5__OH_4_8H2O,
+     'T-E-refract-NaCaB5O6_OH_6_5H2O'                     : IceRayPy.utility.material.transmission.refract.NaCaB5O6_OH_6_5H2O,
+     'T-F-refract-KAl2_AlSi3O10__F_OH_2'                  : IceRayPy.utility.material.transmission.refract.KAl2_AlSi3O10__F_OH_2,
+     'T-G-refract-K_Mg_Fe_3_AlSi3O10__F_OH_2'             : IceRayPy.utility.material.transmission.refract.K_Mg_Fe_3_AlSi3O10__F_OH_2,
+     'T-H-refract-Al2SiO4_F_OH_2'                         : IceRayPy.utility.material.transmission.refract.Al2SiO4_F_OH_2,
+     'T-I-refract-Mg_Fe_2SiO4'                            : IceRayPy.utility.material.transmission.refract.Mg_Fe_2SiO4,
+     'T-B-refract-CaTiO3'                                 : IceRayPy.utility.material.transmission.refract.CaTiO3,
+     'T-B-refract-BaB2O4'                                 : IceRayPy.utility.material.transmission.refract.BaB2O4,
+     'T-B-refract-Be3Al2_SiO3_6'                          : IceRayPy.utility.material.transmission.refract.Be3Al2_SiO3_6,
+     'T-B-refract-CaCO3'                                  : IceRayPy.utility.material.transmission.refract.CaCO3,
+     'T-B-refract-H2O'                                    : IceRayPy.utility.material.transmission.refract.H2O,
+     'T-B-refract-LiNbO3'                                 : IceRayPy.utility.material.transmission.refract.LiNbO3,
+     'T-B-refract-MgF2'                                   : IceRayPy.utility.material.transmission.refract.MgF2,
+     'T-B-refract-SiO2'                                   : IceRayPy.utility.material.transmission.refract.SiO2,
+     'T-B-refract-Al2O3'                                  : IceRayPy.utility.material.transmission.refract.Al2O3,
+     'T-B-refract-TiO2'                                   : IceRayPy.utility.material.transmission.refract.TiO2,
+     'T-B-refract-Al2O3'                                  : IceRayPy.utility.material.transmission.refract.Al2O3,
+     'T-B-refract-SiC'                                    : IceRayPy.utility.material.transmission.refract.SiC,
+     'T-B-refract-Tourmaline'                             : IceRayPy.utility.material.transmission.refract.Tourmaline,
+     'T-B-refract-ZrSiO4_hight'                           : IceRayPy.utility.material.transmission.refract.ZrSiO4_hight,
+     'T-B-refract-ZrSiO4_low'                             : IceRayPy.utility.material.transmission.refract.ZrSiO4_low,
+
 
      'X-Coord3D2Color'               : IceRayPy.utility.material.operation.Coord3D2Color,  #OK
 }

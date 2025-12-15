@@ -119,12 +119,12 @@
                    I_radius *= I_radius;
 
                    T_coord I_direction;
+                   T_coord2D I_disc2d;
                    T_size I_total = 0;
                    T_size I_beginA = P_next.Fv_size();
 
                    for( T_size I_index=0; I_index < I_count; ++I_index )
                     {
-                     T_coord2D I_disc2d;
                      GS_DDMRM::S_IceRay::S_utility::S_random::GF_disc2D( I_disc2d, M2_randgeneral2D );
 
                      T_scalar I_height = sqrt( T_scalar( 1 ) - I_radius * ::math::linear::vector::dot( I_disc2d, I_disc2d ) );
@@ -135,12 +135,13 @@
                       P_next.Fv_push(); ++I_total;
                       auto & I_ray = P_next.Fv_top();
 
+                      I_ray.M_derivation  = P_heading.M_derivation;
+                      I_ray.M_parentUID   = P_heading.M_UID;
                       I_ray.M_geometryID  = P_heading.M_geometryID;
                       I_ray.M_depth       = P_heading.M_depth;
                       I_ray.M_origin      = P_heading.M_origin;
                       I_ray.M_state       = P_heading.M_state;
                       I_ray.M_direction   = I_direction;
-                      I_ray.M_derivation  = P_heading.M_derivation;
                       I_ray.M_ior         = P_heading.M_ior;
                       I_ray.M_intesity    = P_heading.M_intesity / I_count;  //!< todo Not optimized;  P_gauss?
                       I_ray.M_coefficient = T_scalar(1)/ I_count;     //!< todo Not optimized; P_gauss?

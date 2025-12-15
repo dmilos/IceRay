@@ -1,4 +1,4 @@
-#include "./bezier.hpp
+#include "./bezier.hpp"
 
 
 struct GC_box::C_intersect

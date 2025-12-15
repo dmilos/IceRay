@@ -135,7 +135,7 @@ class CylinderG:  #( IceRayPy.core.geometry.Generic ):
 
 
 class ConeG:  #( IceRayPy.core.geometry.Generic ):
-    def __init__( self, P_dll ):
+    def __init__( self, P_dll, P_config = None ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
 
@@ -187,7 +187,7 @@ class ConeG:  #( IceRayPy.core.geometry.Generic ):
 
 
 class ParaboloidG:  #( IceRayPy.core.geometry.Generic ):
-    def __init__( self, P_dll ):
+    def __init__( self, P_dll, P_config = None ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
 
@@ -238,7 +238,7 @@ class ParaboloidG:  #( IceRayPy.core.geometry.Generic ):
 
 
 class HyperboloidG:  #( IceRayPy.core.geometry.Generic ): # TODO have bug !!!
-    def __init__( self, P_dll ):
+    def __init__( self, P_dll, P_config = None ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
 
@@ -299,7 +299,7 @@ class HyperboloidG:  #( IceRayPy.core.geometry.Generic ): # TODO have bug !!!
 
 
 class Parallelepiped:
-    def __init__( self, P_dll ):
+    def __init__( self, P_dll, P_config = None ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
 
@@ -355,7 +355,7 @@ class Parallelepiped:
 
 
 class Cube:  #( IceRayPy.core.geometry.Generic ): # TODO have bug !!!
-    def __init__( self, P_dll ):
+    def __init__( self, P_dll, P_config = None ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
 

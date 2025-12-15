@@ -212,10 +212,11 @@ void GC_intersect::Fv_normal( T_coord &P_normal, T_coord const& P_point, T_state
  {
   C_intersect const &I_intersect = P_state.F_content<C_intersect>();
 
-  T_state I_state; P_state.F_tail<C_intersect>(I_state);
+  T_state I_state; P_state.F_tail<C_intersect>( I_state );
 
   switch( I_intersect.M_hitHit )
    {
+    case( En_none ): /*TODO*/ break;
     case( En_left ):
      {
       M2_left.M_normal->Fv_normal( P_normal, P_point, I_state );
@@ -264,6 +265,7 @@ bool      GC_intersect::Fv_uvw( T_coord & P_uvw, T_coord const& P_point, T_state
 
   switch( I_intersect.M_hitHit )
    {
+    case( En_none ): /*TODO*/ break;
     case( En_left ):
      {
       return M2_left.M_uvw->Fv_uvw( P_uvw, P_point, I_state );
@@ -303,6 +305,8 @@ bool GC_intersect::Fv_fragment( T_fragment & P_fragment, T_state const& P_state 
 
   switch( I_intersect.M_hitHit )
    {
+    default:
+    case( En_none ): return false;
     case( En_left ):
      {
       ++P_fragment.M_depth;
@@ -337,6 +341,8 @@ GC_intersect::T_bool GC_intersect::Fv_solid( T_state const& P_state )const
 
   switch( I_intersect.M_hitHit )
    {
+    default:
+    case( En_none ): return false;
     case( En_left ):
      {
       return M2_left.M_solid->Fv_solid( I_state );

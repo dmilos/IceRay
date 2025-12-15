@@ -1,12 +1,11 @@
-main/interface/c/core/camera/camera.cpp
+IceRay/main/interface/c/core/camera/camera.cpp
 
-main/interface/c/core/geometry/geometry.cpp
-
-main/interface/c/core/object/object.cpp
-main/interface/c/core/light/light.cpp
-main/interface/c/core/material/material.cpp
-main/interface/c/core/render/render.cpp
-main/interface/c/core/utility/utility.cpp
-main/interface/c/type/type.cpp
-main/interface/c/utility/utility.cpp
-main/interface/c/system/system.cpp
+IceRay/main/interface/c/core/geometry/geometry.cpp
+IceRay/main/interface/c/core/light/light.cpp
+IceRay/main/interface/c/core/material/material.cpp
+IceRay/main/interface/c/core/object/object.cpp
+IceRay/main/interface/c/core/render/render.cpp
+IceRay/main/interface/c/core/utility/utility.cpp
+IceRay/main/interface/c/system/system.cpp
+IceRay/main/interface/c/type/type.cpp
+IceRay/main/interface/c/utility/utility.cpp

@@ -8,6 +8,7 @@
 #include "../_pure/normal.hpp"
 #include "../_pure/inside.hpp"
 #include "../_pure/distance.hpp"
+#include "../_pure/pierce.hpp"
 
 #include "../volumetric/vacuum.hpp"
 
@@ -27,12 +28,11 @@
           , public GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_distance
           {
            public:
+             typedef GS_DDMRM::S_IceRay::S_type::GT_size                         T_size;
              typedef GS_DDMRM::S_IceRay::S_type::GT_scalar                       T_scalar;
              typedef GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar3D            T_coord;
 
              typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base      T_geometry, T__base;
-             typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_intersect  T_intersect;
-             typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_inside     T_inside;
 
            public:
              GC_mist();
@@ -65,6 +65,14 @@
              T_scalar M2_precision;
 
            public:
+             T_size    const& F_seed()const{ return M2_seed; }
+             bool               F_seed( T_size const& P_seed );
+           protected:
+             T_size        & F1_seed(){ return M2_seed; }
+           private:
+             T_size         M2_seed;
+
+           public:
              typedef GS_DDMRM::S_IceRay::S_geometry::S_volumetric::GC_vacuum T_vacuum;
              static T_vacuum & Fs_vacuum();
 
@@ -72,17 +80,21 @@
               T__base const& F_hull( )const;
               bool           F_hull( T__base * P_hull );
            private:
+             typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_intersect  T_intersect;
+             typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_pierce     T_pierce;
+             typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_inside     T_inside;
+           
               typedef struct C2_hull
                {
-                  T__base   * M__base;
-                T_intersect * M_intersect;
-                T_inside    * M_inside;
-               }T2_hull;
+                T__base      *M__base;
+                T_intersect  *M_intersect;
+                T_inside     *M_inside;
+                T_pierce     *M_pierce;
+              }T2_hull;
               T2_hull M2_hull;
 
            private:
              struct C_intersect;
-
           };
 
         }

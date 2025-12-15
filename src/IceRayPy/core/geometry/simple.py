@@ -24,7 +24,7 @@ class Sphere : #( IceRayPy.core.geometry.Generic ):
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Geometry_Sphere0()
 
-        if None != P_center:
+        if ( None != P_center) and ( type(P_center) == Coord3D ):
             self.center( P_center )
 
         if None != P_radius:
@@ -43,8 +43,7 @@ class Sphere : #( IceRayPy.core.geometry.Generic ):
 
 
 class Cone: #( IceRayPy.core.geometry.Generic ):
-
-    def __init__( self, P_dll ):
+    def __init__( self, P_dll, P_dummy = None ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Geometry_Cone0()
@@ -52,13 +51,14 @@ class Cone: #( IceRayPy.core.geometry.Generic ):
     def __del__( self ):
         self.m_cargo['dll'].IceRayC_Geometry_Release( self.m_cargo['this'] )
 
+
 class Cylinder: #( IceRayPy.core.geometry.Generic ):
 
     def __init__( self, P_dll, P_radius = None, P_height = None ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Geometry_Cylinder0()
-        if None != P_radius:
+        if ( None != P_radius) and ( type(P_radius) == Scalar ):
             self.radius( P_radius )
         if None != P_height:
             self.height( P_height )
@@ -76,7 +76,7 @@ class Cylinder: #( IceRayPy.core.geometry.Generic ):
 
 class Ellipsoid:  #( IceRayPy.core.geometry.Generic ):
 
-    def __init__( self, P_dll ):
+    def __init__( self, P_dll, P_dummy = None ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Geometry_Ellipsoid0()
@@ -94,7 +94,7 @@ class Ellipsoid:  #( IceRayPy.core.geometry.Generic ):
         return self.m_cargo['dll'].IceRayC_Geometry_Ellipsoid_RadiusV( self.m_cargo['this'], AddressOf( P_radius ) )
 
     def system( self, P_eX: Coord3D, P_eY: Coord3D, P_eZ: Coord3D ):
-        return self.m_cargo['dll'].IceRayC_Geometry_Ellipsoid_RadiusV( self.m_cargo['this'], AddressOf( P_eX ), AddressOf( P_eY ), AddressOf( P_eZ ) )
+        return self.m_cargo['dll'].IceRayC_Geometry_Ellipsoid_System( self.m_cargo['this'], AddressOf( P_eX ), AddressOf( P_eY ), AddressOf( P_eZ ) )
 
 
 class Hyperboloid:  #( IceRayPy.core.geometry.Generic ):
@@ -114,7 +114,7 @@ class Hyperboloid:  #( IceRayPy.core.geometry.Generic ):
 
 
 class Paraboloid:  #( IceRayPy.core.geometry.Generic ):
-    def __init__( self, P_dll ):
+    def __init__( self, P_dll, P_dummy = None ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Geometry_Paraboloid0()
@@ -125,7 +125,7 @@ class Paraboloid:  #( IceRayPy.core.geometry.Generic ):
 
 
 class Quadric:  #( IceRayPy.core.geometry.Generic ):
-    def __init__( self, P_dll ):
+    def __init__( self, P_dll, P_dummy = None ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Geometry_Quadric0()
@@ -170,7 +170,7 @@ class Quadric:  #( IceRayPy.core.geometry.Generic ):
 
 
 class Saddle:  #( IceRayPy.core.geometry.Generic ):
-    def __init__( self, P_dll ):
+    def __init__( self, P_dll, P_dummy = None ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Geometry_Saddle0()
@@ -184,7 +184,7 @@ class Torus:  #( IceRayPy.core.geometry.Generic ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Geometry_Torus0()
-        if( None != P_minor ):
+        if( None != P_minor ) and ( type(P_minor) == Scalar ):
             self.minor( P_minor )
 
     def __del__( self ):
@@ -194,10 +194,8 @@ class Torus:  #( IceRayPy.core.geometry.Generic ):
         self.m_cargo['dll'].IceRayC_Geometry_Torus_Minor( self.m_cargo['this'], Scalar( P_minor ) )
 
 
-
-
 class CylinderU:  #( IceRayPy.core.geometry.Generic ):
-    def __init__( self, P_dll ):
+    def __init__( self, P_dll, P_dummy = None ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Geometry_CylinderU0()
@@ -207,7 +205,7 @@ class CylinderU:  #( IceRayPy.core.geometry.Generic ):
 
 
 class SphereU:  #( IceRayPy.core.geometry.Generic ):
-    def __init__( self, P_dll ):
+    def __init__( self, P_dll, P_dummy = None ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Geometry_USphere0()

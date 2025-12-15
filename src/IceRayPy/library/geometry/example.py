@@ -61,31 +61,31 @@ def IntersectGeneral( P_dll
 
     return intersect
 
-def Intersect_IN_IN( P_dll ):
+def Intersect_IN_IN( P_dll, P_config = None ):
     return IntersectGeneral( P_dll, IceRayPy.core.geometry.complex.Intersect.IN, IceRayPy.core.geometry.complex.Intersect.IN  )
 
-def Intersect_IN_OUT( P_dll ):
+def Intersect_IN_OUT( P_dll, P_config = None ):
     return IntersectGeneral( P_dll, IceRayPy.core.geometry.complex.Intersect.IN, IceRayPy.core.geometry.complex.Intersect.OUT  )
 
-def Intersect_IN_SURFACE( P_dll ):
+def Intersect_IN_SURFACE( P_dll, P_config = None ):
     return IntersectGeneral( P_dll, IceRayPy.core.geometry.complex.Intersect.IN, IceRayPy.core.geometry.complex.Intersect.SURFACE  )
 
-def Intersect_OUT_IN( P_dll ):
+def Intersect_OUT_IN( P_dll, P_config = None ):
     return IntersectGeneral( P_dll, IceRayPy.core.geometry.complex.Intersect.OUT, IceRayPy.core.geometry.complex.Intersect.IN  )
 
-def Intersect_OUT_OUT( P_dll ):
+def Intersect_OUT_OUT( P_dll, P_config = None ):
     return IntersectGeneral( P_dll, IceRayPy.core.geometry.complex.Intersect.OUT, IceRayPy.core.geometry.complex.Intersect.OUT  )
 
-def Intersect_OUT_SURFACE( P_dll ):
+def Intersect_OUT_SURFACE( P_dll, P_config = None ):
     return IntersectGeneral( P_dll, IceRayPy.core.geometry.complex.Intersect.OUT, IceRayPy.core.geometry.complex.Intersect.SURFACE  )
 
-def Intersect_SURFACE_IN( P_dll ):
+def Intersect_SURFACE_IN( P_dll, P_config = None ):
     return IntersectGeneral( P_dll, IceRayPy.core.geometry.complex.Intersect.SURFACE, IceRayPy.core.geometry.complex.Intersect.IN  )
 
-def Intersect_SURFACE_OUT( P_dll ):
+def Intersect_SURFACE_OUT( P_dll, P_config = None ):
     return IntersectGeneral( P_dll, IceRayPy.core.geometry.complex.Intersect.SURFACE, IceRayPy.core.geometry.complex.Intersect.OUT  )
 
-def Intersect_SURFACE_SURFACE( P_dll ):
+def Intersect_SURFACE_SURFACE( P_dll, P_config = None ):
     return IntersectGeneral( P_dll, IceRayPy.core.geometry.complex.Intersect.SURFACE, IceRayPy.core.geometry.complex.Intersect.SURFACE  )
 
 

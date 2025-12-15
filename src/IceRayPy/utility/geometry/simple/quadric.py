@@ -7,10 +7,10 @@ Coord3D = IceRayPy.type.math.coord.Scalar3D
 Matrix3D = IceRayPy.type.math.matrix.Scalar3D
 
 
-def Sphere( P_dll ):
+def Sphere( P_dll, P_dummy = None ):
     return IceRayPy.core.geometry.simple.Quadric( P_dll )
 
-def Cylinder( P_dll ):
+def Cylinder( P_dll, P_dummy = None ):
     result = IceRayPy.core.geometry.simple.Quadric( P_dll )
     matrix = IceRayPy.type.math.matrix.id3D(P_dll)
     matrix.a33 = 0;
@@ -18,7 +18,7 @@ def Cylinder( P_dll ):
     result.scalar( -1 )
     return result
 
-def Paraboloid( P_dll ):
+def Paraboloid( P_dll, P_dummy = None ):
     result = IceRayPy.core.geometry.simple.Quadric( P_dll )
     matrix = IceRayPy.type.math.matrix.id3D(P_dll)
     matrix.a33 = 0;
@@ -28,7 +28,7 @@ def Paraboloid( P_dll ):
     result.scalar( 0 )
     return result
 
-def Saddle( P_dll ):
+def Saddle( P_dll, P_dummy = None ):
     result = IceRayPy.core.geometry.simple.Quadric( P_dll )
     matrix = IceRayPy.type.math.matrix.id3D(P_dll)
     matrix.a22 = -1;
@@ -39,7 +39,7 @@ def Saddle( P_dll ):
     result.scalar( 0 )
     return result
 
-def Nuke( P_dll ):
+def Nuke( P_dll, P_dummy = None ):
     result = IceRayPy.core.geometry.simple.Quadric( P_dll )
     matrix = IceRayPy.type.math.matrix.id3D(P_dll)
     matrix.a33 = -1;
@@ -47,7 +47,7 @@ def Nuke( P_dll ):
     result.scalar( -0.5 )
     return result
 
-def Cone( P_dll ):
+def Cone( P_dll, P_dummy = None ):
     result = IceRayPy.core.geometry.simple.Quadric( P_dll )
     matrix = IceRayPy.type.math.matrix.id3D(P_dll)
     matrix.a33 = -1;

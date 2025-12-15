@@ -100,8 +100,15 @@
                      P_next.Fv_push();
                      T_ray & I_reflected = P_next.Fv_top();
 
-                     I_reflected.M_depth = I_incoming.M_depth + 1;
-                     I_reflected.M_origin = I_point;
+                     I_reflected.M_derivation  = T_ray::Ee_derivation::En_Reflected;
+                     I_reflected.M_depth       = I_incoming.M_depth + 1;
+                     I_reflected.M_parentUID   = I_incoming.M_UID;
+                     I_reflected.M_geometryID  = I_intersect.M_geometryID;
+                     I_reflected.M_state       = I_intersect.M_state;
+                     I_reflected.M_ior         = I_incoming.M_ior;
+                     I_reflected.M_coefficient = T_scalar(1);
+                     I_reflected.M_hierarchy   = T_ray::Ee_hierarchy::En_solo;
+                     I_reflected.M_origin      = I_point;
                      ::math::linear::vector::reflect( I_reflected.M_direction, I_incoming.M_direction, I_normal );
                      ::math::linear::vector::length( I_reflected.M_direction, T_scalar(1) );
 
@@ -112,12 +119,6 @@
 
                      ::color::operation::scale( I_reflected.M_intesity, I_reflectance, I_incoming.M_intesity );
 
-                     I_reflected.M_coefficient = T_scalar(1);
-                     I_reflected.M_ior  = I_incoming.M_ior;
-                     I_reflected.M_derivation = T_ray::Ee_derivation::En_Reflected;
-                     I_reflected.M_geometryID = I_intersect.M_geometryID;
-                     I_reflected.M_state = I_intersect.M_state;
-                     I_reflected.M_hierarchy = T_ray::Ee_hierarchy::En_solo;
 
                    //M2_memoryRay->Fv_store(F_output<T_size>(P_outSize_RayCount),  1 );
                      M2_memorySize->Fv_store( F_output<T_size>(En_outSize_RayStart), P_next.Fv_size() - 1 );

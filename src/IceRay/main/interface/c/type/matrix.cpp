@@ -145,18 +145,18 @@ int   IceRayC_Type_Math_Matrix4D_Zero( IceRayC_Type_Math_Matrix4D *P_this )
 int    IceRayC_Type_Math_Matrix3D_ScaleS( IceRayC_Type_Math_Matrix3D *P_that, IceRayC_TypeScalar P_scale )
  {
   IceRayC_Type_Math_Matrix3D_ID( P_that );
-  P_that->value[3][0] = P_scale;
-  P_that->value[3][1] = P_scale;
-  P_that->value[3][2] = P_scale;
+  P_that->value[2][0] = P_scale;
+  P_that->value[2][1] = P_scale;
+  P_that->value[2][2] = P_scale;
   return 1;
  }
 
 int    IceRayC_Type_Math_Matrix3D_ScaleV( IceRayC_Type_Math_Matrix3D *P_that, IceRayC_TypeCoordScalar3D* P_scale )
  {
   IceRayC_Type_Math_Matrix3D_ID( P_that );
-  P_that->value[3][0] = P_scale->value[0];
-  P_that->value[3][1] = P_scale->value[1];
-  P_that->value[3][2] = P_scale->value[2];
+  P_that->value[2][0] = P_scale->value[0];
+  P_that->value[2][1] = P_scale->value[1];
+  P_that->value[2][2] = P_scale->value[2];
   return 1;
  }
 

@@ -3,6 +3,7 @@
 
 #include "IceRay/type/basic/scalar.hpp"
 #include "IceRay/type/math/coord.hpp"
+#include "IceRay/type/math/matrix.hpp"
 
 
 

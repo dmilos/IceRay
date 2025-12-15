@@ -24,7 +24,8 @@ set( directory_dll    "${directory_temp}/${directory_output}/dll" )
 
 #Internal variables
 set( hpp_file_list    "./hpp.lst.txt" )
-set( cpp_file_list    "./cpp.lst.txt" )
+#set( cpp_file_list    "./cpp.lst.txt" )
+set( cpp_file_list    "./cpp-expand.lst.txt" )
 
 #Processing
 set( SOURCE_HPP "" )
@@ -59,6 +60,8 @@ if( UNIX )
     target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -fexceptions )
     target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -Wno-unused-local-typedefs )
     target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -Wno-unused-variable )
+    #target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -Wmaybe-uninitialized )
+
     if( ICERAY_SWITCH_DEBUG )
         #target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -fsanitize=address )
         #target_link_options(    ${ICERAY_PROJECT_NAME_FULL} PRIVATE -fsanitize=address )
@@ -74,11 +77,15 @@ if( UNIX )
 endif()
 
 if( MSVC )
-    target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE /Zp1    )
+    if( ICERAY_WINDOWS_USE_GDI )
+        target_compile_definitions(  ${ICERAY_PROJECT_NAME_FULL}  PRIVATE ICERAY_WINDOWS_USE_GDI=1 )
+    endif()
+
     target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE /wd4624 )
-    target_compile_definitions( ${ICERAY_PROJECT_NAME_FULL} PRIVATE  $<$<CONFIG:DEBUG>:_SECURE_SCL> )
-    target_compile_definitions( ${ICERAY_PROJECT_NAME_FULL} PRIVATE  $<$<CONFIG:DEBUG>:_ITERATOR_DEBUG_LEVEL=2> )
-    target_compile_definitions( ${ICERAY_PROJECT_NAME_FULL} PRIVATE  $<$<CONFIG:DEBUG>:_HAS_ITERATOR_DEBUGGING> )
+    #target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE /Zp1    )
+    #target_compile_definitions( ${ICERAY_PROJECT_NAME_FULL} PRIVATE  $<$<CONFIG:DEBUG>:_SECURE_SCL> )
+    #target_compile_definitions( ${ICERAY_PROJECT_NAME_FULL} PRIVATE  $<$<CONFIG:DEBUG>:_ITERATOR_DEBUG_LEVEL=2> )
+    #target_compile_definitions( ${ICERAY_PROJECT_NAME_FULL} PRIVATE  $<$<CONFIG:DEBUG>:_HAS_ITERATOR_DEBUGGING> )
 endif()
 
 target_include_directories(  ${ICERAY_PROJECT_NAME_FULL} PRIVATE "${directory_include}")

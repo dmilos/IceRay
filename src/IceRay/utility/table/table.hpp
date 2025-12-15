@@ -10,6 +10,7 @@
 
 #include "./poisson.hpp"
 #include "./sunflower.hpp"
+#include "./kmeans.hpp"
 
 //#include "./penrose.hpp"
 //#include "./random.hpp"

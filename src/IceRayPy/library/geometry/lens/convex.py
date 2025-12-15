@@ -4,12 +4,12 @@ import IceRayPy
 
 Coord3D = IceRayPy.type.math.coord.Scalar3D
 
-def Symetric( P_dll,
-        P_center = Coord3D( 0, 0,0 ),
-        P_normal = Coord3D( 1, 1, 1 ),
-        P_radius = 2,
-        P_thick = 0.3
-        ):
+def Symetric( P_dll, P_config ):
+
+    P_center = Coord3D( 0, 0,0 )
+    P_normal = Coord3D( 1, 1, 1 )
+    P_radius = 2
+    P_thick = 0.3
 
     radius = ( (P_radius/2)*(P_radius/2) + (P_thick/2)*(P_thick/2) ) / P_thick
     center = radius - P_thick / 2
@@ -28,13 +28,13 @@ def Symetric( P_dll,
 
     return result
 
-def Asymetric( P_dll,
-        P_center = Coord3D( 0, 0,0 ),
-        P_normal = Coord3D( 1, 1, 1 ),
-        P_inner = 0.1,
-        P_out = 0.3,
-        P_shift = 0.1,
-        ): #<! TODO
+def Asymetric( P_dll, P_config ):
+
+    P_center = Coord3D( 0, 0,0 )
+    P_normal = Coord3D( 1, 1, 1 )
+    P_inner = 0.1
+    P_out = 0.3
+    P_shift = 0.1
 
     radius = 0.75
     center = 0.5
@@ -60,12 +60,12 @@ def Asymetric( P_dll,
     return union
 
 
-def Plano( P_dll,
-        P_center = Coord3D( 0, 0, 0 ),
-        P_normal = Coord3D( 1, 1, 1 ),
-        P_radius = 2,
-        P_thick = 0.3/2
-        ):
+def Plano( P_dll, P_config ):
+     
+    P_center = Coord3D( 0, 0, 0 )
+    P_normal = Coord3D( 1, 1, 1 )
+    P_radius = 2
+    P_thick = 0.3/2
 
     radius = ( (P_radius/2)*(P_radius/2) + (P_thick)*(P_thick) ) / (2*P_thick)
     center = radius - P_thick

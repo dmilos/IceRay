@@ -6,3 +6,6 @@
 #include "./scanner.cpp"
 #include "./engine.cpp"
 
+#include "./strategy.cpp"
+#include "./filter.cpp"
+

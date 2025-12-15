@@ -88,6 +88,24 @@ IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Hexagon0( )
   auto Ir_result = new GS_DDMRM::S_IceRay::S_material::S_pattern::GC_hexagon{};
   return cpp2c( Ir_result );
  }
+IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Hexagon1( IceRayC_Type_Scalar            P_scale )
+ {
+  auto Ir_result = new GS_DDMRM::S_IceRay::S_material::S_pattern::GC_hexagon{P_scale};
+  return cpp2c( Ir_result );
+ }
+int IceRayC_Material_Pattern_Hexagon_Scale( IceRayC_Material_Pattern_Handle P_that, IceRayC_Type_Scalar            P_scale )
+ {
+  typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GC_hexagon Tf_this;
+
+  auto I_this = dynamic_cast< Tf_this *>( c2cpp( P_that ) );
+  if( nullptr == I_this )
+   {
+    return 0;
+   }
+  I_this->F_scale( P_scale );
+  return 1;
+ }
+
 IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Wave0( )
  {
   auto Ir_result = new GS_DDMRM::S_IceRay::S_material::S_pattern::GC_waveSaw{};
@@ -114,7 +132,6 @@ IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Image1( IceRayC_Type_Pi
   auto Ir_result = new GS_DDMRM::S_IceRay::S_material::S_pattern::GC_image{ c2cpp( P_picture ) };
   return cpp2c( Ir_result );
  }
-
 int IceRayC_Material_Pattern_Image_Picture( IceRayC_Material_Pattern_Handle P_that, IceRayC_Type_Picture_Handle P_picture )
  {
   typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GC_image Tf_this;
@@ -225,7 +242,7 @@ int IceRayC_Material_Pattern_Gradient_Set( IceRayC_Material_Pattern_Handle P_thi
   I_this->F_set( P_point, c2cpp( *P_color ) );
   return 1;
  }
- 
+
 int                             IceRayC_Material_Pattern_Gradient_Bottom( IceRayC_Material_Pattern_Handle P_this, IceRayC_Type_Math_Coord_Scalar3D* P_bottom )
  {
   typedef GS_DDMRM::S_IceRay::S_material::S_pattern::GC_gradient        Tf_surface;

@@ -7,7 +7,7 @@ using namespace GS_DDMRM::S_IceRay::S_render::S_ray::S_classic2::S_stack;
 
 GC_implementation::GC_implementation()
  {
-  M2_total = 0;
+  M2_lastUID = 0;
   M2_index =0;
  }
  
@@ -52,8 +52,7 @@ void GC_implementation::Fv_pop()
 
   auto & I_accident = Fv_topAccident();
 
-  I_accident.M_incoming.M_state.F_chunk().F_release();
-  I_accident.M_intersection.M_state.F_chunk().F_release();
+  I_accident.F_clear();
 
   T_data::F_pop();
  }
@@ -96,21 +95,23 @@ void GC_implementation::Fv_push()
     return;
    }
 
-  ++M2_total;
+  ++M2_lastUID;
   ++M2_index;
 
   auto & I_accident = T_data::F_push();
 //I_ray.M_intersection.M_lambda  = Is_infinity;
-  I_accident.M_incoming.M_UID    = M2_total;
+  I_accident.M_incoming.M_UID    = M2_lastUID;
   I_accident.M_incoming.M_status = T__input::T_ray::Ee_status::En_active;
   I_accident.M_consume           = T__stack::T_accident::Ee_consume::En_fresh;
  }
 
 void GC_implementation::F_clear()
  { // DONE
-  M2_total = 0;
+  M2_lastUID = 0;
   M2_index = 0;
   T_data::F_clear();
+  T__beam::F_clear();
+  //T__stack::F_clear();
  }
 
 GC_implementation::T_size   const&  GC_implementation::F_index()const

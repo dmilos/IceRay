@@ -13,6 +13,7 @@
 
 
 #include <fstream>
+#include <cstring>
 
 #include "./picture.h"
 #include "./coord.hpp"
@@ -162,7 +163,7 @@ IceRayC_Type_Bool IceRayC_Type_Picture_Load( IceRayC_Type_Picture_Handle P_this,
       for( Tf__pure::T_size y=0; y< I_this->F_size()[1]; ++y )
        for( Tf__pure::T_size x=0; x< I_this->F_size()[0]; ++x )
         {
-         I_image->GetPixel( (int)x, (int)y, &I_color );
+         I_image->GetPixel( (INT)x, (INT)y, &I_color );
          I_this-> Fv_pixel( {x,y}, Tf__pure::T_color{ I_color.GetRed(), I_color.GetGreen(), I_color.GetBlue() } );
         }
 
@@ -195,7 +196,7 @@ IceRayC_Type_Bool IceRayC_Type_Picture_StorePNG( IceRayC_Type_Picture_Handle P_t
 #if defined( ICERAY_WINDOWS_USE_GDI )
 
    auto const& I_size = I_this->F_size();
-   Gdiplus::Bitmap I_bmp( I_size[0], I_size[1], PixelFormat24bppRGB );
+   Gdiplus::Bitmap I_bmp( (INT)I_size[0], (INT)I_size[1], PixelFormat24bppRGB );
    if( Gdiplus::Ok == I_bmp.GetLastStatus() )
     {
      Tf__pure::T_coord  I_coord;
@@ -205,7 +206,7 @@ IceRayC_Type_Bool IceRayC_Type_Picture_StorePNG( IceRayC_Type_Picture_Handle P_t
        {
         auto I_pixel = I_this->Fv_pixel( I_color, I_coord );
 
-        I_bmp.SetPixel( I_coord[0], I_coord[1], Gdiplus::Color( I_color[0], I_color[1], I_color[2]  ) );
+        I_bmp.SetPixel( (INT)I_coord[0], (INT)I_coord[1], Gdiplus::Color( I_color[0], I_color[1], I_color[2]  ) );
        }
 
        CLSID I_pngClsid={ 0x557cf406L, 0x1a04L, 0x11d3L, { 0x9a, 0x73, 0x00, 0x00, 0xf8, 0x1e, 0xf3, 0x2e } };
@@ -252,6 +253,23 @@ unsigned char const* IceRayC_Type_Picture_Buffer( IceRayC_Type_Picture_Handle P_
 
   return reinterpret_cast< unsigned char const *> ( I_this->Fv_data() );
  }
+ 
+IceRayC_Type_Bool                 IceRayC_Type_Picture_Transfer( IceRayC_Type_Picture_Handle P_this, unsigned char const*P_data )
+ {
+  typedef GS_DDMRM::S_IceRay::S_type::S_picture::GC__pure      Tf__pure;
+  typedef GS_DDMRM::S_IceRay::S_type::S_picture::GC_memory    Tf_memory;
+
+  auto I_this = dynamic_cast<Tf_memory*>( c2cpp ( P_this ) );
+  if( nullptr == I_this )
+   {
+    return false;
+   }
+
+  auto size = sizeof(Tf__pure::T_color) * I_this->F_size()[0] * I_this->F_size()[1];
+  memcpy( reinterpret_cast< unsigned char *> ( I_this->Fv_data() ), P_data, size );
+  return true;
+ }
+
 
 IceRayC_Type_Bool IceRayC_Type_Picture_Default( IceRayC_Type_Picture_Handle P_this )
  {

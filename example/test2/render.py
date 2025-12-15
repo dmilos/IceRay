@@ -39,13 +39,18 @@ def doIt( P_dll, P_picture, P_scene, P_inventory, P_config, P_result=None ):
 
     print( P_picture['temp']['file'], flush = True  )
 
-    my_file = pathlib.Path( P_picture['temp']['file'] )
-    if my_file.is_file():
-        return
+    if 'overwrite' in P_picture:
+        if True == P_picture['overwrite']:
+            pass
+        else:    
+            my_file = pathlib.Path( P_picture['temp']['file'] )
+            if my_file.is_file():
+                print( "Image already exists. " + P_picture['temp']['file'], flush = True  )
+                return
 
-    I_geometry['the'] = P_inventory['geometry'][ I_geometry['name'] ]( P_dll )
+    I_geometry['the'] = P_inventory['geometry'][ I_geometry['name'] ]( P_dll, P_config['geometry'] )
     I_light['the']    = P_inventory['light'   ][ I_light   ['name'] ]( P_dll, P_config['light'] )
-    I_medium['the']   = P_inventory['medium'  ][ I_medium  ['name'] ]( P_dll )
+    I_medium['the']   = P_inventory['medium'  ][ I_medium  ['name'] ]( P_dll ) #, P_config['medium']
     I_camera['the']   = P_inventory['camera'  ][ I_camera  ['name'] ]( P_dll, P_config['camera'] )
 
     I_light['enclose'] = light_enclose = IceRayPy.core.light.transform.Translate( P_dll, I_light['the'], IceRayPy.type.math.coord.Scalar3D( 0, 0, 2 ) )
@@ -93,10 +98,8 @@ def doIt( P_dll, P_picture, P_scene, P_inventory, P_config, P_result=None ):
     B = IceRayPy.type.math.coord.Size2D( P_picture['window']['B']['x'], P_picture['window']['B']['y'] )
     IceRayPy.type.graph.Crop( P_picture['temp']['crop'], P_picture['temp']['object'], A, B )
 
-    #TODO if( 'watermark' in P_picture ):
-    #TODO    IceRayPy.type.graph.Print( P_picture['temp']['crop'], Size2D(0,0), P_picture['watermark'] )
-
-    #TODO P_picture['temp']['crop'].store( P_picture['temp']['file'] )
+    if( 'watermark' in P_picture ):
+       IceRayPy.type.graph.Print( P_picture['temp']['crop'], IceRayPy.type.math.coord.Size2D(0,0), P_picture['watermark'] )
 
     if( 'pnm' == P_picture['extension'] ):
         P_picture['temp']['crop'].storePNM( P_picture['temp']['file'] )
@@ -108,6 +111,8 @@ def doIt( P_dll, P_picture, P_scene, P_inventory, P_config, P_result=None ):
     I_average = IceRayPy.type.color.RGB()
     P_picture['temp']['crop'].average( I_average )
     I_dispersion = P_picture['temp']['crop'].dispersion()
+    print( 'dispersion: ' + str( I_dispersion ), flush = True  )
+    print( 'average: '    + str( I_average    ), flush = True  )
 
     if( None != P_result ):
         P_result['picture'] = {}
@@ -134,7 +139,10 @@ def doIt( P_dll, P_picture, P_scene, P_inventory, P_config, P_result=None ):
 #I_picture[ 'width']  = 800
 #I_picture['height']  = 600
 #I_picture['aspect']  = I_picture['width'] / I_picture['height']
-#
+#try:
+#   os.mkdir( "_out" )
+# except OSError as e:
+#   pass
 #I_picture['folder'] = './_out'
 #I_picture['extension'] = 'png'
 #
@@ -182,7 +190,6 @@ def doIt( P_dll, P_picture, P_scene, P_inventory, P_config, P_result=None ):
 #I_config['pigment']  = {}
 #I_config['camera']  = {}
 #I_config['room']   = {}
-#I_config['decoration']   = {}
 #
 #I_config['camera'][ 'eye']   = IceRayPy.type.math.coord.Scalar3D( 1, 2, 3 )
 #I_config['camera']['view']   = IceRayPy.type.math.coord.Scalar3D( 0, 0, 0 )

@@ -29,7 +29,7 @@ list = {
      'Q-paraboloid'       : IceRayPy.core.geometry.simple.Paraboloid,
      'Q-util-paraboloid'  : IceRayPy.utility.geometry.simple.ParaboloidG,
      
-     'Q-Q-defailt'        : IceRayPy.core.geometry.simple.Quadric,
+     'Q-Q-default'        : IceRayPy.core.geometry.simple.Quadric,
      'Q-Q-sphere'         : IceRayPy.utility.geometry.simple.quadric.Sphere,
      'Q-Q-cylinder'       : IceRayPy.utility.geometry.simple.quadric.Cylinder,
      'Q-Q-para'           : IceRayPy.utility.geometry.simple.quadric.Paraboloid,
@@ -61,7 +61,7 @@ list = {
     #'C-Enclose'      : IceRayPy.core.geometry.complex.Enclose, #NYI
 
      'C-hfieldI'       : IceRayPy.library.geometry.hfield.Image,
-    #'C-hfieldLE'      : IceRayPy.library.geometry.hfield.Expression, #NYI
+     'C-hfieldLE'      : IceRayPy.library.geometry.hfield.Expression, #NYI
      'C-hfieldT2x2'    : IceRayPy.library.geometry.hfield.Table2x2,
      'C-hfieldT3x3'    : IceRayPy.library.geometry.hfield.Table3x3,
      'C-hfieldT4x4'    : IceRayPy.library.geometry.hfield.Table4x4,
@@ -81,8 +81,8 @@ list = {
      'T-lensPCvA'    : IceRayPy.library.geometry.example.IntersectGeneral,
 
      'V-vacuum'      : IceRayPy.core.geometry.volumetric.Vacuum,
-     'V-Mist'        : IceRayPy.core.geometry.volumetric.Mist,
-     'V-Smoke'       : IceRayPy.core.geometry.volumetric.Smoke,
+     'V-Mist'        : IceRayPy.library.geometry.volumetric.Mist,
+     'V-Smoke'       : IceRayPy.library.geometry.volumetric.Smoke,
      'library-1m'    : IceRayPy.library.geometry.OneM,
      'L-Bpair'       : IceRayPy.library.geometry.blobby.Pair
      }

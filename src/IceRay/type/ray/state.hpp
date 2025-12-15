@@ -30,6 +30,7 @@
 
            public:
                       GC_state( )
+                       : M_index( 0 )
                        {
                        }
 

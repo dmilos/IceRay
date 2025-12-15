@@ -5,5 +5,6 @@
 #include "./triangle.cpp"
 #include "./poisson.cpp"
 #include "./sunflower.cpp"
+#include "./kmeans.cpp"
 
 #include "./congruent.cpp"

@@ -97,10 +97,9 @@ int  IceRayC_Type_Math_Homography_Transform3D( IceRayC_TypeCoordScalar3D *P_resu
 
 int  IceRayC_Type_Math_Homography_System1D( IceRayC_Type_Math_Homography1D *P_result, IceRayC_TypeScalar P_pivot, IceRayC_TypeScalar P_X, IceRayC_TypeScalar P_T )
  {
-  GS_DDMRM::S_IceRay::S_type::S_homography::GT_scalar1D I_result;
-
+  // TODO GS_DDMRM::S_IceRay::S_type::S_homography::GT_scalar1D I_result;
   // TODO ::math::linear::homography::construct( I_result, P_pivot, P_X, P_T );
-  *P_result = cpp2c( I_result );
+  // TODO *P_result = cpp2c( I_result );
 
   return 1;
  }

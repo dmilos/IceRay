@@ -1,6 +1,8 @@
 #ifndef Dh_DDMRM_Iceray_render_pixel_strategy_grid_HPP_
  #define Dh_DDMRM_Iceray_render_pixel_strategy_grid_HPP_
 
+// GS_DDMRM::S_IceRay::S_render::S_pixel::S_strategy::GC_grid
+
  #include "../../../type/basic/scalar.hpp"
 
  #include "./_pure.hpp"
@@ -20,11 +22,18 @@
            : public GS_DDMRM::S_IceRay::S_render::S_pixel::S_strategy::GC__pure
             {
              public:
-              typedef GS_DDMRM::S_IceRay::S_type:: GT_scalar T_scalar;
+               typedef GS_DDMRM::S_IceRay::S_type:: GT_scalar T_scalar;
 
-               explicit GC_grid( T_size const& P_size = 1 )
-               :M2_size( P_size )
-               {}
+
+             public:
+               GC_grid()
+                :M2_size( 10 )
+                {
+                }
+               explicit GC_grid( T_size const& P_size )
+                :M2_size( P_size )
+                {
+                }
                ~GC_grid(){}
 
              public:

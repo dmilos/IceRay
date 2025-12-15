@@ -6,12 +6,12 @@ using namespace GS_DDMRM::S_IceRay::S_camera;
 
 
 S_sphere::GC_package::GC_package()
-  :GC_package(::math::geometry::deg2rad(90), ::math::geometry::deg2rad(90)  )
+  :GC_package( ::math::geometry::deg2rad(90), ::math::geometry::deg2rad(90) )
  {
  }
 
-S_sphere::GC_package::GC_package( T_scalar const& P_horizont, T_scalar const& P_vertical )
- : M2_horizontal( P_horizont )
+S_sphere::GC_package::GC_package( T_scalar const& P_horizontal, T_scalar const& P_vertical )
+ : M2_horizontal( P_horizontal )
  , M2_vertical( P_vertical )
  {
  }

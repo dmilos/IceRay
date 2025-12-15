@@ -5,4 +5,7 @@
 #include "./sheaf.h"
 #include "./ray.h"
 #include "./engine.h"
+#include "./strategy.h"
+#include "./filter.h"
+
 

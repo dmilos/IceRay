@@ -30,12 +30,16 @@ if( 1 < len( sys.argv ) ):
     I_picture['height'] = int( I_picture['width'] / I_picture['aspect'] )
 
 I_picture['prefix'] = ''
+try:
+    os.mkdir( "_out" )
+except OSError as e:
+    pass
 I_picture['folder'] = './_out'
 I_picture['extension'] = 'pnm'
 
 I_picture['index'] = 0
 I_picture['time'] = 0
-I_picture['watermark'] = "%index"
+I_picture['watermark'] = ""
 
 I_picture['window'] = {}
 I_picture['window']['A'] = {}
@@ -76,6 +80,10 @@ I_inventory['decoration'] = library_decoration.list
 
 I_config  = {}
 I_config['pigment']  = {}
+I_config['pigment']['scale']  = 1
+I_config['pigment']['red']   =  IceRayPy.type.color.RGB(2,0,0)
+I_config['pigment']['green'] =  IceRayPy.type.color.RGB(0,2,0)
+I_config['pigment']['blue']  =  IceRayPy.type.color.RGB(0,0,2)
 I_config['camera']  = {}
 I_config['room']   = {}
 I_config['room']['radiosity']={}
@@ -83,12 +91,22 @@ I_config['room']['radiosity']['sample' ]  = 256
 I_config['room']['radiosity']['angle'  ]   = math.radians( 90 )
 I_config['room']['radiosity']['albedo' ]   = IceRayPy.type.color.RGB( 0.99, 0.99, 0.99 )
 I_config['room']['radiosity']['blossom']   = 'sobol'
-I_config['room']['radiosity']['correction'] = "trim"
-I_config['decoration']   = {}
-I_config['light']   = {}
-I_config['light']['sample']   = 1
+I_config['room']['radiosity']['correction'] = {}
+I_config['room']['radiosity']['correction']['rays'] = "claim"
+I_config['room']['radiosity']['correction']['leader'] = False
+I_config['room']['radiosity']['correction']['cone']   = False
+I_config['room']['radiosity']['jitter'] = {}
+I_config['room']['radiosity']['reflect']  = 'diffusive' # 'diffusive', 'one', 'schlick'
 
-g = 1.22074408460575947536 #(math.sqrt(5)+1)/2
+
+I_config['light']  = {}
+I_config['light']['sample']   = 1
+I_config['decoration']   = {}
+I_config['decoration']['size']   = IceRayPy.type.math.coord.Scalar3D( 0.1, 0.1, 0.1 )
+I_config['decoration']['center'] = IceRayPy.type.math.coord.Scalar3D( 0.0, 0.0, 0.0 )
+I_config['decoration']['color']  = IceRayPy.type.color.RGB( 50, 50, 50 )
+I_config['geometry']   = {}
+
 
 g = (math.sqrt(5)+1)/2
 p = 1.324717957244746025960908854
@@ -106,32 +124,34 @@ I_config['composer']['ray-trace']['trash'] = 1.0/10000.0
 I_config['composer']['ray-trace']['next'] = 17000
 
 
-for blossom in [ 'hexagon', 'grid','triangle' ]:
+for blossom in [ 'hexagon', 'grid', 'triangle', 'kmeans', 'sunflower' ]:
     I_picture['prefix'] = '0-' +blossom + "_"
-    I_config['room']['radiosity']['patch' ]  = math.radians( 10 )
-    I_config['room']['radiosity']['jitter-type'  ]   = "congruent"
-    I_config['room']['radiosity']['jitter-angle' ]   = I_config['room']['radiosity']['patch']
+    I_config['room']['radiosity']['patch' ]  = math.radians( 10 )  #<! Used for sample number calculation
+    I_config['room']['radiosity']['jitter']['type'  ]   = "none" # "congruent"
+    I_config['room']['radiosity']['jitter']['angle' ]   = I_config['room']['radiosity']['patch']
     I_config['room']['radiosity']['angle'  ]  = math.radians( 90 )
     I_config['room']['radiosity']['sample'] = int( (1 - math.cos(I_config['room']['radiosity']['angle']) ) / ( 1 - math.cos( I_config['room']['radiosity']['patch'] ) ) + 1 )
-    I_config['room']['radiosity']['blossom']  = blossom
+    I_config['room']['radiosity']['type']  = blossom
+    I_config['room']['radiosity']['albedo']  = IceRayPy.type.color.RGB( 1.0, 1.0, 0.9 )
+
     render.doIt( I_dll, I_picture, I_scene, I_inventory, I_config )
 
 for blossom in [ 'random', 'sobol',  'vdc' ]:
     I_picture['prefix'] = '1-' + blossom + "_"
-    I_config['room']['radiosity']['patch' ]  = math.radians( 10 )
-    I_config['room']['radiosity']['jitter-type'  ]   = "none"
+    I_config['room']['radiosity']['patch' ]  = math.radians( 10 )  #<! Used for sample number calculation
+    I_config['room']['radiosity']['jitter']['type'  ]   = "none"
     I_config['room']['radiosity']['angle'  ]  = math.radians( 90 )
     I_config['room']['radiosity']['sample'] = int( (1 - math.cos(I_config['room']['radiosity']['angle']) ) / ( 1 - math.cos( I_config['room']['radiosity']['patch'] ) ) + 1 )
-    I_config['room']['radiosity']['blossom']  = blossom
+    I_config['room']['radiosity']['type']  = blossom
     render.doIt( I_dll, I_picture, I_scene, I_inventory, I_config )
 
 for blossom in [ 'congruent' ]:
     I_picture['prefix'] = '2-' + blossom + "_"
-    I_config['room']['radiosity']['patch' ]  = math.radians( 3 )
-    I_config['room']['radiosity']['jitter-type'  ]   = "none"
+    I_config['room']['radiosity']['patch' ]  = math.radians( 10 )  #<! Used for sample number calculation
+    I_config['room']['radiosity']['jitter']['type'  ]   = "none"
     I_config['room']['radiosity']['angle'  ]  = math.radians( 90 )
     I_config['room']['radiosity']['sample'] = int( (1 - math.cos(I_config['room']['radiosity']['angle']) ) / ( 1 - math.cos( I_config['room']['radiosity']['patch'] ) ) + 1 )
-    I_config['room']['radiosity']['blossom']  = blossom
+    I_config['room']['radiosity']['type']  = blossom
     render.doIt( I_dll, I_picture, I_scene, I_inventory, I_config )
 
 #for index in range( 1, 360 ):
@@ -149,9 +169,8 @@ for blossom in [ 'congruent' ]:
 #    I_scene['pigment']    = 'P-hexagon'
 #    I_picture['prefix'] = '1-' + 'vdc' + "_"
 #    I_config['room']['radiosity']['patch' ]  = math.radians( 8 )
-#    I_config['room']['radiosity']['jitter-type'  ]   = "none"
+#    I_config['room']['radiosity']['jitter']['type'  ]   = "none"
 #    I_config['room']['radiosity']['angle'  ]  = math.radians( 90 )
 #    I_config['room']['radiosity']['sample'] = index # int( (1 - math.cos(I_config['room']['radiosity']['angle']) ) / ( 1 - math.cos( I_config['room']['radiosity']['patch'] ) ) + 1 )
 #    I_config['room']['radiosity']['blossom']  = 'vdc'
 #    render.doIt( I_dll, I_picture, I_scene, I_inventory, I_config )
-
