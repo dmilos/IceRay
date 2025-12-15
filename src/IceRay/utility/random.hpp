@@ -245,8 +245,8 @@
 
 
 
-          typedef ::math::random::vdc< GS_DDMRM::S_IceRay::S_type::GT_scalar, GS_DDMRM::S_IceRay::S_type::GT_size, 2 > GT_vdc2;
-          typedef ::math::random::vdc< GS_DDMRM::S_IceRay::S_type::GT_scalar, GS_DDMRM::S_IceRay::S_type::GT_size, 3 >  GT_vdc3;
+          typedef ::math::random::vdc< GS_DDMRM::S_IceRay::S_type::GT_scalar, GS_DDMRM::S_IceRay::S_type::GT_size,  2 > GT_vdc2;
+          typedef ::math::random::vdc< GS_DDMRM::S_IceRay::S_type::GT_scalar, GS_DDMRM::S_IceRay::S_type::GT_size,  3 > GT_vdc3;
           typedef ::math::random::vdc< GS_DDMRM::S_IceRay::S_type::GT_scalar, GS_DDMRM::S_IceRay::S_type::GT_size, 10 > GT_vdc10;
 
         //typedef ::math::random::VaPND<GS_DDMRM::S_IceRay::S_type::GT_scalar,  GS_DDMRM::S_IceRay::S_type::GT_size, 2> GT_VaPND;

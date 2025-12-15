@@ -286,8 +286,8 @@ GC_compiler::T_size GC_compiler::F2_comma( T_size const& P_begin, T_size const& 
 
 void GC_compiler::F2_trimspace( T_size& P_begin, T_size& P_end ) const
  {
-  while( 0 != std::isspace( M2_expression->at(P_begin) ) ) ++P_begin;
-  while( 0 != std::isspace( M2_expression->at(P_end-1) ) ) --P_end;
+  while( 0 != std::isspace( M2_expression->at(P_begin), std::locale() ) ) ++P_begin;
+  while( 0 != std::isspace( M2_expression->at(P_end-1), std::locale() ) ) --P_end;
  }
 
 bool GC_compiler::F2_isConstant( T_string const& P_string, T_size const& P_begin, T_size const& P_end ) const

@@ -21,6 +21,8 @@ namespace GS_DDMRM
          : public GS_DDMRM::S_IceRay::S_geometry::S_RTSS::GC__pure
          {
           public:
+            typedef GS_DDMRM::S_IceRay::S_type::GT_int                               T_integer;
+
             typedef GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar     T_coord;
             typedef GS_DDMRM::S_IceRay::S_type::S_coord::GT_size3D     T_size3D, T_position;
             typedef GS_DDMRM::S_IceRay::S_type::S_coord::GT_int3D      T_cell3D;

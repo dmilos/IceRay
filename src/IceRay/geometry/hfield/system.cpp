@@ -95,7 +95,7 @@ bool GC_system::Fv_intersect
      {
       T_scalar I_value = I_origin[I_projection]  +  I_enter * I_direction[I_projection];
 
-      I_cell[I_projection] = (int)F2_world2local( I_value, I_projection ); //!< this will work in theory
+      I_cell[I_projection] = (T_integer)F2_world2local( I_value, I_projection ); //!< this will work in theory
 
       if( I_cell[I_projection]              <         0 )
        {
@@ -104,7 +104,7 @@ bool GC_system::Fv_intersect
        }
       if( T_integer(I_size[I_projection]) < I_cell[I_projection] + 2 )
        {
-        I_cell[I_projection] = I_size[I_projection] - 2;
+        I_cell[I_projection] = (T_integer)I_size[I_projection] - 2;
         continue;
        }
        // no ned for correction
@@ -124,7 +124,7 @@ bool GC_system::Fv_intersect
       I_plane[I_projection] = ( I_cell[I_projection] + 1 ) * M2_step[I_projection] + I_lo[I_projection];
       I_step[I_projection]  = +1 * M2_step[I_projection];
       I_move[I_projection]  = +1;
-      I_fence[I_projection] = I_size[I_projection] - 1;
+      I_fence[I_projection] = (T_integer)I_size[I_projection] - 1;
       continue;
      }
 
@@ -147,7 +147,7 @@ bool GC_system::Fv_intersect
   T_scalar I_front  = I_enter;
   while( true )
    {
-    int I_axis = -1;
+    T_integer I_axis = -1;
     I_behind = I_front;
     I_front = Is_infinity;
     for( T_size I_projection=0; I_projection < 3; ++I_projection )
@@ -159,7 +159,7 @@ bool GC_system::Fv_intersect
       T_scalar I_l = ( I_plane[I_projection] - I_origin[I_projection] ) / I_direction[I_projection];
       if( I_l < I_front )
        {
-        I_axis = I_projection;
+        I_axis = (T_integer)I_projection;
         I_front = I_l;
        }
      }
@@ -252,8 +252,8 @@ void GC_system::Fv_normal
   T_scalar I_x = F2_world2local( P_point[0], 0 ); 
   T_scalar I_y = F2_world2local( P_point[1], 1 ); 
 
-  int I_cell_x = static_cast<T_size >( I_x );  // I_intersect.M_x;
-  int I_cell_y = static_cast<T_size >( I_y );  // I_intersect.M_y;
+  T_integer I_cell_x = static_cast<T_integer>( I_x );  // I_intersect.M_x;
+  T_integer I_cell_y = static_cast<T_integer>( I_y );  // I_intersect.M_y;
 
   T_scalar I_00 = F_generator().Fv_value( I_cell_x + 0, I_cell_y + 0  );
   T_scalar I_10 = F_generator().Fv_value( I_cell_x + 1, I_cell_y + 0  );
@@ -297,8 +297,8 @@ GC_system::T_location GC_system::Fv_inside
   T_scalar I_x = F2_world2local( P_point[0], 0 );
   T_scalar I_y = F2_world2local( P_point[1], 1 );
 
-  int I_cell_x = static_cast<T_size >( I_x );
-  int I_cell_y = static_cast<T_size >( I_y );
+  T_integer I_cell_x = static_cast<T_integer >( I_x );
+  T_integer I_cell_y = static_cast<T_integer >( I_y );
 
   T_scalar I_00 = F_generator().Fv_value( I_cell_x + 0, I_cell_y + 0  );
   T_scalar I_10 = F_generator().Fv_value( I_cell_x + 1, I_cell_y + 0  );
@@ -348,8 +348,8 @@ bool GC_system::Fv_box( T_box const& P_box )
   auto const& I_lo = F_box().lo();
   auto const& I_hi = F_box().hi();
   auto const& I_size = F_generator().F_size();
-  M2_step[0] = ( I_hi[0] - I_lo[0] ) / ( I_size[0] - 1 );
-  M2_step[1] = ( I_hi[1] - I_lo[1] ) / ( I_size[1] - 1 );
+  M2_step[0] = ( I_hi[0] - I_lo[0] ) / ( (T_scalar)I_size[0] - 1 );
+  M2_step[1] = ( I_hi[1] - I_lo[1] ) / ( (T_scalar)I_size[1] - 1 );
   M2_step[2] = ( I_hi[2] - I_lo[2] );
 
   return true;
@@ -365,9 +365,9 @@ bool GC_system::F_generator( T_generator* P_generator )
   M2_generator = P_generator;
   ::math::linear::vector::fill( M2_area[0], 0 );
 
-  M2_area[1][0] = T_scalar( P_generator->F_size()[0] -1);
-  M2_area[1][1] = T_scalar( P_generator->F_size()[1] -1);
-  M2_area[1][2] = T_scalar(1);
+  M2_area[1][0] = (T_integer)P_generator->F_size()[0] -1;
+  M2_area[1][1] = (T_integer)P_generator->F_size()[1] -1;
+  M2_area[1][2] = 1;
 
   auto const& I_lo = F_box().lo();
   auto const& I_hi = F_box().hi();

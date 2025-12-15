@@ -75,6 +75,7 @@ if( UNIX )
         set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -DDEBUG -g -rdynamic -ggdb -g3 -O0")
     endif()
 endif()
+
 if( MSVC )
     if( ICERAY_WINDOWS_USE_GDI )
         target_compile_definitions(  ${ICERAY_PROJECT_NAME_FULL}  PRIVATE ICERAY_WINDOWS_USE_GDI=1 )
