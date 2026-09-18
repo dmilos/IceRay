@@ -39,8 +39,8 @@ def OneM( P_dll ):
     return rtss
 
 def MotionBlur( P_dll, P_child = None ):
-    center = Coord3D( -1+0.5, 0, 0 )
-    direction = Coord3D( -center[0]-center[0], -center[1]-center[1], -center[2]-center[2] )
+    center = Coord3D( -1+0.5, 0, -0.5 )
+    direction = Coord3D( -center[0]-center[0], -center[1]-center[1], 0 )
 
     result = IceRayPy.core.geometry.transform.MotionBlur( P_dll )
     I_child = IceRayPy.core.geometry.simple.Sphere( P_dll, center, 0.25 )

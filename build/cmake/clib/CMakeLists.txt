@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
 
+include ("./config.cmake")
+
 #primary variables
 set( PROJECT_NAME_BARE            "IceRay" ) #!< TODO Take this from INI
 set( PROJECT_NAME_DECOR_POSTFIX      "Lib" )
@@ -51,9 +53,10 @@ include_directories( "${directory_submodule__root}/TopLog/src")
 
 add_library( ${ICERAY_PROJECT_NAME_FULL} STATIC ${SOURCE_CPP} ${SOURCE_HPP}  )
 
-
 set_property( TARGET ${ICERAY_PROJECT_NAME_FULL} PROPERTY POSITION_INDEPENDENT_CODE ON )
 set_property( TARGET ${ICERAY_PROJECT_NAME_FULL} PROPERTY CXX_VISIBILITY_PRESET hidden )
+set_property( TARGET ${ICERAY_PROJECT_NAME_FULL} PROPERTY OUTPUT_NAME "${COMPONENT_NAME}${COMPONENT_DECORATION_POSTFIX}" )
+
 
 if( UNIX )
     target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -frtti )
@@ -93,6 +96,10 @@ target_include_directories(  ${ICERAY_PROJECT_NAME_FULL} PRIVATE "${directory_in
 target_link_libraries(  ${ICERAY_PROJECT_NAME_FULL} PRIVATE ${ICERAY_CORE_CORE_PROJECT_NAME_FULL} )
 add_dependencies(       ${ICERAY_PROJECT_NAME_FULL}         ${ICERAY_CORE_CORE_PROJECT_NAME_FULL} )
 
+install( TARGETS ${ICERAY_PROJECT_NAME_FULL}         DESTINATION ${SOLUTION_INSTALLDIR_BINDIR}/${COMPONENT_NAME} )
+#if( MSVC OR WIN32 )
+#    install( FILES $<TARGET_PDB_FILE:${ICERAY_PROJECT_NAME_FULL}>  DESTINATION ${SOLUTION_INSTALLDIR_BINDIR}/${COMPONENT_NAME} OPTIONAL )
+#endif()
 
 message(STATUS "CMAKE_CXX_FLAGS: ${CMAKE_CXX_FLAGS}")
 message(STATUS "CMAKE_C_FLAGS: ${CMAKE_CXX_FLAGS}")

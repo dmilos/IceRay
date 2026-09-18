@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 3.10)
 
-project(IceRay)
+include ("./config.cmake" )
+include ("./install.cmake" )
+
+
+project( ${SOLUTION_NAME} )
 
 option( ICERAY_SWITCH_DEBUG "Enable Debug" OFF )
 
