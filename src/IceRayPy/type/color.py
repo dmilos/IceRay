@@ -1,7 +1,13 @@
-import ctypes
-
 #print( '<' + __name__ + ' name=\'' +   __file__ + '\'>' )
 
+#IceRayPy.type.color.RGB
+#IceRayPy.type.color.RGBA
+#IceRayPy.type.color.HSL
+#IceRayPy.type.color.RGB2HSL
+#IceRayPy.type.color.HSL2RGB
+#IceRayPy.type.color.distanceRGB
+
+import math
 import ctypes
 import IceRayPy
 
@@ -69,5 +75,12 @@ def HSL2RGB( P_dll, P_hsl ):
     result = RGB()
     P_dll.IceRayC_Type_Color_HSL2RGB( AddressOf( result ), AddressOf(P_hsl) )
     return result
+
+def distanceRGB( P_left, P_right ):
+    result = math.sqrt(   (P_left[0]-P_right[0])*(P_left[0]-P_right[0])
+                        + (P_left[1]-P_right[1])*(P_left[1]-P_right[1])
+                        + (P_left[2]-P_right[2])*(P_left[2]-P_right[2]) );
+    return result
+
 
 #print( '</' + __name__ + ' name=\'' +   __file__ + '\'>' )

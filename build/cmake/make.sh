@@ -6,8 +6,5 @@ reset
 cd _makeGcc
 
 cmake .. -DCMAKE_BUILD_TYPE=Release
-cmake --build .
-
-cmake  ..
-
-make
+cmake --build   . --parallel 8
+cmake --install .
