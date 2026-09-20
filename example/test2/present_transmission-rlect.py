@@ -21,8 +21,8 @@ else:
 
 
 I_picture ={}
-I_picture[ 'width']  = int( 1920 )
-I_picture['height']  = int( 1080 )
+I_picture[ 'width']  = int( 800 )
+I_picture['height']  = int( 600 )
 I_picture['aspect']  = I_picture['width'] / I_picture['height']
 
 if( 1 < len( sys.argv ) ):
@@ -34,7 +34,7 @@ try:
 except OSError as e:
     pass
 I_picture['folder'] = './_out'
-I_picture['extension'] = 'png'
+I_picture['extension'] = 'pnm'
 I_picture['overwrite'] = False
 
 I_picture['index'] = 0
@@ -99,26 +99,26 @@ c = 1.22074408460575947536
 I_config['camera'][ 'eye']   = IceRayPy.type.math.coord.Scalar3D( +c*p*g, +p*g , +g )
 I_config['camera']['view']   = IceRayPy.type.math.coord.Scalar3D( 0, 0, 0 )
 I_config['camera']['aspect'] = I_picture['aspect']
-#I_config['camera']['height']  = 1
+#I_config['camera']['hfov']   = math.radians( 90 )
+#I_config['camera']['vfov']   = math.radians( 90 )
 
 
 pigment_reflect_list =[
-   'T-0-reflect-One'               ,
-   'T-0-reflect-diffusive'         ,
-   'T-0-reflect-mirror'            ,
-   'T-1-reflect-schlick'           ,
-   'T-2-reflect-blossom-Grid'      ,
-   'T-3-reflect-blossom-Hexagon'   ,
-   'T-4-reflect-blossom-trg'       ,
-  #'T-5-reflect-blossom-LD'        ,
-  #'T-5-reflect-blossom-Pinwheel'  ,
-  #'T-5-reflect-blossom-penrose'   ,
+    'T-0-reflect-One'               ,
+    'T-0-reflect-diffusive'         ,
+    'T-0-reflect-mirror'            ,
+    'T-1-reflect-schlick'           ,
+    'T-2-reflect-blossom-Grid'      ,
+    'T-3-reflect-blossom-Hexagon'   ,
+    'T-4-reflect-blossom-trg'       ,
+  ##'T-5-reflect-blossom-LD'        ,
+  ##'T-5-reflect-blossom-Pinwheel'  ,
+  ##'T-5-reflect-blossom-penrose'   ,
    'T-6-reflect-blossom-Rand'      ,
    'T-7-reflect-blossom-sobol'     ,
    'T-8-reflect-blossom-VDC'       ,
    'T-8-reflect-blossom-congruent'
 ]
-
 pigment_refract_list =[
      'T-9-refract-fresnel'           ,
      'T-A-refract-Snell'             ,
@@ -147,26 +147,45 @@ pigment_refract_list =[
      'T-B-refract-Tourmaline'                   ,
      'T-B-refract-ZrSiO4_hight'                 ,
      'T-B-refract-ZrSiO4_low'                   ,
-]
+ ]
 
 geometry_list =[
     'F-box',
     'S-torus',
-    'Q-sphere',
+    'T-lensCS',
+    'T-lensCP',
     'T-lensVS',
+    'T-lensVP' 
 ]
 
+I_config['pigment']['specular']  = IceRayPy.type.color.RGB( 1, 0.1, 0.01 ) 
 
-for index in range( 0,len( pigment_refract_list )*len( geometry_list )*360,1):
-    I_config['camera']['eye']   = IceRayPy.type.math.coord.Scalar3D( p*g * math.cos( math.radians(index)), p*g* math.sin( math.radians(index)) , +g )
-    I_config['pigment']['ior'] = 1 + 1.5 * ((index%360)/360)
+for geometry_name in geometry_list :
+    I_scene['geometry']= geometry_name
+    for pigment_name in pigment_reflect_list :
+        I_scene['pigment']= pigment_name
+        render.doIt( I_dll, I_picture, I_scene, I_inventory, I_config )
 
-    I_scene['pigment']  = pigment_refract_list[ int( index/(360*len( geometry_list        ))) % len( pigment_refract_list ) ]
-    I_scene['geometry'] = geometry_list       [ int( index/(360*len( pigment_refract_list ))) % len( geometry_list )]
 
-    I_picture['prefix'] = "%04i"%(index)+"_"
-    I_picture['index'] = index
-    I_picture['watermark'] = I_scene['pigment']
-    I_picture['watermark'] = I_picture['watermark'][12:] + "; " + str( int(I_config['pigment']['ior'] *100) /100 )+ "; "
-
-    render.doIt( I_dll, I_picture, I_scene, I_inventory, I_config )
+import os
+def prepare_readme():
+    # os.mkdir('I_picture['folder']+'/readme')
+    os.rename( I_picture['folder']+'/'+'C-close_F-persp_F-box_trans_T-0-reflect-mirror_chand-nine_0000.pnm'                , I_picture['folder']+'/'+'mirror-box.pnm' )
+    os.rename( I_picture['folder']+'/'+'C-close_F-persp_F-box_trans_T-B-refract-schlick_chand-nine_0000.pnm'               , I_picture['folder']+'/'+'refract-schlick-box.pnm' )
+    os.rename( I_picture['folder']+'/'+'C-close_F-persp_Q-sphere_trans_T-0-reflect-mirror_chand-nine_0000.pnm'             , I_picture['folder']+'/'+'mirror-sphere.pnm' )
+    os.rename( I_picture['folder']+'/'+'C-close_F-persp_Q-sphere_trans_T-2-reflect-blossom-Grid_chand-nine_0000.pnm'       , I_picture['folder']+'/'+'blossom-grid.pnm' )
+    os.rename( I_picture['folder']+'/'+'C-close_F-persp_Q-sphere_trans_T-3-reflect-blossom-Hexagon_chand-nine_0000.pnm'    , I_picture['folder']+'/'+'blossom-hex.pnm' )
+    os.rename( I_picture['folder']+'/'+'C-close_F-persp_Q-sphere_trans_T-4-reflect-blossom-trg_chand-nine_0000.pnm'        , I_picture['folder']+'/'+'blossom-trg.pnm' )
+    os.rename( I_picture['folder']+'/'+'C-close_F-persp_Q-sphere_trans_T-6-reflect-blossom-Rand_chand-nine_0000.pnm'       , I_picture['folder']+'/'+'blossom-rand.pnm' )
+    os.rename( I_picture['folder']+'/'+'C-close_F-persp_Q-sphere_trans_T-7-reflect-blossom-sobol_chand-nine_0000.pnm'      , I_picture['folder']+'/'+'blossom-sobol.pnm' )
+    os.rename( I_picture['folder']+'/'+'C-close_F-persp_Q-sphere_trans_T-8-reflect-blossom-VDC_chand-nine_0000.pnm'        , I_picture['folder']+'/'+'blossom-vdc.pnm' )
+    os.rename( I_picture['folder']+'/'+'C-close_F-persp_Q-sphere_trans_T-8-reflect-blossom-congruent_chand-nine_0000.pnm'  , I_picture['folder']+'/'+'blossom-congruent.pnm' )
+    os.rename( I_picture['folder']+'/'+'C-close_F-persp_Q-sphere_trans_T-9-refract-fresnel_chand-nine_0000.pnm'            , I_picture['folder']+'/'+'refract-fresnel.pnm' )
+    os.rename( I_picture['folder']+'/'+'C-close_F-persp_Q-sphere_trans_T-A-refract-Snell_chand-nine_0000.pnm'              , I_picture['folder']+'/'+'refract-snell.pnm' )
+    os.rename( I_picture['folder']+'/'+'C-close_F-persp_Q-sphere_trans_T-B-refract-schlick_chand-nine_0000.pnm'            , I_picture['folder']+'/'+'refract-schlick-sphere.pnm' )
+    os.rename( I_picture['folder']+'/'+'C-close_F-persp_S-torus_trans_T-0-reflect-mirror_chand-nine_0000.pnm'              , I_picture['folder']+'/'+'mirror-torus.pnm' )
+    os.rename( I_picture['folder']+'/'+'C-close_F-persp_S-torus_trans_T-B-refract-schlick_chand-nine_0000.pnm'             , I_picture['folder']+'/'+'refract-schlick-torus.pnm' )
+   #os.rename( I_picture['folder']+'/'+'C-close_F-persp_Q-sphere_trans_T-0-reflect-One_chand-nine_0000.pnm'                , I_picture['folder']+'/'+'-delete.pnm' )
+   #os.rename( I_picture['folder']+'/'+'C-close_F-persp_Q-sphere_trans_T-1-reflect-schlick_chand-nine_0000.pnm'            , I_picture['folder']+'/'+'-delete.pnm' )
+   
+#prepare_readme()

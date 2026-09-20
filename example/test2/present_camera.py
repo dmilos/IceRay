@@ -120,6 +120,7 @@ camera_list = [
 
 for item in camera_list :
     I_scene['camera']= item
+    I_picture['watermark'] = item
     render.doIt( I_dll, I_picture, I_scene, I_inventory, I_config )
 
 camera_list = [  'I-C-vertical' ]
@@ -128,6 +129,7 @@ I_config['camera'][ 'eye'] = IceRayPy.type.math.coord.Scalar3D(  0, 0, 0 )
 I_config['camera']['view'] = IceRayPy.type.math.coord.Scalar3D( -3, 0, 0 )
 for item in camera_list :
     I_scene['camera']= item
+    I_picture['watermark'] = item
     render.doIt( I_dll, I_picture, I_scene, I_inventory, I_config )
 
 import os

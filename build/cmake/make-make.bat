@@ -1,12 +1,15 @@
-mkdir _makeVS32
-cd _makeVS32
+set SOLUTION_BUILD_FOLDER32=.\_makeVS32
+set SOLUTION_BUILD_FOLDER64=.\_makeVS64
+
+mkdir %SOLUTION_BUILD_FOLDER32%
+cd %SOLUTION_BUILD_FOLDER32%
 
 %prg_cmake% .. -A Win32
 
 cd ..
 
-mkdir _makeVS64
-cd _makeVS64
+mkdir %SOLUTION_BUILD_FOLDER64%
+cd %SOLUTION_BUILD_FOLDER64%
 
 %prg_cmake% .. -A x64
- pause
+pause

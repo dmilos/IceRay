@@ -163,7 +163,7 @@ for index in range( 0, 360, 1 ): # 1, 2, 3, 4, 5,
     I_config['geometry']['density']= 0.3333333
     #I_config['composer']['manager']['pixel']['size'] = 2
     for item in geometry_list :
-        I_picture['prefix'] = item + '/' +"%04i"%(index)
+        I_picture['prefix'] = "%04i"%(index)
         I_scene['geometry']= item
         render.doIt( I_dll, I_picture, I_scene, I_inventory, I_config )
 

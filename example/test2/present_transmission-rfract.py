@@ -21,8 +21,8 @@ else:
 
 
 I_picture ={}
-I_picture[ 'width']  = int( 1920 )
-I_picture['height']  = int( 1080 )
+I_picture[ 'width']  = int( 800 )
+I_picture['height']  = int( 600 )
 I_picture['aspect']  = I_picture['width'] / I_picture['height']
 
 if( 1 < len( sys.argv ) ):
@@ -34,7 +34,7 @@ try:
 except OSError as e:
     pass
 I_picture['folder'] = './_out'
-I_picture['extension'] = 'png'
+I_picture['extension'] = 'pnm'
 I_picture['overwrite'] = False
 
 I_picture['index'] = 0
@@ -99,20 +99,21 @@ c = 1.22074408460575947536
 I_config['camera'][ 'eye']   = IceRayPy.type.math.coord.Scalar3D( +c*p*g, +p*g , +g )
 I_config['camera']['view']   = IceRayPy.type.math.coord.Scalar3D( 0, 0, 0 )
 I_config['camera']['aspect'] = I_picture['aspect']
-#I_config['camera']['height']  = 1
+#I_config['camera']['hfov']   = math.radians( 90 )
+#I_config['camera']['vfov']   = math.radians( 90 )
 
 
 pigment_reflect_list =[
-   'T-0-reflect-One'               ,
-   'T-0-reflect-diffusive'         ,
-   'T-0-reflect-mirror'            ,
-   'T-1-reflect-schlick'           ,
-   'T-2-reflect-blossom-Grid'      ,
-   'T-3-reflect-blossom-Hexagon'   ,
-   'T-4-reflect-blossom-trg'       ,
-  #'T-5-reflect-blossom-LD'        ,
-  #'T-5-reflect-blossom-Pinwheel'  ,
-  #'T-5-reflect-blossom-penrose'   ,
+    'T-0-reflect-One'               ,
+    'T-0-reflect-diffusive'         ,
+    'T-0-reflect-mirror'            ,
+    'T-1-reflect-schlick'           ,
+    'T-2-reflect-blossom-Grid'      ,
+    'T-3-reflect-blossom-Hexagon'   ,
+    'T-4-reflect-blossom-trg'       ,
+  ##'T-5-reflect-blossom-LD'        ,
+  ##'T-5-reflect-blossom-Pinwheel'  ,
+  ##'T-5-reflect-blossom-penrose'   ,
    'T-6-reflect-blossom-Rand'      ,
    'T-7-reflect-blossom-sobol'     ,
    'T-8-reflect-blossom-VDC'       ,
@@ -147,26 +148,31 @@ pigment_refract_list =[
      'T-B-refract-Tourmaline'                   ,
      'T-B-refract-ZrSiO4_hight'                 ,
      'T-B-refract-ZrSiO4_low'                   ,
-]
+ ]
 
 geometry_list =[
     'F-box',
     'S-torus',
     'Q-sphere',
+    'T-lensCS',
+    'T-lensCP',
     'T-lensVS',
+    'T-lensVP'
 ]
 
+I_config['pigment']['specular']  = IceRayPy.type.color.RGB( 1, 0.1, 0.01 )
 
-for index in range( 0,len( pigment_refract_list )*len( geometry_list )*360,1):
-    I_config['camera']['eye']   = IceRayPy.type.math.coord.Scalar3D( p*g * math.cos( math.radians(index)), p*g* math.sin( math.radians(index)) , +g )
-    I_config['pigment']['ior'] = 1 + 1.5 * ((index%360)/360)
+for geometry_name in geometry_list :
+    I_scene['geometry']= geometry_name
+    for pigment_name in pigment_refract_list :
+        I_picture['watermark'] = pigment_name
+        I_scene['pigment']= pigment_name
+        render.doIt( I_dll, I_picture, I_scene, I_inventory, I_config )
 
-    I_scene['pigment']  = pigment_refract_list[ int( index/(360*len( geometry_list        ))) % len( pigment_refract_list ) ]
-    I_scene['geometry'] = geometry_list       [ int( index/(360*len( pigment_refract_list ))) % len( geometry_list )]
 
-    I_picture['prefix'] = "%04i"%(index)+"_"
-    I_picture['index'] = index
-    I_picture['watermark'] = I_scene['pigment']
-    I_picture['watermark'] = I_picture['watermark'][12:] + "; " + str( int(I_config['pigment']['ior'] *100) /100 )+ "; "
+import os
+def prepare_readme():
+    # os.mkdir('I_picture['folder']+'/readme')
+    pass
 
-    render.doIt( I_dll, I_picture, I_scene, I_inventory, I_config )
+#prepare_readme()

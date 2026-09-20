@@ -3,6 +3,8 @@
 set( SOLUTION_NAME     "IceRay"  )
 
 set( SOLUTION_ROOTDIR     ${CMAKE_SOURCE_DIR}/../..  )
+get_filename_component( SOLUTION_ROOTDIR ${SOLUTION_ROOTDIR} ABSOLUTE )
+
 set( SOLUTION_SOURCEDIR   ${SOLUTION_ROOTDIR}/src  )
 
 set( SOLUTION_VERSION_MAJOR       1  )
