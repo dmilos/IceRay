@@ -603,9 +603,23 @@ int IceRayC_Light_Sphere_Sample( IceRayC_Light_Handle P_this, IceRayC_TypeSize P
   I_this->F_sample( P_sample );
   return 1;
  }
+int IceRayC_Light_Sphere_Center( IceRayC_Light_Handle P_this, IceRayC_Type_Math_Coord_Scalar3D* P_center )
+ {
+  typedef GS_DDMRM::S_IceRay::S_light::GC__pure  Tf__pure;
+  typedef GS_DDMRM::S_IceRay::S_light::GC_sphere Tf_sphere;
+
+  auto I_this = dynamic_cast< Tf_sphere *>( c2cpp ( P_this ) );
+  if( nullptr == I_this )
+   {
+    return 0;
+   }
+  I_this->F_center( c2cpp( *P_center ) );
+  return 1;
+ }
+
 int IceRayC_Light_Sphere_Spot( IceRayC_Light_Handle P_this, IceRayC_TypeSpot* P_spot )
  {
-  typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
+  typedef GS_DDMRM::S_IceRay::S_light::GC__pure  Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_sphere Tf_sphere;
 
   auto I_this = dynamic_cast< Tf_sphere *>( c2cpp ( P_this ) );

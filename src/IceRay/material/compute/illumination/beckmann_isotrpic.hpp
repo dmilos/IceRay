@@ -83,7 +83,7 @@
                    T_coord I_2light;
                    T_coord I_half;
                    T_color I_energy;
-                   bool I_valid = false;
+                   bool I_valid = true;
 
                    for( T_size I_spotIndex = I_spotBegin; I_spotIndex < I_spotEnd; ++I_spotIndex )
                     {
@@ -105,7 +105,7 @@
                     }
 
                    M2_memoryColor->Fv_store( F_output<T_color>( En_outColor_result ), I_summae );
-                   return true;
+                   return I_valid;
                   }
 
                private:

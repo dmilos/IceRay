@@ -23,13 +23,13 @@ class Horizontal:
     def __del__(self):
         self.m_cargo['dll'].IceRayC_Camera_Release( self.m_cargo['this'] )
 
-    def width(self, P_width ):
+    def width(self, P_width : Scalar ):
         return self.m_cargo['dll'].IceRayC_Camera_Cylinder_Horizontal_Width(self.m_cargo['this'], Scalar( P_width ) )
 
-    def theta(self, P_theta ):
+    def theta(self, P_theta : Scalar ):
         return self.m_cargo['dll'].IceRayC_Camera_Cylinder_Horizontal_Theta(self.m_cargo['this'], Scalar( P_theta ) )
 
-    def radius(self, P_radius ):
+    def radius(self, P_radius : Scalar ):
         return self.m_cargo['dll'].IceRayC_Camera_Cylinder_Horizontal_Radius(self.m_cargo['this'], Scalar( P_radius ) )
 
 
@@ -49,11 +49,11 @@ class Vertical:
     def __del__(self):
         self.m_cargo['dll'].IceRayC_Camera_Release( self.m_cargo['this'] )
 
-    def phi(self, P_phi ):
+    def phi(self, P_phi : Scalar ):
         return self.m_cargo['dll'].IceRayC_Camera_Cylinder_Vertical_Phi(self.m_cargo['this'], Scalar( P_phi ) )
 
-    def height(self, P_height ):
+    def height(self, P_height : Scalar ):
         return self.m_cargo['dll'].IceRayC_Camera_Cylinder_Vertical_Height(self.m_cargo['this'], Scalar( P_height ) )
 
-    def radius(self, P_radius ):
+    def radius(self, P_radius : Scalar ):
         return self.m_cargo['dll'].IceRayC_Camera_Cylinder_Vertical_Radius(self.m_cargo['this'], Scalar( P_radius ) )

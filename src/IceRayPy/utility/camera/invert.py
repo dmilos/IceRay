@@ -8,18 +8,16 @@ import IceRayPy
 
 class CylinderVertical:
     def __init__( self, P_dll, P_config = None ):
-        self.m_cargo={}
-        self.m_cargo['dll']= P_dll
-        self.m_cargo['child']= {}
-        self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Camera_Transform_Invert0()
 
-        self.child( IceRayPy.core.camera.cylinder.Vertical(P_dll) );
+        self.m_implementation = IceRayPy.core.camera.transform.Invert( P_dll )
+        self.m_cargo          = self.m_implementation.m_cargo
+
+        self.child( IceRayPy.core.camera.cylinder.Vertical( P_dll ) );
 
     def __del__( self ):
-        self.m_cargo['dll'].IceRayC_Camera_Release( self.m_cargo['this'] )
+        pass
 
     def child( self, P_child ):
-        self.m_cargo['child'] = P_child
-        self.m_cargo['dll'].IceRayC_Camera_Transform_Invert_Child( self.m_cargo['this'], P_child.m_cargo['this'] )
+        self.m_implementation.child( P_child )
 
 #print( '</' + __name__ + ' name=\'' +   __file__ + '>' )

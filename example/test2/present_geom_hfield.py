@@ -33,7 +33,7 @@ try:
 except OSError as e:
     pass
 I_picture['folder'] = './_out'
-I_picture['extension'] = 'pnm'
+I_picture['extension'] = 'png'
 
 I_picture['index'] = 0
 I_picture['time'] = 0

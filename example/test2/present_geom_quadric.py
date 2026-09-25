@@ -4,13 +4,12 @@ import time
 import math
 import os
 import sys
-import IceRayPy
 
 import IceRayPy
 
 import render
 
-dll_path = IceRayPy.system.SearchCDLL()
+dll_path = IceRayPy.system.SearchCDLL(  P_preferDebug = False  )
 
 if 0 != len( dll_path ):
     I_dll = IceRayPy.system.LoadCDLL( dll_path )
@@ -77,9 +76,9 @@ I_inventory['light']      = library_light.list
 I_inventory['decoration'] = library_decoration.list
 
 I_config  = {}
-I_config['pigment']  = {}
-I_config['camera']  = {}
 I_config['room']   = {}
+I_config['camera']  = {}
+I_config['pigment']  = {}
 I_config['light']   = {}
 I_config['light']['sample']   = 1
 I_config['decoration']   = {}
@@ -87,7 +86,7 @@ I_config['geometry']   = {}
 
 g = 1.22074408460575947536 #(math.sqrt(5)+1)/2
 
-g = (math.sqrt(5)+1)/2
+g = (math.sqrt(5)+1)/2  #1.6180339887498948482045868343656
 p = 1.324717957244746025960908854
 c = 1.22074408460575947536
 I_config['camera'][ 'eye']   = IceRayPy.type.math.coord.Scalar3D( +c*p*g, +p*g , +g )

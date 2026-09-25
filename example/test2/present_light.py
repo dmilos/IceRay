@@ -4,13 +4,14 @@ import time
 import math
 import os
 import sys
+
 import IceRayPy
 
 import render
 
 os.system('color')
 
-dll_path = IceRayPy.system.SearchCDLL( P_preferDebug = True )
+dll_path = IceRayPy.system.SearchCDLL( P_preferDebug = False )
 
 if 0 != len( dll_path ):
     I_dll = IceRayPy.system.LoadCDLL( dll_path )
@@ -65,6 +66,7 @@ import library_pigment
 import library_medium
 import library_geometry
 import library_decoration
+import library_path
 
 
 I_inventory= {}
@@ -77,25 +79,26 @@ I_inventory['light']      = library_light.list
 I_inventory['decoration'] = library_decoration.list
 
 I_config  = {}
-I_config['pigment']  = {}
-I_config['camera']  = {}
 I_config['room']   = {}
+I_config['camera']  = {}
+I_config['pigment']  = {}
 I_config['light']   = {}
 I_config['light']['sample']  =  32
-I_config['light']['start']   = IceRayPy.type.math.coord.Scalar3D( 0, -2, +1.5 )
-I_config['light']['end']     = IceRayPy.type.math.coord.Scalar3D( 0, +2, +1.5 )
-I_config['light']['center']  = IceRayPy.type.math.coord.Scalar3D( 0, 0 , +1.5 )
+I_config['light']['start']   = IceRayPy.type.math.coord.Scalar3D( 0, -2, +1.0 )
+I_config['light']['end']     = IceRayPy.type.math.coord.Scalar3D( 0, +2, +1.0 )
+I_config['light']['center']  = IceRayPy.type.math.coord.Scalar3D( 0, 0 , +1.0 )
 I_config['decoration']   = {}
 I_config['geometry']   = {}
 
 g = 1.22074408460575947536 #(math.sqrt(5)+1)/2
 
-g = (math.sqrt(5)+1)/2
+g = (math.sqrt(5)+1)/2  #1.6180339887498948482045868343656
 p = 1.324717957244746025960908854
 c = 1.22074408460575947536
 I_config['camera'][ 'eye']   = IceRayPy.type.math.coord.Scalar3D( +c*p*g, +p*g , +g )
 I_config['camera']['view']   = IceRayPy.type.math.coord.Scalar3D( 0, 0, 0 )
 I_config['camera']['aspect'] = I_picture['aspect']
+I_config['camera']['sample'] = 1
 #I_config['camera']['hfov']   = math.radians( 90 )
 #I_config['camera']['vfov']   = math.radians( 90 )
 
@@ -113,7 +116,8 @@ light_list = [
         'sun-Circle'  ,
         'sun-Line'    ,
         'sun-Disc'    ,
-
+        'chand-studio',
+        'chand-nine'
  ]
 
 for item in light_list :

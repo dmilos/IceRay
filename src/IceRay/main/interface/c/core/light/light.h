@@ -80,8 +80,9 @@ IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Light_Handle IceRayC_Light_Sphere0( )
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Light_Handle IceRayC_Light_Sphere1( IceRayC_TypeSpot* P_spot );
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Light_Handle IceRayC_Light_Sphere2( IceRayC_TypeSpot* P_spot, IceRayC_TypeScalar P_radius );
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Light_Handle IceRayC_Light_Sphere3( IceRayC_TypeSpot* P_spot, IceRayC_TypeScalar P_radius, IceRayC_TypeSize P_sample );
+IceRayC__EXPORT IceRayC__DECLSPEC  int                  IceRayC_Light_Sphere_Center( IceRayC_Light_Handle P_this, IceRayC_Type_Math_Coord_Scalar3D* P_center );
 IceRayC__EXPORT IceRayC__DECLSPEC  int                  IceRayC_Light_Sphere_Sample( IceRayC_Light_Handle P_this, IceRayC_TypeSize P_sample );
-IceRayC__EXPORT IceRayC__DECLSPEC  int                  IceRayC_Light_Sphere_Spot( IceRayC_Light_Handle P_this, IceRayC_TypeSpot* P_spot );
+IceRayC__EXPORT IceRayC__DECLSPEC  int                  IceRayC_Light_Sphere_Spot(   IceRayC_Light_Handle P_this, IceRayC_TypeSpot* P_spot );
 IceRayC__EXPORT IceRayC__DECLSPEC  int                  IceRayC_Light_Sphere_Radius( IceRayC_Light_Handle P_this, IceRayC_TypeScalar P_radius );
 
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Light_Handle IceRayC_Light_Spline0( );

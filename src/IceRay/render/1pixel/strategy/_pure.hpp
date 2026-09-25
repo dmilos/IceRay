@@ -30,6 +30,9 @@
                typedef GC__pure T__pure, T_this;
 
              public:
+                        GC__pure(){}
+               virtual ~GC__pure(){}
+             public:
                /*
                 make array of coords [0-1,0-1]x[0-1,0-1]
                */

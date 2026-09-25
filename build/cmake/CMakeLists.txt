@@ -1,10 +1,10 @@
 cmake_minimum_required(VERSION 3.10)
 
 include ("./config.cmake" )
-include ("./install.cmake" )
-
 
 project( ${SOLUTION_NAME} )
+
+include ("./install.cmake" )
 
 option( ICERAY_SWITCH_DEBUG "Enable Debug" OFF )
 
@@ -24,13 +24,13 @@ message( "_main::SOLUTION_ROOTDIR: " ${SOLUTION_ROOTDIR} )
 
 
 if(MSVC)
-    configure_file( "env-set.bat.config"    "${CMAKE_INSTALL_SCRIPTDIR}/env-set.bat" )
-    configure_file( "env-clear.bat.config"  "${CMAKE_INSTALL_SCRIPTDIR}/env-clear.bat" )
-    configure_file( "env-check.bat.config"  "${CMAKE_INSTALL_SCRIPTDIR}/env-check.bat" )
+    configure_file( "env-set.bat.config"    "${SOLUTION_INSTALLDIR_SCRIPTDIR_FULL}/env-set.bat" )
+    configure_file( "env-clear.bat.config"  "${SOLUTION_INSTALLDIR_SCRIPTDIR_FULL}/env-clear.bat" )
+    configure_file( "env-check.bat.config"  "${SOLUTION_INSTALLDIR_SCRIPTDIR_FULL}/env-check.bat" )
 endif()
 
-if (UNIX)
-    configure_file( "env-set.sh.config"    "${CMAKE_INSTALL_SCRIPTDIR}/env-set.sh" )
-    configure_file( "env-clear.sh.config"  "${CMAKE_INSTALL_SCRIPTDIR}/env-clear.sh" )
-    configure_file( "env-check.sh.config"  "${CMAKE_INSTALL_SCRIPTDIR}/env-check.sh" )
+if( UNIX )
+    configure_file( "env-set.sh.config"    "${SOLUTION_INSTALLDIR_SCRIPTDIR_FULL}/env-set.sh" )
+    configure_file( "env-clear.sh.config"  "${SOLUTION_INSTALLDIR_SCRIPTDIR_FULL}/env-clear.sh" )
+    configure_file( "env-check.sh.config"  "${SOLUTION_INSTALLDIR_SCRIPTDIR_FULL}/env-check.sh" )
 endif()

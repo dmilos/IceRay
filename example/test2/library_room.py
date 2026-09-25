@@ -222,6 +222,9 @@ def disc( P_dll, P_config = { 'level':  - 1.001, 'shadow': False, 'pigment': Non
 
     return wrapper
 
+def cornel_classic( P_dll, P_config = {}, P_light = None, P_exponat = None ): # non-classic
+    pass
+
 
 def cornel_open( P_dll, P_config = {}, P_light = None, P_exponat = None ): # non-classic
 
@@ -295,11 +298,10 @@ def cornel_open( P_dll, P_config = {}, P_light = None, P_exponat = None ): # non
 
     return wrapper
 
-
 def cornel_close( P_dll, P_config = {}, P_light = None, P_exponat = None ): # non-classic
 
     global G_dimesion
-    I_room = [ 8, 8, 4 ] # [ 6, 6, 3.5 ]
+    I_room = [ 8, 8, 4 ] #   [ 6, 6, 3.5 ] [ 7, 7, 4 ]       
     I_move = [ 0, 0, I_room[2]/2-1.01 ]
     wall = 0.1
 
@@ -603,10 +605,10 @@ list = {
       'P-gray'       : plane_gray,
       'P-checker'    : plane_checker,
       'P-radiosity'  : radiosity_plane,
-      'plate'       : plate,
-      'disc'        : disc,
+      'plate'        : plate,
+      'disc'         : disc,
       'B-mirror'     : mirror_box,
-      'R-M-sphere' : mirror_sphere,
+      'R-M-sphere'  : mirror_sphere,
       'C-radiosity' : cornell_radiosity,
       'C-open'      : cornel_open,
       'C-close'     : cornel_close,

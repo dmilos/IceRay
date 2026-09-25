@@ -28,19 +28,19 @@ class Hexa:
         self.m_cargo = self.m_implementation.m_cargo
 
         spot = IceRayPy.core.light.Spot( Coord3D( radius+center[0], 0, 0 ),  color0['+X'], color1['+X'], color2['+X'] )
-        self.m_implementation.push( IceRayPy.core.light.Point( P_dll, {}, spot ) )
+        self.m_implementation.push( IceRayPy.core.light.Point( P_dll, spot ) )
 
         spot = IceRayPy.core.light.Spot( Coord3D( -radius+center[0], 0, 0 ), color0['-X'], color1['-X'], color2['-X'] )
-        self.m_implementation.push( IceRayPy.core.light.Point( P_dll, {}, spot ) )
+        self.m_implementation.push( IceRayPy.core.light.Point( P_dll, spot ) )
 
         spot = IceRayPy.core.light.Spot( Coord3D( 0, radius+center[1], 0 ),  color0['+Y'], color1['+Y'], color2['+Y'] )
-        self.m_implementation.push( IceRayPy.core.light.Point( P_dll, {}, spot ) )
+        self.m_implementation.push( IceRayPy.core.light.Point( P_dll, spot ) )
 
         spot = IceRayPy.core.light.Spot( Coord3D( 0, -radius+center[1], 0 ), color0['-Y'], color1['-Y'], color2['-Y'] )
-        self.m_implementation.push( IceRayPy.core.light.Point( P_dll, {}, spot ) )
+        self.m_implementation.push( IceRayPy.core.light.Point( P_dll, spot ) )
 
         spot = IceRayPy.core.light.Spot( Coord3D( 0, 0, radius+center[2] ),  color0['+Z'], color1['+Z'], color2['+Z'] )
-        self.m_implementation.push( IceRayPy.core.light.Point( P_dll, {}, spot ) )
+        self.m_implementation.push( IceRayPy.core.light.Point( P_dll, spot ) )
 
     def __del__( self ):
         pass # Do nothing
@@ -82,13 +82,13 @@ class Studio:
         color2 = { "-X" : Color( c2, c2, c2 ), "+X" : Color( c2, c2, c2 ), "-Y" : Color( c2, c2, c2 ), "+Y" : Color( c2, c2, c2), "+Z" : Color( c2, c2, c2), "-Z" : Color( c2, c2, c2) }
 
         spot = IceRayPy.core.light.Spot( Coord3D( -radius+center[0], radius+center[1], radius+center[2] ),  color0['+X'], color1['+X'], color2['+X'] )
-        self.m_implementation.push( IceRayPy.core.light.Point( P_dll, {}, spot ) )
+        self.m_implementation.push( IceRayPy.core.light.Point( P_dll, spot ) )
 
         spot = IceRayPy.core.light.Spot( Coord3D( +radius+center[0],  radius+center[1], 1.5*radius+center[2] ), color0['-X'], color1['-X'], color2['-X'] )
-        self.m_implementation.push( IceRayPy.core.light.Point( P_dll, {}, spot ) )
+        self.m_implementation.push( IceRayPy.core.light.Point( P_dll, spot ) )
 
         spot = IceRayPy.core.light.Spot( Coord3D( radius+center[0], -radius+center[1], 0.5*radius+center[2] ),  color0['+Y'], color1['+Y'], color2['+Y'] )
-        self.m_implementation.push( IceRayPy.core.light.Point( P_dll, {}, spot ) )
+        self.m_implementation.push( IceRayPy.core.light.Point( P_dll, spot ) )
 
     def __del__( self ):
         pass # Do nothing
@@ -103,6 +103,10 @@ class Nine:
         self.m_cargo = self.m_implementation.m_cargo
 
         center = Coord3D( 0, 0, 0 )
+        if( None != P_config ):
+            if( 'center' in P_config ):
+                center = P_config[ 'center' ]
+
         radiusIn  = 2
         radiusOut = 2
         heightC   = 3.5
@@ -118,27 +122,26 @@ class Nine:
         color2 = { "-X" : Color( c2, c2, c2 ), "+X" : Color( c2, c2, c2 ), "-Y" : Color( c2, c2, c2 ), "+Y" : Color( c2, c2, c2), "+Z" : Color( c2, c2, c2), "-Z" : Color( c2, c2, c2) }
 
         spot = IceRayPy.core.light.Spot( Coord3D( 0, 0, heightC ),  color0['+X'], color1['+X'], color2['+X'] )
-        self.m_implementation.push( IceRayPy.core.light.Point( P_dll, {}, spot ) )
-
+        self.m_implementation.push( IceRayPy.core.light.Point( P_dll, spot ) )
 
         spot = IceRayPy.core.light.Spot( Coord3D( -radiusIn+center[0], 0, heightIN ),  color0['+X'], color1['+X'], color2['+X'] )
-        self.m_implementation.push( IceRayPy.core.light.Point( P_dll, {}, spot ) )
-        spot = IceRayPy.core.light.Spot( Coord3D( 0,  -radiusIn+center[1], heightIN ), color0['-X'], color1['-X'], color2['-X'] )
-        self.m_implementation.push( IceRayPy.core.light.Point( P_dll, {}, spot ) )
-        spot = IceRayPy.core.light.Spot( Coord3D( 0,  +radiusIn+center[1], heightIN ),  color0['+Y'], color1['+Y'], color2['+Y'] )
-        self.m_implementation.push( IceRayPy.core.light.Point( P_dll, {}, spot ) )
-        spot = IceRayPy.core.light.Spot( Coord3D( +radiusIn+center[0], 0, heightIN ),  color0['+Y'], color1['+Y'], color2['+Y'] )
-        self.m_implementation.push( IceRayPy.core.light.Point( P_dll, {}, spot ) )
+        self.m_implementation.push( IceRayPy.core.light.Point( P_dll, spot ) )
 
+        spot = IceRayPy.core.light.Spot( Coord3D( 0,  -radiusIn+center[1], heightIN ), color0['-X'], color1['-X'], color2['-X'] )
+        self.m_implementation.push( IceRayPy.core.light.Point( P_dll, spot ) )
+        spot = IceRayPy.core.light.Spot( Coord3D( 0,  +radiusIn+center[1], heightIN ),  color0['+Y'], color1['+Y'], color2['+Y'] )
+        self.m_implementation.push( IceRayPy.core.light.Point( P_dll, spot ) )
+        spot = IceRayPy.core.light.Spot( Coord3D( +radiusIn+center[0], 0, heightIN ),  color0['+Y'], color1['+Y'], color2['+Y'] )
+        self.m_implementation.push( IceRayPy.core.light.Point( P_dll, spot ) )
 
         spot = IceRayPy.core.light.Spot( Coord3D( -radiusOut+center[0], -radiusOut+center[1], heightOut ),  color0['+X'], color1['+X'], color2['+X'] )
-        self.m_implementation.push( IceRayPy.core.light.Point( P_dll, {}, spot ) )
+        self.m_implementation.push( IceRayPy.core.light.Point( P_dll, spot ) )
         spot = IceRayPy.core.light.Spot( Coord3D( -radiusOut+center[0],  +radiusOut+center[1], heightOut ), color0['-X'], color1['-X'], color2['-X'] )
-        self.m_implementation.push( IceRayPy.core.light.Point( P_dll, {}, spot ) )
+        self.m_implementation.push( IceRayPy.core.light.Point( P_dll, spot ) )
         spot = IceRayPy.core.light.Spot( Coord3D( +radiusOut+center[0], -radiusOut+center[1], heightOut ),  color0['+Y'], color1['+Y'], color2['+Y'] )
-        self.m_implementation.push( IceRayPy.core.light.Point( P_dll, {}, spot ) )
+        self.m_implementation.push( IceRayPy.core.light.Point( P_dll, spot ) )
         spot = IceRayPy.core.light.Spot( Coord3D( +radiusOut+center[0], +radiusOut+center[1], heightOut ),  color0['+Y'], color1['+Y'], color2['+Y'] )
-        self.m_implementation.push( IceRayPy.core.light.Point( P_dll, {}, spot ) )
+        self.m_implementation.push( IceRayPy.core.light.Point( P_dll, spot ) )
 
 
     def __del__( self ):

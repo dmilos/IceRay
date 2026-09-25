@@ -103,23 +103,6 @@ I_config['camera']['aspect'] = I_picture['aspect']
 #I_config['camera']['vfov']   = math.radians( 90 )
 
 
-pigment_reflect_list =[
-    'T-0-reflect-One'               ,
-    'T-0-reflect-diffusive'         ,
-    'T-0-reflect-mirror'            ,
-    'T-1-reflect-schlick'           ,
-    'T-2-reflect-blossom-Grid'      ,
-    'T-3-reflect-blossom-Hexagon'   ,
-    'T-4-reflect-blossom-trg'       ,
-  ##'T-5-reflect-blossom-LD'        ,
-  ##'T-5-reflect-blossom-Pinwheel'  ,
-  ##'T-5-reflect-blossom-penrose'   ,
-   'T-6-reflect-blossom-Rand'      ,
-   'T-7-reflect-blossom-sobol'     ,
-   'T-8-reflect-blossom-VDC'       ,
-   'T-8-reflect-blossom-congruent'
-]
-
 pigment_refract_list =[
      'T-9-refract-fresnel'           ,
      'T-A-refract-Snell'             ,
@@ -133,7 +116,7 @@ pigment_refract_list =[
      'T-H-refract-Al2SiO4_F_OH_2'               ,
      'T-I-refract-Mg_Fe_2SiO4'                  ,
      'T-B-refract-CaTiO3'                       ,
-
+    
      'T-B-refract-BaB2O4'                       ,
      'T-B-refract-Be3Al2_SiO3_6'                ,
      'T-B-refract-CaCO3'                        ,

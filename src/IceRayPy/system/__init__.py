@@ -328,6 +328,7 @@ def _MapFunction_Light_Sphere( P_dll ):#DONE
     _MakeFunction(P_dll.IceRayC_Light_Sphere1                           ,      ctypes.c_void_p, [ctypes.c_void_p] )
     _MakeFunction(P_dll.IceRayC_Light_Sphere2                           ,      ctypes.c_void_p, [ctypes.c_void_p, ctypes.c_double] )
     _MakeFunction(P_dll.IceRayC_Light_Sphere3                           ,      ctypes.c_void_p, [ctypes.c_void_p, ctypes.c_double,ctypes.c_size_t] )
+    _MakeFunction(P_dll.IceRayC_Light_Sphere_Center                     ,      ctypes.c_int,    [ctypes.c_void_p, ctypes.c_void_p] )
     _MakeFunction(P_dll.IceRayC_Light_Sphere_Radius                     ,      ctypes.c_int,    [ctypes.c_void_p, ctypes.c_double] )
     _MakeFunction(P_dll.IceRayC_Light_Sphere_Sample                     ,      ctypes.c_int,    [ctypes.c_void_p, ctypes.c_size_t] )
     _MakeFunction(P_dll.IceRayC_Light_Sphere_Spot                       ,      ctypes.c_int,    [ctypes.c_void_p, ctypes.c_void_p] )

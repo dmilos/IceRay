@@ -257,7 +257,11 @@ void GC_algorithm::F2_trace( T_color &P_color )
 
             case( T2_ray::Ee_hierarchy::En_lead   ): /*TODO some comment or action */break;
             case( T2_ray::Ee_hierarchy::En_middle ): /*TODO some comment or action */break;
-
+            default:
+            case( T2_ray::Ee_hierarchy::En__Unknown ): 
+             {
+              /* TODO */   
+             }break;
            }
          }
         I_accident.M_consume = T_stack::T_accident::Ee_consume::En_discard;
@@ -313,6 +317,11 @@ void GC_algorithm::F2_trace( T_color &P_color )
          }break;
         case( T2_ray::Ee_hierarchy::En_middle ):  /*TODO some comment or action */break;
         case( T2_ray::Ee_hierarchy::En_back   ):  /*TODO some comment or action */break;
+        default:
+        case( T2_ray::Ee_hierarchy::En__Unknown ):
+         {
+          /* TODO */   
+         }break;
        }
      }
 

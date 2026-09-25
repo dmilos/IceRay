@@ -196,11 +196,11 @@
     - scons
   - Build using CMake (recommended)
     - cd  $/build/cmake
-    - run  make-all.bat on Windows 
+    - run make-all.bat on Windows 
     - run make-all.sh on Unix
     - cd  $
     - run $\install\script\IceRay\env-set.bat on Windows 
     - run $/install/script/IceRay/env-set.sh on Unix
-    - put //src and //example in to PYTHONPATH path
+    - put $/src and $/example in to PYTHONPATH path
       - Not covered by env-set.(bat/sh) scripts
-  - run some examples in //example/test2
+  - run some examples in $/example/test2

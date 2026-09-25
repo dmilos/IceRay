@@ -53,7 +53,6 @@ I_picture['window']['B']['y'] = I_picture['height']
 
 #I_picture['model']={}
 #I_picture['model']['name'] = "./_out/sample/384x010.pnm"
-#I_picture['model']['name'] = "c:/work/code/cpp/prj/github/iceray/work/example/test2/_out/sample/384x010.pnm"
 #I_picture['model']['object'] = IceRayPy.type.graph.Picture( I_dll )
 #I_picture['model']['object'].load( I_picture['model']['name'] );
 

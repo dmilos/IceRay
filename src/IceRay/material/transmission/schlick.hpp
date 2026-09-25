@@ -38,7 +38,7 @@
               {
                T_scalar I_theta = fabs( ::math::linear::vector::dot( P_incoming,  P_normal ) );
                T_scalar I_r0 = ( M2_air - M2_watter )/ ( M2_air + M2_watter ); I_r0 *= I_r0;
-               T_scalar I_r1  = T_scalar(1) - I_theta;
+               T_scalar I_r1 = T_scalar(1) - I_theta;
                I_r1 = I_r1 * I_r1 * I_r1 * I_r1 * I_r1;
 
                P_result = I_r0 + ( T_scalar(1) - I_r0 ) * I_r1;

@@ -35,7 +35,7 @@ class Pin:
 
 
 class Invert:
-    def __init__( self, P_dll, P_config = None ):
+    def __init__( self, P_dll, P_child = None ):
         self.m_cargo={}
         self.m_cargo['dll']= P_dll
         self.m_cargo['child']= {}

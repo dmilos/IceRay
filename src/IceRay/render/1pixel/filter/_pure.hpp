@@ -30,7 +30,7 @@
                enum class Ee_action{ En_skip, En_break, En_process  };
 
              public:
-               GC__pure(){}
+                        GC__pure(){}
                virtual ~GC__pure(){}
 
              public:

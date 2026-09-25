@@ -86,7 +86,7 @@
                    T_coord I_2light;
                    T_coord I_half;
                    T_color I_energy;
-                   bool I_valid = false;
+                   bool I_valid = true;
                    T_coord I_r = M2_memoryCoord->Fv_load( GS_DDMRM::S_IceRay::S_material::S_compute::S_memory::En_inCoord3D_Dynamic_Reflected );
 
                    //T_coord I_X = M2_memoryCoord->Fv_load( GS_DDMRM::S_IceRay::S_material::S_compute::S_memory::En_inCoord3D_Dynamic_Surface_X );
@@ -117,7 +117,7 @@
                     }
 
                    M2_memoryColor->Fv_store( F_output<T_color>( En_outColor_result ), I_summae );
-                   return true;
+                   return I_valid;
                   }
 
                private:

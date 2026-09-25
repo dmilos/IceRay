@@ -9,6 +9,8 @@ import IceRayPy
 
 import render
 
+os.system('color')
+
 dll_path = IceRayPy.system.SearchCDLL( P_preferDebug = False )
 
 if 0 != len( dll_path ):
@@ -32,6 +34,7 @@ try:
     os.mkdir( "_out" )
 except OSError as e:
     pass
+
 I_picture['folder'] = './_out'
 I_picture['extension'] = 'pnm'
 
@@ -80,7 +83,10 @@ I_config['room']   = {}
 I_config['camera']  = {}
 I_config['pigment']  = {}
 I_config['light']   = {}
-I_config['light']['sample']   = 1
+I_config['light']['sample']  =  32
+I_config['light']['start']   = IceRayPy.type.math.coord.Scalar3D( 0, -2, +1.0 )
+I_config['light']['end']     = IceRayPy.type.math.coord.Scalar3D( 0, +2, +1.0 )
+I_config['light']['center']  = IceRayPy.type.math.coord.Scalar3D( 0, 0 , +1.0 )
 I_config['decoration']   = {}
 I_config['geometry']   = {}
 I_config['composer'] = {}
@@ -112,6 +118,7 @@ camera_list = [
     'C-vertical'     ,
     'C-horizontal'   ,
     'P-C-vertical'   ,
+    'P-C-horizontal'   ,
     'DOF-persp'       ,
     'DOF-cone'       ,
     'DOF-cylinder'

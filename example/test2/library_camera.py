@@ -15,6 +15,7 @@ list = {
     'C-horizontal'   : IceRayPy.core.camera.cylinder.Horizontal,
     'I-C-vertical'   : IceRayPy.utility.camera.invert.CylinderVertical,
     'P-C-vertical'   : IceRayPy.utility.camera.pin.CylinderVertical,
+    'P-C-horizontal' : IceRayPy.utility.camera.pin.CylinderHorizontal,
     'DOF-persp'      : IceRayPy.core.camera.dof.Focus,
     'DOF-cone'       : IceRayPy.core.camera.dof.Cone,
     'DOF-cylinder'   : IceRayPy.core.camera.dof.Cylinder,
