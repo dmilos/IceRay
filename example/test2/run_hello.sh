@@ -1,0 +1,3 @@
+PYTHONPATH=$ICERAY_PYTONPATH
+
+hello.py

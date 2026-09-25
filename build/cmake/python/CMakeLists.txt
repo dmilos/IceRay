@@ -17,4 +17,5 @@ source_group( TREE "${CMAKE_SOURCE_DIR}/../../../src/" FILES ${SOURCE_HPP} )
 source_group( TREE "${CMAKE_SOURCE_DIR}/../../../src/" FILES ${SOURCE_CPP} ) 
 
 add_executable( testCmake ${SOURCE} )
+#set_target_properties( testCmake PROPERTIES VERSION ${COMPONENT_VERSION__FINAL} )
 

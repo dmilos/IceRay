@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
 
+include( "./install.cmake" )
+
 #primary variables
 set( PROJECT_NAME_BARE            "IceRay_Internal_SizeOf" ) #!< TODO Take this from INI
 set( PROJECT_NAME_DECOR_POSTFIX   "Exe" )
@@ -48,6 +50,7 @@ include_directories( "${directory_submodule__root}/PNM/src")
 add_executable( ${ICERAY_PROJECT_NAME_FULL} ${SOURCE_CPP} ${SOURCE_HPP}  )
 
 set_property( TARGET ${ICERAY_PROJECT_NAME_FULL} PROPERTY POSITION_INDEPENDENT_CODE ON )
+set_target_properties(${ICERAY_PROJECT_NAME_FULL} PROPERTIES VERSION ${COMPONENT_VERSION__FINAL} )
 
 if( UNIX )
     target_compile_options(  ${ICERAY_PROJECT_NAME_FULL} PRIVATE -Wno-unused-local-typedefs )

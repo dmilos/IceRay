@@ -4,7 +4,6 @@ import time
 import math
 import os
 import sys
-import IceRayPy
 
 import IceRayPy
 
@@ -144,7 +143,9 @@ def prepare_readme():
     os.rename( I_picture['folder']+'/'+    'C-close_S-fisheye_Q-sphere_trans_I-ALP_chand-nine_0000.pnm'          , I_picture['folder']+'/'+'camera-sphere-fisheye.pnm' )
     os.rename( I_picture['folder']+'/'+    'C-close_S-horizontal_Q-sphere_trans_I-ALP_chand-nine_0000.pnm'       , I_picture['folder']+'/'+'camera-sphere-horizontal.pnm' )
     os.rename( I_picture['folder']+'/'+    'C-close_S-vertical_Q-sphere_trans_I-ALP_chand-nine_0000.pnm'         , I_picture['folder']+'/'+'camera-sphere-vertical.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_I-C-vertical_Q-sphere_trans_I-ALP_chand-nine_0000.pnm'       , I_picture['folder']+'/'+'camera-invert-cylinder-vertical.pnm' )
 
+prepare_readme()
 
 ##debug  ************************************
 #for index in range( 0, 360, 6 ):

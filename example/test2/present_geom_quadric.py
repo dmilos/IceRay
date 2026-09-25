@@ -33,6 +33,7 @@ try:
     os.mkdir( "_out" )
 except OSError as e:
     pass
+
 I_picture['folder'] = './_out'
 I_picture['extension'] = 'pnm'
 
@@ -131,7 +132,7 @@ def prepare_readme():
     os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-cylinder_trans_I-ALP_chand-nine_0000.pnm',        I_picture['folder']+'/'+'geometry_quadric_cylinder.pnm' )
     os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-cylinderu_trans_I-ALP_chand-nine_0000.pnm',       I_picture['folder']+'/'+'geometry_quadric_cylinderu.pnm' )
     os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-ellipsoid_trans_I-ALP_chand-nine_0000.pnm',       I_picture['folder']+'/'+'geometry_quadric_ellipsoid.pnm' )
-    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-hyper-cone_trans_I-ALP_chand-nine_0000.pnm',      I_picture['folder']+'/'+'geometry_quadric_hyper-cone.pnm' )         
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-hyper-cone_trans_I-ALP_chand-nine_0000.pnm',      I_picture['folder']+'/'+'geometry_quadric_hyper-cone.pnm' )
     os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-hyper-cylinder_trans_I-ALP_chand-nine_0000.pnm',  I_picture['folder']+'/'+'geometry_quadric_hyper-cylinder.pnm' )
     os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-hyper-negative_trans_I-ALP_chand-nine_0000.pnm' , I_picture['folder']+'/'+'geometry_quadric_hyper-negative.pnm' )
     os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-hyper-nuke_trans_I-ALP_chand-nine_0000.pnm'     , I_picture['folder']+'/'+'geometry_quadric_hyper-nuke.pnm' )
@@ -150,3 +151,5 @@ def prepare_readme():
     os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-util-cone_trans_I-ALP_chand-nine_0000.pnm',       I_picture['folder']+'/'+'geometry_quadric_util-cone.pnm' )
     os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-util-cylinder_trans_I-ALP_chand-nine_0000.pnm',   I_picture['folder']+'/'+'geometry_quadric_util-cylinder.pnm' )
     os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-util-paraboloid_trans_I-ALP_chand-nine_0000.pnm', I_picture['folder']+'/'+'geometry_quadric_util-paraboloid.pnm' )
+
+prepare_readme()

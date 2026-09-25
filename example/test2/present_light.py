@@ -6,11 +6,11 @@ import os
 import sys
 import IceRayPy
 
-import IceRayPy
-
 import render
 
-dll_path = IceRayPy.system.SearchCDLL()
+os.system('color')
+
+dll_path = IceRayPy.system.SearchCDLL( P_preferDebug = True )
 
 if 0 != len( dll_path ):
     I_dll = IceRayPy.system.LoadCDLL( dll_path )
@@ -81,7 +81,10 @@ I_config['pigment']  = {}
 I_config['camera']  = {}
 I_config['room']   = {}
 I_config['light']   = {}
-I_config['light']['sample']   = 32
+I_config['light']['sample']  =  32
+I_config['light']['start']   = IceRayPy.type.math.coord.Scalar3D( 0, -2, +1.5 )
+I_config['light']['end']     = IceRayPy.type.math.coord.Scalar3D( 0, +2, +1.5 )
+I_config['light']['center']  = IceRayPy.type.math.coord.Scalar3D( 0, 0 , +1.5 )
 I_config['decoration']   = {}
 I_config['geometry']   = {}
 
@@ -105,6 +108,12 @@ light_list = [
         'circle'      ,
         'area'        ,
         'disc'        ,
+        'sun-Point'   ,
+        'sun-Area'    ,
+        'sun-Circle'  ,
+        'sun-Line'    ,
+        'sun-Disc'    ,
+
  ]
 
 for item in light_list :
@@ -113,27 +122,20 @@ for item in light_list :
 
 import os
 def prepare_readme():
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-ALP_area_0000.pnm'       , I_picture['folder']+'/'+'light_area.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-ALP_circle_0000.pnm'     , I_picture['folder']+'/'+'light_circle.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-ALP_dark_0000.pnm'       , I_picture['folder']+'/'+'light_dark.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-ALP_disc_0000.pnm'       , I_picture['folder']+'/'+'light_disc.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-ALP_line_0000.pnm'       , I_picture['folder']+'/'+'light_line.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-ALP_point_0000.pnm'      , I_picture['folder']+'/'+'light_point.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-ALP_reflector_0000.pnm'  , I_picture['folder']+'/'+'light_reflector.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-ALP_spline_0000.pnm'     , I_picture['folder']+'/'+'light_spline.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-ALP_sun-Area_0000.pnm'   , I_picture['folder']+'/'+'light_sun-area.pnm'   )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-ALP_sun-Circle_0000.pnm' , I_picture['folder']+'/'+'light_sun-circle.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-ALP_sun-Disc_0000.pnm'   , I_picture['folder']+'/'+'light_sun-disc.pnm'   )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-ALP_sun-Line_0000.pnm'   , I_picture['folder']+'/'+'light_sun-line.pnm'   )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-ALP_sun-Point_0000.pnm'  , I_picture['folder']+'/'+'light_sun-point.pnm'  )
 
-    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-ALP_area_0000.pnm'       , I_picture['folder']+'/'+'light_area.pnm' ) 
-    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-ALP_circle_0000.pnm'     , I_picture['folder']+'/'+'light_circle.pnm' ) 
-    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-ALP_dark_0000.pnm'       , I_picture['folder']+'/'+'light_dark.pnm' ) 
-    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-ALP_disc_0000.pnm'       , I_picture['folder']+'/'+'light_disc.pnm' ) 
-    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-ALP_line_0000.pnm'       , I_picture['folder']+'/'+'light_line.pnm' ) 
-    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-ALP_point_0000.pnm'      , I_picture['folder']+'/'+'light_point.pnm' ) 
-    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-ALP_reflector_0000.pnm'  , I_picture['folder']+'/'+'light_reflector.pnm' ) 
-    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-ALP_spline_0000.pnm'     , I_picture['folder']+'/'+'light_spline.pnm' ) 
-    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-sphere_trans_I-ALP_spline_0000.pnm'     , I_picture['folder']+'/'+'light_sun-point.pnm' ) 
- 
-
- 
-#debug
-#for index in range( 0, 1, 1 ) :
-#    I_picture['index'] = index
-#    for item in light_list :
-#        I_scene['light']= item
-#        render.doIt( I_dll, I_picture, I_scene, I_inventory, I_config )
+prepare_readme()
 
 
-#import os
-#def prepare_readme():
-#   os.rename

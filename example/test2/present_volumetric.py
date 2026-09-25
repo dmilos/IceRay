@@ -10,7 +10,9 @@ import IceRayPy
 
 import render
 
-dll_path = IceRayPy.system.SearchCDLL( P_preferDebug = False )
+os.system('color')
+
+dll_path = IceRayPy.system.SearchCDLL( P_preferDebug = True )
 
 if 0 != len( dll_path ):
     I_dll = IceRayPy.system.LoadCDLL( dll_path )
@@ -21,10 +23,11 @@ else:
 
 
 I_picture ={}
-I_picture[ 'width']  = int( 1920 )
-I_picture['height']  = int( 1080 )
+I_picture[ 'width']  = int( 2560 )
+I_picture['height']  = int( 1440 )
 I_picture['aspect']  = I_picture['width'] / I_picture['height']
 I_picture['watermark'] = ""
+I_picture['overwrite'] = False
 
 if( 1 < len( sys.argv ) ):
     I_picture[ 'width'] = int( sys.argv[1] )
@@ -35,31 +38,31 @@ try:
 except OSError as e:
     pass
 I_picture['folder'] = './_out'
-I_picture['extension'] = 'pnm'
+I_picture['extension'] = 'png'
 
 I_picture['index'] = 0
 I_picture['time'] = 0
 
 I_picture['window'] = {}
 I_picture['window']['A'] = {}
+I_picture['window']['A']['x'] = 0
+I_picture['window']['A']['y'] = 0
 I_picture['window']['B'] = {}
-I_picture['window']['A']['x'] = int( 0.0 * I_picture['width'] )
-I_picture['window']['B']['x'] = int( 1.0 * I_picture['width'] )
-I_picture['window']['A']['y'] = int( 0.0 * I_picture['height'] )
-I_picture['window']['B']['y'] = int( 1.0 * I_picture['height'] )
+I_picture['window']['B']['x'] = I_picture['width']
+I_picture['window']['B']['y'] = I_picture['height']
 
-I_picture['model']={}
-I_picture['model']['name'] = "./_out/sample/384x010.pnm"
-I_picture['model']['name'] = "c:/work/code/cpp/prj/github/iceray/work/example/test2/_out/sample/384x010.pnm"
-I_picture['model']['object'] = IceRayPy.type.graph.Picture( I_dll )
-I_picture['model']['object'].load( I_picture['model']['name'] );
+#I_picture['model']={}
+#I_picture['model']['name'] = "./_out/sample/384x010.pnm"
+#I_picture['model']['name'] = "c:/work/code/cpp/prj/github/iceray/work/example/test2/_out/sample/384x010.pnm"
+#I_picture['model']['object'] = IceRayPy.type.graph.Picture( I_dll )
+#I_picture['model']['object'].load( I_picture['model']['name'] );
 
 I_scene = {}
 I_scene['room']       = 'C-close'
 I_scene['camera']     = 'F-persp'
 I_scene['geometry']   = 'vacuum'
 I_scene['medium']     = 'trans'
-I_scene['pigment']    = 'P-gradientBW'
+I_scene['pigment']    = 'P-RgbCube'
 I_scene['light']      = 'chand-nine'
 I_scene['decoration'] = 'grid'
 
@@ -83,7 +86,7 @@ I_inventory['light']      = library_light.list
 I_inventory['decoration'] = library_decoration.list
 
 I_config  = {}
-I_config['pigment']  = {}
+I_config['pigment']  = {  'lo' : IceRayPy.type.math.coord.Scalar3D( -1.0, -1.0, -1.0 ), 'hi' : IceRayPy.type.math.coord.Scalar3D( +1.0, +1.0, +1.0 ) }
 I_config['camera']  = {}
 I_config['room']   = {}
 I_config['light']   = {}
@@ -91,7 +94,7 @@ I_config['light']['sample']   = 1
 I_config['decoration']   = {}
 I_config['geometry'] ={}
 I_config['geometry']['expression']='1/sqrt(x*x+y*y)'
-I_config['geometry']['density']= 0.99
+I_config['geometry']['density']= 0.1
 
 I_config['composer']={}
 I_config['composer']['hot'] = {}
@@ -100,74 +103,38 @@ I_config['composer']['hot']['y'] = 400
 I_config['composer']['manager'] = {}
 I_config['composer']['manager']['pixel'] = {}
 I_config['composer']['manager']['pixel']['type'] = 'grid' # 'center', 'grid', 'random', 'sobol'
-I_config['composer']['manager']['pixel']['size'] = 3
+I_config['composer']['manager']['pixel']['size'] = 9
 g = 1.22074408460575947536 #(math.sqrt(5)+1)/2
 
-g = (math.sqrt(5)+1)/2
+g = (math.sqrt(5)+1)/2  #1.6180339887498948482045868343656
 p = 1.324717957244746025960908854
 c = 1.22074408460575947536
+
 I_config['camera'][ 'eye']   = IceRayPy.type.math.coord.Scalar3D( +c*p*g, +p*g , +g )
+radius = 1 + 0*math.sqrt(  ( c*p*g* c*p*g ) + (p*g*p*g) );
 I_config['camera']['view']   = IceRayPy.type.math.coord.Scalar3D( 0, 0, 0 )
 I_config['camera']['aspect'] = I_picture['aspect']
+I_config['camera']['sample'] = 1
 #I_config['camera']['hfov']   = math.radians( 90 )
 #I_config['camera']['vfov']   = math.radians( 90 )
 
 geometry_list = [
-      'V-vacuum',
+      #'V-vacuum',
       'V-Mist',
-      'V-Smoke',
+      #'V-Smoke',
  ]
-"""
-I_config['camera']['eye']   = IceRayPy.type.math.coord.Scalar3D( p*g * math.cos( math.radians(90)), p*g* math.sin( math.radians(90)) , +g )
 
-array_len = 44
-chunck_len = 3
-
-best_minimum = 100;
-seed = 0;
-for index in range(1,360,1): #(0,)  1, 2, 5, 10, 20,50, 100, 200, 500, 1000,
-    print("-----------------------------")
+for index in range(0,360,1): #(0,)  1, 2, 5, 10, 20,50, 100, 200, 500, 1000,
+    I_config['camera'][ 'eye'] = IceRayPy.type.math.coord.Scalar3D( +c*p*g * radius * math.cos( math.radians(index) ), p*g * radius * math.sin( math.radians(index)  ), +g   )
     I_picture['prefix'] = "%04i"%(index)
-    I_config['geometry']['density']= 0.25
-    I_config['geometry']['seed']= seed
-    #I_config['composer']['manager']['pixel']['size'] = index
+    I_config['geometry']['density']= index/360.0
     for item in geometry_list :
-        I_scene['geometry']= item
-        I_picture['watermark'] = "" #"index" + " : " +str(index) 
-        
-        render.doIt( I_dll, I_picture, I_scene, I_inventory, I_config )
-        
-        current_minimum = IceRayPy.type.graph.Compare( I_picture['temp']['crop'], I_picture['model']['object'] )
-        if( 1000000 < seed ):
-            seed -= 1000000
-        if( 0 == ( index % 50) ):
-            seed = seed + 1;
-            seed += 1000000
-            continue;
-        if( 100 < seed ):
-            seed = seed - 100;
-        if( current_minimum < best_minimum ):
-            seed += 1000000
-            print( "OLD best_minimum: " +  str(best_minimum), flush=True )
-            best_minimum  = current_minimum;   
-            seed = seed + 1;
-            print( "NEW best_minimum: " +  str(best_minimum), flush=True )
-            I_picture['temp']['crop'].storePNM( "goodone.pnm")
-
-        print(  "I: "+str(index)+ " S: " + str(seed )+ " - best_minimum: " +  str(best_minimum), flush=True  )
-
-"""
-
-for index in range( 0, 360, 1 ): # 1, 2, 3, 4, 5, 
-    I_config['camera'][ 'eye'] = IceRayPy.type.math.coord.Scalar3D( +c*p*g * math.cos( math.radians(index)  ), +1.5* p*g * math.sin( math.radians(index)  ),  +g )
-    I_config['geometry']['density']= 0.3333333
-    #I_config['composer']['manager']['pixel']['size'] = 2
-    for item in geometry_list :
-        I_picture['prefix'] = "%04i"%(index)
         I_scene['geometry']= item
         render.doIt( I_dll, I_picture, I_scene, I_inventory, I_config )
 
-import os
 def prepare_readme():
-    #os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-cone_trans_I-ALP_chand-nine_0000.pnm',            I_picture['folder']+'/'+'geometry_quadric_cone.pnm' )
-    pass
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_V-Mist_trans_P-gradientBW_chand-nine_0000.pnm',      I_picture['folder']+'/'+'volumetric_mist.pnm'   )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_V-Smoke_trans_P-gradientBW_chand-nine_0000.pnm',     I_picture['folder']+'/'+'volumetric_smoke.pnm'  )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_V-vacuum_trans_P-gradientBW_chand-nine_0000.pnm',    I_picture['folder']+'/'+'volumetric_vacuum.pnm' )
+
+#prepare_readme()

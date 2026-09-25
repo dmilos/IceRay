@@ -1,5 +1,7 @@
 #!/cmake Solution configuration
 
+
+
 set( SOLUTION_NAME     "IceRay"  )
 
 set( SOLUTION_ROOTDIR     ${CMAKE_SOURCE_DIR}/../..  )

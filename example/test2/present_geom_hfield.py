@@ -6,8 +6,6 @@ import os
 import sys
 import IceRayPy
 
-import IceRayPy
-
 import render
 
 dll_path = IceRayPy.system.SearchCDLL( P_preferDebug = False )
@@ -100,12 +98,12 @@ I_config['camera']['aspect'] = I_picture['aspect']
 #I_config['camera']['vfov']   = math.radians( 90 )
 
 geometry_list = [
-     'C-hfieldI',
-      'C-hfieldLE',
-     'C-hfieldT2x2',
-     'C-hfieldT3x3',
-     'C-hfieldT4x4',
-     'C-hfieldT30x30'
+     'C-hfield-image'        ,
+     'C-hfield-expression'  , 
+     'C-hfield-table-2x2'   , 
+     'C-hfield-table-3x3'   , 
+     'C-hfield-table-4x4'   , 
+     'C-hfield-table-5x5'    
  ]
 
 for index in (0,): # range(1,360,1) 1, 2, 5, 10, 20,50, 100, 200, 500, 1000,
@@ -119,5 +117,12 @@ for index in (0,): # range(1,360,1) 1, 2, 5, 10, 20,50, 100, 200, 500, 1000,
 
 import os
 def prepare_readme():
-    #os.rename( I_picture['folder']+'/'+    'C-close_F-persp_Q-cone_trans_I-ALP_chand-nine_0000.pnm',            I_picture['folder']+'/'+'geometry_quadric_cone.pnm' )
-    pass
+    os.rename( I_picture['folder']+'/'+    '0000C-close_F-persp_C-hfield-expression_trans_I-ALP_chand-nine_0000.pnm',       I_picture['folder']+'/'+'geometry_hfield_expression.pnm' )
+    os.rename( I_picture['folder']+'/'+    '0000C-close_F-persp_C-hfield-image_trans_I-ALP_chand-nine_0000.pnm',            I_picture['folder']+'/'+'geometry_hfield_image.pnm' )
+    os.rename( I_picture['folder']+'/'+    '0000C-close_F-persp_C-hfield-table-2x2_trans_I-ALP_chand-nine_0000.pnm',        I_picture['folder']+'/'+'geometry_hfield_table2x2.pnm' )
+    os.rename( I_picture['folder']+'/'+    '0000C-close_F-persp_C-hfield-table-3x3_trans_I-ALP_chand-nine_0000.pnm',        I_picture['folder']+'/'+'geometry_hfield_table3x3.pnm' )
+    os.rename( I_picture['folder']+'/'+    '0000C-close_F-persp_C-hfield-table-4x4_trans_I-ALP_chand-nine_0000.pnm',        I_picture['folder']+'/'+'geometry_hfield_table4x4.pnm' )
+    os.rename( I_picture['folder']+'/'+    '0000C-close_F-persp_C-hfield-table-5x5_trans_I-ALP_chand-nine_0000.pnm',        I_picture['folder']+'/'+'geometry_hfield_table5x5.pnm' )
+    
+    
+prepare_readme()

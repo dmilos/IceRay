@@ -734,7 +734,7 @@ IceRayC_Light_Handle IceRayC_Light_SunG1( IceRayC_Light_Handle P_child )
   auto Ir_result = new Tf_sun{ c2cpp( P_child )};
   return cpp2c( Ir_result );
  }
-int IceRayC_Light_SunG_Child ( IceRayC_Light_Handle P_this, IceRayC_Light_Handle P_child )
+int IceRayC_Light_SunG_Child( IceRayC_Light_Handle P_this, IceRayC_Light_Handle P_child )
  {
   typedef GS_DDMRM::S_IceRay::S_light::GC__pure Tf__pure;
   typedef GS_DDMRM::S_IceRay::S_light::GC_sung Tf_sun;

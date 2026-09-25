@@ -61,24 +61,41 @@ def SearchCDLL( P_path = None, P_preferDebug = False ):
         print( "Architecture: " + str( arch ) )
         print( "--------------", flush = True )
 
-        bin_dll_cmake = "IceRayDLL-1.0.0.0.dll"
+        bin_dll_DIR32_D = [
+            "build/cmake/_makeVS32/cdll/Debug",
+            "install/bin/IceRayCDLL-x86-Debug",
+            "install/bin/IceRayDll"
+        ]
+        bin_dll_DIR64_R = [
+            "build/cmake/_makeVS64/cdll/Release",
+            "install/bin/IceRayDll",
+            "install/bin/IceRayCDLL-x86_64-Release/"
+        ]
+
+        bin_dll_cmake_R = "IceRayDLL-1.0.0.0.dll"
+        bin_dll_cmake_D = "IceRayDll-1.0.0.0-d.dll"
+
         bin_dll_scons = "IceRayCDLL-1.0.0.0-dynamic.dll"
 
         list_all = {}
         if( "32bit" == str( platform.architecture()[0] ) ) :
             list_all={
-                  "build/cmake/_makeVS32/cdll/Debug/"   + bin_dll_cmake  : { 'exists': False, 'config': 'debug',  'arch' : '32' }
-                , "build/cmake/_makeVS32/cdll/Release/" + bin_dll_cmake  : { 'exists': False, 'config': 'release','arch' : '32' }
-                , "install/bin/IceRayCDLL-x86-Release/" + bin_dll_scons  : { 'exists': False, 'config': 'release','arch' : '32' }
-                , "install/bin/IceRayCDLL-x86-Debug/"   + bin_dll_scons  : { 'exists': False, 'config': 'debug',  'arch' : '32' }
+                  "install/bin/IceRayDll/"              + bin_dll_cmake_D  : { 'exists': False, 'config': 'debug',    'arch' : '32' }
+                , "install/bin/IceRayDll/"              + bin_dll_cmake_R  : { 'exists': False, 'config': 'release',  'arch' : '32' }
+                , "install/bin/IceRayCDLL-x86-Release/" + bin_dll_scons    : { 'exists': False, 'config': 'release',  'arch' : '32' }
+                , "install/bin/IceRayCDLL-x86-Debug/"   + bin_dll_scons    : { 'exists': False, 'config': 'debug',    'arch' : '32' }
+                , "build/cmake/_makeVS32/cdll/Debug/"   + bin_dll_cmake_D  : { 'exists': False, 'config': 'debug',    'arch' : '32' }
+                , "build/cmake/_makeVS32/cdll/Release/" + bin_dll_cmake_R  : { 'exists': False, 'config': 'release',  'arch' : '32' }
             }
 
         if( "64bit" == str( platform.architecture()[0] ) ) :
             list_all={
-                "build/cmake/_makeVS64/cdll/Release/"    + bin_dll_cmake  : { 'exists': False, 'config': 'release','arch' : '64' }
-              , "build/cmake/_makeVS64/cdll/Debug/"      + bin_dll_cmake  : { 'exists': False, 'config': 'debug',  'arch' : '64' }
-              , "install/bin/IceRayCDLL-x86_64-Release/" + bin_dll_scons  : { 'exists': False, 'config': 'release','arch' : '64' }
-              , "install/bin/IceRayCDLL-x86_64-Debug/"   + bin_dll_scons  : { 'exists': False, 'config': 'debug',  'arch' : '64' }
+                "install/bin/IceRayCDLL-x86_64-Release/" + bin_dll_scons    : { 'exists': False, 'config': 'release','arch' : '64' }
+              , "install/bin/IceRayCDLL-x86_64-Debug/"   + bin_dll_scons    : { 'exists': False, 'config': 'debug',  'arch' : '64' }
+              , "install/bin/IceRayDll/"                 + bin_dll_cmake_D  : { 'exists': False, 'config': 'debug',  'arch' : '64' }
+              , "install/bin/IceRayDll/"                 + bin_dll_cmake_R  : { 'exists': False, 'config': 'release','arch' : '64' }
+              , "build/cmake/_makeVS64/cdll/Release/"    + bin_dll_cmake_R  : { 'exists': False, 'config': 'release','arch' : '64' }
+              , "build/cmake/_makeVS64/cdll/Debug/"      + bin_dll_cmake_D  : { 'exists': False, 'config': 'debug',  'arch' : '64' }
             }
 
         for item in list_all:
@@ -654,7 +671,7 @@ def _MapFunction_Render(P_dll): #!< TODO
     _MakeFunction( P_dll.IceRayC_Render_Pixel_Strategy_Grid0      , ctypes.c_void_p  , [] )
     _MakeFunction( P_dll.IceRayC_Render_Pixel_Strategy_Grid1      , ctypes.c_void_p  , [ctypes.c_size_t] )
     _MakeFunction( P_dll.IceRayC_Render_Pixel_Strategy_Grid_Size  , ctypes.c_int     , [ ctypes.c_void_p, ctypes.c_size_t] )
-    
+
     _MakeFunction( P_dll.IceRayC_Render_Pixel_Strategy_Random0    , ctypes.c_void_p  , [] )
     _MakeFunction( P_dll.IceRayC_Render_Pixel_Strategy_Random1    , ctypes.c_void_p  , [ctypes.c_size_t] )
     _MakeFunction( P_dll.IceRayC_Render_Pixel_Strategy_Random_Size, ctypes.c_int     , [ ctypes.c_void_p, ctypes.c_size_t] )

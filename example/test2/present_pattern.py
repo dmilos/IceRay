@@ -121,6 +121,28 @@ pigment_list =[
       'M-o-Spherical2Cylindric'    ,
 ]
 
+#### TODO Experimental remove after
+#geometry_list = [ 'F-plane' ]
+#pigment_list =[ 'P-hexagon' ]
+#I_scene['decoration'] = 'ptrs'
+#
+#I_config['decoration']['scale']  = 3
+#
+#
+#for index in range( 270, 360, 1 ): # range(1,100,1) 1, 2, 5, 10, 20,50, 100, 200, 500, 1000,
+#    I_config['camera'][ 'eye'] = IceRayPy.type.math.coord.Scalar3D( -c*p*g * math.cos( math.radians(index)  ), +1.5* p*g * math.sin( math.radians(index)  ),  +g )
+#    I_picture['index'] = index
+#    I_picture['prefix'] = "%04i"%(index)+ 'hex'
+#    for geometry_item in geometry_list :
+#        I_scene['geometry']= geometry_item
+#        for pigment_item in pigment_list :
+#            I_scene['pigment']= pigment_item
+#            render.doIt( I_dll, I_picture, I_scene, I_inventory, I_config )
+#
+#exit()
+####
+
+
 for geometry_item in geometry_list :
     I_scene['geometry']= geometry_item
     for pigment_item in pigment_list :
@@ -182,31 +204,31 @@ for geometry_item in geometry_list :
 import os
 def prepare_readme():
     os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-box_trans_M-o-affine_point_0000.pnm' ,          I_picture['folder']+'/'+   'transform-box-affine.pnm'   )
-    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-box_trans_M-o-ID_point_0000.pnm' ,              I_picture['folder']+'/'+   'transform-box-ID.pnm'   )
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-box_trans_M-o-ID_point_0000.pnm' ,              I_picture['folder']+'/'+   'transform-box-id.pnm'   )
     os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-box_trans_M-o-translate_point_0000.pnm' ,       I_picture['folder']+'/'+   'transform-box-translate.pnm'   )
     os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-box_trans_M-o-homography_point_0000.pnm' ,      I_picture['folder']+'/'+   'transform-box-homography.pnm'   )
     os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-box_trans_P-image_point_0000.pnm' ,             I_picture['folder']+'/'+   'transform-box-image.pnm'   )
     os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-box_trans_P-level_point_0000.pnm' ,             I_picture['folder']+'/'+   'transform-box-level.pnm'   )
-    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_Q-sphere_trans_P-level_point_0000.pnm' ,          I_picture['folder']+'/'+   'transform-TODO.pnm'   )
-    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_Q-sphere_trans_M-o-homography_point_0000.pnm' ,   I_picture['folder']+'/'+   'transform-TODO.pnm'   )
-    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_Q-sphere_trans_M-o-ID_point_0000.pnm' ,           I_picture['folder']+'/'+   'transform-TODO.pnm'   )
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_Q-sphere_trans_P-level_point_0000.pnm' ,          I_picture['folder']+'/'+   'transform-sphere-level.pnm'   )
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_Q-sphere_trans_M-o-homography_point_0000.pnm' ,   I_picture['folder']+'/'+   'transform-sphere-hg.pnm'   )
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_Q-sphere_trans_M-o-ID_point_0000.pnm' ,           I_picture['folder']+'/'+   'transform-sphere-id.pnm'   )
 
-    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-box_trans_M-o-Cartesian2Cylindric_point_0000.pnm' ,     I_picture['folder']+'/'+   'transform-Cartesian2Cylindric.pnm'   )
-    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-box_trans_M-o-Cartesian2Package_point_0000.pnm' ,       I_picture['folder']+'/'+   'transform-Cartesian2Package.pnm'   )
-    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-box_trans_M-o-Cylindric2Cartesian_point_0000.pnm' ,     I_picture['folder']+'/'+   'transform-Cylindric2Cartesian.pnm'   )
-    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-box_trans_M-o-Cylindric2Spherical_point_0000.pnm' ,     I_picture['folder']+'/'+   'transform-Cylindric2Spherical.pnm'   )
-    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-box_trans_M-o-Euclid2Max_point_0000.pnm' ,              I_picture['folder']+'/'+   'transform-Euclid2Max.pnm'   )
-    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-box_trans_M-o-Max2Euclid_point_0000.pnm' ,              I_picture['folder']+'/'+   'transform-Max2Euclid.pnm'   )
-    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-box_trans_M-o-Spherical2Cartesian_point_0000.pnm' ,     I_picture['folder']+'/'+   'transform-Spherical2Cartesian.pnm'   )
-    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-box_trans_M-o-Spherical2Cylindric_point_0000.pnm' ,     I_picture['folder']+'/'+   'transform-Spherical2Cylindric.pnm'   )
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-box_trans_M-o-Cartesian2Cylindric_point_0000.pnm' ,     I_picture['folder']+'/'+   'transform-cartesian2cylindric.pnm'   )
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-box_trans_M-o-Cartesian2Package_point_0000.pnm' ,       I_picture['folder']+'/'+   'transform-cartesian2package.pnm'   )
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-box_trans_M-o-Cylindric2Cartesian_point_0000.pnm' ,     I_picture['folder']+'/'+   'transform-cylindric2cartesian.pnm'   )
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-box_trans_M-o-Cylindric2Spherical_point_0000.pnm' ,     I_picture['folder']+'/'+   'transform-cylindric2spherical.pnm'   )
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-box_trans_M-o-Euclid2Max_point_0000.pnm' ,              I_picture['folder']+'/'+   'transform-euclid2max.pnm'   )
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-box_trans_M-o-Max2Euclid_point_0000.pnm' ,              I_picture['folder']+'/'+   'transform-max2euclid.pnm'   )
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-box_trans_M-o-Spherical2Cartesian_point_0000.pnm' ,     I_picture['folder']+'/'+   'transform-spherical2cartesian.pnm'   )
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-box_trans_M-o-Spherical2Cylindric_point_0000.pnm' ,     I_picture['folder']+'/'+   'transform-spherical2cylindric.pnm'   )
 
-    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_Q-sphere_trans_M-o-Cartesian2Fisheye_point_0000.pnm' ,    I_picture['folder']+'/'+   'transform-Cartesian2Fisheye.pnm'   )
-    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_Q-sphere_trans_M-o-Cartesian2Tablecloth_point_0000.pnm' , I_picture['folder']+'/'+   'transform-Cartesian2Tablecloth.pnm'   )
-    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_Q-sphere_trans_M-o-Cartesian2WoodX_point_0000.pnm' ,      I_picture['folder']+'/'+   'transform-Cartesian2WoodX.pnm'   )
-    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_Q-sphere_trans_M-o-Cartesian2WoodY_point_0000.pnm' ,      I_picture['folder']+'/'+   'transform-Cartesian2WoodY.pnm'   )
-    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_Q-cylinder_trans_M-o-Cartesian2WoodZ_point_0000.pnm' ,    I_picture['folder']+'/'+   'transform-Cartesian2WoodZ.pnm'   )
-    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_S-torus_trans_M-o-Cartesian2Torus_point_0000.pnm' ,       I_picture['folder']+'/'+   'transform-Cartesian2Torus.pnm'   )
-    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-plane_trans_M-o-Cartesian2Spherical_point_0000.pnm' ,   I_picture['folder']+'/'+   'transform-Cartesian2Spherical.pnm'   )
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_Q-sphere_trans_M-o-Cartesian2Fisheye_point_0000.pnm' ,    I_picture['folder']+'/'+   'transform-cartesian2fisheye.pnm'   )
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_Q-sphere_trans_M-o-Cartesian2Tablecloth_point_0000.pnm' , I_picture['folder']+'/'+   'transform-cartesian2tablecloth.pnm'   )
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_Q-sphere_trans_M-o-Cartesian2WoodX_point_0000.pnm' ,      I_picture['folder']+'/'+   'transform-cartesian2woodx.pnm'   )
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_Q-sphere_trans_M-o-Cartesian2WoodY_point_0000.pnm' ,      I_picture['folder']+'/'+   'transform-cartesian2woody.pnm'   )
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_Q-cylinder_trans_M-o-Cartesian2WoodZ_point_0000.pnm' ,    I_picture['folder']+'/'+   'transform-cartesian2woodz.pnm'   )
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_S-torus_trans_M-o-Cartesian2Torus_point_0000.pnm' ,       I_picture['folder']+'/'+   'transform-cartesian2torus.pnm'   )
+    os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-plane_trans_M-o-Cartesian2Spherical_point_0000.pnm' ,   I_picture['folder']+'/'+   'transform-cartesian2spherical.pnm'   )
 
     os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-box_trans_P-gradientBW_point_0000.pnm' ,        I_picture['folder']+'/'+   'function-gradient.pnm'   )
     os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-plane_trans_P-checker_point_0000.pnm' ,         I_picture['folder']+'/'+   'function-checker.pnm'   )
@@ -225,4 +247,4 @@ def prepare_readme():
     os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-plane_trans_P-noise-value_point_0000.pnm' ,     I_picture['folder']+'/'+   'noise-value.pnm'   )
     os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-plane_trans_P-noise-vdc_point_0000.pnm' ,       I_picture['folder']+'/'+   'noise-vdc.pnm'   )
 
-#prepare_readme()
+prepare_readme()

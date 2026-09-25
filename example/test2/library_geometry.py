@@ -60,12 +60,12 @@ list = {
 
     #'C-Enclose'      : IceRayPy.core.geometry.complex.Enclose, #NYI
 
-     'C-hfieldI'       : IceRayPy.library.geometry.hfield.Image,
-     'C-hfieldLE'      : IceRayPy.library.geometry.hfield.Expression, #NYI
-     'C-hfieldT2x2'    : IceRayPy.library.geometry.hfield.Table2x2,
-     'C-hfieldT3x3'    : IceRayPy.library.geometry.hfield.Table3x3,
-     'C-hfieldT4x4'    : IceRayPy.library.geometry.hfield.Table4x4,
-     'C-hfieldT30x30'  : IceRayPy.library.geometry.hfield.Table5x5,
+     'C-hfield-image'        : IceRayPy.library.geometry.hfield.Image,
+     'C-hfield-expression'   : IceRayPy.library.geometry.hfield.Expression,
+     'C-hfield-table-2x2'    : IceRayPy.library.geometry.hfield.Table2x2,
+     'C-hfield-table-3x3'    : IceRayPy.library.geometry.hfield.Table3x3,
+     'C-hfield-table-4x4'    : IceRayPy.library.geometry.hfield.Table4x4,
+     'C-hfield-table-5x5'    : IceRayPy.library.geometry.hfield.Table5x5,
 
      'T-identity'   : IceRayPy.core.geometry.transform.Identity,
      'T-translate'  : IceRayPy.core.geometry.transform.Translate,

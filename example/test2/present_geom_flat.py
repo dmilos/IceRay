@@ -125,3 +125,7 @@ def prepare_readme():
     os.rename( I_picture['folder']+'/'+    'C-close_F-persp_F-triangle_trans_I-ALP_chand-nine_0000.pnm'  , I_picture['folder']+'/'+'geometry_flat_triangle.pnm' )
     os.rename( I_picture['folder']+'/'+    'C-close_F-persp_F-triangleU_trans_I-ALP_chand-nine_0000.pnm' , I_picture['folder']+'/'+'geometry_flat_triangle-u.pnm' )
     os.rename( I_picture['folder']+'/'+    'C-close_F-persp_F-udisc_trans_I-ALP_chand-nine_0000.pnm'     , I_picture['folder']+'/'+'geometry_flat_disc-u.pnm' )
+
+prepare_readme()
+
+#done!

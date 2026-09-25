@@ -23,6 +23,8 @@ list = {
       'P-onion'            : IceRayPy.utility.material.pattern.Onion, #TODO check
       'P-level'            : IceRayPy.utility.material.pattern.Level, #TODO check
       'P-gradientBW'       : IceRayPy.utility.material.pattern.Gradient,
+      'P-RgbCube'          : IceRayPy.utility.material.pattern.RgbCube,
+     #'P-HslCone'          : IceRayPy.utility.material.pattern.HslCone,  #TODO make
 
       'I-ALP'           : IceRayPy.utility.material.illumination.Alp,       # OK OK
       'I-ambient'       : IceRayPy.utility.material.illumination.Ambient,   # OK OK TODO align with ALP
@@ -115,7 +117,6 @@ list = {
      'T-B-refract-Tourmaline'                             : IceRayPy.utility.material.transmission.refract.Tourmaline,
      'T-B-refract-ZrSiO4_hight'                           : IceRayPy.utility.material.transmission.refract.ZrSiO4_hight,
      'T-B-refract-ZrSiO4_low'                             : IceRayPy.utility.material.transmission.refract.ZrSiO4_low,
-
 
      'X-Coord3D2Color'               : IceRayPy.utility.material.operation.Coord3D2Color,  #OK
 }

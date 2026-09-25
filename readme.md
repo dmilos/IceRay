@@ -21,6 +21,8 @@
 ![sphere-fisheye](data/sample/camera/sphere-fisheye.png)
 ![sphere-horizontal](data/sample/camera/sphere-horizontal.png)
 ![sphere-vertical](data/sample/camera/sphere-vertical.png)
+![invert-cylinder-vertical](data/sample/camera/invert-cylinder-vertical.png)
+
 
 ### Geometry
 
@@ -30,6 +32,14 @@
 ![plane](data/sample/geometry/flat/plane.png)
 ![triangle](data/sample/geometry/flat/triangle.png)
 ![piped](data/sample/geometry/flat/piped.png)
+
+#### Height Field
+![expression](data/sample/geometry/hfield/expression.png)
+![image](data/sample/geometry/hfield/image.png)
+![table2x2](data/sample/geometry/hfield/table2x2.png)
+![table3x3](data/sample/geometry/hfield/table3x3.png)
+![table4x4](data/sample/geometry/hfield/table4x4.png)
+![table5x5](data/sample/geometry/hfield/table5x5.png)
 
 #### Quadric
 ![cone](data/sample/geometry/quadric/cone.png)

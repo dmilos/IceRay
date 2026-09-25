@@ -6,9 +6,8 @@ def Coord3D2Color(
     P_dll
     ,P_config = None
     ,P_function = None
-    ,P_filename = None 
+    ,P_filename = None
    ):
-
 
     result = IceRayPy.core.material.instruction.label.color.dynamic.RESULT
     normal = IceRayPy.core.material.instruction.label.coord3d.dynamic.NORMAL

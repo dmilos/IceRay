@@ -37,7 +37,8 @@ def doIt( P_dll, P_picture, P_scene, P_inventory, P_config, P_result=None ):
     P_picture['temp']['name'] = I_room['name'] +"_"+ I_camera['name'] +'_'+ I_geometry['name'] +"_"+ I_medium['name']  +"_"+ I_pigment['name']+"_" + I_light['name']
     P_picture['temp']['file'] =  P_picture['folder'] + "/" + I_prefix + P_picture['temp']['name'] + '_'+ "{:04d}".format( P_picture['index'] ) + '.' + P_picture['extension']
 
-    print( P_picture['temp']['file'], flush = True  )
+    if( True ): #P_config['debug']['output-info']
+        print( P_picture['temp']['file'], flush = True  )
 
     if 'overwrite' in P_picture:
         if True == P_picture['overwrite']:
@@ -84,13 +85,16 @@ def doIt( P_dll, P_picture, P_scene, P_inventory, P_config, P_result=None ):
     P_picture['temp']['object'].size( P_picture['width'], P_picture['height'] )
 
     manager = composer.manager( P_dll, P_config['composer'], I_camera['final'], scene )
-    print( "picture:" + str(P_picture), flush = True )
-    print( "config:"  + str(P_config),  flush = True )
-    print( "scene:"   + str(P_scene),   flush = True )
+    if( True ): #P_config['debug']['pre-info']
+        print( "picture:" + str( P_picture ), flush = True )
+        print( "config:"  + str( P_config  ),  flush = True )
+        print( "scene:"   + str( P_scene   ),   flush = True )
+
     start = time.time()
     manager.start( P_picture['temp']['object'] )
     delta = time.time() - start
-    print( "Time:" + str( delta ), flush = True )
+    if( True ): #P_config['debug']['time']
+        print( '\033[94m' + "Time:" + str( delta ) + '\033[0m', flush = True )
 
     P_picture['temp']['crop']  = IceRayPy.type.graph.Picture( P_dll )
 
@@ -101,29 +105,32 @@ def doIt( P_dll, P_picture, P_scene, P_inventory, P_config, P_result=None ):
     if( 'watermark' in P_picture ):
        IceRayPy.type.graph.Print( P_picture['temp']['crop'], IceRayPy.type.math.coord.Size2D(0,0), P_picture['watermark'] )
 
-    if( 'pnm' == P_picture['extension'] ):
-        P_picture['temp']['crop'].storePNM( P_picture['temp']['file'] )
-    if( 'png' == P_picture['extension'] ):
-        P_picture['temp']['crop'].storePNG( P_picture['temp']['file'] )
-    if( 'jpeg' == P_picture['extension'] ):
-        P_picture['temp']['crop'].storeJPEG( P_picture['temp']['file'] )
+    if( ( 'temp' in P_picture ) and ( 'file' in P_picture['temp'] ) ):
+        if( 'pnm' == P_picture['extension'] ):
+            P_picture['temp']['crop'].storePNM( P_picture['temp']['file'] )
+        if( 'png' == P_picture['extension'] ):
+            P_picture['temp']['crop'].storePNG( P_picture['temp']['file'] )
+        if( 'jpeg' == P_picture['extension'] ):
+            P_picture['temp']['crop'].storeJPEG( P_picture['temp']['file'] )
 
     I_average = IceRayPy.type.color.RGB()
     P_picture['temp']['crop'].average( I_average )
     I_dispersion = P_picture['temp']['crop'].dispersion()
-    print( 'dispersion: ' + str( I_dispersion ), flush = True  )
-    print( 'average: '    + str( I_average    ), flush = True  )
+    if( False ): #P_config['debug']['statistic']
+        print( 'dispersion: ' + str( I_dispersion ), flush = True  )
+        print( 'average: '    + str( I_average    ), flush = True  )
 
     if( None != P_result ):
         P_result['picture'] = {}
         P_result['picture']['dispersion'] = I_dispersion
         P_result['picture']['average'] = I_average
 
-    print( 'garbage collector: get_threshold() ' + str( gc.get_threshold() ), flush = True  )
-    print( 'garbage collector: get_count()     ' + str( gc.get_count()     ), flush = True  )
-    print( 'garbage collector: collect()       ' + str( gc.collect()       ), flush = True  )
-    print( 'garbage collector: get_count()    )' + str( gc.get_count()     ), flush = True  )
-    print( 'garbage collector: get_threshold() ' + str( gc.get_threshold() ), flush = True  )
+    if( False ): #P_config['debug']['memory-TODO']
+        print( 'garbage collector: get_threshold() ' + str( gc.get_threshold() ), flush = True  )
+        print( 'garbage collector: get_count()     ' + str( gc.get_count()     ), flush = True  )
+        print( 'garbage collector: collect()       ' + str( gc.collect()       ), flush = True  )
+        print( 'garbage collector: get_count()    )' + str( gc.get_count()     ), flush = True  )
+        print( 'garbage collector: get_threshold() ' + str( gc.get_threshold() ), flush = True  )
 
 
 #dll_path = IceRayPy.system.SearchCDLL()
@@ -160,7 +167,7 @@ def doIt( P_dll, P_picture, P_scene, P_inventory, P_config, P_result=None ):
 #
 #I_scene = {}
 #I_scene['room']       = 'C-close'
-#I_scene['camera']     =  'F-persp'
+#I_scene['camera']     = 'F-persp'
 #I_scene['geometry']   = 'F-box'
 #I_scene['medium']     = 'trans'
 #I_scene['pigment']    = 'I-ALP'
@@ -177,7 +184,7 @@ def doIt( P_dll, P_picture, P_scene, P_inventory, P_config, P_result=None ):
 #import library_decoration
 #
 #
-#I_inventory= {}
+#I_inventory = {}
 #I_inventory['room']       = library_room.list
 #I_inventory['camera']     = library_camera.list
 #I_inventory['geometry']   = library_geometry.list
@@ -186,7 +193,7 @@ def doIt( P_dll, P_picture, P_scene, P_inventory, P_config, P_result=None ):
 #I_inventory['light']      = library_light.list
 #I_inventory['decoration'] = library_decoration.list
 #
-#I_config  = {}
+#I_config = {}
 #I_config['pigment']  = {}
 #I_config['camera']  = {}
 #I_config['room']   = {}

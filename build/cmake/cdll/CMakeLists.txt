@@ -1,16 +1,10 @@
 cmake_minimum_required(VERSION 3.10)
 
-include ("./config.cmake")
+include( "./config.cmake" )
+include( "./install.cmake" )
 
-#primary variables
-set( PROJECT_NAME_BARE            "IceRay" ) #!< TODO Take this from INI
-set( PROJECT_NAME_DECOR_POSTFIX      "DLL" )
+set( ICERAY_CORE_DLL_PROJECT_NAME_FULL         ${COMPONENT_NAME_BARE} CACHE INTERNAL "" )
 
-set( ICERAY_PROJECT_NAME_FULL                  ${PROJECT_NAME_BARE}${PROJECT_NAME_DECOR_POSTFIX}-${COMPONENT_VERSION__FINAL} )
-set( ICERAY_CORE_DLL_PROJECT_NAME_FULL         ${ICERAY_PROJECT_NAME_FULL} CACHE INTERNAL "" )
-
-
-project( ${ICERAY_PROJECT_NAME_FULL} )
 
 set( directory__root "${CMAKE_CURRENT_SOURCE_DIR}/../../.." )
 
@@ -25,14 +19,14 @@ set( directory_dll    "${directory_temp}/${directory_output}/dll" )
 
 #Internal variables
 set( hpp_file_list    "./hpp.lst.txt" )
-set( cpp_file_list    "./cpp.lst.txt" )
 
 #Processing
 set( SOURCE_HPP "" )
 #file( STRINGS ${hpp_file_list} FILE_LIST )
 file( GLOB_RECURSE SOURCE_HPP "${directory_source}/IceRay/main/interface/c/*.hpp")
-source_group( TREE "${directory_include}/" PREFIX "Header Files\\${PROJECT_NAME_BARE}" FILES ${SOURCE_HPP} )
+source_group( TREE "${directory_include}/" PREFIX "Header Files\\${COMPONENT_NAME_BARE}" FILES ${SOURCE_HPP} )
 
+set( cpp_file_list    "./cpp.lst.txt" )
 set( SOURCE_CPP "" )
 file( STRINGS ${cpp_file_list} FILE_LIST )
 foreach(file_item IN LISTS FILE_LIST )
@@ -58,69 +52,77 @@ endif()
 
 set( COMMAND_ARGUMENTS "0 1" )
 set( COMMAND_CMD32_DEBUG    "$ENV{prg_python}" )
-set( COMMAND_ARG32_DEBUG    ${directory__root}"/example/test2/present_radiosity.py" )
+set( COMMAND_ARG32_DEBUG    ${directory__root}"/example/test2/present_light.py" )
 set( COMMAND_CMD32_RELEASE  "$ENV{prg_python}" )
-set( COMMAND_ARG32_RELEASE  ${directory__root}"/example/test2/present_radiosity.py" )
+set( COMMAND_ARG32_RELEASE  ${directory__root}"/example/test2/present_light.py" )
 
 set( COMMAND_CMD64_DEBUG    "$ENV{prg_python}" )
-set( COMMAND_ARG64_DEBUG    ${directory__root}"/example/test2/present_radiosity.py" )
+set( COMMAND_ARG64_DEBUG    ${directory__root}"/example/test2/present_light.py" )
 set( COMMAND_CMD64_RELEASE  "$ENV{prg_python}" )
-set( COMMAND_ARG64_RELEASE  ${directory__root}"/example/test2/present_radiosity.py" )
+set( COMMAND_ARG64_RELEASE  ${directory__root}"/example/test2/present_light.py" )
 
 
-set( COMMAND_ENVIRONMENT_RELEASE "PATH=%PATH%" )
-set( COMMAND_ENVIRONMENT_DEBUG   "PATH=%PATH%" )
-configure_file( template.vcxproj.user.in ${CMAKE_BINARY_DIR}/cdll/${ICERAY_PROJECT_NAME_FULL}.vcxproj.user @ONLY )
+set( COMMAND_ENVIRONMENT_RELEASE "PATH=%PATH%\nPYTHONPATH=%ICERAY_PYTONPATH%" )
+set( COMMAND_ENVIRONMENT_DEBUG   "PATH=%PATH%\nPYTHONPATH=%ICERAY_PYTONPATH%" )
+configure_file( template.vcxproj.user.in ${CMAKE_BINARY_DIR}/cdll/${COMPONENT_NAME_BARE}.vcxproj.user @ONLY )
 
 
-add_library( ${ICERAY_PROJECT_NAME_FULL} SHARED ${SOURCE_CPP} ${SOURCE_HPP}  )
+add_library( ${COMPONENT_NAME_BARE} SHARED ${SOURCE_CPP} ${SOURCE_HPP}  )
 
+set_target_properties(${COMPONENT_NAME_BARE} PROPERTIES VERSION ${COMPONENT_VERSION__FINAL} )
 
-set_property( TARGET ${ICERAY_PROJECT_NAME_FULL} PROPERTY CXX_VISIBILITY_PRESET hidden )
-set_property( TARGET ${ICERAY_PROJECT_NAME_FULL} PROPERTY POSITION_INDEPENDENT_CODE ON )
-set_property( TARGET ${ICERAY_PROJECT_NAME_FULL} PROPERTY OUTPUT_NAME "${COMPONENT_NAME}${COMPONENT_DECORATION_POSTFIX}" )
+set_property( TARGET ${COMPONENT_NAME_BARE} PROPERTY CXX_VISIBILITY_PRESET hidden )
+set_property( TARGET ${COMPONENT_NAME_BARE} PROPERTY POSITION_INDEPENDENT_CODE ON )
+set_property( TARGET ${COMPONENT_NAME_BARE} PROPERTY OUTPUT_NAME "${COMPONENT_NAME_OUTPUT}" )
+set_target_properties(${COMPONENT_NAME_BARE} PROPERTIES VERSION ${COMPONENT_VERSION__FINAL} )
 
 if( UNIX )
-    target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -frtti )
-    target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -fexceptions )
-    target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -Wno-unused-local-typedefs )
-    target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -Wno-unused-variable )
-    #target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -Wmaybe-uninitialized )
+    target_compile_options( ${COMPONENT_NAME_BARE} PRIVATE -frtti )
+    target_compile_options( ${COMPONENT_NAME_BARE} PRIVATE -fexceptions )
+    target_compile_options( ${COMPONENT_NAME_BARE} PRIVATE -Wno-unused-local-typedefs )
+    target_compile_options( ${COMPONENT_NAME_BARE} PRIVATE -Wno-unused-variable )
+    #target_compile_options( ${COMPONENT_NAME_BARE} PRIVATE -Wmaybe-uninitialized )
 
     if( ICERAY_SWITCH_DEBUG )
-        #target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -fsanitize=address )
-        #target_link_options(    ${ICERAY_PROJECT_NAME_FULL} PRIVATE -fsanitize=address )
-
-        target_compile_definitions( ${ICERAY_PROJECT_NAME_FULL} PRIVATE DEBUG )
-        target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -g )
-        target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -rdynamic )
-        target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -ggdb )
-        target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -g3 )
-        target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE -O0 )
+        #target_compile_options( ${COMPONENT_NAME_BARE} PRIVATE -fsanitize=address )
+        #target_link_options(    ${COMPONENT_NAME_BARE} PRIVATE -fsanitize=address )
+        #set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -Wall")
+        target_compile_definitions( ${COMPONENT_NAME_BARE} PRIVATE DEBUG )
+        target_compile_options( ${COMPONENT_NAME_BARE} PRIVATE -g )
+        target_compile_options( ${COMPONENT_NAME_BARE} PRIVATE -rdynamic )
+        target_compile_options( ${COMPONENT_NAME_BARE} PRIVATE -ggdb )
+        target_compile_options( ${COMPONENT_NAME_BARE} PRIVATE -g3 )
+        target_compile_options( ${COMPONENT_NAME_BARE} PRIVATE -O0 )
         set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -DDEBUG -g -rdynamic -ggdb -g3 -O0")
     endif()
 endif()
+
 if( MSVC )
     if( ICERAY_WINDOWS_USE_GDI )
-        target_compile_definitions(  ${ICERAY_PROJECT_NAME_FULL}  PRIVATE ICERAY_WINDOWS_USE_GDI=1 )
+        target_compile_definitions(  ${COMPONENT_NAME_BARE}  PRIVATE ICERAY_WINDOWS_USE_GDI=1 )
     endif()
 
-    #target_compile_options(     ${ICERAY_PROJECT_NAME_FULL} PRIVATE /Zp1)
-    #target_compile_definitions( ${ICERAY_PROJECT_NAME_FULL} PRIVATE  $<$<CONFIG:DEBUG>:_SECURE_SCL> )
-    #target_compile_definitions( ${ICERAY_PROJECT_NAME_FULL} PRIVATE  $<$<CONFIG:DEBUG>:_ITERATOR_DEBUG_LEVEL=2> )
-    #target_compile_definitions( ${ICERAY_PROJECT_NAME_FULL} PRIVATE  $<$<CONFIG:DEBUG>:_HAS_ITERATOR_DEBUGGING> )
+    #target_compile_options( ${COMPONENT_NAME_BARE} PRIVATE /wd4624 )
+    #target_compile_options(     ${COMPONENT_NAME_BARE} PRIVATE /Zp1)
+    #target_compile_definitions( ${COMPONENT_NAME_BARE} PRIVATE  $<$<CONFIG:DEBUG>:_SECURE_SCL> )
+    #target_compile_definitions( ${COMPONENT_NAME_BARE} PRIVATE  $<$<CONFIG:DEBUG>:_ITERATOR_DEBUG_LEVEL=2> )
+    #target_compile_definitions( ${COMPONENT_NAME_BARE} PRIVATE  $<$<CONFIG:DEBUG>:_HAS_ITERATOR_DEBUGGING> )
 endif()
 
-target_include_directories(  ${ICERAY_PROJECT_NAME_FULL} PRIVATE "${directory_include}")
+target_include_directories(  ${COMPONENT_NAME_BARE} PRIVATE "${directory_include}")
 
-target_link_libraries(${ICERAY_PROJECT_NAME_FULL} PRIVATE ${ICERAY_CORE_LIBRARY_PROJECT_NAME_FULL} )
-add_dependencies(     ${ICERAY_PROJECT_NAME_FULL}         ${ICERAY_CORE_LIBRARY_PROJECT_NAME_FULL} )
+target_link_libraries(${COMPONENT_NAME_BARE} PRIVATE ${ICERAY_CORE_LIBRARY_PROJECT_NAME_FULL} )
+add_dependencies(     ${COMPONENT_NAME_BARE}         ${ICERAY_CORE_LIBRARY_PROJECT_NAME_FULL} )
 
-install( TARGETS ${ICERAY_PROJECT_NAME_FULL}         DESTINATION ${SOLUTION_INSTALLDIR_BINDIR}/${COMPONENT_NAME} )
+install( TARGETS ${COMPONENT_NAME_BARE}         DESTINATION ${SOLUTION_INSTALLDIR_BINDIR}/${COMPONENT_NAME_BARE} )
 if( MSVC OR WIN32 )
-    install( FILES $<TARGET_PDB_FILE:${ICERAY_PROJECT_NAME_FULL}>  DESTINATION ${SOLUTION_INSTALLDIR_BINDIR}/${COMPONENT_NAME} OPTIONAL )
+    install( FILES $<TARGET_PDB_FILE:${COMPONENT_NAME_BARE}>  DESTINATION ${SOLUTION_INSTALLDIR_BINDIR}/${COMPONENT_NAME_BARE} OPTIONAL )
 endif()
 
-message( STATUS "CMAKE_CXX_FLAGS: ${CMAKE_CXX_FLAGS}" )
-message( STATUS "CMAKE_CXX_FLAGS: ${CMAKE_C_FLAGS}" )
+message( STATUS "cdll::CMAKE_CXX_FLAGS: ${CMAKE_CXX_FLAGS}" )
+message( STATUS "cdll::CMAKE_C_FLAGS:   ${CMAKE_C_FLAGS}" )
+message( STATUS "cdll::SOLUTION_INSTALLDIR_BINDIR:   ${SOLUTION_INSTALLDIR_BINDIR}" )
+message( STATUS "cdll::COMPONENT_NAME_BARE:          ${COMPONENT_NAME_BARE}" )
+message( STATUS "cdll::CMAKE_INSTALL_PREFIX:         ${CMAKE_INSTALL_PREFIX}" )
+message( STATUS "cdll::COMPONENT_NAME_OUTPUT:        ${COMPONENT_NAME_OUTPUT}" )
 

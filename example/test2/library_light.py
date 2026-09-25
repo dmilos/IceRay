@@ -23,7 +23,7 @@ list = {
         'sun-Area'        : IceRayPy.utility.light.sun.Area,
         'sun-Line'        : IceRayPy.utility.light.sun.Line,
         'sun-Circle'      : IceRayPy.utility.light.sun.Circle,
-        #'sun-Disc'       : IceRayPy.utility.light.sun.Disc
+        'sun-Disc'        : IceRayPy.utility.light.sun.Disc,
         #'sphere'         : IceRayPy.utility.light.sphere.unit.make,    # TODO NYI
         #'chandelier-H'   : IceRayPy.utility.light.chandelier.Hexa   # TODO NYI
         #'chandelier-T'   : IceRayPy.utility.light.chandelier.Tetra, # TODO NYI

@@ -38,7 +38,7 @@ def Image(
             IceRayPy.type.graph.Default( I_picture )
 
     result = IceRayPy.core.material.instruction.label.color.dynamic.RESULT
-    scale = IceRayPy.core.material.instruction.label.scalar.dynamic._BEGIN
+    scale  = IceRayPy.core.material.instruction.label.scalar.dynamic._BEGIN
     point  = IceRayPy.core.material.instruction.label.coord3d.dynamic.POINT
     pointT = IceRayPy.core.material.instruction.label.coord3d.temp._BEGIN
 
@@ -98,7 +98,7 @@ def Brick(
         I_size = P_config[ 'size' ]
     if(  None != P_size ):
         I_size = P_size
-        
+
     I_move = IceRayPy.type.math.coord.Scalar3D( 0.35, 0.5, 0.35 )
     if( 'move' in P_config ):
         I_move = P_config[ 'move' ]
@@ -274,6 +274,49 @@ def Level(
     I_surface.append( IceRayPy.core.material.instruction.convert.Scalar2Color( P_dll, result, value ) )
 
     return I_surface
+
+def RgbCube(
+      P_dll
+     ,P_config
+     ,P_lo = None
+     ,P_hi = None
+    ):
+
+    I_pattern = IceRayPy.core.material.pattern.Level( P_dll )
+
+    result = IceRayPy.core.material.instruction.label.color.dynamic.RESULT
+    point = IceRayPy.core.material.instruction.label.coord3d.dynamic.POINT
+    value = IceRayPy.core.material.instruction.label.scalar.temp._BEGIN
+
+    tempColor  = IceRayPy.core.material.instruction.label.color.temp._BEGIN
+    tempCoord  = IceRayPy.core.material.instruction.label.coord3d.temp._BEGIN
+
+
+    I_lo = IceRayPy.type.math.coord.Scalar3D( -1.0, -1.0, -1.0 )
+    if( 'lo' in P_config ):
+        I_lo = P_config[ 'lo' ]
+    if(  None != P_lo ):
+        I_lo = P_lo
+
+    I_hi = IceRayPy.type.math.coord.Scalar3D( +1.0, +1.0, +1.0 )
+    if( 'hi' in P_config ):
+        I_hi = P_config[ 'hi' ]
+    if(  None != P_hi ):
+        I_hi = P_hi
+
+    I_scale = IceRayPy.type.math.coord.Scalar3D(        1/(I_hi[0]-I_lo[0]),        1/(I_hi[1]-I_lo[1]),        1/(I_hi[2]-I_lo[2] ) )
+    I_move  = IceRayPy.type.math.coord.Scalar3D( -I_lo[0]/(I_hi[0]-I_lo[0]), -I_lo[1]/(I_hi[1]-I_lo[1]), -I_lo[2]/(I_hi[2]-I_lo[2] ) )
+
+    I_surface = IceRayPy.core.material.pigment.Surface( P_dll )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Coord3D( P_dll, I_scale, tempCoord + 1 ) )
+    I_surface.append( IceRayPy.core.material.instruction.constant.Coord3D( P_dll, I_move,  tempCoord + 0 ) )
+    I_surface.append( IceRayPy.core.material.instruction.operation.coord3d.Multiply( P_dll, tempCoord + 2, tempCoord + 1, point ) )
+    I_surface.append( IceRayPy.core.material.instruction.operation.coord3d.Addition( P_dll, tempCoord + 2, tempCoord + 2, tempCoord + 0 ) )
+
+    I_surface.append( IceRayPy.core.material.instruction.convert.Coord3D2Color( P_dll, result, tempCoord + 2 ) )
+
+    return I_surface
+
 
 def Gradient(
       P_dll

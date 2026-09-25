@@ -24,6 +24,10 @@ class Spot(ctypes.Structure):
         if( None != P_center ):
            self.center( P_center )
 
+        self.c0( Color(0.999666,0.999666,0.999666) )
+        self.c1( Color(0,0,0) )
+        self.c2( Color(0,0,0) )
+
         if( None != P_c0 ):
            self.c0( P_c0 )
 
@@ -195,14 +199,25 @@ class Disc:
 
 
 class Line:
-    def __init__( self, P_dll, P_config = None ):
+    def __init__( self, P_dll, P_config = None, P_start = None, P_end = None ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Light_Line0()
         self.sample( 16 )
-        if( None != P_config ) and ( 'sample' in P_config ) :
-            self.sample( P_config['sample'] )
+        if( None != P_config ):
+            if( 'sample' in P_config ) :
+                self.sample( P_config['sample'] )
+            if( 'start' in P_config ) :
+                self.start( P_config['start'] )
+            if( 'end' in P_config ) :
+                self.end( P_config['end'] )
 
+        if( None != P_start ) :
+            self.start( P_start )
+        if( None != P_end ) :
+            self.start( P_end )
+
+        pass
 
     def __del__( self ):
         self.m_cargo['dll'].IceRayC_Light_Release( self.m_cargo['this'] )

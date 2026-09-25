@@ -119,12 +119,14 @@ for item in geometry_list :
 
 import os
 def prepare_readme():
-    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_C-I-i-i_trans_I-ALP_chand-nine_0000.pnm' , I_picture['folder']+'/'+'geometry_intersect_c-i-i-i.pnm' ) 
-    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_C-I-i-o_trans_I-ALP_chand-nine_0000.pnm' , I_picture['folder']+'/'+'geometry_intersect_c-i-i-o.pnm' ) 
-    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_C-I-i-s_trans_I-ALP_chand-nine_0000.pnm' , I_picture['folder']+'/'+'geometry_intersect_c-i-i-s.pnm' ) 
-    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_C-I-o-i_trans_I-ALP_chand-nine_0000.pnm' , I_picture['folder']+'/'+'geometry_intersect_c-i-o-i.pnm' ) 
-    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_C-I-o-o_trans_I-ALP_chand-nine_0000.pnm' , I_picture['folder']+'/'+'geometry_intersect_c-i-o-o.pnm' ) 
-    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_C-I-o-s_trans_I-ALP_chand-nine_0000.pnm' , I_picture['folder']+'/'+'geometry_intersect_c-i-o-s.pnm' ) 
-    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_C-I-s-i_trans_I-ALP_chand-nine_0000.pnm' , I_picture['folder']+'/'+'geometry_intersect_c-i-s-i.pnm' ) 
-    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_C-I-s-o_trans_I-ALP_chand-nine_0000.pnm' , I_picture['folder']+'/'+'geometry_intersect_c-i-s-o.pnm' ) 
-    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_C-I-s-s_trans_I-ALP_chand-nine_0000.pnm' , I_picture['folder']+'/'+'geometry_intersect_c-i-s-s.pnm' ) 
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_C-I-i-i_trans_I-ALP_chand-nine_0000.pnm' , I_picture['folder']+'/'+'geometry_intersect_c-i-i-i.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_C-I-i-o_trans_I-ALP_chand-nine_0000.pnm' , I_picture['folder']+'/'+'geometry_intersect_c-i-i-o.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_C-I-i-s_trans_I-ALP_chand-nine_0000.pnm' , I_picture['folder']+'/'+'geometry_intersect_c-i-i-s.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_C-I-o-i_trans_I-ALP_chand-nine_0000.pnm' , I_picture['folder']+'/'+'geometry_intersect_c-i-o-i.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_C-I-o-o_trans_I-ALP_chand-nine_0000.pnm' , I_picture['folder']+'/'+'geometry_intersect_c-i-o-o.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_C-I-o-s_trans_I-ALP_chand-nine_0000.pnm' , I_picture['folder']+'/'+'geometry_intersect_c-i-o-s.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_C-I-s-i_trans_I-ALP_chand-nine_0000.pnm' , I_picture['folder']+'/'+'geometry_intersect_c-i-s-i.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_C-I-s-o_trans_I-ALP_chand-nine_0000.pnm' , I_picture['folder']+'/'+'geometry_intersect_c-i-s-o.pnm' )
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_C-I-s-s_trans_I-ALP_chand-nine_0000.pnm' , I_picture['folder']+'/'+'geometry_intersect_c-i-s-s.pnm' )
+
+prepare_readme()

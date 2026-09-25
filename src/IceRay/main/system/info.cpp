@@ -85,7 +85,7 @@ int InitInfo( )
   I_info["_MSC_FULL_VER"] = std::to_string( _MSC_FULL_VER );
   I_info["_MSC_VER"] = std::to_string( _MSC_VER  );
   I_info["_MSVC_LANG "] = std::to_string( _MSVC_LANG   );
-  //I_info["_MSVC_TRADITIONAL "] = std::to_string( _MSVC_TRADITIONAL   );
+  //I_info["_MSVC_TRADITIONAL "] = std::to_string( _MSVC_TRADITIONAL );
   I_info["_MT"] = std::to_string( _MT );
   I_info["__TIMESTAMP__"] = __TIMESTAMP__ ;
 

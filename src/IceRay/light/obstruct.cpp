@@ -51,7 +51,7 @@ GC_obstruct::Fv_swarm
   I_ray.M_origin = P_point;
   for( auto const& I_spot: M2_swarm )
    {
-     ::math::linear::vector::subtraction( I_ray.M_direction, I_spot.F_center(), I_ray.M_origin );
+    ::math::linear::vector::subtraction( I_ray.M_direction, I_spot.F_center(), I_ray.M_origin );
 
     T_scalar I_lambda = ::math::linear::vector::length( I_ray.M_direction, T_scalar(1) );
 

@@ -1,1 +1,0 @@
-PYTHONPATH=...\IceRay\work\src;...\IceRay\work\example

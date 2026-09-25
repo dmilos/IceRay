@@ -20,7 +20,7 @@ add_subdirectory(cdll)
 #add_subdirectory(sizeof)
 
 
-message( "SOLUTION_ROOTDIR: " ${SOLUTION_ROOTDIR} )
+message( "_main::SOLUTION_ROOTDIR: " ${SOLUTION_ROOTDIR} )
 
 
 if(MSVC)
