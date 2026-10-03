@@ -19,10 +19,10 @@ else:
 
 
 I_picture ={}
-I_picture[ 'width']  = 800
-I_picture['height']  = 600
+I_picture[ 'width']  = int( 800 )
+I_picture['height']  = int( 600 )
 I_picture['aspect']  = I_picture['width'] / I_picture['height']
-I_picture['watermark'] = "TODO"
+I_picture['watermark'] = ""
 
 if( 1 < len( sys.argv ) ):
     I_picture[ 'width'] = int( sys.argv[1] )
@@ -33,7 +33,7 @@ try:
 except OSError as e:
     pass
 I_picture['folder'] = './_out'
-I_picture['extension'] = 'png'
+I_picture['extension'] = 'pnm'
 
 I_picture['index'] = 0
 I_picture['time'] = 0
@@ -48,10 +48,10 @@ I_picture['window']['B']['y'] = I_picture['height']
 
 I_scene = {}
 I_scene['room']       = 'C-close'
-I_scene['camera']     = 'F-persp'
+I_scene['camera']     =  'F-persp'
 I_scene['geometry']   = 'vacuum'
 I_scene['medium']     = 'trans'
-I_scene['pigment']    = 'I-ALP'
+I_scene['pigment']    = 'T-B-refract-schlick' 
 I_scene['light']      = 'chand-nine'
 I_scene['decoration'] = 'grid'
 
@@ -81,10 +81,7 @@ I_config['room']   = {}
 I_config['light']   = {}
 I_config['light']['sample']   = 1
 I_config['decoration']   = {}
-I_config['geometry'] ={}
-I_config['geometry']['expression']='sin(sqrt(x*x+y*y))'
-I_config['geometry']['expression']='atan2(y,x)'
-I_config['geometry']['interval']=IceRayPy.type.math.interval.Scalar3D( IceRayPy.type.math.coord.Scalar3D(-20,-20,-10),IceRayPy.type.math.coord.Scalar3D(+20,+20,+10) )
+I_config['geometry']   = {}
 
 g = 1.22074408460575947536 #(math.sqrt(5)+1)/2
 
@@ -94,35 +91,28 @@ c = 1.22074408460575947536
 I_config['camera'][ 'eye']   = IceRayPy.type.math.coord.Scalar3D( +c*p*g, +p*g , +g )
 I_config['camera']['view']   = IceRayPy.type.math.coord.Scalar3D( 0, 0, 0 )
 I_config['camera']['aspect'] = I_picture['aspect']
+I_config['camera']['sample'] = 1
 #I_config['camera']['hfov']   = math.radians( 90 )
 #I_config['camera']['vfov']   = math.radians( 90 )
 
 geometry_list = [
-     'C-hfield-image'        ,
-     'C-hfield-expression'  , 
-     'C-hfield-table-2x2'   , 
-     'C-hfield-table-3x3'   , 
-     'C-hfield-table-4x4'   , 
-     'C-hfield-table-5x5'    
- ]
+     'S-torus',
+     'L-Bpair'
+  ]
 
-for index in (0,): # range(1,360,1) 1, 2, 5, 10, 20,50, 100, 200, 500, 1000,
-    #I_config['camera']['eye']   = IceRayPy.type.math.coord.Scalar3D( p*g * math.cos( math.radians(index)), p*g* math.sin( math.radians(index)) , +g )
-    I_picture['prefix'] = "%04i"%(index)
+I_config['composer'] = {}
+I_config['composer']['hot'] = {}
+I_config['composer']['hot']['x'] = 400
+I_config['composer']['hot']['y'] = 300
 
-    for item in geometry_list :
-        I_scene['geometry']= item
-        I_picture['watermark'] = item
-        render.doIt( I_dll, I_picture, I_scene, I_inventory, I_config )
+for item in geometry_list :
+    I_scene['geometry']= item
+    render.doIt( I_dll, I_picture, I_scene, I_inventory, I_config )
 
 import os
 def prepare_readme():
-    os.rename( I_picture['folder']+'/'+    '0000C-close_F-persp_C-hfield-expression_trans_I-ALP_chand-nine_0000.pnm',       I_picture['folder']+'/'+'geometry_hfield_expression.pnm' )
-    os.rename( I_picture['folder']+'/'+    '0000C-close_F-persp_C-hfield-image_trans_I-ALP_chand-nine_0000.pnm',            I_picture['folder']+'/'+'geometry_hfield_image.pnm' )
-    os.rename( I_picture['folder']+'/'+    '0000C-close_F-persp_C-hfield-table-2x2_trans_I-ALP_chand-nine_0000.pnm',        I_picture['folder']+'/'+'geometry_hfield_table2x2.pnm' )
-    os.rename( I_picture['folder']+'/'+    '0000C-close_F-persp_C-hfield-table-3x3_trans_I-ALP_chand-nine_0000.pnm',        I_picture['folder']+'/'+'geometry_hfield_table3x3.pnm' )
-    os.rename( I_picture['folder']+'/'+    '0000C-close_F-persp_C-hfield-table-4x4_trans_I-ALP_chand-nine_0000.pnm',        I_picture['folder']+'/'+'geometry_hfield_table4x4.pnm' )
-    os.rename( I_picture['folder']+'/'+    '0000C-close_F-persp_C-hfield-table-5x5_trans_I-ALP_chand-nine_0000.pnm',        I_picture['folder']+'/'+'geometry_hfield_table5x5.pnm' )
-    
-    
+    os.rename( I_picture['folder']+'/'+    'C-close_F-persp_S-torus_trans_T-B-refract-schlick_chand-nine_0000.pnm'       , I_picture['folder']+'/'+'geometry_torus.pnm' )
+
 prepare_readme()
+
+#done!

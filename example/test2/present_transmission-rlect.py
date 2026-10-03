@@ -151,6 +151,7 @@ pigment_refract_list =[
 
 geometry_list =[
     'F-box',
+    'Q-sphere',
     'S-torus',
     'T-lensCS',
     'T-lensCP',
@@ -171,7 +172,6 @@ import os
 def prepare_readme():
     # os.mkdir('I_picture['folder']+'/readme')
     os.rename( I_picture['folder']+'/'+'C-close_F-persp_F-box_trans_T-0-reflect-mirror_chand-nine_0000.pnm'                , I_picture['folder']+'/'+'mirror-box.pnm' )
-    os.rename( I_picture['folder']+'/'+'C-close_F-persp_F-box_trans_T-B-refract-schlick_chand-nine_0000.pnm'               , I_picture['folder']+'/'+'refract-schlick-box.pnm' )
     os.rename( I_picture['folder']+'/'+'C-close_F-persp_Q-sphere_trans_T-0-reflect-mirror_chand-nine_0000.pnm'             , I_picture['folder']+'/'+'mirror-sphere.pnm' )
     os.rename( I_picture['folder']+'/'+'C-close_F-persp_Q-sphere_trans_T-2-reflect-blossom-Grid_chand-nine_0000.pnm'       , I_picture['folder']+'/'+'blossom-grid.pnm' )
     os.rename( I_picture['folder']+'/'+'C-close_F-persp_Q-sphere_trans_T-3-reflect-blossom-Hexagon_chand-nine_0000.pnm'    , I_picture['folder']+'/'+'blossom-hex.pnm' )
@@ -180,12 +180,8 @@ def prepare_readme():
     os.rename( I_picture['folder']+'/'+'C-close_F-persp_Q-sphere_trans_T-7-reflect-blossom-sobol_chand-nine_0000.pnm'      , I_picture['folder']+'/'+'blossom-sobol.pnm' )
     os.rename( I_picture['folder']+'/'+'C-close_F-persp_Q-sphere_trans_T-8-reflect-blossom-VDC_chand-nine_0000.pnm'        , I_picture['folder']+'/'+'blossom-vdc.pnm' )
     os.rename( I_picture['folder']+'/'+'C-close_F-persp_Q-sphere_trans_T-8-reflect-blossom-congruent_chand-nine_0000.pnm'  , I_picture['folder']+'/'+'blossom-congruent.pnm' )
-    os.rename( I_picture['folder']+'/'+'C-close_F-persp_Q-sphere_trans_T-9-refract-fresnel_chand-nine_0000.pnm'            , I_picture['folder']+'/'+'refract-fresnel.pnm' )
-    os.rename( I_picture['folder']+'/'+'C-close_F-persp_Q-sphere_trans_T-A-refract-Snell_chand-nine_0000.pnm'              , I_picture['folder']+'/'+'refract-snell.pnm' )
-    os.rename( I_picture['folder']+'/'+'C-close_F-persp_Q-sphere_trans_T-B-refract-schlick_chand-nine_0000.pnm'            , I_picture['folder']+'/'+'refract-schlick-sphere.pnm' )
     os.rename( I_picture['folder']+'/'+'C-close_F-persp_S-torus_trans_T-0-reflect-mirror_chand-nine_0000.pnm'              , I_picture['folder']+'/'+'mirror-torus.pnm' )
-    os.rename( I_picture['folder']+'/'+'C-close_F-persp_S-torus_trans_T-B-refract-schlick_chand-nine_0000.pnm'             , I_picture['folder']+'/'+'refract-schlick-torus.pnm' )
    #os.rename( I_picture['folder']+'/'+'C-close_F-persp_Q-sphere_trans_T-0-reflect-One_chand-nine_0000.pnm'                , I_picture['folder']+'/'+'-delete.pnm' )
    #os.rename( I_picture['folder']+'/'+'C-close_F-persp_Q-sphere_trans_T-1-reflect-schlick_chand-nine_0000.pnm'            , I_picture['folder']+'/'+'-delete.pnm' )
    
-#prepare_readme()
+prepare_readme()

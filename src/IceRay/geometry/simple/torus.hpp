@@ -46,10 +46,10 @@
            T_scalar       & F1_minor(){ return M2_minor; }
          private:
            T_scalar M2_minor;
-         
+
          private:
            T_scalar M1_pv;
-         
+
          private:
            struct C_intersect;
            static T_scalar M2s_worst;

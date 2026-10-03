@@ -302,8 +302,11 @@ def cornel_close( P_dll, P_config = {}, P_light = None, P_exponat = None ): # no
 
     global G_dimesion
     I_room = [ 8, 8, 4 ] #   [ 6, 6, 3.5 ] [ 7, 7, 4 ]       
-    I_move = [ 0, 0, I_room[2]/2-1.01 ]
+    I_move = [ 0, 0, I_room[2]/2-1.001 ]
     wall = 0.1
+    
+    if( 'dimension' in P_config ):
+        I_room = P_config['dimension']
 
     lo = Coord3D()
     lo[0] = -I_room[0]/2 + I_move[0]

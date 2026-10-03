@@ -116,7 +116,7 @@ pigment_refract_list =[
      'T-H-refract-Al2SiO4_F_OH_2'               ,
      'T-I-refract-Mg_Fe_2SiO4'                  ,
      'T-B-refract-CaTiO3'                       ,
-    
+
      'T-B-refract-BaB2O4'                       ,
      'T-B-refract-Be3Al2_SiO3_6'                ,
      'T-B-refract-CaCO3'                        ,
@@ -133,6 +133,12 @@ pigment_refract_list =[
      'T-B-refract-ZrSiO4_low'                   ,
  ]
 
+pigment_refract_shortlist =[
+     'T-9-refract-fresnel'           ,
+     'T-A-refract-Snell'             ,
+     'T-B-refract-schlick'           ,
+ ]
+
 geometry_list =[
     'F-box',
     'S-torus',
@@ -142,8 +148,22 @@ geometry_list =[
     'T-lensVS',
     'T-lensVP'
 ]
+geometry_short_list =[
+    'F-box',
+    'S-torus',
+    'Q-sphere',
+]
+
 
 I_config['pigment']['specular']  = IceRayPy.type.color.RGB( 1, 0.1, 0.01 )
+
+#for geometry_name in geometry_short_list :
+#    I_scene['geometry']= geometry_name
+#    for pigment_name in pigment_refract_shortlist :
+#        I_picture['watermark'] = pigment_name
+#        I_scene['pigment']= pigment_name
+#        render.doIt( I_dll, I_picture, I_scene, I_inventory, I_config )
+
 
 for geometry_name in geometry_list :
     I_scene['geometry']= geometry_name
@@ -155,7 +175,11 @@ for geometry_name in geometry_list :
 
 import os
 def prepare_readme():
-    # os.mkdir('I_picture['folder']+'/readme')
-    pass
+    os.rename( I_picture['folder']+'/'+'C-close_F-persp_Q-sphere_trans_T-9-refract-fresnel_chand-nine_0000.pnm'  , I_picture['folder']+'/'+'refract-fresnel-sphere.pnm' )
+    os.rename( I_picture['folder']+'/'+'C-close_F-persp_F-box_trans_T-B-refract-schlick_chand-nine_0000.pnm'     , I_picture['folder']+'/'+'refract-schlick-box.pnm' )
+    os.rename( I_picture['folder']+'/'+'C-close_F-persp_Q-sphere_trans_T-B-refract-schlick_chand-nine_0000.pnm'  , I_picture['folder']+'/'+'refract-schlick-sphere.pnm' )
+    os.rename( I_picture['folder']+'/'+'C-close_F-persp_S-torus_trans_T-B-refract-schlick_chand-nine_0000.pnm'   , I_picture['folder']+'/'+'refract-schlick-torus.pnm' )
+    os.rename( I_picture['folder']+'/'+'C-close_F-persp_Q-sphere_trans_T-A-refract-Snell_chand-nine_0000.pnm'    , I_picture['folder']+'/'+'refract-snell-sphere.pnm' )
+    return
 
-#prepare_readme()
+prepare_readme()

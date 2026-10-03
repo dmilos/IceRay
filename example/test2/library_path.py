@@ -21,20 +21,29 @@ def presentation( P_time, P_config = None ):
     y = -3
     z = 2
 
-    return [x,y,z]
+    #g = (math.sqrt(5)+1)/2
+    #p = 1.324717957244746025960908854
+    #c = 1.22074408460575947536
+    #x = +c*p*g
+    #y = +p*g
+    #z = +g
+
+
+    return Coord3D(x,y,z)
 
 
 def default( P_time, P_config = None ):
     I_radius = 3
 
-    if( 'radius' in P_config ):
-        I_radius = P_config['radius']
+    if( True == isinstance( P_config, dict) ):
+        if( 'radius' in P_config ):
+            I_radius = P_config['radius']
 
     x = 0
     y = I_radius
     z = 0
 
-    return [x,y,z]
+    return Coord3D(x,y,z)
 
 def debug( P_time, P_config = None ):
     I_radius = 3
@@ -43,22 +52,23 @@ def debug( P_time, P_config = None ):
     y = -0.25
     z = +0.25
 
-    return [x,y,z]
+    return Coord3D(x,y,z)
 
 def circle( P_time, P_config = None ):
     I_radius = 3
     I_height = 0
 
-    if( 'radius' in P_config ):
-        I_radius = P_config['radius']
-    if( 'height' in P_config ):
-        I_height = P_config['height']
+    if( True == isinstance( P_config, dict ) ):
+        if( 'radius' in P_config ):
+            I_radius = P_config['radius']
+        if( 'height' in P_config ):
+            I_height = P_config['height']
 
     x = I_radius * math.cos( ( 2 * 3.1415926 ) * P_time - math.pi/2 )
     y = I_radius * math.sin( ( 2 * 3.1415926 ) * P_time - math.pi/2 )
     z = I_height
 
-    return [x,y,z]
+    return Coord3D(x,y,z)
 
 def looker( P_time, P_config = None ):
 
@@ -95,7 +105,7 @@ def looker( P_time, P_config = None ):
 
     print( "Camera: ", degree, " _ [" ,  x, ",", y, ",", height, "]  ||", math.sqrt( x*x+ y*y ), "||" )
 
-    return [x,y,height]
+    return Coord3D(x,y,height)
 
 list= {
         'default' : default,

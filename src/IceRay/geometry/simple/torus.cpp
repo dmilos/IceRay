@@ -74,7 +74,7 @@ bool GC_torus::Fv_intersect( T_scalar &P_lambda, T_state &P_state, T_ray const& 
   T_scalar I_distacne = Fv_distance( I_origin );
   bool     I_surface = ( ( -Is_epsilon_lambda < I_distacne ) &&  ( I_distacne < Is_epsilon_lambda ) );
 
-  T_scalar I_move = 0; // , I_shift = 0;
+  T_scalar I_move = 0;
   std::array<T_scalar,5> I_general;
 
   bool I_equation =  ( ( true == I_intersect.M_hit ) || ( true == I_surface ) );
@@ -86,20 +86,29 @@ bool GC_torus::Fv_intersect( T_scalar &P_lambda, T_state &P_state, T_ray const& 
    }
   else
    {
+#ifdef _DEBUG
     I_intersect.M_hit = I_intersect.M_hit;
-    // TODO What if I_move = - ::math::linear::vector::dot( I_direction, P_ray.M_origin );
-    // TODO What if ::math::linear::vector::combine( I_origin, P_ray.M_origin, I_move, I_direction );
+#endif
+    // This will ruin quartic equation and hide zero as root.
+    // I_move = - ::math::linear::vector::dot( I_direction, P_ray.M_origin );
+    // ::math::linear::vector::combine( I_origin, P_ray.M_origin, I_move, I_direction );
+    // I_equation = false;
    }
+
+  // All af that to save 2 + and 2 *. Not worth it.
+  // T_scalar I_angle= atan2( I_origin[1], I_origin[0] );
+  // ::math::linear::vector::rotateZ( I_direction, -I_angle );
+  // ::math::linear::vector::rotateZ( I_origin,    -I_angle );
 
   {
    T_scalar a,b,c,al,bl,cl;
 
-   al =     I_direction[0]*I_direction[0] + I_direction[1]* I_direction[1];
-   bl = 2*( I_direction[0]*I_origin[0]    + I_direction[1]* I_origin[1] );
-   cl =     I_origin[0] * I_origin[0]    + I_origin[1] * I_origin[1];
+   al =     I_direction[0]*I_direction[0] + I_direction[1] * I_direction[1];
+   bl = 2*( I_direction[0]*I_origin[0]    + I_direction[1] * I_origin[1] );
+   cl =     I_origin[0]   * I_origin[0]   + I_origin[1]    * I_origin[1];
 
-   a = al +   I_direction[2]*I_direction[2];   //T_scalar(1); //
-   b = bl + 2*I_direction[2]*I_origin[2];     // T_scalar(0); //
+   a = al +   I_direction[2]*I_direction[2];   // T_scalar(1); //
+   b = bl + 2*I_direction[2]*I_origin[2];      // if( false == I_equation ) T_scalar(0); //
    c = cl +   I_origin[2]   *I_origin[2] + M1_pv;
 
    I_general[0] =  c*c               -  4.0*cl;  // if( true == I_equation ) T_scalar(0); //
@@ -120,7 +129,6 @@ bool GC_torus::Fv_intersect( T_scalar &P_lambda, T_state &P_state, T_ray const& 
    {
     case( false ):
      {
-      //I_shift = ::math::polynomial::solve:::quartic::monic( I_monic.data(), I_general.data(), Is_epsilon_coefficient )
       /*
       std::array<T_scalar,4> I_rootS;
       int I_countShmakov   = ::math::polynomial::quartic::solve::shmakov(   I_rootS.data(), I_coefficient.data(), Is_epsilon_quartic );
@@ -181,17 +189,17 @@ bool GC_torus::Fv_intersect( T_scalar &P_lambda, T_state &P_state, T_ray const& 
      }break;
     case( true ):
      {
-      I_count = ::math::polynomial::cubic::solve::general( I_root.data(), I_coefficient.data()+1, Is_epsilon_quartic );
+      I_count = ::math::polynomial::cubic::solve::viete( I_root.data(), I_coefficient.data()+1, Is_epsilon_quartic );
      }break;
    }
 
  // T_coord I_point;
   switch( I_count )
    {
-    case( 4 ) : I_root[3] += I_move;  // M2s_worst = std::max( M2s_worst, fabs( Fv_distance( ::math::linear::vector::combine( I_point, P_ray.M_origin, I_root[3], P_ray.M_direction ) ) ) );
-    case( 3 ) : I_root[2] += I_move;  // M2s_worst = std::max( M2s_worst, fabs( Fv_distance( ::math::linear::vector::combine( I_point, P_ray.M_origin, I_root[2], P_ray.M_direction ) ) ) );
-    case( 2 ) : I_root[1] += I_move;  // M2s_worst = std::max( M2s_worst, fabs( Fv_distance( ::math::linear::vector::combine( I_point, P_ray.M_origin, I_root[1], P_ray.M_direction ) ) ) );
-    case( 1 ) : I_root[0] += I_move;  // M2s_worst = std::max( M2s_worst, fabs( Fv_distance( ::math::linear::vector::combine( I_point, P_ray.M_origin, I_root[0], P_ray.M_direction ) ) ) );
+    case( 4 ) : I_root[3] += I_move; // M2s_worst = std::max( M2s_worst, fabs( Fv_distance( ::math::linear::vector::combine( I_point, P_ray.M_origin, I_root[3], P_ray.M_direction ) ) ) );
+    case( 3 ) : I_root[2] += I_move; // M2s_worst = std::max( M2s_worst, fabs( Fv_distance( ::math::linear::vector::combine( I_point, P_ray.M_origin, I_root[2], P_ray.M_direction ) ) ) );
+    case( 2 ) : I_root[1] += I_move; // M2s_worst = std::max( M2s_worst, fabs( Fv_distance( ::math::linear::vector::combine( I_point, P_ray.M_origin, I_root[1], P_ray.M_direction ) ) ) );
+    case( 1 ) : I_root[0] += I_move; // M2s_worst = std::max( M2s_worst, fabs( Fv_distance( ::math::linear::vector::combine( I_point, P_ray.M_origin, I_root[0], P_ray.M_direction ) ) ) );
       break;
     case( 0 ):  return I_intersect.M_hit = false;
    }
