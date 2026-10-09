@@ -28,6 +28,11 @@ IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Blobby_Element_Handle IceRay
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Blobby_Element_Handle IceRayC_Geometry_Blobby_Element_USphere1( IceRayC_TypeScalar P_radius );
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool                      IceRayC_Geometry_Blobby_Element_USphere_Core( IceRayC_Geometry_Blobby_Element_Handle P_this,IceRayC_TypeScalar P_core );
 
+//IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Blobby_Element_Handle IceRayC_Geometry_Blobby_Element_Enclose0();
+//IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Blobby_Element_Handle IceRayC_Geometry_Blobby_Element_Enclose1( IceRayC_TypeScalar P_core );
+//IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool                      IceRayC_Geometry_Blobby_Element_Enclose_Child(   IceRayC_Geometry_Blobby_Element_Handle P_this,IceRayC_TypeScalar P_core );
+//IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool                      IceRayC_Geometry_Blobby_Element_Enclose_Hull(   IceRayC_Geometry_Blobby_Element_Handle P_this,IceRayC_TypeScalar P_core );
+
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Blobby_Element_Handle IceRayC_Geometry_Blobby_Element_UCylinderZ0( );
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Geometry_Blobby_Element_Handle IceRayC_Geometry_Blobby_Element_UCylinderZ1( IceRayC_TypeScalar P_radius );
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Type_Bool                      IceRayC_Geometry_Blobby_Element_UCylinderZ_Core( IceRayC_Geometry_Blobby_Element_Handle P_this,IceRayC_TypeScalar P_core );

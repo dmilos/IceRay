@@ -28,8 +28,6 @@ S_sphere::GC_fisheye::Fv_beam
   ,T_coord2D const&  P_uv
  )const
  {
-  static T_scalar const Isc_phi = ::math::constants::PHI;
-
   T_coord & I_origin = P_beam[0].M_origin;
 
   I_origin[0] = 0;

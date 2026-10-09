@@ -46,3 +46,4 @@ __pycache__
 /build/msvc/2022/.vs
 /install/bin
 /build/cmake/_makeVS32
+/build/cmake/_makeVSCL17

@@ -11,7 +11,6 @@
 
 
 
-
  namespace GS_DDMRM
   {
    namespace S_IceRay

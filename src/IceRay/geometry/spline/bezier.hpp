@@ -47,8 +47,17 @@
             T_scalar    Fv_distance ( T_coord const& P_point )const;
             bool        Fv_uvw      ( T_coord & P_uvw, T_coord const& P_point, T_state const&P_state )const;
 
+          public:
+            typedef 
+             {
+               std::array< std::array< T_scalar, 4 >, 4 > M_coefficient;
+             }T_struct;
+             
+            T_struct M2_struct;
+            
+            T_scalar M2_epsilon;
+
           private:
-            typedef TODO  T_struct;
 
             typedef GS_DDMRM::S_IceRay::S_type::S_interval::GT_scalar2D         T2_interval;
 
@@ -62,8 +71,16 @@
               T_scalar         M_lambda;
              };
 
-            T_struct M2_struct;
+          private:
+            T_size const&  F2_size()const;
+            C2_item      & F2_top();
+            C2_item const& F2_top()const;
+            void           F2_pop();
+            void           F2_push();
+            void           F2_clear();
+            
             mutable std::vector< C2_item  > M2_stack;
+            T_size M2_pointer;
           private:
             static bool F2s_smal( T_interval const& P_interval );
          };

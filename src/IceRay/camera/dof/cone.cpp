@@ -109,7 +109,7 @@ GC_cone::Fv_beam
   return F_size();
  }
 
-void GC_cone::Fv_system( T_affine &P_affine, T_coord2D const& P_uv )
+void GC_cone::Fv_system( T_affine &P_affine, T_coord2D const& P_uv )const
  {
   F_child().Fv_system( P_affine, P_uv );
  }

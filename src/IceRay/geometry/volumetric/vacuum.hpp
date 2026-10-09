@@ -25,7 +25,6 @@
        namespace S_volumetric
         {
 
-
          class GC_vacuum
           : public GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_cluster
           , public GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_intersect
@@ -38,19 +37,23 @@
           , public GS_DDMRM::S_IceRay::S_geometry::S__pure::S_general::GT_prototype
         //, public GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_pierce
         //, public GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_valid
-         {
+          {
            public:
              typedef GS_DDMRM::S_IceRay::S_type::GT_size                         T_size;
              typedef GS_DDMRM::S_IceRay::S_type::GT_scalar                       T_scalar;
              typedef GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar3D            T_coord;
 
              typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base           T__base, T_geometry;
+             typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC_cluster         T_cluster;
 
            public:
              GC_vacuum();
              GC_vacuum( T_coord  const& P_lo, T_coord  const& P_hi );
              GC_vacuum( T_box const& P_box );
             ~GC_vacuum();
+
+           public:
+             using T_cluster::Fv_id;
 
            public:
              void    Fv_reset( T_state &P_intersect )const;
@@ -83,6 +86,5 @@
       }
     }
   }
-
 
 #endif

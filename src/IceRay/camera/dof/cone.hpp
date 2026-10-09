@@ -39,7 +39,7 @@
              T_size   Fv_beam( T_beam & P_beam, T_coord2D const& P_uv )const;
 
            protected:
-             void Fv_system( T_affine &P_affine, T_coord2D const& P_uv );
+             void Fv_system( T_affine &P_affine, T_coord2D const& P_uv )const;
 
            public:
              bool Fv_size( T_size const& P_size );

@@ -26,7 +26,7 @@ GC_spline::GC_spline
   M2_cp[0] = P_cp[0];
   M2_cp[1] = P_cp[1];
   M2_cp[2] = P_cp[2];
-  M2_cp[4] = P_cp[4];
+  M2_cp[3] = P_cp[3];
 
   F_sample( P_sample );
 

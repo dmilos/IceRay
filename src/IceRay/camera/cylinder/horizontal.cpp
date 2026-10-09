@@ -28,8 +28,6 @@ S_cylinder::GC_horizontal::Fv_beam
   ,T_coord2D const&  P_uv
  )const
  {
-  static T_scalar const Is_pi = ::math::constants::PHI;
-
   T_coord & I_origin = P_beam[0].M_origin;
 
   I_origin[0] = P_uv[0] * (M2_width/T_scalar(2));

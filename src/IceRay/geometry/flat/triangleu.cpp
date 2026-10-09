@@ -1,4 +1,4 @@
-#include "./triangleU.hpp"
+#include "./triangleu.hpp"
 
 using namespace GS_DDMRM::S_IceRay::S_geometry;
 

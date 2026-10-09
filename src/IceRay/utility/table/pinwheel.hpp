@@ -1,4 +1,4 @@
-#ifndef Dh_DDMRM_Iceray_utility_table_v_HPP_
+#ifndef Dh_DDMRM_Iceray_utility_table_pinwheel_HPP_
  #define Dh_DDMRM_Iceray_utility_table_pinwheel_HPP_
 
  // GS_DDMRM::S_IceRay::S_utility::S_table::GC_pinwheel

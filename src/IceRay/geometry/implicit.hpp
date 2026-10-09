@@ -1,5 +1,5 @@
 #ifndef _DDMM_IceRAY_geometry_implicit_H_
- #define _DDMM_IceRAY_geometry_cone_H_
+ #define _DDMM_IceRAY_geometry_implicit_H_
 
 #include "IceRay/type/basic/string.hpp"
 #include "IceRay/type/math/interval.hpp"

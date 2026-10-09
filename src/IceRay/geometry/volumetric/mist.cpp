@@ -30,9 +30,9 @@ GC_mist::GC_mist
  (
   T_scalar const& P_density, T_scalar const& P_precision
  )
- :M2_seed( 0 )
- ,M2_density( P_density )
+ :M2_density( P_density )
  ,M2_precision( P_precision )
+ ,M2_seed( 0 )
  {
   F_hull( &Fs_vacuum() );
  }

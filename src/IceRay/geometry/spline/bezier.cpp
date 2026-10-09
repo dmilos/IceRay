@@ -16,9 +16,9 @@ GC_bezier::GC_bezier(  )
 GC_bezier::GC_bezier( T_struct const& P_struct )
  {
   M2_struct = P_struct;
+  M2_epsilon = 1e-7;
+  M2_pointer = 0;
  }
-
-
 
 GC_bezier::~GC_bezier( )
  {
@@ -52,11 +52,11 @@ bool GC_bezier::Fv_intersect
 
   while( false == M2_stack.empty() )
    {
-    C2_item & I_item = M2_stack.back();
+    C2_item & I_item = F2_top();
 
     if( true == I_item.M_used )
      {
-      M2_stack.pop_back();
+      F2_pop();
       continue;
      }
 
@@ -73,7 +73,7 @@ bool GC_bezier::Fv_intersect
 
     T_coord I_size; ::math::linear::vector::subtraction( I_size, I_box.F_lo(), I_box.F_i() );
 
-    if( std::min( {I_size[0], I_size[1], I_size[2]  } ) < TODO_NEKA_MALA_VREDNOST )
+    if( std::min( {I_size[0], I_size[1], I_size[2]  } ) < M2_epsilon )
      { // if small enough for hit test
       T_coord p0, pX, pY;
       T2_plane I_plane( p0, pX, pY )
@@ -112,15 +112,15 @@ bool GC_bezier::Fv_intersect
       continue;
      }
 
-     M2_stack.resize( M2_stack.size() + 4 );
-     { // Big one. Then divide.
-      C2_item & I_item = M2_stack[ M2_stack.size() - 5 ];
+     { // Take big one. Then divide.
+      C2_item I_item = F2_top();
       T_struct I_fragment[4];
       Fs_split( I_fragment, I_item.M_struct );
 
       for( T_size I_index=0; I_index < 4; ++I_index )
        {
-        C2_item & I_sub = M2_stack[ M2_stack.size() - I_index ];
+        F2_push();
+        C2_item & I_sub = F2_top();
 
         I_sub.M_used = false;
 
@@ -199,11 +199,48 @@ bool GC_bezier::Fv_intersect
   }
 
 
- typename GC_bezier::T_size
- GC_bezier::Fv_weight( )const
-  {
-   return sizeof( C2_state );
-  }
+typename GC_bezier::T_size
+GC_bezier::Fv_weight( )const
+ {
+  return sizeof( C2_state );
+ }
+
+GC_bezier::T_size const&  GC_bezier::F2_size()
+ {
+  return M2_pointer;
+ }
+
+GC_bezier::C2_item      & GC_bezier::F2_top()
+ {
+  return M2_stack[ M2_pointer-1 ];
+ }
+
+GC_bezier::C2_item const& GC_bezier::F2_top()const
+ {
+  return M2_stack[ M2_pointer-1 ];
+ }
+
+void GC_bezier::F2_pop()
+ {
+  if( 0 == M2_pointer ) return;
+  --M2_pointer;
+ }
+
+void GC_bezier::F2_push()
+ {
+  ++M2_pointer;
+  if( M2_pointer < M2_stack.size() )
+   {
+    return;
+   }
+  M2_stack.resize( M2_stack.size() +1 );
+ }
+
+void GC_bezier::F2_clear()
+ {
+  M2_pointer=0;
+ }
+
 
 /*
 point splitBezier(point P[4], float t, point P1[4], point P2[4])

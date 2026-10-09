@@ -73,11 +73,16 @@ if( UNIX )
 endif()
 
 if( MSVC )
-    if( ICERAY_WINDOWS_USE_GDI )
-        target_compile_definitions(  ${COMPONENT_NAME_BARE}  PRIVATE ICERAY_WINDOWS_USE_GDI=1 )
+    
+    if( CMAKE_CXX_COMPILER_ID MATCHES "MSVC" )
+        if( ICERAY_WINDOWS_USE_GDI )
+            target_compile_definitions(  ${COMPONENT_NAME_BARE}  PRIVATE ICERAY_WINDOWS_USE_GDI=1 )
+        endif()
+        target_compile_options( ${COMPONENT_NAME_BARE} PRIVATE /wd4624 )
+        target_compile_options( ${COMPONENT_NAME_BARE} PRIVATE /wd4250 )
     endif()
+   
 
-    target_compile_options( ${COMPONENT_NAME_BARE} PRIVATE /wd4624 )
     #target_compile_options( ${COMPONENT_NAME_BARE} PRIVATE /Zp1    )
     #target_compile_definitions( ${COMPONENT_NAME_BARE} PRIVATE  $<$<CONFIG:DEBUG>:_SECURE_SCL> )
     #target_compile_definitions( ${COMPONENT_NAME_BARE} PRIVATE  $<$<CONFIG:DEBUG>:_ITERATOR_DEBUG_LEVEL=2> )

@@ -62,6 +62,8 @@
 
          public:
            bool           Fv_color( T_color & P_color, T_beam &P_next, T_pigment::T_intersect const& P_intersect, T_state const& P_state )const;
+
+         public:
            using T_pigmentBase::Fv_maxNextRays;
            using T_pigmentBase::F_maxRayPerHit;
          protected:

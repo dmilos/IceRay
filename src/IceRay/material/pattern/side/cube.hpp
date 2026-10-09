@@ -11,7 +11,6 @@
 
 
 
-
  namespace GS_DDMRM
   {
    namespace S_IceRay
@@ -45,9 +44,9 @@
                 {
                  switch( ::math::linear::vector::dominant( P_coord ).first )
                   {
-                   case(0): if( P_coord[0] < 0 ) P_result += 4; break;
-                   case(1): if( P_coord[1] < 0 ) P_result += 4; break;
-                   case(2): if( P_coord[2] < 0 ) P_result += 4; break;
+                   case( 0 ): if( P_coord[0] < 0 ) P_result += 4; break;
+                   case( 1 ): if( P_coord[1] < 0 ) P_result += 4; break;
+                   case( 2 ): if( P_coord[2] < 0 ) P_result += 4; break;
                   }
                 }
 

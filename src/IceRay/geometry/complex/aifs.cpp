@@ -60,11 +60,17 @@ bool GC_AIFS::Fv_intersect( T_scalar &P_lambda, T_state &P_state, T_ray const& P
 
   T_size I_depth=0;
 
+  // 1. transform ray to sub-world
+  // 2. transform ray to child 
+  // 3. hit every child
+  // 4. put hit child on stack
+  // 5. repeat until closest hit
+
   // push
   struct C_item
    {
     T_affine     M_2world;
-    //T_intersect *M_intersect;
+  //T_intersect *M_intersect;
     T_size       M_depth;
    };
 
@@ -92,7 +98,6 @@ bool GC_AIFS::Fv_intersect( T_scalar &P_lambda, T_state &P_state, T_ray const& P
 
 
      }
-
 
      //if( I_item.M_depth < M2_depth )
       {

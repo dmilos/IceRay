@@ -95,6 +95,7 @@ IceRay/geometry/blobby/translate.hpp
 IceRay/geometry/blobby/type/coefficient.hpp
 IceRay/geometry/blobby/type/heap.hpp
 IceRay/geometry/blobby/ucylinderZ.hpp
+IceRay/geometry/blobby/enclose.hpp
 IceRay/geometry/blobby/usphere.hpp
 IceRay/geometry/complex/aifs.hpp
 IceRay/geometry/complex/complex.hpp

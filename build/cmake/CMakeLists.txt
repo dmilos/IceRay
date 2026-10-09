@@ -34,3 +34,19 @@ if( UNIX )
     configure_file( "env-clear.sh.config"  "${SOLUTION_INSTALLDIR_SCRIPTDIR_FULL}/env-clear.sh" )
     configure_file( "env-check.sh.config"  "${SOLUTION_INSTALLDIR_SCRIPTDIR_FULL}/env-check.sh" )
 endif()
+
+
+add_compile_options(
+    $<$<OR:$<CXX_COMPILER_ID:GNU>,$<CXX_COMPILER_ID:Clang>>:
+        -Wno-unused-variable
+        -Wno-unused-private-field
+        -Wunused-local-typedef
+        -Wunused-variable #!< enable if you want to develop
+        -Wself-assign     #!< enable if you want to develop
+        -Wunused-but-set-variable 
+        -Wself-assign-field
+    >
+    $<$<CXX_COMPILER_ID:MSVC>:/wd4101>
+)
+
+include ("./info.cmake")

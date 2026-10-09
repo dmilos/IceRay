@@ -130,6 +130,7 @@ print( cc_files )
 #    cc_files += [ os.path.join( 'geometry', 'blobby', 'ucylinderZ.cpp' ) ]
 #    cc_files += [ os.path.join( 'geometry', 'blobby', 'usphere.cpp' ) ]
 #    cc_files += [ os.path.join( 'geometry', 'blobby', 'uwaterZ.cpp' ) ]
+#    cc_files += [ os.path.join( 'geometry', 'blobby', 'enclose.cpp' ) ]
 #
 #cc_files += [ os.path.join( 'geometry', 'complex', 'complex.cpp' ) ]
 #if( False ):

@@ -26,6 +26,7 @@ IceRay/geometry/blobby/sphere.cpp
 IceRay/geometry/blobby/system.cpp
 IceRay/geometry/blobby/translate.cpp
 IceRay/geometry/blobby/ucylinderZ.cpp
+IceRay/geometry/blobby/enclose.cpp
 IceRay/geometry/blobby/usphere.cpp
 IceRay/geometry/blobby/uwaterZ.cpp
 IceRay/geometry/blobby/vacuum.cpp

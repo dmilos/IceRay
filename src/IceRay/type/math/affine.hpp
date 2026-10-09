@@ -3,7 +3,7 @@
 // GS_DDMRM::S_IceRay::S_type::S_affine::GC__model<N_number, N_dimension>
 // GS_DDMRM::S_IceRay::S_type::S_affine::GT_scalar1D,
 // GS_DDMRM::S_IceRay::S_type::S_affine::GT_scalar2D,
-// GS_DDMRM::S_IceRay::S_type::S_affine::GT_scalar3D,
+// GS_DDMRM::S_IceRay::S_type::S_affine::GT_scalar3D, GT_affine,
 // GS_DDMRM::S_IceRay::S_type::S_affine::GT_scalar4D
 
 

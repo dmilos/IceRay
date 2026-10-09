@@ -50,6 +50,8 @@
              virtual void               Fv_prepare( T_coord const& P_point, T_state & P_state )const=0;
 
            public:
+             using T_cluster::Fv_id;
+           public:
              typedef GS_DDMRM::S_IceRay::S_geometry::S_volumetric::GC_vacuum T_vacuum;
              static T_vacuum & Fs_vacuum();
           };

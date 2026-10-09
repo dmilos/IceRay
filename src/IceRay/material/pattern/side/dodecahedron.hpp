@@ -11,7 +11,6 @@
 
 
 
-
  namespace GS_DDMRM
   {
    namespace S_IceRay
@@ -43,10 +42,17 @@
              public:
                void  Fv_process( T_result &P_result, T_coord const& P_coord )const
                 {
-                 // TODO
-                 P_result = rand()/ (T_scalar)RAND_MAX;
+                 //for( P_result = 0; P_result < M2_pyramid.size(); ++P_result )
+                 // {
+                 //  if( true == M2_pyramid.Fv_process( P_coord ) )
+                 //   {
+                 //    return;
+                 //   }
+                 // }
+                 P_result = 0;
                 }
-
+             public:
+              //std::array<T_pyramid, 12*3> M2_pyramid;
             };
 
            }

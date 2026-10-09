@@ -19,7 +19,7 @@
         {
          public:
            GC_spline( );
-           GC_spline( T_spot const& P_spot, T_coord const P_cp[3], T_size const& P_sample = 1 );
+           GC_spline( T_spot const& P_spot, T_coord const P_cp[4], T_size const& P_sample = 1 );
           ~GC_spline();
 
          public:

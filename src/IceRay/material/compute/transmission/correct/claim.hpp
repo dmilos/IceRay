@@ -59,8 +59,10 @@
                    T_size   const& I_count    = M2_memorySize->Fv_load(   F_input<T_size  >( En_inSize_Count   ) );
                    T_size   const& I_leader   = M2_memorySize->Fv_load(   F_input<T_size  >( En_inSize_Leader  ) );
 
-                   T_size  I_pass = 0;  //!< debug
-                   T_size  I_save = 0;  //!< debug
+#if defined( _DEBUG )
+                   T_size  I_pass = 0;
+                   T_size  I_save = 0;
+#endif
 
                    for( T_size I_index = I_leader; I_index < I_leader+I_count; ++I_index )
                     {
@@ -79,11 +81,15 @@
                       {
                        //I_current.M_coefficient = 0.0; //!< DEBUG
                        //I_current.M_intesity = ::color::constant::black_t{}; //!< DEBUG
-                       //++I_pass; //!< debug
+#if defined( _DEBUG )
+                       ++I_pass;
+#endif
                        continue;  
                       }
 
-                     //++I_save; //!< debug
+#if defined( _DEBUG )
+                     ++I_save;
+#endif
                      //I_current.M_coefficient = 1; //!< DEBUG
                      //I_current.M_intesity = ::color::constant::white_t{}; //!< DEBUG
                      ::math::linear::vector::reflect( I_direction, I_direction, I_normal );

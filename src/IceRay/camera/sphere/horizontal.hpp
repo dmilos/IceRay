@@ -1,5 +1,5 @@
 #ifndef _DDMRM_IceRAY_camera_sphere_horizontal_HPP_
- #define _DDMRM_IceRAY_camera_sphere_horizontall_HPP_
+ #define _DDMRM_IceRAY_camera_sphere_horizontal_HPP_
 
  // GS_DDMRM::S_IceRay::S_camera::S_sphere::GC_horizontal
 

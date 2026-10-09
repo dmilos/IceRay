@@ -129,6 +129,32 @@ int IceRayC_Geometry_Blobby_Element_USphere_Core( IceRayC_Geometry_Blobby_Elemen
    }
   return I_this->F_core( P_core ); 
  }
+ 
+/*
+IceRayC_Geometry_Blobby_Element_Handle IceRayC_Geometry_Blobby_Element_Enclose0() 
+ {
+  auto Ir_result = new GS_DDMRM::S_IceRay::S_geometry::S_blobby::GC_enclose{};
+  return cpp2c( Ir_result );
+ }
+
+IceRayC_Geometry_Blobby_Element_Handle IceRayC_Geometry_Blobby_Element_Enclose1( IceRayC_TypeScalar P_core )
+ {
+  auto Ir_result = new GS_DDMRM::S_IceRay::S_geometry::S_blobby::GC_Enclose{ P_core };
+  return cpp2c( Ir_result );
+ }
+int IceRayC_Geometry_Blobby_Element_Enclose_Child( IceRayC_Geometry_Blobby_Element_Handle P_this,IceRayC_TypeScalar P_core )
+ {
+  typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;
+  typedef GS_DDMRM::S_IceRay::S_geometry::S_blobby::GC_enclose Tf_enclose;
+
+  auto I_this = dynamic_cast< Tf_enclose *>( c2cpp( P_this ) );
+  if( nullptr == I_this )
+   {
+    return 0;
+   }
+  return I_this->F_child( P_child ); 
+ }
+*/
 
 IceRayC_Geometry_Blobby_Element_Handle IceRayC_Geometry_Blobby_Element_UCylinderZ0()
  {
@@ -145,7 +171,7 @@ IceRayC_Geometry_Blobby_Element_Handle IceRayC_Geometry_Blobby_Element_UCylinder
   return cpp2c( Ir_result );
  }
 
-int IceRayC_Geometry_Blobby_Element_UCylinderZ_Core( IceRayC_Geometry_Blobby_Element_Handle P_this,IceRayC_TypeScalar P_core )
+int IceRayC_Geometry_Blobby_Element_UCylinderZ_Core( IceRayC_Geometry_Blobby_Element_Handle P_this, IceRayC_TypeScalar P_core )
  {
   typedef GS_DDMRM::S_IceRay::S_geometry::S_blobby::GC_ucylinderZ Tf_ucylinderZ;
   typedef GS_DDMRM::S_IceRay::S_geometry::S__pure::GC__base Tf__base;

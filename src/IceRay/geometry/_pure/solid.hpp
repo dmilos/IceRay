@@ -33,7 +33,10 @@
              virtual ~GC_solid(){}
 
            public:
-             virtual T_bool      Fv_solid    ( T_state &P_state )const{ return T_bool( true ); }
+             virtual T_bool      Fv_solid    ( T_state const&P_state )const
+              {
+               return T_bool( true ); 
+              }
 
           };
 

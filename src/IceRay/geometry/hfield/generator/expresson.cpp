@@ -37,7 +37,7 @@ S_hfield::S_generator::GC_expression::T_scalar S_hfield::S_generator::GC_express
 
 S_hfield::S_generator::GC_expression::T_scalar S_hfield::S_generator::GC_expression::Fv_value( T_size2D const& P_position )const
  {
-  return Fv_value( { P_position[0], P_position[1] } );
+  return Fv_value( P_position[0], P_position[1] );
  }
 
  bool               S_hfield::S_generator::GC_expression::F_expression( T_string const& P_expression ) 

@@ -90,7 +90,7 @@ GC_cylinder::Fv_beam
 
     {
      T_scalar I_intesity = ::math::linear::vector::dot( I_heading, I_direction ) / I_len;
-     I_intesity = ( 1 < I_intesity ? 1: I_intesity );
+     I_intesity = ( 1 < I_intesity ? 1 : I_intesity );
      I_intesity = ::math::function::pdf<T_scalar>( acos( I_intesity ), F_gauss() );
      P_beam[I_index].M_intesity = T_gray{ {I_intesity} };
      I_summae += I_intesity;
@@ -107,7 +107,7 @@ GC_cylinder::Fv_beam
   return F_size();
  }
 
-void GC_cylinder::Fv_system( T_affine &P_affine, T_coord2D const& P_uv )
+void GC_cylinder::Fv_system( T_affine &P_affine, T_coord2D const& P_uv )const
  {
   F_child().Fv_system( P_affine, P_uv );
  }

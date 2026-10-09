@@ -74,7 +74,7 @@
              // }
 
            public:
-             T_size const&  Fv_id( T_state const&P_state )
+             T_size const&  Fv_id( T_state const&P_state )const
               {   // goes to the bottom!
                T_fragment I_fragment;
 
