@@ -4,11 +4,12 @@ import time
 import math
 import os
 import sys
-import IceRayPy
 
 import IceRayPy
 
 import render
+os.system('color')
+
 
 dll_path = IceRayPy.system.SearchCDLL( P_preferDebug = False )
 
@@ -90,7 +91,7 @@ g = 1.22074408460575947536 #(math.sqrt(5)+1)/2
 g = (math.sqrt(5)+1)/2
 p = 1.324717957244746025960908854
 c = 1.22074408460575947536
-I_config['camera'][ 'eye']   = IceRayPy.type.math.coord.Scalar3D( +c*p*g, +p*g , +g )
+I_config['camera'][ 'eye']   = IceRayPy.type.math.coord.Scalar3D( +c*p*g, +p*g, +g )
 I_config['camera']['view']   = IceRayPy.type.math.coord.Scalar3D( 0, 0, 0 )
 I_config['camera']['aspect'] = I_picture['aspect']
 I_config['camera']['sample'] = 1
@@ -116,6 +117,5 @@ def prepare_readme():
     os.rename( I_picture['folder']+'/'+    'C-close_F-persp_T-identity_trans_I-ALP_chand-nine_0000.pnm'   , I_picture['folder']+'/'+'geometry_transform_identity.pnm' )
     os.rename( I_picture['folder']+'/'+    'C-close_F-persp_T-mblur_trans_I-ALP_chand-nine_0000.pnm'      , I_picture['folder']+'/'+'geometry_transform_mblur.pnm' )
     os.rename( I_picture['folder']+'/'+    'C-close_F-persp_T-translate_trans_I-ALP_chand-nine_0000.pnm'  , I_picture['folder']+'/'+'geometry_transform_translate.pnm' )
-
 
 prepare_readme()

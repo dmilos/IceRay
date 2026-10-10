@@ -105,25 +105,59 @@ bool             GC_homography::Fv_fragment( T_fragment & P_fragment, T_state co
 
 bool GC_homography::Fv_intersect( T_scalar &P_lambda, T_state &P_state, T_ray const& P_ray )const
  {
+  static T_scalar Is_infinity = 1e+12;//!< T_scalar( std::numeric_limits<T_scalar>::???() );
+  static T_scalar Is_epsilon  = 1e-12; 
+
   C_intersect &I_head = P_state.F_content<C_intersect>();
   T_state      I_tail;  P_state.F_tail<C_intersect>(I_tail);
-  T_coord I_temp;
 
+  T_coord I_origin    = P_ray.M_origin;
+  T_coord const& I_direction = P_ray.M_direction;
+
+  T_scalar I_move = 0;
+  if(false)if( false == math::geometry::interval::in( F_box(), I_origin ) )
+   {  //! Other side fix. in progress
+    std::tuple<unsigned, T_scalar, unsigned, T_scalar > I_line;
+
+    if( false == ::math::geometry::interval::intersect( I_line, F_box(), { I_origin, I_direction }, Is_epsilon ) )
+     {
+      return I_head.M_hit = false;
+     }
+
+    I_move = std::get<1>( I_line );
+    if( ( Is_epsilon < I_move ) && ( I_move < P_lambda ) )
+     {
+      ::math::linear::vector::combine( I_origin, P_ray.M_origin, I_move, P_ray.M_direction );
+     }
+    else
+     {
+      I_move = std::get<3>( I_line );
+      if( ( Is_epsilon < I_move ) && ( I_move < P_lambda ) )
+       {
+        ::math::linear::vector::combine( I_origin, P_ray.M_origin, I_move, P_ray.M_direction );
+       }
+      else
+       {
+        return I_head.M_hit = false;
+       }
+     }
+   }
+
+  T_coord I_tip;
   T_ray I_ray;
 
-  ::math::linear::homography::transform( I_ray.M_origin, M2_2local, P_ray.M_origin );
-
-  ::math::linear::vector::addition( I_temp, P_ray.M_direction, P_ray.M_origin );
-  ::math::linear::homography::transform( I_ray.M_direction, M2_2local, I_temp );
+  ::math::linear::homography::transform( I_ray.M_origin, M2_2local, I_origin );
+  ::math::linear::vector::addition( I_tip, I_direction, I_origin );
+  ::math::linear::homography::transform( I_ray.M_direction, M2_2local, I_tip );
   ::math::linear::vector::subtraction( I_ray.M_direction, I_ray.M_origin );
   auto I_length = ::math::linear::vector::length( I_ray.M_direction, T_scalar(1) );
 
-  T_coord I_far;
-  ::math::linear::vector::combine( I_temp, P_ray.M_origin, P_lambda, P_ray.M_direction );
-  ::math::linear::homography::transform( I_far, M2_2local, I_temp );
-  ::math::linear::vector::subtraction( I_far, I_ray.M_origin );
+  //T_coord I_far;
+  //::math::linear::vector::combine( I_tip, I_ray.M_origin, P_lambda, I_ray.M_direction );
+  //::math::linear::homography::transform( I_far, M2_2local, I_tip );
+  //::math::linear::vector::subtraction( I_far, I_ray.M_origin );
 
-  T_scalar I_lambda = I_length * ::math::linear::vector::dot( I_far, I_ray.M_direction  );
+  T_scalar I_lambda = Is_infinity; //I_length * ::math::linear::vector::dot( I_far, I_ray.M_direction  );
 
   if( false == M2_geometry.M2_intersect->Fv_intersect( I_lambda, I_tail, I_ray ) )
    {
@@ -131,18 +165,17 @@ bool GC_homography::Fv_intersect( T_scalar &P_lambda, T_state &P_state, T_ray co
    }
   T_scalar I_check = I_lambda / I_length;
 
-  ::math::linear::vector::combine( I_temp, I_ray.M_origin, I_lambda, I_ray.M_direction );
-  ::math::linear::homography::transform( I_ray.M_origin, M2_2world, I_temp );
+  ::math::linear::vector::combine( I_tip, I_ray.M_origin, I_lambda, I_ray.M_direction );
+  ::math::linear::homography::transform( I_ray.M_origin, M2_2world, I_tip );
   ::math::linear::vector::subtraction( I_ray.M_origin, P_ray.M_origin );
 
-  I_lambda = ::math::linear::vector::dot( P_ray.M_direction, I_ray.M_origin );
+  I_lambda = I_move + ::math::linear::vector::dot( I_direction, I_ray.M_origin );
   if( P_lambda < I_lambda )
    {
     return I_head.M_hit = false;
    }
 
   P_lambda = I_lambda;
-
   return I_head.M_hit = true;
  }
 
@@ -157,53 +190,11 @@ void GC_homography::Fv_normal( T_coord &P_normal, T_coord const& P_point, T_stat
 
   T_coord I_normal;
   M2_geometry.M2_normal->Fv_normal( I_normal, I_point, I_tail );
-  {
-   T_coord I_vertexL;  ::math::linear::vector::combine( I_vertexL, I_point, 0.001, I_normal );
-   T_coord I_vertexW;  ::math::linear::homography::transform( I_vertexW, M2_2world, I_vertexL );
 
-   ::math::linear::vector::subtraction( P_normal, I_vertexW, P_point );
-   ::math::linear::vector::length( P_normal, T_scalar( 1 ) );
-   return;
-  }
+  T_matrix J;  ::math::linear::homography::jacobian( J, F_2local(), I_point );
+  ::math::linear::matrix::transpose( J );
 
-
-  T_homography const& m4 = F_2local();
-
-  T_scalar d3 =  m4[3][0]*I_point[0]
-                +m4[3][1]*I_point[1]
-                +m4[3][2]*I_point[2]
-                +m4[3][3];
-
-  T_scalar det =1.0/(d3*d3);
-
-  T_scalar d0 =  m4[0][0]*I_point[0]
-                +m4[0][1]*I_point[1]
-                +m4[0][2]*I_point[2]
-                +m4[0][3];
-  T_scalar d1 =  m4[1][0]*I_point[0]
-               + m4[1][1]*I_point[1]
-               + m4[1][2]*I_point[2]
-               + m4[1][3] ;
-
-  T_scalar d2 =  m4[2][0]*I_point[0]
-               + m4[2][1]*I_point[1]
-               + m4[2][2]*I_point[2]
-               + m4[2][3];
-
-  T_matrix m3;
-  m3[0][0] = ( m4[0][0] * d3  -  m4[3][0] * d0 ) * det;
-  m3[0][1] = ( m4[0][1] * d3  -  m4[3][1] * d0 ) * det;
-  m3[0][2] = ( m4[0][2] * d3  -  m4[3][2] * d0 ) * det;
-
-  m3[1][0] = ( m4[1][0] * d3  -  m4[3][0] * d1 ) * det;
-  m3[1][1] = ( m4[1][1] * d3  -  m4[3][1] * d1 ) * det;
-  m3[1][2] = ( m4[1][2] * d3  -  m4[3][2] * d1 ) * det;
-
-  m3[2][0] = ( m4[2][0] * d3  -  m4[3][0] * d2 ) * det;
-  m3[2][1] = ( m4[2][1] * d3  -  m4[3][1] * d2 ) * det;
-  m3[2][2] = ( m4[2][2] * d3  -  m4[3][2] * d2 ) * det;
-
-  ::math::linear::matrix::transform( P_normal, m3, I_normal );
+  ::math::linear::matrix::transform( P_normal, J, I_normal );
   ::math::linear::vector::length( P_normal, T_scalar(1) );
  }
 
@@ -243,14 +234,14 @@ GC_homography::T_affine const&  GC_homography::Fv_2world( T_state const&P_state 
   T_state I_mainHit;      P_state.F_tail<C_intersect>( I_mainHit );
 
   return I_intersect.M_2world;
-}
+ }
 
 GC_homography::T_affine const&  GC_homography::Fv_2local( T_state const&P_state )const
-{
+ {
   C_intersect const&I_intersect = P_state.F_content<C_intersect>();
 
   return I_intersect.M_2local;
-}
+ }
 
 bool GC_homography::F_2world( T_homography const& P_2world )
  {
@@ -259,7 +250,7 @@ bool GC_homography::F_2world( T_homography const& P_2world )
   ::math::linear::matrix::invert( M2_2local, M2_2world );
 
   T_interval I_box;
-  T_interval I_base = M2_geometry.M2__base->F_box();
+  T_interval const& I_base = M2_geometry.M2__base->F_box();
 
   ::math::linear::homography::transform( I_box[0], M2_2world, I_base[0] );
   I_box[1] = I_box[0];
@@ -288,7 +279,7 @@ bool GC_homography::F_2local( T_homography const& P_2local )
  {
   ::math::linear::matrix::invert( M2_2world, P_2local );
   return F_2world( M2_2world );
-}
+ }
 
 bool GC_homography::F_child( T_geometry *P_child )
  {
@@ -301,7 +292,7 @@ bool GC_homography::F_child( T_geometry *P_child )
   M2_geometry.M2_uvw       = dynamic_cast<T2_uvw      *>( M2_geometry.M2__base ); if( nullptr == M2_geometry.M2_uvw      ) M2_geometry.M2_uvw       = & Fs_vacuum();
 
   return F_2world( M2_2world );
-}
+ }
 
 GC_homography::T_vacuum & GC_homography::Fs_vacuum()
  {

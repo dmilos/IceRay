@@ -19,8 +19,8 @@ else:
 
 
 I_picture ={}
-I_picture[ 'width']  = 800
-I_picture['height']  = 600
+I_picture[ 'width']  = 800*2
+I_picture['height']  = 600*2
 I_picture['aspect']  = I_picture['width'] / I_picture['height']
 I_picture['watermark'] = "TODO"
 
@@ -82,8 +82,8 @@ I_config['light']   = {}
 I_config['light']['sample']   = 1
 I_config['decoration']   = {}
 I_config['geometry'] ={}
-I_config['geometry']['expression']='sin(sqrt(x*x+y*y))'
-I_config['geometry']['expression']='atan2(y,x)'
+I_config['geometry']['expression']='sin(sqrt(x*x+y*y)+atan2(y,x))'
+#I_config['geometry']['expression']='atan2(y,x)'
 I_config['geometry']['interval']=IceRayPy.type.math.interval.Scalar3D( IceRayPy.type.math.coord.Scalar3D(-20,-20,-10),IceRayPy.type.math.coord.Scalar3D(+20,+20,+10) )
 
 g = 1.22074408460575947536 #(math.sqrt(5)+1)/2

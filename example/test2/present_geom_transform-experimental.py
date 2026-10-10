@@ -4,11 +4,12 @@ import time
 import math
 import os
 import sys
-import IceRayPy
 
 import IceRayPy
 
 import render
+os.system('color')
+
 
 dll_path = IceRayPy.system.SearchCDLL( P_preferDebug = False )
 

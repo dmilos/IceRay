@@ -10,6 +10,8 @@ import IceRayPy
 
 import render
 
+os.system('color')
+
 dll_path = IceRayPy.system.SearchCDLL()
 
 if 0 != len( dll_path ):
@@ -55,7 +57,7 @@ I_scene['geometry']   = 'Q-sphere'
 I_scene['medium']     = 'trans'
 I_scene['pigment']    = 'I-ALP'
 I_scene['light']      = 'chand-nine'
-I_scene['decoration'] = 'plate'
+I_scene['decoration'] = 'grid'
 
 
 import library_room
@@ -65,6 +67,7 @@ import library_pigment
 import library_medium
 import library_geometry
 import library_decoration
+import library_path
 
 
 I_inventory= {}
@@ -77,7 +80,7 @@ I_inventory['light']      = library_light.list
 I_inventory['decoration'] = library_decoration.list
 
 I_config  = {}
-I_config['room']   = {}
+I_config['room']   = { }
 I_config['camera']  = {}
 I_config['pigment']  = {}
 I_config['light']   = {}
@@ -156,17 +159,41 @@ geometry_list =[
     'T-lensVS',
 ]
 
+geometry_list =[
+    'F-box',
+    'S-torus',
+    'Q-sphere',
+    'T-lensVS',
+]
 
-for index in range( 0,len( pigment_refract_list )*len( geometry_list )*360,1):
-    I_config['camera']['eye']   = IceRayPy.type.math.coord.Scalar3D( p*g * math.cos( math.radians(index)), p*g* math.sin( math.radians(index)) , +g )
-    I_config['pigment']['ior'] = 1 + 1.5 * ((index%360)/360)
+for index in range( 460, 360*4, 10 ):
+    I_config['room']['dimension']   = [ 2+2*index/360.0, 2+2*index/360.0, 4 ]
 
-    I_scene['pigment']  = pigment_refract_list[ int( index/(360*len( geometry_list        ))) % len( pigment_refract_list ) ]
-    I_scene['geometry'] = geometry_list       [ int( index/(360*len( pigment_refract_list ))) % len( geometry_list )]
+    I_time = 168.0/ 360.0
+    I_config['camera']['eye']   = library_path.looker( I_time )
+    I_config['pigment']['ior'] = 2.1 #1 + 1.5 * ((index%360)/360)
+    I_scene['pigment']  = 'T-B-refract-schlick'
+    I_scene['geometry'] ='T-lensVS'
 
+    I_picture['index'] = index
     I_picture['prefix'] = "%04i"%(index)+"_"
     I_picture['index'] = index
     I_picture['watermark'] = I_scene['pigment']
     I_picture['watermark'] = I_picture['watermark'][12:] + "; " + str( int(I_config['pigment']['ior'] *100) /100 )+ "; "
+    I_picture['watermark'] = str( I_config['room']['dimension'][0] )+ "; "
 
     render.doIt( I_dll, I_picture, I_scene, I_inventory, I_config )
+
+#for index in range( 0,len( pigment_refract_list )*len( geometry_list )*360,1):
+#    I_config['camera']['eye']   = IceRayPy.type.math.coord.Scalar3D( p*g * math.cos( math.radians(index)), p*g* math.sin( math.radians(index)) , +g )
+#    I_config['pigment']['ior'] = 1 + 1.5 * ((index%360)/360)
+#
+#    I_scene['pigment']  = pigment_refract_list[ int( index/(360*len( geometry_list        ))) % len( pigment_refract_list ) ]
+#    I_scene['geometry'] = geometry_list       [ int( index/(360*len( pigment_refract_list ))) % len( geometry_list )]
+#
+#    I_picture['prefix'] = "%04i"%(index)+"_"
+#    I_picture['index'] = index
+#    I_picture['watermark'] = I_scene['pigment']
+#    I_picture['watermark'] = I_picture['watermark'][12:] + "; " + str( int(I_config['pigment']['ior'] *100) /100 )+ "; "
+#
+#    render.doIt( I_dll, I_picture, I_scene, I_inventory, I_config )

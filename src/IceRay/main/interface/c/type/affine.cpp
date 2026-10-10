@@ -63,8 +63,8 @@ IceRayC_Type_Math_Affine3D cpp2c( GS_DDMRM::S_IceRay::S_type::S_affine::GT_scala
 GS_DDMRM::S_IceRay::S_type::S_affine:: GT_scalar4D c2cpp( IceRayC_Type_Math_Affine4D const& P_that )
  {
   GS_DDMRM::S_IceRay::S_type::S_affine::GT_scalar4D Ir_result;
-  for(int i=0; i< 5; ++i)
-   for(int j=0; i< 4; ++j)
+  for( int i=0; i < 5; ++i )
+   for( int j=0; j < 4; ++j )
     Ir_result[i][j] = P_that.value[i][j];
   return Ir_result;
  }

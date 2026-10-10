@@ -67,10 +67,10 @@ list = {
      'C-hfield-table-4x4'    : IceRayPy.library.geometry.hfield.Table4x4,
      'C-hfield-table-5x5'    : IceRayPy.library.geometry.hfield.Table5x5,
 
-     'T-identity'   : IceRayPy.core.geometry.transform.Identity,
-     'T-translate'  : IceRayPy.core.geometry.transform.Translate,
-     'T-affine'     : IceRayPy.core.geometry.transform.Affine,
-     'T-hgraphy'    : IceRayPy.core.geometry.transform.Homography,
+     'T-identity'   : IceRayPy.library.geometry.transform.Identity,
+     'T-translate'  : IceRayPy.library.geometry.transform.Translate,
+     'T-affine'     : IceRayPy.library.geometry.transform.Affine,
+     'T-hgraphy'    : IceRayPy.library.geometry.transform.Homography,
      'T-mblur'      : IceRayPy.library.geometry.MotionBlur,
 
      'T-lensCS'      : IceRayPy.library.geometry.lens.concave.Symetric,

@@ -111,7 +111,7 @@
                    T_size const& I_count = P_count;
 
 
-                   T_size I_total = 0;
+                   //T_size I_total = 0;
                    T_size I_beginA = P_next.Fv_size();
 
                    T_coord I_direction;
@@ -129,7 +129,7 @@
 
                      ::math::linear::vector::length( I_direction, T_scalar( 1 ) );
                      {
-                      P_next.Fv_push(); ++I_total;
+                      P_next.Fv_push(); //++I_total;
                       auto & I_ray = P_next.Fv_top();
 
                       I_ray.M_geometryID  = P_heading.M_geometryID;

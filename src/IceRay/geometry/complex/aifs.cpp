@@ -9,7 +9,7 @@ struct GC_AIFS::C_intersect
   T_size M_index;
   T_affine M_2local;
   T_affine M_2world;
-};
+ };
 
 GC_AIFS::GC_AIFS()
  {

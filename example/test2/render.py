@@ -86,9 +86,9 @@ def doIt( P_dll, P_picture, P_scene, P_inventory, P_config, P_result=None ):
 
     manager = composer.manager( P_dll, P_config['composer'], I_camera['final'], scene )
     if( True ): #P_config['debug']['pre-info']
-        print( "picture:" + str( P_picture ), flush = True )
-        print( "config:"  + str( P_config  ),  flush = True )
-        print( "scene:"   + str( P_scene   ),   flush = True )
+        print( "\033[94mpicture:\033[0m " + str( P_picture ), flush = True )
+        print( "\033[94mconfig:\033[0m  " + str( P_config  ), flush = True )
+        print( "\033[94mscene:\033[0m   " + str( P_scene   ), flush = True )
 
     start = time.time()
     manager.start( P_picture['temp']['object'] )

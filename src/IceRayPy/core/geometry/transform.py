@@ -63,11 +63,27 @@ class Translate:
         self.m_cargo['dll'].IceRayC_Geometry_Transform_Translate_Child( self.m_cargo['this'], P_child.m_cargo['this'] )
 
     def move(self, P_move : Coord3D ):
-        return self.m_cargo['dll'].IceRayC_Geometry_Transform_Translate_Move( self.m_cargo['this'], AddressOf( P_move ) )
+        return self.tWorldSet( P_move )
+
+    def toLocalGet( self ):
+        result = Coord3D()
+        self.m_cargo['dll'].IceRayC_Geometry_Transform_Translate_2Local_Get( self.m_cargo['this'], AddressOf( result ) )
+        return result
+
+    def toLocalSet( self, P_2local: Coord3D ):
+        return self.m_cargo['dll'].IceRayC_Geometry_Transform_Translate_2Local_Set( self.m_cargo['this'], AddressOf( P_2local ) )
+
+    def toWorldGet( self ):
+        result = Coord3D()
+        self.m_cargo['dll'].IceRayC_Geometry_Transform_Translate_2World_Get( self.m_cargo['this'], AddressOf( result ) )
+        return result
+
+    def tWorldSet( self, P_2world: Coord3D ):
+        return self.m_cargo['dll'].IceRayC_Geometry_Transform_Translate_2World_Set( self.m_cargo['this'], AddressOf( P_2world ) )
 
 
 class Affine:
-    def __init__( self, P_dll,  P_child = None, P_affine = None ):
+    def __init__( self, P_dll, P_child = None, P_affine = None ):
         self.m_cargo = {}
         self.m_cargo['dll'] = P_dll
         self.m_cargo['this'] = self.m_cargo['dll'].IceRayC_Geometry_Transform_Affine0()
