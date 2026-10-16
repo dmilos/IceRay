@@ -1,4 +1,6 @@
 #include <regex>
+#include <iostream>
+#include <iomanip>
 
 #include "./compiler.hpp"
 
@@ -32,6 +34,18 @@ bool GC_compiler::F_compile( T_program & P_program, T_string const& P_expression
 
   M2_result = F2_expression( 0, M2_expression->size() );
 
+ #if defined(_DEBUG)
+  for( auto const& I_instruction: M2_program->F_container() )
+   {
+    std::cout << "  ." << I_instruction.F_domain()[0] << " = " << I_instruction.F_domain()[1] << " ~ " << I_instruction.F_domain()[2] << std::endl;
+   }
+
+  for( auto const& I_item: M2_mapper.F_container() )
+   {
+    std::cout << "\"" << I_item.first << "\"" << " -> " << I_item.second << std::endl;
+   }
+#endif
+
   return M2_result.F_valid();
  }
 
@@ -56,7 +70,7 @@ GC_compiler::T_address GC_compiler::F2_expression( T_size const& P_begin, T_size
    }
 
   Ir_result = F2_binary( {"+","-" }, I_begin, I_end );
-  if( true == Ir_result.F_valid())
+  if( true == Ir_result.F_valid() )
    {
     return Ir_result;
    }
@@ -73,11 +87,16 @@ GC_compiler::T_address GC_compiler::F2_expression( T_size const& P_begin, T_size
   // }
  
   Ir_result = F2_function( I_begin, I_end );
-  if( true == Ir_result.F_valid())
+  if( true == Ir_result.F_valid() )
    {
     return Ir_result;
    }
 
+  Ir_result = F2_inbracket( I_begin, I_end );
+  if( true == Ir_result.F_valid() )
+   {
+    return Ir_result;
+   }
   return Ir_result;
  }
 
@@ -163,7 +182,7 @@ GC_compiler::T_address GC_compiler::F2_function( T_size const& P_begin, T_size c
  {
   T_string I_name;   I_name.reserve( 10 );
   T_size I_index = P_begin; 
-  for( ; I_index < P_end;++I_index )
+  for( ; I_index < P_end; ++I_index )
    {
     auto const& I_char = M2_expression->at( I_index );
     if( '(' == I_char )
@@ -172,6 +191,7 @@ GC_compiler::T_address GC_compiler::F2_function( T_size const& P_begin, T_size c
      }
     I_name.push_back( I_char );
    }
+  F2_trimspace( I_name );
   auto I_instruction = M2_library.F_get( I_name );
   if( false == I_instruction.F_valid() )
    {
@@ -183,7 +203,7 @@ GC_compiler::T_address GC_compiler::F2_function( T_size const& P_begin, T_size c
    {
     return T_address{};
    }
-   T_size I_result = -1;
+  T_size I_result = -1;
 
   for( auto const& I_argument : I_list )
    {
@@ -211,6 +231,37 @@ GC_compiler::T_address GC_compiler::F2_function( T_size const& P_begin, T_size c
 
   return T_address{ 1, I_result };
  }
+
+GC_compiler::T_address GC_compiler::F2_inbracket( T_size const& P_begin, T_size const& P_end )
+ {
+  T_address I_address;
+  auto I_begin = P_begin;
+  auto I_end = P_end;
+
+ for( ; I_begin < I_end; ++I_begin)
+  {
+   if ( 0 != std::isspace( M2_expression->at( I_begin ), std::locale() ) )
+    {
+     continue;
+    }
+   break;
+  }
+
+ for(; I_begin < I_end; --I_end )
+  {
+   if( 0 != std::isspace( M2_expression->at( I_end-1 ), std::locale() ))
+    {
+     continue;
+    }
+   break;
+  }
+
+  if( '(' != M2_expression->at( I_begin ) ) return I_address;
+  if( ')' != M2_expression->at( I_end-1 ) ) return I_address;
+
+  return F2_expression( I_begin+1, I_end-1 );
+ }
+ 
 
 GC_compiler::T_size GC_compiler::F2_enclose( T_size const& P_begin, T_size const& P_end, T_argument& P_list )
 {
@@ -288,6 +339,19 @@ void GC_compiler::F2_trimspace( T_size& P_begin, T_size& P_end ) const
  {
   while( 0 != std::isspace( M2_expression->at(P_begin), std::locale() ) ) ++P_begin;
   while( 0 != std::isspace( M2_expression->at(P_end-1), std::locale() ) ) --P_end;
+ }
+
+void GC_compiler::F2_trimspace( T_string & P_str ) const
+ {
+  while( true )
+   {
+    if( 0 == P_str.size() ) break;
+    if( 0 == std::isspace( P_str.back(), std::locale() ) )
+     {
+      break;
+     }
+    P_str.resize( P_str.size()-1 );
+   }
  }
 
 bool GC_compiler::F2_isConstant( T_string const& P_string, T_size const& P_begin, T_size const& P_end ) const

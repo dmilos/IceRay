@@ -51,26 +51,39 @@
            T_scalar    Fv_distance( T_coord const& P_point )const;
 
          public:  // property expression  expression
-            T_interval    const& F_interval()const{ return M2_interval; }
-           virtual bool          F_interval( T_interval const& P_interval ){ M2_interval = P_interval; return bool( true ); }
+           T_string    const& F_expression()const{ return M2_expression; }
+           bool               F_expression( T_string const& P_expression );
+         protected:
+           T_string        & F1_expression(){ return M2_expression; }
+         private:
+           T_string M2_expression;
+
+         public:  // property interval  interval
+           T_interval    const& F_interval()const{ return M2_interval; }
+           bool                 F_interval( T_interval const& P_interval ){ M2_interval = P_interval; return bool( true ); }
          protected:
            T_interval& F1_interval(){ return M2_interval; }
          private:
            T_interval M2_interval;
 
-         public:  // property expression  expression
-           T_scalar    const& F_delta()const{ return M2_delta; }
-           virtual bool       F_delta( T_scalar const& P_delta ){ M2_delta = P_delta; return bool( true ); }
+         public:  // property sampling  sampling
+           T_scalar    const& F_sampling()const{ return M2_sampling; }
+           bool               F_sampling( T_scalar const& P_sampling ){ M2_sampling = P_sampling; return bool( true ); }
          private:
-           T_scalar M2_delta;
+           T_scalar M2_sampling; //!< for search
 
-         public:  // property expression  expression
-                   T_string    const& F_expression()const{ return M2_expression; }
-           virtual bool               F_expression( T_string const& P_expression );
-         protected:
-           T_string        & F1_expression(){ return M2_expression; }
+         public:  // property delta  delta
+           T_scalar    const& F_delta()const{ return M2_delta; }
+           bool               F_delta( T_scalar const& P_delta ){ M2_delta = P_delta; return bool( true ); }
          private:
-           T_string M2_expression;
+           T_scalar M2_delta; //!< for derivation
+
+         public:  // property iteration  iteration
+           T_size      const& F_iteration()const{ return M2_iteration; }
+           bool               F_iteration( T_size const& P_iteration ){ M2_iteration = P_iteration; return bool( true ); }
+         private:
+           T_size M2_iteration;
+
          private:
            T_program M2_program;
            mutable T_memory  M2_memory;

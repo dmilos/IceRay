@@ -110,6 +110,7 @@ IceRay/geometry/flat/triangle.hpp
 IceRay/geometry/flat/triangleu.hpp
 IceRay/geometry/flat/udisc.hpp
 IceRay/geometry/geometry.hpp
+IceRay/geometry/implicit.hpp
 IceRay/geometry/hfield/generator/_pure.hpp
 IceRay/geometry/hfield/generator/expression.hpp
 IceRay/geometry/hfield/generator/function.hpp
@@ -153,6 +154,7 @@ IceRay/geometry/transform/transform.hpp
 IceRay/geometry/transform/translate.hpp
 IceRay/geometry/volumetric/mist.hpp
 IceRay/geometry/volumetric/smoke.hpp
+IceRay/geometry/implicit.hpp
 IceRay/light/_parent.hpp
 IceRay/light/_pure.hpp
 IceRay/light/area.hpp

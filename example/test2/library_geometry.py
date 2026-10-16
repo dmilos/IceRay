@@ -28,7 +28,7 @@ list = {
      'Q-ellipsoid'        : IceRayPy.core.geometry.simple.Ellipsoid,
      'Q-paraboloid'       : IceRayPy.core.geometry.simple.Paraboloid,
      'Q-util-paraboloid'  : IceRayPy.utility.geometry.simple.ParaboloidG,
-     
+
      'Q-Q-default'        : IceRayPy.core.geometry.simple.Quadric,
      'Q-Q-sphere'         : IceRayPy.utility.geometry.simple.quadric.Sphere,
      'Q-Q-cylinder'       : IceRayPy.utility.geometry.simple.quadric.Cylinder,
@@ -83,6 +83,9 @@ list = {
      'V-vacuum'      : IceRayPy.core.geometry.volumetric.Vacuum,
      'V-Mist'        : IceRayPy.library.geometry.volumetric.Mist,
      'V-Smoke'       : IceRayPy.library.geometry.volumetric.Smoke,
+
+     'E-implicit'    : IceRayPy.library.geometry.Implicit,
+
      'library-1m'    : IceRayPy.library.geometry.OneM,
      'L-Bpair'       : IceRayPy.library.geometry.blobby.Pair
      }

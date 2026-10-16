@@ -61,11 +61,13 @@ namespace GS_DDMRM
             T_address F2_variable(   T_size const& P_begin, T_size const& P_end );
             T_address F2_binary( std::set<T_string> const& P_set, T_size const& P_begin, T_size const& P_end );
             T_address F2_function(   T_size const& P_begin, T_size const& P_end );
+            T_address F2_inbracket( T_size const& P_begin, T_size const& P_end );
             T_size    F2_enclose(    T_size const& P_begin, T_size const& P_end, T_argument& P_argument );
             T_size    F2_comma(      T_size const& P_begin, T_size const& P_end, T_argument& P_argument );
 
           private:
             void F2_trimspace( T_size & P_begin, T_size & P_end ) const;
+            void F2_trimspace( T_string & P_str ) const;
             bool F2_isConstant( T_string const& P_string, T_size const& P_begin, T_size const& P_end ) const;
             bool F2_isTemp( T_size const& P_index ) const;
             void F2_makeTemp( T_string & P_tmp ) const;

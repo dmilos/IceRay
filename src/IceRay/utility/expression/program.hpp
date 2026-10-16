@@ -33,12 +33,19 @@
              typedef GS_DDMRM::S_IceRay::S_utility::S_expression::GC_instruction T_instruction;
 
              typedef std::vector<T_instruction>  T_container;
+           public:
+              GC_program();
+             ~GC_program();
 
+           public:
              void F_clear( );
              void F_memory( T_memory & P_memory );
              void F_push( T_instruction const& P_instruction );
              void F_execute()const;
              T_size F_consumption();
+             
+          public:
+             T_container const& F_container()const;
           private:
              T_container M2_container;
           };

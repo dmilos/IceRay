@@ -28,6 +28,8 @@
              typedef GS_DDMRM::S_IceRay::S_type::GT_scalar T_scalar;
              typedef GS_DDMRM::S_IceRay::S_utility::S_expression::GC_memory T_memory;
 
+             typedef std::array< T_address, 5 > T_domain;
+
              typedef T_scalar (*T_function0)( );
              typedef T_scalar (*T_function1)( T_scalar const& p1);
              typedef T_scalar (*T_function2)( T_scalar const& p1, T_scalar const& p2 );
@@ -51,10 +53,16 @@
 
              bool F_valid( )const;
              bool F_memory( T_memory & P_memory );
-             bool F_address( T_address const& P_0, T_address const& P_1 =-1, T_address const& P_2=-1, T_address const& P_3=-1, T_address const& P_4=-1 );
              void F_execute( )const;
              T_address F_consumption( )const;
 
+           public:
+             bool F_address( T_address const& P_0, T_address const& P_1 =-1, T_address const& P_2=-1, T_address const& P_3=-1, T_address const& P_4=-1 );
+
+             T_domain const& F_domain(  )const;
+
+           private:
+             T_domain M2_domain;
            private:
              T_scalar   *M2_data;
 
@@ -71,7 +79,6 @@
              T_vector5  M2_vector5;
 
              int M_type;
-             std::array< T_address, 5 > M2_address;
           };
 
         }

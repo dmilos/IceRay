@@ -149,7 +149,7 @@ def _MakeFunction( P_function, P_return, P_argument ):
 def _MapFunction_Camera_Cylinder( P_dll ): #DONE
     _MakeFunction( P_dll.IceRayC_Camera_Cylinder_Horizontal0             , ctypes.c_void_p    , [] )
     _MakeFunction( P_dll.IceRayC_Camera_Cylinder_Horizontal1             , ctypes.c_void_p    , [ctypes.c_double  , ctypes.c_double  ] )
-    _MakeFunction( P_dll.IceRayC_Camera_Cylinder_Horizontal2             , ctypes.c_void_p    , [ctypes.c_double  , ctypes.c_double  , ctypes.c_double  ] )
+    _MakeFunction( P_dll.IceRayC_Camera_Cylinder_Horizontal2             , ctypes.c_void_p    , [ctypes.c_double  , ctypes.c_double, ctypes.c_double  ] )
     _MakeFunction( P_dll.IceRayC_Camera_Cylinder_Horizontal_Radius       , ctypes.c_int       , [ctypes.c_void_p , ctypes.c_double   ] )
     _MakeFunction( P_dll.IceRayC_Camera_Cylinder_Horizontal_Theta        , ctypes.c_int       , [ctypes.c_void_p , ctypes.c_double   ] )
     _MakeFunction( P_dll.IceRayC_Camera_Cylinder_Horizontal_Width        , ctypes.c_int       , [ctypes.c_void_p , ctypes.c_double   ] )
@@ -420,7 +420,7 @@ def _MapFunction_Geometry_Blobby( P_dll ): #TODO
    #_MakeFunction( P_dll.IceRayC_Geometry_Blobby_Element_Enclose0                     , ctypes.c_void_p  , [] )
    #_MakeFunction( P_dll.IceRayC_Geometry_Blobby_Element_Enclose1                     , ctypes.c_void_p  , [ctypes.c_void_p,ctypes.c_void_p] )
    #_MakeFunction( P_dll.IceRayC_Geometry_Blobby_Element_Enclose_Child                , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_void_p] )
-   #_MakeFunction( P_dll.IceRayC_Geometry_Blobby_Element_Enclose_Hull                 , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_void_p] )   
+   #_MakeFunction( P_dll.IceRayC_Geometry_Blobby_Element_Enclose_Hull                 , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_void_p] )
     _MakeFunction( P_dll.IceRayC_Geometry_Blobby_Element_USphere0                     , ctypes.c_void_p  , [] )
     _MakeFunction( P_dll.IceRayC_Geometry_Blobby_Element_USphere1                     , ctypes.c_void_p  , [ctypes.c_double] )
     _MakeFunction( P_dll.IceRayC_Geometry_Blobby_Element_USphere_Core                 , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_double] )
@@ -561,6 +561,16 @@ def _MapFunction_Geometry( P_dll ): #TODO
     _MapFunction_Geometry_RTSS(P_dll)
     _MapFunction_Geometry_Transform( P_dll )
     _MapFunction_Geometry_Volumetric(P_dll)
+
+    _MakeFunction( P_dll.IceRayC_Geometry_Implicit0                           , ctypes.c_void_p  , [] )
+    _MakeFunction( P_dll.IceRayC_Geometry_Implicit1                           , ctypes.c_void_p  , [ctypes.c_void_p ] )
+   #_MakeFunction( P_dll.IceRayC_Geometry_Implicit_Hull                       , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_void_p] )
+    _MakeFunction( P_dll.IceRayC_Geometry_Implicit_Expression                 , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_char_p] )
+    _MakeFunction( P_dll.IceRayC_Geometry_Implicit_Interval                   , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_void_p] )
+
+    _MakeFunction( P_dll.IceRayC_Geometry_Implicit_Delta                      , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_double] )
+    _MakeFunction( P_dll.IceRayC_Geometry_Implicit_Sampling                   , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_double] )
+    _MakeFunction( P_dll.IceRayC_Geometry_Implicit_Iteration                  , ctypes.c_int     , [ctypes.c_void_p,ctypes.c_size_t] )
 
     _MakeFunction( P_dll.IceRayC_Geometry_Box0                                , ctypes.c_void_p  , [] )
     _MakeFunction( P_dll.IceRayC_Geometry_Box1                                , ctypes.c_void_p  , [ctypes.c_void_p,ctypes.c_void_p] )

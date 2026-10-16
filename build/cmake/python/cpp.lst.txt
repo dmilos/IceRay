@@ -29,6 +29,8 @@ main/interface/python/core/geometry/volumetric/smoke.cpp
 main/interface/python/core/geometry/volumetric/vacuum.cpp
 main/interface/python/core/geometry/volumetric/mist.cpp
 
+main/interface/python/core/geometry/implicit.cpp
+
 main/interface/python/core/light/light.cpp
 main/interface/python/core/material/illumination/illumination.cpp
 main/interface/python/core/material/geometry/geometry.cpp

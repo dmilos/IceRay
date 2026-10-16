@@ -1,10 +1,11 @@
 
+#include "./handle.cpp"
 #include "./base.cpp"
 #include "./blobby.cpp"
 #include "./complex.cpp"
 #include "./flat.cpp"
-#include "./handle.cpp"
 #include "./hfield.cpp"
+#include "./implicit.cpp"
 #include "./rtss.cpp"
 #include "./transform.cpp"
 #include "./volumetric.cpp"

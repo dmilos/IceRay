@@ -9,6 +9,13 @@ namespace GS_DDMRM
       namespace S_expression
        {
 
+GC_program::GC_program()
+ {
+ }
+
+GC_program::~GC_program()
+ {
+ }
 
 void GC_program::F_clear( )
  {
@@ -22,7 +29,7 @@ void GC_program::F_memory( T_memory& P_memory )
     I_instruction.F_memory( P_memory );
    }
  }
- 
+
 void GC_program::F_push( T_instruction const& P_instruction )
  {
   M2_container.push_back( P_instruction );
@@ -46,6 +53,10 @@ GC_program::T_size GC_program::F_consumption()
   return Ir_result+1;
  }
 
+GC_program::T_container const& GC_program::F_container()const
+ {
+  return M2_container;
+ }
 
         }
       }

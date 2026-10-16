@@ -47,3 +47,4 @@ __pycache__
 /install/bin
 /build/cmake/_makeVS32
 /build/cmake/_makeVSCL17
+/build/msvc/2026/.vs/

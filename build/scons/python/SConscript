@@ -180,6 +180,9 @@ if( False ):
     cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'geometry', 'volumetric', 'mist.cpp' ) ]
     cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'geometry', 'volumetric', 'smoke.cpp' ) ]
     cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'geometry', 'volumetric', 'vacuum.cpp' ) ]
+    
+if( False ):
+    cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'geometry', 'implicit.cpp' ) ]
 
 cc_files += [ os.path.join( 'main', 'interface', 'python', 'core', 'light', 'light.cpp' ) ]
 if( False ):

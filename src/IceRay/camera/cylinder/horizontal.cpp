@@ -46,16 +46,16 @@ S_cylinder::GC_horizontal::Fv_beam
 void
 S_cylinder::GC_horizontal::Fv_system( T_affine &P_affine, T_coord2D const& P_uv )const
  {
+  T_coord I_eX;  ::math::linear::vector::load( I_eX, 1, 0, 0 );
+
   T_coord I_eY;
   I_eY[0] = P_uv[0] * (M2_width / T_scalar(2) );
   I_eY[1] = M2_radius * cos( P_uv[1] * M2_theta/T_scalar(2) );
   I_eY[2] = M2_radius * sin( P_uv[1] * M2_theta/T_scalar(2) );
+  ::math::linear::vector::length( I_eY, T_scalar(1) );
 
-  // TODO Ceheck/fix
-  T_coord I_z;  ::math::linear::vector::load( I_z, 0, 0, 1 );
-  T_coord I_eX; ::math::linear::vector::cross( I_eX, I_eY, I_z  ); ::math::linear::vector::length( I_eX, T_scalar(1) );
   T_coord I_eZ; ::math::linear::vector::cross( I_eZ, I_eY, I_eX ); ::math::linear::vector::length( I_eZ, T_scalar(1) );
 
-  ::math::linear::vector::load<T_scalar,T_scalar>( P_affine.vector(), 0, 0, P_uv[1] );
+  ::math::linear::vector::load<T_scalar,T_scalar>( P_affine.vector(), P_uv[0] * (M2_width / T_scalar(2) ), 0, 0 );
   ::math::linear::matrix::system( P_affine.matrix(), I_eX, I_eY, I_eZ );
  }

@@ -6,6 +6,7 @@ IceRay/geometry/blobby/uwaterZ.hpp
 IceRay/geometry/blobby/vacuum.hpp
 IceRay/geometry/hfield/object/vacuum.hpp
 IceRay/geometry/volumetric/vacuum.hpp
+IceRay/geometry/implicit.hpp
 IceRay/geometry/volumetric/volumetric.hpp
 IceRay/main/interface/c/core/geometry/volumetric.h
 IceRay/main/interface/c/core/geometry/volumetric.hpp

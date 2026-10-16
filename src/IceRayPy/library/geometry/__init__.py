@@ -62,7 +62,7 @@ def Grid( P_dll, P_config = { 'shadow': False, 'pigment': None }, P_light = None
     epsilon = 0.1
     I_lo = Coord3D( -1 + epsilon,-1 + epsilon,-1 + epsilon )
     I_hi = Coord3D( +1 - epsilon,+1 - epsilon,+1 - epsilon )
-    
+
     I_size=[2,2]
 
     for u in range(0,I_size[0]) :
@@ -95,6 +95,41 @@ def Grid( P_dll, P_config = { 'shadow': False, 'pigment': None }, P_light = None
     wrapper.geometrySet( rtss )
 
     return wrapper
+
+def Implicit( P_dll, P_config = None ):
+
+    I_interval = IceRayPy.type.math.interval.Scalar3D( Coord3D(-1,-1,-1), Coord3D(+1,+1,+1) )
+    I_box      = IceRayPy.type.math.interval.Scalar3D( Coord3D(-1,-1,-1), Coord3D(+1,+1,+1) )
+    I_expression= "sqrt(x*x+y*y+z*z)-1"
+    result = IceRayPy.core.geometry.Implicit(P_dll)
+
+    I_delta = 0.000001
+    I_sampling = 0.01
+    I_iteration = 10
+
+    if( None != P_config ):
+        if( 'expression' in P_config ):
+            I_expression = P_config['expression']
+        if( 'interval' in P_config ):
+            I_interval = P_config['interval']
+        if( 'box' in P_config ):
+            I_box = P_config['box']
+        if( 'delta' in P_config ):
+            I_delta = P_config['delta']
+        if( 'sampling' in P_config ):
+            I_sampling = P_config['sampling']
+        if( 'iteration' in P_config ):
+            I_iteration = P_config['iteration']
+
+    result.expression( I_expression )
+    result.interval( I_interval )
+    result.box( I_box )
+
+    result.delta( I_delta )
+    result.sampling( I_sampling )
+    result.iteration( I_iteration )
+
+    return result
 
 
 

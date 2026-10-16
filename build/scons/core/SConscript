@@ -199,6 +199,9 @@ print( cc_files )
 #    cc_files += [ os.path.join( 'geometry', 'volumetric', 'smoke.cpp'  ) ]
 #    cc_files += [ os.path.join( 'geometry', 'volumetric', 'vacuum.cpp' ) ]
 #
+#if( False ):
+#    cc_files += [ os.path.join( 'geometry', 'implicit.cpp'   ) ]
+#
 #cc_files += [ os.path.join( 'light', 'light.cpp' ) ]
 #if( False ):
 #    cc_files += [ os.path.join( 'light', 'sun.cpp' ) ]
