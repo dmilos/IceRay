@@ -10,7 +10,9 @@ set SOLUTION_CMAKE_PARAM=%SOLUTION_CMAKE_PARAM% -DCMAKE_CXX_STANDARD=17
 set SOLUTION_CMAKE_PARAM=%SOLUTION_CMAKE_PARAM% -DCMAKE_CXX_STANDARD_REQUIRED=ON
 set SOLUTION_CMAKE_PARAM=%SOLUTION_CMAKE_PARAM% -T ClangCL
 
-%prg_cmake% .. %SOLUTION_CMAKE_PARAM%   
+%prg_cmake% .. %SOLUTION_CMAKE_PARAM%
+
+%prg_cmake% --build . --config Release
+%prg_cmake% --install . --config Release
 
 pause
-

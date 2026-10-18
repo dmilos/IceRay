@@ -10,7 +10,9 @@ namespace GS_DDMRM
        {
 
 GC_instruction::GC_instruction()
- :M2_data( nullptr )
+ :M_type(-1)
+ ,M2_domain{0,0,0,0,0}
+ ,M2_data( nullptr )
  ,M2_scalar0( nullptr )
  ,M2_scalar1( nullptr )
  ,M2_scalar2( nullptr )
@@ -21,12 +23,9 @@ GC_instruction::GC_instruction()
  ,M2_vector3( nullptr )
  ,M2_vector4( nullptr )
  ,M2_vector5( nullptr )
- ,M_type(-1)
- , M2_domain{0,0,0,0,0}
  {
-  
  }
- 
+
 GC_instruction::GC_instruction( T_function0 const& P_func0, T_address const& P_0 )
  :GC_instruction()
  {
@@ -34,7 +33,7 @@ GC_instruction::GC_instruction( T_function0 const& P_func0, T_address const& P_0
   M2_scalar0 = P_func0;
   M2_domain[0] = P_0;
  }
- 
+
 GC_instruction::GC_instruction( T_function1 const& P_func1, T_address const& P_0, T_address const& P_1 )
  :GC_instruction()
  {
@@ -85,13 +84,12 @@ bool GC_instruction::F_address( T_address const& P_0, T_address const& P_1, T_ad
 
   return true;
  }
- 
+
 GC_instruction::T_domain const& GC_instruction::F_domain(  )const
  {
-  return M2_domain;   
+  return M2_domain;
  }
- 
- 
+
 void GC_instruction::F_execute(  )const
  {
   auto & I_data = this->M2_data;
@@ -129,7 +127,6 @@ GC_instruction::T_address GC_instruction::F_consumption()const
     default:return 0;
    }
  }
-
 
         }
       }

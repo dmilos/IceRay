@@ -130,8 +130,6 @@ void GC_sphere::Fv_normal
  {
   static T_scalar Is_epsilon = 1e-12;
   static T_scalar Is_one_small = T_scalar(1)-10*Is_epsilon;
-  static T_scalar Is_one_exact = T_scalar(1);
-  static T_scalar Is_one_big   = T_scalar(1)+Is_epsilon;
 
   //C_intersect const&I_intersect = P_state.F_content<C_intersect const>();
 
@@ -164,7 +162,7 @@ GC_sphere::Fv_inside
 GC_sphere::T_scalar
 GC_sphere::Fv_distance( T_coord const& P_point )const
  {
-  return ::math::linear::vector::distance( P_point, M2_center );
+  return ::math::linear::vector::distance( P_point, M2_center )-M2_radius;
  }
 
 void

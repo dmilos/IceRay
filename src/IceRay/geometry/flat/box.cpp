@@ -108,10 +108,9 @@ GC_box::T_location GC_box::Fv_inside
   return En_out;
  }
 
-GC_box::T_scalar   GC_box::Fv_distance( T_coord const& P_pnt )const
+GC_box::T_scalar   GC_box::Fv_distance( T_coord const& P_point )const
  {
-  // TODO there is 27 sides, for cube,
-  return 0;
+  return -1;  //< ! TODO ::math::geometry::interval::distance( point, F_box() )
  }
 
 void
@@ -144,6 +143,8 @@ GC_box::Fv_box( T_box const& P_box )
 bool               GC_box::Fs_valid( T_state const&P_state )
  {
   C_intersect const &I_intersect = P_state.F_content<C_intersect const>();
+  if( -1 == I_intersect.M_side ) return false;
+  if( I_intersect.M_max <= I_intersect.M_min ) return false;
   return true;
  }
 

@@ -108,6 +108,7 @@ if( MSVC )
 
     if( CMAKE_CXX_COMPILER_ID MATCHES "Clang" )
         target_compile_options( ${COMPONENT_NAME_BARE} PUBLIC -Wunused-local-typedef )
+        target_compile_options( ${COMPONENT_NAME_BARE} PUBLIC -Wswitch-bool )
     endif()
 
     #target_compile_options( ${COMPONENT_NAME_BARE} PRIVATE /wd4624 )

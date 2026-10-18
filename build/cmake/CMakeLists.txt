@@ -45,6 +45,7 @@ add_compile_options(
         -Wself-assign     #!< enable if you want to develop
         -Wunused-but-set-variable 
         -Wself-assign-field
+        -Wswitch-bool
     >
     $<$<CXX_COMPILER_ID:MSVC>:/wd4101>
 )

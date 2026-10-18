@@ -107,7 +107,7 @@ I_config['geometry']   = {}
 #I_config['geometry'][    'box' ]=IceRayPy.type.math.interval.Scalar3D( IceRayPy.type.math.coord.Scalar3D(-1,-1,-1),IceRayPy.type.math.coord.Scalar3D(+1,+1,+1) )
 
 I_picture['watermark'] = 'tower_max'
-I_config['geometry']['expression']='max(max(y-1/x,x-1/y),y-1/z)-1'
+I_config['geometry']['expression']='max(max(max(y-1/x,x-1/y),max(y-1/z,y-1/z)),max(x-1/z,z-1/x))-1'
 I_config['geometry']['interval']=IceRayPy.type.math.interval.Scalar3D( IceRayPy.type.math.coord.Scalar3D(-2.5,-2.5,-2.5),IceRayPy.type.math.coord.Scalar3D(+2.5,+2.5,+2.5) )
 I_config['geometry'][    'box' ]=IceRayPy.type.math.interval.Scalar3D( IceRayPy.type.math.coord.Scalar3D(-1,-1,-1),IceRayPy.type.math.coord.Scalar3D(+1,+1,+1) )
 

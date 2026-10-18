@@ -203,7 +203,7 @@ GC_compiler::T_address GC_compiler::F2_function( T_size const& P_begin, T_size c
    {
     return T_address{};
    }
-  T_size I_result = -1;
+  T_size I_result = T_size(-1);
 
   for( auto const& I_argument : I_list )
    {
@@ -212,7 +212,7 @@ GC_compiler::T_address GC_compiler::F2_function( T_size const& P_begin, T_size c
       I_result = std::min( I_argument.M_position, I_result );
      }
    }
-  if( -1 == I_result  )
+  if( T_size(-1) == I_result  )
    {
     T_string I_tmp; F2_makeTemp( I_tmp );
     M2_mapper.F_add( I_tmp );
@@ -235,33 +235,12 @@ GC_compiler::T_address GC_compiler::F2_function( T_size const& P_begin, T_size c
 GC_compiler::T_address GC_compiler::F2_inbracket( T_size const& P_begin, T_size const& P_end )
  {
   T_address I_address;
-  auto I_begin = P_begin;
-  auto I_end = P_end;
 
- for( ; I_begin < I_end; ++I_begin)
-  {
-   if ( 0 != std::isspace( M2_expression->at( I_begin ), std::locale() ) )
-    {
-     continue;
-    }
-   break;
-  }
+  if( '(' != M2_expression->at( P_begin ) ) return I_address;
+  if( ')' != M2_expression->at( P_end-1 ) ) return I_address;
 
- for(; I_begin < I_end; --I_end )
-  {
-   if( 0 != std::isspace( M2_expression->at( I_end-1 ), std::locale() ))
-    {
-     continue;
-    }
-   break;
-  }
-
-  if( '(' != M2_expression->at( I_begin ) ) return I_address;
-  if( ')' != M2_expression->at( I_end-1 ) ) return I_address;
-
-  return F2_expression( I_begin+1, I_end-1 );
+  return F2_expression( P_begin +1, P_end -1 );
  }
- 
 
 GC_compiler::T_size GC_compiler::F2_enclose( T_size const& P_begin, T_size const& P_end, T_argument& P_list )
 {

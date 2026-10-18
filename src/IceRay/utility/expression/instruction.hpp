@@ -62,6 +62,8 @@
              T_domain const& F_domain(  )const;
 
            private:
+             int M_type;
+           private:
              T_domain M2_domain;
            private:
              T_scalar   *M2_data;
@@ -78,7 +80,6 @@
              T_vector4  M2_vector4;
              T_vector5  M2_vector5;
 
-             int M_type;
           };
 
         }

@@ -137,10 +137,10 @@ for index in range( 0, 360, 1 ):
 
     sT = Coord3D( +1, +1, +1 )
 
-    tO = Coord3D( -1, -1, -1 )
+    tO = Coord3D( -1.5, -1.5, -1 )
 
-    tX = Coord3D( +1, -1, -1 )
-    tY = Coord3D( -1, +1, -1 )
+    tX = Coord3D( +1.5, -1.5, -1 )
+    tY = Coord3D( -1.5, +1.5, -1 )
     move = 300/360.0
     tZ = Coord3D( -1.0 + move, -1.0 + move, +1.0  )
 

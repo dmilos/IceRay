@@ -103,6 +103,7 @@ if( MSVC )
         target_compile_options( ${COMPONENT_NAME_BARE} PRIVATE -Wunused-but-set-variable )
         target_compile_options( ${COMPONENT_NAME_BARE} PRIVATE -Wself-assign )
         target_compile_options( ${COMPONENT_NAME_BARE} PRIVATE -Winconsistent-missing-override )
+        target_compile_options( ${COMPONENT_NAME_BARE} PRIVATE -Wswitch-bool )
     endif()
 
     #target_compile_options(${COMPONENT_NAME_BARE} PRIVATE /Zp1)

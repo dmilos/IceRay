@@ -26,6 +26,7 @@ set( SOLUTION_VERSION__FINAL   ${SOLUTION_VERSION_MAJOR}.${SOLUTION_VERSION_MINO
 #    add_compile_options( -Wself-assign                 )
 #    add_compile_options( -Wself-assign-field           )
 #    add_compile_options( -Wunused-variable             )
+#    add_compile_options( -Wswitch-bool                 )
 #elseif(MSVC)
 #    #add_compile_options(/wd4250)
 #endif()
