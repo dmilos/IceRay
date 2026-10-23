@@ -63,7 +63,8 @@ bool GC_triangle::Fv_intersect( T_scalar &P_lambda, T_scalar const& P_00, T_scal
        }else{ I_lambdaB = -1; }
      }else{ I_lambdaB = -1; }
    }else{ I_lambdaB = -1; }
-   /**/
+   
+  /* epilog */
   switch( ( ( 0 < I_lambdaA )?1:0  ) + ( (0 < I_lambdaB )?2:0 ) )
    {
     case( 0 ): return false;
@@ -95,8 +96,10 @@ void GC_triangle::Fv_height( T_scalar &P_height, T_scalar const& P_00, T_scalar 
     T_scalar b = ::math::function::to_any( T_scalar(1)-P_x, P_10, P_10 + (P_01 - P_11 ) );
 
     P_height = ::math::function::to_any( T_scalar(1)-P_y, a, b );
+    return;
    }
 
+  return;
  }
 
 void GC_triangle::Fv_normal( T_coord  &P_normal, T_scalar const& P_00, T_scalar const& P_10, T_scalar const& P_01, T_scalar const& P_11, T_scalar const& P_x, T_scalar const& P_y )const

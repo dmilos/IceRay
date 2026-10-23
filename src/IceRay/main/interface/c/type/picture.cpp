@@ -345,7 +345,7 @@ IceRayC_Type_Scalar IceRayC_Type_Picture_Dispersion( IceRayC_Type_Picture_Handle
     return 0;
    }
 
-  ::math::statistic::gauss::V2< Tf_scalar, std::size_t > statistic;
+  ::math::statistic::gauss::V2< Tf_scalar, Tf__pure::T_size > statistic;
 
   std::for_each( I_this->Fv_data()+0, I_this->Fv_data() + I_this->F_size()[0]* I_this->F_size()[1],
     [&statistic]( auto const& P_color)

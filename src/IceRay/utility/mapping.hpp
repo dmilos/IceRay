@@ -196,7 +196,7 @@
               }
           };
 
-         class GC_cartesian2tablecloth //?? TODO fisheye
+         class GC_cartesian2tablecloth //?? TODO fisheye do not mix with box wrap  and GC_cartesian2package
           {
            public:
             typedef GS_DDMRM::S_IceRay::S_type::GT_scalar          T_scalar;
@@ -227,7 +227,7 @@
 
               Ir_result[0] = r * x + T_scalar( 0.5 );
               Ir_result[1] = r * y + T_scalar( 0.5 );
-              Ir_result[2] = I_length/ T_scalar( 1 );
+              Ir_result[2] = I_length / T_scalar( 1 );
 
               return Ir_result;
              }
@@ -347,7 +347,7 @@
 
             T_coord   operator()( T_coord const& P_point )const
              { // map [0,1]x[0,1] -> box wrap
-              static T_scalar Is_side = sqrt( T_scalar( 1 ) / T_scalar( 24 ) );
+              static T_scalar Is_side = sqrt( T_scalar( 1 ) / T_scalar( 24 ) ); //< 0.25 ??
               T_coord Ir_result{1,2,3};
 
               T_scalar I_radius = std::max( { fabs(P_point[0]), fabs(P_point[1]), fabs(P_point[2]) } );

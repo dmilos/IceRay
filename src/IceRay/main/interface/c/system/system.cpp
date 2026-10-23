@@ -7,7 +7,7 @@ typedef std::map<std::string,std::string> InfoContainer;
 
 extern InfoContainer & GetInfoContaier();
 
-int  IceRayC_System_First( std::size_t P_capacity, char*P_key )
+int  IceRayC_System_First( IceRayC_TypeSize P_capacity, char*P_key )
  {
   auto const & I_key = GetInfoContaier().begin()->first;
 
@@ -22,7 +22,7 @@ int  IceRayC_System_First( std::size_t P_capacity, char*P_key )
   return (int)I_key.size();
  }
 
-int  IceRayC_System_Value( std::size_t P_length, char*P_key, std::size_t P_capacity, char* P_value )
+int  IceRayC_System_Value( IceRayC_TypeSize P_length, char*P_key, IceRayC_TypeSize P_capacity, char* P_value )
  {
   auto iterator = GetInfoContaier().find( P_key );
   if( GetInfoContaier().end() == iterator )
@@ -41,7 +41,7 @@ int  IceRayC_System_Value( std::size_t P_length, char*P_key, std::size_t P_capac
   return (int)iterator->second.size();
  }
 
-int  IceRayC_System_Next( std::size_t P_length, char*P_current, std::size_t P_capacity, char* P_next )
+int  IceRayC_System_Next( IceRayC_TypeSize P_length, char*P_current, IceRayC_TypeSize P_capacity, char* P_next )
  {
   auto iterator = GetInfoContaier().find( P_current );
   if( GetInfoContaier().end() == iterator )

@@ -60,13 +60,13 @@
               T_scalar    const& F_precision()const{ return M2_precision; }
               bool               F_precision( T_scalar const& P_precision );
            protected:
-             T_scalar        & F1_precision(){ return M2_precision; }
+             T_scalar         & F1_precision(){ return M2_precision; }
            private:
              T_scalar M2_precision;
 
            public:
              T_size    const& F_seed()const{ return M2_seed; }
-             bool               F_seed( T_size const& P_seed );
+             bool             F_seed( T_size const& P_seed );
            protected:
              T_size        & F1_seed(){ return M2_seed; }
            private:

@@ -6,8 +6,6 @@ import os
 import sys
 import IceRayPy
 
-import IceRayPy
-
 import render
 
 dll_path = IceRayPy.system.SearchCDLL()

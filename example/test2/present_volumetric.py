@@ -12,7 +12,9 @@ import render
 
 os.system('color')
 
-dll_path = IceRayPy.system.SearchCDLL( P_preferDebug = True )
+running_in_visual_studio = "VisualStudioVersion" in os.environ
+
+dll_path = IceRayPy.system.SearchCDLL( P_preferDebug = running_in_visual_studio )
 
 if 0 != len( dll_path ):
     I_dll = IceRayPy.system.LoadCDLL( dll_path )
@@ -23,15 +25,17 @@ else:
 
 
 I_picture ={}
-I_picture[ 'width']  = int( 2560 )
-I_picture['height']  = int( 1440 )
+I_picture[ 'width']  = int( 1920 )
+I_picture['height']  = int( 1080 )
 I_picture['aspect']  = I_picture['width'] / I_picture['height']
 I_picture['watermark'] = ""
-I_picture['overwrite'] = False
+I_picture['overwrite'] = True
 
+I_begin = 0
 if( 1 < len( sys.argv ) ):
-    I_picture[ 'width'] = int( sys.argv[1] )
-    I_picture['height'] = int( I_picture['width'] / I_picture['aspect'] )
+    I_begin = int( sys.argv[1] )
+    #I_picture[ 'width'] = int( sys.argv[1] )
+    #I_picture['height'] = int( I_picture['width'] / I_picture['aspect'] )
 
 try:
     os.mkdir( "_out" )
@@ -45,6 +49,7 @@ I_picture['time'] = 0
 
 I_picture['window'] = {}
 I_picture['window']['A'] = {}
+
 I_picture['window']['A']['x'] = 0
 I_picture['window']['A']['y'] = 0
 I_picture['window']['B'] = {}
@@ -63,7 +68,7 @@ I_scene['geometry']   = 'vacuum'
 I_scene['medium']     = 'trans'
 I_scene['pigment']    = 'P-RgbCube'
 I_scene['light']      = 'chand-nine'
-I_scene['decoration'] = 'grid'
+I_scene['decoration'] = 'vacuum'
 
 
 import library_room
@@ -73,6 +78,7 @@ import library_pigment
 import library_medium
 import library_geometry
 import library_decoration
+import library_path
 
 
 I_inventory= {}
@@ -92,7 +98,8 @@ I_config['light']   = {}
 I_config['light']['sample']   = 1
 I_config['decoration']   = {}
 I_config['geometry'] ={}
-I_config['geometry']['expression']='1/sqrt(x*x+y*y)'
+I_config['geometry']['expression']='0.25*pow( x*x+y*y+z*z, -1 )'
+I_config['geometry']['expression']= 'abs( cos(x*5)*cos(y*5)*cos(z*5) )'
 I_config['geometry']['density']= 0.1
 
 I_config['composer']={}
@@ -102,7 +109,7 @@ I_config['composer']['hot']['y'] = 400
 I_config['composer']['manager'] = {}
 I_config['composer']['manager']['pixel'] = {}
 I_config['composer']['manager']['pixel']['type'] = 'grid' # 'center', 'grid', 'random', 'sobol'
-I_config['composer']['manager']['pixel']['size'] = 9
+I_config['composer']['manager']['pixel']['size'] = 1
 g = 1.22074408460575947536 #(math.sqrt(5)+1)/2
 
 g = (math.sqrt(5)+1)/2  #1.6180339887498948482045868343656
@@ -114,19 +121,24 @@ radius = 1 + 0*math.sqrt(  ( c*p*g* c*p*g ) + (p*g*p*g) );
 I_config['camera']['view']   = IceRayPy.type.math.coord.Scalar3D( 0, 0, 0 )
 I_config['camera']['aspect'] = I_picture['aspect']
 I_config['camera']['sample'] = 1
+
+print( "Magic number:" + str( c*p*g) )
+
 #I_config['camera']['hfov']   = math.radians( 90 )
 #I_config['camera']['vfov']   = math.radians( 90 )
 
 geometry_list = [
       #'V-vacuum',
-      'V-Mist',
-      #'V-Smoke',
+      #'V-Mist',
+      'V-Smoke',
+      #'F-box'  ,
+
  ]
 
-for index in range(0,360,1): #(0,)  1, 2, 5, 10, 20,50, 100, 200, 500, 1000,
-    I_config['camera'][ 'eye'] = IceRayPy.type.math.coord.Scalar3D( +c*p*g * radius * math.cos( math.radians(index) ), p*g * radius * math.sin( math.radians(index)  ), +g   )
+for index in range( I_begin, 360, 20 ):
+    I_config['camera'][ 'eye'] = library_path.looker( index/360.0 )
     I_picture['prefix'] = "%04i"%(index)
-    I_config['geometry']['density']= index/360.0
+    I_picture['index'] = index
     for item in geometry_list :
         I_scene['geometry']= item
         render.doIt( I_dll, I_picture, I_scene, I_inventory, I_config )

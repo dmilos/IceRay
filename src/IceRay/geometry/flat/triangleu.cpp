@@ -69,7 +69,14 @@ GC_triangleU::T_location GC_triangleU::Fv_inside(T_coord const& P_point/*, T_sta
 
 GC_triangleU::T_scalar GC_triangleU::Fv_distance( T_coord const& P_point )const
  {
-  // TODO
+  T_scalar  I_summae = P_point[0] + P_point[1];
+  if( ( 0 < P_point[0] ) && ( 0 < P_point[1] ) && ( I_summae < 1 )  )
+   {
+    return P_point[2];
+   }
+  // TODO 1. distance from point line 
+  // TODO 2. distance from point line 
+  // TODO 3. distance from point line 
   return 1;
  }
 

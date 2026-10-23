@@ -26,7 +26,7 @@ I_picture['aspect']  = I_picture['width'] / I_picture['height']
 I_picture['watermark'] = ""
 I_picture['overwrite'] = True
 
-I_begin = 0
+I_begin = 120
 if( 1 < len( sys.argv ) ):
     I_begin = int( sys.argv[1] )
     #I_picture[ 'width'] = int( sys.argv[1] )
@@ -36,6 +36,7 @@ try:
     os.mkdir( "_out" )
 except OSError as e:
     pass
+
 I_picture['folder'] = './_out'
 I_picture['extension'] = 'pnm'
 
@@ -142,10 +143,9 @@ I_config['camera']['width']   = 1
 
 
 geometry_list = [
-     #'S-torus',
-     #'L-Bpair'
+     'S-torus',
+     'L-Bpair',
      'E-implicit'
-    #'Q-sphere'
   ]
 
 I_config['composer'] = {}
@@ -153,10 +153,11 @@ I_config['composer']['hot'] = {}
 I_config['composer']['hot']['x'] = 1280
 I_config['composer']['hot']['y'] = 145
 
-for index in range( I_begin, 360, 20 ):
+for index in range( I_begin, 360, 361 ):
     I_config['camera']['eye'] = library_path.looker( index/360.0 )
     I_picture['index'] = index
     for item in geometry_list :
+        I_picture['watermark'] = item
         I_scene['geometry']= item
         render.doIt( I_dll, I_picture, I_scene, I_inventory, I_config )
 

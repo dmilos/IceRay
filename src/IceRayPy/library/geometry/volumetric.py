@@ -52,6 +52,7 @@ def Smoke( P_dll,
     I_density = 0.5;
     I_lo = Coord3D(-1,-1,-1);
     I_hi = Coord3D(+1,+1,+1);
+    I_expression = "x+y+z"
 
     if( None != P_config ):
         if( 'expression' in P_config ):

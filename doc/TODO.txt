@@ -1,12 +1,17 @@
 - HField
+-- Review
 - lights
 -- test for sphere
 - illuminations
+- lights
 - geometries
 --blobby
+---- lights
 -- etc
 - bezier
+-- Implement
 - projective
+-- BUG: when point and vertex ar on different plance side
 - camera
 -- transform origin from point to line, or something else.
 --- calc point on screen. recalc direction = screen - new_origin

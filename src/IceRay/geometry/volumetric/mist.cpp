@@ -102,7 +102,7 @@ bool GC_mist::Fv_intersect
      {
       if( false == I_hitB )
        {
-        return false;
+        return I_head.M_hit = false;
        }
 
       auto I_ray = P_ray;
@@ -115,7 +115,7 @@ bool GC_mist::Fv_intersect
         case( true  ): I_end += I_begin;  break;
        }
      }break;
-    default: return false;
+    default: return I_head.M_hit = false;
    }
   T_scalar I_bound = GFs_randX();
 
@@ -125,9 +125,9 @@ bool GC_mist::Fv_intersect
    {
     I_steps = I_bound /( M2_precision * M2_density );
     P_lambda = I_begin + I_steps * M2_precision;
-    return true;
+    return I_head.M_hit = true;
    }
-  return false;
+  return I_head.M_hit = false;
 
 /*
   T_scalar const& I_precision = M2_precision;

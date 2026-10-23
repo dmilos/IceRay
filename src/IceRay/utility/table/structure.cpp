@@ -66,7 +66,7 @@ namespace GS_DDMRM
           double index=0;
           // /*debug*/ auto & outputTxt = std::ofstream( "table_" + std::to_string( I_size )+ "-"+ std::to_string(I_rsize) +".txt" );
           ::math::geometry::direction::fit2D<double>::scalar_type   a,  b ;
-          for( std::size_t index=1; index < M2_size.size(); ++index )
+          for( T_size index=1; index < M2_size.size(); ++index )
            {
             sample.push_back( (double) M2_size[index] );
             average.push( (double)M2_size[index] - (double)M2_size[index-1] );

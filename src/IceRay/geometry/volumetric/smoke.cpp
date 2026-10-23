@@ -94,7 +94,7 @@ bool GC_smoke::Fv_intersect
      {
       if( false == I_hitB )
        {
-        return false;
+        return I_head.M_hit = false;
        }
 
       auto I_ray = P_ray;
@@ -107,16 +107,18 @@ bool GC_smoke::Fv_intersect
         case( true  ): I_end += I_begin;  break;
        }
      }break;
-    default: return false;
+    default: return I_head.M_hit = false;
    }
   T_scalar I_bound = GFs_randX();
 
   T_scalar const& I_precision = M2_precision;
   T_coord I_step;  ::math::linear::vector::scale( I_step, I_precision, P_ray.M_direction );
-  T_coord I_point = P_ray.M_origin; 
-  T_scalar I_lambda = I_begin;
-  T_scalar I_summa = 0.0;
 
+  T_scalar I_lambda = I_begin;
+
+  T_coord I_point; ::math::linear::vector::combine( I_point, P_ray.M_origin, I_begin, P_ray.M_direction );
+
+  T_scalar I_summa = 0.0;
   while( I_lambda < I_end )
    {
     T_scalar I_density = 0.5;
@@ -133,7 +135,7 @@ bool GC_smoke::Fv_intersect
     I_lambda += I_precision;
     ::math::linear::vector::addition( I_point, I_step );
     if( I_bound < I_summa )
-     {
+     { // linear, exponential, polynom, etc.
       //if( not_epsilon( value ) )
       // P_lambda +=   delta
       //            * ( info->next  - exp( -summa ) )
@@ -142,11 +144,11 @@ bool GC_smoke::Fv_intersect
       // P_lambda = ????;
 
       P_lambda = I_lambda;
-      return true;
+      return I_head.M_hit = true;
      }
    }
 
-  return false;
+  return I_head.M_hit = false;
  }
 
 void GC_smoke::Fv_normal
@@ -156,6 +158,9 @@ void GC_smoke::Fv_normal
   ,T_state  const& P_intersect
  )const
  {
+  //C_intersect const& I_head = P_intersect.F_content<C_intersect>();
+  //T_state            I_tail;  P_intersect.F_tail<C_intersect>( I_tail );
+
   static T_scalar Is_epsilon = 1e-12;// T_scalar( std::numeric_limits<T_scalar>::epsilon() );
   T_scalar I_len;
 

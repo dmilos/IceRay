@@ -72,8 +72,10 @@ def circle( P_time, P_config = None ):
 
 def looker( P_time, P_config = None ):
 
-    radiusX_lo = 2.2
-    radiusX_hi = 3.2
+    g = (math.sqrt(5)+1)/2
+
+    radiusX_lo = g
+    radiusX_hi = 2*g
 
     heightHi = 2
     heightLo = 0

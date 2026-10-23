@@ -22,7 +22,7 @@ GC_udisc::GC_udisc
  {
   M2_radius = P_radius;
   F1_box
-   ( T_box{ 
+   ( T_box{
      ::math::linear::vector::fill( T_coord{}, -M2_radius )
     ,::math::linear::vector::fill( T_coord{}, +M2_radius )
    } );
@@ -75,13 +75,23 @@ void GC_udisc::Fv_normal( T_coord &P_normal, T_coord const& P_point, T_state con
 
 GC_udisc::T_location GC_udisc::Fv_inside( T_coord const& P_point/*, T_state &P_intersect*/ )const
  {
+  //static T_scalar Is_epsilon = 1e-12;// T_scalar( std::numeric_limits<T_scalar>::epsilon() );     
+  //if( P_point[2] < -Is_epsilon )  return En_inside;
+  //if( P_point[2] < +Is_epsilon )  return En_surface;
   return En_out;
  }
 
 GC_udisc::T_scalar GC_udisc::Fv_distance( T_coord const& P_point )const
-{ // TODO
-    return 1;
-}
+ {
+  T_scalar I_a = sqrt( P_point[0]*P_point[0] + P_point[1]*P_point[1] );
+  if( I_a < T_scalar( 1 ) )
+   {
+    return P_point[2];
+   }
+
+  T_scalar t = I_a - T_scalar(1);
+  return sqrt( t * t + P_point[2] * P_point[2] ); //!< Pythagoras
+ }
 
 void GC_udisc::Fv_reset( T_state &P_intersect )const
  {

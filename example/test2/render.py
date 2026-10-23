@@ -33,9 +33,12 @@ def doIt( P_dll, P_picture, P_scene, P_inventory, P_config, P_result=None ):
     I_prefix = ''
     if( 'prefix' in P_picture ):
         I_prefix = P_picture['prefix']
+    I_postfix= ''
+    if( 'postfix' in P_picture ):
+        I_postfix = P_picture['postfix']
     P_picture['temp'] = {}
     P_picture['temp']['name'] = I_room['name'] +"_"+ I_camera['name'] +'_'+ I_geometry['name'] +"_"+ I_medium['name']  +"_"+ I_pigment['name']+"_" + I_light['name']
-    P_picture['temp']['file'] =  P_picture['folder'] + "/" + I_prefix + P_picture['temp']['name'] + '_'+ "{:04d}".format( P_picture['index'] ) + '.' + P_picture['extension']
+    P_picture['temp']['file'] =  P_picture['folder'] + "/" + I_prefix + P_picture['temp']['name'] + '_'+ "{:04d}".format( P_picture['index'] ) + I_postfix+ '.' + P_picture['extension']
 
     if( True ): #P_config['debug']['output-info']
         print( P_picture['temp']['file'], flush = True  )
