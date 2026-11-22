@@ -198,6 +198,11 @@ void expose_IceRay_material_compute_operation_mapping()
     .def( boost::python::init<>() )
     .def( boost::python::init< GTs_size,GTs_size>( ) )
     ;
+  typedef  GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_mapping::GT_torus2cartesian    GTs_torus2cartesian;
+  typedef boost::python::class_< GTs_torus2cartesian, boost::python::bases< GTs_instruction > > ( "MaterialCoord3DMappingTorus2Cartesian" )
+    .def( boost::python::init<>() )
+    .def( boost::python::init< GTs_size,GTs_size>( ) )
+    ;
 
   typedef  GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_mapping::GT_cartesian2tablecloth    GTs_cartesian2tablecloth;
   typedef boost::python::class_< GTs_cartesian2tablecloth, boost::python::bases< GTs_instruction > > ( "MaterialCoord3DMappingCartesian2Tablecloth" )

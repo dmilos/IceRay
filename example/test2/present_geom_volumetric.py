@@ -25,13 +25,13 @@ else:
 
 
 I_picture ={}
-I_picture[ 'width']  = int( 1920 )
-I_picture['height']  = int( 1080 )
+I_picture[ 'width']  = int( 1920/2 )
+I_picture['height']  = int( 1080/2 )
 I_picture['aspect']  = I_picture['width'] / I_picture['height']
 I_picture['watermark'] = ""
 I_picture['overwrite'] = True
 
-I_begin = 0
+I_begin = 1
 if( 1 < len( sys.argv ) ):
     I_begin = int( sys.argv[1] )
     #I_picture[ 'width'] = int( sys.argv[1] )
@@ -98,8 +98,8 @@ I_config['light']   = {}
 I_config['light']['sample']   = 1
 I_config['decoration']   = {}
 I_config['geometry'] ={}
-I_config['geometry']['expression']='0.25*pow( x*x+y*y+z*z, -1 )'
 I_config['geometry']['expression']= 'abs( cos(x*5)*cos(y*5)*cos(z*5) )'
+I_config['geometry']['expression']='(sin(20*(x*x+y*y+z*z))+1)/2'
 I_config['geometry']['density']= 0.1
 
 I_config['composer']={}
@@ -109,7 +109,7 @@ I_config['composer']['hot']['y'] = 400
 I_config['composer']['manager'] = {}
 I_config['composer']['manager']['pixel'] = {}
 I_config['composer']['manager']['pixel']['type'] = 'grid' # 'center', 'grid', 'random', 'sobol'
-I_config['composer']['manager']['pixel']['size'] = 1
+I_config['composer']['manager']['pixel']['size'] = 9
 g = 1.22074408460575947536 #(math.sqrt(5)+1)/2
 
 g = (math.sqrt(5)+1)/2  #1.6180339887498948482045868343656
@@ -135,7 +135,7 @@ geometry_list = [
 
  ]
 
-for index in range( I_begin, 360, 20 ):
+for index in range( I_begin, 360, 1 ):
     I_config['camera'][ 'eye'] = library_path.looker( index/360.0 )
     I_picture['prefix'] = "%04i"%(index)
     I_picture['index'] = index

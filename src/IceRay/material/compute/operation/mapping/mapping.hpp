@@ -82,6 +82,13 @@
 
              typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::GC_unary
                <
+                  GS_DDMRM::S_IceRay::S_utility::S_mapping::GC_torus2cartesian
+                 ,GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar
+                 ,GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar
+               > GT_torus2cartesian;
+
+             typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::GC_unary
+               <
                  GS_DDMRM::S_IceRay::S_utility::S_mapping::GC_cartesian2tablecloth
                  ,GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar
                  ,GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar

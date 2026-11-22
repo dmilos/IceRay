@@ -37,7 +37,7 @@ bool GC_system::Fv_intersect
   ,T_ray   const& P_ray
  )const
  {
-  static T_scalar Is_epsilon = 1e-8;// T_scalar( std::numeric_limits<T_scalar>::epsilon() );
+  static T_scalar Is_epsilon              = 1e-8;// T_scalar( std::numeric_limits<T_scalar>::epsilon() );
   static T_scalar Is_epsilon_quartic      = 1e-10;
   static T_scalar Is_epsilon_lambda       = 1e-5; // 9.018249101e-06
   static T_scalar Is_epsilon_coefficient  = 1e-8;
@@ -75,34 +75,16 @@ bool GC_system::Fv_intersect
   T_scalar I_root[4];
   T_rtss::T_fragment I_fragment;
   T_ray I_ray( P_ray );
-  std::array<T_scalar,5> I_monic;
-  std::array<T_scalar,5> I_depressed;
   std::array<T_scalar,5> I_optimal;
 
   while( true == M2_rtss->Fv_intersect( I_lambda, I_state_rtss, I_ray ) )
    {
-    // todo make monic and depressed
-    //if( NAN == ::math::polynomial::monicing( I_monic.data(), I_state_this.M_coefficient.data(), 5 ) )
-    // {
-    //
-    // }
-    T_scalar I_shift = 0; //::math::polynomial::quartic::depressing( I_depressed.data(), I_monic.data() );
-
-    {
-      ::math::polynomial::optimize<T_scalar,5>( I_optimal, I_state_this.M_coefficient, 1e-5 );
-     // monic
-
-     // depress
-
-     // monic
-
-    }
+    ::math::polynomial::optimize<T_scalar,5>( I_optimal, I_state_this.M_coefficient, 1e-5 );
 
     int I_count = ::math::polynomial::quartic::solve::general( I_root, I_optimal.data(), Is_epsilon_coefficient );
 
     for( int I_index=0; I_index < I_count; ++I_index )
      {
-      I_root[I_index] += I_shift;
       T_scalar I_zero = ::math::polynomial::evaluate( I_root[I_index], I_optimal );
 
       if( I_root[I_index] - I_pass < Is_epsilon_lambda )
@@ -122,7 +104,7 @@ bool GC_system::Fv_intersect
     if( true == I_state_this.M_hit )
      {
       P_lambda = I_pass + I_lambda;
-      return true;
+      return I_state_this.M_hit = true;
      }
 
     ::math::linear::vector::combine( I_ray.M_origin, I_ray.M_origin, I_lambda, I_ray.M_direction );
@@ -139,7 +121,7 @@ bool GC_system::Fv_intersect
      }
    }
 
-  return false;
+  return I_state_this.M_hit = false;
  }
 
 void GC_system::Fv_normal

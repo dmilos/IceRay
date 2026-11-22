@@ -16,7 +16,7 @@ def _Generic(
     if( None != P_filename ):
         I_picture.load( P_filename )
     else:
-        I_size = 256
+        I_size = 1024
         if( None != P_config ) and ( 'size' in P_config ):
             I_size = P_config['size']
         I_picture.size( I_size, I_size )
@@ -66,6 +66,9 @@ def Cartesian2Spherical( P_dll, P_config, P_filename = None ):
 
 def Cartesian2Torus( P_dll, P_config, P_filename = None ):
     return _Generic( P_dll, P_config, IceRayPy.core.material.instruction.operation.mapping.Cartesian2Torus, P_filename )
+
+def Torus2Cartesian( P_dll, P_config, P_filename = None ):
+    return _Generic( P_dll, P_config, IceRayPy.core.material.instruction.operation.mapping.Torus2Cartesian, P_filename )
 
 def Cartesian2Tablecloth( P_dll, P_config, P_filename = None ):
     return _Generic( P_dll, P_config, IceRayPy.core.material.instruction.operation.mapping.Cartesian2Tablecloth, P_filename )

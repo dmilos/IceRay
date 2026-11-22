@@ -260,6 +260,12 @@ H F(Cartesian2Torus0     )( S P_result, S P_left )
   auto Ir_result = new Tf_this{ P_result, P_left };
   return cpp2c( Ir_result );
  }
+H F(Torus2Cartesian0     )( S P_result, S P_left )
+ {
+  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_mapping::GT_torus2cartesian    Tf_this;
+  auto Ir_result = new Tf_this{ P_result, P_left };
+  return cpp2c( Ir_result );
+ }
 H F(Cartesian2Tablecloth0)( S P_result, S P_left )
  {
   typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::S_mapping::GT_cartesian2tablecloth    Tf_this;

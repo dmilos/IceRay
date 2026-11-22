@@ -1084,6 +1084,7 @@ def _MapFunction_Material_Pigment_Surface_Instruction_Operation_Mapping(P_dll): 
     _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Mapping_Cartesian2Spherical0     , ctypes.c_void_p, [ctypes.c_size_t, ctypes.c_size_t ] )
     _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Mapping_Cartesian2Tablecloth0    , ctypes.c_void_p, [ctypes.c_size_t, ctypes.c_size_t ] )
     _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Mapping_Cartesian2Torus0         , ctypes.c_void_p, [ctypes.c_size_t, ctypes.c_size_t ] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Mapping_Torus2Cartesian0         , ctypes.c_void_p, [ctypes.c_size_t, ctypes.c_size_t ] )
     _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Mapping_Cartesian2WoodX0         , ctypes.c_void_p, [ctypes.c_size_t, ctypes.c_size_t ] )
     _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Mapping_Cartesian2WoodY0         , ctypes.c_void_p, [ctypes.c_size_t, ctypes.c_size_t ] )
     _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Mapping_Cartesian2WoodZ0         , ctypes.c_void_p, [ctypes.c_size_t, ctypes.c_size_t ] )

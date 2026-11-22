@@ -40,12 +40,6 @@ endforeach(file_item)
 
 source_group( TREE "${directory_source}" FILES ${SOURCE_CPP} )
 
-include_directories( "${directory_source}")
-include_directories( "${directory_submodule__root}/color/src")
-include_directories( "${directory_submodule__root}/container/src")
-include_directories( "${directory_submodule__root}/math/src")
-include_directories( "${directory_submodule__root}/memory/src")
-include_directories( "${directory_submodule__root}/PNM/src")
 
 add_executable( ${ICERAY_PROJECT_NAME_FULL} ${SOURCE_CPP} ${SOURCE_HPP}  )
 
@@ -57,10 +51,16 @@ if( UNIX )
     target_compile_options(  ${ICERAY_PROJECT_NAME_FULL} PRIVATE -Wno-unused-variable )
 endif()
 
-target_include_directories(  ${ICERAY_PROJECT_NAME_FULL} PRIVATE "${directory_include}")
+target_include_directories( ${ICERAY_PROJECT_NAME_FULL} PRIVATE "${directory_submodule__root}/color/src")
+target_include_directories( ${ICERAY_PROJECT_NAME_FULL} PRIVATE "${directory_submodule__root}/container/src")
+target_include_directories( ${ICERAY_PROJECT_NAME_FULL} PRIVATE "${directory_submodule__root}/math/src")
+target_include_directories( ${ICERAY_PROJECT_NAME_FULL} PRIVATE "${directory_submodule__root}/memory/src")
+target_include_directories( ${ICERAY_PROJECT_NAME_FULL} PRIVATE "${directory_submodule__root}/PNM/src")
+target_include_directories( ${ICERAY_PROJECT_NAME_FULL} PRIVATE "${directory_include}")
 
 
 if(MSVC)
     target_compile_options( ${ICERAY_PROJECT_NAME_FULL} PRIVATE "/wd4624;" )
 endif()
 
+include( "./epilog.cmake" )

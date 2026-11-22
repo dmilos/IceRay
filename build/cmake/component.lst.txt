@@ -1,0 +1,4 @@
+./memorylib
+./core
+./clib
+./cdll

@@ -39,7 +39,7 @@
                  //typedef GS_DDMRM::S_IceRay::S_material::S_compute::GC_instruction   T_instruction;
 
                  enum Ee_output{ En_outTYPE_ResultValue = 0 };
-                 enum Ee_input{  En_inTYPE_LeftValue    = 01 };
+                 enum Ee_input{  En_inTYPE_LeftValue    = 1 };
 
                public:
                  GC_unary
@@ -62,7 +62,7 @@
                   {
                    this->template F_output<T_result>( En_outTYPE_ResultValue,  P_outType_result );
 
-                   this-> template F_input<T_input>(    En_inTYPE_LeftValue,     P_inType_left    );
+                   this-> template F_input<T_input>(  En_inTYPE_LeftValue,     P_inType_left    );
                   }
 
                public:
@@ -72,7 +72,7 @@
 
                    T_result I_result = M2_operation( I_left );
 
-                   M2_memoryResult->Fv_store( this->template F_output<T_result>(En_outTYPE_ResultValue), I_result );
+                   M2_memoryResult->Fv_store( this->template F_output<T_result>( En_outTYPE_ResultValue ), I_result );
 
                    return true;
                   }

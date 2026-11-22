@@ -1,0 +1,8 @@
+set SOLUTION_BUILD_FOLDER64=.\_makeVS64
+
+
+mkdir %SOLUTION_BUILD_FOLDER64%
+cd %SOLUTION_BUILD_FOLDER64%
+
+%prg_cmake% .. -A x64
+pause

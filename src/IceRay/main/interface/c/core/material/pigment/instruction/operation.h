@@ -84,6 +84,7 @@ IceRayC__EXPORT IceRayC__DECLSPEC H F(Cartesian2Cylindric0 )( S P_result, S P_le
 IceRayC__EXPORT IceRayC__DECLSPEC H F(Cartesian2Package0   )( S P_result, S P_left );
 IceRayC__EXPORT IceRayC__DECLSPEC H F(Cartesian2Spherical0 )( S P_result, S P_left );
 IceRayC__EXPORT IceRayC__DECLSPEC H F(Cartesian2Torus0     )( S P_result, S P_left );
+IceRayC__EXPORT IceRayC__DECLSPEC H F(Torus2Cartesian0     )( S P_result, S P_left );
 IceRayC__EXPORT IceRayC__DECLSPEC H F(Cartesian2Tablecloth0)( S P_result, S P_left );
 IceRayC__EXPORT IceRayC__DECLSPEC H F(Cartesian2WoodX0     )( S P_result, S P_left );
 IceRayC__EXPORT IceRayC__DECLSPEC H F(Cartesian2WoodY0     )( S P_result, S P_left );

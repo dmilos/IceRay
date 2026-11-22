@@ -62,6 +62,7 @@ list = {
       'M-o-Cartesian2Package'      : IceRayPy.utility.material.operation.mapping.Cartesian2Package,    #TODO check
       'M-o-Cartesian2Spherical'    : IceRayPy.utility.material.operation.mapping.Cartesian2Spherical,  #TODO check
       'M-o-Cartesian2Torus'        : IceRayPy.utility.material.operation.mapping.Cartesian2Torus,      #TODO check
+      'M-o-Torus2Cartesian'        : IceRayPy.utility.material.operation.mapping.Torus2Cartesian,      #TODO check
       'M-o-Cartesian2Tablecloth'   : IceRayPy.utility.material.operation.mapping.Cartesian2Tablecloth, #TODO check
       'M-o-Cartesian2WoodX'        : IceRayPy.utility.material.operation.mapping.Cartesian2WoodX,      #TODO check
       'M-o-Cartesian2WoodY'        : IceRayPy.utility.material.operation.mapping.Cartesian2WoodY,      #TODO check

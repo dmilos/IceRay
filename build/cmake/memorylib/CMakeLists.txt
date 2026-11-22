@@ -27,7 +27,6 @@ endforeach(file_item)
 
 source_group( TREE "${directory_source}" FILES ${SOURCE_CPP} )
 
-include_directories( "${directory_source}")
 
 if ( CMAKE_COMPILER_IS_GNUCC )
     set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -Wall")
@@ -38,6 +37,9 @@ endif()
 
 
 add_library(${COMPONENT_NAME_BARE} STATIC ${SOURCE_CPP} ${SOURCE_HPP})
+
+target_include_directories(  ${COMPONENT_NAME_BARE} PRIVATE "${directory_source}")
+
 
 set_target_properties(${COMPONENT_NAME_BARE} PROPERTIES VERSION ${COMPONENT_VERSION__FINAL} )
 set_property( TARGET ${COMPONENT_NAME_BARE} PROPERTY POSITION_INDEPENDENT_CODE ON )
@@ -72,9 +74,4 @@ if( MSVC )
     #target_compile_definitions( ${COMPONENT_NAME_BARE} PRIVATE  $<$<CONFIG:DEBUG>:_HAS_ITERATOR_DEBUGGING> )
 endif()
 
-message( STATUS "memory::CMAKE_CXX_FLAGS: ${CMAKE_CXX_FLAGS}" )
-message( STATUS "memory::CMAKE_C_FLAGS:   ${CMAKE_C_FLAGS}" )
-message( STATUS "memory::SOLUTION_INSTALLDIR_BINDIR:   ${SOLUTION_INSTALLDIR_BINDIR}" )
-message( STATUS "memory::COMPONENT_NAME_BARE:    ${COMPONENT_NAME_BARE}" )
-message( STATUS "memory::CMAKE_INSTALL_PREFIX:   ${CMAKE_INSTALL_PREFIX}" )
-
+include( "./epilog.cmake" )

@@ -31,7 +31,7 @@ def Image(
         if( 'filename' in P_config ):
             I_picture.load( P_config[ 'filename' ] )
         else:
-            I_size = 512
+            I_size = 1024
             if( None != P_config ) and ( 'size' in P_config ):
                 I_size = P_config['size']
             I_picture.size( I_size, I_size )

@@ -36,13 +36,6 @@ endforeach(file_item)
 
 source_group( TREE "${directory_source}" FILES ${SOURCE_CPP} )
 
-include_directories( "${directory_source}")
-include_directories( "${directory_submodule__root}/color/src")
-include_directories( "${directory_submodule__root}/container/src")
-include_directories( "${directory_submodule__root}/math/src")
-include_directories( "${directory_submodule__root}/memory/src")
-include_directories( "${directory_submodule__root}/PNM/src")
-include_directories( "${directory_submodule__root}/TopLog/src")
 
 add_library( ${COMPONENT_NAME_BARE} STATIC ${SOURCE_CPP} ${SOURCE_HPP}  )
 
@@ -89,7 +82,13 @@ if( MSVC )
     #target_compile_definitions( ${COMPONENT_NAME_BARE} PRIVATE  $<$<CONFIG:DEBUG>:_HAS_ITERATOR_DEBUGGING> )
 endif()
 
-target_include_directories(  ${COMPONENT_NAME_BARE} PRIVATE "${directory_include}")
+target_include_directories( ${COMPONENT_NAME_BARE} PRIVATE "${directory_submodule__root}/color/src")
+target_include_directories( ${COMPONENT_NAME_BARE} PRIVATE "${directory_submodule__root}/container/src")
+target_include_directories( ${COMPONENT_NAME_BARE} PRIVATE "${directory_submodule__root}/math/src")
+target_include_directories( ${COMPONENT_NAME_BARE} PRIVATE "${directory_submodule__root}/memory/src")
+target_include_directories( ${COMPONENT_NAME_BARE} PRIVATE "${directory_submodule__root}/PNM/src")
+target_include_directories( ${COMPONENT_NAME_BARE} PRIVATE "${directory_submodule__root}/TopLog/src")
+target_include_directories( ${COMPONENT_NAME_BARE} PRIVATE "${directory_include}")
 
 target_link_libraries(  ${COMPONENT_NAME_BARE} PRIVATE ${ICERAY_CORE_CORE_PROJECT_NAME_FULL} )
 add_dependencies(       ${COMPONENT_NAME_BARE}         ${ICERAY_CORE_CORE_PROJECT_NAME_FULL} )
@@ -99,9 +98,4 @@ install( TARGETS ${COMPONENT_NAME_BARE}         DESTINATION ${SOLUTION_INSTALLDI
 #    install( FILES $<TARGET_PDB_FILE:${COMPONENT_NAME_BARE}>  DESTINATION ${SOLUTION_INSTALLDIR_BINDIR}/${COMPONENT_NAME_BARE} OPTIONAL )
 #endif()
 
-message( STATUS "clib::CMAKE_CXX_FLAGS: ${CMAKE_CXX_FLAGS}" )
-message( STATUS "clib::CMAKE_C_FLAGS:   ${CMAKE_C_FLAGS}" )
-message( STATUS "clib::SOLUTION_INSTALLDIR_BINDIR:   ${SOLUTION_INSTALLDIR_BINDIR}" )
-message( STATUS "clib::COMPONENT_NAME_BARE:    ${COMPONENT_NAME_BARE}" )
-message( STATUS "clib::CMAKE_INSTALL_PREFIX:   ${CMAKE_INSTALL_PREFIX}" )
-
+include( "./epilog.cmake" )

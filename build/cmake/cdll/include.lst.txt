@@ -1,0 +1,8 @@
+${directory_submodule__root}/color/src 
+${directory_submodule__root}/container/src 
+${directory_submodule__root}/math/src 
+${directory_submodule__root}/memory/src 
+${directory_submodule__root}/PNM/src 
+${directory_submodule__root}/TopLog/src 
+${directory_include} 
+

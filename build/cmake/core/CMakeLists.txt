@@ -40,15 +40,6 @@ endforeach(file_item)
 
 source_group( TREE "${directory_source}" FILES ${SOURCE_CPP} )
 
-include_directories( "${directory_source}")
-
-include_directories( "${directory_submodule__root}/color/src")
-include_directories( "${directory_submodule__root}/container/src")
-include_directories( "${directory_submodule__root}/math/src")
-include_directories( "${directory_submodule__root}/memory/src")
-include_directories( "${directory_submodule__root}/PNM/src")
-include_directories( "${directory_submodule__root}/TopLog/src")
-
 if ( CMAKE_COMPILER_IS_GNUCC )
     set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -Wall")
 endif()
@@ -64,6 +55,14 @@ endif()
 
 
 add_library(${COMPONENT_NAME_BARE} STATIC ${SOURCE_CPP} ${SOURCE_HPP})
+
+target_include_directories(  ${COMPONENT_NAME_BARE} PRIVATE "${directory_submodule__root}/color/src")
+target_include_directories(  ${COMPONENT_NAME_BARE} PRIVATE "${directory_submodule__root}/container/src")
+target_include_directories(  ${COMPONENT_NAME_BARE} PRIVATE "${directory_submodule__root}/math/src")
+target_include_directories(  ${COMPONENT_NAME_BARE} PRIVATE "${directory_submodule__root}/memory/src")
+target_include_directories(  ${COMPONENT_NAME_BARE} PRIVATE "${directory_submodule__root}/PNM/src")
+target_include_directories(  ${COMPONENT_NAME_BARE} PRIVATE "${directory_submodule__root}/TopLog/src")
+target_include_directories(  ${COMPONENT_NAME_BARE} PRIVATE "${directory_include}")
 
 set_target_properties(${COMPONENT_NAME_BARE} PROPERTIES VERSION ${COMPONENT_VERSION__FINAL} )
 set_property( TARGET ${COMPONENT_NAME_BARE} PROPERTY POSITION_INDEPENDENT_CODE ON )
@@ -121,10 +120,4 @@ install( TARGETS ${COMPONENT_NAME_BARE}         DESTINATION ${SOLUTION_INSTALLDI
 #endif()
 
 
-message( STATUS "core::CMAKE_CXX_FLAGS: ${CMAKE_CXX_FLAGS}" )
-message( STATUS "core::CMAKE_C_FLAGS:   ${CMAKE_C_FLAGS}" )
-message( STATUS "core::SOLUTION_INSTALLDIR_BINDIR:   ${SOLUTION_INSTALLDIR_BINDIR}" )
-message( STATUS "core::COMPONENT_NAME_BARE:    ${COMPONENT_NAME_BARE}" )
-message( STATUS "core::CMAKE_INSTALL_PREFIX:   ${CMAKE_INSTALL_PREFIX}" )
-
-
+include( "./epilog.cmake" )
