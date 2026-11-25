@@ -36,8 +36,9 @@ namespace GS_DDMRM
             GC_mapper();
 
           public:
-            T_size const& F_index(  T_string const& P_name )const;
+            T_size   const& F_index(  T_string const& P_name )const;
             T_string const& F_name( T_size const& P_index )const;
+
             bool F_add( T_string const& P_name );
             bool F_tie( T_string const& P_name, T_size const& P_index );
             bool F_untie( T_string const& P_name, T_size const& P_index );

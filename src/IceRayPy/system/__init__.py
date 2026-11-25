@@ -1118,6 +1118,11 @@ def _MapFunction_Material_Pigment_Surface_Instruction_Operation(P_dll): #!< done
     _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Switch_Scalar0                   , ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t, ctypes.c_size_t] )
     _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Switch_Size0                     , ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t, ctypes.c_size_t] )
 
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Expression0                     , ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t ] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Expression_Expression           , ctypes.c_int,     [ctypes.c_void_p, ctypes.c_char_p] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Expression_String2Index         , ctypes.c_int,     [ctypes.c_void_p, ctypes.c_size_t, ctypes.c_char_p] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Expression_Index2Index          , ctypes.c_int,     [ctypes.c_void_p, ctypes.c_size_t, ctypes.c_size_t] )
+
 def _MapFunction_Material_Pigment_Surface_Instruction_Pattern(P_dll): #done
     _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Pattern_Color0                             , ctypes.c_void_p , [ctypes.c_void_p, ctypes.c_size_t, ctypes.c_size_t ] )
     _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Pattern_Coord_Scalar2D0                    , ctypes.c_void_p , [ctypes.c_void_p, ctypes.c_size_t, ctypes.c_size_t ] )

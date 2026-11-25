@@ -4,19 +4,30 @@ import time
 import math
 import os
 import sys
-import IceRayPy
 
+import IceRayPy
 import render
 
-dll_path = IceRayPy.system.SearchCDLL( P_preferDebug = False )
 
+os.system('color')
+
+running_in_visual_studio = "VisualStudioVersion" in os.environ
+dll_path = IceRayPy.system.SearchCDLL( P_preferDebug = running_in_visual_studio )
 if 0 != len( dll_path ):
     I_dll = IceRayPy.system.LoadCDLL( dll_path )
 else:
     print("Can not find DLL")
     time.sleep(200)
     exit()
-    
+
+
+I_picture ={}
+I_picture[ 'width']  = int( 4/3*1080 * 0.3333333333333 )
+I_picture['height']  = int(     1080 * 0.3333333333333 )
+I_picture['aspect']  = I_picture['width'] / I_picture['height']
+I_picture['watermark'] = ""
+I_picture['overwrite'] = True
+
 start = 0;
 if( 1 < len( sys.argv ) ):
     start = int( sys.argv[1] )
@@ -25,10 +36,6 @@ end = 10;
 if( 2 < len( sys.argv ) ):
     end = int( sys.argv[2] )
 
-I_picture ={}
-I_picture[ 'width']  = int( 4/3*1080 * 0.3333333333333 )
-I_picture['height']  = int(     1080 * 0.3333333333333 )
-I_picture['aspect']  = I_picture['width'] / I_picture['height']
 
 #if( 1 < len( sys.argv ) ):
 #    I_picture[ 'width'] = int( sys.argv[1] )
@@ -98,7 +105,7 @@ I_config['room']['radiosity']['correction']['rays'] = "trim"
 I_config['room']['radiosity']['correction']['leader' ]  = False
 I_config['room']['radiosity']['correction']['cone' ]  = False
 I_config['room']['level']  = -1
- 
+
 I_config['light']   = {}
 I_config['light']['sample']   = 1
 I_config['decoration']   = {}
@@ -130,11 +137,11 @@ I_config['composer']['hot']['y'] = 100
 
 for index in (1999, 2001 ): # range(1,100,1) 1, 2, 5, 10, 20,50, 100, 200, 500, 1000,
     for blossom in [  'vdc' ]: # , 'grid', 'hexagon', 'congruent', 'sobol', 'random', 'kmeans','sunflower', 'triangle'
-        for object in [ 'Q-util-cylinder' ]:  #, 'Q-sphere' 'V-vacuum', 'Q-sphere''Q-util-cylinder', 
+        for object in [ 'Q-util-cylinder' ]:  #, 'Q-sphere' 'V-vacuum', 'Q-sphere''Q-util-cylinder',
             I_scene['geometry']   = object # 'Q-util-cylinder'  #'V-vacuum' 'Q-sphere'  'S-util-torus'
             I_picture['index'] = index
             I_picture['prefix'] = "%04i"%(index)+ '_cyl_' + blossom + "_"
-            I_config['room']['radiosity']['type']  = blossom 
+            I_config['room']['radiosity']['type']  = blossom
             I_config['room']['radiosity']['patch' ] = math.radians( 90 )/index  #<! Used also for sample number calculation
             I_config['room']['radiosity']['jitter'] = {}
             I_config['room']['radiosity']['jitter']['type' ]   = "none" # 'none', 'random', 'sobol', 'vdc', 'congruent'

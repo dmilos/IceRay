@@ -6,6 +6,7 @@ import IceRayPy.core.material.pattern.constant
 import IceRayPy.core.material.pattern.noise
 import IceRayPy.core.material.pattern.side
 
+
 AddressOf = ctypes.addressof
 
 Color    = IceRayPy.type.color.RGB

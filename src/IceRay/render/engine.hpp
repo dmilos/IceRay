@@ -1,5 +1,5 @@
-#ifndef Dh_DDMRM_IceRay_render_world_HPP_
- #define Dh_DDMRM_IceRay_render_world_HPP_
+#ifndef Dh_DDMRM_IceRay_render_engine_HPP_
+ #define Dh_DDMRM_IceRay_render_engine_HPP_
 
 
 #include "./0scanner/_pure.hpp"
@@ -41,37 +41,37 @@
            void           F_scanner( T_scanner * P_scanner   );
            T_scanner    & F_scanner()const{ return *M2_scanner;  }
         private:
-           T_scanner     *M2_scanner;
+           T_scanner    *M2_scanner;
          private:
            static T_scanner & Fs_scanner();
 
          public:
            void           F_pixel( T_pixel   * P_pixel     );
-           T_pixel     *& F_pixel(){ return M2_pixel;    }
+           T_pixel      & F_pixel()const { return *M2_pixel;    }
          private:
-           T_pixel       *M2_pixel;
+           T_pixel      *M2_pixel;
          public:
            static T_pixel & Fs_pixel();
 
          public:
            void           F_pierce( T_pierce  * P_pierce    );
-           T_pierce    *& F_pierce(){ return M2_pierce;   }
+           T_pierce     & F_pierce()const { return *M2_pierce;   }
          private:
-           T_pierce      *M2_pierce;
+           T_pierce     *M2_pierce;
          public:
            static T_pierce & Fs_pierce();
 
          public:
            void         F_sheaf( T_sheaf  * P_sheaf    );
-           T_sheaf    *& F_sheaf(){ return M2_sheaf;   }
+           T_sheaf    & F_sheaf()const{ return *M2_sheaf;   }
          private:
-           T_sheaf      *M2_sheaf;
+           T_sheaf     *M2_sheaf;
          public:
            static T_sheaf & Fs_sheaf();
 
          public:
-           void        F_ray( T_ray  * P_ray    );
-           T_ray    *& F_ray(){ return M2_ray;   }
+           void          F_ray( T_ray  * P_ray    );
+           T_ray const & F_ray()const{ return *M2_ray;   }
          private:
            T_ray     *M2_ray;
          public:
@@ -81,8 +81,5 @@
       }
     }
   }
-
-
-
 
 #endif

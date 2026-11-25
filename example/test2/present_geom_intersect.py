@@ -4,11 +4,15 @@ import time
 import math
 import os
 import sys
-import IceRayPy
 
+import IceRayPy
 import render
 
-dll_path = IceRayPy.system.SearchCDLL()
+
+os.system('color')
+
+running_in_visual_studio = "VisualStudioVersion" in os.environ
+dll_path = IceRayPy.system.SearchCDLL( P_preferDebug = running_in_visual_studio )
 
 if 0 != len( dll_path ):
     I_dll = IceRayPy.system.LoadCDLL( dll_path )
@@ -22,6 +26,9 @@ I_picture ={}
 I_picture[ 'width']  = 800
 I_picture['height']  = 600
 I_picture['aspect']  = I_picture['width'] / I_picture['height']
+I_picture['watermark'] = ""
+I_picture['overwrite'] = True
+
 
 if( 1 < len( sys.argv ) ):
     I_picture[ 'width'] = int( sys.argv[1] )

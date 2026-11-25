@@ -6,18 +6,18 @@
  // GS_DDMRM::S_IceRay::S_utility::S_mapping::GC_cartesian2spherical
  // GS_DDMRM::S_IceRay::S_utility::S_mapping::GC_cylindric2cartesian
  // GS_DDMRM::S_IceRay::S_utility::S_mapping::GC_cylindric2spherical
- // GS_DDMRM::S_IceRay::S_utility::S_mapping::GC_spherical2cartesian 
- // GS_DDMRM::S_IceRay::S_utility::S_mapping::GC_spherical2cylindric 
- // GS_DDMRM::S_IceRay::S_utility::S_mapping::GC_euclid2max 
- // GS_DDMRM::S_IceRay::S_utility::S_mapping::GC_max2euclid 
- // GS_DDMRM::S_IceRay::S_utility::S_mapping::GC_cartesian2tablecloth 
- // GS_DDMRM::S_IceRay::S_utility::S_mapping::GC_cartesian2torus 
- // GS_DDMRM::S_IceRay::S_utility::S_mapping::GC_torus2cartesian 
- // GS_DDMRM::S_IceRay::S_utility::S_mapping::GC_cartesian2woodX 
- // GS_DDMRM::S_IceRay::S_utility::S_mapping::GC_cartesian2woodY 
- // GS_DDMRM::S_IceRay::S_utility::S_mapping::GC_cartesian2woodZ 
- // GS_DDMRM::S_IceRay::S_utility::S_mapping::GC_cartesian2fisheye 
- // GS_DDMRM::S_IceRay::S_utility::S_mapping::GC_cartesian2package 
+ // GS_DDMRM::S_IceRay::S_utility::S_mapping::GC_spherical2cartesian
+ // GS_DDMRM::S_IceRay::S_utility::S_mapping::GC_spherical2cylindric
+ // GS_DDMRM::S_IceRay::S_utility::S_mapping::GC_euclid2max
+ // GS_DDMRM::S_IceRay::S_utility::S_mapping::GC_max2euclid
+ // GS_DDMRM::S_IceRay::S_utility::S_mapping::GC_cartesian2tablecloth
+ // GS_DDMRM::S_IceRay::S_utility::S_mapping::GC_cartesian2torus
+ // GS_DDMRM::S_IceRay::S_utility::S_mapping::GC_torus2cartesian
+ // GS_DDMRM::S_IceRay::S_utility::S_mapping::GC_cartesian2woodX
+ // GS_DDMRM::S_IceRay::S_utility::S_mapping::GC_cartesian2woodY
+ // GS_DDMRM::S_IceRay::S_utility::S_mapping::GC_cartesian2woodZ
+ // GS_DDMRM::S_IceRay::S_utility::S_mapping::GC_cartesian2fisheye
+ // GS_DDMRM::S_IceRay::S_utility::S_mapping::GC_cartesian2package
 
 
 
@@ -100,7 +100,7 @@
 
              GC_homography( T_homography const& P_homography = T_homography{} )
               :M_homography( P_homography )
-              { 
+              {
                //::math::linear::matrix::id<T_scalar,3>()
               }
 
@@ -273,7 +273,7 @@
              typedef GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar T_coord;
 
              T_coord   operator()( T_coord const&P_point )const
-              { 
+              {
                const T_scalar phi    = P_point[0] * math::constants::PHI;
                const T_scalar theta  = P_point[1] * math::constants::PHI;
                const T_scalar ridius = P_point[2];
@@ -325,8 +325,8 @@
               {
                T_coord Ir_result;
 
-               Ir_result[0] = atan2( P_point[1], P_point[0] )/math::constants::PHI; 
-               Ir_result[1] = P_point[2]; 
+               Ir_result[0] = atan2( P_point[1], P_point[0] )/math::constants::PHI;
+               Ir_result[1] = P_point[2];
                Ir_result[2] = sqrt( P_point[0]*P_point[0]  +  P_point[1]*P_point[1] );
                return Ir_result;
               }

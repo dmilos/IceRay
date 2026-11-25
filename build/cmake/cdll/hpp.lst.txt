@@ -52,6 +52,8 @@ IceRay/main/interface/c/core/material/pigment/instruction/operation.hpp
 IceRay/main/interface/c/core/material/pigment/instruction/pattern.h
 IceRay/main/interface/c/core/material/pigment/instruction/transmission.h
 IceRay/main/interface/c/core/material/pigment/instruction/transmission.hpp
+IceRay/main/interface/c/core/material/pigment/instruction/expression.h
+IceRay/main/interface/c/core/material/pigment/instruction/expression.hpp
 IceRay/main/interface/c/core/material/pigment/pigment.h
 IceRay/main/interface/c/core/material/pigment/pigment.hpp
 IceRay/main/interface/c/core/material/pigment/surface.h

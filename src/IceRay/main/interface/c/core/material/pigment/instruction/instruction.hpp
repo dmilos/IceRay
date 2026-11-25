@@ -11,4 +11,5 @@
 //#include "./scalar.hpp"
 //#include "./size.hpp"
 #include "./setup.hpp"
+#include "./expression.hpp"
 

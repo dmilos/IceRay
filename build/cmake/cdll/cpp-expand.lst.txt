@@ -30,6 +30,7 @@ IceRay/main/interface/c/core/material/pigment/instruction/scalar.cpp
 IceRay/main/interface/c/core/material/pigment/instruction/setup.cpp
 IceRay/main/interface/c/core/material/pigment/instruction/size.cpp
 IceRay/main/interface/c/core/material/pigment/instruction/transmission.cpp
+IceRay/main/interface/c/core/material/pigment/instruction/expression.cpp
 IceRay/main/interface/c/core/material/pigment/surface.cpp
 IceRay/main/interface/c/core/object/object.cpp
 IceRay/main/interface/c/core/render/engine.cpp

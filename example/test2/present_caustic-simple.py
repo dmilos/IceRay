@@ -4,19 +4,30 @@ import time
 import math
 import os
 import sys
-import IceRayPy
 
+import IceRayPy
 import render
 
-dll_path = IceRayPy.system.SearchCDLL( P_preferDebug = False )
 
+os.system('color')
+
+running_in_visual_studio = "VisualStudioVersion" in os.environ
+dll_path = IceRayPy.system.SearchCDLL( P_preferDebug = running_in_visual_studio )
 if 0 != len( dll_path ):
     I_dll = IceRayPy.system.LoadCDLL( dll_path )
 else:
     print("Can not find DLL")
     time.sleep(200)
     exit()
-    
+
+
+I_picture ={}
+I_picture[ 'width']  = int( 4/3*1000*0.25  )
+I_picture['height']  = int(     1000*0.25  )
+I_picture['aspect']  = I_picture['width'] / I_picture['height']
+I_picture['watermark'] = ""
+I_picture['overwrite'] = True
+
 start = 0;
 if( 1 < len( sys.argv ) ):
     start = int( sys.argv[1] )
@@ -24,11 +35,6 @@ if( 1 < len( sys.argv ) ):
 end = 10;
 if( 2 < len( sys.argv ) ):
     end = int( sys.argv[2] )
-
-I_picture ={}
-I_picture[ 'width']  = int( 4/3*1000*0.25  )
-I_picture['height']  = int(     1000*0.25  )
-I_picture['aspect']  = I_picture['width'] / I_picture['height']
 
 #if( 1 < len( sys.argv ) ):
 #    I_picture[ 'width'] = int( sys.argv[1] )
@@ -103,7 +109,7 @@ I_config['room']['radiosity']['correction']['rays'] = "trim"
 I_config['room']['radiosity']['correction']['leader' ]  = False
 I_config['room']['radiosity']['correction']['cone' ]  = False
 I_config['room']['level']  = -1
- 
+
 I_config['light']   = {}
 I_config['light']['sample']   = 1
 I_config['decoration']   = {}
@@ -134,11 +140,11 @@ I_config['composer']['hot'] = {}
 I_config['composer']['hot']['x'] = 50
 I_config['composer']['hot']['y'] = 360
 
-for index in ( 50,100, 200, 500, 1000, 2000, 5000, 9999 ): #1, 2, 5, 10, 20,50,100, 200, 500, 1000, 2000  
-    for jitter in [ 'none' ]:  # , 'vdc', 'triangle', 'sobol', 'random', 'sunflower', 'congruent', 'grid', 'hexagon' 
-        for object in [ 'V-vacuum'  ]:  #'Q-sphere' 'V-vacuum', 'Q-sphere', 'Q-util-cylinder', 
+for index in ( 50,100, 200, 500, 1000, 2000, 5000, 9999 ): #1, 2, 5, 10, 20,50,100, 200, 500, 1000, 2000
+    for jitter in [ 'none' ]:  # , 'vdc', 'triangle', 'sobol', 'random', 'sunflower', 'congruent', 'grid', 'hexagon'
+        for object in [ 'V-vacuum'  ]:  #'Q-sphere' 'V-vacuum', 'Q-sphere', 'Q-util-cylinder',
             I_scene['geometry']   = object
-            for blossom in [ 'vdc', 'kmeans', 'triangle', 'sunflower', 'grid', 'hexagon', 'congruent', 'sobol', 'random'    ]: # 
+            for blossom in [ 'vdc', 'kmeans', 'triangle', 'sunflower', 'grid', 'hexagon', 'congruent', 'sobol', 'random'    ]: #
                 I_picture['index'] = index
                 I_picture['prefix'] = blossom +'/' +"%04i"%(index) + '_sph_' + blossom + "_"
                 I_config['room']['radiosity']['type']  = blossom

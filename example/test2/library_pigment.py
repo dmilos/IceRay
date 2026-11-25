@@ -5,6 +5,8 @@ print( '<' + __name__ + ' file=\'' +   __file__ + '\'>' )
 import IceRayPy
 
 list = {
+      'X-NOP'              : IceRayPy.utility.material.operation.NOP,
+
       'constant'                 : IceRayPy.utility.material.pattern.Constant,
        #TODO NYI 'surface'       : core.material.pigment.Surface,
 
@@ -25,6 +27,7 @@ list = {
       'P-gradientBW'       : IceRayPy.utility.material.pattern.Gradient,
       'P-RgbCube'          : IceRayPy.utility.material.pattern.RgbCube,
      #'P-HslCone'          : IceRayPy.utility.material.pattern.HslCone,  #TODO make
+      'P-expression'       : IceRayPy.utility.material.operation.Expression,
 
       'I-ALP'           : IceRayPy.utility.material.illumination.Alp,       # OK OK
       'I-ambient'       : IceRayPy.utility.material.illumination.Ambient,   # OK OK TODO align with ALP

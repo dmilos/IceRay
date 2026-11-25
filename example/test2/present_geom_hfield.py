@@ -4,11 +4,15 @@ import time
 import math
 import os
 import sys
-import IceRayPy
 
+import IceRayPy
 import render
 
-dll_path = IceRayPy.system.SearchCDLL( P_preferDebug = False )
+
+os.system('color')
+
+running_in_visual_studio = "VisualStudioVersion" in os.environ
+dll_path = IceRayPy.system.SearchCDLL( P_preferDebug = running_in_visual_studio )
 
 if 0 != len( dll_path ):
     I_dll = IceRayPy.system.LoadCDLL( dll_path )
@@ -22,7 +26,8 @@ I_picture ={}
 I_picture[ 'width']  = 800*2
 I_picture['height']  = 600*2
 I_picture['aspect']  = I_picture['width'] / I_picture['height']
-I_picture['watermark'] = "TODO"
+I_picture['watermark'] = ""
+I_picture['overwrite'] = True
 
 if( 1 < len( sys.argv ) ):
     I_picture[ 'width'] = int( sys.argv[1] )
@@ -99,11 +104,11 @@ I_config['camera']['aspect'] = I_picture['aspect']
 
 geometry_list = [
      'C-hfield-image'        ,
-     'C-hfield-expression'  , 
-     'C-hfield-table-2x2'   , 
-     'C-hfield-table-3x3'   , 
-     'C-hfield-table-4x4'   , 
-     'C-hfield-table-5x5'    
+     'C-hfield-expression'  ,
+     'C-hfield-table-2x2'   ,
+     'C-hfield-table-3x3'   ,
+     'C-hfield-table-4x4'   ,
+     'C-hfield-table-5x5'
  ]
 
 for index in (0,): # range(1,360,1) 1, 2, 5, 10, 20,50, 100, 200, 500, 1000,
@@ -111,18 +116,21 @@ for index in (0,): # range(1,360,1) 1, 2, 5, 10, 20,50, 100, 200, 500, 1000,
     I_picture['prefix'] = "%04i"%(index)
 
     for item in geometry_list :
-        I_scene['geometry']= item
         I_picture['watermark'] = item
+        if item == 'C-hfield-expression' :
+            I_picture['watermark'] += I_config['geometry']['expression']
+
+        I_scene['geometry']= item
         render.doIt( I_dll, I_picture, I_scene, I_inventory, I_config )
 
 import os
-def prepare_readme():
+def prepare_readme(): #!< TODO review
     os.rename( I_picture['folder']+'/'+    '0000C-close_F-persp_C-hfield-expression_trans_I-ALP_chand-nine_0000.pnm',       I_picture['folder']+'/'+'geometry_hfield_expression.pnm' )
     os.rename( I_picture['folder']+'/'+    '0000C-close_F-persp_C-hfield-image_trans_I-ALP_chand-nine_0000.pnm',            I_picture['folder']+'/'+'geometry_hfield_image.pnm' )
     os.rename( I_picture['folder']+'/'+    '0000C-close_F-persp_C-hfield-table-2x2_trans_I-ALP_chand-nine_0000.pnm',        I_picture['folder']+'/'+'geometry_hfield_table2x2.pnm' )
     os.rename( I_picture['folder']+'/'+    '0000C-close_F-persp_C-hfield-table-3x3_trans_I-ALP_chand-nine_0000.pnm',        I_picture['folder']+'/'+'geometry_hfield_table3x3.pnm' )
     os.rename( I_picture['folder']+'/'+    '0000C-close_F-persp_C-hfield-table-4x4_trans_I-ALP_chand-nine_0000.pnm',        I_picture['folder']+'/'+'geometry_hfield_table4x4.pnm' )
     os.rename( I_picture['folder']+'/'+    '0000C-close_F-persp_C-hfield-table-5x5_trans_I-ALP_chand-nine_0000.pnm',        I_picture['folder']+'/'+'geometry_hfield_table5x5.pnm' )
-    
-    
+
+
 prepare_readme()

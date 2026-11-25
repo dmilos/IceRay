@@ -10,10 +10,10 @@ cd _makeVS64
 
 %prg_cmake% .. -A x64
 
-%prg_cmake% --build . --config Release
+%prg_cmake% --build . --config Release  --parallel 16 -j 16
 %prg_cmake% --install . --config Release
 
-%prg_cmake% --build . --config Debug
+%prg_cmake% --build . --config Debug --parallel 16 -j 16
 %prg_cmake% --install . --config Debug
 
 pause

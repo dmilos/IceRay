@@ -4,12 +4,14 @@ import time
 import math
 import os
 import sys
-import IceRayPy
 
+import IceRayPy
 import render
 
-running_in_visual_studio = "VisualStudioVersion" in os.environ
 
+os.system('color')
+
+running_in_visual_studio = "VisualStudioVersion" in os.environ
 dll_path = IceRayPy.system.SearchCDLL( P_preferDebug = running_in_visual_studio )
 
 if 0 != len( dll_path ):
@@ -24,6 +26,8 @@ I_picture ={}
 I_picture[ 'width']  = int( 800*2)
 I_picture['height']  = int( 600*2)
 I_picture['aspect']  = I_picture['width'] / I_picture['height']
+I_picture['watermark'] = ""
+I_picture['overwrite'] = True
 
 if( 1 < len( sys.argv ) ):
     I_picture[ 'width'] = int( sys.argv[1] )
@@ -103,25 +107,26 @@ geometry_list = [
  ]
 
 pigment_list =[
+      'P-expression' ,
 
-      'P-image'            ,
-
-      'P-level'            ,
-
-      'P-gradientBW' ,
-
-      'M-o-ID'                     ,
-      'M-o-translate'              ,
-      'M-o-affine'                 ,
-      'M-o-homography'             ,
-
-      'M-o-Cartesian2WoodX'        ,
-      'M-o-Cartesian2WoodY'        ,
-      'M-o-Cartesian2WoodZ'        ,
-      'M-o-Cylindric2Spherical'    ,
-
-      'M-o-Spherical2Cartesian'    ,
-      'M-o-Spherical2Cylindric'    ,
+#      'P-image'            ,
+#
+#      'P-level'            ,
+#
+#      'P-gradientBW' ,
+#
+#      'M-o-ID'                     ,
+#      'M-o-translate'              ,
+#      'M-o-affine'                 ,
+#      'M-o-homography'             ,
+#
+#      'M-o-Cartesian2WoodX'        ,
+#      'M-o-Cartesian2WoodY'        ,
+#      'M-o-Cartesian2WoodZ'        ,
+#      'M-o-Cylindric2Spherical'    ,
+#
+#      'M-o-Spherical2Cartesian'    ,
+#      'M-o-Spherical2Cylindric'    ,
 ]
 
 #### TODO Experimental remove after
@@ -145,7 +150,7 @@ pigment_list =[
 #exit()
 ####
 
-pigment_list =[ 'M-o-Cartesian2WoodX', 'M-o-Cartesian2WoodY', 'M-o-Cartesian2WoodZ' ] #<! Temporal
+#pigment_list =[ 'M-o-Cartesian2WoodX', 'M-o-Cartesian2WoodY', 'M-o-Cartesian2WoodZ' ] #<! Temporal
 #geometry_list = [ 'V-vacuum' ]
 for geometry_item in geometry_list :
     I_scene['geometry']= geometry_item
@@ -252,4 +257,5 @@ def prepare_readme():
     os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-box_trans_M-o-Cartesian2WoodX_point_0000.pnm' ,       I_picture['folder']+'/'+   'transform-wood-x.pnm'   )
     os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-box_trans_M-o-Cartesian2WoodY_point_0000.pnm' ,       I_picture['folder']+'/'+   'transform-wood-y.pnm'   )
     os.rename( I_picture['folder']+'/'+ 'C-close_F-persp_F-box_trans_M-o-Cartesian2WoodZ_point_0000.pnm' ,       I_picture['folder']+'/'+   'transform-wood-z.pnm'   )
+
 prepare_readme()

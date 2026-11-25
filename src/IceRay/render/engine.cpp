@@ -71,7 +71,7 @@ GC_engine::T_scanner & GC_engine::Fs_scanner()
  }
 
 void
-GC_engine::F_pixel   (T_pixel   * P_pixel    )
+GC_engine::F_pixel   ( T_pixel   * P_pixel    )
  {
   if( true == F_work() ) return;
 
@@ -97,7 +97,7 @@ GC_engine::T_pixel & GC_engine::Fs_pixel()
   return Irs_pixel;
  }
 
-void GC_engine::F_pierce    (T_pierce    * P_pierce     )
+void GC_engine::F_pierce    ( T_pierce    * P_pierce     )
  {
   if( true == F_work() ) return;
   M2_pierce = P_pierce;

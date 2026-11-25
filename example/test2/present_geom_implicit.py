@@ -4,12 +4,14 @@ import time
 import math
 import os
 import sys
-import IceRayPy
 
+import IceRayPy
 import render
 
-running_in_visual_studio = "VisualStudioVersion" in os.environ
 
+os.system('color')
+
+running_in_visual_studio = "VisualStudioVersion" in os.environ
 dll_path = IceRayPy.system.SearchCDLL( P_preferDebug = running_in_visual_studio )
 
 if 0 != len( dll_path ):
@@ -18,6 +20,7 @@ else:
     print("Can not find DLL")
     time.sleep(200)
     exit()
+
 
 I_picture ={}
 I_picture[ 'width']  = int( 2560*(3.0/4.0) )

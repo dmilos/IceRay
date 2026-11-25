@@ -4,19 +4,30 @@ import time
 import math
 import os
 import sys
-import IceRayPy
 
+import IceRayPy
 import render
 
-dll_path = IceRayPy.system.SearchCDLL( P_preferDebug = False )
 
+os.system('color')
+
+running_in_visual_studio = "VisualStudioVersion" in os.environ
+dll_path = IceRayPy.system.SearchCDLL( P_preferDebug = running_in_visual_studio )
 if 0 != len( dll_path ):
     I_dll = IceRayPy.system.LoadCDLL( dll_path )
 else:
     print("Can not find DLL")
     time.sleep(200)
     exit()
-    
+
+
+I_picture ={}
+I_picture[ 'width']  = int( 4/3*100*8  )
+I_picture['height']  = int(     100*8  )
+I_picture['aspect']  = I_picture['width'] / I_picture['height']
+I_picture['watermark'] = ""
+I_picture['overwrite'] = True
+
 start = 0;
 if( 1 < len( sys.argv ) ):
     start = int( sys.argv[1] )
@@ -24,11 +35,6 @@ if( 1 < len( sys.argv ) ):
 end = 10;
 if( 2 < len( sys.argv ) ):
     end = int( sys.argv[2] )
-
-I_picture ={}
-I_picture[ 'width']  = int( 4/3*1000*3  )
-I_picture['height']  = int(     1000*3  )
-I_picture['aspect']  = I_picture['width'] / I_picture['height']
 
 #if( 1 < len( sys.argv ) ):
 #    I_picture[ 'width'] = int( sys.argv[1] )
@@ -103,13 +109,13 @@ I_config['room']['radiosity']['correction']['rays'] = "trim"
 I_config['room']['radiosity']['correction']['leader' ]  = False
 I_config['room']['radiosity']['correction']['cone' ]  = False
 I_config['room']['level']  = -1
- 
+
 I_config['light']   = {}
 I_config['light']['sample']   = 1
 I_config['decoration']   = {}
 I_config['decoration']['size']   = IceRayPy.type.math.coord.Scalar3D(  1.5, 1.5, 0.01 )
 I_config['decoration']['center'] = IceRayPy.type.math.coord.Scalar3D( 1, 1, 1 )
-I_config['decoration']['color'] = IceRayPy.type.color.RGB(  50/10.0, 50/10.0,  50/10.0 )
+I_config['decoration']['color']  = IceRayPy.type.color.RGB(  50/10.0, 50/10.0,  50/10.0 )
 I_config['decoration']['pigment'] = 'hexagon'
 I_config['geometry']   = {}
 
@@ -133,25 +139,36 @@ I_config['composer']['ray-trace']['next'] = 17000
 I_config['composer']['hot'] = {}
 I_config['composer']['hot']['x'] = 50
 I_config['composer']['hot']['y'] = 360
+I_config['composer']['manager'] = {}
+I_config['composer']['manager']['pixel'] = {}
+I_config['composer']['manager']['pixel']['type'] = 'grid' # 'center', 'grid', 'random', 'sobol'
+I_config['composer']['manager']['pixel']['size'] = 4
 
-for index in (  1, 2, 5, 10, 20,50,100, 200, 500, 1000, 2000 ): #1, 2, 5, 10, 20,50,100, 200, 500, 1000, 2000  
-    for jitter in [ 'none' ]:  # , 'vdc', 'triangle', 'sobol', 'random', 'sunflower', 'congruent', 'grid', 'hexagon' 
-        for object in [ 'Q-sphere'  ]:  #'Q-sphere' 'V-vacuum', 'Q-sphere', 'Q-util-cylinder', 
+
+#for index in (  1, 2, 5, 10, 20,50,100, 200, 500, 1000, 2000 ): #1, 2, 5, 10, 20,50,100, 200, 500, 1000, 2000
+for index in range( 245, 250, 5 ):
+    I_config['decoration']['color']  = IceRayPy.type.color.RGB(  index/10.0, index/10.0,  index/10.0 )
+    I_config['decoration']['red']    = IceRayPy.type.color.RGB(  index/10.0, 0,  0 )
+    I_config['decoration']['green']  = IceRayPy.type.color.RGB(  0, index/10.0,  0 )
+    I_config['decoration']['blue']   = IceRayPy.type.color.RGB(  0, 0,  index/10.0 )
+    for jitter in [ 'none' ]:  # , 'vdc', 'triangle', 'sobol', 'random', 'sunflower', 'congruent', 'grid', 'hexagon'
+        for object in [ 'Q-sphere'  ]:  #'Q-sphere' 'V-vacuum', 'Q-sphere', 'Q-util-cylinder',
             I_scene['geometry']   = object
-            for blossom in [ 'vdc'  ]: # , 'kmeans', 'triangle', 'sunflower', 'grid', 'hexagon', 'congruent', 'sobol', 'random'  
+            for blossom in [ 'vdc'  ]: # , 'kmeans', 'triangle', 'sunflower', 'grid', 'hexagon', 'congruent', 'sobol', 'random'
+                I_picture['watermark']= str(index) + " " + blossom +" " + object +" " + jitter
                 I_picture['index'] = index
                 I_picture['prefix'] = "%04i"%(index) + '_sph_' + blossom + "_"
                 I_config['room']['radiosity']['type']  = blossom
-                I_config['room']['radiosity']['patch']  = math.radians( 90 )/index #<! Used also for sample number calculation
+                I_config['room']['radiosity']['patch']  = math.radians( 90 ) #<! Used also for sample number calculation
                 I_config['room']['radiosity']['jitter'] = {}
                 I_config['room']['radiosity']['jitter']['type' ]   = jitter # 'none', 'random', 'sobol', 'vdc', 'congruent'
                 I_config['room']['radiosity']['jitter']['angle' ]   = 0.5 * I_config['room']['radiosity']['patch']
                 I_config['room']['radiosity']['correction'] = {}
                 I_config['room']['radiosity']['correction']['leader' ] = False
                 I_config['room']['radiosity']['correction']['cone' ] = False
-                I_config['room']['radiosity']['correction']['rays' ] = 'trim' # 'none', 'claim', 'trim'
+                I_config['room']['radiosity']['correction']['rays' ] = 'trim' #!< ( 'none', 'claim', 'trim' )
                 I_config['room']['radiosity']['angle'  ] = math.radians( 135 )
-                I_config['room']['radiosity']['sample'] = index +0* int( (1 - math.cos(I_config['room']['radiosity']['angle']) ) / ( 1 - math.cos( I_config['room']['radiosity']['patch'] ) ) + 1 )
+                I_config['room']['radiosity']['sample'] = 100 +0* int( (1 - math.cos(I_config['room']['radiosity']['angle']) ) / ( 1 - math.cos( I_config['room']['radiosity']['patch'] ) ) + 1 )
                 I_config['room']['radiosity']['reflect']  = 'diffusive' # 'diffusive', 'one', 'schlick'
                 I_config['room']['radiosity']['albedo']  = IceRayPy.type.color.RGB( 1.0, 1.0, 1.0 )
                 I_config['room']['radiosity']['coefficient']  = 1/3

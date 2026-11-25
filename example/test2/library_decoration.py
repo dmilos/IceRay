@@ -218,11 +218,21 @@ def radiosity( P_dll, P_config = { 'shadow': False, 'pigment': None }, P_light =
     geometry = IceRayPy.core.geometry.flat.Box( P_dll )
     geometry.box( Coord3D( lo[0], lo[1], lo[2] ), Coord3D( hi[0], hi[1], hi[2] ) )
     #geometry = IceRayPy.core.geometry.simple.Sphere( P_dll, I_center, (I_size[0] +I_size[1] +I_size[2] )/3 )
-    
+
     pigment = IceRayPy.utility.material.pattern.Constant( P_dll, {}, I_color )
     if( 'pigment' in P_config ):
         if( 'hexagon' == P_config['pigment'] ):
-            pigment = IceRayPy.utility.material.pattern.Hexagon( P_dll, {}  )
+            I_red   = IceRayPy.type.color.RGB(  1, 0, 0 )
+            if( 'red'in P_config ):
+                I_red     = P_config['red']
+            I_green = IceRayPy.type.color.RGB(  0, 1, 0 )
+            if( 'green'in P_config ):
+                I_green   = P_config['green']
+            I_blue  = IceRayPy.type.color.RGB(  0, 0, 1 )
+            if( 'blue'in P_config ):
+                I_blue    = P_config['blue']
+            pigment = IceRayPy.utility.material.pattern.Hexagon( P_dll, { 'red': I_red, 'green': I_green, 'blue': I_blue }  )
+
         if( 'constant' in P_config['pigment'] ):
             pigment = IceRayPy.utility.material.pattern.Constant( P_dll, {}, I_color )
 

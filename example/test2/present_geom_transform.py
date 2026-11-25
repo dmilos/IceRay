@@ -6,12 +6,13 @@ import os
 import sys
 
 import IceRayPy
-
 import render
+
+
 os.system('color')
 
-
-dll_path = IceRayPy.system.SearchCDLL( P_preferDebug = False )
+running_in_visual_studio = "VisualStudioVersion" in os.environ
+dll_path = IceRayPy.system.SearchCDLL( P_preferDebug = running_in_visual_studio )
 
 if 0 != len( dll_path ):
     I_dll = IceRayPy.system.LoadCDLL( dll_path )
@@ -25,6 +26,8 @@ I_picture ={}
 I_picture[ 'width']  = 800
 I_picture['height']  = 600
 I_picture['aspect']  = I_picture['width'] / I_picture['height']
+I_picture['watermark'] = ""
+I_picture['overwrite'] = True
 
 if( 1 < len( sys.argv ) ):
     I_picture[ 'width'] = int( sys.argv[1] )
@@ -66,6 +69,7 @@ import library_pigment
 import library_medium
 import library_geometry
 import library_decoration
+import library_path
 
 
 I_inventory= {}
@@ -92,6 +96,7 @@ g = (math.sqrt(5)+1)/2
 p = 1.324717957244746025960908854
 c = 1.22074408460575947536
 I_config['camera'][ 'eye']   = IceRayPy.type.math.coord.Scalar3D( +c*p*g, +p*g, +g )
+I_config['camera']['eye'] = library_path.looker( 120.0/360.0 )
 I_config['camera']['view']   = IceRayPy.type.math.coord.Scalar3D( 0, 0, 0 )
 I_config['camera']['aspect'] = I_picture['aspect']
 I_config['camera']['sample'] = 1

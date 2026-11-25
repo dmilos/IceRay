@@ -280,3 +280,4 @@ int                             IceRayC_Material_Pattern_Gradient_Clear(    IceR
   I_this->F_clear();
   return 1;
  }
+ 

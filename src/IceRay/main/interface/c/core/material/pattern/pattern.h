@@ -17,7 +17,7 @@ IceRayC__EXPORT IceRayC__DECLSPEC   int  IceRayC_Material_Pattern_Release( IceRa
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Brick0( );
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Checker0( );
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Hexagon0( );
-IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Hexagon1( IceRayC_Type_Scalar            P_scale ); 
+IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Hexagon1( IceRayC_Type_Scalar            P_scale );
 IceRayC__EXPORT IceRayC__DECLSPEC  int                             IceRayC_Material_Pattern_Hexagon_Scale(IceRayC_Material_Pattern_Handle P_that, IceRayC_Type_Scalar            P_scale);
 
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Wave0( );
@@ -47,10 +47,9 @@ IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Material_Pattern_Handle IceRayC_Mater
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Side_Tetrahedron0( );
 
 IceRayC__EXPORT IceRayC__DECLSPEC  IceRayC_Material_Pattern_Handle IceRayC_Material_Pattern_Gradient0    ( );
-IceRayC__EXPORT IceRayC__DECLSPEC  int                             IceRayC_Material_Pattern_Gradient_Set ( IceRayC_Material_Pattern_Handle P_this, IceRayC_Type_Scalar P_point,   IceRayC_Type_Color_RGB* P_color );
+IceRayC__EXPORT IceRayC__DECLSPEC  int                             IceRayC_Material_Pattern_Gradient_Set (   IceRayC_Material_Pattern_Handle P_this, IceRayC_Type_Scalar P_point,   IceRayC_Type_Color_RGB* P_color );
 IceRayC__EXPORT IceRayC__DECLSPEC  int                             IceRayC_Material_Pattern_Gradient_Bottom( IceRayC_Material_Pattern_Handle P_this, IceRayC_Type_Math_Coord_Scalar3D* P_bottom );
 IceRayC__EXPORT IceRayC__DECLSPEC  int                             IceRayC_Material_Pattern_Gradient_Top(    IceRayC_Material_Pattern_Handle P_this, IceRayC_Type_Math_Coord_Scalar3D* P_top    );
 IceRayC__EXPORT IceRayC__DECLSPEC  int                             IceRayC_Material_Pattern_Gradient_Clear(  IceRayC_Material_Pattern_Handle P_this  );
-
 
 #endif
