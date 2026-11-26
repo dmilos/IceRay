@@ -11,7 +11,11 @@ import pathlib
 import ctypes
 import time
 
+BoolType = ctypes.c_bool
+IntegerType = ctypes.c_int
 SizeType = ctypes.c_size_t
+ScalarType = ctypes.c_double
+VoidPtrType = ctypes.c_void_p
 
 class Info:
     def __init__( self, P_dll ):
@@ -964,13 +968,13 @@ def _MapFunction_Material_Pigment_Surface_Instruction_Type(P_dll):
     _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Coord2D_Subtraction0, ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t, ctypes.c_size_t] )
     _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Coord2D_Unit0       , ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t] )
 
-    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Coord3D_Addition0   , ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t, ctypes.c_size_t] )
-    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Coord3D_Cross0      , ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t, ctypes.c_size_t] )
-    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Coord3D_Load0       , ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t, ctypes.c_size_t, ctypes.c_size_t] )
-    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Coord3D_Multiply0   , ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t, ctypes.c_size_t] )
-    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Coord3D_Scale0      , ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t, ctypes.c_size_t] )
-    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Coord3D_Subtraction0, ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t, ctypes.c_size_t] )
-    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Coord3D_Unit0       , ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Coord3D_Addition0    , ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t, ctypes.c_size_t] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Coord3D_Cross0       , ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t, ctypes.c_size_t] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Coord3D_Load0        , ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t, ctypes.c_size_t, ctypes.c_size_t] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Coord3D_Multiply0    , ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t, ctypes.c_size_t] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Coord3D_Scale0       , ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t, ctypes.c_size_t] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Coord3D_Subtraction0 , ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t, ctypes.c_size_t] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Coord3D_Unit0        , ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t] )
 
     _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Random_Congruent1D0   , ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t] )
     _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Random_Congruent2D0   , ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t] )
@@ -986,6 +990,14 @@ def _MapFunction_Material_Pigment_Surface_Instruction_Type(P_dll):
     _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Color_Multiply0      , ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t, ctypes.c_size_t] )
     _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Color_Scale0         , ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t, ctypes.c_size_t] )
     _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Color_Subtraction0   , ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t, ctypes.c_size_t] )
+
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Fill_Bool0           , ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_int,    ctypes.c_size_t] )
+   #_MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Fill_Integer0        , ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_int,    ctypes.c_size_t] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Fill_Scalar0         , ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_double, ctypes.c_size_t] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Fill_Color0          , ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_void_p, ctypes.c_size_t] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Fill_Coord2D0        , ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_void_p, ctypes.c_size_t] )
+    _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Operation_Fill_Coord3D0        , ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_void_p, ctypes.c_size_t] )
+
 
 def _MapFunction_Material_Pigment_Surface_Instruction_Convert(P_dll): #!< DONE
     _MakeFunction( P_dll.IceRayC_Material_Pigment_Surface_Instruction_Convert_Bool2Bool0                         , ctypes.c_void_p , [ctypes.c_size_t, ctypes.c_size_t] )

@@ -102,6 +102,24 @@ IceRayC__EXPORT IceRayC__DECLSPEC H F(Cartesian2Fisheye0   )( S P_result, S P_le
 #undef F
 #undef P
 
+
+#define P(D_P) IceRayC_##D_P
+#define F(D_P) IceRayC_Material_Pigment_Surface_Instruction_Operation_Fill_##D_P
+#define S IceRayC_Type_Size
+#define H IceRayC_Material_Pigment_Surfcace_Instruction_Handle
+
+IceRayC__EXPORT IceRayC__DECLSPEC H   F( Bool0     )( S P_result, IceRayC_Type_Bool             P_value, S P_size );
+IceRayC__EXPORT IceRayC__DECLSPEC H   F( Scalar0   )( S P_result, IceRayC_Type_Scalar           P_value, S P_size );
+IceRayC__EXPORT IceRayC__DECLSPEC H   F( Color0    )( S P_result, IceRayC_TypeColorRGB        * P_value, S P_size );
+IceRayC__EXPORT IceRayC__DECLSPEC H   F( Coord2D0  )( S P_result, IceRayC_Type_Coord_Scalar2D * P_value, S P_size );
+IceRayC__EXPORT IceRayC__DECLSPEC H   F( Coord3D0  )( S P_result, IceRayC_Type_Coord_Scalar3D * P_value, S P_size );
+ 
+#undef H
+#undef S
+#undef F
+#undef P
+
+
 // TODO IceRayC_Material_Pigment_Surfcace_Instruction_Handle IceRayC_Material_Pigment_Surface_Instruction_Operation_Binary( );
 // TODO IceRayC_Material_Pigment_Surfcace_Instruction_Handle IceRayC_Material_Pigment_Surface_Instruction_Operation_Ternary( );
 // TODO IceRayC_Material_Pigment_Surfcace_Instruction_Handle IceRayC_Material_Pigment_Surface_Instruction_Operation_Unary( );

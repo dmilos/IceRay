@@ -1,6 +1,8 @@
 #include "./operation.hpp"
 
 #include "../../../../type/coord.hpp"
+#include "../../../../type/color.hpp"
+#include "../../../../type/bool.hpp"
 #include "../../../../type/affine.hpp"
 #include "../../../../type/matrix.hpp"
 #include "../../../../type/homography.hpp"
@@ -337,3 +339,50 @@ H F(Cartesian2Fisheye0   )( S P_result, S P_left )
 #undef S
 #undef F
 #undef P
+
+#define P(D_P) IceRayC_##D_P
+#define F(D_P) IceRayC_Material_Pigment_Surface_Instruction_Operation_Fill_##D_P
+#define S IceRayC_Type_Size
+#define H IceRayC_Material_Pigment_Surfcace_Instruction_Handle
+
+H   F( Bool0     )( S P_result, IceRayC_Type_Bool             P_value, S P_size )
+ {
+  typedef GS_DDMRM::S_IceRay::S_type::GT_bool Tf_value;
+  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::GC_fill<Tf_value> Tf_this;
+  auto Ir_result = new Tf_this{ P_result, c2cpp(P_value), P_size };
+  return cpp2c( Ir_result );
+ }
+H   F( Scalar0   )( S P_result, IceRayC_Type_Scalar           P_value, S P_size )
+ {
+  typedef GS_DDMRM::S_IceRay::S_type::GT_scalar Tf_value;
+  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::GC_fill<Tf_value> Tf_this;
+  auto Ir_result = new Tf_this{ P_result, P_value, P_size };
+  return cpp2c( Ir_result );
+ }
+H   F( Color0    )( S P_result, IceRayC_TypeColorRGB        * P_value, S P_size )
+ {
+  typedef GS_DDMRM::S_IceRay::S_type::S_color::GT_scalar Tf_value;
+  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::GC_fill<Tf_value> Tf_this;
+  auto Ir_result = new Tf_this{ P_result, c2cpp(*P_value), P_size };
+  return cpp2c( Ir_result );
+ }
+H   F( Coord2D0  )( S P_result, IceRayC_Type_Coord_Scalar2D * P_value, S P_size )
+ {
+  typedef GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar2D Tf_value;
+  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::GC_fill<Tf_value> Tf_this;
+  auto Ir_result = new Tf_this{ P_result, c2cpp(*P_value), P_size };
+  return cpp2c( Ir_result );
+ }
+H   F( Coord3D0  )( S P_result, IceRayC_Type_Coord_Scalar3D * P_value, S P_size )
+ {
+  typedef GS_DDMRM::S_IceRay::S_type::S_coord::GT_scalar3D Tf_value;
+  typedef GS_DDMRM::S_IceRay::S_material::S_compute::S_operation::GC_fill<Tf_value> Tf_this;
+  auto Ir_result = new Tf_this{ P_result, c2cpp(*P_value), P_size };
+  return cpp2c( Ir_result );
+ }
+ 
+#undef H
+#undef S
+#undef F
+#undef P
+

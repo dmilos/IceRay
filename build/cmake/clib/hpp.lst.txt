@@ -398,6 +398,7 @@ IceRay/material/compute/operation/switch.hpp
 IceRay/material/compute/operation/ternary.hpp
 IceRay/material/compute/operation/tile.hpp
 IceRay/material/compute/operation/unary.hpp
+IceRay/material/compute/operation/fill.hpp
 IceRay/material/compute/pattern/constant.hpp
 IceRay/material/compute/pattern/function.hpp
 IceRay/material/compute/pattern/pattern.hpp

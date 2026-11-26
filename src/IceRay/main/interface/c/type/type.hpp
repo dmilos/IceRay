@@ -5,3 +5,4 @@
 #include "./color.hpp"
 #include "./homography.hpp"
 #include "./picture.hpp"
+#include "./bool.hpp"

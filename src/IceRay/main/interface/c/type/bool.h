@@ -1,5 +1,5 @@
-#ifndef x5b876687523d4322ab63d78dcd390c14
-#define x5b876687523d4322ab63d78dcd390c14
+#ifndef _x5b876687523d4322ab63d78dcd390c14
+#define _x5b876687523d4322ab63d78dcd390c14
 
 typedef int IceRayC_Type_Bool;
 

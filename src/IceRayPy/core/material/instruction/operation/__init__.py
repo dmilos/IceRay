@@ -12,4 +12,6 @@ import IceRayPy.core.material.instruction.operation.integer
 import IceRayPy.core.material.instruction.operation.scalar
 import IceRayPy.core.material.instruction.operation.size
 
+import IceRayPy.core.material.instruction.operation.fill
+
 #print( '</' + __name__ + ' name=\'' +   __file__ + '\'>' )

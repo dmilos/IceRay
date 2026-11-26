@@ -26,3 +26,6 @@
 
 #include "./tile.hpp"
 #include "./random/random.hpp"
+
+#include "./expression.hpp"
+#include "./fill.hpp"
