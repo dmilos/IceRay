@@ -23,18 +23,25 @@ else:
 
 
 I_picture ={}
-I_picture[ 'width']  = int( 2560 )
-I_picture['height']  = int( 1440 )
+I_picture[ 'width']  = int( 2560/3 )
+I_picture['height']  = int( 1440/3 )
 I_picture['aspect']  = I_picture['width'] / I_picture['height']
 I_picture['watermark'] = ""
 I_picture['overwrite'] = True
 
 
-I_begin = 120
+I_begin = 0
 if( 1 < len( sys.argv ) ):
     I_begin = int( sys.argv[1] )
     #I_picture[ 'width'] = int( sys.argv[1] )
     #I_picture['height'] = int( I_picture['width'] / I_picture['aspect'] )
+
+I_step = 1
+if( 2 < len( sys.argv ) ):
+    I_step = int( sys.argv[2] )
+    #I_picture[ 'width'] = int( sys.argv[1] )
+    #I_picture['height'] = int( I_picture['width'] / I_picture['aspect'] )
+
 
 try:
     os.mkdir( "_out" )
@@ -57,7 +64,7 @@ I_picture['window']['B']['y'] = I_picture['height']
 
 I_scene = {}
 I_scene['room']       = 'C-close'
-I_scene['camera']     =  'F-persp'
+I_scene['camera']     = 'F-persp'
 I_scene['geometry']   = 'vacuum'
 I_scene['medium']     = 'trans'
 I_scene['pigment']    = 'I-ALP'
@@ -92,6 +99,7 @@ I_config['light']   = {}
 I_config['light']['sample']   = 1
 I_config['decoration']   = {}
 I_config['geometry']   = {}
+
 
 
 #I_picture['watermark']             = 'cos(x)*cos(y)*cos(z)'
@@ -143,13 +151,13 @@ I_config['camera']['aspect'] = I_picture['aspect']
 I_config['camera']['sample'] = 1
 #I_config['camera']['hfov']   = math.radians( 90 )
 #I_config['camera']['vfov']   = math.radians( 90 )
-I_config['camera']['width']   = 1
+I_config['camera']['width']   = 0.5
 
 
 geometry_list = [
-     'S-torus',
+     #'S-torus',
      'L-Bpair',
-     'E-implicit'
+     #'E-implicit'
   ]
 
 I_config['composer'] = {}
@@ -157,11 +165,27 @@ I_config['composer']['hot'] = {}
 I_config['composer']['hot']['x'] = 1280
 I_config['composer']['hot']['y'] = 145
 
-for index in range( I_begin, 360, 361 ):
+shift = 0.5
+
+for index in range( I_begin, 360, I_step ):
     I_config['camera']['eye'] = library_path.looker( index/360.0 )
     I_picture['index'] = index
+    I_picture['prefix'] = "%04i"%(index)+ '_'
+    I_picture['watermark'] = "%04i"%(index)
+
+    #influence = index / 360.0
+    #radius = math.sqrt( math.fabs( shift * shift - influence*influence )*math.sqrt( 2.0 ) + influence*influence )
+
+    influence = 0.85
+    radius =  0.23333333
+   #I_config['geometry']['distance']  = shift
+    I_config['geometry']['influence'] = influence
+    I_config['geometry']['radius']    = radius
+
+    I_picture['watermark'] = "%04i"%(index) #+ ";     "+ "I: %04f"%(influence)+"; " + "R: %04f"%(radius)+'; '
+
     for item in geometry_list :
-        I_picture['watermark'] = item
+        #I_picture['watermark'] = item
         I_scene['geometry']= item
         render.doIt( I_dll, I_picture, I_scene, I_inventory, I_config )
 

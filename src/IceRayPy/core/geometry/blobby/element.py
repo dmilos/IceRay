@@ -24,11 +24,11 @@ class Sphere:
     def center( self, P_center ):
         self.m_cargo['dll'].IceRayC_Geometry_Blobby_Element_Sphere_Center( self.m_cargo['this'], AddressOf( P_center ) )
 
-    def core( self, P_radius ):
-        self.m_cargo['dll'].IceRayC_Geometry_Blobby_Element_Sphere_Core( self.m_cargo['this'], Scalar( P_radius) )
+    def influence( self, P_influenece ):
+        self.m_cargo['dll'].IceRayC_Geometry_Blobby_Element_Sphere_Influence( self.m_cargo['this'], Scalar( P_influenece ) )
 
     def radius( self, P_radius ):
-        self.m_cargo['dll'].IceRayC_Geometry_Blobby_Element_Sphere_Radius( self.m_cargo['this'], Scalar( P_radius) )
+        self.m_cargo['dll'].IceRayC_Geometry_Blobby_Element_Sphere_Radius( self.m_cargo['this'], Scalar( P_radius ) )
 
 class Cylinder:
     def __init__( self, P_dll, P_center = None , P_radius = None ):

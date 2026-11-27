@@ -46,19 +46,19 @@
 
            public:
              T_coord  const& F_center()const{ return M2_center; }
-             bool            F_center( T_coord const& P_center ){ M2_center = P_center; return bool( true ); }
+             bool            F_center( T_coord const& P_center );
            private:
              T_coord M2_center;
 
            public:
              T_scalar    const& F_radius()const{ return M2_radius; }
-             bool               F_radius( T_scalar const& P_radius ){ M2_radius = P_radius; return bool( true ); }
+             bool               F_radius( T_scalar const& P_radius );
            private:
              T_scalar M2_radius;
 
            public:
              T_scalar    const& F_influence()const{ return M2_influence; }
-             bool               F_influence( T_scalar const& P_influence ){ M2_influence = P_influence; return bool( true ); }
+             bool               F_influence( T_scalar const& P_influence );
            private:
              T_scalar M2_influence;
 

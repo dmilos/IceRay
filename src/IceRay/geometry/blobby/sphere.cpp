@@ -27,24 +27,9 @@ GC_sphere::GC_sphere( T_coord const& P_center, T_scalar const& P_radius, T_scala
  ,M2_radius( P_influence * P_radius )
  ,M2_influence ( P_influence )
  {
-  static T_scalar Is_epsilon = 1e-10;// T_scalar( std::numeric_limits<T_scalar>::epsilon() );
-
-  T_scalar I_f = M2_radius * M2_radius - M2_influence * M2_influence;
-  I_f *= I_f;
-
-  if( ( -Is_epsilon < I_f ) && ( I_f < Is_epsilon ) )
-   {
-    M2_radius = M2_influence * 0.999;
-    I_f = M2_radius * M2_radius - M2_influence * M2_influence;
-    I_f *= I_f;
-   }
-
-  M2_c0 = M2_influence * M2_influence;
-  M2_c1 = 1.0 / I_f;
-
-  T_coord I_lo; ::math::linear::vector::addition( I_lo, P_center, ::math::linear::vector::fill( T_coord(), -P_influence ) );
-  T_coord I_hi; ::math::linear::vector::addition( I_hi, P_center, ::math::linear::vector::fill( T_coord(), +P_influence ) );
-  F1_box( T_box{ I_lo, I_hi } );
+  F_center( P_center );
+  F_radius( P_radius );
+  F_influence( P_influence );
  }
 
 GC_sphere::~GC_sphere( )
@@ -281,4 +266,58 @@ GC_sphere::T_scalar GC_sphere::Fv_intensity( T_coord const& P_point )const
   I_intensity /= M2_c1;
 
   return I_intensity;
+ }
+
+bool   GC_sphere::F_center( T_coord const& P_center )
+ {
+  M2_center = P_center;
+  T_coord I_lo; ::math::linear::vector::addition( I_lo, P_center, ::math::linear::vector::fill( T_coord(), -F_influence() ) );
+  T_coord I_hi; ::math::linear::vector::addition( I_hi, P_center, ::math::linear::vector::fill( T_coord(), +F_influence() ) );
+  F1_box( T_box{ I_lo, I_hi } );
+  return bool( true ); 
+ }
+ 
+bool   GC_sphere::F_radius( T_scalar const& P_radius )
+ {
+  M2_radius = P_radius;
+  static T_scalar Is_epsilon = 1e-10;// T_scalar( std::numeric_limits<T_scalar>::epsilon() );
+
+  T_scalar I_f = M2_radius * M2_radius - M2_influence * M2_influence;
+  I_f *= I_f;
+
+  if( ( -Is_epsilon < I_f ) && ( I_f < Is_epsilon ) )
+   {
+    M2_influence = M2_radius * 1.001;
+    I_f = M2_radius * M2_radius - M2_influence * M2_influence;
+    I_f *= I_f;
+   }
+
+  M2_c0 = M2_influence * M2_influence;
+  M2_c1 = 1.0 / I_f;
+
+  return bool( true ); 
+ }
+
+bool   GC_sphere::F_influence( T_scalar const& P_influence )
+ {
+  M2_influence = P_influence;
+  static T_scalar Is_epsilon = 1e-10;// T_scalar( std::numeric_limits<T_scalar>::epsilon() );
+
+  T_scalar I_f = M2_radius * M2_radius - M2_influence * M2_influence;
+  I_f *= I_f;
+
+  if( ( -Is_epsilon < I_f ) && ( I_f < Is_epsilon ) )
+   {
+    M2_radius = M2_influence * 0.999;
+    I_f = M2_radius * M2_radius - M2_influence * M2_influence;
+    I_f *= I_f;
+   }
+
+  M2_c0 = M2_influence * M2_influence;
+  M2_c1 = 1.0 / I_f;
+
+  T_coord I_lo; ::math::linear::vector::addition( I_lo, F_center(), ::math::linear::vector::fill( T_coord(), -M2_influence ) );
+  T_coord I_hi; ::math::linear::vector::addition( I_hi, F_center(), ::math::linear::vector::fill( T_coord(), +M2_influence ) );
+  F1_box( T_box{ I_lo, I_hi } );
+  return bool( true ); 
  }
